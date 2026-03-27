@@ -16,6 +16,13 @@
 
 ## 중요 규칙 (반드시 준수)
 
+### 공유 URL slug 하드코딩 금지!
+- 컴포넌트 내부에서 공유 URL 만들 때 slug을 직접 문자열로 쓰지 말 것
+- **잘못된 예**: `${siteConfig.url}/tools/random-decision#share=...`
+- **올바른 예**: props나 meta에서 slug을 받아서 사용
+- EN 버전은 slug 뒤에 `-en` 붙어야 함 (예: `random-decision-maker-en`)
+- 기존 코드에 하드코딩된 slug이 많으니 수정 시 확인 필요
+
 ### KR/EN 동시 적용 (필수!)
 1. **수정 요청 시 항상 EN 확인**
    - `src/data/tools-en.ts` 검색해서 EN에도 있는지 확인
