@@ -233,7 +233,7 @@ export function RandomDecisionMaker() {
             <ResultShareButtons
               url={getShareUrl()}
               title={`랜덤 결정: ${result}`}
-              description="JSSpace 랜덤 결정 도구"
+              description="ToolPiki 랜덤 결정 도구"
             />
           </div>
         )}

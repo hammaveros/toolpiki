@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About - JSSpace',
-  description: 'JSSpace is a free online web tools collection. Text conversion, image editing, encoding, and more.',
+  title: 'About - ToolPiki',
+  description: 'ToolPiki is a free online web tools collection. Text conversion, image editing, encoding, and more.',
 };
 
 export default function AboutPageEn() {
@@ -15,10 +15,10 @@ export default function AboutPageEn() {
       <div className="prose dark:prose-invert max-w-none space-y-6">
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
-            What is JSSpace?
+            What is ToolPiki?
           </h2>
           <p className="text-gray-700 dark:text-gray-300">
-            JSSpace is a free online utility service that provides commonly needed web tools.
+            ToolPiki is a free online utility service that provides commonly needed web tools.
             Anyone can use it without registration, and all processing happens in your browser,
             so your data is never sent to our servers.
           </p>
@@ -44,7 +44,7 @@ export default function AboutPageEn() {
             About the Project
           </h2>
           <p className="text-gray-700 dark:text-gray-300">
-            JSSpace is an independent project run by an individual developer.
+            ToolPiki is an independent project run by an individual developer.
             It is not affiliated with any company, agency, or organization.
           </p>
           <p className="text-gray-700 dark:text-gray-300 mt-2">

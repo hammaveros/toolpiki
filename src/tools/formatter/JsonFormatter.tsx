@@ -326,7 +326,7 @@ export function JsonFormatter() {
 
   const handleSample = () => {
     const sample = {
-      name: 'JSSpace',
+      name: 'ToolPiki',
       version: '1.0.0',
       features: ['JSON 포맷터', '코드 변환', '해시 생성'],
       config: {

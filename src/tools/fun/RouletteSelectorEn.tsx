@@ -237,7 +237,7 @@ export function RouletteSelectorEn() {
             <ResultShareButtonsEn
               url={getShareUrl()}
               title={`Roulette Result: ${result}`}
-              description={`Selected from ${items.length} items - JSSpace`}
+              description={`Selected from ${items.length} items - ToolPiki`}
             />
           </div>
         )}

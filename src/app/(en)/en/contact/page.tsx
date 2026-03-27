@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'Contact - JSSpace',
-  description: 'Send us your inquiries, feedback, or bug reports about JSSpace.',
+  title: 'Contact - ToolPiki',
+  description: 'Send us your inquiries, feedback, or bug reports about ToolPiki.',
 };
 
 export default function ContactPageEn() {
@@ -29,7 +29,7 @@ export default function ContactPageEn() {
       </div>
 
       <a
-        href={`mailto:${email}?subject=[JSSpace] Inquiry`}
+        href={`mailto:${email}?subject=[ToolPiki] Inquiry`}
         className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
       >
         Send Email

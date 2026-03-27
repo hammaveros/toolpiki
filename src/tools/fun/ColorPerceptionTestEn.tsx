@@ -194,7 +194,7 @@ export function ColorPerceptionTestEn() {
             <ResultShareButtonsEn
               url={getShareUrl()}
               title={`Color Perception Test: ${Math.round((score / totalRounds) * 100)}% Accuracy`}
-              description={`Avg response ${(totalTime / totalRounds / 1000).toFixed(2)}s - JSSpace`}
+              description={`Avg response ${(totalTime / totalRounds / 1000).toFixed(2)}s - ToolPiki`}
             />
           </div>
 

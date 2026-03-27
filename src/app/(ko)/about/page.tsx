@@ -16,10 +16,10 @@ export default function AboutPage() {
       <div className="prose dark:prose-invert max-w-none space-y-6">
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
-            JSSpace란?
+            ToolPiki란?
           </h2>
           <p className="text-gray-700 dark:text-gray-300">
-            JSSpace는 일상에서 자주 필요한 웹 도구들을 무료로 제공하는 온라인 유틸리티 서비스입니다.
+            ToolPiki는 일상에서 자주 필요한 웹 도구들을 무료로 제공하는 온라인 유틸리티 서비스입니다.
             회원가입 없이 누구나 바로 사용할 수 있으며, 모든 작업은 브라우저에서 처리되어
             개인정보가 서버로 전송되지 않습니다.
           </p>
@@ -45,7 +45,7 @@ export default function AboutPage() {
             운영 정보
           </h2>
           <p className="text-gray-700 dark:text-gray-300">
-            JSSpace는 개인이 운영하는 독립 프로젝트입니다.
+            ToolPiki는 개인이 운영하는 독립 프로젝트입니다.
             특정 기업, 에이전시, 조직과 무관하며 상업적 클라이언트 업무를 수행하지 않습니다.
           </p>
           <p className="text-gray-700 dark:text-gray-300 mt-2">

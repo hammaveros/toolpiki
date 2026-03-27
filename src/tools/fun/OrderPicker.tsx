@@ -19,7 +19,7 @@ function shuffle<T>(array: T[]): T[] {
   return result;
 }
 
-const STORAGE_KEY = 'jsspace-order-picker-items';
+const STORAGE_KEY = 'toolpiki-order-picker-items';
 
 export function OrderPicker() {
   const [input, setInput] = useState('');
@@ -152,7 +152,7 @@ export function OrderPicker() {
             <ResultShareButtons
               url={getShareUrl()}
               title={`순번 정하기 결과: 1위 ${result[0]}`}
-              description={`${result.length}명 순번 - JSSpace`}
+              description={`${result.length}명 순번 - ToolPiki`}
             />
           </div>
         </Card>

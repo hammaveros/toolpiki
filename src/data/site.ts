@@ -1,8 +1,8 @@
 // 사이트 설정 - 도메인 변경 시 여기만 수정
 export const siteConfig = {
   // 기본 정보 (도메인 변경 가능)
-  name: 'JSSpace',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://jsspace.online',
+  name: 'ToolPiki',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://toolpiki.com',
 
   // 문의 이메일
   contactEmail: 'hammaveros@gmail.com',
@@ -16,7 +16,7 @@ export const siteConfig = {
     '무료 도구',
     '웹 유틸리티',
     '편리한 도구',
-    'JSSpace',
+    'ToolPiki',
   ],
 
   // 소셜

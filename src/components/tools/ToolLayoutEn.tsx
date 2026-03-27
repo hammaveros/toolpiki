@@ -62,7 +62,7 @@ function ToolLayoutEnContent({ meta, children }: ToolLayoutEnProps) {
                 {meta.description}
               </p>
               <ShareButtonsEn
-                url={`https://jsspace.online/en/tools/${meta.slug}`}
+                url={`https://toolpiki.com/en/tools/${meta.slug}`}
                 title={meta.name}
                 description={meta.description}
                 className="ml-3 flex-shrink-0"
@@ -165,7 +165,7 @@ function ToolLayoutEnFallback({ meta, children }: ToolLayoutEnProps) {
               {meta.description}
             </p>
             <ShareButtonsEn
-              url={`https://jsspace.online/en/tools/${meta.slug}`}
+              url={`https://toolpiki.com/en/tools/${meta.slug}`}
               title={meta.name}
               description={meta.description}
               className="ml-3 flex-shrink-0"

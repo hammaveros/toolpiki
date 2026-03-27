@@ -1190,23 +1190,6 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'pros-cons-comparator-en',
-    name: 'Pros & Cons Comparator',
-    description: 'Compare options by listing and weighing pros and cons.',
-    category: 'calculator',
-    tags: ['pros', 'cons', 'compare', 'decision'],
-    icon: '⚖️',
-    keywords: ['pros and cons', 'decision maker', 'compare options', 'pros cons list'],
-    relatedSlugs: ['random-decision-maker-en', 'random-picker-en'],
-    seoTitle: 'Pros & Cons Comparator - Free Decision Making Tool',
-    seoDescription: 'Compare options by listing and weighing pros and cons. Make better decisions with visual analysis.',
-    seoContent: '## What is Pros & Cons Comparator?\n\nList pros and cons for any decision, assign weights to each factor, and see a visual comparison. Helps make informed decisions by organizing and quantifying your thoughts.',
-    faqs: [
-      { question: 'How does weighting work?', answer: 'Assign importance (1-5) to each pro/con. Higher weighted items count more in the final score.' },
-      { question: 'Can I compare multiple options?', answer: 'Yes, create separate pro/con lists for each option and compare their total scores.' },
-    ],
-  },
-  {
     slug: 'loan-calculator-en',
     name: 'Loan Calculator',
     description: 'Calculate monthly payments, total interest, and amortization schedule for loans.',

@@ -70,7 +70,7 @@ function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
                 {meta.description}
               </p>
               <ShareButtons
-                url={`https://jsspace.online/tools/${meta.slug}`}
+                url={`https://toolpiki.com/tools/${meta.slug}`}
                 title={meta.name}
                 description={meta.description}
                 className="ml-3 flex-shrink-0"
@@ -173,7 +173,7 @@ function ToolLayoutFallback({ meta, children }: ToolLayoutProps) {
               {meta.description}
             </p>
             <ShareButtons
-              url={`https://jsspace.online/tools/${meta.slug}`}
+              url={`https://toolpiki.com/tools/${meta.slug}`}
               title={meta.name}
               description={meta.description}
               className="ml-3 flex-shrink-0"

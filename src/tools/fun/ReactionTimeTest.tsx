@@ -335,7 +335,7 @@ export function ReactionTimeTest() {
               <ResultShareButtons
                 url={getShareUrl()}
                 title={`반응속도 테스트 결과: 평균 ${stats.average}ms`}
-                description={`최소 ${stats.min}ms, 최대 ${stats.max}ms - JSSpace`}
+                description={`최소 ${stats.min}ms, 최대 ${stats.max}ms - ToolPiki`}
               />
             </div>
           )}

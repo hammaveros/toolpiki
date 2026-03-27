@@ -609,7 +609,7 @@ docs/blog/YYYY-MM-DD_순번_slug_언어.md
 # 제목 - 간결하게
 
 
-👉 [도구명 바로가기](https://jsspace.online/tools/slug)
+👉 [도구명 바로가기](https://toolpiki.com/tools/slug)
 
 > 한줄 설명 (문제 상황)
 
@@ -679,7 +679,7 @@ N초면 됨.
 
 ## 써보기
 
-👉 [도구명 바로가기](https://jsspace.online/tools/slug)
+👉 [도구명 바로가기](https://toolpiki.com/tools/slug)
 
 짧은 마무리~
 

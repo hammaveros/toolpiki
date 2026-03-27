@@ -145,7 +145,7 @@ export function OrderPickerEn() {
             <ResultShareButtonsEn
               url={getShareUrl()}
               title={`Order Picker: #1 ${result[0]}`}
-              description={`${result.length} items shuffled - JSSpace`}
+              description={`${result.length} items shuffled - ToolPiki`}
             />
           </div>
         </Card>

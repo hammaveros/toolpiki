@@ -97,7 +97,7 @@ export function CharacterCounter() {
   const handleClear = () => setText('');
 
   const handleExample = () => {
-    setText(`안녕하세요! JSSpace 글자수 세기 도구입니다.
+    setText(`안녕하세요! ToolPiki 글자수 세기 도구입니다.
 
 이 도구는 텍스트의 글자수, 단어수, 문장수를 실시간으로 계산합니다. 블로그 글, 자기소개서, SNS 게시물 작성 시 글자수 제한 확인에 유용합니다.
 

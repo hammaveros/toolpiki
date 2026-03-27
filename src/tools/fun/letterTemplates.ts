@@ -7,7 +7,7 @@ export interface LetterTemplate {
   cardClass: string;
   /** 본문 텍스트 클래스 */
   textClass: string;
-  /** 워터마크(jsspace.online) 색 */
+  /** 워터마크(toolpiki.com) 색 */
   watermarkClass: string;
   /** toPng backgroundColor */
   bgColor: string;

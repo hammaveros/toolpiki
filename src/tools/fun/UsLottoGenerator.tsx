@@ -302,7 +302,7 @@ export function UsLottoGenerator() {
             <ResultShareButtonsEn
               url={getShareUrl()}
               title={`${config.name} Numbers: ${results.length} ${results.length === 1 ? 'set' : 'sets'}`}
-              description={`Generated with JSSpace`}
+              description={`Generated with ToolPiki`}
             />
           </div>
         </Card>

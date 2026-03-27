@@ -24,7 +24,7 @@ export function HeaderEn({ focusMode = false }: HeaderEnProps) {
             href="/en"
             className="flex items-center gap-2 font-bold text-xl text-gray-900 dark:text-white"
           >
-            <span className="text-blue-600">JSSpace</span>
+            <span className="text-blue-600">ToolPiki</span>
           </Link>
 
           {/* Desktop Navigation */}

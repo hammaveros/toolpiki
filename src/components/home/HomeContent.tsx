@@ -8,10 +8,10 @@ export function HomeContent() {
       {/* 사이트 소개 */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          JSSpace 소개
+          ToolPiki 소개
         </h2>
         <p className="leading-relaxed mb-3">
-          JSSpace는 일상과 업무에서 자주 필요한 작은 도구들을 웹에서 바로 사용할 수 있도록 제공하는 무료 온라인 유틸리티 사이트입니다.
+          ToolPiki는 일상과 업무에서 자주 필요한 작은 도구들을 웹에서 바로 사용할 수 있도록 제공하는 무료 온라인 유틸리티 사이트입니다.
           별도의 프로그램 설치나 회원가입 없이, 브라우저만 있으면 텍스트 변환, 이미지 편집, 데이터 포맷 정리, 색상 코드 변환 등 다양한 작업을 즉시 처리할 수 있습니다.
         </p>
         <p className="leading-relaxed mb-3">
@@ -76,7 +76,7 @@ export function HomeContent() {
           사용 방법
         </h2>
         <div className="space-y-2">
-          <p>JSSpace의 모든 도구는 동일한 방식으로 간편하게 사용할 수 있습니다.</p>
+          <p>ToolPiki의 모든 도구는 동일한 방식으로 간편하게 사용할 수 있습니다.</p>
           <ol className="list-decimal list-inside space-y-1 ml-2">
             <li>메인 페이지에서 필요한 도구를 검색하거나 카테고리에서 선택합니다.</li>
             <li>도구 페이지에서 텍스트를 입력하거나 파일을 업로드합니다.</li>

@@ -8,10 +8,10 @@ export function HomeContentEn() {
       {/* About */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          About JSSpace
+          About ToolPiki
         </h2>
         <p className="leading-relaxed">
-          JSSpace is a free online utility website that provides everyday tools you can use directly in your browser.
+          ToolPiki is a free online utility website that provides everyday tools you can use directly in your browser.
           No software installation or sign-up required — just open your browser and instantly handle tasks like text conversion, image editing, data formatting, and color code conversion.
           Text and files you input are processed entirely in your browser and never sent to any server.
           The site works seamlessly on both desktop and mobile devices, helping you save time on repetitive tasks.
@@ -69,7 +69,7 @@ export function HomeContentEn() {
           How to Use
         </h2>
         <div className="space-y-2">
-          <p>All JSSpace tools follow the same simple workflow:</p>
+          <p>All ToolPiki tools follow the same simple workflow:</p>
           <ol className="list-decimal list-inside space-y-1 ml-2">
             <li>Search for a tool or browse by category on the main page.</li>
             <li>Enter text or upload a file on the tool page.</li>

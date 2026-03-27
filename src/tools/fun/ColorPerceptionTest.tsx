@@ -198,7 +198,7 @@ export function ColorPerceptionTest() {
             <ResultShareButtons
               url={getShareUrl()}
               title={`색감 테스트 결과: 정확도 ${Math.round((score / totalRounds) * 100)}%`}
-              description={`평균 반응시간 ${(totalTime / totalRounds / 1000).toFixed(2)}초 - JSSpace`}
+              description={`평균 반응시간 ${(totalTime / totalRounds / 1000).toFixed(2)}초 - ToolPiki`}
             />
           </div>
 

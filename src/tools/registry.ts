@@ -148,12 +148,8 @@ import { RatioCalculator } from './calculator/RatioCalculator';
 import { AgeCalculator } from './calculator/AgeCalculator';
 import { BmiCalculator } from './calculator/BmiCalculator';
 import { RandomPicker } from './calculator/RandomPicker';
-import { DecisionFatigueCalculator } from './calculator/DecisionFatigueCalculator';
 import { MeetingCostCalculator } from './calculator/MeetingCostCalculator';
 import { MeetingCostCalculatorEn } from './calculator/MeetingCostCalculatorEn';
-import { FocusTimeCalculator } from './calculator/FocusTimeCalculator';
-import { ProsConsComparator } from './calculator/ProsConsComparator';
-import { ProsConsComparatorEn } from './calculator/ProsConsComparatorEn';
 import { CssUnitConverter } from './calculator/CssUnitConverter';
 import { SalaryCalculator } from './calculator/SalaryCalculator';
 import { LoanCalculator } from './calculator/LoanCalculator';
@@ -185,9 +181,7 @@ import { FakeDataGeneratorEn } from './calculator/FakeDataGeneratorEn';
 // 재미/테스트
 import { ReactionTimeTest } from './fun/ReactionTimeTest';
 import { LottoGenerator } from './fun/LottoGenerator';
-import { DecisionStyleTest } from './fun/DecisionStyleTest';
 import { NicknameGenerator } from './fun/NicknameGenerator';
-import { FocusPatternTest } from './fun/FocusPatternTest';
 import { ColorPerceptionTest } from './fun/ColorPerceptionTest';
 import { ColorPerceptionTestEn } from './fun/ColorPerceptionTestEn';
 import { RouletteSelector } from './fun/RouletteSelector';
@@ -239,9 +233,7 @@ import { PomodoroTimerEn } from './calculator/PomodoroTimerEn';
 
 // 추천
 import { MenuRecommender } from './recommender/MenuRecommender';
-import { OutfitRecommender } from './recommender/OutfitRecommender';
 import { WeekendRecommender } from './recommender/WeekendRecommender';
-import { ContentRecommender } from './recommender/ContentRecommender';
 import { RestRecommender } from './recommender/RestRecommender';
 
 // 도구 레지스트리 맵
@@ -391,12 +383,8 @@ const toolComponents: Record<string, ComponentType> = {
   'age-calculator': AgeCalculator,
   'bmi-calculator': BmiCalculator,
   'random-picker': RandomPicker,
-  'decision-fatigue-calculator': DecisionFatigueCalculator,
   'meeting-cost-calculator': MeetingCostCalculator,
   'meeting-cost-calculator-en': MeetingCostCalculatorEn,
-  'focus-time-calculator': FocusTimeCalculator,
-  'pros-cons-comparator': ProsConsComparator,
-  'pros-cons-comparator-en': ProsConsComparatorEn,
   'css-unit-converter': CssUnitConverter,
   'bmi-calculator-en': BmiCalculatorEn,
   'ratio-calculator-en': RatioCalculatorEn,
@@ -428,9 +416,7 @@ const toolComponents: Record<string, ComponentType> = {
   // 재미/테스트 (12개)
   'reaction-time-test': ReactionTimeTest,
   'lotto-generator': LottoGenerator,
-  'decision-style-test': DecisionStyleTest,
   'nickname-generator': NicknameGenerator,
-  'focus-pattern-test': FocusPatternTest,
   'color-perception-test': ColorPerceptionTest,
   'color-perception-test-en': ColorPerceptionTestEn,
   'roulette-selector': RouletteSelector,
@@ -482,9 +468,7 @@ const toolComponents: Record<string, ComponentType> = {
 
   // 추천 (5개)
   'menu-recommender': MenuRecommender,
-  'outfit-recommender': OutfitRecommender,
   'weekend-recommender': WeekendRecommender,
-  'content-recommender': ContentRecommender,
   'rest-recommender': RestRecommender,
 };
 

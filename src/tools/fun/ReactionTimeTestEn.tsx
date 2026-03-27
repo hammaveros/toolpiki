@@ -333,7 +333,7 @@ export function ReactionTimeTestEn() {
               <ResultShareButtonsEn
                 url={getShareUrl()}
                 title={`Reaction Time Test: Average ${stats.average}ms`}
-                description={`Min ${stats.min}ms, Max ${stats.max}ms - JSSpace`}
+                description={`Min ${stats.min}ms, Max ${stats.max}ms - ToolPiki`}
               />
             </div>
           )}

@@ -47,7 +47,7 @@ function LetterCard({
       <p className={`${fontSize} leading-relaxed ${template.textClass} whitespace-pre-wrap text-center`}>
         {text}
       </p>
-      <div className={`text-right mt-6 text-[10px] ${template.watermarkClass}`}>jsspace.online</div>
+      <div className={`text-right mt-6 text-[10px] ${template.watermarkClass}`}>toolpiki.com</div>
     </div>
   );
 }

@@ -94,7 +94,7 @@ export function CharacterCounterEn() {
   const handleClear = () => setText('');
 
   const handleExample = () => {
-    setText(`Hello! Welcome to JSSpace Character Counter.
+    setText(`Hello! Welcome to ToolPiki Character Counter.
 
 This tool calculates characters, words, and sentences in real-time. It's useful for checking character limits for blog posts, essays, and social media.
 

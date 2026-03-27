@@ -177,7 +177,7 @@ export function TimingTest() {
               <ResultShareButtons
                 url={getShareUrl()}
                 title={`타이밍 테스트: ${targetSeconds}초 목표 → ${elapsed.toFixed(3)}초`}
-                description={`오차 ${Math.abs(getDifference()).toFixed(3)}초 - JSSpace`}
+                description={`오차 ${Math.abs(getDifference()).toFixed(3)}초 - ToolPiki`}
               />
             </div>
             <Button onClick={resetGame}>

@@ -329,7 +329,7 @@ export function JsonFormatterEn() {
 
   const handleSample = () => {
     const sample = {
-      name: 'JSSpace',
+      name: 'ToolPiki',
       version: '1.0.0',
       features: ['JSON Formatter', 'Code Converter', 'Hash Generator'],
       config: {

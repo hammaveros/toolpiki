@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: 'Browse all free online tools: JSON formatter, Base64 encoder, image tools, color converters, calculators, and more.',
   keywords: ['online tools', 'web tools', 'developer tools', 'free utilities'],
   openGraph: {
-    title: 'All Tools - 100+ Free Online Utilities | JSSpace',
+    title: 'All Tools - 100+ Free Online Utilities | ToolPiki',
     description: 'Browse all free online tools for developers and everyday use.',
   },
 };

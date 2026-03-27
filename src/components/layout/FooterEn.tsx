@@ -14,14 +14,14 @@ export function FooterEn({ focusMode = false }: FooterEnProps) {
       <div className="container mx-auto px-4 py-8">
         {/* Project Info */}
         <p className="text-xs text-gray-400 dark:text-gray-500 text-center mb-6">
-          JSSpace is an independent web utility project.
+          ToolPiki is an independent web utility project.
           Not affiliated with any company, agency, or organization.
         </p>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           {/* Copyright */}
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            © {currentYear} JSSpace
+            © {currentYear} ToolPiki
           </p>
 
           {/* Links */}

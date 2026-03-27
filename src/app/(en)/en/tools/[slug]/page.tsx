@@ -39,7 +39,7 @@ export async function generateMetadata({
     description,
     keywords: tool.keywords,
     openGraph: {
-      title: `${title} | JSSpace`,
+      title: `${title} | ToolPiki`,
       description,
       type: 'website',
       locale: 'en_US',

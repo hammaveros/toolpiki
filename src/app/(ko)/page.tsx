@@ -4,41 +4,75 @@ import { tools } from '@/data/tools';
 import { categoryList } from '@/data/categories';
 import { ToolsClientPage } from '@/components/tools/ToolsClientPage';
 import { HomeContent } from '@/components/home/HomeContent';
+import { useState } from 'react';
 
 export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState('');
+
   return (
     <>
-      {/* 히어로 + 간단 소개 섹션 */}
-      <section className="bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:to-slate-950">
-        <div className="container mx-auto px-4 pt-10 pb-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
-              JSSpace
-            </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-              웹에서 바로 쓰는 무료 온라인 도구 모음
-            </p>
-            <div className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
-              <p>
-                텍스트 변환, Base64 인코딩, JSON 포맷터, 이미지 압축, 색상 코드 변환 등<br />
-                <strong className="text-gray-700 dark:text-gray-300">100개 이상의 무료 도구</strong>를 회원가입 없이 바로 사용하세요.
-              </p>
-              <p className="mt-2">
-                모든 작업은 브라우저에서 처리되어 파일이 서버로 전송되지 않습니다.<br />
-                개인정보 걱정 없이 안심하고 사용할 수 있어요.
-              </p>
-            </div>
+      {/* 히어로 섹션 */}
+      <section className="relative hero-grid">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50/80 via-white/60 to-white dark:from-indigo-950/40 dark:via-[#0f1117]/80 dark:to-[#0f1117] pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto px-4 pt-14 pb-10 text-center">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-3">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              ToolPiki
+            </span>
+          </h1>
+          <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 mb-2">
+            웹에서 바로 쓰는 무료 온라인 도구 모음
+          </p>
+          <p className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+            <span className="text-blue-600 dark:text-blue-400">100+</span> 무료 도구
+          </p>
+
+          {/* 검색창 */}
+          <div className="relative max-w-xl mx-auto">
+            <svg
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="도구 이름이나 기능으로 검색 (예: base64, 이미지 압축...)"
+              className="w-full pl-12 pr-10 py-3.5 text-base rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bg-surface)] focus:border-blue-500 dark:focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all shadow-sm"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
           </div>
+          {searchQuery.trim() && (
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
+              &quot;{searchQuery}&quot; 검색 결과: {tools.filter(t =>
+                t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                t.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                t.keywords?.some(k => k.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                t.tags?.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+              ).length}개
+            </p>
+          )}
         </div>
       </section>
 
-      {/* 카테고리 필터 + 도구 그리드 (즐겨찾기, 최근사용 포함) */}
-      <section className="container mx-auto px-4 py-4">
-        <ToolsClientPage tools={tools} categories={categoryList} isMainPage />
+      {/* 카테고리 필터 + 도구 그리드 */}
+      <section className="max-w-6xl mx-auto px-4 py-6">
+        <ToolsClientPage tools={tools} categories={categoryList} isMainPage initialSearch={searchQuery} />
       </section>
 
-      {/* 사이트 소개 콘텐츠 (AdSense용) */}
-      <section className="container mx-auto px-4 py-8 border-t border-gray-200 dark:border-gray-700">
+      {/* 사이트 소개 콘텐츠 */}
+      <section className="max-w-6xl mx-auto px-4 py-8 border-t border-gray-200 dark:border-[var(--border-subtle)]">
         <HomeContent />
       </section>
     </>

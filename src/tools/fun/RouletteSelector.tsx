@@ -242,7 +242,7 @@ export function RouletteSelector() {
             <ResultShareButtons
               url={getShareUrl()}
               title={`룰렛 결과: ${result}`}
-              description={`${items.length}개 항목 중 선택 - JSSpace`}
+              description={`${items.length}개 항목 중 선택 - ToolPiki`}
             />
           </div>
         )}

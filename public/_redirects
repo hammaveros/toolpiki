@@ -1,7 +1,7 @@
 # Cloudflare Pages 리다이렉트 설정
 
 # www → non-www 301 리다이렉트
-https://www.jsspace.online/* https://jsspace.online/:splat 301
+https://www.toolpiki.com/* https://toolpiki.com/:splat 301
 
 # 레거시 URL 리다이렉트 (필요시 추가)
 # /old-tool /tools/new-tool 301

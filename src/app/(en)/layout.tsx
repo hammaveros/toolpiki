@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'JSSpace - Free Online Tools',
-    template: '%s | JSSpace',
+    default: 'ToolPiki - Free Online Tools',
+    template: '%s | ToolPiki',
   },
   description: 'Free online tools for everyone. Text converters, image editors, color tools, calculators, and fun tests.',
   keywords: ['online tools', 'free tools', 'web utilities', 'free online utilities'],
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'JSSpace - Free Online Tools',
+    title: 'ToolPiki - Free Online Tools',
     description: 'Free online tools for everyone. Text converters, image editors, color tools, calculators, and fun tests.',
-    siteName: 'JSSpace',
+    siteName: 'ToolPiki',
     locale: 'en_US',
     type: 'website',
     url: `${siteConfig.url}/en`,
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
         url: `${siteConfig.url}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: 'JSSpace - Free Online Tools',
+        alt: 'ToolPiki - Free Online Tools',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'JSSpace - Free Online Tools',
+    title: 'ToolPiki - Free Online Tools',
     description: 'Free online tools for everyone. Text converters, image editors, color tools, calculators, and fun tests.',
     images: [`${siteConfig.url}/og-image.png`],
   },

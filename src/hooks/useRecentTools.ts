@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-const STORAGE_KEY = 'jsspace:recent-tools';
+const STORAGE_KEY = 'toolpiki:recent-tools';
 const MAX_RECENT = 4;
 
 /**
