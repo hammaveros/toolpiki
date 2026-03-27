@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Link from 'next/link';
 import type { ToolMeta } from '@/types';
 import { cn } from '@/lib/utils/cn';
@@ -29,7 +30,7 @@ const CATEGORY_ICON_BG: Record<string, string> = {
   fun: 'bg-orange-50 dark:bg-orange-900/20',
 };
 
-export function ToolCard({ tool, compact = false, showRemove = false, onRemove }: ToolCardProps) {
+export const ToolCard = memo(function ToolCard({ tool, compact = false, showRemove = false, onRemove }: ToolCardProps) {
   const isExternal = !!tool.externalUrl;
   const href = tool.externalUrl || `/tools/${tool.slug}`;
   const borderColor = CATEGORY_BORDER[tool.category] || 'border-l-gray-400';
@@ -132,4 +133,4 @@ export function ToolCard({ tool, compact = false, showRemove = false, onRemove }
       </Link>
     </div>
   );
-}
+});

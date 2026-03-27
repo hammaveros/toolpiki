@@ -1,455 +1,232 @@
+import dynamic from 'next/dynamic';
 import type { ComponentType } from 'react';
 
-// 도구 컴포넌트 레지스트리
-// 새 도구 추가 시 이 파일에 등록
+// 도구 컴포넌트 레지스트리 (Dynamic Import - 코드 스플리팅)
+// 각 도구는 필요할 때만 로드됨
 
-// 텍스트 도구
-import { CharacterCounter } from './text/CharacterCounter';
-import { CaseConverter } from './text/CaseConverter';
-import { LineBreakRemover } from './text/LineBreakRemover';
-import { DuplicateLineRemover } from './text/DuplicateLineRemover';
-import { TextSorter } from './text/TextSorter';
-import { RandomStringGenerator } from './text/RandomStringGenerator';
-import { KoreanEnglishConverter } from './text/KoreanEnglishConverter';
-import { LoremIpsum } from './text/LoremIpsum';
-import { TextDiff } from './text/TextDiff';
-import { WordFrequency } from './text/WordFrequency';
-import { MessageLengthChecker } from './text/MessageLengthChecker';
-import { ReadingTimeCalculator } from './text/ReadingTimeCalculator';
-import { CharacterCounterEn } from './text/CharacterCounterEn';
-import { CaseConverterEn } from './text/CaseConverterEn';
-import { LineBreakRemoverEn } from './text/LineBreakRemoverEn';
-import { DuplicateLineRemoverEn } from './text/DuplicateLineRemoverEn';
-import { TextSorterEn } from './text/TextSorterEn';
-import { RandomStringGeneratorEn } from './text/RandomStringGeneratorEn';
-import { LoremIpsumEn } from './text/LoremIpsumEn';
-import { TextDiffEn } from './text/TextDiffEn';
-import { WordFrequencyEn } from './text/WordFrequencyEn';
-import { MessageLengthCheckerEn } from './text/MessageLengthCheckerEn';
-import { ReadingTimeCalculatorEn } from './text/ReadingTimeCalculatorEn';
-import { RegexGenerator } from './text/RegexGenerator';
-import { RegexGeneratorEn } from './text/RegexGeneratorEn';
-import { LineNumber } from './text/LineNumber';
-import { LineNumberEn } from './text/LineNumberEn';
-
-// 인코딩/디코딩
-import { Base64Tool } from './encoding/Base64Tool';
-import { UrlEncoder } from './encoding/UrlEncoder';
-import { HashGenerator } from './encoding/HashGenerator';
-import { HtmlEntity } from './encoding/HtmlEntity';
-import { UnicodeConverter } from './encoding/UnicodeConverter';
-import { MorseCode } from './encoding/MorseCode';
-import { JwtDecoder } from './encoding/JwtDecoder';
-import { Base64ToolEn } from './encoding/Base64ToolEn';
-import { UrlEncoderEn } from './encoding/UrlEncoderEn';
-import { HashGeneratorEn } from './encoding/HashGeneratorEn';
-import { HtmlEntityEn } from './encoding/HtmlEntityEn';
-import { UnicodeConverterEn } from './encoding/UnicodeConverterEn';
-import { MorseCodeEn } from './encoding/MorseCodeEn';
-import { JwtDecoderEn } from './encoding/JwtDecoderEn';
-import { StringEscape } from './encoding/StringEscape';
-import { StringEscapeEn } from './encoding/StringEscapeEn';
-
-// 포맷터
-import { JsonFormatter } from './formatter/JsonFormatter';
-import { JsonCsvConverter } from './formatter/JsonCsvConverter';
-import { XmlFormatter } from './formatter/XmlFormatter';
-import { SqlFormatter } from './formatter/SqlFormatter';
-import { Minifier } from './formatter/Minifier';
-import { MarkdownPreview } from './formatter/MarkdownPreview';
-import { YamlJsonConverter } from './formatter/YamlJsonConverter';
-import { UrlQueryParser } from './formatter/UrlQueryParser';
-import { JsonFormatterEn } from './formatter/JsonFormatterEn';
-import { JsonCsvConverterEn } from './formatter/JsonCsvConverterEn';
-import { XmlFormatterEn } from './formatter/XmlFormatterEn';
-import { SqlFormatterEn } from './formatter/SqlFormatterEn';
-import { MinifierEn } from './formatter/MinifierEn';
-import { MarkdownPreviewEn } from './formatter/MarkdownPreviewEn';
-import { YamlJsonConverterEn } from './formatter/YamlJsonConverterEn';
-import { UrlQueryParserEn } from './formatter/UrlQueryParserEn';
-import { HtmlPreview } from './formatter/HtmlPreview';
-import { HtmlPreviewEn } from './formatter/HtmlPreviewEn';
-import { CodeDiff } from './formatter/CodeDiff';
-import { CodeDiffEn } from './formatter/CodeDiffEn';
-import { CronParser } from './formatter/CronParser';
-import { CronParserEn } from './formatter/CronParserEn';
-import { HttpStatusCode } from './formatter/HttpStatusCode';
-import { HttpStatusCodeEn } from './formatter/HttpStatusCodeEn';
-import { JsonPathTester } from './formatter/JsonPathTester';
-import { JsonPathTesterEn } from './formatter/JsonPathTesterEn';
-import { HtmlBoilerplate } from './formatter/HtmlBoilerplate';
-import { HtmlBoilerplateEn } from './formatter/HtmlBoilerplateEn';
-import { FlexboxPlayground } from './formatter/FlexboxPlayground';
-import { FlexboxPlaygroundEn } from './formatter/FlexboxPlaygroundEn';
-import { OgPreview } from './formatter/OgPreview';
-import { OgPreviewEn } from './formatter/OgPreviewEn';
-import { MermaidDiagram } from './formatter/MermaidDiagram';
-import { MermaidDiagramEn } from './formatter/MermaidDiagramEn';
-
-// 이미지 도구
-import { ImageResize } from './image/ImageResize';
-import { ImageCompress } from './image/ImageCompress';
-import { ImageConvert } from './image/ImageConvert';
-import { ImageCrop } from './image/ImageCrop';
-import { ImageRotate } from './image/ImageRotate';
-import { Base64Image } from './image/Base64Image';
-import { FaviconGenerator } from './image/FaviconGenerator';
-import { VideoGifConverter } from './image/VideoGifConverter';
-import { ImageResizeEn } from './image/ImageResizeEn';
-import { ImageCompressEn } from './image/ImageCompressEn';
-import { ImageConvertEn } from './image/ImageConvertEn';
-import { ImageCropEn } from './image/ImageCropEn';
-import { ImageRotateEn } from './image/ImageRotateEn';
-import { Base64ImageEn } from './image/Base64ImageEn';
-import { FaviconGeneratorEn } from './image/FaviconGeneratorEn';
-import { VideoGifConverterEn } from './image/VideoGifConverterEn';
-
-// 색상 도구
-import { ColorConverter } from './color/ColorConverter';
-import { PaletteGenerator } from './color/PaletteGenerator';
-import { GradientGenerator } from './color/GradientGenerator';
-import { ContrastChecker } from './color/ContrastChecker';
-import { ImageColorPicker } from './color/ImageColorPicker';
-import { ColorBlender } from './color/ColorBlender';
-import { ColorBlindSimulator } from './color/ColorBlindSimulator';
-import { ColorConverterEn } from './color/ColorConverterEn';
-import { PaletteGeneratorEn } from './color/PaletteGeneratorEn';
-import { GradientGeneratorEn } from './color/GradientGeneratorEn';
-import { ContrastCheckerEn } from './color/ContrastCheckerEn';
-import { ImageColorPickerEn } from './color/ImageColorPickerEn';
-import { ColorBlenderEn } from './color/ColorBlenderEn';
-import { ColorBlindSimulatorEn } from './color/ColorBlindSimulatorEn';
-import { BoxShadowGenerator } from './color/BoxShadowGenerator';
-import { BoxShadowGeneratorEn } from './color/BoxShadowGeneratorEn';
-import { BorderRadiusGenerator } from './color/BorderRadiusGenerator';
-import { BorderRadiusGeneratorEn } from './color/BorderRadiusGeneratorEn';
-
-// 계산기/생성기
-import { UuidGenerator } from './calculator/UuidGenerator';
-import { QrGenerator } from './calculator/QrGenerator';
-import { DateCalculator } from './calculator/DateCalculator';
-import { PercentageCalculator } from './calculator/PercentageCalculator';
-import { BaseConverter } from './calculator/BaseConverter';
-import { UnixTimestamp } from './calculator/UnixTimestamp';
-import { UnitConverter } from './calculator/UnitConverter';
-import { RegexTester } from './calculator/RegexTester';
-import { Timer } from './calculator/Timer';
-import { ServerTime } from './calculator/ServerTime';
-import { ServerTimeEn } from './calculator/ServerTimeEn';
-import { RatioCalculator } from './calculator/RatioCalculator';
-import { AgeCalculator } from './calculator/AgeCalculator';
-import { BmiCalculator } from './calculator/BmiCalculator';
-import { RandomPicker } from './calculator/RandomPicker';
-import { MeetingCostCalculator } from './calculator/MeetingCostCalculator';
-import { MeetingCostCalculatorEn } from './calculator/MeetingCostCalculatorEn';
-import { CssUnitConverter } from './calculator/CssUnitConverter';
-import { SalaryCalculator } from './calculator/SalaryCalculator';
-import { LoanCalculator } from './calculator/LoanCalculator';
-import { LoanCalculatorEn } from './calculator/LoanCalculatorEn';
-import { InterestCalculator } from './calculator/InterestCalculator';
-import { InterestCalculatorEn } from './calculator/InterestCalculatorEn';
-import { BmiCalculatorEn } from './calculator/BmiCalculatorEn';
-import { RatioCalculatorEn } from './calculator/RatioCalculatorEn';
-import { TimerEn } from './calculator/TimerEn';
-import { UnitConverterEn } from './calculator/UnitConverterEn';
-import { UnixTimestampEn } from './calculator/UnixTimestampEn';
-import { DateCalculatorEn } from './calculator/DateCalculatorEn';
-import { PercentageCalculatorEn } from './calculator/PercentageCalculatorEn';
-import { RandomPickerEn } from './calculator/RandomPickerEn';
-import { BaseConverterEn } from './calculator/BaseConverterEn';
-import { RegexTesterEn } from './calculator/RegexTesterEn';
-import { QrGeneratorEn } from './calculator/QrGeneratorEn';
-import { UuidGeneratorEn } from './calculator/UuidGeneratorEn';
-import { CssUnitConverterEn } from './calculator/CssUnitConverterEn';
-import { IpLookup } from './calculator/IpLookup';
-import { IpLookupEn } from './calculator/IpLookupEn';
-import { FileSizeCalculator } from './calculator/FileSizeCalculator';
-import { FileSizeCalculatorEn } from './calculator/FileSizeCalculatorEn';
-import { SpeedTest } from './calculator/SpeedTest';
-import { SpeedTestEn } from './calculator/SpeedTestEn';
-import { FakeDataGenerator } from './calculator/FakeDataGenerator';
-import { FakeDataGeneratorEn } from './calculator/FakeDataGeneratorEn';
-
-// 재미/테스트
-import { ReactionTimeTest } from './fun/ReactionTimeTest';
-import { LottoGenerator } from './fun/LottoGenerator';
-import { NicknameGenerator } from './fun/NicknameGenerator';
-import { ColorPerceptionTest } from './fun/ColorPerceptionTest';
-import { ColorPerceptionTestEn } from './fun/ColorPerceptionTestEn';
-import { RouletteSelector } from './fun/RouletteSelector';
-import { RouletteSelectorEn } from './fun/RouletteSelectorEn';
-import { LadderGame } from './fun/LadderGame';
-import { LadderGameEn } from './fun/LadderGameEn';
-import { TimingTest } from './fun/TimingTest';
-import { TimingTestEn } from './fun/TimingTestEn';
-import { RandomDecisionMaker } from './fun/RandomDecisionMaker';
-import { RandomDecisionMakerEn } from './fun/RandomDecisionMakerEn';
-import { FortuneCookie } from './fun/FortuneCookie';
-import { OrderPicker } from './fun/OrderPicker';
-import { OrderPickerEn } from './fun/OrderPickerEn';
-import { ReactionTimeTestEn } from './fun/ReactionTimeTestEn';
-import { UsLottoGenerator } from './fun/UsLottoGenerator';
-import { NameCompatibility } from './fun/NameCompatibility';
-import { BirthdayCompatibility } from './fun/BirthdayCompatibility';
-import { DailyTarot } from './fun/DailyTarot';
-import { LoveCalculator } from './fun/LoveCalculator';
-import { ShipNameGenerator } from './fun/ShipNameGenerator';
-import { DailyHoroscope } from './fun/DailyHoroscope';
-import { PersonalityColorQuiz } from './fun/PersonalityColorQuiz';
-import { ShellGame } from './fun/ShellGame';
-import { ShellGameEn } from './fun/ShellGameEn';
-import { LetterQr } from './fun/LetterQr';
-import { LetterQrEn } from './fun/LetterQrEn';
-import { SajuReading } from './fun/SajuReading';
-import { SajuCompatibility } from './fun/SajuCompatibility';
-import { TeamPicker } from './fun/TeamPicker';
-import { TeamPickerEn } from './fun/TeamPickerEn';
-import { TypingGame } from './fun/TypingGame';
-import { TypingPractice } from './fun/TypingPractice';
-import { TypingGameEn } from './fun/TypingGameEn';
-import { TypingPracticeEn } from './fun/TypingPracticeEn';
-import { NumberGuess } from './fun/NumberGuess';
-import { NumberGuessEn } from './fun/NumberGuessEn';
-import { TipCalculator } from './calculator/TipCalculator';
-import { GpaCalculator } from './calculator/GpaCalculator';
-import { PasswordStrength } from './calculator/PasswordStrength';
-import { PasswordStrengthEn } from './calculator/PasswordStrengthEn';
-import { InvoiceGenerator } from './calculator/InvoiceGenerator';
-import { InvoiceGeneratorEn } from './calculator/InvoiceGeneratorEn';
-import { ScreenRuler } from './calculator/ScreenRuler';
-import { ScreenRulerEn } from './calculator/ScreenRulerEn';
-import { PomodoroTimer } from './calculator/PomodoroTimer';
-import { PomodoroTimerEn } from './calculator/PomodoroTimerEn';
-
-// 추천
-import { MenuRecommender } from './recommender/MenuRecommender';
-import { WeekendRecommender } from './recommender/WeekendRecommender';
-import { RestRecommender } from './recommender/RestRecommender';
-
-// 도구 레지스트리 맵
 const toolComponents: Record<string, ComponentType> = {
-  // 텍스트 도구 (14개)
-  'character-counter': CharacterCounter,
-  'case-converter': CaseConverter,
-  'line-break-remover': LineBreakRemover,
-  'duplicate-line-remover': DuplicateLineRemover,
-  'text-sorter': TextSorter,
-  'random-string-generator': RandomStringGenerator,
-  'korean-english-converter': KoreanEnglishConverter,
-  'lorem-ipsum': LoremIpsum,
-  'text-diff': TextDiff,
-  'word-frequency': WordFrequency,
-  'message-length-checker': MessageLengthChecker,
-  'reading-time-calculator': ReadingTimeCalculator,
-  'character-counter-en': CharacterCounterEn,
-  'case-converter-en': CaseConverterEn,
-  'line-break-remover-en': LineBreakRemoverEn,
-  'duplicate-line-remover-en': DuplicateLineRemoverEn,
-  'text-sorter-en': TextSorterEn,
-  'random-string-generator-en': RandomStringGeneratorEn,
-  'lorem-ipsum-en': LoremIpsumEn,
-  'text-diff-en': TextDiffEn,
-  'word-frequency-en': WordFrequencyEn,
-  'message-length-checker-en': MessageLengthCheckerEn,
-  'reading-time-calculator-en': ReadingTimeCalculatorEn,
-  'regex-generator': RegexGenerator,
-  'regex-generator-en': RegexGeneratorEn,
-  'line-number': LineNumber,
-  'line-number-en': LineNumberEn,
+  // 텍스트 도구
+  'character-counter': dynamic(() => import('./text/CharacterCounter').then(m => ({ default: m.CharacterCounter }))),
+  'case-converter': dynamic(() => import('./text/CaseConverter').then(m => ({ default: m.CaseConverter }))),
+  'line-break-remover': dynamic(() => import('./text/LineBreakRemover').then(m => ({ default: m.LineBreakRemover }))),
+  'duplicate-line-remover': dynamic(() => import('./text/DuplicateLineRemover').then(m => ({ default: m.DuplicateLineRemover }))),
+  'text-sorter': dynamic(() => import('./text/TextSorter').then(m => ({ default: m.TextSorter }))),
+  'random-string-generator': dynamic(() => import('./text/RandomStringGenerator').then(m => ({ default: m.RandomStringGenerator }))),
+  'korean-english-converter': dynamic(() => import('./text/KoreanEnglishConverter').then(m => ({ default: m.KoreanEnglishConverter }))),
+  'lorem-ipsum': dynamic(() => import('./text/LoremIpsum').then(m => ({ default: m.LoremIpsum }))),
+  'text-diff': dynamic(() => import('./text/TextDiff').then(m => ({ default: m.TextDiff }))),
+  'word-frequency': dynamic(() => import('./text/WordFrequency').then(m => ({ default: m.WordFrequency }))),
+  'message-length-checker': dynamic(() => import('./text/MessageLengthChecker').then(m => ({ default: m.MessageLengthChecker }))),
+  'reading-time-calculator': dynamic(() => import('./text/ReadingTimeCalculator').then(m => ({ default: m.ReadingTimeCalculator }))),
+  'character-counter-en': dynamic(() => import('./text/CharacterCounterEn').then(m => ({ default: m.CharacterCounterEn }))),
+  'case-converter-en': dynamic(() => import('./text/CaseConverterEn').then(m => ({ default: m.CaseConverterEn }))),
+  'line-break-remover-en': dynamic(() => import('./text/LineBreakRemoverEn').then(m => ({ default: m.LineBreakRemoverEn }))),
+  'duplicate-line-remover-en': dynamic(() => import('./text/DuplicateLineRemoverEn').then(m => ({ default: m.DuplicateLineRemoverEn }))),
+  'text-sorter-en': dynamic(() => import('./text/TextSorterEn').then(m => ({ default: m.TextSorterEn }))),
+  'random-string-generator-en': dynamic(() => import('./text/RandomStringGeneratorEn').then(m => ({ default: m.RandomStringGeneratorEn }))),
+  'lorem-ipsum-en': dynamic(() => import('./text/LoremIpsumEn').then(m => ({ default: m.LoremIpsumEn }))),
+  'text-diff-en': dynamic(() => import('./text/TextDiffEn').then(m => ({ default: m.TextDiffEn }))),
+  'word-frequency-en': dynamic(() => import('./text/WordFrequencyEn').then(m => ({ default: m.WordFrequencyEn }))),
+  'message-length-checker-en': dynamic(() => import('./text/MessageLengthCheckerEn').then(m => ({ default: m.MessageLengthCheckerEn }))),
+  'reading-time-calculator-en': dynamic(() => import('./text/ReadingTimeCalculatorEn').then(m => ({ default: m.ReadingTimeCalculatorEn }))),
+  'regex-generator': dynamic(() => import('./text/RegexGenerator').then(m => ({ default: m.RegexGenerator }))),
+  'regex-generator-en': dynamic(() => import('./text/RegexGeneratorEn').then(m => ({ default: m.RegexGeneratorEn }))),
+  'line-number': dynamic(() => import('./text/LineNumber').then(m => ({ default: m.LineNumber }))),
+  'line-number-en': dynamic(() => import('./text/LineNumberEn').then(m => ({ default: m.LineNumberEn }))),
 
-  // 인코딩/디코딩 (8개)
-  'base64': Base64Tool,
-  'url-encoder': UrlEncoder,
-  'hash-generator': HashGenerator,
-  'html-entity': HtmlEntity,
-  'unicode-converter': UnicodeConverter,
-  'morse-code': MorseCode,
-  'jwt-decoder': JwtDecoder,
-  'base64-en': Base64ToolEn,
-  'url-encoder-en': UrlEncoderEn,
-  'hash-generator-en': HashGeneratorEn,
-  'html-entity-en': HtmlEntityEn,
-  'unicode-converter-en': UnicodeConverterEn,
-  'morse-code-en': MorseCodeEn,
-  'jwt-decoder-en': JwtDecoderEn,
-  'string-escape': StringEscape,
-  'string-escape-en': StringEscapeEn,
+  // 인코딩/디코딩
+  'base64': dynamic(() => import('./encoding/Base64Tool').then(m => ({ default: m.Base64Tool }))),
+  'url-encoder': dynamic(() => import('./encoding/UrlEncoder').then(m => ({ default: m.UrlEncoder }))),
+  'hash-generator': dynamic(() => import('./encoding/HashGenerator').then(m => ({ default: m.HashGenerator }))),
+  'html-entity': dynamic(() => import('./encoding/HtmlEntity').then(m => ({ default: m.HtmlEntity }))),
+  'unicode-converter': dynamic(() => import('./encoding/UnicodeConverter').then(m => ({ default: m.UnicodeConverter }))),
+  'morse-code': dynamic(() => import('./encoding/MorseCode').then(m => ({ default: m.MorseCode }))),
+  'jwt-decoder': dynamic(() => import('./encoding/JwtDecoder').then(m => ({ default: m.JwtDecoder }))),
+  'base64-en': dynamic(() => import('./encoding/Base64ToolEn').then(m => ({ default: m.Base64ToolEn }))),
+  'url-encoder-en': dynamic(() => import('./encoding/UrlEncoderEn').then(m => ({ default: m.UrlEncoderEn }))),
+  'hash-generator-en': dynamic(() => import('./encoding/HashGeneratorEn').then(m => ({ default: m.HashGeneratorEn }))),
+  'html-entity-en': dynamic(() => import('./encoding/HtmlEntityEn').then(m => ({ default: m.HtmlEntityEn }))),
+  'unicode-converter-en': dynamic(() => import('./encoding/UnicodeConverterEn').then(m => ({ default: m.UnicodeConverterEn }))),
+  'morse-code-en': dynamic(() => import('./encoding/MorseCodeEn').then(m => ({ default: m.MorseCodeEn }))),
+  'jwt-decoder-en': dynamic(() => import('./encoding/JwtDecoderEn').then(m => ({ default: m.JwtDecoderEn }))),
+  'string-escape': dynamic(() => import('./encoding/StringEscape').then(m => ({ default: m.StringEscape }))),
+  'string-escape-en': dynamic(() => import('./encoding/StringEscapeEn').then(m => ({ default: m.StringEscapeEn }))),
 
-  // 포맷터 (7개)
-  'json-formatter': JsonFormatter,
-  'json-csv-converter': JsonCsvConverter,
-  'xml-formatter': XmlFormatter,
-  'sql-formatter': SqlFormatter,
-  'minifier': Minifier,
-  'markdown-preview': MarkdownPreview,
-  'yaml-json-converter': YamlJsonConverter,
-  'url-query-parser': UrlQueryParser,
-  'json-formatter-en': JsonFormatterEn,
-  'json-csv-converter-en': JsonCsvConverterEn,
-  'xml-formatter-en': XmlFormatterEn,
-  'sql-formatter-en': SqlFormatterEn,
-  'minifier-en': MinifierEn,
-  'markdown-preview-en': MarkdownPreviewEn,
-  'yaml-json-converter-en': YamlJsonConverterEn,
-  'url-query-parser-en': UrlQueryParserEn,
-  'html-preview': HtmlPreview,
-  'html-preview-en': HtmlPreviewEn,
-  'code-diff': CodeDiff,
-  'code-diff-en': CodeDiffEn,
-  'cron-parser': CronParser,
-  'cron-parser-en': CronParserEn,
-  'http-status-code': HttpStatusCode,
-  'http-status-code-en': HttpStatusCodeEn,
-  'json-path-tester': JsonPathTester,
-  'json-path-tester-en': JsonPathTesterEn,
-  'html-boilerplate': HtmlBoilerplate,
-  'html-boilerplate-en': HtmlBoilerplateEn,
-  'flexbox-playground': FlexboxPlayground,
-  'flexbox-playground-en': FlexboxPlaygroundEn,
-  'og-preview': OgPreview,
-  'og-preview-en': OgPreviewEn,
-  'mermaid-diagram': MermaidDiagram,
-  'mermaid-diagram-en': MermaidDiagramEn,
+  // 포맷터
+  'json-formatter': dynamic(() => import('./formatter/JsonFormatter').then(m => ({ default: m.JsonFormatter }))),
+  'json-csv-converter': dynamic(() => import('./formatter/JsonCsvConverter').then(m => ({ default: m.JsonCsvConverter }))),
+  'xml-formatter': dynamic(() => import('./formatter/XmlFormatter').then(m => ({ default: m.XmlFormatter }))),
+  'sql-formatter': dynamic(() => import('./formatter/SqlFormatter').then(m => ({ default: m.SqlFormatter }))),
+  'minifier': dynamic(() => import('./formatter/Minifier').then(m => ({ default: m.Minifier }))),
+  'markdown-preview': dynamic(() => import('./formatter/MarkdownPreview').then(m => ({ default: m.MarkdownPreview }))),
+  'yaml-json-converter': dynamic(() => import('./formatter/YamlJsonConverter').then(m => ({ default: m.YamlJsonConverter }))),
+  'url-query-parser': dynamic(() => import('./formatter/UrlQueryParser').then(m => ({ default: m.UrlQueryParser }))),
+  'json-formatter-en': dynamic(() => import('./formatter/JsonFormatterEn').then(m => ({ default: m.JsonFormatterEn }))),
+  'json-csv-converter-en': dynamic(() => import('./formatter/JsonCsvConverterEn').then(m => ({ default: m.JsonCsvConverterEn }))),
+  'xml-formatter-en': dynamic(() => import('./formatter/XmlFormatterEn').then(m => ({ default: m.XmlFormatterEn }))),
+  'sql-formatter-en': dynamic(() => import('./formatter/SqlFormatterEn').then(m => ({ default: m.SqlFormatterEn }))),
+  'minifier-en': dynamic(() => import('./formatter/MinifierEn').then(m => ({ default: m.MinifierEn }))),
+  'markdown-preview-en': dynamic(() => import('./formatter/MarkdownPreviewEn').then(m => ({ default: m.MarkdownPreviewEn }))),
+  'yaml-json-converter-en': dynamic(() => import('./formatter/YamlJsonConverterEn').then(m => ({ default: m.YamlJsonConverterEn }))),
+  'url-query-parser-en': dynamic(() => import('./formatter/UrlQueryParserEn').then(m => ({ default: m.UrlQueryParserEn }))),
+  'html-preview': dynamic(() => import('./formatter/HtmlPreview').then(m => ({ default: m.HtmlPreview }))),
+  'html-preview-en': dynamic(() => import('./formatter/HtmlPreviewEn').then(m => ({ default: m.HtmlPreviewEn }))),
+  'code-diff': dynamic(() => import('./formatter/CodeDiff').then(m => ({ default: m.CodeDiff }))),
+  'code-diff-en': dynamic(() => import('./formatter/CodeDiffEn').then(m => ({ default: m.CodeDiffEn }))),
+  'cron-parser': dynamic(() => import('./formatter/CronParser').then(m => ({ default: m.CronParser }))),
+  'cron-parser-en': dynamic(() => import('./formatter/CronParserEn').then(m => ({ default: m.CronParserEn }))),
+  'http-status-code': dynamic(() => import('./formatter/HttpStatusCode').then(m => ({ default: m.HttpStatusCode }))),
+  'http-status-code-en': dynamic(() => import('./formatter/HttpStatusCodeEn').then(m => ({ default: m.HttpStatusCodeEn }))),
+  'json-path-tester': dynamic(() => import('./formatter/JsonPathTester').then(m => ({ default: m.JsonPathTester }))),
+  'json-path-tester-en': dynamic(() => import('./formatter/JsonPathTesterEn').then(m => ({ default: m.JsonPathTesterEn }))),
+  'html-boilerplate': dynamic(() => import('./formatter/HtmlBoilerplate').then(m => ({ default: m.HtmlBoilerplate }))),
+  'html-boilerplate-en': dynamic(() => import('./formatter/HtmlBoilerplateEn').then(m => ({ default: m.HtmlBoilerplateEn }))),
+  'flexbox-playground': dynamic(() => import('./formatter/FlexboxPlayground').then(m => ({ default: m.FlexboxPlayground }))),
+  'flexbox-playground-en': dynamic(() => import('./formatter/FlexboxPlaygroundEn').then(m => ({ default: m.FlexboxPlaygroundEn }))),
+  'og-preview': dynamic(() => import('./formatter/OgPreview').then(m => ({ default: m.OgPreview }))),
+  'og-preview-en': dynamic(() => import('./formatter/OgPreviewEn').then(m => ({ default: m.OgPreviewEn }))),
+  'mermaid-diagram': dynamic(() => import('./formatter/MermaidDiagram').then(m => ({ default: m.MermaidDiagram }))),
+  'mermaid-diagram-en': dynamic(() => import('./formatter/MermaidDiagramEn').then(m => ({ default: m.MermaidDiagramEn }))),
 
-  // 이미지 도구 (7개)
-  'image-resize': ImageResize,
-  'image-compress': ImageCompress,
-  'image-convert': ImageConvert,
-  'image-crop': ImageCrop,
-  'image-rotate': ImageRotate,
-  'base64-image': Base64Image,
-  'favicon-generator': FaviconGenerator,
-  'video-gif-converter': VideoGifConverter,
-  'image-resize-en': ImageResizeEn,
-  'image-compress-en': ImageCompressEn,
-  'image-convert-en': ImageConvertEn,
-  'image-crop-en': ImageCropEn,
-  'image-rotate-en': ImageRotateEn,
-  'base64-image-en': Base64ImageEn,
-  'favicon-generator-en': FaviconGeneratorEn,
-  'video-gif-converter-en': VideoGifConverterEn,
+  // 이미지 도구
+  'image-resize': dynamic(() => import('./image/ImageResize').then(m => ({ default: m.ImageResize }))),
+  'image-compress': dynamic(() => import('./image/ImageCompress').then(m => ({ default: m.ImageCompress }))),
+  'image-convert': dynamic(() => import('./image/ImageConvert').then(m => ({ default: m.ImageConvert }))),
+  'image-crop': dynamic(() => import('./image/ImageCrop').then(m => ({ default: m.ImageCrop }))),
+  'image-rotate': dynamic(() => import('./image/ImageRotate').then(m => ({ default: m.ImageRotate }))),
+  'base64-image': dynamic(() => import('./image/Base64Image').then(m => ({ default: m.Base64Image }))),
+  'favicon-generator': dynamic(() => import('./image/FaviconGenerator').then(m => ({ default: m.FaviconGenerator }))),
+  'video-gif-converter': dynamic(() => import('./image/VideoGifConverter').then(m => ({ default: m.VideoGifConverter }))),
+  'image-resize-en': dynamic(() => import('./image/ImageResizeEn').then(m => ({ default: m.ImageResizeEn }))),
+  'image-compress-en': dynamic(() => import('./image/ImageCompressEn').then(m => ({ default: m.ImageCompressEn }))),
+  'image-convert-en': dynamic(() => import('./image/ImageConvertEn').then(m => ({ default: m.ImageConvertEn }))),
+  'image-crop-en': dynamic(() => import('./image/ImageCropEn').then(m => ({ default: m.ImageCropEn }))),
+  'image-rotate-en': dynamic(() => import('./image/ImageRotateEn').then(m => ({ default: m.ImageRotateEn }))),
+  'base64-image-en': dynamic(() => import('./image/Base64ImageEn').then(m => ({ default: m.Base64ImageEn }))),
+  'favicon-generator-en': dynamic(() => import('./image/FaviconGeneratorEn').then(m => ({ default: m.FaviconGeneratorEn }))),
+  'video-gif-converter-en': dynamic(() => import('./image/VideoGifConverterEn').then(m => ({ default: m.VideoGifConverterEn }))),
 
-  // 색상 도구 (8개)
-  'color-converter': ColorConverter,
-  'palette-generator': PaletteGenerator,
-  'gradient-generator': GradientGenerator,
-  'contrast-checker': ContrastChecker,
-  'image-color-picker': ImageColorPicker,
-  'color-blender': ColorBlender,
-  'color-blind-simulator': ColorBlindSimulator,
-  'color-converter-en': ColorConverterEn,
-  'palette-generator-en': PaletteGeneratorEn,
-  'gradient-generator-en': GradientGeneratorEn,
-  'contrast-checker-en': ContrastCheckerEn,
-  'image-color-picker-en': ImageColorPickerEn,
-  'color-blender-en': ColorBlenderEn,
-  'color-blind-simulator-en': ColorBlindSimulatorEn,
-  'box-shadow-generator': BoxShadowGenerator,
-  'box-shadow-generator-en': BoxShadowGeneratorEn,
-  'border-radius-generator': BorderRadiusGenerator,
-  'border-radius-generator-en': BorderRadiusGeneratorEn,
+  // 색상 도구
+  'color-converter': dynamic(() => import('./color/ColorConverter').then(m => ({ default: m.ColorConverter }))),
+  'palette-generator': dynamic(() => import('./color/PaletteGenerator').then(m => ({ default: m.PaletteGenerator }))),
+  'gradient-generator': dynamic(() => import('./color/GradientGenerator').then(m => ({ default: m.GradientGenerator }))),
+  'contrast-checker': dynamic(() => import('./color/ContrastChecker').then(m => ({ default: m.ContrastChecker }))),
+  'image-color-picker': dynamic(() => import('./color/ImageColorPicker').then(m => ({ default: m.ImageColorPicker }))),
+  'color-blender': dynamic(() => import('./color/ColorBlender').then(m => ({ default: m.ColorBlender }))),
+  'color-blind-simulator': dynamic(() => import('./color/ColorBlindSimulator').then(m => ({ default: m.ColorBlindSimulator }))),
+  'color-converter-en': dynamic(() => import('./color/ColorConverterEn').then(m => ({ default: m.ColorConverterEn }))),
+  'palette-generator-en': dynamic(() => import('./color/PaletteGeneratorEn').then(m => ({ default: m.PaletteGeneratorEn }))),
+  'gradient-generator-en': dynamic(() => import('./color/GradientGeneratorEn').then(m => ({ default: m.GradientGeneratorEn }))),
+  'contrast-checker-en': dynamic(() => import('./color/ContrastCheckerEn').then(m => ({ default: m.ContrastCheckerEn }))),
+  'image-color-picker-en': dynamic(() => import('./color/ImageColorPickerEn').then(m => ({ default: m.ImageColorPickerEn }))),
+  'color-blender-en': dynamic(() => import('./color/ColorBlenderEn').then(m => ({ default: m.ColorBlenderEn }))),
+  'color-blind-simulator-en': dynamic(() => import('./color/ColorBlindSimulatorEn').then(m => ({ default: m.ColorBlindSimulatorEn }))),
+  'box-shadow-generator': dynamic(() => import('./color/BoxShadowGenerator').then(m => ({ default: m.BoxShadowGenerator }))),
+  'box-shadow-generator-en': dynamic(() => import('./color/BoxShadowGeneratorEn').then(m => ({ default: m.BoxShadowGeneratorEn }))),
+  'border-radius-generator': dynamic(() => import('./color/BorderRadiusGenerator').then(m => ({ default: m.BorderRadiusGenerator }))),
+  'border-radius-generator-en': dynamic(() => import('./color/BorderRadiusGeneratorEn').then(m => ({ default: m.BorderRadiusGeneratorEn }))),
 
-  // 계산기/생성기 (13개)
-  'uuid-generator': UuidGenerator,
-  'qr-generator': QrGenerator,
-  'date-calculator': DateCalculator,
-  'percentage': PercentageCalculator,
-  'base-converter': BaseConverter,
-  'unix-timestamp': UnixTimestamp,
-  'unit-converter': UnitConverter,
-  'regex-tester': RegexTester,
-  'timer': Timer,
-  'server-time': ServerTime,
-  'server-time-en': ServerTimeEn,
-  'ratio-calculator': RatioCalculator,
-  'age-calculator': AgeCalculator,
-  'bmi-calculator': BmiCalculator,
-  'random-picker': RandomPicker,
-  'meeting-cost-calculator': MeetingCostCalculator,
-  'meeting-cost-calculator-en': MeetingCostCalculatorEn,
-  'css-unit-converter': CssUnitConverter,
-  'bmi-calculator-en': BmiCalculatorEn,
-  'ratio-calculator-en': RatioCalculatorEn,
-  'timer-en': TimerEn,
-  'unit-converter-en': UnitConverterEn,
-  'unix-timestamp-en': UnixTimestampEn,
-  'date-calculator-en': DateCalculatorEn,
-  'percentage-en': PercentageCalculatorEn,
-  'random-picker-en': RandomPickerEn,
-  'base-converter-en': BaseConverterEn,
-  'regex-tester-en': RegexTesterEn,
-  'qr-generator-en': QrGeneratorEn,
-  'uuid-generator-en': UuidGeneratorEn,
-  'css-unit-converter-en': CssUnitConverterEn,
-  'ip-lookup': IpLookup,
-  'ip-lookup-en': IpLookupEn,
-  'file-size-calculator': FileSizeCalculator,
-  'file-size-calculator-en': FileSizeCalculatorEn,
-  'speed-test': SpeedTest,
-  'speed-test-en': SpeedTestEn,
-  'fake-data-generator': FakeDataGenerator,
-  'fake-data-generator-en': FakeDataGeneratorEn,
-  'salary-calculator': SalaryCalculator,
-  'loan-calculator': LoanCalculator,
-  'loan-calculator-en': LoanCalculatorEn,
-  'interest-calculator': InterestCalculator,
-  'interest-calculator-en': InterestCalculatorEn,
+  // 계산기/생성기
+  'uuid-generator': dynamic(() => import('./calculator/UuidGenerator').then(m => ({ default: m.UuidGenerator }))),
+  'qr-generator': dynamic(() => import('./calculator/QrGenerator').then(m => ({ default: m.QrGenerator }))),
+  'date-calculator': dynamic(() => import('./calculator/DateCalculator').then(m => ({ default: m.DateCalculator }))),
+  'percentage': dynamic(() => import('./calculator/PercentageCalculator').then(m => ({ default: m.PercentageCalculator }))),
+  'base-converter': dynamic(() => import('./calculator/BaseConverter').then(m => ({ default: m.BaseConverter }))),
+  'unix-timestamp': dynamic(() => import('./calculator/UnixTimestamp').then(m => ({ default: m.UnixTimestamp }))),
+  'unit-converter': dynamic(() => import('./calculator/UnitConverter').then(m => ({ default: m.UnitConverter }))),
+  'regex-tester': dynamic(() => import('./calculator/RegexTester').then(m => ({ default: m.RegexTester }))),
+  'timer': dynamic(() => import('./calculator/Timer').then(m => ({ default: m.Timer }))),
+  'server-time': dynamic(() => import('./calculator/ServerTime').then(m => ({ default: m.ServerTime }))),
+  'server-time-en': dynamic(() => import('./calculator/ServerTimeEn').then(m => ({ default: m.ServerTimeEn }))),
+  'ratio-calculator': dynamic(() => import('./calculator/RatioCalculator').then(m => ({ default: m.RatioCalculator }))),
+  'age-calculator': dynamic(() => import('./calculator/AgeCalculator').then(m => ({ default: m.AgeCalculator }))),
+  'bmi-calculator': dynamic(() => import('./calculator/BmiCalculator').then(m => ({ default: m.BmiCalculator }))),
+  'random-picker': dynamic(() => import('./calculator/RandomPicker').then(m => ({ default: m.RandomPicker }))),
+  'meeting-cost-calculator': dynamic(() => import('./calculator/MeetingCostCalculator').then(m => ({ default: m.MeetingCostCalculator }))),
+  'meeting-cost-calculator-en': dynamic(() => import('./calculator/MeetingCostCalculatorEn').then(m => ({ default: m.MeetingCostCalculatorEn }))),
+  'css-unit-converter': dynamic(() => import('./calculator/CssUnitConverter').then(m => ({ default: m.CssUnitConverter }))),
+  'bmi-calculator-en': dynamic(() => import('./calculator/BmiCalculatorEn').then(m => ({ default: m.BmiCalculatorEn }))),
+  'ratio-calculator-en': dynamic(() => import('./calculator/RatioCalculatorEn').then(m => ({ default: m.RatioCalculatorEn }))),
+  'timer-en': dynamic(() => import('./calculator/TimerEn').then(m => ({ default: m.TimerEn }))),
+  'unit-converter-en': dynamic(() => import('./calculator/UnitConverterEn').then(m => ({ default: m.UnitConverterEn }))),
+  'unix-timestamp-en': dynamic(() => import('./calculator/UnixTimestampEn').then(m => ({ default: m.UnixTimestampEn }))),
+  'date-calculator-en': dynamic(() => import('./calculator/DateCalculatorEn').then(m => ({ default: m.DateCalculatorEn }))),
+  'percentage-en': dynamic(() => import('./calculator/PercentageCalculatorEn').then(m => ({ default: m.PercentageCalculatorEn }))),
+  'random-picker-en': dynamic(() => import('./calculator/RandomPickerEn').then(m => ({ default: m.RandomPickerEn }))),
+  'base-converter-en': dynamic(() => import('./calculator/BaseConverterEn').then(m => ({ default: m.BaseConverterEn }))),
+  'regex-tester-en': dynamic(() => import('./calculator/RegexTesterEn').then(m => ({ default: m.RegexTesterEn }))),
+  'qr-generator-en': dynamic(() => import('./calculator/QrGeneratorEn').then(m => ({ default: m.QrGeneratorEn }))),
+  'uuid-generator-en': dynamic(() => import('./calculator/UuidGeneratorEn').then(m => ({ default: m.UuidGeneratorEn }))),
+  'css-unit-converter-en': dynamic(() => import('./calculator/CssUnitConverterEn').then(m => ({ default: m.CssUnitConverterEn }))),
+  'ip-lookup': dynamic(() => import('./calculator/IpLookup').then(m => ({ default: m.IpLookup }))),
+  'ip-lookup-en': dynamic(() => import('./calculator/IpLookupEn').then(m => ({ default: m.IpLookupEn }))),
+  'file-size-calculator': dynamic(() => import('./calculator/FileSizeCalculator').then(m => ({ default: m.FileSizeCalculator }))),
+  'file-size-calculator-en': dynamic(() => import('./calculator/FileSizeCalculatorEn').then(m => ({ default: m.FileSizeCalculatorEn }))),
+  'speed-test': dynamic(() => import('./calculator/SpeedTest').then(m => ({ default: m.SpeedTest }))),
+  'speed-test-en': dynamic(() => import('./calculator/SpeedTestEn').then(m => ({ default: m.SpeedTestEn }))),
+  'fake-data-generator': dynamic(() => import('./calculator/FakeDataGenerator').then(m => ({ default: m.FakeDataGenerator }))),
+  'fake-data-generator-en': dynamic(() => import('./calculator/FakeDataGeneratorEn').then(m => ({ default: m.FakeDataGeneratorEn }))),
+  'salary-calculator': dynamic(() => import('./calculator/SalaryCalculator').then(m => ({ default: m.SalaryCalculator }))),
+  'loan-calculator': dynamic(() => import('./calculator/LoanCalculator').then(m => ({ default: m.LoanCalculator }))),
+  'loan-calculator-en': dynamic(() => import('./calculator/LoanCalculatorEn').then(m => ({ default: m.LoanCalculatorEn }))),
+  'interest-calculator': dynamic(() => import('./calculator/InterestCalculator').then(m => ({ default: m.InterestCalculator }))),
+  'interest-calculator-en': dynamic(() => import('./calculator/InterestCalculatorEn').then(m => ({ default: m.InterestCalculatorEn }))),
 
-  // 재미/테스트 (12개)
-  'reaction-time-test': ReactionTimeTest,
-  'lotto-generator': LottoGenerator,
-  'nickname-generator': NicknameGenerator,
-  'color-perception-test': ColorPerceptionTest,
-  'color-perception-test-en': ColorPerceptionTestEn,
-  'roulette-selector': RouletteSelector,
-  'roulette-selector-en': RouletteSelectorEn,
-  'ladder-game': LadderGame,
-  'ladder-game-en': LadderGameEn,
-  'timing-test': TimingTest,
-  'timing-test-en': TimingTestEn,
-  'random-decision-maker': RandomDecisionMaker,
-  'random-decision-maker-en': RandomDecisionMakerEn,
-  'fortune-cookie': FortuneCookie,
-  'order-picker': OrderPicker,
-  'order-picker-en': OrderPickerEn,
-  'reaction-time-test-en': ReactionTimeTestEn,
-  'us-lotto-generator-en': UsLottoGenerator,
-  'name-compatibility': NameCompatibility,
-  'birthday-compatibility': BirthdayCompatibility,
-  'daily-tarot': DailyTarot,
-  'love-calculator-en': LoveCalculator,
-  'ship-name-generator-en': ShipNameGenerator,
-  'daily-horoscope-en': DailyHoroscope,
-  'personality-color-quiz-en': PersonalityColorQuiz,
-  'tip-calculator-en': TipCalculator,
-  'gpa-calculator-en': GpaCalculator,
-  'shell-game': ShellGame,
-  'shell-game-en': ShellGameEn,
-  'letter-qr': LetterQr,
-  'letter-qr-en': LetterQrEn,
-  'saju-reading': SajuReading,
-  'saju-compatibility': SajuCompatibility,
-  'team-picker': TeamPicker,
-  'team-picker-en': TeamPickerEn,
-  'typing-game': TypingGame,
-  'typing-practice': TypingPractice,
-  'typing-game-en': TypingGameEn,
-  'typing-practice-en': TypingPracticeEn,
-  'number-guess': NumberGuess,
-  'number-guess-en': NumberGuessEn,
-  'password-strength': PasswordStrength,
-  'password-strength-en': PasswordStrengthEn,
-  'invoice-generator': InvoiceGenerator,
-  'invoice-generator-en': InvoiceGeneratorEn,
-  'screen-ruler': ScreenRuler,
-  'screen-ruler-en': ScreenRulerEn,
-  'pomodoro-timer': PomodoroTimer,
-  'pomodoro-timer-en': PomodoroTimerEn,
+  // 재미/테스트
+  'reaction-time-test': dynamic(() => import('./fun/ReactionTimeTest').then(m => ({ default: m.ReactionTimeTest }))),
+  'lotto-generator': dynamic(() => import('./fun/LottoGenerator').then(m => ({ default: m.LottoGenerator }))),
+  'nickname-generator': dynamic(() => import('./fun/NicknameGenerator').then(m => ({ default: m.NicknameGenerator }))),
+  'color-perception-test': dynamic(() => import('./fun/ColorPerceptionTest').then(m => ({ default: m.ColorPerceptionTest }))),
+  'color-perception-test-en': dynamic(() => import('./fun/ColorPerceptionTestEn').then(m => ({ default: m.ColorPerceptionTestEn }))),
+  'roulette-selector': dynamic(() => import('./fun/RouletteSelector').then(m => ({ default: m.RouletteSelector }))),
+  'roulette-selector-en': dynamic(() => import('./fun/RouletteSelectorEn').then(m => ({ default: m.RouletteSelectorEn }))),
+  'ladder-game': dynamic(() => import('./fun/LadderGame').then(m => ({ default: m.LadderGame }))),
+  'ladder-game-en': dynamic(() => import('./fun/LadderGameEn').then(m => ({ default: m.LadderGameEn }))),
+  'timing-test': dynamic(() => import('./fun/TimingTest').then(m => ({ default: m.TimingTest }))),
+  'timing-test-en': dynamic(() => import('./fun/TimingTestEn').then(m => ({ default: m.TimingTestEn }))),
+  'random-decision-maker': dynamic(() => import('./fun/RandomDecisionMaker').then(m => ({ default: m.RandomDecisionMaker }))),
+  'random-decision-maker-en': dynamic(() => import('./fun/RandomDecisionMakerEn').then(m => ({ default: m.RandomDecisionMakerEn }))),
+  'fortune-cookie': dynamic(() => import('./fun/FortuneCookie').then(m => ({ default: m.FortuneCookie }))),
+  'order-picker': dynamic(() => import('./fun/OrderPicker').then(m => ({ default: m.OrderPicker }))),
+  'order-picker-en': dynamic(() => import('./fun/OrderPickerEn').then(m => ({ default: m.OrderPickerEn }))),
+  'reaction-time-test-en': dynamic(() => import('./fun/ReactionTimeTestEn').then(m => ({ default: m.ReactionTimeTestEn }))),
+  'us-lotto-generator-en': dynamic(() => import('./fun/UsLottoGenerator').then(m => ({ default: m.UsLottoGenerator }))),
+  'name-compatibility': dynamic(() => import('./fun/NameCompatibility').then(m => ({ default: m.NameCompatibility }))),
+  'birthday-compatibility': dynamic(() => import('./fun/BirthdayCompatibility').then(m => ({ default: m.BirthdayCompatibility }))),
+  'daily-tarot': dynamic(() => import('./fun/DailyTarot').then(m => ({ default: m.DailyTarot }))),
+  'love-calculator-en': dynamic(() => import('./fun/LoveCalculator').then(m => ({ default: m.LoveCalculator }))),
+  'ship-name-generator-en': dynamic(() => import('./fun/ShipNameGenerator').then(m => ({ default: m.ShipNameGenerator }))),
+  'daily-horoscope-en': dynamic(() => import('./fun/DailyHoroscope').then(m => ({ default: m.DailyHoroscope }))),
+  'personality-color-quiz-en': dynamic(() => import('./fun/PersonalityColorQuiz').then(m => ({ default: m.PersonalityColorQuiz }))),
+  'tip-calculator-en': dynamic(() => import('./calculator/TipCalculator').then(m => ({ default: m.TipCalculator }))),
+  'gpa-calculator-en': dynamic(() => import('./calculator/GpaCalculator').then(m => ({ default: m.GpaCalculator }))),
+  'shell-game': dynamic(() => import('./fun/ShellGame').then(m => ({ default: m.ShellGame }))),
+  'shell-game-en': dynamic(() => import('./fun/ShellGameEn').then(m => ({ default: m.ShellGameEn }))),
+  'letter-qr': dynamic(() => import('./fun/LetterQr').then(m => ({ default: m.LetterQr }))),
+  'letter-qr-en': dynamic(() => import('./fun/LetterQrEn').then(m => ({ default: m.LetterQrEn }))),
+  'saju-reading': dynamic(() => import('./fun/SajuReading').then(m => ({ default: m.SajuReading }))),
+  'saju-compatibility': dynamic(() => import('./fun/SajuCompatibility').then(m => ({ default: m.SajuCompatibility }))),
+  'team-picker': dynamic(() => import('./fun/TeamPicker').then(m => ({ default: m.TeamPicker }))),
+  'team-picker-en': dynamic(() => import('./fun/TeamPickerEn').then(m => ({ default: m.TeamPickerEn }))),
+  'typing-game': dynamic(() => import('./fun/TypingGame').then(m => ({ default: m.TypingGame }))),
+  'typing-practice': dynamic(() => import('./fun/TypingPractice').then(m => ({ default: m.TypingPractice }))),
+  'typing-game-en': dynamic(() => import('./fun/TypingGameEn').then(m => ({ default: m.TypingGameEn }))),
+  'typing-practice-en': dynamic(() => import('./fun/TypingPracticeEn').then(m => ({ default: m.TypingPracticeEn }))),
+  'number-guess': dynamic(() => import('./fun/NumberGuess').then(m => ({ default: m.NumberGuess }))),
+  'number-guess-en': dynamic(() => import('./fun/NumberGuessEn').then(m => ({ default: m.NumberGuessEn }))),
+  'password-strength': dynamic(() => import('./calculator/PasswordStrength').then(m => ({ default: m.PasswordStrength }))),
+  'password-strength-en': dynamic(() => import('./calculator/PasswordStrengthEn').then(m => ({ default: m.PasswordStrengthEn }))),
+  'invoice-generator': dynamic(() => import('./calculator/InvoiceGenerator').then(m => ({ default: m.InvoiceGenerator }))),
+  'invoice-generator-en': dynamic(() => import('./calculator/InvoiceGeneratorEn').then(m => ({ default: m.InvoiceGeneratorEn }))),
+  'screen-ruler': dynamic(() => import('./calculator/ScreenRuler').then(m => ({ default: m.ScreenRuler }))),
+  'screen-ruler-en': dynamic(() => import('./calculator/ScreenRulerEn').then(m => ({ default: m.ScreenRulerEn }))),
+  'pomodoro-timer': dynamic(() => import('./calculator/PomodoroTimer').then(m => ({ default: m.PomodoroTimer }))),
+  'pomodoro-timer-en': dynamic(() => import('./calculator/PomodoroTimerEn').then(m => ({ default: m.PomodoroTimerEn }))),
 
-  // 추천 (5개)
-  'menu-recommender': MenuRecommender,
-  'weekend-recommender': WeekendRecommender,
-  'rest-recommender': RestRecommender,
+  // 추천
+  'menu-recommender': dynamic(() => import('./recommender/MenuRecommender').then(m => ({ default: m.MenuRecommender }))),
+  'weekend-recommender': dynamic(() => import('./recommender/WeekendRecommender').then(m => ({ default: m.WeekendRecommender }))),
+  'rest-recommender': dynamic(() => import('./recommender/RestRecommender').then(m => ({ default: m.RestRecommender }))),
 };
 
 /**
