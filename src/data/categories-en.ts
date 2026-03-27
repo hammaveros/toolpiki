@@ -30,6 +30,13 @@ export const categoryGroupsEn: CategoryGroupEn[] = [
  */
 export const categoriesEn: CategoryMeta[] = [
   {
+    slug: 'fun',
+    name: 'Fun & Tests',
+    description: 'Reaction tests, random generators, and interactive tools',
+    icon: '🎮',
+    order: 1,
+  },
+  {
     slug: 'text',
     name: 'Text',
     description: 'Character counting, text formatting, and manipulation tools',
@@ -37,24 +44,24 @@ export const categoriesEn: CategoryMeta[] = [
     order: 2,
   },
   {
-    slug: 'encoding',
-    name: 'Encoding',
-    description: 'Base64, URL encoding, hashing, and data conversion',
-    icon: '🔠',
+    slug: 'calculator',
+    name: 'Calculate',
+    description: 'Date, unit, percentage, and utility calculators',
+    icon: '🔢',
     order: 3,
-  },
-  {
-    slug: 'formatter',
-    name: 'Format',
-    description: 'JSON, XML, SQL, and code formatting tools',
-    icon: '📄',
-    order: 4,
   },
   {
     slug: 'image',
     name: 'Image',
     description: 'Resize, compress, crop, and convert images',
     icon: '🖼️',
+    order: 4,
+  },
+  {
+    slug: 'formatter',
+    name: 'Format',
+    description: 'JSON, XML, SQL, and code formatting tools',
+    icon: '📄',
     order: 5,
   },
   {
@@ -65,18 +72,11 @@ export const categoriesEn: CategoryMeta[] = [
     order: 6,
   },
   {
-    slug: 'calculator',
-    name: 'Calculate',
-    description: 'Date, unit, percentage, and utility calculators',
-    icon: '🔢',
+    slug: 'encoding',
+    name: 'Encoding',
+    description: 'Base64, URL encoding, hashing, and data conversion',
+    icon: '🔠',
     order: 7,
-  },
-  {
-    slug: 'fun',
-    name: 'Fun & Tests',
-    description: 'Reaction tests, random generators, and interactive tools',
-    icon: '🎮',
-    order: 8,
   },
 ];
 
