@@ -31,7 +31,7 @@ export function FooterAdBanner({ disableFallback = false }: { disableFallback?: 
   return (
     <div className="flex justify-center py-4 bg-gray-50 dark:bg-gray-900/50">
       <div className="w-full max-w-[728px] px-2 md:px-4">
-        <AdSlot format="auto" onBlocked={() => setAdBlocked(true)} />
+        <AdSlot format="autorelaxed" slotId="5755192113" onBlocked={() => setAdBlocked(true)} />
       </div>
     </div>
   );

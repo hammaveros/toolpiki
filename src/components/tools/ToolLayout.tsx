@@ -12,6 +12,15 @@ import { ArrowLeftIcon } from '@/components/icons';
 import { cn } from '@/lib/utils/cn';
 import { useRecentTools } from '@/hooks/useRecentTools';
 import { ShareButtons } from '@/components/share/ShareButtons';
+import { AdSlot } from '@/components/ads/AdSlot';
+
+function ToolMidAd() {
+  return (
+    <div className="mt-8 flex justify-center">
+      <AdSlot format="auto" slotId="5012956081" className="w-full max-w-3xl" />
+    </div>
+  );
+}
 
 // 오락/점술 도구 — 면책 문구 표시 대상
 const ENTERTAINMENT_SLUGS = new Set([
@@ -117,6 +126,9 @@ function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
 
         {/* 메인 콘텐츠 */}
         <div className="tool-content">{children}</div>
+
+        {/* 도구 중간 광고 */}
+        {!focusMode && <ToolMidAd />}
 
         {/* SEO 콘텐츠 */}
         {!focusMode && meta.seoContent && (

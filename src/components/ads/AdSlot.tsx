@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface AdSlotProps {
-  format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle';
+  format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle' | 'autorelaxed';
+  slotId?: string;
   className?: string;
   responsive?: boolean;
   onBlocked?: () => void;
@@ -20,7 +21,7 @@ declare global {
  * - 반응형: data-ad-format + data-full-width-responsive
  * - 광고 미충전 시 컨테이너 숨김
  */
-export function AdSlot({ format = 'auto', className, responsive = true, onBlocked }: AdSlotProps) {
+export function AdSlot({ format = 'auto', slotId = '5499882149', className, responsive = true, onBlocked }: AdSlotProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const insRef = useRef<HTMLModElement>(null);
   const pushed = useRef(false);
@@ -105,7 +106,7 @@ export function AdSlot({ format = 'auto', className, responsive = true, onBlocke
         className="adsbygoogle"
         style={{ display: 'block' }}
         data-ad-client="ca-pub-3612035754086019"
-        data-ad-slot="5499882149"
+        data-ad-slot={slotId}
         data-ad-format={format}
         data-full-width-responsive={responsive ? 'true' : 'false'}
       />
