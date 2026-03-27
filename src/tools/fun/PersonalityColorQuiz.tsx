@@ -147,7 +147,7 @@ export function PersonalityColorQuiz() {
     if (!result) return '';
     const data = { color: result.name };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/personality-color-quiz#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/personality-color-quiz-en#share=${encoded}`;
   };
 
   const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;

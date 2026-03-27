@@ -149,7 +149,7 @@ export function UsLottoGenerator() {
       sets: results.map(s => ({ main: s.mainNumbers, special: s.specialNumber })),
     };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/us-lotto-generator#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/us-lotto-generator-en#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

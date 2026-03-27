@@ -90,7 +90,7 @@ export function LoveCalculator() {
     if (!result) return '';
     const data = { n1: name1, n2: name2 };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/love-calculator#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/love-calculator-en#share=${encoded}`;
   };
 
   // Load from URL hash

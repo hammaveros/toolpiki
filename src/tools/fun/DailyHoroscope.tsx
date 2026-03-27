@@ -96,7 +96,7 @@ export function DailyHoroscope() {
     if (selectedSign === null || !sign) return '';
     const data = { sign: sign.name };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/daily-horoscope#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/daily-horoscope-en#share=${encoded}`;
   };
 
   return (

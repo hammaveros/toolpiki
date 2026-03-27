@@ -1130,7 +1130,7 @@ export const toolsEn: ToolMeta[] = [
     icon: '🏦',
     featured: true,
     keywords: ['loan calculator', 'mortgage calculator', 'monthly payment', 'amortization schedule', 'loan interest'],
-    relatedSlugs: ['interest-calculator-en', 'percentage-en', 'tip-calculator'],
+    relatedSlugs: ['interest-calculator-en', 'percentage-en', 'tip-calculator-en'],
     seoTitle: 'Loan Calculator - Free Mortgage & Payment Calculator',
     seoDescription: 'Calculate monthly loan payments and total interest. Compare fixed payment, fixed principal, and interest-only loans. Download amortization schedule.',
     seoContent: '## What is Loan Calculator?\n\nCalculate monthly payments and total interest for loans. Compare three repayment methods: fixed payment (amortizing), fixed principal, and interest-only. View and download a detailed amortization schedule.',
@@ -1148,7 +1148,7 @@ export const toolsEn: ToolMeta[] = [
     tags: ['interest', 'compound', 'simple', 'investment', 'savings'],
     icon: '📈',
     keywords: ['interest calculator', 'compound interest', 'simple interest', 'investment calculator', 'savings calculator'],
-    relatedSlugs: ['loan-calculator-en', 'percentage-en', 'tip-calculator'],
+    relatedSlugs: ['loan-calculator-en', 'percentage-en', 'tip-calculator-en'],
     seoTitle: 'Interest Calculator - Free Compound & Simple Interest Calculator',
     seoDescription: 'Calculate simple and compound interest on investments and savings. Compare monthly, quarterly, and yearly compounding.',
     seoContent: '## What is Interest Calculator?\n\nCalculate how much interest you will earn or owe. Compare simple vs compound interest and see how your money grows over time with different compounding frequencies.',
@@ -1326,7 +1326,7 @@ export const toolsEn: ToolMeta[] = [
   // US Lotto (EN-only)
   // ========================================
   {
-    slug: 'us-lotto-generator',
+    slug: 'us-lotto-generator-en',
     name: 'US Lotto Number Generator',
     description: 'Generate random numbers for Powerball and Mega Millions.',
     category: 'fun',
@@ -1348,7 +1348,7 @@ export const toolsEn: ToolMeta[] = [
   // Traffic Tools - EN Only (8)
   // ========================================
   {
-    slug: 'love-calculator',
+    slug: 'love-calculator-en',
     name: 'Love Calculator',
     description: 'Calculate your love compatibility with someone special. Fun entertainment tool!',
     category: 'fun',
@@ -1366,7 +1366,7 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'ship-name-generator',
+    slug: 'ship-name-generator-en',
     name: 'Ship Name Generator',
     description: 'Create couple name combinations (like Brangelina) from two names.',
     category: 'fun',
@@ -1383,7 +1383,7 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'tip-calculator',
+    slug: 'tip-calculator-en',
     name: 'Tip Calculator',
     description: 'Calculate tip amount and split bills easily. Perfect for restaurants and services.',
     category: 'calculator',
@@ -1401,7 +1401,7 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'gpa-calculator',
+    slug: 'gpa-calculator-en',
     name: 'GPA Calculator',
     description: 'Calculate your Grade Point Average with credit hours and letter grades.',
     category: 'calculator',
@@ -1418,7 +1418,7 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'daily-horoscope',
+    slug: 'daily-horoscope-en',
     name: 'Daily Horoscope',
     description: 'Get your daily horoscope for love, career, and health based on your zodiac sign.',
     category: 'fun',
@@ -1436,7 +1436,7 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'personality-color-quiz',
+    slug: 'personality-color-quiz-en',
     name: 'Personality Color Quiz',
     description: 'Discover which color matches your personality through fun questions.',
     category: 'fun',
