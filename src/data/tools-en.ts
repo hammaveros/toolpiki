@@ -132,23 +132,6 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'emoji-picker-en',
-    name: 'Emoji Picker',
-    description: 'Search and copy emojis with categories and skin tone variants.',
-    category: 'text',
-    tags: ['emoji', 'emoticon', 'copy', 'search'],
-    icon: '😀',
-    keywords: ['emoji picker', 'emoji search', 'copy emoji', 'emoticons'],
-    relatedSlugs: ['character-counter-en', 'unicode-converter-en'],
-    seoTitle: 'Emoji Picker - Free Online Emoji Search & Copy Tool',
-    seoDescription: 'Search and copy emojis instantly. Browse by category, search by keyword, and pick skin tone variants. One-click copy to clipboard.',
-    seoContent: '## What is Emoji Picker?\n\nFind and copy any emoji quickly with our searchable picker. Browse categories like smileys, animals, food, and objects. Includes skin tone variants and recent emojis. Click to copy instantly.',
-    faqs: [
-      { question: 'How do I find a specific emoji?', answer: 'Use the search bar to type keywords like "heart" or "smile", or browse categories.' },
-      { question: 'Can I change emoji skin tones?', answer: 'Yes, emojis with skin tone variants show a selector when you hover or click.' },
-    ],
-  },
-  {
     slug: 'text-diff-en',
     name: 'Text Diff',
     description: 'Compare two texts and highlight differences line by line.',

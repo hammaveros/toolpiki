@@ -20,9 +20,73 @@ const ENTERTAINMENT_SLUGS = new Set([
   'fortune-cookie', 'lotto-generator',
 ]);
 
+const CATEGORY_BADGE: Record<string, { label: string; color: string }> = {
+  text: { label: '📝 텍스트', color: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' },
+  encoding: { label: '🔐 인코딩', color: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' },
+  formatter: { label: '📋 포맷/변환', color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' },
+  image: { label: '🖼️ 이미지', color: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' },
+  color: { label: '🎨 색상', color: 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400' },
+  calculator: { label: '🔢 계산/생성', color: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400' },
+  fun: { label: '🎮 재미/테스트', color: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400' },
+};
+
 interface ToolLayoutProps {
   meta: ToolMeta;
   children: ReactNode;
+}
+
+function ToolHero({ meta, focusMode }: { meta: ToolMeta; focusMode: boolean }) {
+  const badge = CATEGORY_BADGE[meta.category];
+
+  if (focusMode) {
+    return (
+      <div className="mb-4">
+        <h1 className="text-xl font-bold text-gray-900 dark:text-white">{meta.name}</h1>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mb-6 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-blue-50/50 dark:from-[var(--bg-surface)] dark:via-[var(--bg-surface)] dark:to-indigo-950/20 border border-gray-200 dark:border-[var(--border-subtle)] p-5 md:p-6">
+      {/* 상단: 뒤로가기 + 공유 */}
+      <div className="flex items-center justify-between mb-4">
+        <Link
+          href="/tools"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-[var(--bg-elevated)] rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+        >
+          <ArrowLeftIcon size={12} />
+          모든 도구
+        </Link>
+        <ShareButtons
+          url={`https://toolpiki.com/tools/${meta.slug}`}
+          title={meta.name}
+          description={meta.description}
+        />
+      </div>
+
+      {/* 아이콘 + 제목 + 설명 */}
+      <div className="flex items-start gap-4">
+        <span className="text-4xl md:text-5xl flex-shrink-0" role="img" aria-hidden="true">
+          {meta.icon}
+        </span>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+              {meta.name}
+            </h1>
+            {badge && (
+              <span className={cn('inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold', badge.color)}>
+                {badge.label}
+              </span>
+            )}
+          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+            {meta.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
@@ -30,7 +94,6 @@ function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
   const focusMode = searchParams.get('focus') === '1';
   const { recordToolUsage } = useRecentTools();
 
-  // 페이지 진입 시 최근 이용 도구 자동 기록
   useEffect(() => {
     recordToolUsage(meta.slug);
   }, [meta.slug, recordToolUsage]);
@@ -49,51 +112,17 @@ function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
       <JsonLd data={breadcrumb} />
       {faqJsonLd && <JsonLd data={faqJsonLd} />}
 
-      <article className="container mx-auto px-4 py-1 md:py-2">
-        {!focusMode && (
-          <div className="mb-1">
-            <Link
-              href="/tools"
-              className={cn(
-                'inline-flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500',
-                'hover:text-gray-600 dark:hover:text-gray-400 transition-colors'
-              )}
-            >
-              <ArrowLeftIcon size={12} />
-              <span>모든 도구</span>
-            </Link>
-            <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-              {meta.name}
-            </h1>
-            <div className="flex items-center justify-between">
-              <p className="text-gray-600 dark:text-gray-400 text-sm flex-1">
-                {meta.description}
-              </p>
-              <ShareButtons
-                url={`https://toolpiki.com/tools/${meta.slug}`}
-                title={meta.name}
-                description={meta.description}
-                className="ml-3 flex-shrink-0"
-              />
-            </div>
-          </div>
-        )}
+      <article className="max-w-5xl mx-auto px-4 py-4 md:py-6">
+        <ToolHero meta={meta} focusMode={focusMode} />
 
-        {focusMode && (
-          <div className="mb-4">
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-              {meta.name}
-            </h1>
-          </div>
-        )}
-
+        {/* 메인 콘텐츠 */}
         <div className="tool-content">{children}</div>
 
-        {/* SEO 콘텐츠 블록 - 도구 UI 아래, 광고 위 */}
+        {/* SEO 콘텐츠 */}
         {!focusMode && meta.seoContent && (
-          <section className="mt-6 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
+          <section className="mt-8 p-5 md:p-6 bg-white dark:bg-[var(--bg-surface)] rounded-2xl border border-gray-200 dark:border-[var(--border-subtle)]">
             <div
-              className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-sm prose-headings:font-semibold prose-headings:mb-2 prose-p:text-gray-600 prose-p:dark:text-gray-400 prose-p:leading-relaxed prose-p:text-sm"
+              className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-base prose-headings:font-bold prose-headings:text-gray-900 prose-headings:dark:text-white prose-headings:mb-3 prose-p:text-gray-600 prose-p:dark:text-gray-400 prose-p:leading-relaxed prose-p:text-sm"
               dangerouslySetInnerHTML={{
                 __html: meta.seoContent
                   .replace(/^## (.+)$/gm, '<h2>$1</h2>')
@@ -108,33 +137,34 @@ function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
           </section>
         )}
 
-        {/* FAQ 섹션 - 검색엔진 & 사용자 모두에게 노출 */}
+        {/* FAQ */}
         {!focusMode && meta.faqs && meta.faqs.length > 0 && (
-          <section className="mt-4 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-            <h2 className="text-sm font-semibold text-gray-900 dark:text-white mb-3">자주 묻는 질문</h2>
-            <dl className="space-y-3">
+          <section className="mt-4 p-5 md:p-6 bg-white dark:bg-[var(--bg-surface)] rounded-2xl border border-gray-200 dark:border-[var(--border-subtle)]">
+            <h2 className="text-base font-bold text-gray-900 dark:text-white mb-4">자주 묻는 질문</h2>
+            <dl className="space-y-4">
               {meta.faqs.map((faq, i) => (
-                <div key={i}>
-                  <dt className="text-sm font-medium text-gray-800 dark:text-gray-200">{faq.question}</dt>
-                  <dd className="text-sm text-gray-600 dark:text-gray-400 mt-1 leading-relaxed">{faq.answer}</dd>
+                <div key={i} className="pb-4 border-b border-gray-100 dark:border-[var(--border-subtle)] last:border-0 last:pb-0">
+                  <dt className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1">{faq.question}</dt>
+                  <dd className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{faq.answer}</dd>
                 </div>
               ))}
             </dl>
           </section>
         )}
 
+        {/* 면책 문구 */}
         {!focusMode && ENTERTAINMENT_SLUGS.has(meta.slug) && (
-          <div className="mt-4 p-3 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+          <div className="mt-4 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
             <p className="text-xs text-amber-700 dark:text-amber-400">
               이 도구는 재미와 오락 목적으로 제공됩니다. 과학적·학술적 근거가 없으며, 결과를 실제 의사결정에 사용하지 마세요.
             </p>
           </div>
         )}
 
+        {/* 관련 도구 */}
         {!focusMode && meta.relatedSlugs && meta.relatedSlugs.length > 0 && (
           <RelatedTools slugs={meta.relatedSlugs} />
         )}
-
       </article>
     </>
   );
@@ -152,54 +182,17 @@ function ToolLayoutFallback({ meta, children }: ToolLayoutProps) {
     <>
       <JsonLd data={jsonLd} />
       <JsonLd data={breadcrumb} />
-
-      <article className="container mx-auto px-4 py-1 md:py-2">
-        <div className="mb-1">
-          <Link
-            href="/tools"
-            className={cn(
-              'inline-flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500',
-              'hover:text-gray-600 dark:hover:text-gray-400 transition-colors'
-            )}
-          >
-            <ArrowLeftIcon size={12} />
-            <span>모든 도구</span>
-          </Link>
-          <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-            {meta.name}
-          </h1>
-          <div className="flex items-center justify-between">
-            <p className="text-gray-600 dark:text-gray-400 text-sm flex-1">
-              {meta.description}
-            </p>
-            <ShareButtons
-              url={`https://toolpiki.com/tools/${meta.slug}`}
-              title={meta.name}
-              description={meta.description}
-              className="ml-3 flex-shrink-0"
-            />
-          </div>
-        </div>
-
+      <article className="max-w-5xl mx-auto px-4 py-4 md:py-6">
+        <ToolHero meta={meta} focusMode={false} />
         <div className="tool-content">{children}</div>
-
-
         {meta.relatedSlugs && meta.relatedSlugs.length > 0 && (
           <RelatedTools slugs={meta.relatedSlugs} />
         )}
-
       </article>
     </>
   );
 }
 
-/**
- * 도구 페이지 공통 레이아웃
- * - 제목, 설명
- * - 광고 슬롯
- * - 관련 도구
- * - JSON-LD 구조화 데이터
- */
 export function ToolLayout({ meta, children }: ToolLayoutProps) {
   return (
     <Suspense fallback={<ToolLayoutFallback meta={meta}>{children}</ToolLayoutFallback>}>

@@ -12,7 +12,6 @@ import { TextSorter } from './text/TextSorter';
 import { RandomStringGenerator } from './text/RandomStringGenerator';
 import { KoreanEnglishConverter } from './text/KoreanEnglishConverter';
 import { LoremIpsum } from './text/LoremIpsum';
-import { EmojiPicker } from './text/EmojiPicker';
 import { TextDiff } from './text/TextDiff';
 import { WordFrequency } from './text/WordFrequency';
 import { MessageLengthChecker } from './text/MessageLengthChecker';
@@ -24,7 +23,6 @@ import { DuplicateLineRemoverEn } from './text/DuplicateLineRemoverEn';
 import { TextSorterEn } from './text/TextSorterEn';
 import { RandomStringGeneratorEn } from './text/RandomStringGeneratorEn';
 import { LoremIpsumEn } from './text/LoremIpsumEn';
-import { EmojiPickerEn } from './text/EmojiPickerEn';
 import { TextDiffEn } from './text/TextDiffEn';
 import { WordFrequencyEn } from './text/WordFrequencyEn';
 import { MessageLengthCheckerEn } from './text/MessageLengthCheckerEn';
@@ -247,7 +245,6 @@ const toolComponents: Record<string, ComponentType> = {
   'random-string-generator': RandomStringGenerator,
   'korean-english-converter': KoreanEnglishConverter,
   'lorem-ipsum': LoremIpsum,
-  'emoji-picker': EmojiPicker,
   'text-diff': TextDiff,
   'word-frequency': WordFrequency,
   'message-length-checker': MessageLengthChecker,
@@ -259,7 +256,6 @@ const toolComponents: Record<string, ComponentType> = {
   'text-sorter-en': TextSorterEn,
   'random-string-generator-en': RandomStringGeneratorEn,
   'lorem-ipsum-en': LoremIpsumEn,
-  'emoji-picker-en': EmojiPickerEn,
   'text-diff-en': TextDiffEn,
   'word-frequency-en': WordFrequencyEn,
   'message-length-checker-en': MessageLengthCheckerEn,
