@@ -26,7 +26,7 @@ export const siteConfig = {
   // 검색엔진 인증 (배포 후 설정)
   verification: {
     google: '', // Google Search Console 인증 코드
-    naver: '',  // 네이버 서치어드바이저 인증 코드
+    naver: '943e1ba5022da6564eda3471b5a0062c69b54fc1',
     bing: '',   // Bing Webmaster Tools 인증 코드
   },
 };

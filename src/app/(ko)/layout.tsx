@@ -37,6 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         {/* End Google Tag Manager */}
         <meta name="google-adsense-account" content="ca-pub-3612035754086019" />
+        <meta name="naver-site-verification" content="943e1ba5022da6564eda3471b5a0062c69b54fc1" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3612035754086019"
