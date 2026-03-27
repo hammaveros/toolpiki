@@ -39,7 +39,6 @@ import { HashGenerator } from './encoding/HashGenerator';
 import { HtmlEntity } from './encoding/HtmlEntity';
 import { UnicodeConverter } from './encoding/UnicodeConverter';
 import { MorseCode } from './encoding/MorseCode';
-import { AsciiConverter } from './encoding/AsciiConverter';
 import { JwtDecoder } from './encoding/JwtDecoder';
 import { Base64ToolEn } from './encoding/Base64ToolEn';
 import { UrlEncoderEn } from './encoding/UrlEncoderEn';
@@ -47,12 +46,9 @@ import { HashGeneratorEn } from './encoding/HashGeneratorEn';
 import { HtmlEntityEn } from './encoding/HtmlEntityEn';
 import { UnicodeConverterEn } from './encoding/UnicodeConverterEn';
 import { MorseCodeEn } from './encoding/MorseCodeEn';
-import { AsciiConverterEn } from './encoding/AsciiConverterEn';
 import { JwtDecoderEn } from './encoding/JwtDecoderEn';
 import { StringEscape } from './encoding/StringEscape';
 import { StringEscapeEn } from './encoding/StringEscapeEn';
-import { HexViewer } from './encoding/HexViewer';
-import { HexViewerEn } from './encoding/HexViewerEn';
 
 // 포맷터
 import { JsonFormatter } from './formatter/JsonFormatter';
@@ -116,7 +112,6 @@ import { ContrastChecker } from './color/ContrastChecker';
 import { ImageColorPicker } from './color/ImageColorPicker';
 import { ColorBlender } from './color/ColorBlender';
 import { ColorBlindSimulator } from './color/ColorBlindSimulator';
-import { BatchColorConverter } from './color/BatchColorConverter';
 import { ColorConverterEn } from './color/ColorConverterEn';
 import { PaletteGeneratorEn } from './color/PaletteGeneratorEn';
 import { GradientGeneratorEn } from './color/GradientGeneratorEn';
@@ -124,7 +119,6 @@ import { ContrastCheckerEn } from './color/ContrastCheckerEn';
 import { ImageColorPickerEn } from './color/ImageColorPickerEn';
 import { ColorBlenderEn } from './color/ColorBlenderEn';
 import { ColorBlindSimulatorEn } from './color/ColorBlindSimulatorEn';
-import { BatchColorConverterEn } from './color/BatchColorConverterEn';
 import { BoxShadowGenerator } from './color/BoxShadowGenerator';
 import { BoxShadowGeneratorEn } from './color/BoxShadowGeneratorEn';
 import { BorderRadiusGenerator } from './color/BorderRadiusGenerator';
@@ -222,8 +216,6 @@ import { PasswordStrength } from './calculator/PasswordStrength';
 import { PasswordStrengthEn } from './calculator/PasswordStrengthEn';
 import { InvoiceGenerator } from './calculator/InvoiceGenerator';
 import { InvoiceGeneratorEn } from './calculator/InvoiceGeneratorEn';
-import { ColorBlindness } from './image/ColorBlindness';
-import { ColorBlindnessEn } from './image/ColorBlindnessEn';
 import { ScreenRuler } from './calculator/ScreenRuler';
 import { ScreenRulerEn } from './calculator/ScreenRulerEn';
 import { PomodoroTimer } from './calculator/PomodoroTimer';
@@ -272,7 +264,6 @@ const toolComponents: Record<string, ComponentType> = {
   'html-entity': HtmlEntity,
   'unicode-converter': UnicodeConverter,
   'morse-code': MorseCode,
-  'ascii-converter': AsciiConverter,
   'jwt-decoder': JwtDecoder,
   'base64-en': Base64ToolEn,
   'url-encoder-en': UrlEncoderEn,
@@ -280,12 +271,9 @@ const toolComponents: Record<string, ComponentType> = {
   'html-entity-en': HtmlEntityEn,
   'unicode-converter-en': UnicodeConverterEn,
   'morse-code-en': MorseCodeEn,
-  'ascii-converter-en': AsciiConverterEn,
   'jwt-decoder-en': JwtDecoderEn,
   'string-escape': StringEscape,
   'string-escape-en': StringEscapeEn,
-  'hex-viewer': HexViewer,
-  'hex-viewer-en': HexViewerEn,
 
   // 포맷터 (7개)
   'json-formatter': JsonFormatter,
@@ -349,7 +337,6 @@ const toolComponents: Record<string, ComponentType> = {
   'image-color-picker': ImageColorPicker,
   'color-blender': ColorBlender,
   'color-blind-simulator': ColorBlindSimulator,
-  'batch-color-converter': BatchColorConverter,
   'color-converter-en': ColorConverterEn,
   'palette-generator-en': PaletteGeneratorEn,
   'gradient-generator-en': GradientGeneratorEn,
@@ -357,7 +344,6 @@ const toolComponents: Record<string, ComponentType> = {
   'image-color-picker-en': ImageColorPickerEn,
   'color-blender-en': ColorBlenderEn,
   'color-blind-simulator-en': ColorBlindSimulatorEn,
-  'batch-color-converter-en': BatchColorConverterEn,
   'box-shadow-generator': BoxShadowGenerator,
   'box-shadow-generator-en': BoxShadowGeneratorEn,
   'border-radius-generator': BorderRadiusGenerator,
@@ -455,8 +441,6 @@ const toolComponents: Record<string, ComponentType> = {
   'password-strength-en': PasswordStrengthEn,
   'invoice-generator': InvoiceGenerator,
   'invoice-generator-en': InvoiceGeneratorEn,
-  'color-blindness-image': ColorBlindness,
-  'color-blindness-image-en': ColorBlindnessEn,
   'screen-ruler': ScreenRuler,
   'screen-ruler-en': ScreenRulerEn,
   'pomodoro-timer': PomodoroTimer,
