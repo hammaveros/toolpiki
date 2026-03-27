@@ -425,7 +425,7 @@ export function LadderGameEn() {
     }));
     const data = { mappings };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/ladder-game#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/ladder-game-en#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

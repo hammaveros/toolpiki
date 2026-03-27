@@ -53,16 +53,6 @@ export default function HomePage() {
               </button>
             )}
           </div>
-          {searchQuery.trim() && (
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
-              &quot;{searchQuery}&quot; 검색 결과: {tools.filter(t =>
-                t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                t.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                t.keywords?.some(k => k.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                t.tags?.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-              ).length}개
-            </p>
-          )}
         </div>
       </section>
 

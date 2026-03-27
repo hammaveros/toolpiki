@@ -101,7 +101,7 @@ export function ColorPerceptionTestEn() {
     const avgTime = (totalTime / totalRounds / 1000).toFixed(2);
     const data = { score, total: totalRounds, accuracy, avgTime };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/color-perception-test#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/color-perception-test-en#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

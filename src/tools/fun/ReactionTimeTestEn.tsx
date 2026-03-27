@@ -141,7 +141,7 @@ export function ReactionTimeTestEn() {
     if (!stats || results.length === 0) return '';
     const data = { results: results.map(r => r.time), avg: stats.average };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/reaction-time-test#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/reaction-time-test-en#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

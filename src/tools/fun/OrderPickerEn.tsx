@@ -56,7 +56,7 @@ export function OrderPickerEn() {
     if (!result) return '';
     const data = { order: result };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/order-picker#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/order-picker-en#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

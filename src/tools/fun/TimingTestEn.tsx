@@ -94,7 +94,7 @@ export function TimingTestEn() {
   const getShareUrl = () => {
     const data = { target: targetSeconds, elapsed: elapsed.toFixed(3), diff: getDifference().toFixed(3) };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/timing-test#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/timing-test-en#share=${encoded}`;
   };
 
   // Restore shared data from URL hash
