@@ -172,10 +172,12 @@ export function ReactionTimeTest() {
   }, []);
 
   const getReactionRating = (ms: number) => {
-    if (ms < 250) return { label: '매우 빠름', color: 'text-emerald-600 dark:text-emerald-400' };
-    if (ms < 300) return { label: '빠름', color: 'text-green-600 dark:text-green-400' };
-    if (ms < 350) return { label: '보통', color: 'text-yellow-600 dark:text-yellow-400' };
-    return { label: '느림', color: 'text-orange-600 dark:text-orange-400' };
+    if (ms < 200) return { label: '프로게이머급 🔥', comment: '와 진짜 미쳤다...', color: 'text-emerald-600 dark:text-emerald-400' };
+    if (ms < 250) return { label: '매우 빠름 ⚡', comment: '반사신경 장난 아닌데?', color: 'text-emerald-600 dark:text-emerald-400' };
+    if (ms < 300) return { label: '빠름 👍', comment: '꽤 빠르네! 상위권이야', color: 'text-green-600 dark:text-green-400' };
+    if (ms < 350) return { label: '보통', comment: '평균 수준이야. 연습하면 더 빨라질 수 있어!', color: 'text-yellow-600 dark:text-yellow-400' };
+    if (ms < 450) return { label: '느림 🐢', comment: '졸린 건 아니지...?', color: 'text-orange-600 dark:text-orange-400' };
+    return { label: '매우 느림 😴', comment: '커피 한 잔 하고 다시 해보자', color: 'text-red-600 dark:text-red-400' };
   };
 
   return (
@@ -277,6 +279,9 @@ export function ReactionTimeTest() {
               </p>
               <p className={cn('text-lg font-medium mt-1', getReactionRating(stats.average).color)}>
                 {getReactionRating(stats.average).label}
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                {getReactionRating(stats.average).comment}
               </p>
               <p className="text-sm text-blue-600 dark:text-blue-400 mt-2">
                 클릭하여 다시 시작
