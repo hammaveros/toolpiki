@@ -58,9 +58,7 @@ export function FileSizeCalculator() {
         const index = units.indexOf(unit);
         const converted = bytes / Math.pow(1024, index);
         let formatted: string;
-        if (converted >= 1000000) {
-          formatted = converted.toExponential(2);
-        } else if (converted < 0.01 && converted > 0) {
+        if (converted < 0.01 && converted > 0) {
           formatted = converted.toExponential(2);
         } else {
           formatted = converted.toLocaleString('ko-KR', { maximumFractionDigits: 2 });
