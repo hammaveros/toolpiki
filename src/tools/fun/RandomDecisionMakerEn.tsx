@@ -77,7 +77,7 @@ export function RandomDecisionMakerEn() {
     if (!result) return '';
     const data = { type, result };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/random-decision#share=${encoded}`;
+    return `${siteConfig.url}/en/tools/random-decision-maker-en#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

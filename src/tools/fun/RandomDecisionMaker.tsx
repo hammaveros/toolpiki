@@ -97,7 +97,7 @@ export function RandomDecisionMaker() {
     if (!result) return '';
     const data = { type, result };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/tools/random-decision#share=${encoded}`;
+    return `${siteConfig.url}/tools/random-decision-maker#share=${encoded}`;
   };
 
   // URL hash에서 공유 데이터 복원
