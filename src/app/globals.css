@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+
+/* Tailwind v4: 다크모드를 .dark 클래스로 제어 (next-themes 연동) */
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f8fafc;
+  --foreground: #1e293b;
+}
+
+/* .dark 클래스가 있을 때 다크 테마 적용 */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  /* iOS Safari pull-to-refresh 비활성화 */
+  overscroll-behavior-y: contain;
+}
+
+/* 터치 타겟 최소 크기 */
+button,
+a,
+input,
+select,
+textarea {
+  min-height: 44px;
+}
+
+/* 텍스트 영역 크기 조절 */
+textarea {
+  resize: vertical;
+}
+
+/* 스크롤바 스타일 (웹킷) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* .dark 클래스 기반 스크롤바 */
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Focus 스타일 */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* 선택 영역 스타일 */
+::selection {
+  background: #3b82f6;
+  color: white;
+}
+
+/* 팀 배정 애니메이션 */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in-up 0.35s ease-out;
+}

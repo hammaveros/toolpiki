@@ -1,0 +1,13 @@
+# Cloudflare Pages 리다이렉트 설정
+
+# www → non-www 301 리다이렉트
+https://www.jsspace.online/* https://jsspace.online/:splat 301
+
+# 레거시 URL 리다이렉트 (필요시 추가)
+# /old-tool /tools/new-tool 301
+
+# EN 도구 잘못된 URL 리다이렉트
+/en/tools/color-perception-test /en/tools/color-perception-test-en 301
+
+# SPA 폴백 (Next.js SSG에서는 보통 불필요)
+# /* /index.html 200

@@ -1,0 +1,74 @@
+# Cloudflare Pages 헤더 설정
+
+# 모든 페이지 기본 보안 헤더
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# 정적 에셋 캐싱 (1년)
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 이미지 캐싱 (1주)
+/images/*
+  Cache-Control: public, max-age=604800
+
+# 폰트 캐싱 (1년)
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 도구 페이지 (1일 캐시) - Cloudflare Edge에서 캐싱
+/tools/*
+  Cache-Control: public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800
+
+/en/tools/*
+  Cache-Control: public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800
+
+# 메인/about 등 기타 페이지 (1시간 캐시)
+/
+  Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400
+
+/en
+  Cache-Control: public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400
+
+/about
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+/en/about
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+/contact
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+/en/contact
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+/privacy
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+/en/privacy
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+/terms
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+/en/terms
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+# HTML 페이지 기본 (1시간 캐시)
+/*.html
+  Cache-Control: public, max-age=3600, s-maxage=3600
+
+# ads.txt (짧은 캐시)
+/ads.txt
+  Cache-Control: public, max-age=86400
+
+# sitemap, robots (1일 캐시)
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/robots.txt
+  Cache-Control: public, max-age=86400
