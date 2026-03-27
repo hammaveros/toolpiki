@@ -135,7 +135,7 @@ export function QrGenerator() {
               onClick={() => setMode(m)}
               className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
                 mode === m
-                  ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900'
+                  ? 'bg-blue-600 text-white'
                   : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
             >

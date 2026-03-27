@@ -249,7 +249,7 @@ export function BirthdayCompatibility() {
           <Button
             onClick={handleCalculate}
             disabled={!date1 || !date2 || isAnimating}
-            className="flex-1 bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600"
+            className="flex-1"
           >
             {isAnimating ? '궁합 분석 중...' : '궁합 보기 🔮'}
           </Button>

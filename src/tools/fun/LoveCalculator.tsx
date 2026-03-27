@@ -142,7 +142,7 @@ export function LoveCalculator() {
           <Button
             onClick={handleCalculate}
             disabled={!name1.trim() || !name2.trim() || isCalculating}
-            className="flex-1 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600"
+            className="flex-1"
           >
             {isCalculating ? 'Calculating...' : 'Calculate Love ❤️'}
           </Button>

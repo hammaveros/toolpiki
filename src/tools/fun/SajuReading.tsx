@@ -1349,7 +1349,7 @@ function SajuReadingInner() {
         <div className="flex gap-3">
           <button
             onClick={handleAnalyze}
-            className="flex-1 py-3 rounded-xl text-white font-bold text-base bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 active:scale-[0.98] transition-all shadow-lg shadow-purple-500/25"
+            className="flex-1 py-3 rounded-xl text-white font-bold text-base bg-blue-600 hover:bg-blue-700 active:scale-[0.98] transition-all shadow-lg shadow-blue-500/25"
           >
             🔮 사주 풀이하기
           </button>

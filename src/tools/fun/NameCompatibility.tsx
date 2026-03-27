@@ -204,7 +204,7 @@ export function NameCompatibility() {
           <Button
             onClick={handleCalculate}
             disabled={!name1.trim() || !name2.trim() || isAnimating}
-            className="flex-1 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600"
+            className="flex-1"
           >
             {isAnimating ? '궁합 계산 중...' : '궁합 보기 💘'}
           </Button>

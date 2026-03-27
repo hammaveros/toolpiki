@@ -141,6 +141,7 @@ export function LadderGame() {
     const rowHeight = height / (rows + 1);
 
     ctx.clearRect(0, 0, width, height);
+    const isDark = document.documentElement.classList.contains('dark');
 
     // 숨기기 모드 체크 (한 명이라도 클릭하면 바로 공개)
     const shouldHide = hideMiddle && !isRevealed && finalResults.size === 0 && selectedPlayer === null;
@@ -150,7 +151,7 @@ export function LadderGame() {
     const hideEndY = height - rowHeight * 1.2;  // 하단 약간 위까지
 
     // 세로선 (전체)
-    ctx.strokeStyle = '#666';
+    ctx.strokeStyle = isDark ? '#6b7280' : '#9ca3af';
     ctx.lineWidth = 3;
     for (let col = 0; col < cols; col++) {
       const x = colWidth * col + colWidth / 2;
@@ -162,7 +163,7 @@ export function LadderGame() {
 
     // 가로선 (숨기기 모드가 아닐 때만 표시)
     if (!shouldHide) {
-      ctx.strokeStyle = '#666';
+      ctx.strokeStyle = isDark ? '#6b7280' : '#9ca3af';
       ctx.lineWidth = 3;
       ladderPaths.forEach(({ col, row }) => {
         const x1 = colWidth * col + colWidth / 2;
@@ -179,7 +180,7 @@ export function LadderGame() {
     // 숨기기 박스 (불투명하게 가림)
     if (shouldHide) {
       // 배경색에 맞춰서 (다크모드 감지)
-      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      // isDark는 상위에서 선언됨
 
       // 그라데이션으로 자연스럽게
       const gradient = ctx.createLinearGradient(0, hideStartY - 20, 0, hideStartY + 20);

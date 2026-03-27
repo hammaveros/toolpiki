@@ -97,7 +97,7 @@ export function HttpStatusCodeEn() {
             onClick={() => setSelectedCategory(cat.id)}
             className={`px-3 py-1.5 text-sm rounded-full transition-colors ${
               selectedCategory === cat.id
-                ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900'
+                ? 'bg-blue-600 text-white'
                 : 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
             }`}
           >

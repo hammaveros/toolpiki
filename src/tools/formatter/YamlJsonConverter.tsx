@@ -267,27 +267,30 @@ export function YamlJsonConverter() {
 
   return (
     <div className="space-y-2">
-      {/* 모드 선택 및 버튼 */}
-      <div className="flex gap-2 flex-wrap">
-        <Button
-          variant={mode === 'yaml-to-json' ? 'primary' : 'secondary'}
+      {/* 모드 선택 탭 */}
+      <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg w-fit">
+        <button
           onClick={() => setMode('yaml-to-json')}
+          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            mode === 'yaml-to-json' ? 'bg-blue-600 text-white' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+          }`}
         >
           YAML → JSON
-        </Button>
-        <Button
-          variant={mode === 'json-to-yaml' ? 'primary' : 'secondary'}
+        </button>
+        <button
           onClick={() => setMode('json-to-yaml')}
+          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            mode === 'json-to-yaml' ? 'bg-blue-600 text-white' : 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+          }`}
         >
           JSON → YAML
-        </Button>
+        </button>
+      </div>
+      {/* 액션 버튼 */}
+      <div className="flex gap-2 flex-wrap">
         <Button onClick={handleConvert}>변환</Button>
-        <Button variant="secondary" onClick={handleSwap}>
-          ↔ 모드 전환
-        </Button>
-        <Button variant="secondary" onClick={() => { setInput(''); setOutput(''); setError(''); }}>
-          초기화
-        </Button>
+        <Button variant="secondary" onClick={handleSwap}>↔ 모드 전환</Button>
+        <Button variant="secondary" onClick={() => { setInput(''); setOutput(''); setError(''); }}>초기화</Button>
       </div>
 
       {error && <p className="text-red-500 text-sm">{error}</p>}

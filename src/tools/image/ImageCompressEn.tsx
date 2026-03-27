@@ -211,7 +211,7 @@ export function ImageCompressEn() {
                       onClick={() => setQuality(q)}
                       className={`flex-1 py-1 text-xs rounded ${
                         quality === q
-                          ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900'
+                          ? 'bg-blue-600 text-white'
                           : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
                       }`}
                     >
