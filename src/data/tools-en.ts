@@ -275,23 +275,6 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'morse-code-en',
-    name: 'Morse Code Translator',
-    description: 'Convert text to Morse code and Morse code to text.',
-    category: 'fun',
-    tags: ['morse', 'code', 'translator', 'dots', 'fun'],
-    icon: '📡',
-    keywords: ['morse code translator', 'morse code converter', 'text to morse', 'morse decoder'],
-    relatedSlugs: ['unicode-converter-en', 'base64-en'],
-    seoTitle: 'Morse Code Translator - Free Text to Morse Converter',
-    seoDescription: 'Convert text to Morse code and decode Morse code to text. Learn Morse code with our free online translator.',
-    seoContent: '## What is Morse Code Translator?\n\nTranslate any text to Morse code (dots and dashes) and convert Morse code back to readable text. Great for learning Morse code, encoding messages, or educational purposes.',
-    faqs: [
-      { question: 'What is SOS in Morse code?', answer: '... --- ... (three dots, three dashes, three dots). The most famous Morse code distress signal.' },
-      { question: 'Does it support numbers and punctuation?', answer: 'Yes, numbers 0-9 and common punctuation marks have standard Morse code representations.' },
-    ],
-  },
-  {
     slug: 'jwt-decoder-en',
     name: 'JWT Decoder',
     description: 'Decode and inspect JWT tokens without verification.',
