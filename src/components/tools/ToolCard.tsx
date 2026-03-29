@@ -76,20 +76,8 @@ export const ToolCard = memo(function ToolCard({ tool, compact = false, showRemo
             {tool.name}
             {isExternal && <span className="ml-1 text-xs opacity-50">↗</span>}
           </span>
-          {!tool.isSpecial && !showRemove && (
+          {!tool.isSpecial && (
             <span className="ml-auto text-gray-300 dark:text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity text-xs flex-shrink-0 self-center">→</span>
-          )}
-          {showRemove && onRemove && (
-            <button
-              type="button"
-              onClick={(e) => { e.preventDefault(); e.stopPropagation(); onRemove(); }}
-              className="ml-auto p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity text-gray-300 dark:text-gray-600 hover:text-red-500 flex-shrink-0 self-center"
-              aria-label="삭제"
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </button>
           )}
         </Link>
       </div>
