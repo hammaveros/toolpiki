@@ -211,7 +211,6 @@ export function ChatRoom() {
     }
 
     try {
-      console.log('[채팅] 전송 시도:', { uid, nickname: nickname.name, text: filtered });
       await addDoc(collection(db, 'messages'), {
         text: filtered,
         nickname: nickname.name,
@@ -220,7 +219,6 @@ export function ChatRoom() {
         type: 'message',
         createdAt: serverTimestamp(),
       });
-      console.log('[채팅] 전송 성공');
       setCooldown(true);
       setTimeout(() => setCooldown(false), 2000);
     } catch (err) {
