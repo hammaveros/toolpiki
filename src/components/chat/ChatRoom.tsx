@@ -123,14 +123,14 @@ export function ChatRoom() {
     };
   }, [uid, joined, nickname]);
 
-  // 자동 스크롤 (하단 근처일 때만)
+  // 자동 스크롤 (하단 근처일 때만, 컨테이너 내부만)
   const chatContainerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const container = chatContainerRef.current;
     if (!container) return;
     const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 80;
     if (isNearBottom) {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      container.scrollTop = container.scrollHeight;
     }
   }, [messages]);
 
@@ -311,7 +311,7 @@ export function ChatRoom() {
   }
 
   return (
-    <div className="flex flex-col h-full w-full bg-[#FAF6F1] dark:bg-[#1C1917] overflow-hidden">
+    <div className="flex flex-col w-full bg-[#FAF6F1] dark:bg-[#1C1917] overflow-hidden" style={{ height: 'calc(100vh - 160px)' }}>
       {/* 헤더 */}
       <div className="border-b border-[#E8DFD4] dark:border-[#3D3530] px-4 py-2 text-center flex-shrink-0">
         <div className="flex items-center justify-center gap-2 mb-1">
