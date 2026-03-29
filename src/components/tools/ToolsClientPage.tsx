@@ -16,13 +16,7 @@ interface ToolsClientPageProps {
   isEnglish?: boolean;
 }
 
-const CATEGORY_FOLD_LIMIT = 8;
-
 function CategorySection({ category: cat, tools: catTools, basePath = '/tools' }: { category: CategoryMeta; tools: ToolMeta[]; basePath?: string }) {
-  const [expanded, setExpanded] = useState(false);
-  const needsFold = catTools.length > CATEGORY_FOLD_LIMIT;
-  const displayTools = needsFold && !expanded ? catTools.slice(0, CATEGORY_FOLD_LIMIT) : catTools;
-
   return (
     <section>
       <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
@@ -31,18 +25,10 @@ function CategorySection({ category: cat, tools: catTools, basePath = '/tools' }
         <span className="text-sm font-normal text-gray-400 dark:text-gray-500">({catTools.length})</span>
       </h2>
       <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {displayTools.map((tool) => (
+        {catTools.map((tool) => (
           <ToolCard key={tool.slug} tool={tool} compact basePath={basePath} />
         ))}
       </div>
-      {needsFold && !expanded && (
-        <button
-          onClick={() => setExpanded(true)}
-          className="mt-3 text-sm text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-        >
-          + {catTools.length - CATEGORY_FOLD_LIMIT} more ↓
-        </button>
-      )}
     </section>
   );
 }
