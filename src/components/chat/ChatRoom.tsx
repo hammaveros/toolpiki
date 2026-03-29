@@ -123,6 +123,15 @@ export function ChatRoom() {
   }, [uid, joined, nickname]);
 
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const initialScrollDone = useRef(false);
+
+  // 최초 로드 시 채팅 맨 아래로 (컨테이너 내부만)
+  useEffect(() => {
+    if (messages.length > 0 && !initialScrollDone.current && chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      initialScrollDone.current = true;
+    }
+  }, [messages]);
 
   // 분위기 메시지 (30초 이상 새 메시지 없으면)
   useEffect(() => {
