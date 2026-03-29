@@ -778,7 +778,7 @@ export function TeamSajuCompatibility() {
                   </p>
                 </div>
               </div>
-              <CopyButton text={getShareUrl()} label="팀원에게 공유" />
+              <CopyButton text={getShareUrl()} label="📨 팀원 초대하기" />
             </div>
             {/* 오행 분포 인라인 */}
             <div className="flex gap-1 mt-3">
