@@ -64,7 +64,7 @@ export function ChatRoom() {
       collection(db, 'messages'),
       where('createdAt', '>', twentyFourHoursAgo),
       orderBy('createdAt', 'asc'),
-      limit(100),
+      limit(30),
     );
 
     const unsub = onSnapshot(q, (snapshot) => {
@@ -95,15 +95,15 @@ export function ChatRoom() {
         nickname: nickname?.name || '???',
         lastSeen: serverTimestamp(),
       });
-    }, 15000);
+    }, 300000);
 
-    // presence 구독 (전체 구독 후 클라이언트 필터링)
+    // presence 구독 (5분 이내 갱신한 유저만 접속 중)
     const unsub = onSnapshot(collection(db, 'presence'), (snapshot) => {
       const now = Date.now();
       let count = 0;
       snapshot.forEach((d) => {
         const lastSeen = d.data().lastSeen?.toDate?.();
-        if (lastSeen && now - lastSeen.getTime() < 60000) count++;
+        if (lastSeen && now - lastSeen.getTime() < 300000) count++;
       });
       setOnlineCount(count);
     });
@@ -149,7 +149,7 @@ export function ChatRoom() {
           type: 'ambient',
           createdAt: null,
         }]);
-      }, 30000);
+      }, 60000);
     };
 
     resetAmbientTimer();
@@ -250,7 +250,7 @@ export function ChatRoom() {
     });
 
     setCooldown(true);
-    setTimeout(() => setCooldown(false), 5000);
+    setTimeout(() => setCooldown(false), 10000);
   }, [uid, nickname, cooldown]);
 
   // 간식 카운터
@@ -282,7 +282,7 @@ export function ChatRoom() {
     });
 
     setCooldown(true);
-    setTimeout(() => setCooldown(false), 5000);
+    setTimeout(() => setCooldown(false), 10000);
   }, [nickname, cooldown, snackCount, uid]);
 
   // 시간 포맷
