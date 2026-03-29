@@ -233,6 +233,35 @@ function getTodayHighlight(members: MemberSaju[]): { lucky: MemberSaju | null; c
   return { lucky, charm, wealth };
 }
 
+// 일간 성격 해석
+const DAYGAN_PERSONALITY: Record<string, { title: string; desc: string }> = {
+  갑: { title: '리더형', desc: '곧은 나무처럼 정의감 있고 추진력이 강해요. 새로운 시작을 잘하는 타입.' },
+  을: { title: '유연형', desc: '덩굴처럼 유연하고 적응력이 뛰어나요. 사람들과 잘 어울리는 타입.' },
+  병: { title: '열정형', desc: '태양처럼 밝고 에너지가 넘쳐요. 주변을 환하게 만드는 분위기 메이커.' },
+  정: { title: '섬세형', desc: '촛불처럼 따뜻하고 세심해요. 디테일에 강하고 배려심이 깊은 타입.' },
+  무: { title: '안정형', desc: '큰 산처럼 듬직하고 믿음직해요. 중심을 잘 잡고 변치 않는 타입.' },
+  기: { title: '현실형', desc: '기름진 땅처럼 실용적이고 현실 감각이 뛰어나요. 꼼꼼한 타입.' },
+  경: { title: '결단형', desc: '강철처럼 단단하고 결단력이 있어요. 옳다고 생각하면 밀고 나가는 타입.' },
+  신: { title: '감각형', desc: '보석처럼 예리하고 감각적이에요. 완벽주의 성향이 있는 타입.' },
+  임: { title: '자유형', desc: '큰 바다처럼 자유롭고 포용력이 넓어요. 스케일이 크고 대범한 타입.' },
+  계: { title: '지혜형', desc: '맑은 시냇물처럼 총명하고 직관적이에요. 눈치가 빠르고 영리한 타입.' },
+};
+
+// 오행 관계 기반 1:1 코멘트
+function getOhangPairComment(o1: string, o2: string, name1: string, name2: string): string {
+  const rel = getOhangRelationLabel(o1, o2);
+  if (rel === '상생') {
+    return `${name1}(${o1})이 ${name2}(${o2})에게 좋은 기운을 줘요. 함께하면 시너지가 나는 관계.`;
+  }
+  if (rel === '상극') {
+    return `${name1}(${o1})과 ${name2}(${o2})는 긴장감이 있지만, 그만큼 서로 자극이 되는 관계.`;
+  }
+  if (rel === '동질') {
+    return `둘 다 ${o1} 기운이라 동질감이 강해요. 말 안 해도 통하는 부분이 많을 거예요.`;
+  }
+  return `${o1}과 ${o2}의 기운이 자연스럽게 공존하는 편안한 관계.`;
+}
+
 function getPairScore(ji1: string, ji2: string): { score: number; relation: string } {
   if (YUKAP[ji1] === ji2) return { score: 95, relation: '육합' };
   if (SAMHAP[ji1]?.includes(ji2)) return { score: 85, relation: '삼합' };
@@ -284,6 +313,79 @@ interface PairResult {
 // ========================================
 // 메인 컴포넌트
 // ========================================
+
+// 선택된 멤버 상세
+function MemberDetail({ selectedMember, results, getScoreBg, getScoreColor, getScoreEmoji, getScoreLabel }: {
+  selectedMember: string;
+  results: { members: MemberSaju[]; pairs: PairResult[] };
+  getScoreBg: (s: number) => string;
+  getScoreColor: (s: number) => string;
+  getScoreEmoji: (s: number) => string;
+  getScoreLabel: (s: number) => string;
+}) {
+  const me = results.members.find(m => m.name === selectedMember);
+  const personality = me ? DAYGAN_PERSONALITY[me.dayGan] : null;
+  const role = me ? getOhangRole(me.ohang) : null;
+
+  return (
+    <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 space-y-3">
+      {me && personality && (
+        <div className="p-3 bg-blue-50 dark:bg-blue-900/15 rounded-xl">
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="text-lg">{ANIMAL_EMOJI[me.animal]}</span>
+            <span className="font-bold text-sm text-gray-900 dark:text-white">{me.name}</span>
+            <span className={cn('px-1.5 py-0.5 rounded text-[10px] font-medium', OHANG_BG[me.dayGanOhang])}>
+              {me.dayGan}({me.dayGanOhang})
+            </span>
+            <span className="text-[10px] text-gray-500">{me.animal}띠</span>
+          </div>
+          <p className="text-xs text-gray-600 dark:text-gray-300">
+            <strong>{personality.title}</strong> — {personality.desc}
+          </p>
+          {role && (
+            <p className="text-[10px] text-blue-600 dark:text-blue-400 mt-1">
+              팀 역할: {role.role} · {role.desc}
+            </p>
+          )}
+        </div>
+      )}
+
+      <p className="text-xs font-semibold text-gray-600 dark:text-gray-300">
+        {selectedMember}의 팀원 궁합
+      </p>
+      {results.pairs
+        .filter(p => p.member1 === selectedMember || p.member2 === selectedMember)
+        .sort((a, b) => b.score - a.score)
+        .map((pair, i) => {
+          const other = pair.member1 === selectedMember ? pair.member2 : pair.member1;
+          const otherMember = results.members.find(m => m.name === other);
+          const ohangComment = me && otherMember
+            ? getOhangPairComment(me.dayGanOhang, otherMember.dayGanOhang, me.name, other)
+            : '';
+          return (
+            <div key={i} className={cn('p-3 rounded-xl', getScoreBg(pair.score))}>
+              <div className="flex items-center gap-2">
+                <span className="text-base">{getScoreEmoji(pair.score)}</span>
+                <span className="font-medium text-sm text-gray-900 dark:text-white">{other}</span>
+                {otherMember && (
+                  <span className={cn('px-1 py-0.5 rounded text-[9px]', OHANG_BG[otherMember.dayGanOhang])}>
+                    {otherMember.dayGanOhang}
+                  </span>
+                )}
+                <span className="flex-1" />
+                <span className={cn('text-sm font-bold', getScoreColor(pair.score))}>{pair.score}</span>
+                <span className={cn('text-[10px] font-medium', getScoreColor(pair.score))}>{getScoreLabel(pair.score)}</span>
+              </div>
+              <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1 ml-7">{pair.comment}</p>
+              {ohangComment && (
+                <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-0.5 ml-7">{ohangComment}</p>
+              )}
+            </div>
+          );
+        })}
+    </div>
+  );
+}
 
 // 다각형 관계도
 function RelationPolygon({
@@ -674,58 +776,84 @@ export function TeamSajuCompatibility() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-          {members.map((member, idx) => (
-            <div key={member.id} className="flex items-center gap-1.5 p-2 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-              <span className="text-[10px] text-gray-400 w-4 flex-shrink-0 text-center">{idx + 1}</span>
-              <input
-                type="text"
-                value={member.name}
-                onChange={(e) => updateMember(member.id, 'name', e.target.value)}
-                placeholder="이름"
-                maxLength={10}
-                className="flex-1 min-w-0 px-2 py-1.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
-              />
-              <input
-                type="date"
-                value={member.birthDate}
-                onChange={(e) => updateMember(member.id, 'birthDate', e.target.value)}
-                className="w-28 px-1 py-1.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
-              />
-              <select
-                value={member.birthTime}
-                onChange={(e) => updateMember(member.id, 'birthTime', e.target.value)}
-                className="w-36 px-1 py-1.5 text-[10px] rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
-              >
-                <option value="">모름</option>
-                <option value="23">자시 (23:00~01:00)</option>
-                <option value="01">축시 (01:00~03:00)</option>
-                <option value="03">인시 (03:00~05:00)</option>
-                <option value="05">묘시 (05:00~07:00)</option>
-                <option value="07">진시 (07:00~09:00)</option>
-                <option value="09">사시 (09:00~11:00)</option>
-                <option value="11">오시 (11:00~13:00)</option>
-                <option value="13">미시 (13:00~15:00)</option>
-                <option value="15">신시 (15:00~17:00)</option>
-                <option value="17">유시 (17:00~19:00)</option>
-                <option value="19">술시 (19:00~21:00)</option>
-                <option value="21">해시 (21:00~23:00)</option>
-              </select>
-              <button
-                onClick={() => removeMember(member.id)}
-                disabled={members.length <= 2}
-                className={cn(
-                  'p-1 rounded transition-colors flex-shrink-0',
-                  members.length <= 2 ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed' : 'text-gray-400 hover:text-red-500'
-                )}
-                aria-label="삭제"
-              >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {members.map((member, idx) => {
+            // 날짜 유효성 검사
+            const dateStr = member.birthDate.replace(/-/g, '');
+            const isDateValid = !dateStr || (/^\d{8}$/.test(dateStr) && !isNaN(new Date(
+              `${dateStr.slice(0,4)}-${dateStr.slice(4,6)}-${dateStr.slice(6,8)}`
+            ).getTime()));
+            return (
+            <div key={member.id} className="relative p-2.5 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[10px] text-gray-400 w-4 flex-shrink-0 text-center">{idx + 1}</span>
+                <input
+                  type="text"
+                  value={member.name}
+                  onChange={(e) => updateMember(member.id, 'name', e.target.value)}
+                  placeholder="이름"
+                  maxLength={10}
+                  className="flex-[2] min-w-0 px-2 py-1.5 text-sm rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
+                />
+                <div className="relative flex-[3] min-w-0">
+                  <input
+                    type="text"
+                    value={member.birthDate}
+                    onChange={(e) => {
+                      let v = e.target.value.replace(/[^0-9]/g, '');
+                      if (v.length > 8) v = v.slice(0, 8);
+                      // 자동 하이픈
+                      if (v.length >= 6) v = `${v.slice(0,4)}-${v.slice(4,6)}-${v.slice(6)}`;
+                      else if (v.length >= 4) v = `${v.slice(0,4)}-${v.slice(4)}`;
+                      updateMember(member.id, 'birthDate', v);
+                    }}
+                    placeholder="생년월일 (19950314)"
+                    maxLength={10}
+                    className={cn(
+                      'w-full px-2 py-1.5 text-xs rounded border bg-white dark:bg-gray-800 focus:border-blue-500 outline-none',
+                      !isDateValid ? 'border-red-400' : 'border-gray-200 dark:border-gray-700'
+                    )}
+                  />
+                  {!isDateValid && (
+                    <span className="absolute -bottom-4 left-0 text-[9px] text-red-400">올바른 날짜를 입력하세요</span>
+                  )}
+                </div>
+                <select
+                  value={member.birthTime}
+                  onChange={(e) => updateMember(member.id, 'birthTime', e.target.value)}
+                  className="w-14 px-0.5 py-1.5 text-[10px] rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none flex-shrink-0"
+                >
+                  <option value="">시간</option>
+                  <option value="23">子</option>
+                  <option value="01">丑</option>
+                  <option value="03">寅</option>
+                  <option value="05">卯</option>
+                  <option value="07">辰</option>
+                  <option value="09">巳</option>
+                  <option value="11">午</option>
+                  <option value="13">未</option>
+                  <option value="15">申</option>
+                  <option value="17">酉</option>
+                  <option value="19">戌</option>
+                  <option value="21">亥</option>
+                </select>
+                <button
+                  onClick={() => removeMember(member.id)}
+                  disabled={members.length <= 2}
+                  className={cn(
+                    'p-1 rounded transition-colors flex-shrink-0',
+                    members.length <= 2 ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed' : 'text-gray-400 hover:text-red-500'
+                  )}
+                  aria-label="삭제"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         <Button
@@ -801,30 +929,14 @@ export function TeamSajuCompatibility() {
               onSelectMember={setSelectedMember}
             />
             {/* 선택된 멤버 상세 궁합 */}
-            {selectedMember && (
-              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 space-y-2">
-                <p className="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2">
-                  {selectedMember}의 관계
-                </p>
-                {results.pairs
-                  .filter(p => p.member1 === selectedMember || p.member2 === selectedMember)
-                  .sort((a, b) => b.score - a.score)
-                  .map((pair, i) => {
-                    const other = pair.member1 === selectedMember ? pair.member2 : pair.member1;
-                    return (
-                      <div key={i} className={cn('p-3 rounded-xl', getScoreBg(pair.score))}>
-                        <div className="flex items-center gap-2">
-                          <span className="text-base">{getScoreEmoji(pair.score)}</span>
-                          <span className="font-medium text-sm text-gray-900 dark:text-white flex-1">{other}</span>
-                          <span className={cn('text-sm font-bold', getScoreColor(pair.score))}>{pair.score}</span>
-                          <span className={cn('text-[10px] font-medium', getScoreColor(pair.score))}>{getScoreLabel(pair.score)}</span>
-                        </div>
-                        <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1 ml-7">{pair.comment}</p>
-                      </div>
-                    );
-                  })}
-              </div>
-            )}
+            {selectedMember && <MemberDetail
+              selectedMember={selectedMember}
+              results={results}
+              getScoreBg={getScoreBg}
+              getScoreColor={getScoreColor}
+              getScoreEmoji={getScoreEmoji}
+              getScoreLabel={getScoreLabel}
+            />}
           </Card>
 
           {/* 베스트/주의 조합 */}

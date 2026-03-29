@@ -74,6 +74,9 @@ export function ChatRoom() {
         msgs.push({ id: d.id, ...d.data() } as Message);
       });
       setMessages(msgs);
+      setFirebaseError(false);
+    }, () => {
+      setFirebaseError(true);
     });
 
     return () => unsub();
@@ -318,7 +321,20 @@ export function ChatRoom() {
 
       {/* 메시지 영역 */}
       <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-4 py-3 space-y-0.5 scroll-smooth">
-        {messages.length === 0 && (
+        {firebaseError && (
+          <div className="flex flex-col items-center justify-center h-full text-[#C4B8A8] dark:text-[#5C5048]">
+            <span className="text-3xl mb-2">☁️</span>
+            <p className="text-sm">탕비실이 잠시 쉬는 중이에요</p>
+            <p className="text-xs mt-1">잠시 후 다시 와주세요</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="mt-3 text-xs px-3 py-1.5 rounded-full bg-[#E8DFD4] dark:bg-[#3D3530] text-[#8B7B6B] dark:text-[#A89880] hover:bg-[#D4C8B8] dark:hover:bg-[#4D4540] transition-colors"
+            >
+              다시 접속하기
+            </button>
+          </div>
+        )}
+        {!firebaseError && messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-[#C4B8A8] dark:text-[#5C5048]">
             <span className="text-3xl mb-2">🫧</span>
             <p className="text-sm">아직 조용해요...</p>
