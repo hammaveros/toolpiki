@@ -42,6 +42,15 @@ export const INTERACTION_MESSAGES = {
     '젤리 하나 슬쩍~ 🍭',
     '초콜릿 발견! 🍫',
   ],
+  snackFail: [
+    '소매에 왕창 넣다가 들켜버렸다!! 🚨',
+    '팀장님이 뒤에 서 있었다... 👀',
+    '간식 바구니가 비어있다... 누가 다 먹었지? 😱',
+    '과자 봉지 뜯는 소리가 온 사무실에 울렸다 📢',
+    '몰래 먹다가 부스러기가 키보드에... 💀',
+    '간식 도둑 CCTV에 찍혔다! 📷',
+    '옆자리에서 "나도 하나..." 하고 말았다 🤝',
+  ],
 };
 
 export function getRandomAmbient() {
@@ -49,9 +58,13 @@ export function getRandomAmbient() {
 }
 
 export function getRandomInteraction(type: 'coffee' | 'snack') {
-  // 커피: 20% 확률로 실패
+  // 20% 확률로 실패 이벤트
   if (type === 'coffee' && Math.random() < 0.2) {
     const fails = INTERACTION_MESSAGES.coffeeFail;
+    return fails[Math.floor(Math.random() * fails.length)];
+  }
+  if (type === 'snack' && Math.random() < 0.15) {
+    const fails = INTERACTION_MESSAGES.snackFail;
     return fails[Math.floor(Math.random() * fails.length)];
   }
   const msgs = INTERACTION_MESSAGES[type];
