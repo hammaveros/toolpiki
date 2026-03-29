@@ -305,7 +305,7 @@ function SeoContent() {
           <li><strong>영업일 계산</strong>: 총 일수에서 주말(2/7)을 대략 빼면 영업일 추정 가능</li>
           <li><strong>윤년 주의</strong>: 2월 29일이 포함된 기간은 1년 = 366일</li>
           <li><strong>시차 고려</strong>: 해외 일정은 시간대 변환도 함께 확인</li>
-          <li><strong>음력 변환</strong>: 음력 생일, 명절은 별도 음력 변환기 사용</li>
+          <li><strong>음력 변환</strong>: 음력 변환이 필요하면 별도 음력 변환기를 검색해보세요</li>
         </ul>
       </section>
 

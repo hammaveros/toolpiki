@@ -17,8 +17,8 @@ interface BmiRange {
 
 const BMI_RANGES: BmiRange[] = [
   { min: 0, max: 18.5, label: '저체중', color: 'text-blue-600 dark:text-blue-400', bgColor: 'bg-blue-100 dark:bg-blue-900/30' },
-  { min: 18.5, max: 23, label: '정상', color: 'text-green-600 dark:text-green-400', bgColor: 'bg-green-100 dark:bg-green-900/30' },
-  { min: 23, max: 25, label: '과체중', color: 'text-yellow-600 dark:text-yellow-400', bgColor: 'bg-yellow-100 dark:bg-yellow-900/30' },
+  { min: 18.5, max: 22.9, label: '정상', color: 'text-green-600 dark:text-green-400', bgColor: 'bg-green-100 dark:bg-green-900/30' },
+  { min: 22.9, max: 25, label: '과체중', color: 'text-yellow-600 dark:text-yellow-400', bgColor: 'bg-yellow-100 dark:bg-yellow-900/30' },
   { min: 25, max: 30, label: '비만', color: 'text-orange-600 dark:text-orange-400', bgColor: 'bg-orange-100 dark:bg-orange-900/30' },
   { min: 30, max: 100, label: '고도비만', color: 'text-red-600 dark:text-red-400', bgColor: 'bg-red-100 dark:bg-red-900/30' },
 ];
@@ -43,7 +43,7 @@ export function BmiCalculator() {
 
     // 정상 체중 범위
     const normalMin = 18.5 * h * h;
-    const normalMax = 23 * h * h;
+    const normalMax = 22.9 * h * h;
 
     // 이상적인 체중 (BMI 21 기준)
     const idealWeight = 21 * h * h;

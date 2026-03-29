@@ -409,7 +409,7 @@ function SeoContent() {
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
           <li><strong>충분한 수면 (7~8시간)</strong>: 수면 부족은 반응속도를 최대 30% 저하시킵니다. 일정한 수면 패턴이 가장 중요합니다.</li>
           <li><strong>규칙적인 유산소 운동</strong>: 주 3~4회 30분 이상 운동은 신경 전달 속도와 집중력을 동시에 향상시킵니다.</li>
-          <li><strong>에임 트레이닝 게임</strong>: Aim Lab, KovaaK&apos;s 같은 에임 트레이너로 매일 15~20분 연습하면 2~4주 내 체감 가능합니다.</li>
+          <li><strong>에임 트레이닝 게임</strong>: Aim Lab, KovaaK&apos;s 같은 에임 트레이너로 매일 15~20분 연습하면 2~4주 내 실력 향상을 느낄 수 있습니다.</li>
           <li><strong>카페인 적정 섭취</strong>: 100~200mg(커피 1~2잔) 카페인은 일시적으로 반응속도를 10~15% 개선합니다. 과다 섭취는 역효과.</li>
           <li><strong>스트레칭과 손 워밍업</strong>: 게임 전 손목·손가락 스트레칭 5분이 초반 반응속도를 크게 높여줍니다.</li>
         </ul>

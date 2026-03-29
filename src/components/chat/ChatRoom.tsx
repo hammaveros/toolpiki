@@ -325,7 +325,7 @@ export function ChatRoom() {
           <button
             onClick={() => {
               navigator.clipboard.writeText(`${window.location.origin}/chat`).then(() => {
-                alert('초대 링크가 복사됐어요!');
+                alert('초대 링크가 복사됐어요');
               }).catch(() => {});
             }}
             className="hover:text-[#8B7B6B] dark:hover:text-[#A89880] transition-colors"
@@ -334,7 +334,7 @@ export function ChatRoom() {
           </button>
         </div>
         <p className="text-[10px] text-[#C4B8A8] dark:text-[#5C5048] mt-1 transition-opacity duration-500">
-          &quot;{headerQuote}&quot;
+          {headerQuote}
         </p>
       </div>
 

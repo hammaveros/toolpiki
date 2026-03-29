@@ -129,7 +129,7 @@ export function ChatWidget() {
           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
             <span>{current.emoji}</span>
             <span className="font-medium">{current.nickname}</span>
-            <span className="text-gray-400 dark:text-gray-500">&quot;{current.text}&quot;</span>
+            <span className="text-gray-400 dark:text-gray-500">{current.text}</span>
           </div>
         </div>
       </Link>

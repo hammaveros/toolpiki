@@ -136,7 +136,7 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔄 지원하는 정렬 방식</h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
           <li><strong>오름차순 (가→힣, A→Z)</strong> — 한글은 가나다순, 영어는 알파벳순으로 정렬합니다. 이름 목록, 용어 사전, 참고문헌 정리에 적합합니다.</li>
-          <li><strong>내림차순 (힣→가, Z→A)</strong> — 오름차순의 반대 순서로 정렬합니다. 역순 색인이나 특수한 정렬이 필요할 때 사용합니다.</li>
+          <li><strong>내림차순 (힣→가, Z→A)</strong> — 오름차순의 반대 순서로 정렬합니다. 내림차순이 필요하거나 반대로 뒤집어 볼 때 사용합니다.</li>
           <li><strong>길이순 (짧은→긴 / 긴→짧은)</strong> — 텍스트의 길이(글자수)를 기준으로 정렬합니다. 데이터 분석이나 UI 레이아웃 검토에 유용합니다.</li>
           <li><strong>무작위</strong> — 줄의 순서를 랜덤으로 섞습니다. 발표 순서 정하기, 퀴즈 문항 섞기, 추첨 등에 활용할 수 있습니다.</li>
           <li><strong>역순</strong> — 현재 순서를 그대로 뒤집습니다. 마지막 항목을 맨 위로 올리고 싶을 때 간편합니다.</li>

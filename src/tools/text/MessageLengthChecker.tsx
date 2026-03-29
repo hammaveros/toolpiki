@@ -17,7 +17,7 @@ interface LengthGuide {
 const guides: Record<MessageType, LengthGuide> = {
   email: { optimal: 150, max: 500, label: '이메일' },
   slack: { optimal: 100, max: 300, label: '슬랙/팀즈' },
-  sms: { optimal: 70, max: 90, label: 'SMS' },
+  sms: { optimal: 50, max: 70, label: 'SMS' },
   kakaotalk: { optimal: 100, max: 200, label: '카카오톡' },
 };
 
@@ -168,7 +168,7 @@ export function MessageLengthChecker() {
       <div className="text-xs text-gray-400 dark:text-gray-500 space-y-1">
         <p>• 이메일: 150자 이내 요약 → 본문 상세</p>
         <p>• 슬랙/팀즈: 스크롤 없이 읽히는 길이 권장</p>
-        <p>• SMS: 90자 초과 시 장문 문자로 전환</p>
+        <p>• SMS: 70자 초과 시 장문 문자(LMS)로 전환</p>
       </div>
 
       <SeoContent />
@@ -193,7 +193,7 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">바이트와 글자수의 차이</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
           SMS 발송 시 특히 중요한 것이 바이트(byte) 개념입니다. 한글 1자는 2바이트, 영문/숫자 1자는 1바이트로 계산됩니다.
-          국내 SMS 기준 80바이트(한글 약 40자)까지가 단문 문자이며, 이를 초과하면 장문(LMS, 2,000바이트)으로 자동 전환됩니다.
+          국내 SMS 기준 한글 70자(80바이트)까지가 단문 문자이며, 이를 초과하면 장문(LMS, 2,000바이트)으로 자동 전환됩니다.
           비즈니스 문자 발송, 마케팅 메시지, 알림톡 등을 작성할 때 글자수를 미리 체크하면 불필요한 비용 증가를 방지할 수 있습니다.
           본 도구는 글자수, 단어수, 줄 수를 동시에 분석하고, 적정/약간 김/너무 김 상태를 시각적으로 표시하여 직관적인 메시지 길이 관리를 돕습니다.
         </p>

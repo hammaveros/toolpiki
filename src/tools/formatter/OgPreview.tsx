@@ -20,7 +20,7 @@ export function OgPreview() {
     description: '웹사이트에 대한 설명입니다. SNS에서 공유될 때 이 텍스트가 표시됩니다.',
     image: 'https://placehold.co/1200x630/3b82f6/ffffff?text=OG+Image',
     url: 'https://example.com',
-    siteName: 'My Website',
+    siteName: '내 웹사이트',
     type: 'website',
   });
 

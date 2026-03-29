@@ -390,7 +390,7 @@ function SeoContent() {
           💡 대출 계획 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>DSR 확인</strong>: 연소득 대비 원리금 상환 비율(40% 이내 권장)</li>
+          <li><strong>DSR(총부채원리금상환비율) 확인</strong>: 연소득 대비 원리금 상환 비율(40% 이내 권장)</li>
           <li><strong>금리 유형 선택</strong>: 고정금리 vs 변동금리 장단점 파악</li>
           <li><strong>중도상환수수료</strong>: 3년 내 상환 시 수수료 발생 여부 확인</li>
           <li><strong>거치기간 활용</strong>: 초기 부담 완화, 단 총 이자 증가</li>
@@ -418,7 +418,7 @@ function SeoContent() {
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
           <li><strong>중도상환 활용</strong>: 여유 자금이 생기면 중도상환으로 원금을 줄이세요. 3년 후에는 중도상환수수료가 면제되는 경우가 많습니다.</li>
-          <li><strong>금리 비교는 필수</strong>: 시중은행, 인터넷전문은행, 보험사, 상호금융까지 비교하면 0.5%p 이상 차이 나기도 합니다. 금융감독원 금리비교 사이트 활용을 추천합니다.</li>
+          <li><strong>금리 비교는 필수</strong>: 시중은행, 인터넷전문은행, 보험사, 상호금융까지 비교하면 0.5%포인트 이상 차이 나기도 합니다. 온라인에서 금융감독원 금리비교 서비스를 검색해보세요.</li>
           <li><strong>거치기간 최소화</strong>: 거치기간 동안은 원금이 줄지 않아 이자만 나가므로, 꼭 필요한 경우가 아니면 거치기간을 줄이는 것이 총 이자 절감에 효과적입니다.</li>
           <li><strong>대출 기간 단축</strong>: 같은 금리라도 기간이 절반이면 총 이자는 절반 이하로 줄어듭니다. 월 상환 부담이 가능하다면 기간을 줄여보세요.</li>
           <li><strong>금리인하요구권</strong>: 승진, 연봉 인상, 신용등급 상승 시 은행에 금리 인하를 요청할 수 있는 법적 권리입니다.</li>

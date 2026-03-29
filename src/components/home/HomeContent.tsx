@@ -15,13 +15,13 @@ export function HomeContent() {
           별도의 프로그램 설치나 회원가입 없이, 브라우저만 있으면 텍스트 변환, 이미지 편집, 데이터 포맷 정리, 색상 코드 변환 등 다양한 작업을 즉시 처리할 수 있습니다.
         </p>
         <p className="leading-relaxed mb-3">
-          모든 도구는 클라이언트 사이드에서 동작하여 입력한 텍스트나 업로드 파일이 서버로 전송되지 않습니다.
+          모든 도구는 브라우저에서 직접 처리되므로 입력한 텍스트나 업로드 파일이 서버로 전송되지 않습니다.
           개인정보가 포함된 문서도 안심하고 처리할 수 있으며, 인터넷 연결이 불안정해도 대부분의 기능을 사용할 수 있습니다.
         </p>
         <p className="leading-relaxed">
-          PC와 모바일 환경 모두에서 원활하게 작동하도록 반응형으로 설계되었습니다.
+          PC와 모바일 환경 모두 편하게 사용할 수 있습니다.
           개발자, 디자이너, 마케터, 학생, 직장인 등 누구나 반복적인 단순 작업 시간을 줄이고 생산성을 높일 수 있습니다.
-          현재 100개 이상의 도구를 제공하며, 지속적으로 새로운 도구가 추가되고 있습니다.
+          현재 100개 이상의 도구를 제공하며, 계속해서 새로운 도구를 추가하고 있습니다.
         </p>
       </section>
 
@@ -163,7 +163,7 @@ export function HomeContent() {
               Q. 새로운 도구를 요청할 수 있나요?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 네, 필요한 도구가 있다면 피드백을 통해 알려주시면 검토 후 추가를 고려하겠습니다.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 네, 필요한 도구가 있다면 문의를 통해 알려주시면 검토 후 추가해 보겠습니다.</p>
           </details>
         </div>
       </section>

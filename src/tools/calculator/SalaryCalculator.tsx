@@ -15,7 +15,7 @@ const RATES_2026 = {
   employmentInsurance: 0.009, // 고용보험 0.9% (동결)
 };
 
-// 간이세액표 (2025년 기준, 부양가족 수별 월급여 구간)
+// 간이세액표 (2026년 기준, 부양가족 수별 월급여 구간)
 // 실제 간이세액표를 단순화한 근사치
 function getIncomeTax(monthlyTaxable: number, dependents: number, children: number): number {
   // 부양가족 공제 반영 (본인 포함)

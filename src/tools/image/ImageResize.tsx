@@ -264,7 +264,7 @@ function SeoContent() {
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
           <li><strong>비율 유지</strong>: 이미지 왜곡 방지를 위해 가로세로 비율 유지 권장</li>
-          <li><strong>확대 주의</strong>: 원본보다 크게 확대하면 화질이 저하됨 (업스케일링)</li>
+          <li><strong>확대 주의</strong>: 원본보다 크게 확대하면 화질이 저하됨</li>
           <li><strong>용량 절감</strong>: 크기를 50% 줄이면 용량은 약 75% 감소</li>
           <li><strong>배치 처리</strong>: 여러 이미지를 같은 규격으로 맞출 때 유용</li>
         </ul>

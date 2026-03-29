@@ -394,7 +394,7 @@ export function JsonFormatter() {
           />
         </div>
         <Button variant="primary" onClick={handleBeautify}>
-          Beautify
+          정리
         </Button>
         <Button variant="secondary" onClick={handleFormat}>
           포맷팅
@@ -429,7 +429,7 @@ export function JsonFormatter() {
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
                   }`}
                 >
-                  Beautify
+                  정리
                 </button>
                 <button
                   type="button"

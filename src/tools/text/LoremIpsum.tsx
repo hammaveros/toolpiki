@@ -273,7 +273,7 @@ function SeoContent() {
           &quot;한글 입숨&quot;은 한국어 특유의 자간과 행간을 테스트하기에 적합하고,
           &quot;Hipster Ipsum&quot;이나 &quot;Bacon Ipsum&quot;처럼 재미있는 주제의 더미 텍스트도 존재합니다.
           프로젝트의 성격에 따라 적절한 더미 텍스트를 선택하면 작업의 분위기를 살릴 수 있습니다.
-          다만 클라이언트에게 시안을 보여줄 때는 전통적인 Lorem Ipsum이 가장 무난한 선택입니다.
+          다만 고객사나 의뢰인에게 시안을 보여줄 때는 전통적인 Lorem Ipsum이 가장 무난한 선택입니다.
         </p>
       </section>
 

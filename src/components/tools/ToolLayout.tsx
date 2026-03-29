@@ -138,11 +138,16 @@ function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
               dangerouslySetInnerHTML={{
                 __html: meta.seoContent
                   .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+                  .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                  .replace(/^- (.+)$/gm, '<li>$1</li>')
+                  .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
                   .replace(/\n\n/g, '</p><p>')
                   .replace(/^/, '<p>')
                   .replace(/$/, '</p>')
                   .replace(/<p><h2>/g, '<h2>')
                   .replace(/<\/h2><\/p>/g, '</h2>')
+                  .replace(/<p><ul>/g, '<ul>')
+                  .replace(/<\/ul><\/p>/g, '</ul>')
                   .replace(/<p><\/p>/g, ''),
               }}
             />
