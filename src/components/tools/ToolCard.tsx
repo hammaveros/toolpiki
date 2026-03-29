@@ -8,6 +8,7 @@ interface ToolCardProps {
   compact?: boolean;
   showRemove?: boolean;
   onRemove?: () => void;
+  basePath?: string;
 }
 
 const CATEGORY_BORDER: Record<string, string> = {
@@ -30,9 +31,9 @@ const CATEGORY_ICON_BG: Record<string, string> = {
   fun: 'bg-orange-50 dark:bg-orange-900/20',
 };
 
-export const ToolCard = memo(function ToolCard({ tool, compact = false, showRemove = false, onRemove }: ToolCardProps) {
+export const ToolCard = memo(function ToolCard({ tool, compact = false, showRemove = false, onRemove, basePath = '/tools' }: ToolCardProps) {
   const isExternal = !!tool.externalUrl;
-  const href = tool.externalUrl || `/tools/${tool.slug}`;
+  const href = tool.externalUrl || `${basePath}/${tool.slug}`;
   const borderColor = CATEGORY_BORDER[tool.category] || 'border-l-gray-400';
   const iconBg = CATEGORY_ICON_BG[tool.category] || 'bg-gray-100 dark:bg-gray-800';
   const linkProps = isExternal ? { target: '_blank' as const, rel: 'noopener noreferrer' } : {};

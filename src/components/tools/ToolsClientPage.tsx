@@ -13,11 +13,12 @@ interface ToolsClientPageProps {
   categories: CategoryMeta[];
   isMainPage?: boolean;
   initialSearch?: string;
+  isEnglish?: boolean;
 }
 
 const CATEGORY_FOLD_LIMIT = 8;
 
-function CategorySection({ category: cat, tools: catTools }: { category: CategoryMeta; tools: ToolMeta[] }) {
+function CategorySection({ category: cat, tools: catTools, basePath = '/tools' }: { category: CategoryMeta; tools: ToolMeta[]; basePath?: string }) {
   const [expanded, setExpanded] = useState(false);
   const needsFold = catTools.length > CATEGORY_FOLD_LIMIT;
   const displayTools = needsFold && !expanded ? catTools.slice(0, CATEGORY_FOLD_LIMIT) : catTools;
@@ -27,11 +28,11 @@ function CategorySection({ category: cat, tools: catTools }: { category: Categor
       <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
         <span className="text-xl" aria-hidden="true">{cat.icon}</span>
         {cat.name}
-        <span className="text-sm font-normal text-gray-400 dark:text-gray-500">({catTools.length}개)</span>
+        <span className="text-sm font-normal text-gray-400 dark:text-gray-500">({catTools.length})</span>
       </h2>
       <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {displayTools.map((tool) => (
-          <ToolCard key={tool.slug} tool={tool} compact />
+          <ToolCard key={tool.slug} tool={tool} compact basePath={basePath} />
         ))}
       </div>
       {needsFold && !expanded && (
@@ -39,7 +40,7 @@ function CategorySection({ category: cat, tools: catTools }: { category: Categor
           onClick={() => setExpanded(true)}
           className="mt-3 text-sm text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
         >
-          더 보기 ({catTools.length - CATEGORY_FOLD_LIMIT}개) ↓
+          + {catTools.length - CATEGORY_FOLD_LIMIT} more ↓
         </button>
       )}
     </section>
@@ -51,7 +52,9 @@ const POPULAR_SLUGS = [
   'mermaid-diagram', 'reaction-time-test', 'pomodoro-timer', 'server-time',
 ];
 
-function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch = '' }: ToolsClientPageProps) {
+function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch = '', isEnglish = false }: ToolsClientPageProps) {
+  const basePath = isEnglish ? '/en/tools' : '/tools';
+  const toolsPath = isEnglish ? '/en/tools' : '/tools';
   const searchParams = useSearchParams();
   const router = useRouter();
   const { recentTools, isLoaded: recentLoaded, removeRecent } = useRecentTools();
@@ -123,9 +126,9 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
 
   const handleCategoryChange = (newCategory: string | undefined) => {
     if (newCategory) {
-      router.push(`/tools?category=${newCategory}`, { scroll: false });
+      router.push(`${toolsPath}?category=${newCategory}`, { scroll: false });
     } else {
-      router.push('/tools', { scroll: false });
+      router.push(toolsPath, { scroll: false });
     }
   };
 
@@ -144,7 +147,7 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="도구 이름이나 기능으로 검색 (예: base64, 이미지 압축...)"
+              placeholder={isEnglish ? "Search tools (e.g. base64, image compress...)" : "도구 이름이나 기능으로 검색 (예: base64, 이미지 압축...)"}
               className="w-full pl-12 pr-10 py-3 text-sm rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-[var(--bg-surface)] focus:border-blue-500 dark:focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all"
             />
             {searchQuery && (
@@ -157,7 +160,7 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
           </div>
           {searchQuery.trim() && (
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 text-center">
-              &quot;{searchQuery}&quot; 검색 결과: {searchFilteredTools.length}개
+              {isEnglish ? `"${searchQuery}": ${searchFilteredTools.length} results` : `"${searchQuery}" 검색 결과: ${searchFilteredTools.length}개`}
             </p>
           )}
         </div>
@@ -177,13 +180,13 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
       {showPersonalSections && (
         <div className="mb-8">
           <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 flex items-center gap-2">
-            <span aria-hidden="true">🕘</span> 최근 사용
+            <span aria-hidden="true">🕘</span> {isEnglish ? 'Recent' : '최근 사용'}
           </h3>
           <div className="flex flex-wrap gap-2">
             {recentToolsList.map((tool) => (
               <Link
                 key={tool.slug}
-                href={`/tools/${tool.slug}`}
+                href={`${basePath}/${tool.slug}`}
                 className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-[var(--bg-surface)] border border-gray-200 dark:border-[var(--border-subtle)] hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200 text-sm"
               >
                 <span className="text-base">{tool.icon}</span>
@@ -205,8 +208,8 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
       {/* 검색 결과 없음 */}
       {effectiveSearch.trim() && searchFilteredTools.length === 0 && (
         <div className="text-center py-16">
-          <p className="text-lg text-gray-400 dark:text-gray-500 mb-2">검색 결과가 없어요</p>
-          <p className="text-sm text-gray-400 dark:text-gray-500">다른 키워드로 검색해 보세요!</p>
+          <p className="text-lg text-gray-400 dark:text-gray-500 mb-2">{isEnglish ? 'No results found' : '검색 결과가 없어요'}</p>
+          <p className="text-sm text-gray-400 dark:text-gray-500">{isEnglish ? 'Try a different keyword!' : '다른 키워드로 검색해 보세요!'}</p>
         </div>
       )}
 
@@ -214,13 +217,13 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
       {toolsByCategory ? (
         <div className="space-y-10">
           {toolsByCategory.map(({ category: cat, tools: catTools }) => (
-            <CategorySection key={cat.slug} category={cat} tools={catTools} />
+            <CategorySection key={cat.slug} category={cat} tools={catTools} basePath={basePath} />
           ))}
         </div>
       ) : (
         <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredTools.map((tool) => (
-            <ToolCard key={tool.slug} tool={tool} compact />
+            <ToolCard key={tool.slug} tool={tool} compact basePath={basePath} />
           ))}
         </div>
       )}
