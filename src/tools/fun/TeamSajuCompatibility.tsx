@@ -408,28 +408,53 @@ export function TeamSajuCompatibility() {
     roles: { name: string; role: string; desc: string }[];
   } | null>(null);
 
-  // URL 파라미터에서 복원
+  // URL 파라미터에서 복원 (#s= 축약 포맷 + 레거시 #share= 호환)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const hash = window.location.hash;
-    if (!hash.includes('share=')) return;
+    let decoded: Record<string, unknown> | null = null;
+
     try {
-      const encoded = hash.split('share=')[1];
-      const decoded = JSON.parse(decodeURIComponent(atob(encoded)));
-      if (decoded.team) setTeamName(decoded.team);
-      if (decoded.members && Array.isArray(decoded.members)) {
-        setMembers(decoded.members.map((m: { name: string; birthDate: string }, i: number) => ({
-          id: String(i + 1),
-          name: m.name || '',
-          birthDate: m.birthDate || '',
-        })));
-        // 공유 링크에서 온 경우 자동 분석 (약간 딜레이 후)
-        setTimeout(() => {
-          const btn = document.querySelector('[data-analyze-btn]') as HTMLButtonElement;
-          if (btn && !btn.disabled) btn.click();
-        }, 300);
+      if (hash.includes('#s=')) {
+        // 새 축약 포맷: #s=base64
+        const encoded = hash.split('#s=')[1];
+        const json = decodeURIComponent(escape(atob(encoded)));
+        decoded = JSON.parse(json);
+      } else if (hash.includes('share=')) {
+        // 레거시 호환
+        const encoded = hash.split('share=')[1];
+        decoded = JSON.parse(decodeURIComponent(atob(encoded)));
       }
     } catch { /* ignore */ }
+
+    if (!decoded) return;
+
+    // 새 포맷: { t: '팀명', m: [['이름','950314'], ...] }
+    if (decoded.m && Array.isArray(decoded.m)) {
+      if (decoded.t) setTeamName(decoded.t as string);
+      const arr = decoded.m as string[][];
+      setMembers(arr.map((item, i) => {
+        const d = item[1] || '';
+        let birthDate = '';
+        if (d.length === 6) {
+          const yy = parseInt(d.slice(0, 2));
+          const prefix = yy >= 40 ? '19' : '20'; // 40이상이면 1940~1999, 미만이면 2000~
+          birthDate = `${prefix}${d.slice(0,2)}-${d.slice(2,4)}-${d.slice(4,6)}`;
+        }
+        return { id: String(i + 1), name: item[0] || '', birthDate };
+      }));
+      setIsSample(false);
+    }
+    // 레거시 포맷: { team, members: [{name, birthDate}] }
+    else if (decoded.members && Array.isArray(decoded.members)) {
+      if (decoded.team) setTeamName(decoded.team as string);
+      setMembers((decoded.members as { name: string; birthDate: string }[]).map((m, i) => ({
+        id: String(i + 1),
+        name: m.name || '',
+        birthDate: m.birthDate || '',
+      })));
+      setIsSample(false);
+    }
   }, []);
 
   const addMember = useCallback(() => {
@@ -532,20 +557,17 @@ export function TeamSajuCompatibility() {
 
   const getShareUrl = useCallback(() => {
     if (!validMembers.length) return '';
-    const data = {
-      team: teamName.trim() || undefined,
-      members: validMembers.map(m => ({ name: m.name, birthDate: m.birthDate })),
-      // 결과도 포함 → 공유 받은 사람이 바로 결과 확인 가능
-      ...(results ? {
-        r: {
-          ts: results.teamScore,
-          pairs: results.pairs.map(p => ({ m1: p.member1, m2: p.member2, s: p.score, rel: p.relation, oh: p.ohangRelation })),
-        },
-      } : {}),
-    };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/tools/team-saju#share=${encoded}`;
-  }, [validMembers, teamName, results]);
+    // 축약: t=팀명, m=[[이름,YYMMDD], ...] — URL 최소화
+    const m = validMembers.map(v => {
+      const d = v.birthDate.replace(/-/g, '').slice(2); // 1995-03-14 → 950314
+      return [v.name, d];
+    });
+    const data = teamName.trim() ? { t: teamName.trim(), m } : { m };
+    const json = JSON.stringify(data);
+    // UTF-8 → base64 (한글 지원)
+    const encoded = btoa(unescape(encodeURIComponent(json)));
+    return `${siteConfig.url}/tools/team-saju#s=${encoded}`;
+  }, [validMembers, teamName]);
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-emerald-600 dark:text-emerald-400';

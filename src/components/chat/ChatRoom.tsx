@@ -35,7 +35,7 @@ export function ChatRoom() {
   const [toast, setToast] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const lastMsgsRef = useRef<string[]>([]);
-  const ambientTimerRef = useRef<ReturnType<typeof setTimeout>>();
+  const ambientTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   // 헤더 문구 로테이션
   useEffect(() => {
