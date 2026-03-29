@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { FaqSection } from '@/components/ui/FaqItem';
 import { Button } from '@/components/ui/Button';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 interface ShareData {
   text: string;
@@ -46,8 +47,7 @@ export function CharacterCounterEn() {
     if (hash.startsWith('#share=')) {
       try {
         const encoded = hash.slice(7);
-        const decoded = decodeURIComponent(atob(encoded));
-        const parsed = JSON.parse(decoded) as ShareData;
+        const parsed = decodeShareData<ShareData>(encoded);
         if (parsed.text) {
           setText(parsed.text);
           setIsFromShare(true);
@@ -63,8 +63,7 @@ export function CharacterCounterEn() {
     if (typeof window === 'undefined' || !text.trim()) return '';
     try {
       const data: ShareData = { text };
-      const json = JSON.stringify(data);
-      const encoded = btoa(encodeURIComponent(json));
+      const encoded = encodeShareData(data);
       const baseUrl = window.location.href.split('#')[0];
       return `${baseUrl}#share=${encoded}`;
     } catch {

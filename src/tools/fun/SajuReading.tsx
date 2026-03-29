@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 // 천간 (10개)
 const CHEONGAN = ['갑', '을', '병', '정', '무', '기', '경', '신', '임', '계'] as const;
@@ -1111,7 +1112,7 @@ function SajuReadingInner() {
     if (hash.includes('share=')) {
       try {
         const encoded = hash.split('share=')[1];
-        const decoded = JSON.parse(decodeURIComponent(atob(encoded)));
+        const decoded = decodeShareData(encoded);
         y = decoded.y ? String(decoded.y) : null;
         m = decoded.m ? String(decoded.m) : null;
         d = decoded.d ? String(decoded.d) : null;
@@ -1196,7 +1197,7 @@ function SajuReadingInner() {
     if (gender === 'female') {
       data.g = 'female';
     }
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 

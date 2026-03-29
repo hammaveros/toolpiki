@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 const COLORS = [
   '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4',
@@ -210,7 +211,7 @@ export function RouletteSelectorEn() {
       w: winnerIndex,
       a: finalAngle,
     };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData({ ...data, a: Math.round(data.a * 100) / 100 });
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -223,8 +224,7 @@ export function RouletteSelectorEn() {
     if (!hash.startsWith('#share=')) return;
 
     try {
-      const decoded = decodeURIComponent(atob(hash.slice(7)));
-      const parsed = JSON.parse(decoded);
+      const parsed = decodeShareData(hash.slice(7));
 
       // New format: { i, iw, w, a }
       if (parsed.i && typeof parsed.w === 'number' && typeof parsed.a === 'number') {

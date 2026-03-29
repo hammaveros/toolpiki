@@ -7,6 +7,7 @@ import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { cn } from '@/lib/utils/cn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 interface LottoSet {
   id: number;
@@ -79,8 +80,7 @@ export function LottoGenerator() {
     if (hash.startsWith('#share=')) {
       try {
         const encoded = hash.slice(7);
-        const decoded = decodeURIComponent(atob(encoded));
-        const parsed = JSON.parse(decoded) as ShareData;
+        const parsed = decodeShareData(encoded) as ShareData;
         if (parsed.numbers?.length) {
           const restored: LottoSet[] = parsed.numbers.map((nums, i) => ({
             id: Date.now() + i,
@@ -104,8 +104,7 @@ export function LottoGenerator() {
         numbers: results.map(r => r.numbers),
         bonus: results.some(r => r.bonus) ? results.map(r => r.bonus || 0) : undefined,
       };
-      const json = JSON.stringify(data);
-      const encoded = btoa(encodeURIComponent(json));
+      const encoded = encodeShareData(data);
       const baseUrl = window.location.href.split('#')[0];
       return `${baseUrl}#share=${encoded}`;
     } catch {

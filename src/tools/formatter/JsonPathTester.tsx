@@ -107,8 +107,8 @@ export function JsonPathTester() {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+        <div className="flex flex-col">
           <Textarea
             label="JSON 데이터"
             value={jsonInput}
@@ -127,7 +127,7 @@ export function JsonPathTester() {
           </Button>
         </div>
 
-        <div className="space-y-4">
+        <div className="flex flex-col space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               JSONPath 경로

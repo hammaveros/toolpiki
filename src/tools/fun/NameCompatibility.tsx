@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { cn } from '@/lib/utils/cn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 // 간단한 획수 기반 계산 (재미용)
 function getStrokeCount(char: string): number {
@@ -98,8 +99,7 @@ export function NameCompatibility() {
     if (hash.startsWith('#share=')) {
       try {
         const encoded = hash.slice(7);
-        const decoded = decodeURIComponent(atob(encoded));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(encoded);
         if (parsed.n1 && parsed.n2) {
           setName1(parsed.n1);
           setName2(parsed.n2);
@@ -124,7 +124,7 @@ export function NameCompatibility() {
     if (typeof window === 'undefined' || !result) return '';
     try {
       const data = { n1: result.name1, n2: result.name2 };
-      const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+      const encoded = encodeShareData(data);
       const baseUrl = window.location.href.split('#')[0];
       return `${baseUrl}#share=${encoded}`;
     } catch {

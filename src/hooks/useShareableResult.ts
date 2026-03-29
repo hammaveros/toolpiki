@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 interface ShareableData {
   [key: string]: string | number | boolean | null | string[] | number[];
@@ -36,8 +37,7 @@ export function useShareableResult<T extends ShareableData>() {
     if (hash.startsWith('#share=')) {
       try {
         const encoded = hash.slice(7); // '#share=' 제거
-        const decoded = decodeURIComponent(atob(encoded));
-        const parsed = JSON.parse(decoded) as T;
+        const parsed = decodeShareData<T>(encoded);
         setData(parsed);
         setIsFromShare(true);
       } catch {
@@ -74,7 +74,7 @@ export function useShareableResult<T extends ShareableData>() {
         return { url: baseUrl, success: false, error: 'TOO_LARGE' };
       }
 
-      const encoded = btoa(encodeURIComponent(json));
+      const encoded = encodeShareData(dataToShare);
       const fullUrl = `${baseUrl}#share=${encoded}`;
 
       // URL 길이 체크

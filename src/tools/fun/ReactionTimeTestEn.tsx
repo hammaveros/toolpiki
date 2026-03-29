@@ -6,6 +6,7 @@ import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { cn } from '@/lib/utils/cn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 type GameState = 'idle' | 'waiting' | 'go' | 'tooSoon' | 'result';
 
@@ -139,7 +140,7 @@ export function ReactionTimeTestEn() {
   const getShareUrl = () => {
     if (!stats || results.length === 0) return '';
     const data = { results: results.map(r => r.time), avg: stats.average };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -149,8 +150,7 @@ export function ReactionTimeTestEn() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
         if (parsed.results && Array.isArray(parsed.results)) {
           const restoredResults: RoundResult[] = parsed.results.map((time: number, idx: number) => ({
             round: idx + 1,

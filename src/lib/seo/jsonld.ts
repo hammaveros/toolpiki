@@ -90,8 +90,8 @@ export function generateToolListJsonLd(tools: ToolMeta[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: '무료 온라인 도구 모음',
-    description: '100개 이상의 무료 온라인 유틸리티 도구',
+    name: '툴피키(ToolPiki) - 무료 온라인 도구 모음',
+    description: '툴피키 - 100개 이상의 무료 온라인 유틸리티 도구',
     numberOfItems: tools.length,
     itemListElement: tools.slice(0, 10).map((tool, index) => ({
       '@type': 'ListItem',

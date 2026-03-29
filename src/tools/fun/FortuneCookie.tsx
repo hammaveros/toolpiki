@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { FaqSection } from '@/components/ui/FaqItem';
@@ -334,7 +335,7 @@ export function FortuneCookie() {
     if (hash.includes('share=')) {
       try {
         const encoded = hash.split('share=')[1];
-        const decoded = JSON.parse(decodeURIComponent(atob(encoded)));
+        const decoded = decodeShareData<{ f: string }>(encoded);
         if (decoded.f) {
           setSharedFortune(decoded.f);
           // 해당 카테고리 찾기
@@ -510,7 +511,7 @@ export function FortuneCookie() {
               <button
                 onClick={() => {
                   const data = { f: fortune.text };
-                  const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+                  const encoded = encodeShareData(data);
                   const shareUrl = `${window.location.origin}${window.location.pathname}#share=${encoded}`;
                   navigator.clipboard.writeText(shareUrl).then(() => {
                     setShareCopied(true);
@@ -524,7 +525,7 @@ export function FortuneCookie() {
             </div>
             <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 w-full max-w-md">
               <ResultShareButtons
-                url={(() => { try { const data = { f: fortune.text }; const encoded = btoa(encodeURIComponent(JSON.stringify(data))); return `${typeof window !== 'undefined' ? window.location.origin + window.location.pathname : ''}#share=${encoded}`; } catch { return typeof window !== 'undefined' ? window.location.origin + window.location.pathname : ''; } })()}
+                url={(() => { try { const data = { f: fortune.text }; const encoded = encodeShareData(data); return `${typeof window !== 'undefined' ? window.location.origin + window.location.pathname : ''}#share=${encoded}`; } catch { return typeof window !== 'undefined' ? window.location.origin + window.location.pathname : ''; } })()}
                 title="🥠 오늘의 포춘쿠키"
                 description={fortune.text}
               />

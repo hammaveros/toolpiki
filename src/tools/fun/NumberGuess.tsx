@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 interface GameState {
   target: number;
@@ -34,8 +35,7 @@ export function NumberGuess() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
         if (parsed.a && parsed.d && parsed.r) {
           setSharedResult(parsed);
         }
@@ -46,7 +46,7 @@ export function NumberGuess() {
   const handleShare = useCallback(() => {
     if (!game || game.status !== 'won') return;
     const data = { a: game.attempts, d: difficulty.name, r: difficulty.range };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     const url = `${window.location.origin}${window.location.pathname}#share=${encoded}`;
     navigator.clipboard.writeText(url).then(() => {
       setCopied(true);

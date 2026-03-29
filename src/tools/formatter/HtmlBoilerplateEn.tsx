@@ -150,8 +150,8 @@ export function HtmlBoilerplateEn() {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="space-y-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+        <div className="flex flex-col space-y-4">
           <Card variant="bordered" className="p-4">
             <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Basic Settings</h3>
             <div className="space-y-3">
@@ -247,7 +247,7 @@ export function HtmlBoilerplateEn() {
           </Card>
         </div>
 
-        <div>
+        <div className="flex flex-col">
           <div className="flex justify-between items-center mb-2">
             <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Generated HTML
@@ -258,7 +258,7 @@ export function HtmlBoilerplateEn() {
             value={generatedHtml}
             readOnly
             rows={30}
-            className="font-mono text-sm bg-gray-50 dark:bg-gray-800/50"
+            className="font-mono text-sm bg-gray-50 dark:bg-gray-800/50 flex-1"
           />
         </div>
       </div>

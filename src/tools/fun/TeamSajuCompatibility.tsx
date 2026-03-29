@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { FaqSection } from '@/components/ui/FaqItem';
 import { cn } from '@/lib/utils/cn';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 // ========================================
 // 사주 계산 로직 (기존 SajuCompatibility에서 가져옴)
@@ -544,12 +545,11 @@ export function TeamSajuCompatibility() {
       if (hash.includes('#s=')) {
         // 새 축약 포맷: #s=base64
         const encoded = hash.split('#s=')[1];
-        const json = decodeURIComponent(escape(atob(encoded)));
-        decoded = JSON.parse(json);
+        decoded = decodeShareData(encoded);
       } else if (hash.includes('share=')) {
         // 레거시 호환
         const encoded = hash.split('share=')[1];
-        decoded = JSON.parse(decodeURIComponent(atob(encoded)));
+        decoded = decodeShareData(encoded);
       }
     } catch { /* ignore */ }
 
@@ -690,9 +690,7 @@ export function TeamSajuCompatibility() {
       return v.birthTime ? [v.name, d, v.birthTime] : [v.name, d];
     });
     const data = teamName.trim() ? { t: teamName.trim(), m } : { m };
-    const json = JSON.stringify(data);
-    // UTF-8 → base64 (한글 지원)
-    const encoded = btoa(unescape(encodeURIComponent(json)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#s=${encoded}`;
   }, [validMembers, teamName]);
 

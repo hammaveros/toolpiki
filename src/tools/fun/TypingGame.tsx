@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 type Difficulty = 'easy' | 'normal' | 'hard';
 type GameMode = 'survival' | 'timeattack' | 'sentence';
@@ -439,8 +440,7 @@ export function TypingGame() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
         if (parsed.w !== undefined && parsed.a !== undefined) {
           setSharedResult(parsed);
         }
@@ -588,7 +588,7 @@ export function TypingGame() {
         : 100;
       data = { s: stats.score, w: wpm, a: acc, m: gameMode };
     }
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     const url = `${window.location.origin}${window.location.pathname}#share=${encoded}`;
     navigator.clipboard.writeText(url).then(() => {
       setCopied(true);

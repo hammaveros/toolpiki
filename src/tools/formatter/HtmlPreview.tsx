@@ -224,12 +224,12 @@ export function HtmlPreview() {
 
       {/* 메인 영역 */}
       <div className={cn(
-        'grid gap-4',
+        'grid gap-4 items-stretch',
         viewMode === 'split' ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'
       )}>
         {/* 코드 에디터 */}
         {viewMode !== 'preview' && (
-          <div>
+          <div className="flex flex-col">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               HTML 코드
             </label>
@@ -237,7 +237,7 @@ export function HtmlPreview() {
               value={code}
               onChange={(e) => setCode(e.target.value)}
               rows={viewMode === 'split' ? 20 : 25}
-              className="font-mono text-sm"
+              className="font-mono text-sm flex-1"
               placeholder="<!DOCTYPE html>&#10;<html>&#10;<head>&#10;  <style>/* CSS */</style>&#10;</head>&#10;<body>&#10;  <!-- HTML -->&#10;  <script>// JavaScript</script>&#10;</body>&#10;</html>"
             />
           </div>
@@ -245,12 +245,12 @@ export function HtmlPreview() {
 
         {/* 미리보기 */}
         {viewMode !== 'code' && (
-          <div>
+          <div className="flex flex-col">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               미리보기 {deviceSize !== 'full' && `(${DEVICE_SIZES[deviceSize].width})`}
             </label>
             <div
-              className="border border-gray-200 dark:border-gray-700 rounded-lg bg-white overflow-auto"
+              className="border border-gray-200 dark:border-gray-700 rounded-lg bg-white overflow-auto flex-1"
               style={{
                 minHeight: viewMode === 'split' ? '470px' : '500px',
                 display: 'flex',
@@ -264,7 +264,7 @@ export function HtmlPreview() {
                 sandbox="allow-scripts allow-same-origin allow-modals allow-forms"
                 style={{
                   width: DEVICE_SIZES[deviceSize].width,
-                  height: viewMode === 'split' ? '470px' : '500px',
+                  height: '100%',
                   border: deviceSize !== 'full' ? '1px solid #ddd' : 'none',
                   backgroundColor: 'white',
                   boxShadow: deviceSize !== 'full' ? '0 4px 6px -1px rgba(0,0,0,0.1)' : 'none',

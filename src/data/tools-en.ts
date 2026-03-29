@@ -1548,20 +1548,6 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'http-status-code-en',
-    name: 'HTTP Status Code Reference',
-    description: 'Search HTTP status codes and understand their meanings. All 1xx-5xx codes included.',
-    category: 'formatter',
-    tags: ['HTTP', 'status', 'API'],
-    icon: '📡',
-    keywords: ['HTTP status codes', 'HTTP error', '404 meaning', '500 error'],
-    relatedSlugs: ['url-query-parser-en', 'json-formatter-en'],
-    faqs: [
-      { question: 'What is the difference between 200 and 201?', answer: '200 means success, 201 means resource created. POST requests typically return 201 when creating new data.' },
-      { question: 'Is 500 error my fault?', answer: '500 is an internal server error. It is the server\'s problem, not the client (user).' },
-    ],
-  },
-  {
     slug: 'string-escape-en',
     name: 'String Escape/Unescape',
     description: 'Escape and unescape strings for JSON, JavaScript, HTML, URL, Regex, and SQL.',

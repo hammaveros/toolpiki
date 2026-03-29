@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 // 천간 (10개)
 const CHEONGAN = ['갑', '을', '병', '정', '무', '기', '경', '신', '임', '계'] as const;
@@ -633,7 +634,7 @@ export function SajuCompatibility() {
     if (!hash.includes('share=')) return;
     try {
       const encoded = hash.split('share=')[1];
-      const decoded = JSON.parse(decodeURIComponent(atob(encoded)));
+      const decoded = decodeShareData(encoded);
       if (decoded.y1 && decoded.m1 && decoded.d1 && decoded.y2 && decoded.m2 && decoded.d2) {
         if (decoded.n1) setName1(decoded.n1);
         setYear1(String(decoded.y1));
@@ -685,7 +686,7 @@ export function SajuCompatibility() {
     else if (birthTime1 !== '') data.t1 = birthTime1;
     if (unknownTime2) data.ut2 = '1';
     else if (birthTime2 !== '') data.t2 = birthTime2;
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 

@@ -7,6 +7,7 @@ import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { cn } from '@/lib/utils/cn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 type LottoType = 'powerball' | 'megamillions';
 
@@ -147,7 +148,7 @@ export function UsLottoGenerator() {
       type: lottoType,
       sets: results.map(s => ({ main: s.mainNumbers, special: s.specialNumber })),
     };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -157,8 +158,7 @@ export function UsLottoGenerator() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
         if (parsed.type && parsed.sets) {
           setLottoType(parsed.type);
           const restoredResults: LottoSet[] = parsed.sets.map((s: { main: number[]; special: number }, idx: number) => ({

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 type GameMode = '5' | '10' | '30';
 
@@ -92,7 +93,7 @@ export function TimingTestEn() {
 
   const getShareUrl = () => {
     const data = { target: targetSeconds, elapsed: elapsed.toFixed(3), diff: getDifference().toFixed(3) };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -102,8 +103,7 @@ export function TimingTestEn() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
         if (parsed.target && parsed.elapsed) {
           setMode(parsed.target.toString() as GameMode);
           setElapsed(parseFloat(parsed.elapsed));

@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/Input';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { cn } from '@/lib/utils/cn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData } from '@/lib/utils/share-encoding';
 
 type GameState = 'setup' | 'shuffling' | 'selecting' | 'result';
 
@@ -106,7 +107,7 @@ export function ShellGameEn() {
     if (gameState !== 'result') return '';
     const foundPrizes = revealedCups.filter(r => r.isPrize).length;
     const data = { found: foundPrizes, total: prizeCount, cups: cupCount };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 

@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { cn } from '@/lib/utils/cn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 // 12지신 (띠)
 const ZODIAC_ANIMALS = [
@@ -130,8 +131,7 @@ export function BirthdayCompatibility() {
     if (hash.startsWith('#share=')) {
       try {
         const encoded = hash.slice(7);
-        const decoded = decodeURIComponent(atob(encoded));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(encoded);
         if (parsed.d1 && parsed.d2) {
           setDate1(parsed.d1);
           setDate2(parsed.d2);
@@ -146,7 +146,7 @@ export function BirthdayCompatibility() {
     if (typeof window === 'undefined' || !result) return '';
     try {
       const data = { d1: date1, d2: date2 };
-      const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+      const encoded = encodeShareData(data);
       const baseUrl = window.location.href.split('#')[0];
       return `${baseUrl}#share=${encoded}`;
     } catch {

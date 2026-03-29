@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { cn } from '@/lib/utils/cn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 // ========================================
 // 타입 정의
@@ -424,7 +425,7 @@ export function NicknameGenerator() {
     if (hash.includes('share=')) {
       try {
         const encoded = hash.split('share=')[1];
-        const decoded = JSON.parse(decodeURIComponent(atob(encoded)));
+        const decoded = decodeShareData(encoded);
         if (decoded.n) {
           setSharedNickname(decoded.n);
         }
@@ -434,7 +435,7 @@ export function NicknameGenerator() {
 
   const getShareUrl = useCallback((nickname: string) => {
     const data = { n: nickname };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   }, []);
 

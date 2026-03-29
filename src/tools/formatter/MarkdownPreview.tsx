@@ -211,8 +211,8 @@ console.log(hello);
   const renderedHtml = useMemo(() => parseMarkdown(input), [input]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
+      <div className="flex flex-col">
         <div className="flex justify-between items-center mb-2">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
             마크다운 입력
@@ -222,11 +222,11 @@ console.log(hello);
           value={input}
           onChange={(e) => setInput(e.target.value)}
           rows={20}
-          className="font-mono text-sm"
+          className="font-mono text-sm flex-1"
         />
       </div>
 
-      <div>
+      <div className="flex flex-col">
         <div className="flex justify-between items-center mb-2">
           <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
             미리보기
@@ -234,7 +234,7 @@ console.log(hello);
           <CopyButton text={renderedHtml} label="HTML 복사" />
         </div>
         <div
-          className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 overflow-auto prose dark:prose-invert max-w-none"
+          className="flex-1 p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 overflow-auto prose dark:prose-invert max-w-none"
           style={{ minHeight: '470px' }}
           dangerouslySetInnerHTML={{ __html: renderedHtml }}
         />

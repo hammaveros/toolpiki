@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 interface LoveResult {
   name1: string;
@@ -88,7 +89,7 @@ export function LoveCalculator() {
   const getShareUrl = () => {
     if (!result) return '';
     const data = { n1: name1, n2: name2 };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -98,8 +99,7 @@ export function LoveCalculator() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
         if (parsed.n1 && parsed.n2) {
           setName1(parsed.n1);
           setName2(parsed.n2);

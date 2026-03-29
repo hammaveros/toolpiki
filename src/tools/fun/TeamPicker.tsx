@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/Card';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { toPng } from 'html-to-image';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 interface Team {
   name: string;
@@ -254,7 +255,7 @@ export function TeamPicker() {
   const getShareUrl = () => {
     if (teams.length === 0 || currentSeed === null) return '';
     const data = { s: currentSeed, m: names, t: teamCount };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -450,8 +451,7 @@ export function TeamPicker() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
 
         // New seed-based format: { s: seed, m: members[], t: teamCount }
         if (parsed.s != null && Array.isArray(parsed.m) && parsed.t) {

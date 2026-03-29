@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { FaqSection } from '@/components/ui/FaqItem';
 
@@ -196,7 +197,12 @@ export function MermaidDiagram() {
     const hash = window.location.hash;
     if (hash.startsWith('#code=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(6)));
+        let decoded: string;
+        try {
+          decoded = decodeShareData<string>(hash.slice(6));
+        } catch {
+          decoded = decodeURIComponent(atob(hash.slice(6)));
+        }
         setCode(decoded);
         window.history.replaceState(null, '', window.location.pathname);
         return;
@@ -433,7 +439,7 @@ export function MermaidDiagram() {
   // 공유 URL 생성
   const generateShareUrl = () => {
     if (!code.trim()) return;
-    const encoded = btoa(encodeURIComponent(code));
+    const encoded = encodeShareData(code);
     const url = `${window.location.origin}${window.location.pathname}#code=${encoded}`;
     setShareUrl(url);
     navigator.clipboard.writeText(url).catch(() => {});

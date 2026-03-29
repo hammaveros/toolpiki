@@ -65,8 +65,8 @@ export function ChatInput({ onSend, disabled, cooldown, cooldownSeconds = 0 }: C
       : '☕ 한마디 남기기...';
 
   return (
-    <div className="border-t border-[#E8DFD4] dark:border-[#3D3530] bg-[#FAF6F1] dark:bg-[#1C1917] p-3">
-      <div className="flex items-end gap-2">
+    <div className="border-t border-[#E8DFD4] dark:border-[#3D3530] bg-[#FAF6F1] dark:bg-[#1C1917] px-3 py-1.5">
+      <div className="flex items-center gap-1.5">
         <div className="flex-1 relative">
           <textarea
             ref={inputRef}
@@ -77,7 +77,7 @@ export function ChatInput({ onSend, disabled, cooldown, cooldownSeconds = 0 }: C
             disabled={disabled || cooldown}
             autoFocus
             rows={1}
-            className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-[#292524] border border-[#E8DFD4] dark:border-[#3D3530] text-sm text-[#5C4A3A] dark:text-[#D4B896] placeholder:text-[#C4B8A8] dark:placeholder:text-[#5C5048] resize-none focus:outline-none focus:ring-2 focus:ring-[#D4A574]/50 disabled:opacity-50"
+            className="w-full px-3 py-1.5 rounded-xl bg-white dark:bg-[#292524] border border-[#E8DFD4] dark:border-[#3D3530] text-sm text-[#5C4A3A] dark:text-[#D4B896] placeholder:text-[#C4B8A8] dark:placeholder:text-[#5C5048] resize-none focus:outline-none focus:ring-2 focus:ring-[#D4A574]/50 disabled:opacity-50"
             style={{ maxHeight: 80 }}
           />
           {text.length > 0 && (
@@ -89,7 +89,7 @@ export function ChatInput({ onSend, disabled, cooldown, cooldownSeconds = 0 }: C
         <button
           onClick={handleSend}
           disabled={!text.trim() || disabled || cooldown}
-          className="px-4 py-2.5 rounded-xl bg-[#D4A574] hover:bg-[#C49564] disabled:opacity-40 text-white text-sm font-medium transition-colors flex-shrink-0"
+          className="px-3 py-1.5 rounded-xl bg-[#D4A574] hover:bg-[#C49564] disabled:opacity-40 text-white text-sm font-medium transition-colors flex-shrink-0"
         >
           {cooldown && remainSec > 0 ? `${remainSec}s` : '전송'}
         </button>

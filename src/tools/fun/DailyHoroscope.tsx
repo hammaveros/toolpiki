@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData } from '@/lib/utils/share-encoding';
 
 const ZODIAC_SIGNS = [
   { name: 'Aries', emoji: '♈', dates: 'Mar 21 - Apr 19', element: 'Fire' },
@@ -94,7 +95,7 @@ export function DailyHoroscope() {
   const getShareUrl = () => {
     if (selectedSign === null || !sign) return '';
     const data = { sign: sign.name };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 

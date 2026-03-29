@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Textarea } from '@/components/ui/Textarea';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 type DecisionType = 'yesno' | 'custom' | 'number' | 'coin';
 
@@ -75,7 +76,7 @@ export function RandomDecisionMakerEn() {
   const getShareUrl = () => {
     if (!result) return '';
     const data = { type, result };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -85,8 +86,7 @@ export function RandomDecisionMakerEn() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
         if (parsed.type && parsed.result) {
           setType(parsed.type);
           setResult(parsed.result);

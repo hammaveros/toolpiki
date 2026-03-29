@@ -51,14 +51,15 @@ export function ChatRoom() {
   }, []);
 
   // 공유 과자 항아리 (Firestore)
-  const [snackJar, setSnackJar] = useState(100);
+  const [snackJar, setSnackJar] = useState(50);
 
   useEffect(() => {
     const unsub = onSnapshot(doc(db, 'shared', 'snackJar'), (snap) => {
       if (snap.exists()) {
-        setSnackJar(snap.data().count ?? 100);
+        const count = snap.data().count ?? 50;
+        setSnackJar(Math.min(count, 50));
       } else {
-        setDoc(doc(db, 'shared', 'snackJar'), { count: 100 });
+        setDoc(doc(db, 'shared', 'snackJar'), { count: 50 });
       }
     });
     return () => unsub();
@@ -285,10 +286,10 @@ export function ChatRoom() {
       displayText = `${text} (간식 소매넣기 실패!)`;
     } else {
       // 성공 → 과자 1개 차감 (0이면 리필)
-      const newCount = snackJar <= 1 ? 100 : snackJar - 1;
+      const newCount = snackJar <= 1 ? 50 : snackJar - 1;
       await setDoc(doc(db, 'shared', 'snackJar'), { count: newCount });
       if (snackJar <= 1) {
-        displayText = `${text} 🎉 과자 다 먹었다! 누가 100개 채워놨어요`;
+        displayText = `${text} 🎉 과자 다 먹었다! 누가 50개 채워놨어요`;
       } else {
         displayText = `${text} (남은 과자: ${newCount}개)`;
       }
@@ -338,28 +339,27 @@ export function ChatRoom() {
   return (
     <div className="flex flex-col w-full bg-[#FAF6F1] dark:bg-[#1C1917] overflow-hidden" style={{ height: 'calc(100vh - 160px)' }}>
       {/* 헤더 */}
-      <div className="border-b border-[#E8DFD4] dark:border-[#3D3530] px-4 py-2 text-center flex-shrink-0">
-        <div className="flex items-center justify-center gap-2 mb-1">
-          <span className="text-lg">☕</span>
-          <h1 className="text-lg font-bold text-[#5C4A3A] dark:text-[#D4B896]">랜선 탕비실</h1>
+      <div className="border-b border-[#E8DFD4] dark:border-[#3D3530] px-4 py-1.5 flex-shrink-0">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <span className="text-base">☕</span>
+            <h1 className="text-sm font-bold text-[#5C4A3A] dark:text-[#D4B896]">랜선 탕비실</h1>
+            <span className="text-[10px] text-[#A89880] dark:text-[#6B5E50]">🫧 {onlineCount}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] text-[#C4B8A8] dark:text-[#5C5048] hidden sm:inline transition-opacity duration-500">{headerQuote}</span>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(`${window.location.origin}/chat`).then(() => {
+                  alert('초대 링크가 복사됐어요');
+                }).catch(() => {});
+              }}
+              className="text-[10px] text-[#A89880] dark:text-[#6B5E50] hover:text-[#8B7B6B] dark:hover:text-[#A89880] transition-colors"
+            >
+              초대 📋
+            </button>
+          </div>
         </div>
-        <div className="flex items-center justify-center gap-3 text-xs text-[#A89880] dark:text-[#6B5E50]">
-          <span>🫧 {onlineCount}명 접속 중</span>
-          <span>·</span>
-          <button
-            onClick={() => {
-              navigator.clipboard.writeText(`${window.location.origin}/chat`).then(() => {
-                alert('초대 링크가 복사됐어요');
-              }).catch(() => {});
-            }}
-            className="hover:text-[#8B7B6B] dark:hover:text-[#A89880] transition-colors"
-          >
-            친구 초대 📋
-          </button>
-        </div>
-        <p className="text-[10px] text-[#C4B8A8] dark:text-[#5C5048] mt-1 transition-opacity duration-500">
-          {headerQuote}
-        </p>
       </div>
 
       {/* 메시지 영역 */}
@@ -400,14 +400,14 @@ export function ChatRoom() {
       {/* 과자 항아리 */}
       <div className="px-4 py-2 border-t border-[#E8DFD4] dark:border-[#3D3530]">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-xs text-[#A89880] dark:text-[#6B5E50]">🍪 탕비실 과자 ({snackJar}/100)</span>
+          <span className="text-xs text-[#A89880] dark:text-[#6B5E50]">🍪 탕비실 과자 ({snackJar}/50)</span>
           {snackJar <= 10 && <span className="text-[10px] text-red-400 animate-pulse">거의 다 먹었다!</span>}
         </div>
-        <div className="flex flex-wrap gap-[2px] leading-none">
-          {Array.from({ length: 100 }).map((_, i) => (
+        <div className="grid gap-[1px] leading-none" style={{ gridTemplateColumns: 'repeat(25, 1fr)' }}>
+          {Array.from({ length: 50 }).map((_, i) => (
             <span
               key={i}
-              className={`text-[10px] transition-all duration-300 ${i < snackJar ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
+              className={`text-[10px] text-center transition-all duration-300 ${i < snackJar ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
             >
               {['🍪', '🍩', '🍫', '🍬', '🍭'][i % 5]}
             </span>
@@ -416,18 +416,18 @@ export function ChatRoom() {
       </div>
 
       {/* 인터랙션 버튼 */}
-      <div className="flex justify-center gap-2 px-4 py-1.5 border-t border-[#E8DFD4] dark:border-[#3D3530]">
+      <div className="flex justify-center gap-1.5 px-4 py-1 border-t border-[#E8DFD4] dark:border-[#3D3530]">
         <button
           onClick={handleCoffee}
           disabled={cooldown}
-          className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#E8DFD4] dark:bg-[#3D3530] text-xs text-[#8B7B6B] dark:text-[#A89880] hover:bg-[#DDD2C4] dark:hover:bg-[#4D4540] transition-colors disabled:opacity-40"
+          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#E8DFD4] dark:bg-[#3D3530] text-[11px] text-[#8B7B6B] dark:text-[#A89880] hover:bg-[#DDD2C4] dark:hover:bg-[#4D4540] transition-colors disabled:opacity-40"
         >
           ☕ 커피 내리기
         </button>
         <button
           onClick={handleSnack}
           disabled={cooldown}
-          className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#E8DFD4] dark:bg-[#3D3530] text-xs text-[#8B7B6B] dark:text-[#A89880] hover:bg-[#DDD2C4] dark:hover:bg-[#4D4540] transition-colors disabled:opacity-40"
+          className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#E8DFD4] dark:bg-[#3D3530] text-[11px] text-[#8B7B6B] dark:text-[#A89880] hover:bg-[#DDD2C4] dark:hover:bg-[#4D4540] transition-colors disabled:opacity-40"
         >
           🍪 간식 소매넣기
         </button>

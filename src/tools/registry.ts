@@ -73,8 +73,6 @@ const toolComponents: Record<string, ComponentType> = {
   'code-diff-en': dynamic(() => import('./formatter/CodeDiffEn').then(m => ({ default: m.CodeDiffEn }))),
   'cron-parser': dynamic(() => import('./formatter/CronParser').then(m => ({ default: m.CronParser }))),
   'cron-parser-en': dynamic(() => import('./formatter/CronParserEn').then(m => ({ default: m.CronParserEn }))),
-  'http-status-code': dynamic(() => import('./formatter/HttpStatusCode').then(m => ({ default: m.HttpStatusCode }))),
-  'http-status-code-en': dynamic(() => import('./formatter/HttpStatusCodeEn').then(m => ({ default: m.HttpStatusCodeEn }))),
   'json-path-tester': dynamic(() => import('./formatter/JsonPathTester').then(m => ({ default: m.JsonPathTester }))),
   'json-path-tester-en': dynamic(() => import('./formatter/JsonPathTesterEn').then(m => ({ default: m.JsonPathTesterEn }))),
   'html-boilerplate': dynamic(() => import('./formatter/HtmlBoilerplate').then(m => ({ default: m.HtmlBoilerplate }))),

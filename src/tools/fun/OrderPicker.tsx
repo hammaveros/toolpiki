@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/Textarea';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 // Fisher-Yates shuffle (random)
 function shuffle<T>(array: T[]): T[] {
@@ -90,7 +91,7 @@ export function OrderPicker() {
   const getShareUrl = () => {
     if (!result || !currentSeed) return '';
     const data = { s: currentSeed, n: items };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -100,8 +101,7 @@ export function OrderPicker() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
         // 새 형식: seed + names
         if (parsed.s && parsed.n && Array.isArray(parsed.n)) {
           const names = parsed.n as string[];

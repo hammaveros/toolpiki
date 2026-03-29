@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData } from '@/lib/utils/share-encoding';
 
 interface Question {
   id: number;
@@ -145,7 +146,7 @@ export function PersonalityColorQuiz() {
   const getShareUrl = () => {
     if (!result) return '';
     const data = { color: result.name };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 

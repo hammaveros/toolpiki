@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { FaqSection } from '@/components/ui/FaqItem';
@@ -433,7 +434,7 @@ export function LadderGame() {
       result: results[finalResults.get(idx) || 0]
     }));
     const data = { mappings };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -443,8 +444,7 @@ export function LadderGame() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData<{ mappings: { player: string; result: string }[] }>(hash.slice(7));
         if (parsed.mappings && Array.isArray(parsed.mappings)) {
           // 공유된 결과만 표시 (사다리는 재생성 불가)
           restoredFromShare.current = true;

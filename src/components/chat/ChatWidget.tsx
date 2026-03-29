@@ -110,7 +110,7 @@ export function ChatWidget() {
         href="/chat"
         className="block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 hover:shadow-md transition-all group"
       >
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-lg">☕</span>
             <span className="font-semibold text-sm text-gray-900 dark:text-white">랜선 탕비실</span>
@@ -120,16 +120,17 @@ export function ChatWidget() {
               </span>
             )}
           </div>
-          <span className="text-xs text-gray-400 group-hover:text-blue-500 transition-colors">
-            들어가기 →
-          </span>
-        </div>
-
-        <div className={`transition-all duration-500 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-            <span>{current.emoji}</span>
-            <span className="font-medium">{current.nickname}</span>
-            <span className="text-gray-400 dark:text-gray-500">{current.text}</span>
+          <div className="flex flex-col items-end gap-0.5">
+            <span className="text-xs text-gray-400 group-hover:text-blue-500 transition-colors">
+              들어가기 →
+            </span>
+            <div className={`transition-all duration-500 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'}`}>
+              <div className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-400">
+                <span>{current.emoji}</span>
+                <span className="font-medium">{current.nickname}</span>
+                <span className="text-gray-400 dark:text-gray-500 truncate max-w-[15ch]">{current.text}</span>
+              </div>
+            </div>
           </div>
         </div>
       </Link>

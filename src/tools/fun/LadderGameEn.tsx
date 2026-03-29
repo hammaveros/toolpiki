@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
@@ -423,7 +424,7 @@ export function LadderGameEn() {
       result: results[finalResults.get(idx) || 0]
     }));
     const data = { mappings };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -433,8 +434,7 @@ export function LadderGameEn() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData<{ mappings: { player: string; result: string }[] }>(hash.slice(7));
         if (parsed.mappings && Array.isArray(parsed.mappings)) {
           restoredFromShare.current = true;
           const sharedPlayers = parsed.mappings.map((m: { player: string }) => m.player);

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData, decodeShareData } from '@/lib/utils/share-encoding';
 
 interface Round {
   targetColor: string;
@@ -99,7 +100,7 @@ export function ColorPerceptionTestEn() {
     const accuracy = Math.round((score / totalRounds) * 100);
     const avgTime = (totalTime / totalRounds / 1000).toFixed(2);
     const data = { score, total: totalRounds, accuracy, avgTime };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
@@ -109,8 +110,7 @@ export function ColorPerceptionTestEn() {
     const hash = window.location.hash;
     if (hash.startsWith('#share=')) {
       try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
+        const parsed = decodeShareData(hash.slice(7));
         if (parsed.score !== undefined && parsed.total) {
           setScore(parsed.score);
           setTotalTime(parsed.avgTime * parsed.total * 1000);

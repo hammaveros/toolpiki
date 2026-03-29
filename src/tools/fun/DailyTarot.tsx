@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { FaqSection } from '@/components/ui/FaqItem';
+import { encodeShareData } from '@/lib/utils/share-encoding';
 
 // 메이저 아르카나 22장
 const TAROT_CARDS = [
@@ -338,7 +339,7 @@ export function DailyTarot() {
   const getShareUrl = () => {
     if (!result || !card) return '';
     const data = { card: card.name, reversed: result.isReversed };
-    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const encoded = encodeShareData(data);
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
