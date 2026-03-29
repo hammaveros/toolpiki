@@ -12,13 +12,13 @@ interface ToolCardProps {
 }
 
 const CATEGORY_BORDER: Record<string, string> = {
-  text: 'border-l-blue-500',
-  encoding: 'border-l-purple-500',
-  formatter: 'border-l-emerald-500',
-  image: 'border-l-amber-500',
-  color: 'border-l-pink-500',
-  calculator: 'border-l-cyan-500',
-  fun: 'border-l-orange-500',
+  text: 'border-l-blue-500 dark:border-l-blue-400',
+  encoding: 'border-l-purple-500 dark:border-l-purple-400',
+  formatter: 'border-l-emerald-500 dark:border-l-emerald-400',
+  image: 'border-l-amber-500 dark:border-l-amber-400',
+  color: 'border-l-pink-500 dark:border-l-pink-400',
+  calculator: 'border-l-cyan-500 dark:border-l-cyan-400',
+  fun: 'border-l-orange-500 dark:border-l-orange-400',
 };
 
 const CATEGORY_ICON_BG: Record<string, string> = {

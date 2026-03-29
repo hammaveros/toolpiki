@@ -57,72 +57,96 @@ export function SpeedTestEn() {
     return { ping: Math.round(avgPing), jitter: Math.round(jitter) };
   }, []);
 
+  const downloadChunk = useCallback(async (size: number): Promise<{ bytes: number; time: number }> => {
+    const start = performance.now();
+    try {
+      const response = await fetch(`${TEST_DOWNLOAD_URL}${size}&_=${Date.now()}${Math.random()}`, {
+        cache: 'no-store',
+        signal: abortControllerRef.current?.signal,
+      });
+      const blob = await response.blob();
+      const end = performance.now();
+      return { bytes: blob.size, time: (end - start) / 1000 };
+    } catch {
+      return { bytes: 0, time: 0 };
+    }
+  }, []);
+
   const testDownload = useCallback(async (): Promise<number> => {
-    const testSizes = [100000, 500000, 1000000, 5000000];
-    let totalBytes = 0;
-    let totalTime = 0;
+    // Warm-up (establish TCP, pass slow start)
+    await Promise.all([downloadChunk(100000), downloadChunk(100000)]);
+    setProgress(35);
 
-    for (let i = 0; i < testSizes.length; i++) {
-      const size = testSizes[i];
-      const start = performance.now();
+    // Main test: 4 parallel connections × 3 rounds
+    const rounds = [10000000, 10000000, 25000000];
+    const samples: number[] = [];
 
-      try {
-        const response = await fetch(`${TEST_DOWNLOAD_URL}${size}`, {
-          cache: 'no-store',
-          signal: abortControllerRef.current?.signal,
-        });
-        const blob = await response.blob();
-        const end = performance.now();
-
-        totalBytes += blob.size;
-        totalTime += (end - start) / 1000;
-
-        const currentMbps = (totalBytes * 8) / (totalTime * 1000000);
-        setCurrentSpeed(currentMbps);
-      } catch {
-        // Ignore errors
+    for (let r = 0; r < rounds.length; r++) {
+      const size = rounds[r];
+      const results = await Promise.all(
+        Array.from({ length: 4 }, () => downloadChunk(size))
+      );
+      const valid = results.filter(x => x.time > 0);
+      if (valid.length > 0) {
+        const totalBytes = valid.reduce((s, x) => s + x.bytes, 0);
+        const maxTime = Math.max(...valid.map(x => x.time));
+        const mbps = (totalBytes * 8) / (maxTime * 1000000);
+        samples.push(mbps);
+        setCurrentSpeed(mbps);
       }
-
-      setProgress(30 + ((i + 1) / testSizes.length * 35));
+      setProgress(35 + ((r + 1) / rounds.length * 30));
     }
 
-    if (totalTime === 0) return 0;
-    return (totalBytes * 8) / (totalTime * 1000000);
+    if (samples.length === 0) return 0;
+    samples.sort((a, b) => a - b);
+    const trimmed = samples.length > 1 ? samples.slice(1) : samples;
+    return trimmed.reduce((a, b) => a + b, 0) / trimmed.length;
+  }, [downloadChunk]);
+
+  const uploadChunk = useCallback(async (size: number): Promise<{ bytes: number; time: number }> => {
+    const data = new Blob([new ArrayBuffer(size)]);
+    const start = performance.now();
+    try {
+      await fetch(TEST_UPLOAD_URL, {
+        method: 'POST',
+        body: data,
+        signal: abortControllerRef.current?.signal,
+      });
+      const end = performance.now();
+      return { bytes: size, time: (end - start) / 1000 };
+    } catch {
+      return { bytes: 0, time: 0 };
+    }
   }, []);
 
   const testUpload = useCallback(async (): Promise<number> => {
-    const testSizes = [100000, 500000, 1000000];
-    let totalBytes = 0;
-    let totalTime = 0;
+    await Promise.all([uploadChunk(100000), uploadChunk(100000)]);
+    setProgress(70);
 
-    for (let i = 0; i < testSizes.length; i++) {
-      const size = testSizes[i];
-      const data = new Blob([new ArrayBuffer(size)]);
-      const start = performance.now();
+    const rounds = [2000000, 5000000, 5000000];
+    const samples: number[] = [];
 
-      try {
-        await fetch(TEST_UPLOAD_URL, {
-          method: 'POST',
-          body: data,
-          signal: abortControllerRef.current?.signal,
-        });
-        const end = performance.now();
-
-        totalBytes += size;
-        totalTime += (end - start) / 1000;
-
-        const currentMbps = (totalBytes * 8) / (totalTime * 1000000);
-        setCurrentSpeed(currentMbps);
-      } catch {
-        // Ignore errors
+    for (let r = 0; r < rounds.length; r++) {
+      const size = rounds[r];
+      const results = await Promise.all(
+        Array.from({ length: 3 }, () => uploadChunk(size))
+      );
+      const valid = results.filter(x => x.time > 0);
+      if (valid.length > 0) {
+        const totalBytes = valid.reduce((s, x) => s + x.bytes, 0);
+        const maxTime = Math.max(...valid.map(x => x.time));
+        const mbps = (totalBytes * 8) / (maxTime * 1000000);
+        samples.push(mbps);
+        setCurrentSpeed(mbps);
       }
-
-      setProgress(65 + ((i + 1) / testSizes.length * 35));
+      setProgress(70 + ((r + 1) / rounds.length * 30));
     }
 
-    if (totalTime === 0) return 0;
-    return (totalBytes * 8) / (totalTime * 1000000);
-  }, []);
+    if (samples.length === 0) return 0;
+    samples.sort((a, b) => a - b);
+    const trimmed = samples.length > 1 ? samples.slice(1) : samples;
+    return trimmed.reduce((a, b) => a + b, 0) / trimmed.length;
+  }, [uploadChunk]);
 
   const runTest = useCallback(async () => {
     abortControllerRef.current = new AbortController();
