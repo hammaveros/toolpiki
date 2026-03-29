@@ -304,7 +304,7 @@ function SeoContent() {
         <p className="text-sm leading-relaxed">
           Code Diff is a tool that visually shows differences between two pieces of code or text.
           Similar to Git diff, it displays added lines (green), removed lines (red), and unchanged lines with color coding.
-          It is essential for code review, version comparison, merge conflict resolution, and before/after refactoring comparison.
+          It's essential for code review, version comparison, merge conflict resolution, and before/after refactoring comparison.
           Uses the Myers diff algorithm (same as Git) to efficiently compare even large code files.
         </p>
       </section>

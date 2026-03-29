@@ -16,7 +16,7 @@ function SeoContent() {
         </h2>
         <p className="text-sm leading-relaxed">
           Code Minifier is a tool that removes unnecessary whitespace, line breaks, and comments from CSS, JavaScript, and HTML
-          to minimize file size. It is essential for improving website loading speed and saving bandwidth.
+          to minimize file size. It's essential for improving website loading speed and saving bandwidth.
           Minification before deployment is standard practice, typically achieving 30-70% size reduction.
           The Beautify feature does the opposite, reformatting compressed code for readability.
         </p>

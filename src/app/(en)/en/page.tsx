@@ -24,7 +24,7 @@ export default function HomePageEn() {
             100+ Free Online Tools — No Signup Required
           </h1>
           <p className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-6">
-            JSON, QR Code, Image Compress <span className="text-blue-600 dark:text-blue-400">& 100+</span>
+            JSON formatting, QR codes, image compression <span className="text-blue-600 dark:text-blue-400">& 100+ more</span>
           </p>
 
           {/* Search */}
