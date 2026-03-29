@@ -2,7 +2,7 @@
 
 import { toolsEn } from '@/data/tools-en';
 import { categoryListEn } from '@/data/categories-en';
-import { ToolsClientPage } from '@/components/tools/ToolsClientPage';
+import { ToolsClientPageEn } from '@/components/tools/ToolsClientPageEn';
 import { HomeContentEn } from '@/components/home/HomeContentEn';
 import { useState } from 'react';
 
@@ -58,7 +58,7 @@ export default function HomePageEn() {
 
       {/* Tool Grid */}
       <section className="max-w-6xl mx-auto px-4 py-6">
-        <ToolsClientPage tools={toolsEn} categories={categoryListEn} isMainPage initialSearch={searchQuery} isEnglish />
+        <ToolsClientPageEn tools={toolsEn} categories={categoryListEn} isMainPage initialSearch={searchQuery} />
       </section>
 
       {/* Site Content */}
