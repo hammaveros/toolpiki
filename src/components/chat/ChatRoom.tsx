@@ -46,13 +46,14 @@ export function ChatRoom() {
     return () => clearInterval(interval);
   }, []);
 
-  // Firebase 익명 로그인
+  // Firebase 익명 로그인 + 저장된 닉네임 자동 입장
   useEffect(() => {
     signInAnonymously(auth).then((cred) => {
       setUid(cred.user.uid);
       const saved = getSavedNickname();
       if (saved) {
         setNickname(saved);
+        setJoined(true);
       }
     });
   }, []);
@@ -121,9 +122,15 @@ export function ChatRoom() {
     };
   }, [uid, joined, nickname]);
 
-  // 자동 스크롤
+  // 자동 스크롤 (하단 근처일 때만)
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const container = chatContainerRef.current;
+    if (!container) return;
+    const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 150;
+    if (isNearBottom) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
 
   // 분위기 메시지 (30초 이상 새 메시지 없으면)
@@ -275,12 +282,8 @@ export function ChatRoom() {
     return `${h >= 12 ? '오후' : '오전'} ${h > 12 ? h - 12 : h || 12}:${m}`;
   };
 
-  // 닉네임 모달 (저장된 닉네임 없을 때)
+  // 닉네임 모달 (저장된 닉네임 없을 때만)
   if (!joined && uid) {
-    if (nickname) {
-      // 저장된 닉네임 있으면 바로 입장 가능
-      return <NicknameModal onJoin={handleJoin} />;
-    }
     return <NicknameModal onJoin={handleJoin} />;
   }
 
@@ -296,7 +299,7 @@ export function ChatRoom() {
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-64px)] max-w-2xl mx-auto bg-[#FAF6F1] dark:bg-[#1C1917]">
+    <div className="flex flex-col h-[100dvh] max-w-2xl mx-auto bg-[#FAF6F1] dark:bg-[#1C1917] fixed inset-0 z-40">
       {/* 헤더 */}
       <div className="border-b border-[#E8DFD4] dark:border-[#3D3530] px-4 py-3 text-center flex-shrink-0">
         <div className="flex items-center justify-center gap-2 mb-1">
@@ -314,7 +317,7 @@ export function ChatRoom() {
       </div>
 
       {/* 메시지 영역 */}
-      <div className="flex-1 overflow-y-auto px-4 py-3 space-y-0.5 scroll-smooth">
+      <div ref={chatContainerRef} className="flex-1 overflow-y-auto px-4 py-3 space-y-0.5 scroll-smooth">
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-[#C4B8A8] dark:text-[#5C5048]">
             <span className="text-3xl mb-2">🫧</span>
