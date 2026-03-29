@@ -15,7 +15,7 @@ export function FooterAdBanner({ disableFallback = false }: { disableFallback?: 
 
   if (adBlocked && !disableFallback) {
     return (
-      <div className="flex justify-center py-4 bg-gray-50 dark:bg-gray-900/50">
+      <div className="flex justify-center py-1 bg-gray-50 dark:bg-gray-900/50">
         <div className="hidden md:block">
           <KakaoAdfit unit="DAN-FQao7kKjxM9YUvZK" width={250} height={250} />
         </div>
@@ -29,7 +29,7 @@ export function FooterAdBanner({ disableFallback = false }: { disableFallback?: 
   if (adBlocked) return null;
 
   return (
-    <div className="flex justify-center py-4 bg-gray-50 dark:bg-gray-900/50">
+    <div className="flex justify-center py-1 bg-gray-50 dark:bg-gray-900/50">
       <div className="w-full max-w-[728px] px-2 md:px-4">
         <AdSlot format="autorelaxed" slotId="5755192113" onBlocked={() => setAdBlocked(true)} />
       </div>

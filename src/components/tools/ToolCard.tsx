@@ -58,7 +58,7 @@ export const ToolCard = memo(function ToolCard({ tool, compact = false, showRemo
                   'hover:-translate-y-0.5 hover:shadow-md dark:hover:shadow-black/20',
                   'hover:bg-gray-50 dark:hover:bg-[var(--bg-elevated)]'
                 ),
-            showRemove && 'pr-8'
+            showRemove && ''
           )}
         >
           <span
@@ -84,10 +84,10 @@ export const ToolCard = memo(function ToolCard({ tool, compact = false, showRemo
           <button
             type="button"
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); onRemove(); }}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 hover:text-red-500"
+            className="absolute -top-1.5 -left-1.5 w-5 h-5 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-600 opacity-0 group-hover:opacity-100 transition-opacity text-gray-500 dark:text-gray-300 hover:bg-red-100 hover:text-red-500 dark:hover:bg-red-900/50 z-10"
             aria-label="삭제"
           >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
