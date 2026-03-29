@@ -30,12 +30,39 @@ export function ChatRoom() {
   const [uid, setUid] = useState<string | null>(null);
   const [joined, setJoined] = useState(false);
   const [cooldown, setCooldown] = useState(false);
+  const [cooldownSec, setCooldownSec] = useState(0);
+  const cooldownTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const [onlineCount, setOnlineCount] = useState(0);
   const [headerQuote, setHeaderQuote] = useState('');
   const [toast, setToast] = useState('');
   const [firebaseError, setFirebaseError] = useState(false);
   const lastMsgsRef = useRef<string[]>([]);
   const ambientTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  // 쿨다운 시작 헬퍼
+  const startCooldown = useCallback((sec: number) => {
+    setCooldown(true);
+    setCooldownSec(sec);
+    if (cooldownTimerRef.current) clearTimeout(cooldownTimerRef.current);
+    cooldownTimerRef.current = setTimeout(() => {
+      setCooldown(false);
+      setCooldownSec(0);
+    }, sec * 1000);
+  }, []);
+
+  // 공유 과자 항아리 (Firestore)
+  const [snackJar, setSnackJar] = useState(100);
+
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, 'shared', 'snackJar'), (snap) => {
+      if (snap.exists()) {
+        setSnackJar(snap.data().count ?? 100);
+      } else {
+        setDoc(doc(db, 'shared', 'snackJar'), { count: 100 });
+      }
+    });
+    return () => unsub();
+  }, []);
 
   // 헤더 문구 로테이션
   useEffect(() => {
@@ -197,8 +224,7 @@ export function ChatRoom() {
     if (lastMsgsRef.current.length > 3) lastMsgsRef.current.shift();
     if (lastMsgsRef.current.length >= 3 && lastMsgsRef.current.every((m) => m === text)) {
       setToast('같은 말 그만! 😅');
-      setCooldown(true);
-      setTimeout(() => setCooldown(false), 30000);
+      startCooldown(30);
       setTimeout(() => setToast(''), 3000);
       return;
     }
@@ -219,8 +245,7 @@ export function ChatRoom() {
         type: 'message',
         createdAt: serverTimestamp(),
       });
-      setCooldown(true);
-      setTimeout(() => setCooldown(false), 2000);
+      startCooldown(2);
     } catch (err) {
       console.error('[채팅] 전송 실패:', err);
       setToast('지금은 전송이 안 돼요 😢 잠시 후 다시 시도해주세요');
@@ -243,21 +268,14 @@ export function ChatRoom() {
         type: 'interaction',
         createdAt: serverTimestamp(),
       });
-      setCooldown(true);
-      setTimeout(() => setCooldown(false), 10000);
+      startCooldown(10);
     } catch {
       setToast('지금은 안 돼요 😢');
       setTimeout(() => setToast(''), 3000);
     }
-  }, [uid, nickname, cooldown]);
+  }, [uid, nickname, cooldown, startCooldown]);
 
-  // 간식 카운터
-  const [snackCount, setSnackCount] = useState(() => {
-    if (typeof window === 'undefined') return 0;
-    return Number(localStorage.getItem('tangbisil-snack-count') || '0');
-  });
-
-  // 인터랙션: 간식 소매넣기
+  // 인터랙션: 간식 소매넣기 (공유 과자 항아리에서 차감)
   const handleSnack = useCallback(async () => {
     if (!uid || !nickname || cooldown) return;
     const { text, failed } = getRandomInteraction('snack');
@@ -266,10 +284,14 @@ export function ChatRoom() {
     if (failed) {
       displayText = `${text} (간식 소매넣기 실패!)`;
     } else {
-      const newCount = snackCount + 1;
-      setSnackCount(newCount);
-      localStorage.setItem('tangbisil-snack-count', String(newCount));
-      displayText = `${text} (${newCount}번째 간식 소매넣기!)`;
+      // 성공 → 과자 1개 차감 (0이면 리필)
+      const newCount = snackJar <= 1 ? 100 : snackJar - 1;
+      await setDoc(doc(db, 'shared', 'snackJar'), { count: newCount });
+      if (snackJar <= 1) {
+        displayText = `${text} 🎉 과자 다 먹었다! 누가 100개 채워놨어요`;
+      } else {
+        displayText = `${text} (남은 과자: ${newCount}개)`;
+      }
     }
 
     try {
@@ -281,13 +303,12 @@ export function ChatRoom() {
         type: 'interaction',
         createdAt: serverTimestamp(),
       });
-      setCooldown(true);
-      setTimeout(() => setCooldown(false), 10000);
+      startCooldown(10);
     } catch {
       setToast('지금은 안 돼요 😢');
       setTimeout(() => setToast(''), 3000);
     }
-  }, [nickname, cooldown, snackCount, uid]);
+  }, [nickname, cooldown, snackJar, uid, startCooldown]);
 
   // 시간 포맷
   const formatTime = (ts: Timestamp | null) => {
@@ -376,6 +397,24 @@ export function ChatRoom() {
         ))}
       </div>
 
+      {/* 과자 항아리 */}
+      <div className="px-4 py-2 border-t border-[#E8DFD4] dark:border-[#3D3530]">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-xs text-[#A89880] dark:text-[#6B5E50]">🍪 탕비실 과자 ({snackJar}/100)</span>
+          {snackJar <= 10 && <span className="text-[10px] text-red-400 animate-pulse">거의 다 먹었다!</span>}
+        </div>
+        <div className="flex flex-wrap gap-[2px] leading-none">
+          {Array.from({ length: 100 }).map((_, i) => (
+            <span
+              key={i}
+              className={`text-[10px] transition-all duration-300 ${i < snackJar ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
+            >
+              {['🍪', '🍩', '🍫', '🍬', '🍭'][i % 5]}
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* 인터랙션 버튼 */}
       <div className="flex justify-center gap-2 px-4 py-1.5 border-t border-[#E8DFD4] dark:border-[#3D3530]">
         <button
@@ -390,12 +429,12 @@ export function ChatRoom() {
           disabled={cooldown}
           className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#E8DFD4] dark:bg-[#3D3530] text-xs text-[#8B7B6B] dark:text-[#A89880] hover:bg-[#DDD2C4] dark:hover:bg-[#4D4540] transition-colors disabled:opacity-40"
         >
-          🍪 간식 소매넣기{snackCount > 0 && ` (${snackCount})`}
+          🍪 간식 소매넣기
         </button>
       </div>
 
       {/* 입력창 */}
-      <ChatInput onSend={handleSend} cooldown={cooldown} />
+      <ChatInput onSend={handleSend} cooldown={cooldown} cooldownSeconds={cooldownSec} />
 
       {/* 토스트 */}
       {toast && (

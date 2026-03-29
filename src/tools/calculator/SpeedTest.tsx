@@ -59,74 +59,115 @@ export function SpeedTest() {
     return { ping: Math.round(avgPing), jitter: Math.round(jitter) };
   }, []);
 
-  // 다운로드 속도 테스트
+  // 단일 다운로드 요청
+  const downloadChunk = useCallback(async (size: number): Promise<{ bytes: number; time: number }> => {
+    const start = performance.now();
+    try {
+      const response = await fetch(`${TEST_DOWNLOAD_URL}${size}&_=${Date.now()}${Math.random()}`, {
+        cache: 'no-store',
+        signal: abortControllerRef.current?.signal,
+      });
+      const blob = await response.blob();
+      const end = performance.now();
+      return { bytes: blob.size, time: (end - start) / 1000 };
+    } catch {
+      return { bytes: 0, time: 0 };
+    }
+  }, []);
+
+  // 다운로드 속도 테스트 (병렬 + 워밍업)
   const testDownload = useCallback(async (): Promise<number> => {
-    const testSizes = [100000, 500000, 1000000, 5000000]; // 100KB, 500KB, 1MB, 5MB
-    let totalBytes = 0;
-    let totalTime = 0;
+    // 워밍업 (TCP 연결 확립, slow start 통과)
+    await Promise.all([
+      downloadChunk(100000),
+      downloadChunk(100000),
+    ]);
+    setProgress(35);
 
-    for (let i = 0; i < testSizes.length; i++) {
-      const size = testSizes[i];
-      const start = performance.now();
+    // 본 측정: 병렬 4연결 × 3라운드, 큰 파일
+    const rounds = [10000000, 10000000, 25000000]; // 10MB, 10MB, 25MB
+    const samples: number[] = [];
 
-      try {
-        const response = await fetch(`${TEST_DOWNLOAD_URL}${size}`, {
-          cache: 'no-store',
-          signal: abortControllerRef.current?.signal,
-        });
-        const blob = await response.blob();
-        const end = performance.now();
+    for (let r = 0; r < rounds.length; r++) {
+      const size = rounds[r];
+      const parallel = 4;
+      const results = await Promise.all(
+        Array.from({ length: parallel }, () => downloadChunk(size))
+      );
 
-        totalBytes += blob.size;
-        totalTime += (end - start) / 1000; // seconds
-
-        const currentMbps = (totalBytes * 8) / (totalTime * 1000000);
-        setCurrentSpeed(currentMbps);
-      } catch {
-        // 에러 무시
+      const validResults = results.filter(x => x.time > 0);
+      if (validResults.length > 0) {
+        const totalBytes = validResults.reduce((s, x) => s + x.bytes, 0);
+        const maxTime = Math.max(...validResults.map(x => x.time)); // 병렬이니까 가장 긴 시간 기준
+        const mbps = (totalBytes * 8) / (maxTime * 1000000);
+        samples.push(mbps);
+        setCurrentSpeed(mbps);
       }
 
-      setProgress(30 + ((i + 1) / testSizes.length * 35));
+      setProgress(35 + ((r + 1) / rounds.length * 30));
     }
 
-    if (totalTime === 0) return 0;
-    return (totalBytes * 8) / (totalTime * 1000000); // Mbps
+    if (samples.length === 0) return 0;
+    // 가장 느린 샘플 제거하고 평균
+    samples.sort((a, b) => a - b);
+    const trimmed = samples.length > 1 ? samples.slice(1) : samples;
+    return trimmed.reduce((a, b) => a + b, 0) / trimmed.length;
+  }, [downloadChunk]);
+
+  // 단일 업로드 요청
+  const uploadChunk = useCallback(async (size: number): Promise<{ bytes: number; time: number }> => {
+    const data = new Blob([new ArrayBuffer(size)]);
+    const start = performance.now();
+    try {
+      await fetch(TEST_UPLOAD_URL, {
+        method: 'POST',
+        body: data,
+        signal: abortControllerRef.current?.signal,
+      });
+      const end = performance.now();
+      return { bytes: size, time: (end - start) / 1000 };
+    } catch {
+      return { bytes: 0, time: 0 };
+    }
   }, []);
 
-  // 업로드 속도 테스트
+  // 업로드 속도 테스트 (병렬 + 워밍업)
   const testUpload = useCallback(async (): Promise<number> => {
-    const testSizes = [100000, 500000, 1000000]; // 100KB, 500KB, 1MB
-    let totalBytes = 0;
-    let totalTime = 0;
+    // 워밍업
+    await Promise.all([
+      uploadChunk(100000),
+      uploadChunk(100000),
+    ]);
+    setProgress(70);
 
-    for (let i = 0; i < testSizes.length; i++) {
-      const size = testSizes[i];
-      const data = new Blob([new ArrayBuffer(size)]);
-      const start = performance.now();
+    // 본 측정: 병렬 3연결 × 3라운드
+    const rounds = [2000000, 5000000, 5000000]; // 2MB, 5MB, 5MB
+    const samples: number[] = [];
 
-      try {
-        await fetch(TEST_UPLOAD_URL, {
-          method: 'POST',
-          body: data,
-          signal: abortControllerRef.current?.signal,
-        });
-        const end = performance.now();
+    for (let r = 0; r < rounds.length; r++) {
+      const size = rounds[r];
+      const parallel = 3;
+      const results = await Promise.all(
+        Array.from({ length: parallel }, () => uploadChunk(size))
+      );
 
-        totalBytes += size;
-        totalTime += (end - start) / 1000;
-
-        const currentMbps = (totalBytes * 8) / (totalTime * 1000000);
-        setCurrentSpeed(currentMbps);
-      } catch {
-        // 에러 무시
+      const validResults = results.filter(x => x.time > 0);
+      if (validResults.length > 0) {
+        const totalBytes = validResults.reduce((s, x) => s + x.bytes, 0);
+        const maxTime = Math.max(...validResults.map(x => x.time));
+        const mbps = (totalBytes * 8) / (maxTime * 1000000);
+        samples.push(mbps);
+        setCurrentSpeed(mbps);
       }
 
-      setProgress(65 + ((i + 1) / testSizes.length * 35));
+      setProgress(70 + ((r + 1) / rounds.length * 30));
     }
 
-    if (totalTime === 0) return 0;
-    return (totalBytes * 8) / (totalTime * 1000000); // Mbps
-  }, []);
+    if (samples.length === 0) return 0;
+    samples.sort((a, b) => a - b);
+    const trimmed = samples.length > 1 ? samples.slice(1) : samples;
+    return trimmed.reduce((a, b) => a + b, 0) / trimmed.length;
+  }, [uploadChunk]);
 
   // 전체 테스트 실행
   const runTest = useCallback(async () => {

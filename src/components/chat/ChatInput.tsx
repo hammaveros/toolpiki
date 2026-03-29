@@ -6,11 +6,29 @@ interface ChatInputProps {
   onSend: (text: string) => void;
   disabled?: boolean;
   cooldown?: boolean;
+  cooldownSeconds?: number;
 }
 
-export function ChatInput({ onSend, disabled, cooldown }: ChatInputProps) {
+export function ChatInput({ onSend, disabled, cooldown, cooldownSeconds = 0 }: ChatInputProps) {
   const [text, setText] = useState('');
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const [remainSec, setRemainSec] = useState(0);
+
+  // 쿨다운 카운트다운
+  useEffect(() => {
+    if (cooldown && cooldownSeconds > 0) {
+      setRemainSec(cooldownSeconds);
+      const interval = setInterval(() => {
+        setRemainSec(prev => {
+          if (prev <= 1) { clearInterval(interval); return 0; }
+          return prev - 1;
+        });
+      }, 1000);
+      return () => clearInterval(interval);
+    } else {
+      setRemainSec(0);
+    }
+  }, [cooldown, cooldownSeconds]);
 
   // 포커스가 iframe(광고)으로 넘어가면 입력창으로 되돌리기
   useEffect(() => {
@@ -40,6 +58,12 @@ export function ChatInput({ onSend, disabled, cooldown }: ChatInputProps) {
     }
   };
 
+  const placeholder = cooldown && remainSec > 0
+    ? `${remainSec}초 후 가능`
+    : cooldown
+      ? '잠시만요...'
+      : '☕ 한마디 남기기...';
+
   return (
     <div className="border-t border-[#E8DFD4] dark:border-[#3D3530] bg-[#FAF6F1] dark:bg-[#1C1917] p-3">
       <div className="flex items-end gap-2">
@@ -49,7 +73,7 @@ export function ChatInput({ onSend, disabled, cooldown }: ChatInputProps) {
             value={text}
             onChange={(e) => setText(e.target.value.slice(0, 200))}
             onKeyDown={handleKeyDown}
-            placeholder={cooldown ? '잠시만요...' : '☕ 한마디 남기기...'}
+            placeholder={placeholder}
             disabled={disabled || cooldown}
             autoFocus
             rows={1}
@@ -67,7 +91,7 @@ export function ChatInput({ onSend, disabled, cooldown }: ChatInputProps) {
           disabled={!text.trim() || disabled || cooldown}
           className="px-4 py-2.5 rounded-xl bg-[#D4A574] hover:bg-[#C49564] disabled:opacity-40 text-white text-sm font-medium transition-colors flex-shrink-0"
         >
-          전송
+          {cooldown && remainSec > 0 ? `${remainSec}s` : '전송'}
         </button>
       </div>
     </div>
