@@ -180,15 +180,7 @@ export function ChatRoom() {
     saveNickname(nick);
     setJoined(true);
 
-    setMessages((prev) => [...prev, {
-      id: `join-${Date.now()}`,
-      text: `🌿 ${nick.emoji} ${nick.name} 님이 탕비실에 들어왔어요`,
-      nickname: nick.name,
-      emoji: nick.emoji,
-      uid: uid || '',
-      type: 'system',
-      createdAt: null,
-    }]);
+    // 입장 메시지 없음 (조용히 입장)
   }, [uid]);
 
   // 메시지 전송
@@ -235,15 +227,15 @@ export function ChatRoom() {
     setMessages((prev) => [...prev, {
       id: `coffee-${Date.now()}`,
       text: msg,
-      nickname: nickname.name,
-      emoji: nickname.emoji,
+      nickname: '',
+      emoji: '',
       uid: uid || '',
-      type: 'interaction',
+      type: 'ambient',
       createdAt: null,
     }]);
 
     setCooldown(true);
-    setTimeout(() => setCooldown(false), 3000);
+    setTimeout(() => setCooldown(false), 5000);
   }, [nickname, cooldown, uid]);
 
   // 간식 카운터
@@ -263,16 +255,16 @@ export function ChatRoom() {
 
     setMessages((prev) => [...prev, {
       id: `snack-${Date.now()}`,
-      text: `${msg} (${newCount}번째 간식 훔치기!)`,
-      nickname: nickname.name,
-      emoji: nickname.emoji,
+      text: `${msg} (${newCount}번째)`,
+      nickname: '',
+      emoji: '',
       uid: uid || '',
-      type: 'interaction',
+      type: 'ambient',
       createdAt: null,
     }]);
 
     setCooldown(true);
-    setTimeout(() => setCooldown(false), 3000);
+    setTimeout(() => setCooldown(false), 5000);
   }, [nickname, cooldown, snackCount, uid]);
 
   // 시간 포맷
