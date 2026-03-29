@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 
 interface ChatInputProps {
   onSend: (text: string) => void;
@@ -11,6 +11,19 @@ interface ChatInputProps {
 export function ChatInput({ onSend, disabled, cooldown }: ChatInputProps) {
   const [text, setText] = useState('');
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  // 포커스가 iframe(광고)으로 넘어가면 입력창으로 되돌리기
+  useEffect(() => {
+    const handleBlur = () => {
+      setTimeout(() => {
+        if (document.activeElement?.tagName === 'IFRAME') {
+          inputRef.current?.focus();
+        }
+      }, 100);
+    };
+    window.addEventListener('blur', handleBlur);
+    return () => window.removeEventListener('blur', handleBlur);
+  }, []);
 
   const handleSend = useCallback(() => {
     const trimmed = text.trim();
