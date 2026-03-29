@@ -27,7 +27,7 @@ function getIncomeTax(monthlyTaxable: number, dependents: number, children: numb
   const annualTaxable = monthlyTaxable * 12;
   const taxableIncome = Math.max(0, annualTaxable - baseDeduction);
 
-  // 근로소득세율 (2025년)
+  // 근로소득세율 (2026년)
   let tax = 0;
   if (taxableIncome <= 14000000) {
     tax = taxableIncome * 0.06;

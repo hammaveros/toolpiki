@@ -231,11 +231,12 @@ export function ChatRoom() {
   // 인터랙션: 커피 내리기
   const handleCoffee = useCallback(async () => {
     if (!uid || !nickname || cooldown) return;
-    const { text } = getRandomInteraction('coffee');
+    const { text, failed } = getRandomInteraction('coffee');
+    const displayText = failed ? `${text} (커피 내리기 실패!)` : text;
 
     try {
       await addDoc(collection(db, 'messages'), {
-        text,
+        text: displayText,
         nickname: nickname.name,
         emoji: nickname.emoji,
         uid,
@@ -262,7 +263,9 @@ export function ChatRoom() {
     const { text, failed } = getRandomInteraction('snack');
 
     let displayText = text;
-    if (!failed) {
+    if (failed) {
+      displayText = `${text} (간식 소매넣기 실패!)`;
+    } else {
       const newCount = snackCount + 1;
       setSnackCount(newCount);
       localStorage.setItem('tangbisil-snack-count', String(newCount));
