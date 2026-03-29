@@ -31,6 +31,10 @@ const JIJI_ANIMAL: Record<string, string> = {
   자: '쥐', 축: '소', 인: '호랑이', 묘: '토끼', 진: '용', 사: '뱀',
   오: '말', 미: '양', 신: '원숭이', 유: '닭', 술: '개', 해: '돼지',
 };
+const ANIMAL_EMOJI: Record<string, string> = {
+  쥐: '🐭', 소: '🐮', 호랑이: '🐯', 토끼: '🐰', 용: '🐲', 뱀: '🐍',
+  말: '🐴', 양: '🐑', 원숭이: '🐵', 닭: '🐔', 개: '🐶', 돼지: '🐷',
+};
 const OHANG_BG: Record<string, string> = {
   목: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200',
   화: 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200',
@@ -230,6 +234,7 @@ interface Member {
   id: string;
   name: string;
   birthDate: string; // YYYY-MM-DD
+  birthTime: string; // HH:MM or '' (모름)
 }
 
 interface MemberSaju extends Member {
@@ -360,24 +365,25 @@ function RelationPolygon({
                 stroke={isSelected ? '#3b82f6' : '#d1d5db'}
                 strokeWidth={isSelected ? 2.5 : 1.5}
               />
+              {/* 띠 이모지 */}
               <text
-                x={p.x} y={p.y + 1}
+                x={p.x} y={p.y - 4}
                 textAnchor="middle"
                 dominantBaseline="middle"
+                className="text-[14px] pointer-events-none"
+              >
+                {ANIMAL_EMOJI[m.animal] || ''}
+              </text>
+              {/* 이름 */}
+              <text
+                x={p.x} y={p.y + 12}
+                textAnchor="middle"
                 className={cn(
-                  'text-[11px] font-bold pointer-events-none',
+                  'text-[10px] font-bold pointer-events-none',
                   isSelected ? 'fill-white' : isDimmed ? 'fill-gray-400 dark:fill-gray-500' : 'fill-gray-800 dark:fill-gray-200'
                 )}
               >
                 {m.name.length > 3 ? m.name.slice(0, 3) : m.name}
-              </text>
-              {/* 이름 아래 띠 표시 */}
-              <text
-                x={p.x} y={p.y + 14 + (isSelected ? 4 : 0)}
-                textAnchor="middle"
-                className="text-[8px] fill-gray-400 dark:fill-gray-500 pointer-events-none"
-              >
-                {m.animal}
               </text>
             </g>
           );
@@ -391,9 +397,9 @@ export function TeamSajuCompatibility() {
   const [isSample, setIsSample] = useState(true);
   const [teamName, setTeamName] = useState('우리팀');
   const [members, setMembers] = useState<Member[]>([
-    { id: '1', name: '김민수', birthDate: '1995-03-14' },
-    { id: '2', name: '이서연', birthDate: '1997-08-22' },
-    { id: '3', name: '박지훈', birthDate: '1994-12-05' },
+    { id: '1', name: '김민수', birthDate: '1995-03-14', birthTime: '' },
+    { id: '2', name: '이서연', birthDate: '1997-08-22', birthTime: '' },
+    { id: '3', name: '박지훈', birthDate: '1994-12-05', birthTime: '' },
   ]);
   const [analyzing, setAnalyzing] = useState(false);
   const [results, setResults] = useState<{
@@ -441,17 +447,18 @@ export function TeamSajuCompatibility() {
           const prefix = yy >= 40 ? '19' : '20'; // 40이상이면 1940~1999, 미만이면 2000~
           birthDate = `${prefix}${d.slice(0,2)}-${d.slice(2,4)}-${d.slice(4,6)}`;
         }
-        return { id: String(i + 1), name: item[0] || '', birthDate };
+        return { id: String(i + 1), name: item[0] || '', birthDate, birthTime: item[2] || '' };
       }));
       setIsSample(false);
     }
     // 레거시 포맷: { team, members: [{name, birthDate}] }
     else if (decoded.members && Array.isArray(decoded.members)) {
       if (decoded.team) setTeamName(decoded.team as string);
-      setMembers((decoded.members as { name: string; birthDate: string }[]).map((m, i) => ({
+      setMembers((decoded.members as { name: string; birthDate: string; birthTime?: string }[]).map((m, i) => ({
         id: String(i + 1),
         name: m.name || '',
         birthDate: m.birthDate || '',
+        birthTime: m.birthTime || '',
       })));
       setIsSample(false);
     }
@@ -459,7 +466,7 @@ export function TeamSajuCompatibility() {
 
   const addMember = useCallback(() => {
     if (members.length >= 20) return;
-    setMembers(prev => [...prev, { id: String(Date.now()), name: '', birthDate: '' }]);
+    setMembers(prev => [...prev, { id: String(Date.now()), name: '', birthDate: '', birthTime: '' }]);
   }, [members.length]);
 
   const removeMember = useCallback((id: string) => {
@@ -467,7 +474,7 @@ export function TeamSajuCompatibility() {
     setMembers(prev => prev.filter(m => m.id !== id));
   }, [members.length]);
 
-  const updateMember = useCallback((id: string, field: 'name' | 'birthDate', value: string) => {
+  const updateMember = useCallback((id: string, field: 'name' | 'birthDate' | 'birthTime', value: string) => {
     if (isSample) setIsSample(false);
     setMembers(prev => prev.map(m => m.id === id ? { ...m, [field]: value } : m));
   }, [isSample]);
@@ -557,10 +564,10 @@ export function TeamSajuCompatibility() {
 
   const getShareUrl = useCallback(() => {
     if (!validMembers.length) return '';
-    // 축약: t=팀명, m=[[이름,YYMMDD], ...] — URL 최소화
+    // 축약: t=팀명, m=[[이름,YYMMDD,시간], ...] — URL 최소화
     const m = validMembers.map(v => {
       const d = v.birthDate.replace(/-/g, '').slice(2); // 1995-03-14 → 950314
-      return [v.name, d];
+      return v.birthTime ? [v.name, d, v.birthTime] : [v.name, d];
     });
     const data = teamName.trim() ? { t: teamName.trim(), m } : { m };
     const json = JSON.stringify(data);
@@ -629,8 +636,8 @@ export function TeamSajuCompatibility() {
                 setSelectedMember(null);
                 setTeamName('');
                 setMembers([
-                  { id: String(Date.now()), name: '', birthDate: '' },
-                  { id: String(Date.now() + 1), name: '', birthDate: '' },
+                  { id: String(Date.now()), name: '', birthDate: '', birthTime: '' },
+                  { id: String(Date.now() + 1), name: '', birthDate: '', birthTime: '' },
                 ]);
                 window.history.replaceState(null, '', window.location.pathname);
               }}
@@ -667,6 +674,25 @@ export function TeamSajuCompatibility() {
                 onChange={(e) => updateMember(member.id, 'birthDate', e.target.value)}
                 className="w-28 px-1 py-1.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
               />
+              <select
+                value={member.birthTime}
+                onChange={(e) => updateMember(member.id, 'birthTime', e.target.value)}
+                className="w-14 px-0.5 py-1.5 text-[10px] rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
+              >
+                <option value="">모름</option>
+                <option value="23">子時</option>
+                <option value="01">丑時</option>
+                <option value="03">寅時</option>
+                <option value="05">卯時</option>
+                <option value="07">辰時</option>
+                <option value="09">巳時</option>
+                <option value="11">午時</option>
+                <option value="13">未時</option>
+                <option value="15">申時</option>
+                <option value="17">酉時</option>
+                <option value="19">戌時</option>
+                <option value="21">亥時</option>
+              </select>
               <button
                 onClick={() => removeMember(member.id)}
                 disabled={members.length <= 2}
@@ -853,94 +879,6 @@ export function TeamSajuCompatibility() {
             </div>
           )}
 
-          {/* 구성원 정보 — 클릭하면 상세 궁합 */}
-          <Card variant="bordered" className="p-5">
-            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-              구성원 {selectedMember ? `— ${selectedMember}의 궁합` : '(클릭하면 상세 궁합)'}
-            </h3>
-            <div className="grid gap-2">
-              {results.members.map(m => (
-                <button
-                  key={m.id}
-                  onClick={() => setSelectedMember(selectedMember === m.name ? null : m.name)}
-                  className={cn(
-                    'flex items-center gap-3 p-3 rounded-lg text-sm text-left transition-all w-full',
-                    selectedMember === m.name
-                      ? 'bg-blue-50 dark:bg-blue-900/20 ring-1 ring-blue-300 dark:ring-blue-700'
-                      : 'bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800'
-                  )}
-                >
-                  <span className="font-semibold text-gray-900 dark:text-white w-16 truncate">{m.name}</span>
-                  <span className={cn('px-2 py-0.5 rounded text-xs font-medium', OHANG_BG[m.dayGanOhang])}>
-                    {m.dayGan}({m.dayGanOhang})
-                  </span>
-                  <span className="text-gray-500 dark:text-gray-400 text-xs">{m.animal}띠</span>
-                  <span className="text-gray-400 dark:text-gray-500 text-xs ml-auto">
-                    {m.saju.year.gan}{m.saju.year.ji} {m.saju.month.gan}{m.saju.month.ji} {m.saju.day.gan}{m.saju.day.ji}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            {/* 선택된 멤버의 1:1 궁합 상세 */}
-            {selectedMember && (
-              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 space-y-2">
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                  {selectedMember} vs 다른 팀원
-                </p>
-                {results.pairs
-                  .filter(p => p.member1 === selectedMember || p.member2 === selectedMember)
-                  .sort((a, b) => b.score - a.score)
-                  .map((pair, i) => {
-                    const other = pair.member1 === selectedMember ? pair.member2 : pair.member1;
-                    return (
-                      <div key={i} className={cn('p-3 rounded-xl', getScoreBg(pair.score))}>
-                        <div className="flex items-center gap-3">
-                          <span className="text-lg">{getScoreEmoji(pair.score)}</span>
-                          <span className="font-medium text-gray-900 dark:text-white flex-1">{other}</span>
-                          <span className={cn('text-sm font-bold', getScoreColor(pair.score))}>{pair.score}점</span>
-                          <span className={cn('text-xs font-medium px-2 py-0.5 rounded-full', getScoreBg(pair.score), getScoreColor(pair.score))}>
-                            {getScoreLabel(pair.score)}
-                          </span>
-                        </div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1.5 ml-8">
-                          {pair.comment}
-                        </p>
-                      </div>
-                    );
-                  })}
-              </div>
-            )}
-          </Card>
-
-          {/* 전체 조합 표 */}
-          <Card variant="bordered" className="p-5">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                조합별 궁합 ({results.pairs.length}개)
-              </h3>
-              <CopyButton
-                text={`팀 사주 궁합 결과\n팀 점수: ${results.teamScore}점\n\n${results.pairs.map(p => `${p.member1} & ${p.member2}: ${p.score}점 (${p.relation})`).join('\n')}`}
-                label="복사"
-              />
-            </div>
-            <div className="space-y-2">
-              {[...results.pairs].sort((a, b) => b.score - a.score).map((pair, i) => (
-                <div key={i} className={cn('flex items-center gap-2 sm:gap-3 p-3 rounded-lg text-sm', getScoreBg(pair.score))}>
-                  <span className="text-base flex-shrink-0">{getScoreEmoji(pair.score)}</span>
-                  <span className="font-medium text-gray-900 dark:text-white flex-1 min-w-0 truncate">
-                    {pair.member1} & {pair.member2}
-                  </span>
-                  <span className={cn('font-bold flex-shrink-0', getScoreColor(pair.score))}>
-                    {pair.score}
-                  </span>
-                  <span className={cn('text-xs font-medium flex-shrink-0 hidden sm:inline', getScoreColor(pair.score))}>
-                    {getScoreLabel(pair.score)}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </Card>
 
         </>
       )}
