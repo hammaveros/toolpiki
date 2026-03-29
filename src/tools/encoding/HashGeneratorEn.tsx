@@ -155,7 +155,7 @@ function SeoContent() {
         <p className="text-sm leading-relaxed">
           A hash function is a one-way function that converts data of any length into a fixed-length hash value.
           The same input always produces the same hash, but recovering the original from the hash is impossible.
-          It plays a critical role in file integrity verification, password storage, digital signatures, and blockchain.
+          It is widely used for file integrity verification, password storage, digital signatures, and blockchain.
           This tool supports MD5, SHA-1, SHA-256, SHA-384, and SHA-512 algorithms.
         </p>
       </section>

@@ -172,7 +172,7 @@ function SeoContent() {
             This tool leverages <code>crypto.getRandomValues</code>, which is a cryptographically secure pseudo-random number generator (CSPRNG) provided by the browser.
             This is fundamentally different from <code>Math.random()</code>, a basic pseudo-random number generator (PRNG).
             With PRNG, knowing the internal seed state allows an attacker to predict future outputs, whereas CSPRNG relies on OS-level entropy sources that make prediction practically infeasible.
-            However, securely transmitting and storing the generated strings remains your responsibility.
+            However, how you transmit and store these strings is up to you.
             Always hash passwords with algorithms like bcrypt or Argon2 before storing them, manage API keys through environment variables, and never share sensitive strings in plaintext.
           </p>
         </div>

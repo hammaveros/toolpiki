@@ -89,7 +89,7 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔧 What Is a Line Break Remover?</h2>
         <p className="text-sm leading-relaxed">
           A line break remover is a tool that strips or converts newline characters from text, turning multi-line content into a clean single-line or properly formatted output.
-          When you copy text from PDFs, emails, or web pages, unwanted line breaks often sneak in and break the flow of your content.
+          When you copy text from PDFs, emails, or web pages, unwanted line breaks can disrupt the flow of your content.
           These stray line breaks can cause formatting issues in documents, code editors, spreadsheets, and messaging apps.
           This tool offers four distinct modes — line breaks to spaces, remove all whitespace, normalize whitespace, and remove empty lines — so you can pick the right cleanup strategy for any situation.
         </p>

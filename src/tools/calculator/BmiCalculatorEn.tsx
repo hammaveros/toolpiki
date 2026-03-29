@@ -200,7 +200,7 @@ function SeoContent() {
         </h2>
         <p className="text-sm leading-relaxed">
           BMI (Body Mass Index) is an international standard metric that measures body fat based on height and weight ratio.
-          It is calculated by dividing weight (kg) by the square of height (m), and is the obesity assessment standard recommended by the WHO.
+          It is calculated by dividing weight (kg) by the square of height (m), and is the screening tool recommended by the WHO.
           This calculator computes your BMI from entered height and weight, showing your normal weight range and ideal weight.
           A visual BMI range chart helps you understand your current health status at a glance.
         </p>

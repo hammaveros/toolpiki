@@ -229,7 +229,7 @@ function SeoContent() {
         <p className="text-sm leading-relaxed">
           Image resizing changes the resolution (width × height in pixels) of photos or graphics.
           You can scale images while maintaining aspect ratio or adjust to specific dimensions for social media.
-          Common uses include website loading optimization, social media formatting, thumbnail creation, and reducing email attachment sizes.
+          Common uses include optimizing images for faster website loading, social media formatting, thumbnail creation, and reducing email attachment sizes.
           All processing happens in your browser — images are never sent to any server.
         </p>
       </section>

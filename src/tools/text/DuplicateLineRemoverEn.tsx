@@ -131,7 +131,7 @@ function SeoContent() {
         <div className="text-sm leading-relaxed space-y-2">
           <p><strong>Server Log Cleanup:</strong> When the same error messages or request logs repeat, removing duplicates helps you quickly identify the core issues without scrolling through redundant entries.</p>
           <p><strong>Email and Contact Lists:</strong> After merging contacts from multiple sources, use this tool to eliminate duplicate email addresses or phone numbers in one step.</p>
-          <p><strong>Data Refinement:</strong> When working with CSV or plain text data that contains repeated rows, extract only unique values to create a clean dataset ready for analysis.</p>
+          <p><strong>Data Cleaning:</strong> When working with CSV or plain text data that contains repeated rows, extract only unique values to create a clean dataset ready for analysis.</p>
           <p><strong>Code Cleanup:</strong> Quickly find and remove accidentally duplicated import statements, configuration values, or list items in your source code.</p>
         </div>
       </section>

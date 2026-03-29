@@ -491,7 +491,7 @@ function SeoContent() {
         </h2>
         <p className="text-sm leading-relaxed">
           Text diff is a technique for comparing two pieces of text line by line to identify what has been
-          added, removed, or modified. Originating from the Unix diff command, this concept has become
+          added, removed, or modified. Based on the Unix diff command, this concept has become
           fundamental in software development, document management, and content editing. This tool lets you
           perform instant text comparisons directly in your browser with no installation or sign-up required,
           and all processing happens locally on your device.

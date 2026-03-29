@@ -376,7 +376,7 @@ function SeoContent() {
         </h2>
         <p className="text-sm leading-relaxed">
           A character counter is a tool that instantly calculates the number of characters, words, sentences,
-          paragraphs, and bytes in your text. It is essential for checking platform character limits like
+          paragraphs, and bytes in your text. It's essential for checking platform character limits like
           Twitter (280 characters), Instagram captions (2,200 characters), and YouTube titles (100 characters).
           It also helps optimize SEO meta tags by ensuring your title stays under 60 characters
           and your description within 155-160 characters.

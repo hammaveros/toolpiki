@@ -266,7 +266,7 @@ function SeoContent() {
         </h2>
         <p className="text-sm leading-relaxed">
           Date Calculator computes the duration between two dates or adds/subtracts days from a specific date.
-          Use it for D-day countdowns, project deadlines, contract periods, and travel planning.
+          Use it for event countdowns, project deadlines, contract periods, and travel planning.
           Results are shown in multiple formats: days, weeks, hours, and years/months/days breakdown.
           Quick buttons let you apply common intervals (7, 30, 90 days) with one click.
         </p>
@@ -286,7 +286,7 @@ function SeoContent() {
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">D-day countdown</td><td>Date Difference</td><td>Days until exam/wedding?</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Event countdown</td><td>Date Difference</td><td>Days until exam/wedding?</td></tr>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Contract expiry</td><td>Add Days</td><td>365 days from today?</td></tr>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Employment period</td><td>Date Difference</td><td>Days since start date</td></tr>
               <tr><td className="py-2 px-2 font-medium">Backward planning</td><td>Subtract Days</td><td>When to book 30 days before trip?</td></tr>

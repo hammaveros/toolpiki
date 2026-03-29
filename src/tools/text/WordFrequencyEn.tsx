@@ -222,7 +222,7 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📊 What Is Word Frequency Analysis?</h2>
         <p className="text-sm leading-relaxed">
           Word frequency analysis is a fundamental text mining technique that counts how many times each word appears in a given text and ranks them by occurrence.
-          It allows you to quickly identify the core topics, recurring themes, and dominant keywords within any document.
+          It allows you to quickly identify the core topics, recurring themes, and most-used keywords within any document.
           This tool is applicable to a wide range of content including blog posts, academic papers, marketing copy, news articles, and social media data.
           With options like minimum word length filtering, case-insensitive matching, and flexible sorting, you can fine-tune the analysis to get exactly the insights you need.
         </p>
@@ -234,7 +234,7 @@ function SeoContent() {
           <li><strong>SEO Keyword Analysis</strong> — Check whether your target keywords appear at an optimal density in your web content. Too few mentions may hurt search visibility, while excessive repetition can trigger keyword-stuffing penalties.</li>
           <li><strong>Academic Research</strong> — Identify the most frequently used terms in research papers, theses, or reports to verify that the writing stays focused on the intended subject.</li>
           <li><strong>Text Mining &amp; Data Analysis</strong> — Extract commonly mentioned words from customer reviews, survey responses, or social media comments to uncover trends and public sentiment.</li>
-          <li><strong>Writing Improvement</strong> — Detect overused words and repetitive phrasing in your drafts. A higher ratio of unique words to total words generally indicates richer, more engaging writing.</li>
+          <li><strong>Writing Improvement</strong> — Detect overused words and repetitive phrasing in your drafts. A higher ratio of unique words to total words may indicate richer, more engaging writing.</li>
           <li><strong>Language Learning</strong> — Discover the most common vocabulary in foreign-language texts to prioritize which words to study first for maximum reading comprehension.</li>
         </ul>
       </section>

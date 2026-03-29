@@ -381,8 +381,8 @@ function SeoContent() {
         </h2>
         <p className="text-sm leading-relaxed">
           Image compression reduces file size while minimizing visible quality loss.
-          Methods include lossy (JPEG) and lossless (PNG) compression, with modern WebP offering both benefits.
-          Essential for improving website loading speeds, saving cloud storage, and meeting email/messenger size limits.
+          Methods include lossy (JPEG) and lossless (PNG) compression, with modern WebP offering the best of both worlds.
+          Essential for improving website loading speeds, saving cloud storage, and meeting email and messaging app size limits.
           Supports batch compression for processing multiple images at once.
         </p>
       </section>

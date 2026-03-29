@@ -396,7 +396,7 @@ function SeoContent() {
             answer: 'Fixed principal results in less total interest, but has higher initial payments. Choose fixed payment for stable budgeting, fixed principal if you can afford higher early payments.',
           },
           {
-            question: 'Why might actual loan amounts differ from calculated results?',
+            question: 'Why might actual loan payments differ from calculated results?',
             answer: 'Real loans may include additional costs like origination fees, closing costs, PMI, and prepayment penalties. Contact your lender for exact figures.',
           },
           {

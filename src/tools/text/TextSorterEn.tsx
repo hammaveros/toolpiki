@@ -138,7 +138,7 @@ function SeoContent() {
           <li><strong>Ascending (A to Z)</strong> — Sorts lines in alphabetical order. Perfect for organizing name lists, glossaries, bibliographies, and reference materials.</li>
           <li><strong>Descending (Z to A)</strong> — Sorts lines in reverse alphabetical order. Useful for reverse indexes or when you need the opposite of standard alphabetical sorting.</li>
           <li><strong>By Length (Short to Long / Long to Short)</strong> — Sorts lines based on character count. Great for data analysis, identifying outliers, or reviewing UI string lengths.</li>
-          <li><strong>Random Shuffle</strong> — Randomizes the order of all lines. Ideal for creating random sequences, shuffling quiz questions, assigning presentation order, or running simple lotteries.</li>
+          <li><strong>Random Shuffle</strong> — Randomizes the order of all lines. Ideal for creating random sequences, shuffling quiz questions, assigning presentation order, or drawing names for a giveaway.</li>
           <li><strong>Reverse</strong> — Flips the current order of lines without any alphabetical sorting. Handy when you want to read a list from bottom to top.</li>
         </ul>
       </section>

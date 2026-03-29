@@ -343,14 +343,14 @@ function SeoContent() {
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
           This tool estimates how long it takes to read or present a given piece of text based on average reading and speaking speeds.
           The average adult reads at approximately 200 to 250 words per minute (WPM), while speaking rates during presentations are typically 120 to 180 WPM due to natural pauses, emphasis, and audience interaction.
-          Three modes are available: text input for direct measurement, slide calculator for estimating presentation duration from slide count, and target time for reverse-calculating how many words you need for a specific time slot.
+          Three modes are available: text input for direct measurement, slide calculator for estimating presentation duration from slide count, and target time for working backwards to calculate how many words you need for a specific time slot.
         </p>
       </div>
 
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Use Cases</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Content creators and bloggers can optimize article length for reader engagement. Research suggests that the ideal blog post length is around 1,000 to 2,000 words, roughly a 5 to 10 minute read.
+          Content creators and bloggers can optimize article length for better readability. Research suggests that the ideal blog post length is around 1,000 to 2,000 words, roughly a 5 to 10 minute read.
           Public speakers can use the slide calculator to plan presentations by entering their slide count and time per slide.
           The target time feature helps when you know your time slot (e.g., a 15-minute talk) and need to figure out how long your script should be.
           Students, podcast scriptwriters, and YouTube creators can also benefit from planning content length to fit intended time slots.
