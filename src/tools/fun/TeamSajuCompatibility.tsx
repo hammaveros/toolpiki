@@ -256,6 +256,7 @@ interface PairResult {
 // ========================================
 
 export function TeamSajuCompatibility() {
+  const [isSample, setIsSample] = useState(true);
   const [teamName, setTeamName] = useState('우리팀');
   const [members, setMembers] = useState<Member[]>([
     { id: '1', name: '김민수', birthDate: '1995-03-14' },
@@ -312,8 +313,15 @@ export function TeamSajuCompatibility() {
   }, [members.length]);
 
   const updateMember = useCallback((id: string, field: 'name' | 'birthDate', value: string) => {
+    if (isSample) {
+      // 샘플 상태에서 입력 시작하면 → 해당 멤버만 남기고 나머지 비우기
+      setIsSample(false);
+      setTeamName('');
+      setMembers(prev => prev.map(m => m.id === id ? { ...m, [field]: value } : { ...m, name: '', birthDate: '' }));
+      return;
+    }
     setMembers(prev => prev.map(m => m.id === id ? { ...m, [field]: value } : m));
-  }, []);
+  }, [isSample]);
 
   const validMembers = useMemo(() => members.filter(m => m.name.trim() && m.birthDate), [members]);
 
@@ -472,6 +480,7 @@ export function TeamSajuCompatibility() {
                 setMembers(samples.map((s, i) => ({ id: String(Date.now() + i), ...s })));
                 setTeamName('우리팀');
                 setResults(null);
+                setIsSample(false);
               }}
               className="text-xs px-3 py-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
@@ -762,10 +771,10 @@ export function TeamSajuCompatibility() {
               variant="secondary"
               onClick={() => {
                 setResults(null);
+                setIsSample(false);
                 setMembers([
                   { id: String(Date.now()), name: '', birthDate: '' },
                   { id: String(Date.now() + 1), name: '', birthDate: '' },
-                  { id: String(Date.now() + 2), name: '', birthDate: '' },
                 ]);
                 setTeamName('');
                 setSelectedMember(null);
