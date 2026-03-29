@@ -300,7 +300,7 @@ export function TeamSajuCompatibility() {
   }, []);
 
   const addMember = useCallback(() => {
-    if (members.length >= 10) return;
+    if (members.length >= 20) return;
     setMembers(prev => [...prev, { id: String(Date.now()), name: '', birthDate: '' }]);
   }, [members.length]);
 
@@ -455,12 +455,12 @@ export function TeamSajuCompatibility() {
 
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
-            구성원 ({members.length}/10)
+            구성원 ({members.length}/20)
           </h3>
           <Button
             variant="secondary"
             onClick={addMember}
-            disabled={members.length >= 10}
+            disabled={members.length >= 20}
             className="text-xs px-3 py-1"
           >
             + 추가
@@ -771,7 +771,7 @@ function SeoContent() {
         </h2>
         <p className="text-sm leading-relaxed">
           팀 사주 궁합은 여러 명의 사주를 한번에 분석하여 팀 내 모든 조합의 궁합을 확인하는 도구입니다.
-          최대 10명까지 참여할 수 있으며, 각 구성원의 일간 오행, 띠, 사주 정보를 바탕으로
+          최대 20명까지 참여할 수 있으며, 각 구성원의 일간 오행, 띠, 사주 정보를 바탕으로
           모든 1:1 조합의 궁합 점수를 계산합니다. 팀 전체의 오행 균형도 함께 확인할 수 있어
           조별 과제, 프로젝트 팀, 동아리, 회사 팀 구성 등에서 재미로 활용할 수 있습니다.
         </p>
@@ -792,7 +792,7 @@ function SeoContent() {
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: '최대 몇 명까지 분석할 수 있나요?', answer: '최대 10명까지 분석 가능합니다. 10명이면 45개의 1:1 조합이 계산됩니다.' },
+          { question: '최대 몇 명까지 분석할 수 있나요?', answer: '최대 20명까지 분석 가능합니다. 20명이면 190개의 1:1 조합이 계산됩니다.' },
           { question: '공유 링크로 다른 사람도 볼 수 있나요?', answer: '네, 공유 링크에 구성원 정보가 포함되어 있어 링크를 받은 사람도 같은 결과를 볼 수 있습니다.' },
           { question: '사주 궁합 결과를 실제로 믿어도 되나요?', answer: '재미와 오락 목적의 도구입니다. 실제 팀 구성은 능력, 성격, 경험 등을 종합적으로 고려하세요.' },
         ]}
