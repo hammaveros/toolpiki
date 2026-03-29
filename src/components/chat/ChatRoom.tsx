@@ -66,8 +66,8 @@ export function ChatRoom() {
     const q = query(
       collection(db, 'messages'),
       where('createdAt', '>', twentyFourHoursAgo),
-      orderBy('createdAt', 'asc'),
-      limit(100),
+      orderBy('createdAt', 'desc'),
+      limit(50),
     );
 
     const unsub = onSnapshot(q, (snapshot) => {
@@ -75,7 +75,7 @@ export function ChatRoom() {
       snapshot.forEach((d) => {
         msgs.push({ id: d.id, ...d.data() } as Message);
       });
-      setMessages(msgs);
+      setMessages(msgs.reverse()); // desc로 받아서 역순 → 시간순
       setFirebaseError(false);
     }, () => {
       setFirebaseError(true);
