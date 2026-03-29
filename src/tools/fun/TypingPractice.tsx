@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useMemo, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqSection } from '@/components/ui/FaqItem';
@@ -24,23 +24,51 @@ const PRACTICE_TEXTS = [
   '완벽함을 추구하기보다 꾸준히 발전하는 것이 더 중요합니다. 오늘의 나보다 내일의 내가 더 나아지면 됩니다.',
 ];
 
+interface RoundResult {
+  wpm: number;
+  accuracy: number;
+  length: number;
+}
+
 export function TypingPractice() {
   const [practiceText, setPracticeText] = useState('');
   const [practiceInput, setPracticeInput] = useState('');
   const [practiceStartTime, setPracticeStartTime] = useState<number | null>(null);
   const [practiceComplete, setPracticeComplete] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [history, setHistory] = useState<RoundResult[]>([]);
+  const [usedIndexes, setUsedIndexes] = useState<Set<number>>(new Set());
 
   const practiceInputRef = useRef<HTMLTextAreaElement>(null);
 
+  // 다음 문장 (중복 방지)
+  const getNextText = () => {
+    let available = PRACTICE_TEXTS.map((_, i) => i).filter((i) => !usedIndexes.has(i));
+    if (available.length === 0) {
+      setUsedIndexes(new Set());
+      available = PRACTICE_TEXTS.map((_, i) => i);
+    }
+    const idx = available[Math.floor(Math.random() * available.length)];
+    setUsedIndexes((prev) => new Set(prev).add(idx));
+    return PRACTICE_TEXTS[idx];
+  };
+
   // 연습 시작
   const startPractice = () => {
-    const randomText = PRACTICE_TEXTS[Math.floor(Math.random() * PRACTICE_TEXTS.length)];
-    setPracticeText(randomText);
+    setPracticeText(getNextText());
     setPracticeInput('');
     setPracticeStartTime(null);
     setPracticeComplete(false);
     setIsPlaying(true);
+    setTimeout(() => practiceInputRef.current?.focus(), 100);
+  };
+
+  // 다음 문장으로
+  const nextSentence = () => {
+    setPracticeText(getNextText());
+    setPracticeInput('');
+    setPracticeStartTime(null);
+    setPracticeComplete(false);
     setTimeout(() => practiceInputRef.current?.focus(), 100);
   };
 
@@ -61,8 +89,7 @@ export function TypingPractice() {
   // 타수 계산
   const practiceTypingSpeed = useMemo(() => {
     if (!practiceStartTime || practiceInput.length === 0) return 0;
-    const endTime = practiceComplete ? Date.now() : Date.now();
-    const minutes = (endTime - practiceStartTime) / 60000;
+    const minutes = (Date.now() - practiceStartTime) / 60000;
     if (minutes < 0.05) return 0;
     return Math.round(practiceInput.length / minutes);
   }, [practiceStartTime, practiceInput, practiceComplete]);
@@ -77,20 +104,36 @@ export function TypingPractice() {
     return Math.round((correct / practiceInput.length) * 100);
   }, [practiceInput, practiceText]);
 
+  // 완료 시 기록 저장 + 즉시 다음 문장
+  useEffect(() => {
+    if (!practiceComplete) return;
+    setHistory((prev) => [...prev, {
+      wpm: practiceTypingSpeed,
+      accuracy: practiceAccuracy,
+      length: practiceText.length,
+    }]);
+    nextSentence();
+  }, [practiceComplete]);
+
+  // 누적 통계
+  const totalStats = useMemo(() => {
+    if (history.length === 0) return null;
+    const totalChars = history.reduce((s, r) => s + r.length, 0);
+    const avgWpm = Math.round(history.reduce((s, r) => s + r.wpm, 0) / history.length);
+    const avgAcc = Math.round(history.reduce((s, r) => s + r.accuracy, 0) / history.length);
+    return { rounds: history.length, totalChars, avgWpm, avgAcc };
+  }, [history]);
+
   // 글자별 색상 표시
   const renderPracticeText = () => {
     return practiceText.split('').map((char, i) => {
-      let className = 'text-gray-400'; // 아직 입력 안 됨
+      let className = 'text-gray-400';
       if (i < practiceInput.length) {
         className = practiceInput[i] === char
           ? 'text-green-600 dark:text-green-400'
           : 'text-red-500 dark:text-red-400 bg-red-100 dark:bg-red-900/30';
       }
-      return (
-        <span key={i} className={className}>
-          {char}
-        </span>
-      );
+      return <span key={i} className={className}>{char}</span>;
     });
   };
 
@@ -103,8 +146,8 @@ export function TypingPractice() {
             <h2 className="text-xl font-bold mb-4">긴 글 타자 연습</h2>
             <div className="text-sm text-gray-500 mb-6 space-y-1">
               <p>랜덤 문장이 제시됩니다</p>
-              <p>정확하게 따라 입력하세요</p>
-              <p>실시간으로 타수와 정확도가 표시됩니다</p>
+              <p>완료하면 자동으로 다음 문장이 나옵니다</p>
+              <p>문장별 타수와 누적 통계가 표시됩니다</p>
             </div>
             <Button onClick={startPractice} className="text-lg px-8 py-3">
               연습 시작
@@ -116,6 +159,16 @@ export function TypingPractice() {
       {/* 연습 진행 중 */}
       {isPlaying && (
         <>
+          {/* 누적 통계 */}
+          {totalStats && (
+            <div className="flex justify-center gap-4 text-xs text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800/50 rounded-lg px-3 py-2">
+              <span>📝 {totalStats.rounds}문장</span>
+              <span>⌨️ 평균 {totalStats.avgWpm}타/분</span>
+              <span>🎯 평균 {totalStats.avgAcc}%</span>
+              <span>📊 총 {totalStats.totalChars}자</span>
+            </div>
+          )}
+
           <div className="flex justify-between items-center text-sm mb-2">
             <span>타수: <strong className="text-green-600">{practiceTypingSpeed}</strong>/분</span>
             <span>정확도: <strong className="text-blue-600">{practiceAccuracy}%</strong></span>
@@ -139,17 +192,9 @@ export function TypingPractice() {
             disabled={practiceComplete}
           />
 
-          {practiceComplete && (
+          {false && practiceComplete && (
             <Card variant="bordered" className="p-4 text-center bg-green-50 dark:bg-green-900/20">
               <p className="text-xl font-bold text-green-600 mb-2">완료!</p>
-              <div className="flex justify-center gap-6 text-sm">
-                <span>최종 타수: <strong>{practiceTypingSpeed}</strong>/분</span>
-                <span>정확도: <strong>{practiceAccuracy}%</strong></span>
-              </div>
-              <div className="flex justify-center gap-3 mt-4">
-                <Button onClick={startPractice}>다른 문장</Button>
-                <Button variant="secondary" onClick={() => setIsPlaying(false)}>처음으로</Button>
-              </div>
             </Card>
           )}
 
@@ -165,9 +210,9 @@ export function TypingPractice() {
       {!isPlaying && (
         <div className="text-xs text-gray-400 dark:text-gray-500 space-y-1">
           <p>• 제시된 문장을 정확하게 따라 입력하세요</p>
-          <p>• 실시간으로 타수(분당 글자 수)가 측정됩니다</p>
+          <p>• 완료하면 3초 후 자동으로 다음 문장이 나옵니다</p>
+          <p>• 문장별 타수와 누적 평균이 표시됩니다</p>
           <p>• 틀린 글자는 빨간색으로 표시됩니다</p>
-          <p>• 정확도와 속도를 함께 향상시켜보세요</p>
         </div>
       )}
 
@@ -190,59 +235,12 @@ function SeoContent() {
         </p>
       </section>
 
-      <section>
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          📊 타수 기준 안내
-        </h2>
-        <div className="text-sm leading-relaxed">
-          <div className="grid grid-cols-2 gap-2">
-            <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-              <p className="font-medium">초급</p>
-              <p className="text-xs text-gray-500">100~200타/분</p>
-            </div>
-            <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-              <p className="font-medium">중급</p>
-              <p className="text-xs text-gray-500">200~350타/분</p>
-            </div>
-            <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-              <p className="font-medium">고급</p>
-              <p className="text-xs text-gray-500">350~500타/분</p>
-            </div>
-            <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
-              <p className="font-medium">전문가</p>
-              <p className="text-xs text-gray-500">500타/분 이상</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          💡 효과적인 연습 방법
-        </h2>
-        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>처음에는 정확도 95% 이상을 유지하며 천천히 연습하세요</li>
-          <li>틀린 글자가 나오면 해당 키 위치를 의식적으로 확인하세요</li>
-          <li>하루 10분이라도 매일 꾸준히 하는 것이 집중적으로 하는 것보다 효과적입니다</li>
-          <li>다양한 문장을 연습하면 특정 글자 조합에 익숙해집니다</li>
-        </ul>
-      </section>
-
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          {
-            question: '타이핑 연습과 타이핑 게임의 차이는 무엇인가요?',
-            answer: '타이핑 연습은 실제 문장을 따라 치며 실력을 측정하는 데 초점을 맞추고, 타이핑 게임은 서바이벌, 타임어택 등 재미 요소를 통해 연습하는 방식입니다.',
-          },
-          {
-            question: '한글 타수는 어떻게 계산되나요?',
-            answer: '한글은 자음과 모음의 조합으로 이루어지므로, 분당 입력한 총 글자 수(타)를 기준으로 측정됩니다.',
-          },
-          {
-            question: '정확도가 낮으면 어떻게 해야 하나요?',
-            answer: '속도를 낮추고 정확도를 먼저 높이세요. 정확도 95% 이상을 유지하면서 점차 속도를 올리는 것이 가장 효과적인 방법입니다.',
-          },
+          { question: '평균 타수가 어느 정도면 빠른 건가요?', answer: '일반적으로 분당 300타 이상이면 빠른 편이고, 400타 이상이면 매우 빠른 수준입니다.' },
+          { question: '정확도와 속도 중 뭐가 더 중요한가요?', answer: '처음에는 정확도를 먼저 높이세요. 정확하게 칠 수 있게 되면 속도는 자연스럽게 따라옵니다.' },
+          { question: '매일 얼마나 연습하면 좋나요?', answer: '하루 10~20분이면 충분합니다. 짧더라도 매일 꾸준히 하는 것이 효과적입니다.' },
         ]}
       />
     </div>

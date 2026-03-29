@@ -15,8 +15,8 @@ interface RoundResult {
 }
 
 const TOTAL_ROUNDS = 5;
-const MIN_DELAY = 800;
-const MAX_DELAY = 2500;
+const MIN_DELAY = 400;
+const MAX_DELAY = 2000;
 
 function getSecureRandomDelay(): number {
   if (typeof window !== 'undefined' && window.crypto) {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useMemo, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqSection } from '@/components/ui/FaqItem';
@@ -30,13 +30,22 @@ export function TypingPracticeEn() {
   const [practiceStartTime, setPracticeStartTime] = useState<number | null>(null);
   const [practiceComplete, setPracticeComplete] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [history, setHistory] = useState<Array<{ wpm: number; accuracy: number; length: number }>>([]);
+  const [usedIndexes, setUsedIndexes] = useState<Set<number>>(new Set());
 
   const practiceInputRef = useRef<HTMLTextAreaElement>(null);
 
+  const getNextText = () => {
+    let available = PRACTICE_TEXTS.map((_, i) => i).filter((i) => !usedIndexes.has(i));
+    if (available.length === 0) { setUsedIndexes(new Set()); available = PRACTICE_TEXTS.map((_, i) => i); }
+    const idx = available[Math.floor(Math.random() * available.length)];
+    setUsedIndexes((prev) => new Set(prev).add(idx));
+    return PRACTICE_TEXTS[idx];
+  };
+
   // Start practice
   const startPractice = () => {
-    const randomText = PRACTICE_TEXTS[Math.floor(Math.random() * PRACTICE_TEXTS.length)];
-    setPracticeText(randomText);
+    setPracticeText(getNextText());
     setPracticeInput('');
     setPracticeStartTime(null);
     setPracticeComplete(false);
@@ -87,6 +96,37 @@ export function TypingPracticeEn() {
     return Math.round((correct / practiceInput.length) * 100);
   }, [practiceInput, practiceText]);
 
+  const [countdown, setCountdown] = useState(0);
+
+  // Auto-next on complete + save history
+  useEffect(() => {
+    if (!practiceComplete) return;
+    setHistory((prev) => [...prev, { wpm: practiceWpm, accuracy: practiceAccuracy, length: practiceText.length }]);
+    setCountdown(3);
+    const interval = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          setPracticeText(getNextText()); setPracticeInput(''); setPracticeStartTime(null); setPracticeComplete(false);
+          setTimeout(() => practiceInputRef.current?.focus(), 100);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [practiceComplete]);
+
+  const totalStats = useMemo(() => {
+    if (history.length === 0) return null;
+    return {
+      rounds: history.length,
+      totalChars: history.reduce((s, r) => s + r.length, 0),
+      avgWpm: Math.round(history.reduce((s, r) => s + r.wpm, 0) / history.length),
+      avgAcc: Math.round(history.reduce((s, r) => s + r.accuracy, 0) / history.length),
+    };
+  }, [history]);
+
   // Render text with colors
   const renderPracticeText = () => {
     return practiceText.split('').map((char, i) => {
@@ -126,6 +166,14 @@ export function TypingPracticeEn() {
       {/* Practice in progress */}
       {isPlaying && (
         <>
+          {totalStats && (
+            <div className="flex justify-center gap-4 text-xs text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800/50 rounded-lg px-3 py-2">
+              <span>📝 {totalStats.rounds} sentences</span>
+              <span>⌨️ Avg {totalStats.avgWpm} WPM</span>
+              <span>🎯 Avg {totalStats.avgAcc}%</span>
+              <span>📊 {totalStats.totalChars} chars</span>
+            </div>
+          )}
           <div className="flex justify-between items-center text-sm mb-2">
             <span>WPM: <strong className="text-green-600">{practiceWpm}</strong></span>
             <span>Accuracy: <strong className="text-blue-600">{practiceAccuracy}%</strong></span>
@@ -153,13 +201,13 @@ export function TypingPracticeEn() {
             <Card variant="bordered" className="p-4 text-center bg-green-50 dark:bg-green-900/20">
               <p className="text-xl font-bold text-green-600 mb-2">Complete!</p>
               <div className="flex justify-center gap-6 text-sm">
-                <span>Final WPM: <strong>{practiceWpm}</strong></span>
-                <span>CPM: <strong>{practiceTypingSpeed}</strong></span>
+                <span>WPM: <strong>{practiceWpm}</strong></span>
                 <span>Accuracy: <strong>{practiceAccuracy}%</strong></span>
               </div>
-              <div className="flex justify-center gap-3 mt-4">
-                <Button onClick={startPractice}>Try Another</Button>
-                <Button variant="secondary" onClick={() => setIsPlaying(false)}>Back</Button>
+              <p className="text-xs text-gray-400 mt-2">Next sentence in 3 seconds...</p>
+              <div className="flex justify-center gap-3 mt-3">
+                <Button onClick={() => { setPracticeText(getNextText()); setPracticeInput(''); setPracticeStartTime(null); setPracticeComplete(false); setTimeout(() => practiceInputRef.current?.focus(), 100); }}>Next →</Button>
+                <Button variant="secondary" onClick={() => setIsPlaying(false)}>Stop</Button>
               </div>
             </Card>
           )}

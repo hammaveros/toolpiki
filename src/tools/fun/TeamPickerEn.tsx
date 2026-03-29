@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -13,6 +13,47 @@ interface Team {
   members: string[];
 }
 
+type ViewMode = 'instant' | 'animated';
+type AnimSpeed = 'fast' | 'slow';
+
+// Seeded PRNG (mulberry32)
+function mulberry32(seed: number) {
+  return function () {
+    let t = (seed += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Seeded shuffle (Fisher-Yates)
+function seededShuffle<T>(arr: T[], rng: () => number): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Deterministic team division from seed + inputs
+function divideWithSeed(members: string[], teamCount: number, seed: number): Team[] {
+  const rng = mulberry32(seed);
+  const shuffled = seededShuffle(members, rng);
+  const teams: Team[] = Array.from({ length: teamCount }, (_, i) => ({
+    name: `Team ${i + 1}`,
+    members: [],
+  }));
+  const assignments = shuffled.map((name, idx) => ({ name, teamIdx: idx % teamCount }));
+  const shuffledAssignments = seededShuffle(assignments, rng);
+  shuffledAssignments.forEach(({ name, teamIdx }) => {
+    teams[teamIdx].members.push(name);
+  });
+  return teams;
+}
+
+const STORAGE_KEY = 'team-picker-names-en';
+
 export function TeamPickerEn() {
   const [namesInput, setNamesInput] = useState('');
   const [teamCount, setTeamCount] = useState(2);
@@ -20,10 +61,31 @@ export function TeamPickerEn() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const allTeamsRef = useRef<HTMLDivElement>(null);
+
+  // Animation mode state
+  const [viewMode, setViewMode] = useState<ViewMode>('animated');
+  const [animSpeed, setAnimSpeed] = useState<AnimSpeed>('fast');
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [animatedTeams, setAnimatedTeams] = useState<Team[]>([]);
+  const [currentAssigning, setCurrentAssigning] = useState<{ name: string; teamIdx: number } | null>(null);
+  const [assignedCount, setAssignedCount] = useState(0);
+  const [totalToAssign, setTotalToAssign] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
+  const [currentSeed, setCurrentSeed] = useState<number | null>(null);
+  const animTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const allTeamsRef = useRef<HTMLDivElement>(null);
   const restoredFromShare = useRef(false);
 
+  // Load from localStorage
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      setNamesInput(saved);
+    }
+  }, []);
+
+  // Parse input + save to localStorage
   useEffect(() => {
     const parsed = namesInput
       .split(/[,\n]/)
@@ -36,9 +98,27 @@ export function TeamPickerEn() {
       setTeams([]);
     }
     setError(null);
+
+    if (typeof window !== 'undefined' && namesInput.trim()) {
+      localStorage.setItem(STORAGE_KEY, namesInput);
+    }
   }, [namesInput]);
 
-  const divideTeams = () => {
+  // Clear animation timer
+  const clearAnimTimer = useCallback(() => {
+    if (animTimerRef.current) {
+      clearTimeout(animTimerRef.current);
+      animTimerRef.current = null;
+    }
+  }, []);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => clearAnimTimer();
+  }, [clearAnimTimer]);
+
+  // Divide teams (with optional seed for replay)
+  const divideTeams = (forceSeed?: number) => {
     if (names.length < 2) {
       setError('Please enter at least 2 names');
       return;
@@ -53,32 +133,95 @@ export function TeamPickerEn() {
     }
 
     setError(null);
-    setIsLoading(true);
+    clearAnimTimer();
     setTeams([]);
+    setCurrentAssigning(null);
 
-    setTimeout(() => {
-      const shuffled = [...names].sort(() => Math.random() - 0.5);
-      const newTeams: Team[] = [];
-      for (let i = 0; i < teamCount; i++) {
-        newTeams.push({
-          name: `Team ${i + 1}`,
-          members: [],
-        });
-      }
+    const seed = forceSeed ?? Date.now();
+    setCurrentSeed(seed);
 
-      // Shuffle assignment order after even distribution for unpredictability
-      const assignments: Array<{ name: string; teamIdx: number }> = shuffled.map((name, idx) => ({
-        name,
-        teamIdx: idx % teamCount,
-      }));
-      const shuffledAssignments: Array<{ name: string; teamIdx: number }> = [...assignments].sort(() => Math.random() - 0.5);
-      shuffledAssignments.forEach(({ name, teamIdx }) => {
-        newTeams[teamIdx].members.push(name);
+    // Use seeded RNG for deterministic results
+    const rng = mulberry32(seed);
+    const shuffled = seededShuffle([...names], rng);
+
+    const newTeams: Team[] = [];
+    for (let i = 0; i < teamCount; i++) {
+      newTeams.push({
+        name: `Team ${i + 1}`,
+        members: [],
       });
+    }
 
-      setTeams(newTeams);
-      setIsLoading(false);
-    }, 1500);
+    const assignments: Array<{ name: string; teamIdx: number }> = shuffled.map((name, idx) => ({
+      name,
+      teamIdx: idx % teamCount,
+    }));
+    const shuffledAssignments = seededShuffle(assignments, rng);
+
+    if (viewMode === 'instant') {
+      setIsLoading(true);
+      setTimeout(() => {
+        shuffledAssignments.forEach(({ name, teamIdx }) => {
+          newTeams[teamIdx].members.push(name);
+        });
+        setTeams(newTeams);
+        setIsLoading(false);
+      }, 800);
+    } else {
+      setIsAnimating(true);
+      setAnimatedTeams(newTeams);
+      setAssignedCount(0);
+      setTotalToAssign(shuffledAssignments.length);
+
+      const delay = animSpeed === 'fast' ? 800 : 1800;
+
+      const assignNext = (idx: number, currentTeams: Team[]) => {
+        if (idx >= shuffledAssignments.length) {
+          setCurrentAssigning(null);
+          setIsAnimating(false);
+          setTeams(currentTeams);
+          setAnimatedTeams([]);
+          return;
+        }
+
+        const name: string = shuffledAssignments[idx].name;
+        const teamIdx: number = shuffledAssignments[idx].teamIdx;
+
+        setCurrentAssigning({ name, teamIdx });
+
+        animTimerRef.current = setTimeout(() => {
+          const updated: Team[] = currentTeams.map((team, i) =>
+            i === teamIdx
+              ? { ...team, members: [...team.members, name] }
+              : team
+          );
+          setAnimatedTeams(updated);
+          setCurrentAssigning(null);
+          setAssignedCount(idx + 1);
+
+          animTimerRef.current = setTimeout(() => {
+            assignNext(idx + 1, updated);
+          }, delay * 0.3);
+        }, delay * 0.7);
+      };
+
+      animTimerRef.current = setTimeout(() => {
+        assignNext(0, newTeams);
+      }, 500);
+    }
+  };
+
+  // Skip animation (same seed -> same result)
+  const skipAnimation = () => {
+    clearAnimTimer();
+    setCurrentAssigning(null);
+    setIsAnimating(false);
+
+    if (currentSeed !== null) {
+      const result = divideWithSeed(names, teamCount, currentSeed);
+      setTeams(result);
+    }
+    setAnimatedTeams([]);
   };
 
   const updateTeamName = (idx: number, newName: string) => {
@@ -101,9 +244,10 @@ export function TeamPickerEn() {
     setError(null);
   };
 
+  // Share URL (seed-based for reproducibility)
   const getShareUrl = () => {
-    if (teams.length === 0) return '';
-    const data = { teams };
+    if (teams.length === 0 || currentSeed === null) return '';
+    const data = { s: currentSeed, m: names, t: teamCount };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
@@ -291,7 +435,7 @@ export function TeamPickerEn() {
     }
   };
 
-
+  // Restore from share URL (seed-based replay)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const hash = window.location.hash;
@@ -299,7 +443,22 @@ export function TeamPickerEn() {
       try {
         const decoded = decodeURIComponent(atob(hash.slice(7)));
         const parsed = JSON.parse(decoded);
-        if (parsed.teams && Array.isArray(parsed.teams)) {
+
+        // New seed-based format: { s: seed, m: members[], t: teamCount }
+        if (parsed.s != null && Array.isArray(parsed.m) && parsed.t) {
+          restoredFromShare.current = true;
+          const members: string[] = parsed.m;
+          const tc: number = parsed.t;
+          const seed: number = parsed.s;
+          setNamesInput(members.join(', '));
+          setTeamCount(tc);
+          setCurrentSeed(seed);
+          const result = divideWithSeed(members, tc, seed);
+          setTeams(result);
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+        // Legacy format: { teams: [...] }
+        else if (parsed.teams && Array.isArray(parsed.teams)) {
           restoredFromShare.current = true;
           const allMembers = parsed.teams.flatMap((t: Team) => t.members);
           setNamesInput(allMembers.join(', '));
@@ -322,6 +481,11 @@ export function TeamPickerEn() {
     'bg-pink-100 dark:bg-pink-900/30 border-pink-300 dark:border-pink-700',
     'bg-indigo-100 dark:bg-indigo-900/30 border-indigo-300 dark:border-indigo-700',
     'bg-cyan-100 dark:bg-cyan-900/30 border-cyan-300 dark:border-cyan-700',
+  ];
+
+  const teamBadgeColors = [
+    '#dbeafe', '#fee2e2', '#dcfce7', '#fef9c3',
+    '#f3e8ff', '#fce7f3', '#e0e7ff', '#cffafe',
   ];
 
   return (
@@ -381,21 +545,84 @@ export function TeamPickerEn() {
 
         {error && <p className="text-sm text-red-500">{error}</p>}
 
+        {/* View mode selection */}
+        <div>
+          <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 block">
+            View Mode
+          </label>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setViewMode('instant')}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors
+                ${viewMode === 'instant'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+                }`}
+            >
+              Instant
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode('animated')}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors
+                ${viewMode === 'animated'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+                }`}
+            >
+              One by One
+            </button>
+          </div>
+          {viewMode === 'animated' && (
+            <div className="flex gap-2 mt-2">
+              <button
+                type="button"
+                onClick={() => setAnimSpeed('fast')}
+                className={`px-3 py-1 rounded text-xs font-medium transition-colors
+                  ${animSpeed === 'fast'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+              >
+                Fast
+              </button>
+              <button
+                type="button"
+                onClick={() => setAnimSpeed('slow')}
+                className={`px-3 py-1 rounded text-xs font-medium transition-colors
+                  ${animSpeed === 'slow'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+              >
+                Slow
+              </button>
+            </div>
+          )}
+        </div>
+
         <div className="flex gap-3">
-          <Button onClick={divideTeams} disabled={isLoading}>
-            {isLoading ? 'Dividing...' : 'Divide Teams'}
+          <Button onClick={() => divideTeams()} disabled={isLoading || isAnimating}>
+            {isLoading || isAnimating ? 'Dividing...' : 'Divide Teams'}
           </Button>
-          {teams.length > 0 && (
+          {isAnimating && (
+            <Button variant="secondary" onClick={skipAnimation}>
+              Skip
+            </Button>
+          )}
+          {!isAnimating && teams.length > 0 && (
             <Button variant="secondary" onClick={reshuffleTeams} disabled={isLoading}>
               Reshuffle
             </Button>
           )}
-          <Button variant="ghost" onClick={reset}>
+          <Button variant="ghost" onClick={reset} disabled={isAnimating}>
             Reset
           </Button>
         </div>
       </Card>
 
+      {/* Loading animation (instant mode) */}
       {isLoading && (
         <div className="flex flex-col items-center justify-center py-12">
           <div className="relative">
@@ -405,19 +632,80 @@ export function TeamPickerEn() {
           <p className="mt-4 text-gray-600 dark:text-gray-400 animate-pulse">
             Dividing teams...
           </p>
-          <div className="flex gap-2 mt-3">
-            {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                className="w-3 h-3 bg-blue-500 rounded-full animate-bounce"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              />
+        </div>
+      )}
+
+      {/* One-by-one animation */}
+      {isAnimating && animatedTeams.length > 0 && (
+        <div className="space-y-4">
+          {/* Progress */}
+          <div className="text-center space-y-2">
+            <div className="flex items-center justify-center gap-2">
+              <div className="w-full max-w-xs bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                <div
+                  className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${totalToAssign > 0 ? (assignedCount / totalToAssign) * 100 : 0}%` }}
+                />
+              </div>
+              <span className="text-xs text-gray-500 whitespace-nowrap">
+                {assignedCount}/{totalToAssign}
+              </span>
+            </div>
+            <div className="h-10 flex items-center justify-center">
+              {currentAssigning ? (
+                <div className="flex items-center justify-center gap-2 animate-bounce">
+                  <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                    {currentAssigning.name}
+                  </span>
+                  <span className="text-gray-400">&rarr;</span>
+                  <span
+                    className="text-sm font-medium px-2 py-0.5 rounded"
+                    style={{
+                      backgroundColor: teamBadgeColors[currentAssigning.teamIdx % teamBadgeColors.length],
+                    }}
+                  >
+                    {animatedTeams[currentAssigning.teamIdx]?.name}
+                  </span>
+                </div>
+              ) : (
+                <span className="text-sm text-gray-400 animate-pulse">...</span>
+              )}
+            </div>
+          </div>
+
+          {/* Team cards (during animation) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {animatedTeams.map((team, idx) => (
+              <Card
+                key={idx}
+                variant="bordered"
+                className={`p-4 border-2 transition-all duration-300 ${teamColors[idx % teamColors.length]}
+                  ${currentAssigning?.teamIdx === idx ? 'ring-2 ring-blue-500 scale-[1.02]' : ''}`}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="font-bold text-lg">{team.name}</span>
+                  <span className="text-sm text-gray-500">({team.members.length})</span>
+                </div>
+                <div className="flex flex-wrap gap-2 min-h-[2rem]">
+                  {team.members.map((member, mIdx) => (
+                    <span
+                      key={mIdx}
+                      className={`px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-sm
+                                 border border-gray-200 dark:border-gray-700
+                                 ${mIdx === team.members.length - 1 ? 'animate-fade-in' : ''}`}
+                    >
+                      {member}
+                    </span>
+                  ))}
+                </div>
+              </Card>
             ))}
           </div>
         </div>
       )}
 
-      {!isLoading && teams.length > 0 && (
+      {/* Final results */}
+      {!isLoading && !isAnimating && teams.length > 0 && (
         <div className="space-y-4">
           <div ref={allTeamsRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {teams.map((team, idx) => (

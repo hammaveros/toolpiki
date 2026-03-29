@@ -8,7 +8,7 @@ import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { FaqSection } from '@/components/ui/FaqItem';
 
-// Fisher-Yates shuffle
+// Fisher-Yates shuffle (random)
 function shuffle<T>(array: T[]): T[] {
   const result = [...array];
   for (let i = result.length - 1; i > 0; i--) {
@@ -18,13 +18,43 @@ function shuffle<T>(array: T[]): T[] {
   return result;
 }
 
+// Seeded shuffle for reproducible results
+function shuffleWithSeed(arr: string[], seed: number): string[] {
+  const result = [...arr];
+  for (let i = result.length - 1; i > 0; i--) {
+    seed = (seed * 16807 + 0) % 2147483647;
+    const j = Math.floor((seed / 2147483647) * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+const STORAGE_KEY = 'toolpiki-order-picker-en-items';
+
 export function OrderPickerEn() {
   const [input, setInput] = useState('');
   const [result, setResult] = useState<string[] | null>(null);
   const [isShuffling, setIsShuffling] = useState(false);
+  const [currentSeed, setCurrentSeed] = useState<number | null>(null);
+  const [isFromShare, setIsFromShare] = useState(false);
+
+  // Restore from localStorage
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) setInput(saved);
+  }, []);
+
+  // Save to localStorage on input change
+  const handleInputChange = (value: string) => {
+    setInput(value);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(STORAGE_KEY, value);
+    }
+  };
 
   const items = input
-    .split('\n')
+    .split(',')
     .map((s) => s.trim())
     .filter((s) => s);
 
@@ -33,15 +63,21 @@ export function OrderPickerEn() {
 
     setIsShuffling(true);
     setResult(null);
+    setIsFromShare(false);
 
+    const seed = Math.floor(Math.random() * 2147483646) + 1;
+
+    // Shuffle animation (12 iterations)
     let count = 0;
     const interval = setInterval(() => {
       count++;
       setResult(shuffle(items));
 
-      if (count >= 8) {
+      if (count >= 12) {
         clearInterval(interval);
-        setResult(shuffle(items));
+        const finalResult = shuffleWithSeed(items, seed);
+        setResult(finalResult);
+        setCurrentSeed(seed);
         setIsShuffling(false);
       }
     }, 100);
@@ -52,13 +88,13 @@ export function OrderPickerEn() {
     : '';
 
   const getShareUrl = () => {
-    if (!result) return '';
-    const data = { order: result };
+    if (!result || !currentSeed) return '';
+    const data = { s: currentSeed, n: items };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
-  // Restore shared data from URL hash
+  // Restore shared data from URL hash (seed-based reproduction)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const hash = window.location.hash;
@@ -66,9 +102,21 @@ export function OrderPickerEn() {
       try {
         const decoded = decodeURIComponent(atob(hash.slice(7)));
         const parsed = JSON.parse(decoded);
-        if (parsed.order && Array.isArray(parsed.order)) {
-          setInput(parsed.order.join('\n'));
+        // New format: seed + names
+        if (parsed.s && parsed.n && Array.isArray(parsed.n)) {
+          const names = parsed.n as string[];
+          const seed = parsed.s as number;
+          setInput(names.join(', '));
+          setResult(shuffleWithSeed(names, seed));
+          setCurrentSeed(seed);
+          setIsFromShare(true);
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+        // Legacy format compatibility
+        else if (parsed.order && Array.isArray(parsed.order)) {
+          setInput(parsed.order.join(', '));
           setResult(parsed.order);
+          setIsFromShare(true);
           window.history.replaceState(null, '', window.location.pathname);
         }
       } catch {
@@ -80,38 +128,32 @@ export function OrderPickerEn() {
   return (
     <div className="space-y-2">
       <Textarea
-        label="Enter items (one per line)"
+        label="Enter items (comma separated)"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Alice&#10;Bob&#10;Charlie&#10;Diana"
-        rows={6}
+        onChange={(e) => handleInputChange(e.target.value)}
+        placeholder="Alice, Bob, Charlie, Diana"
+        rows={3}
       />
 
       <div className="flex items-center justify-between">
         <span className="text-sm text-gray-500">
           {items.length} items {items.length < 2 && items.length > 0 && '(minimum 2 required)'}
         </span>
-        <div className="flex gap-2">
-          <Button
-            onClick={pickOrder}
-            disabled={items.length < 2 || isShuffling}
-          >
-            {isShuffling ? 'Shuffling...' : 'Pick Order'}
-          </Button>
-          {result && (
-            <Button
-              variant="secondary"
-              onClick={pickOrder}
-              disabled={isShuffling}
-            >
-              Shuffle Again
-            </Button>
-          )}
-        </div>
+        <Button
+          onClick={pickOrder}
+          disabled={items.length < 2 || isShuffling}
+        >
+          {isShuffling ? 'Shuffling...' : 'Pick Order'}
+        </Button>
       </div>
 
       {result && (
         <Card variant="bordered" className="p-4">
+          {isFromShare && (
+            <div className="mb-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-sm text-blue-700 dark:text-blue-300">
+              🔗 Shared order result (items: {items.join(', ')})
+            </div>
+          )}
           <div>
             <div className="flex justify-between items-center mb-3">
               <p className="text-sm font-medium">Result</p>
@@ -154,6 +196,8 @@ export function OrderPickerEn() {
         <p>• Uses Fisher-Yates algorithm for fair shuffling</p>
         <p>• Great for meeting order, presentations, etc.</p>
       </div>
+
+      <SeoContent />
     </div>
   );
 }
@@ -212,7 +256,7 @@ function SeoContent() {
           Tips
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Use line breaks to separate items for easy entry</li>
+          <li>Use commas to separate items for easy entry</li>
           <li>Minimum of 2 items required</li>
           <li>Click "Shuffle Again" to generate a new random order</li>
           <li>Use share feature to send results to team members</li>
