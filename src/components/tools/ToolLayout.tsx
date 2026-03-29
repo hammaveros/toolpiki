@@ -149,20 +149,7 @@ function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
           </section>
         )}
 
-        {/* FAQ */}
-        {!focusMode && meta.faqs && meta.faqs.length > 0 && (
-          <section className="mt-4 p-5 md:p-6 bg-white dark:bg-[var(--bg-surface)] rounded-2xl border border-gray-200 dark:border-[var(--border-subtle)]">
-            <h2 className="text-base font-bold text-gray-900 dark:text-white mb-4">자주 묻는 질문</h2>
-            <dl className="space-y-4">
-              {meta.faqs.map((faq, i) => (
-                <div key={i} className="pb-4 border-b border-gray-100 dark:border-[var(--border-subtle)] last:border-0 last:pb-0">
-                  <dt className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-1">{faq.question}</dt>
-                  <dd className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{faq.answer}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-        )}
+        {/* FAQ는 각 도구 컴포넌트 내부 FaqSection에서 렌더링 (중복 방지) */}
 
         {/* 면책 문구 */}
         {!focusMode && ENTERTAINMENT_SLUGS.has(meta.slug) && (
