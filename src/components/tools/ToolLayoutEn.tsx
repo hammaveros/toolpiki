@@ -51,7 +51,7 @@ function ToolLayoutEnContent({ meta, children }: ToolLayoutEnProps) {
       <JsonLd data={jsonLd} />
       <JsonLd data={breadcrumb} />
 
-      <article className="container mx-auto px-4 py-1 md:py-2">
+      <article className="max-w-5xl mx-auto px-4 py-4 md:py-6">
         {!focusMode && (() => {
           const badge = CATEGORY_BADGE_EN[meta.category];
           return (
@@ -166,7 +166,7 @@ function ToolLayoutEnFallback({ meta, children }: ToolLayoutEnProps) {
       <JsonLd data={jsonLd} />
       <JsonLd data={breadcrumb} />
 
-      <article className="container mx-auto px-4 py-1 md:py-2">
+      <article className="max-w-5xl mx-auto px-4 py-4 md:py-6">
         {(() => {
           const badge = CATEGORY_BADGE_EN[meta.category];
           return (
