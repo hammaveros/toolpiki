@@ -10,10 +10,10 @@ export function Footer({ focusMode = false }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-gray-200 dark:border-white/[0.07] bg-gray-50 dark:bg-[#0a0d14] mt-16">
-      <div className="max-w-6xl mx-auto px-6 md:px-10 pt-14 pb-0">
+    <footer className="border-t border-gray-200 dark:border-white/[0.07] bg-gray-50 dark:bg-[#0a0d14] mt-8">
+      <div className="max-w-6xl mx-auto px-6 md:px-10 pt-8 pb-0">
         {/* 3컬럼 그리드: 1.5 : 2 : 1 비율 */}
-        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_2fr_1fr] gap-8 md:gap-12 pb-12 border-b border-gray-200 dark:border-white/[0.07]">
+        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_2fr_1fr] gap-6 md:gap-8 pb-8 border-b border-gray-200 dark:border-white/[0.07]">
           {/* 브랜드 */}
           <div>
             <Link href="/" className="inline-block text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-3">
