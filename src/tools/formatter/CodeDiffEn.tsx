@@ -166,7 +166,7 @@ export function CodeDiffEn() {
           value={code1}
           onChange={(e) => setCode1(e.target.value)}
           placeholder="Enter original code..."
-          rows={12}
+          rows={20}
           className="font-mono text-sm"
         />
         <Textarea
@@ -174,7 +174,7 @@ export function CodeDiffEn() {
           value={code2}
           onChange={(e) => setCode2(e.target.value)}
           placeholder="Enter modified code..."
-          rows={12}
+          rows={20}
           className="font-mono text-sm"
         />
       </div>

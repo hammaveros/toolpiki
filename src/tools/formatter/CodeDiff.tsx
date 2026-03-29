@@ -166,7 +166,7 @@ export function CodeDiff() {
           value={code1}
           onChange={(e) => setCode1(e.target.value)}
           placeholder="원본 코드를 입력하세요..."
-          rows={12}
+          rows={20}
           className="font-mono text-sm"
         />
         <Textarea
@@ -174,7 +174,7 @@ export function CodeDiff() {
           value={code2}
           onChange={(e) => setCode2(e.target.value)}
           placeholder="수정된 코드를 입력하세요..."
-          rows={12}
+          rows={20}
           className="font-mono text-sm"
         />
       </div>
