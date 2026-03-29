@@ -35,6 +35,22 @@ const JIJI_ANIMAL: Record<string, string> = {
   오: '말', 미: '양', 신: '원숭이', 유: '닭', 술: '개', 해: '돼지',
 };
 
+// 시간대 (2시간 단위)
+const TIME_PERIODS = [
+  { value: 0, label: '자시 (23:00~01:00)', ji: '자' },
+  { value: 1, label: '축시 (01:00~03:00)', ji: '축' },
+  { value: 3, label: '인시 (03:00~05:00)', ji: '인' },
+  { value: 5, label: '묘시 (05:00~07:00)', ji: '묘' },
+  { value: 7, label: '진시 (07:00~09:00)', ji: '진' },
+  { value: 9, label: '사시 (09:00~11:00)', ji: '사' },
+  { value: 11, label: '오시 (11:00~13:00)', ji: '오' },
+  { value: 13, label: '미시 (13:00~15:00)', ji: '미' },
+  { value: 15, label: '신시 (15:00~17:00)', ji: '신' },
+  { value: 17, label: '유시 (17:00~19:00)', ji: '유' },
+  { value: 19, label: '술시 (19:00~21:00)', ji: '술' },
+  { value: 21, label: '해시 (21:00~23:00)', ji: '해' },
+];
+
 // 오행 배경색
 const OHANG_BG: Record<string, string> = {
   목: 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200',
@@ -64,6 +80,7 @@ interface Saju {
   year: { gan: string; ji: string };
   month: { gan: string; ji: string };
   day: { gan: string; ji: string };
+  hour: { gan: string; ji: string } | null;
 }
 
 // 절기 날짜 계산
@@ -162,12 +179,36 @@ function getDayPillar(year: number, month: number, day: number): { gan: string; 
   return { gan: CHEONGAN[ganIndex], ji: JIJI[jiIndex] };
 }
 
+// 시주 계산
+function getHourPillar(dayGan: string, hour: number): { gan: string; ji: string } {
+  let jiIndex = 0;
+  if (hour >= 23 || hour < 1) jiIndex = 0;
+  else if (hour >= 1 && hour < 3) jiIndex = 1;
+  else if (hour >= 3 && hour < 5) jiIndex = 2;
+  else if (hour >= 5 && hour < 7) jiIndex = 3;
+  else if (hour >= 7 && hour < 9) jiIndex = 4;
+  else if (hour >= 9 && hour < 11) jiIndex = 5;
+  else if (hour >= 11 && hour < 13) jiIndex = 6;
+  else if (hour >= 13 && hour < 15) jiIndex = 7;
+  else if (hour >= 15 && hour < 17) jiIndex = 8;
+  else if (hour >= 17 && hour < 19) jiIndex = 9;
+  else if (hour >= 19 && hour < 21) jiIndex = 10;
+  else if (hour >= 21 && hour < 23) jiIndex = 11;
+
+  const dayGanIndex = (CHEONGAN as readonly string[]).indexOf(dayGan);
+  const ganIndex = (dayGanIndex * 2 + jiIndex) % 10;
+  return { gan: CHEONGAN[ganIndex], ji: JIJI[jiIndex] };
+}
+
 // 사주 계산
-function calculateSaju(year: number, month: number, day: number): Saju {
+function calculateSaju(year: number, month: number, day: number, hour: number | null): Saju {
+  const dayPillar = getDayPillar(year, month, day);
+  const hourPillar = hour !== null ? getHourPillar(dayPillar.gan, hour) : null;
   return {
     year: getYearPillar(year, month, day),
     month: getMonthPillar(year, month, day),
-    day: getDayPillar(year, month, day),
+    day: dayPillar,
+    hour: hourPillar,
   };
 }
 
@@ -210,6 +251,10 @@ function analyzeOhang(saju: Saju): Record<string, number> {
   count[JIJI_OHANG[saju.year.ji]]++;
   count[JIJI_OHANG[saju.month.ji]]++;
   count[JIJI_OHANG[saju.day.ji]]++;
+  if (saju.hour) {
+    count[CHEONGAN_OHANG[saju.hour.gan]]++;
+    count[JIJI_OHANG[saju.hour.ji]]++;
+  }
   return count;
 }
 
@@ -378,14 +423,16 @@ function analyzeCompatibility(
   month1: number,
   day1: number,
   gender1: string,
+  hour1: number | null,
   name2: string,
   year2: number,
   month2: number,
   day2: number,
-  gender2: string
+  gender2: string,
+  hour2: number | null
 ): CompatibilityResult {
-  const saju1 = calculateSaju(year1, month1, day1);
-  const saju2 = calculateSaju(year2, month2, day2);
+  const saju1 = calculateSaju(year1, month1, day1, hour1);
+  const saju2 = calculateSaju(year2, month2, day2, hour2);
 
   const dayGan1 = saju1.day.gan;
   const dayGan2 = saju2.day.gan;
@@ -424,6 +471,11 @@ function analyzeCompatibility(
   }
   // 일지 관계 반영
   loveScore += (iljiAnalysis.score - 65) / 2;
+  // 시주 관계 반영 (있는 경우)
+  if (saju1.hour && saju2.hour) {
+    const hourJiRelation = analyzeIljiRelation(saju1.hour.ji, saju2.hour.ji);
+    loveScore += (hourJiRelation.score - 65) / 4; // 시주는 일주보다 영향 적음
+  }
   loveScore = Math.min(100, Math.max(0, loveScore));
 
   // 애정 궁합 설명
@@ -557,6 +609,8 @@ export function SajuCompatibility() {
   const [year1, setYear1] = useState('');
   const [month1, setMonth1] = useState('');
   const [day1, setDay1] = useState('');
+  const [birthTime1, setBirthTime1] = useState('');
+  const [unknownTime1, setUnknownTime1] = useState(false);
   const [gender1, setGender1] = useState<'male' | 'female'>('male');
 
   // 사람 2
@@ -564,6 +618,8 @@ export function SajuCompatibility() {
   const [year2, setYear2] = useState('');
   const [month2, setMonth2] = useState('');
   const [day2, setDay2] = useState('');
+  const [birthTime2, setBirthTime2] = useState('');
+  const [unknownTime2, setUnknownTime2] = useState(false);
   const [gender2, setGender2] = useState<'male' | 'female'>('female');
 
   const [result, setResult] = useState<CompatibilityResult | null>(null);
@@ -584,11 +640,15 @@ export function SajuCompatibility() {
         setMonth1(String(decoded.m1));
         setDay1(String(decoded.d1));
         if (decoded.g1) setGender1(decoded.g1);
+        if (decoded.t1 !== undefined) setBirthTime1(String(decoded.t1));
+        if (decoded.ut1) setUnknownTime1(true);
         if (decoded.n2) setName2(decoded.n2);
         setYear2(String(decoded.y2));
         setMonth2(String(decoded.m2));
         setDay2(String(decoded.d2));
         if (decoded.g2) setGender2(decoded.g2);
+        if (decoded.t2 !== undefined) setBirthTime2(String(decoded.t2));
+        if (decoded.ut2) setUnknownTime2(true);
 
         setTimeout(() => {
           const y1 = parseInt(decoded.y1);
@@ -597,12 +657,14 @@ export function SajuCompatibility() {
           const y2 = parseInt(decoded.y2);
           const m2 = parseInt(decoded.m2);
           const d2 = parseInt(decoded.d2);
+          const h1 = decoded.ut1 ? null : (decoded.t1 !== undefined ? parseInt(decoded.t1) : null);
+          const h2 = decoded.ut2 ? null : (decoded.t2 !== undefined ? parseInt(decoded.t2) : null);
           if (y1 >= 1900 && y1 <= 2100 && y2 >= 1900 && y2 <= 2100 &&
               m1 >= 1 && m1 <= 12 && m2 >= 1 && m2 <= 12 &&
               d1 >= 1 && d1 <= 31 && d2 >= 1 && d2 <= 31) {
             const compatibility = analyzeCompatibility(
-              decoded.n1 || '', y1, m1, d1, decoded.g1 || 'male',
-              decoded.n2 || '', y2, m2, d2, decoded.g2 || 'female'
+              decoded.n1 || '', y1, m1, d1, decoded.g1 || 'male', h1,
+              decoded.n2 || '', y2, m2, d2, decoded.g2 || 'female', h2
             );
             setResult(compatibility);
           }
@@ -619,6 +681,10 @@ export function SajuCompatibility() {
     };
     if (name1) data.n1 = name1;
     if (name2) data.n2 = name2;
+    if (unknownTime1) data.ut1 = '1';
+    else if (birthTime1 !== '') data.t1 = birthTime1;
+    if (unknownTime2) data.ut2 = '1';
+    else if (birthTime2 !== '') data.t2 = birthTime2;
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
@@ -661,9 +727,12 @@ export function SajuCompatibility() {
       return;
     }
 
+    const h1 = unknownTime1 ? null : (birthTime1 !== '' ? parseInt(birthTime1) : null);
+    const h2 = unknownTime2 ? null : (birthTime2 !== '' ? parseInt(birthTime2) : null);
+
     const compatibility = analyzeCompatibility(
-      name1, y1, m1, d1, gender1,
-      name2, y2, m2, d2, gender2
+      name1, y1, m1, d1, gender1, h1,
+      name2, y2, m2, d2, gender2, h2
     );
     setResult(compatibility);
   };
@@ -673,11 +742,15 @@ export function SajuCompatibility() {
     setYear1('');
     setMonth1('');
     setDay1('');
+    setBirthTime1('');
+    setUnknownTime1(false);
     setGender1('male');
     setName2('');
     setYear2('');
     setMonth2('');
     setDay2('');
+    setBirthTime2('');
+    setUnknownTime2(false);
     setGender2('female');
     setResult(null);
     setError(null);
@@ -719,6 +792,37 @@ export function SajuCompatibility() {
                 onChange={(e) => setDay1(e.target.value)}
                 placeholder="1"
               />
+            </div>
+            <div>
+              <label className="text-xs font-medium text-gray-500 mb-1 block">태어난 시간</label>
+              <select
+                value={birthTime1}
+                onChange={(e) => setBirthTime1(e.target.value)}
+                disabled={unknownTime1}
+                className="w-full h-10 px-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <option value="">선택하세요</option>
+                {TIME_PERIODS.map((period) => (
+                  <option key={period.value} value={period.value}>
+                    {period.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="unknownTime1"
+                checked={unknownTime1}
+                onChange={(e) => {
+                  setUnknownTime1(e.target.checked);
+                  if (e.target.checked) setBirthTime1('');
+                }}
+                className="w-4 h-4"
+              />
+              <label htmlFor="unknownTime1" className="text-sm text-gray-600 dark:text-gray-400">
+                시간을 모릅니다
+              </label>
             </div>
             <div className="flex gap-4">
               <label className="flex items-center gap-2 cursor-pointer">
@@ -775,6 +879,37 @@ export function SajuCompatibility() {
                 onChange={(e) => setDay2(e.target.value)}
                 placeholder="1"
               />
+            </div>
+            <div>
+              <label className="text-xs font-medium text-gray-500 mb-1 block">태어난 시간</label>
+              <select
+                value={birthTime2}
+                onChange={(e) => setBirthTime2(e.target.value)}
+                disabled={unknownTime2}
+                className="w-full h-10 px-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <option value="">선택하세요</option>
+                {TIME_PERIODS.map((period) => (
+                  <option key={period.value} value={period.value}>
+                    {period.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="unknownTime2"
+                checked={unknownTime2}
+                onChange={(e) => {
+                  setUnknownTime2(e.target.checked);
+                  if (e.target.checked) setBirthTime2('');
+                }}
+                className="w-4 h-4"
+              />
+              <label htmlFor="unknownTime2" className="text-sm text-gray-600 dark:text-gray-400">
+                시간을 모릅니다
+              </label>
             </div>
             <div className="flex gap-4">
               <label className="flex items-center gap-2 cursor-pointer">
@@ -967,7 +1102,7 @@ export function SajuCompatibility() {
               {/* 사람 1 사주 */}
               <div>
                 <h4 className="font-medium text-center mb-3">{result.person1.name}</h4>
-                <div className="grid grid-cols-3 gap-2 text-center">
+                <div className={`grid ${result.person1.saju.hour ? 'grid-cols-4' : 'grid-cols-3'} gap-2 text-center`}>
                   <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
                     <div className="text-xs text-gray-500">년주</div>
                     <div className="font-bold">{result.person1.saju.year.gan}{result.person1.saju.year.ji}</div>
@@ -984,13 +1119,19 @@ export function SajuCompatibility() {
                       {result.person1.dayGanOhang}
                     </div>
                   </div>
+                  {result.person1.saju.hour && (
+                    <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
+                      <div className="text-xs text-gray-500">시주</div>
+                      <div className="font-bold">{result.person1.saju.hour.gan}{result.person1.saju.hour.ji}</div>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* 사람 2 사주 */}
               <div>
                 <h4 className="font-medium text-center mb-3">{result.person2.name}</h4>
-                <div className="grid grid-cols-3 gap-2 text-center">
+                <div className={`grid ${result.person2.saju.hour ? 'grid-cols-4' : 'grid-cols-3'} gap-2 text-center`}>
                   <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
                     <div className="text-xs text-gray-500">년주</div>
                     <div className="font-bold">{result.person2.saju.year.gan}{result.person2.saju.year.ji}</div>
@@ -1007,6 +1148,12 @@ export function SajuCompatibility() {
                       {result.person2.dayGanOhang}
                     </div>
                   </div>
+                  {result.person2.saju.hour && (
+                    <div className="p-2 bg-gray-50 dark:bg-gray-800 rounded">
+                      <div className="text-xs text-gray-500">시주</div>
+                      <div className="font-bold">{result.person2.saju.hour.gan}{result.person2.saju.hour.ji}</div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -1035,7 +1182,7 @@ export function SajuCompatibility() {
             },
             {
               question: '시간까지 입력해야 정확한가요?',
-              answer: '기본적인 궁합은 생년월일만으로도 충분합니다. 더 상세한 분석을 원하시면 시주까지 포함된 전문 상담을 권장합니다.',
+              answer: '태어난 시간을 입력하면 시주(時柱)가 추가되어 오행 분석과 궁합이 더 정확해집니다. 모르면 "시간을 모릅니다"를 체크하세요.',
             },
           ]}
         />
