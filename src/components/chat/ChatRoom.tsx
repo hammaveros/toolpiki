@@ -255,13 +255,23 @@ export function ChatRoom() {
     setTimeout(() => setCooldown(false), 3000);
   }, [uid, nickname, cooldown]);
 
+  // 간식 카운터
+  const [snackCount, setSnackCount] = useState(() => {
+    if (typeof window === 'undefined') return 0;
+    return Number(localStorage.getItem('tangbisil-snack-count') || '0');
+  });
+
   // 인터랙션: 간식 훔치기
   const handleSnack = useCallback(async () => {
     if (!uid || !nickname || cooldown) return;
+    const newCount = snackCount + 1;
+    setSnackCount(newCount);
+    localStorage.setItem('tangbisil-snack-count', String(newCount));
+
     const msg = getRandomInteraction('snack');
 
     await addDoc(collection(db, 'messages'), {
-      text: msg,
+      text: `${msg} (${newCount}번째 간식 훔치기!)`,
       nickname: nickname.name,
       emoji: nickname.emoji,
       uid,
@@ -271,7 +281,7 @@ export function ChatRoom() {
 
     setCooldown(true);
     setTimeout(() => setCooldown(false), 3000);
-  }, [uid, nickname, cooldown]);
+  }, [uid, nickname, cooldown, snackCount]);
 
   // 시간 포맷
   const formatTime = (ts: Timestamp | null) => {
@@ -353,7 +363,7 @@ export function ChatRoom() {
           disabled={cooldown}
           className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#E8DFD4] dark:bg-[#3D3530] text-xs text-[#8B7B6B] dark:text-[#A89880] hover:bg-[#DDD2C4] dark:hover:bg-[#4D4540] transition-colors disabled:opacity-40"
         >
-          🍪 간식 훔치기
+          🍪 간식 훔치기{snackCount > 0 && ` (${snackCount})`}
         </button>
       </div>
 

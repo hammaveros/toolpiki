@@ -24,6 +24,14 @@ export const INTERACTION_MESSAGES = {
     '아메리카노 한 잔 완성! ☕',
     '향긋한 커피가 준비됐어요 ☕',
     '에스프레소 샷 추가! ☕',
+    '라떼 한 잔 완성~ 🥛☕',
+  ],
+  coffeeFail: [
+    '커피를 쏟아버렸다!! 😱☕',
+    '앗... 커피가 키보드 위로... 💀',
+    '커피 머신이 고장났다! 🔧',
+    '컵을 떨어뜨렸다... 🫠',
+    '설탕을 너무 많이 넣었다 🤢',
   ],
   snack: [
     '과자 하나 몰래 집었어요 🍪',
@@ -31,6 +39,8 @@ export const INTERACTION_MESSAGES = {
     '냠냠... 맛있다 🍪',
     '간식 타임~ 🍩',
     '사탕 하나 주워왔어요 🍬',
+    '젤리 하나 슬쩍~ 🍭',
+    '초콜릿 발견! 🍫',
   ],
 };
 
@@ -39,6 +49,11 @@ export function getRandomAmbient() {
 }
 
 export function getRandomInteraction(type: 'coffee' | 'snack') {
+  // 커피: 20% 확률로 실패
+  if (type === 'coffee' && Math.random() < 0.2) {
+    const fails = INTERACTION_MESSAGES.coffeeFail;
+    return fails[Math.floor(Math.random() * fails.length)];
+  }
   const msgs = INTERACTION_MESSAGES[type];
   return msgs[Math.floor(Math.random() * msgs.length)];
 }
