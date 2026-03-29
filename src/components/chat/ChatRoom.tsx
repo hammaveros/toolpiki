@@ -230,10 +230,10 @@ export function ChatRoom() {
   // 인터랙션: 커피 내리기
   const handleCoffee = useCallback(async () => {
     if (!uid || !nickname || cooldown) return;
-    const msg = getRandomInteraction('coffee');
+    const { text } = getRandomInteraction('coffee');
 
     await addDoc(collection(db, 'messages'), {
-      text: msg,
+      text,
       nickname: nickname.name,
       emoji: nickname.emoji,
       uid,
@@ -254,14 +254,18 @@ export function ChatRoom() {
   // 인터랙션: 간식 훔치기
   const handleSnack = useCallback(async () => {
     if (!uid || !nickname || cooldown) return;
-    const newCount = snackCount + 1;
-    setSnackCount(newCount);
-    localStorage.setItem('tangbisil-snack-count', String(newCount));
+    const { text, failed } = getRandomInteraction('snack');
 
-    const msg = getRandomInteraction('snack');
+    let displayText = text;
+    if (!failed) {
+      const newCount = snackCount + 1;
+      setSnackCount(newCount);
+      localStorage.setItem('tangbisil-snack-count', String(newCount));
+      displayText = `${text} (${newCount}번째 간식 훔치기!)`;
+    }
 
     await addDoc(collection(db, 'messages'), {
-      text: `${msg} (${newCount}번째 간식 훔치기!)`,
+      text: displayText,
       nickname: nickname.name,
       emoji: nickname.emoji,
       uid,

@@ -57,18 +57,18 @@ export function getRandomAmbient() {
   return AMBIENT_MESSAGES[Math.floor(Math.random() * AMBIENT_MESSAGES.length)];
 }
 
-export function getRandomInteraction(type: 'coffee' | 'snack') {
+export function getRandomInteraction(type: 'coffee' | 'snack'): { text: string; failed: boolean } {
   // 20% 확률로 실패 이벤트
   if (type === 'coffee' && Math.random() < 0.2) {
     const fails = INTERACTION_MESSAGES.coffeeFail;
-    return fails[Math.floor(Math.random() * fails.length)];
+    return { text: fails[Math.floor(Math.random() * fails.length)], failed: true };
   }
   if (type === 'snack' && Math.random() < 0.15) {
     const fails = INTERACTION_MESSAGES.snackFail;
-    return fails[Math.floor(Math.random() * fails.length)];
+    return { text: fails[Math.floor(Math.random() * fails.length)], failed: true };
   }
   const msgs = INTERACTION_MESSAGES[type];
-  return msgs[Math.floor(Math.random() * msgs.length)];
+  return { text: msgs[Math.floor(Math.random() * msgs.length)], failed: false };
 }
 
 // 탕비실 고정 문구 (상단에 랜덤 표시)
