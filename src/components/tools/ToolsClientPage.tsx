@@ -47,9 +47,8 @@ function CategorySection({ category: cat, tools: catTools }: { category: Categor
 }
 
 const POPULAR_SLUGS = [
-  'saju-reading', 'team-saju', 'json-formatter', 'mermaid-diagram',
-  'team-picker', 'letter-qr', 'server-time', 'reaction-time-test',
-  'pomodoro-timer', 'reading-time-calculator', 'interest-calculator', 'qr-generator',
+  'saju-reading', 'team-saju', 'qr-generator', 'json-formatter',
+  'mermaid-diagram', 'reaction-time-test', 'pomodoro-timer', 'server-time',
 ];
 
 function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch = '' }: ToolsClientPageProps) {

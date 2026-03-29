@@ -8,10 +8,8 @@ import { CategoryFilterEn } from './CategoryFilterEn';
 import { useRecentTools } from '@/hooks/useRecentTools';
 
 const POPULAR_SLUGS_EN = [
-  'json-formatter-en', 'mermaid-diagram-en', 'team-picker-en', 'letter-qr-en',
-  'server-time-en', 'reaction-time-test-en', 'pomodoro-timer-en',
-  'reading-time-calculator-en', 'interest-calculator-en',
-  'us-lotto-generator-en', 'character-counter-en', 'qr-generator-en',
+  'qr-generator-en', 'json-formatter-en', 'mermaid-diagram-en', 'reaction-time-test-en',
+  'pomodoro-timer-en', 'character-counter-en', 'server-time-en', 'us-lotto-generator-en',
 ];
 
 interface ToolsClientPageEnProps {
