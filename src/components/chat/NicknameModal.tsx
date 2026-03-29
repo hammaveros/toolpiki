@@ -29,7 +29,7 @@ export function NicknameModal({ onJoin }: NicknameModalProps) {
       <div className="bg-[#FAF6F1] dark:bg-[#1C1917] rounded-2xl p-6 w-full max-w-sm shadow-xl border border-[#E8DFD4] dark:border-[#3D3530]">
         <div className="text-center mb-6">
           <div className="text-4xl mb-2">☕</div>
-          <h2 className="text-xl font-bold text-[#5C4A3A] dark:text-[#D4B896]">랜선탕비실</h2>
+          <h2 className="text-xl font-bold text-[#5C4A3A] dark:text-[#D4B896]">랜선 탕비실</h2>
           <p className="text-sm text-[#8B7B6B] dark:text-[#A89880] mt-1">잠깐 쉬어가세요</p>
         </div>
 

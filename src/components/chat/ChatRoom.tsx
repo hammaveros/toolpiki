@@ -33,6 +33,7 @@ export function ChatRoom() {
   const [onlineCount, setOnlineCount] = useState(0);
   const [headerQuote, setHeaderQuote] = useState('');
   const [toast, setToast] = useState('');
+  const [firebaseError, setFirebaseError] = useState(false);
   const lastMsgsRef = useRef<string[]>([]);
   const ambientTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -159,28 +160,6 @@ export function ChatRoom() {
     };
   }, [joined, messages.length]);
 
-  // 퇴근 카운트다운
-  const [countdown, setCountdown] = useState('');
-  useEffect(() => {
-    const update = () => {
-      const now = new Date();
-      const endOfDay = new Date(now);
-      endOfDay.setHours(18, 0, 0, 0);
-
-      if (now >= endOfDay) {
-        setCountdown('🎉 퇴근 축하!');
-      } else {
-        const diff = endOfDay.getTime() - now.getTime();
-        const h = Math.floor(diff / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        setCountdown(`⏰ 퇴근까지 ${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`);
-      }
-    };
-    update();
-    const interval = setInterval(update, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   // 입장 처리 (파베 저장 안 함 - 로컬에서만 표시)
   const handleJoin = useCallback((nick: { name: string; emoji: string }) => {
@@ -316,12 +295,21 @@ export function ChatRoom() {
       <div className="border-b border-[#E8DFD4] dark:border-[#3D3530] px-4 py-2 text-center flex-shrink-0">
         <div className="flex items-center justify-center gap-2 mb-1">
           <span className="text-lg">☕</span>
-          <h1 className="text-lg font-bold text-[#5C4A3A] dark:text-[#D4B896]">랜선탕비실</h1>
+          <h1 className="text-lg font-bold text-[#5C4A3A] dark:text-[#D4B896]">랜선 탕비실</h1>
         </div>
         <div className="flex items-center justify-center gap-3 text-xs text-[#A89880] dark:text-[#6B5E50]">
           <span>🫧 {onlineCount}명 접속 중</span>
           <span>·</span>
-          <span>{countdown}</span>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(`${window.location.origin}/chat`).then(() => {
+                alert('초대 링크가 복사됐어요!');
+              }).catch(() => {});
+            }}
+            className="hover:text-[#8B7B6B] dark:hover:text-[#A89880] transition-colors"
+          >
+            친구 초대 📋
+          </button>
         </div>
         <p className="text-[10px] text-[#C4B8A8] dark:text-[#5C5048] mt-1 transition-opacity duration-500">
           &quot;{headerQuote}&quot;

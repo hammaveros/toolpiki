@@ -113,7 +113,7 @@ export function ChatWidget() {
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <span className="text-lg">☕</span>
-            <span className="font-semibold text-sm text-gray-900 dark:text-white">랜선탕비실</span>
+            <span className="font-semibold text-sm text-gray-900 dark:text-white">랜선 탕비실</span>
             {onlineCount > 0 && (
               <span className="text-[10px] bg-[#D4A574]/20 text-[#D4A574] px-2 py-0.5 rounded-full">
                 🔴 {onlineCount}명

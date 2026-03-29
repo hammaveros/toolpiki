@@ -69,7 +69,7 @@ export function Header({ focusMode = false }: HeaderProps) {
           <nav className="md:hidden py-3 border-t border-gray-200 dark:border-gray-700/50">
             <MobileNavLink href="/" onClick={() => setMobileMenuOpen(false)}><HomeIcon size={20} /><span>홈</span></MobileNavLink>
             <MobileNavLink href="/tools" onClick={() => setMobileMenuOpen(false)}><ToolsIcon size={20} /><span>도구</span></MobileNavLink>
-            <MobileNavLink href="/chat" onClick={() => setMobileMenuOpen(false)}><span>☕</span><span>랜선탕비실</span></MobileNavLink>
+            <MobileNavLink href="/chat" onClick={() => setMobileMenuOpen(false)}><span>☕</span><span>랜선 탕비실</span></MobileNavLink>
             <MobileNavLink href="/contact" onClick={() => setMobileMenuOpen(false)}><span>📩</span><span>문의하기</span></MobileNavLink>
           </nav>
         )}
