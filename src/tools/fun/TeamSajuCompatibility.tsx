@@ -275,10 +275,10 @@ function RelationPolygon({
   const n = members.length;
   if (n < 2) return null;
 
-  const size = 400;
+  const size = 420;
   const cx = size / 2;
   const cy = size / 2;
-  const radius = size / 2 - 55;
+  const radius = size / 2 - 45;
 
   // 꼭짓점 좌표 (12시 방향부터 시계방향)
   const points = members.map((_, i) => {
@@ -303,7 +303,7 @@ function RelationPolygon({
 
   return (
     <div className="flex justify-center">
-      <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-md" style={{ maxHeight: 400 }}>
+      <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-lg" style={{ maxHeight: 420 }}>
         {/* 연결선 */}
         {pairs.map((pair, idx) => {
           const i1 = members.findIndex(m => m.name === pair.member1);
@@ -350,41 +350,32 @@ function RelationPolygon({
               key={m.id}
               onClick={() => onSelectMember(isSelected ? null : m.name)}
               className="cursor-pointer"
+              opacity={isDimmed ? 0.3 : 1}
             >
-              <circle
-                cx={p.x} cy={p.y}
-                r={isSelected ? 26 : 22}
-                className={cn(
-                  'transition-all duration-200',
-                  isSelected
-                    ? 'fill-blue-500 dark:fill-blue-400'
-                    : isDimmed
-                      ? 'fill-gray-200 dark:fill-gray-700'
-                      : 'fill-white dark:fill-gray-800'
-                )}
-                stroke={isSelected ? '#3b82f6' : '#d1d5db'}
-                strokeWidth={isSelected ? 2.5 : 1.5}
-              />
-              {/* 띠 이모지 */}
+              {/* 띠 이모지 — 크게 */}
               <text
-                x={p.x} y={p.y - 4}
+                x={p.x} y={p.y - 2}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                className="text-[14px] pointer-events-none"
+                className={cn('pointer-events-none', isSelected ? 'text-[28px]' : 'text-[24px]')}
               >
-                {ANIMAL_EMOJI[m.animal] || ''}
+                {ANIMAL_EMOJI[m.animal] || '⭐'}
               </text>
-              {/* 이름 */}
+              {/* 이름 — 아래에 */}
               <text
-                x={p.x} y={p.y + 12}
+                x={p.x} y={p.y + 20}
                 textAnchor="middle"
                 className={cn(
-                  'text-[10px] font-bold pointer-events-none',
-                  isSelected ? 'fill-white' : isDimmed ? 'fill-gray-400 dark:fill-gray-500' : 'fill-gray-800 dark:fill-gray-200'
+                  'text-[11px] font-bold pointer-events-none',
+                  isSelected ? 'fill-blue-600 dark:fill-blue-400' : 'fill-gray-700 dark:fill-gray-300'
                 )}
               >
-                {m.name.length > 3 ? m.name.slice(0, 3) : m.name}
+                {m.name.length > 4 ? m.name.slice(0, 4) : m.name}
               </text>
+              {/* 선택 표시 링 */}
+              {isSelected && (
+                <circle cx={p.x} cy={p.y} r={20} fill="none" stroke="#3b82f6" strokeWidth={2} strokeDasharray="4 2" />
+              )}
             </g>
           );
         })}
@@ -759,7 +750,7 @@ export function TeamSajuCompatibility() {
                   </p>
                 </div>
               </div>
-              <CopyButton text={getShareUrl()} label="공유 🔗" />
+              <CopyButton text={getShareUrl()} label="팀원에게 공유" />
             </div>
             {/* 오행 분포 인라인 */}
             <div className="flex gap-1 mt-3">

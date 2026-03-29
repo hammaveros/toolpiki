@@ -9,6 +9,11 @@ export interface CategoryGroupEn {
 
 export const categoryGroupsEn: CategoryGroupEn[] = [
   {
+    name: 'Popular',
+    icon: '🔥',
+    categories: ['popular'],
+  },
+  {
     name: 'Text & Data',
     icon: '📄',
     categories: ['text', 'encoding', 'formatter'],
@@ -30,10 +35,10 @@ export const categoryGroupsEn: CategoryGroupEn[] = [
  */
 export const categoriesEn: CategoryMeta[] = [
   {
-    slug: 'fun',
-    name: 'Fun & Tests',
-    description: 'Reaction tests, random generators, and interactive tools',
-    icon: '🎮',
+    slug: 'popular',
+    name: 'Popular',
+    description: 'Most popular tools',
+    icon: '🔥',
     order: 1,
   },
   {
@@ -77,6 +82,13 @@ export const categoriesEn: CategoryMeta[] = [
     description: 'Base64, URL encoding, hashing, and data conversion',
     icon: '🔠',
     order: 7,
+  },
+  {
+    slug: 'fun',
+    name: 'Fun & Tests',
+    description: 'Reaction tests, random generators, and interactive tools',
+    icon: '🎮',
+    order: 8,
   },
 ];
 

@@ -7,6 +7,13 @@ import { ToolCardEn } from './ToolCardEn';
 import { CategoryFilterEn } from './CategoryFilterEn';
 import { useRecentTools } from '@/hooks/useRecentTools';
 
+const POPULAR_SLUGS_EN = [
+  'json-formatter-en', 'mermaid-diagram-en', 'team-picker-en', 'letter-qr-en',
+  'server-time-en', 'reaction-time-test-en', 'pomodoro-timer-en',
+  'reading-time-calculator-en', 'interest-calculator-en',
+  'us-lotto-generator-en', 'character-counter-en', 'qr-generator-en',
+];
+
 interface ToolsClientPageEnProps {
   tools: ToolMeta[];
   categories: CategoryMeta[];
@@ -34,20 +41,40 @@ function ToolsClientPageEnContent({ tools, categories, isMainPage, initialSearch
     );
   }, [tools, searchQuery]);
 
+  const popularTools = useMemo(() => {
+    return POPULAR_SLUGS_EN
+      .map((slug) => tools.find((t) => t.slug === slug))
+      .filter((t): t is ToolMeta => t !== undefined);
+  }, [tools]);
+
+  const toolCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    categories.forEach((cat) => {
+      if (cat.slug === 'popular') {
+        counts[cat.slug] = popularTools.length;
+      } else {
+        counts[cat.slug] = searchFilteredTools.filter((t) => t.category === cat.slug).length;
+      }
+    });
+    return counts;
+  }, [searchFilteredTools, categories, popularTools]);
+
   // Recent tools list
   const recentToolsList = useMemo(() => {
     if (!recentLoaded) return [];
     return recentTools
       .map((slug) => searchFilteredTools.find((t) => t.slug === slug))
-      .filter((t): t is ToolMeta => t !== undefined);
+      .filter((t): t is ToolMeta => t !== undefined)
+      .slice(0, 8);
   }, [recentTools, searchFilteredTools, recentLoaded]);
 
   const filteredTools = useMemo(() => {
+    if (category === 'popular') return popularTools;
     if (category) {
       return searchFilteredTools.filter((tool) => tool.category === category);
     }
     return searchFilteredTools;
-  }, [searchFilteredTools, category]);
+  }, [searchFilteredTools, category, popularTools]);
 
   // Group tools by category (for all view)
   const toolsByCategory = useMemo(() => {
@@ -56,14 +83,20 @@ function ToolsClientPageEnContent({ tools, categories, isMainPage, initialSearch
     const grouped: { category: CategoryMeta; tools: ToolMeta[] }[] = [];
 
     categories.forEach((cat) => {
-      const categoryTools = searchFilteredTools.filter((t) => t.category === cat.slug);
-      if (categoryTools.length > 0) {
-        grouped.push({ category: cat, tools: categoryTools });
+      if (cat.slug === 'popular') {
+        if (popularTools.length > 0) {
+          grouped.push({ category: cat, tools: popularTools });
+        }
+      } else {
+        const categoryTools = searchFilteredTools.filter((t) => t.category === cat.slug);
+        if (categoryTools.length > 0) {
+          grouped.push({ category: cat, tools: categoryTools });
+        }
       }
     });
 
     return grouped;
-  }, [searchFilteredTools, categories, category]);
+  }, [searchFilteredTools, categories, category, popularTools]);
 
   const handleCategoryChange = (newCategory: string | undefined) => {
     if (newCategory) {

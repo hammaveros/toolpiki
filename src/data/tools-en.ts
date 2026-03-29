@@ -1071,23 +1071,6 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'meeting-cost-calculator-en',
-    name: 'Meeting Cost Calculator',
-    description: 'Calculate the real cost of meetings based on attendees and time.',
-    category: 'calculator',
-    tags: ['meeting', 'cost', 'calculator', 'productivity'],
-    icon: '💰',
-    keywords: ['meeting cost calculator', 'meeting calculator', 'meeting roi', 'time cost'],
-    relatedSlugs: ['timer-en', 'date-calculator-en'],
-    seoTitle: 'Meeting Cost Calculator - Free Meeting ROI Calculator',
-    seoDescription: 'Calculate the real cost of meetings based on attendees, time, and hourly rates. See if meetings are worth it.',
-    seoContent: '## What is Meeting Cost Calculator?\n\nCalculate how much your meetings really cost based on number of attendees, duration, and hourly rates. Helps justify or reduce unnecessary meetings in your organization.',
-    faqs: [
-      { question: 'How is meeting cost calculated?', answer: 'Number of attendees × meeting duration × average hourly rate = total meeting cost.' },
-      { question: 'What should I use for hourly rate?', answer: 'Use average salary divided by work hours, or use the default industry average.' },
-    ],
-  },
-  {
     slug: 'css-unit-converter-en',
     name: 'CSS Unit Converter',
     description: 'Convert between px, rem, em, vw, vh, and other CSS units.',
@@ -1683,20 +1666,6 @@ export const toolsEn: ToolMeta[] = [
     ],
   },
   {
-    slug: 'invoice-generator-en',
-    name: 'Invoice Generator',
-    description: 'Create and print invoices easily. Auto-calculate item totals and taxes.',
-    category: 'calculator',
-    tags: ['invoice', 'billing', 'quote'],
-    icon: '📄',
-    keywords: ['invoice generator', 'create invoice', 'billing tool', 'quote maker'],
-    relatedSlugs: ['percentage-en', 'date-calculator-en'],
-    faqs: [
-      { question: 'Can I save the invoice as PDF?', answer: 'Click Print and select "Save as PDF" to download your invoice as a PDF file.' },
-      { question: 'How is tax calculated?', answer: 'Tax is automatically calculated by applying the set rate (default 10%) to the subtotal.' },
-    ],
-  },
-  {
     slug: 'screen-ruler-en',
     name: 'Screen Pixel Ruler',
     description: 'Drag to measure screen element dimensions in pixels. Convert to mm and save multiple measurements.',
@@ -1719,7 +1688,7 @@ export const toolsEn: ToolMeta[] = [
     icon: '🍅',
     featured: true,
     keywords: ['pomodoro timer', 'focus timer', '25 minute timer', 'productivity timer'],
-    relatedSlugs: ['timer-en', 'meeting-cost-calculator-en'],
+    relatedSlugs: ['timer-en'],
     seoTitle: 'Pomodoro Timer - 25 Min Focus Productivity Timer',
     faqs: [
       { question: 'What is the Pomodoro Technique?', answer: 'A time management method: 25 minutes of focused work followed by a 5-minute break. After 4 cycles, take a longer 15-minute break.' },

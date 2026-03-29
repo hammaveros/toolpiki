@@ -1910,24 +1910,6 @@ export const tools: ToolMeta[] = [
     ],
   },
   {
-    slug: 'invoice-generator',
-    name: '견적서 생성기',
-    description: '견적서/청구서를 쉽게 작성하고 인쇄하세요. 품목별 금액, 세금 계산을 자동으로 처리합니다.',
-    category: 'calculator',
-    tags: ['견적서', '청구서', '인보이스'],
-    icon: '📄',
-    keywords: ['견적서 만들기', '청구서 생성', '인보이스 작성', '세금계산서'],
-    relatedSlugs: ['percentage', 'date-calculator'],
-    seoTitle: '견적서 생성기 - 무료 견적서/청구서 작성',
-    seoDescription: '견적서와 청구서를 쉽게 작성하고 인쇄/PDF 저장. 품목별 금액과 세금 자동 계산.',
-    seoContent: '## 견적서 생성기란?\n\n견적서, 청구서, 인보이스를 간편하게 작성하는 도구입니다. 발행처/수신처 정보 입력, 품목별 단가와 수량 추가, 부가세 자동 계산까지 한 번에 처리합니다.\n\n## 주요 기능\n\n- 발행처/수신처 정보 입력\n- 품목 추가/삭제, 단가×수량 자동 계산\n- 부가세율 설정 및 자동 반영\n- 인쇄 또는 PDF 저장\n- 브라우저에서 모든 작업 완료 (데이터 미전송)',
-    faqs: [
-      { question: '생성한 견적서를 PDF로 저장할 수 있나요?', answer: '인쇄 버튼을 누르고 "PDF로 저장"을 선택하면 PDF로 저장할 수 있습니다.' },
-      { question: '부가세는 어떻게 계산되나요?', answer: '설정한 세율(기본 10%)을 소계에 적용하여 자동 계산됩니다.' },
-      { question: '회사 로고를 넣을 수 있나요?', answer: '현재는 텍스트 기반 견적서만 지원합니다. 로고가 필요한 경우 PDF 저장 후 편집 프로그램에서 추가하세요.' },
-    ],
-  },
-  {
     slug: 'screen-ruler',
     name: '화면 픽셀 측정기',
     description: '드래그해서 화면 요소의 픽셀 크기를 측정합니다. mm 단위 변환 및 여러 측정값 저장 가능.',
@@ -1954,7 +1936,7 @@ export const tools: ToolMeta[] = [
     icon: '🍅',
     featured: true,
     keywords: ['뽀모도로', '집중 타이머', '25분 타이머', '생산성 타이머'],
-    relatedSlugs: ['timer', 'meeting-cost-calculator'],
+    relatedSlugs: ['timer'],
     seoTitle: '뽀모도로 타이머 - 25분 집중 생산성 타이머',
     faqs: [
       { question: '뽀모도로 기법이란?', answer: '25분 집중 후 5분 휴식을 반복하는 시간 관리 기법입니다. 4회 반복 후 긴 휴식을 취합니다.' },
