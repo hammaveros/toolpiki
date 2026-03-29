@@ -1102,13 +1102,30 @@ function SajuReadingInner() {
   const [copied, setCopied] = useState(false);
   const searchParams = useSearchParams();
 
-  // URL 파라미터로 자동 분석
+  // URL 해시 파라미터로 자동 분석
   useEffect(() => {
-    const y = searchParams.get('y');
-    const m = searchParams.get('m');
-    const d = searchParams.get('d');
-    const t = searchParams.get('t');
-    const g = searchParams.get('g');
+    if (typeof window === 'undefined') return;
+    const hash = window.location.hash;
+    let y: string | null = null, m: string | null = null, d: string | null = null, t: string | null = null, g: string | null = null;
+
+    if (hash.includes('share=')) {
+      try {
+        const encoded = hash.split('share=')[1];
+        const decoded = JSON.parse(decodeURIComponent(atob(encoded)));
+        y = decoded.y ? String(decoded.y) : null;
+        m = decoded.m ? String(decoded.m) : null;
+        d = decoded.d ? String(decoded.d) : null;
+        t = decoded.t != null ? String(decoded.t) : null;
+        g = decoded.g || null;
+      } catch {}
+    } else {
+      // 기존 query param 호환
+      y = searchParams.get('y');
+      m = searchParams.get('m');
+      d = searchParams.get('d');
+      t = searchParams.get('t');
+      g = searchParams.get('g');
+    }
 
     if (y && m && d) {
       setBirthYear(y);
@@ -1124,9 +1141,9 @@ function SajuReadingInner() {
       }
       // 자동 분석 실행 (약간의 딜레이 후)
       setTimeout(() => {
-        const year = parseInt(y);
-        const month = parseInt(m);
-        const day = parseInt(d);
+        const year = parseInt(y!);
+        const month = parseInt(m!);
+        const day = parseInt(d!);
         const hour = t === 'unknown' ? null : (t ? parseInt(t) : null);
 
         if (year >= 1900 && year <= 2100 && month >= 1 && month <= 12 && day >= 1 && day <= 31) {
@@ -1164,23 +1181,27 @@ function SajuReadingInner() {
     }
   }, [searchParams]);
 
-  // 공유 URL 생성 및 복사
-  const handleShare = () => {
-    const params = new URLSearchParams();
-    params.set('y', birthYear);
-    params.set('m', birthMonth);
-    params.set('d', birthDay);
+  // 공유 URL 생성 (해시 기반)
+  const getShareUrl = () => {
+    const data: Record<string, string | number> = {
+      y: birthYear,
+      m: birthMonth,
+      d: birthDay,
+    };
     if (unknownTime) {
-      params.set('t', 'unknown');
+      data.t = 'unknown';
     } else if (birthTime) {
-      params.set('t', birthTime);
+      data.t = birthTime;
     }
     if (gender === 'female') {
-      params.set('g', 'female');
+      data.g = 'female';
     }
+    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
+  };
 
-    const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
-    navigator.clipboard.writeText(shareUrl).then(() => {
+  const handleShare = () => {
+    navigator.clipboard.writeText(getShareUrl()).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     });

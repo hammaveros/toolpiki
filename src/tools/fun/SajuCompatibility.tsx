@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -568,6 +568,67 @@ export function SajuCompatibility() {
 
   const [result, setResult] = useState<CompatibilityResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  // URL 해시 파라미터로 자동 분석
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const hash = window.location.hash;
+    if (!hash.includes('share=')) return;
+    try {
+      const encoded = hash.split('share=')[1];
+      const decoded = JSON.parse(decodeURIComponent(atob(encoded)));
+      if (decoded.y1 && decoded.m1 && decoded.d1 && decoded.y2 && decoded.m2 && decoded.d2) {
+        if (decoded.n1) setName1(decoded.n1);
+        setYear1(String(decoded.y1));
+        setMonth1(String(decoded.m1));
+        setDay1(String(decoded.d1));
+        if (decoded.g1) setGender1(decoded.g1);
+        if (decoded.n2) setName2(decoded.n2);
+        setYear2(String(decoded.y2));
+        setMonth2(String(decoded.m2));
+        setDay2(String(decoded.d2));
+        if (decoded.g2) setGender2(decoded.g2);
+
+        setTimeout(() => {
+          const y1 = parseInt(decoded.y1);
+          const m1 = parseInt(decoded.m1);
+          const d1 = parseInt(decoded.d1);
+          const y2 = parseInt(decoded.y2);
+          const m2 = parseInt(decoded.m2);
+          const d2 = parseInt(decoded.d2);
+          if (y1 >= 1900 && y1 <= 2100 && y2 >= 1900 && y2 <= 2100 &&
+              m1 >= 1 && m1 <= 12 && m2 >= 1 && m2 <= 12 &&
+              d1 >= 1 && d1 <= 31 && d2 >= 1 && d2 <= 31) {
+            const compatibility = analyzeCompatibility(
+              decoded.n1 || '', y1, m1, d1, decoded.g1 || 'male',
+              decoded.n2 || '', y2, m2, d2, decoded.g2 || 'female'
+            );
+            setResult(compatibility);
+          }
+        }, 100);
+      }
+    } catch {}
+  }, []);
+
+  // 공유 URL 생성 (해시 기반)
+  const getShareUrl = () => {
+    const data: Record<string, string> = {
+      y1: year1, m1: month1, d1: day1, g1: gender1,
+      y2: year2, m2: month2, d2: day2, g2: gender2,
+    };
+    if (name1) data.n1 = name1;
+    if (name2) data.n2 = name2;
+    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
+  };
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(getShareUrl()).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   const handleAnalyze = () => {
     setError(null);
@@ -764,6 +825,12 @@ export function SajuCompatibility() {
               {result.total.score}점
             </div>
             <p className="text-gray-600 dark:text-gray-400">{result.total.summary}</p>
+            <button
+              onClick={handleShare}
+              className="mt-3 text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+            >
+              {copied ? '✅ 링크 복사됨!' : '🔗 결과 공유하기'}
+            </button>
 
             {/* 두 사람 요약 */}
             <div className="grid grid-cols-2 gap-4 mt-6">
