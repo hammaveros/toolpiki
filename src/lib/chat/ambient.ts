@@ -58,12 +58,12 @@ export function getRandomAmbient() {
 }
 
 export function getRandomInteraction(type: 'coffee' | 'snack'): { text: string; failed: boolean } {
-  // 20% 확률로 실패 이벤트
-  if (type === 'coffee' && Math.random() < 0.2) {
+  // 실패 확률
+  if (type === 'coffee' && Math.random() < 0.35) {
     const fails = INTERACTION_MESSAGES.coffeeFail;
     return { text: fails[Math.floor(Math.random() * fails.length)], failed: true };
   }
-  if (type === 'snack' && Math.random() < 0.15) {
+  if (type === 'snack' && Math.random() < 0.3) {
     const fails = INTERACTION_MESSAGES.snackFail;
     return { text: fails[Math.floor(Math.random() * fails.length)], failed: true };
   }

@@ -119,8 +119,8 @@ export function TeamPicker() {
     return () => clearAnimTimer();
   }, [clearAnimTimer]);
 
-  // 팀 나누기
-  const divideTeams = () => {
+  // 팀 나누기 (with optional seed for replay)
+  const divideTeams = (forceSeed?: number) => {
     if (names.length < 2) {
       setError('최소 2명 이상 입력해 주세요');
       return;
@@ -139,8 +139,12 @@ export function TeamPicker() {
     setTeams([]);
     setCurrentAssigning(null);
 
-    // 이름 셔플
-    const shuffled = [...names].sort(() => Math.random() - 0.5);
+    const seed = forceSeed ?? Date.now();
+    setCurrentSeed(seed);
+
+    // Use seeded RNG for deterministic results
+    const rng = mulberry32(seed);
+    const shuffled = seededShuffle([...names], rng);
 
     // 팀 생성
     const newTeams: Team[] = [];
@@ -151,17 +155,13 @@ export function TeamPicker() {
       });
     }
 
-    // 균등 분배: 먼저 팀 배정을 확정한 후 순서를 섞음
-    // 각 사람에게 팀 번호를 부여 (라운드 로빈)
     const assignments: Array<{ name: string; teamIdx: number }> = shuffled.map((name, idx) => ({
       name,
       teamIdx: idx % teamCount,
     }));
-    // 배정 순서를 랜덤으로 섞어서 예측 불가능하게
-    const shuffledAssignments: Array<{ name: string; teamIdx: number }> = [...assignments].sort(() => Math.random() - 0.5);
+    const shuffledAssignments = seededShuffle(assignments, rng);
 
     if (viewMode === 'instant') {
-      // 바로보기: 기존처럼 즉시 표시
       setIsLoading(true);
       setTimeout(() => {
         shuffledAssignments.forEach(({ name, teamIdx }) => {
@@ -171,7 +171,6 @@ export function TeamPicker() {
         setIsLoading(false);
       }, 800);
     } else {
-      // 구경하면서 보기: 한 명씩 애니메이션
       setIsAnimating(true);
       setAnimatedTeams(newTeams);
       setAssignedCount(0);
@@ -191,7 +190,6 @@ export function TeamPicker() {
         const name: string = shuffledAssignments[idx].name;
         const teamIdx: number = shuffledAssignments[idx].teamIdx;
 
-        // 현재 배정 중인 사람 표시
         setCurrentAssigning({ name, teamIdx });
 
         animTimerRef.current = setTimeout(() => {
@@ -210,34 +208,22 @@ export function TeamPicker() {
         }, delay * 0.7);
       };
 
-      // 빈 팀 카드 보여준 후 시작
       animTimerRef.current = setTimeout(() => {
         assignNext(0, newTeams);
       }, 500);
     }
   };
 
-  // 애니메이션 건너뛰기
+  // 애니메이션 건너뛰기 (same seed → same result)
   const skipAnimation = () => {
     clearAnimTimer();
     setCurrentAssigning(null);
     setIsAnimating(false);
 
-    // 이름 다시 셔플하여 즉시 완료
-    const shuffled = [...names].sort(() => Math.random() - 0.5);
-    const newTeams: Team[] = [];
-    for (let i = 0; i < teamCount; i++) {
-      newTeams.push({ name: `${i + 1}팀`, members: [] });
+    if (currentSeed !== null) {
+      const result = divideWithSeed(names, teamCount, currentSeed);
+      setTeams(result);
     }
-    const assignments: Array<{ name: string; teamIdx: number }> = shuffled.map((name, idx) => ({
-      name,
-      teamIdx: idx % teamCount,
-    }));
-    const shuffledAssignments: Array<{ name: string; teamIdx: number }> = [...assignments].sort(() => Math.random() - 0.5);
-    shuffledAssignments.forEach(({ name, teamIdx }) => {
-      newTeams[teamIdx].members.push(name);
-    });
-    setTeams(newTeams);
     setAnimatedTeams([]);
   };
 
@@ -264,10 +250,10 @@ export function TeamPicker() {
     setError(null);
   };
 
-  // 공유 URL 생성
+  // 공유 URL 생성 (seed + inputs for reproducibility)
   const getShareUrl = () => {
-    if (teams.length === 0) return '';
-    const data = { teams };
+    if (teams.length === 0 || currentSeed === null) return '';
+    const data = { s: currentSeed, m: names, t: teamCount };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
@@ -458,7 +444,7 @@ export function TeamPicker() {
   };
 
 
-  // URL에서 공유 데이터 복원
+  // URL에서 공유 데이터 복원 (seed-based replay)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const hash = window.location.hash;
@@ -466,7 +452,22 @@ export function TeamPicker() {
       try {
         const decoded = decodeURIComponent(atob(hash.slice(7)));
         const parsed = JSON.parse(decoded);
-        if (parsed.teams && Array.isArray(parsed.teams)) {
+
+        // New seed-based format: { s: seed, m: members[], t: teamCount }
+        if (parsed.s != null && Array.isArray(parsed.m) && parsed.t) {
+          restoredFromShare.current = true;
+          const members: string[] = parsed.m;
+          const tc: number = parsed.t;
+          const seed: number = parsed.s;
+          setNamesInput(members.join(', '));
+          setTeamCount(tc);
+          setCurrentSeed(seed);
+          const result = divideWithSeed(members, tc, seed);
+          setTeams(result);
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+        // Legacy format: { teams: [...] }
+        else if (parsed.teams && Array.isArray(parsed.teams)) {
           restoredFromShare.current = true;
           const allMembers = parsed.teams.flatMap((t: Team) => t.members);
           setNamesInput(allMembers.join(', '));
@@ -614,7 +615,7 @@ export function TeamPicker() {
         </div>
 
         <div className="flex gap-3">
-          <Button onClick={divideTeams} disabled={isLoading || isAnimating}>
+          <Button onClick={() => divideTeams()} disabled={isLoading || isAnimating}>
             {isLoading || isAnimating ? '나누는 중...' : '팀 나누기'}
           </Button>
           {isAnimating && (

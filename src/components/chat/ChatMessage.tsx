@@ -37,7 +37,6 @@ export function ChatMessage({ nickname, emoji, text, time, isMine, type }: ChatM
     return (
       <div className="flex justify-end mb-3 animate-fade-in">
         <div className="flex items-end gap-1.5 max-w-[75%]">
-          <span className="text-[10px] text-[#A89880] dark:text-[#6B5E50] flex-shrink-0 mb-1">{time}</span>
           <div className="bg-[#D4A574]/20 dark:bg-[#D4A574]/10 border border-[#D4A574]/30 dark:border-[#D4A574]/20 px-3.5 py-2 rounded-2xl rounded-br-md">
             <p className="text-sm text-[#5C4A3A] dark:text-[#D4B896] break-words whitespace-pre-wrap">{text}</p>
           </div>
@@ -58,7 +57,6 @@ export function ChatMessage({ nickname, emoji, text, time, isMine, type }: ChatM
           <div className="bg-white dark:bg-[#292524] border border-[#E8DFD4] dark:border-[#3D3530] px-3.5 py-2 rounded-2xl rounded-bl-md">
             <p className="text-sm text-[#5C4A3A] dark:text-[#D4B896] break-words whitespace-pre-wrap">{text}</p>
           </div>
-          <span className="text-[10px] text-[#A89880] dark:text-[#6B5E50] flex-shrink-0 mb-1">{time}</span>
         </div>
       </div>
     </div>

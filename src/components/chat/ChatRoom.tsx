@@ -259,7 +259,7 @@ export function ChatRoom() {
     return Number(localStorage.getItem('tangbisil-snack-count') || '0');
   });
 
-  // 인터랙션: 간식 훔치기
+  // 인터랙션: 간식 소매넣기
   const handleSnack = useCallback(async () => {
     if (!uid || !nickname || cooldown) return;
     const { text, failed } = getRandomInteraction('snack');
@@ -269,7 +269,7 @@ export function ChatRoom() {
       const newCount = snackCount + 1;
       setSnackCount(newCount);
       localStorage.setItem('tangbisil-snack-count', String(newCount));
-      displayText = `${text} (${newCount}번째 간식 훔치기!)`;
+      displayText = `${text} (${newCount}번째 간식 소매넣기!)`;
     }
 
     await addDoc(collection(db, 'messages'), {
@@ -364,7 +364,7 @@ export function ChatRoom() {
           disabled={cooldown}
           className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#E8DFD4] dark:bg-[#3D3530] text-xs text-[#8B7B6B] dark:text-[#A89880] hover:bg-[#DDD2C4] dark:hover:bg-[#4D4540] transition-colors disabled:opacity-40"
         >
-          🍪 간식 훔치기{snackCount > 0 && ` (${snackCount})`}
+          🍪 간식 소매넣기{snackCount > 0 && ` (${snackCount})`}
         </button>
       </div>
 

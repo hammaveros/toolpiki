@@ -110,6 +110,45 @@ export function RouletteSelectorEn() {
     ctx.fill();
   }, [items, rotation, totalWeight]);
 
+  // Store winner index and final angle for sharing
+  const [winnerIndex, setWinnerIndex] = useState<number | null>(null);
+  const [finalAngle, setFinalAngle] = useState<number | null>(null);
+
+  const spinToAngle = (targetFinalAngle: number, targetWinnerIdx: number, duration = 4000) => {
+    setIsSpinning(true);
+    setResult(null);
+
+    const startRotation = rotation;
+    const minSpins = 5 * 360;
+    const targetMod = ((targetFinalAngle % 360) + 360) % 360;
+    const currentMod = ((startRotation % 360) + 360) % 360;
+    let diff = targetMod - currentMod;
+    if (diff < 0) diff += 360;
+    const totalRotation = minSpins + diff;
+
+    const startTime = Date.now();
+
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const currentRotation = startRotation + totalRotation * eased;
+
+      setRotation(currentRotation);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setIsSpinning(false);
+        setWinnerIndex(targetWinnerIdx);
+        setFinalAngle(currentRotation);
+        setResult(items[targetWinnerIdx]?.name ?? '');
+      }
+    };
+
+    requestAnimationFrame(animate);
+  };
+
   const spin = () => {
     if (isSpinning || items.length < 2) return;
 
@@ -154,6 +193,8 @@ export function RouletteSelectorEn() {
           }
         }
 
+        setWinnerIndex(selectedIndex);
+        setFinalAngle(currentRotation);
         setResult(items[selectedIndex].name);
       }
     };
@@ -162,34 +203,71 @@ export function RouletteSelectorEn() {
   };
 
   const getShareUrl = () => {
-    if (!result) return '';
-    const data = { items, result };
+    if (!result || winnerIndex === null || finalAngle === null) return '';
+    const data = {
+      i: items.map(item => item.name),
+      iw: items.map(item => item.weight),
+      w: winnerIndex,
+      a: finalAngle,
+    };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // Restore shared data from URL hash
+  const sharedDataRef = useRef<{ items: RouletteItem[]; winnerIndex: number; angle: number } | null>(null);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const hash = window.location.hash;
-    if (hash.startsWith('#share=')) {
-      try {
-        const decoded = decodeURIComponent(atob(hash.slice(7)));
-        const parsed = JSON.parse(decoded);
-        if (parsed.items && parsed.result) {
-          // Backward compatibility (string[] → RouletteItem[])
-          const loadedItems = parsed.items.map((item: string | RouletteItem) =>
-            typeof item === 'string' ? { name: item, weight: 1 } : item
-          );
-          setItems(loadedItems);
-          setResult(parsed.result);
-          window.history.replaceState(null, '', window.location.pathname);
-        }
-      } catch {
-        // ignore
+    if (!hash.startsWith('#share=')) return;
+
+    try {
+      const decoded = decodeURIComponent(atob(hash.slice(7)));
+      const parsed = JSON.parse(decoded);
+
+      // New format: { i, iw, w, a }
+      if (parsed.i && typeof parsed.w === 'number' && typeof parsed.a === 'number') {
+        const weights: number[] = parsed.iw || parsed.i.map(() => 1);
+        const loadedItems: RouletteItem[] = (parsed.i as string[]).map((name: string, idx: number) => ({
+          name,
+          weight: weights[idx] ?? 1,
+        }));
+        setItems(loadedItems);
+        sharedDataRef.current = { items: loadedItems, winnerIndex: parsed.w, angle: parsed.a };
+        window.history.replaceState(null, '', window.location.pathname);
+        return;
       }
+
+      // Backward compatibility (items + result)
+      if (parsed.items && parsed.result) {
+        const loadedItems = parsed.items.map((item: string | RouletteItem) =>
+          typeof item === 'string' ? { name: item, weight: 1 } : item
+        );
+        setItems(loadedItems);
+        setResult(parsed.result);
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+    } catch {
+      // ignore
     }
   }, []);
+
+  // Auto-spin after shared data is loaded
+  const hasAutoSpun = useRef(false);
+  useEffect(() => {
+    if (hasAutoSpun.current || !sharedDataRef.current) return;
+    if (items.length < 2) return;
+    const data = sharedDataRef.current;
+    if (items[0]?.name !== data.items[0]?.name) return;
+    hasAutoSpun.current = true;
+    sharedDataRef.current = null;
+    const timer = setTimeout(() => {
+      spinToAngle(data.angle, data.winnerIndex);
+    }, 500);
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items]);
 
   return (
     <div className="space-y-2">
