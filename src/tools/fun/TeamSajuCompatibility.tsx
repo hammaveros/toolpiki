@@ -270,10 +270,10 @@ function RelationPolygon({
   const n = members.length;
   if (n < 2) return null;
 
-  const size = 320;
+  const size = 400;
   const cx = size / 2;
   const cy = size / 2;
-  const radius = size / 2 - 50;
+  const radius = size / 2 - 55;
 
   // 꼭짓점 좌표 (12시 방향부터 시계방향)
   const points = members.map((_, i) => {
@@ -298,7 +298,7 @@ function RelationPolygon({
 
   return (
     <div className="flex justify-center">
-      <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-xs" style={{ maxHeight: 320 }}>
+      <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-md" style={{ maxHeight: 400 }}>
         {/* 연결선 */}
         {pairs.map((pair, idx) => {
           const i1 = members.findIndex(m => m.name === pair.member1);
@@ -321,9 +321,9 @@ function RelationPolygon({
               {isHighlighted && (
                 <text
                   x={(p1.x + p2.x) / 2}
-                  y={(p1.y + p2.y) / 2 - 4}
+                  y={(p1.y + p2.y) / 2 - 5}
                   textAnchor="middle"
-                  className="text-[9px] font-bold fill-gray-600 dark:fill-gray-300"
+                  className="text-[12px] font-bold fill-gray-700 dark:fill-gray-200"
                 >
                   {pair.score}
                 </text>
@@ -348,7 +348,7 @@ function RelationPolygon({
             >
               <circle
                 cx={p.x} cy={p.y}
-                r={isSelected ? 22 : 18}
+                r={isSelected ? 26 : 22}
                 className={cn(
                   'transition-all duration-200',
                   isSelected
@@ -365,7 +365,7 @@ function RelationPolygon({
                 textAnchor="middle"
                 dominantBaseline="middle"
                 className={cn(
-                  'text-[10px] font-semibold pointer-events-none',
+                  'text-[11px] font-bold pointer-events-none',
                   isSelected ? 'fill-white' : isDimmed ? 'fill-gray-400 dark:fill-gray-500' : 'fill-gray-800 dark:fill-gray-200'
                 )}
               >
@@ -389,11 +389,11 @@ function RelationPolygon({
 
 export function TeamSajuCompatibility() {
   const [isSample, setIsSample] = useState(true);
-  const [teamName, setTeamName] = useState('샘플팀');
+  const [teamName, setTeamName] = useState('우리팀');
   const [members, setMembers] = useState<Member[]>([
-    { id: '1', name: '김테스트', birthDate: '1995-03-14' },
-    { id: '2', name: '이테스트', birthDate: '1997-08-22' },
-    { id: '3', name: '박테스트', birthDate: '1994-12-05' },
+    { id: '1', name: '김민수', birthDate: '1995-03-14' },
+    { id: '2', name: '이서연', birthDate: '1997-08-22' },
+    { id: '3', name: '박지훈', birthDate: '1994-12-05' },
   ]);
   const [analyzing, setAnalyzing] = useState(false);
   const [results, setResults] = useState<{
@@ -602,22 +602,19 @@ export function TeamSajuCompatibility() {
           <div className="flex gap-2">
             <button
               onClick={() => {
-                const samples = [
-                  { name: '김테스트', birthDate: '1995-03-14' },
-                  { name: '이테스트', birthDate: '1997-08-22' },
-                  { name: '박테스트', birthDate: '1994-12-05' },
-                  { name: '최테스트', birthDate: '1996-06-30' },
-                  { name: '정테스트', birthDate: '1998-01-17' },
-                ];
-                setMembers(samples.map((s, i) => ({ id: String(Date.now() + i), ...s })));
-                setTeamName('샘플팀');
-                setIsSample(true);
                 setResults(null);
                 setIsSample(false);
+                setSelectedMember(null);
+                setTeamName('');
+                setMembers([
+                  { id: String(Date.now()), name: '', birthDate: '' },
+                  { id: String(Date.now() + 1), name: '', birthDate: '' },
+                ]);
+                window.history.replaceState(null, '', window.location.pathname);
               }}
               className="text-xs px-3 py-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
             >
-              샘플
+              새로 만들기
             </button>
             <Button
               variant="secondary"
@@ -640,13 +637,13 @@ export function TeamSajuCompatibility() {
                 onChange={(e) => updateMember(member.id, 'name', e.target.value)}
                 placeholder="이름"
                 maxLength={10}
-                className="w-16 min-w-0 px-2 py-1.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
+                className="flex-1 min-w-0 px-2 py-1.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
               />
               <input
                 type="date"
                 value={member.birthDate}
                 onChange={(e) => updateMember(member.id, 'birthDate', e.target.value)}
-                className="flex-1 min-w-0 px-2 py-1.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
+                className="w-28 px-1 py-1.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
               />
               <button
                 onClick={() => removeMember(member.id)}
@@ -693,47 +690,37 @@ export function TeamSajuCompatibility() {
       {/* 결과 */}
       {results && !analyzing && (
         <>
-          {/* 팀 종합 점수 */}
-          <Card variant="bordered" className="p-5">
-            <div className="text-center mb-4">
-              {teamName.trim() && (
-                <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">{teamName.trim()}</p>
-              )}
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">팀 궁합 점수</p>
-              <p className={cn('text-5xl font-bold', getScoreColor(results.teamScore))}>
-                {results.teamScore}
-              </p>
-              <p className={cn('text-sm font-medium mt-1', getScoreColor(results.teamScore))}>
-                {results.teamScore >= 85 ? '이 팀 해체하면 안 됩니다' :
-                 results.teamScore >= 75 ? '눈빛만 봐도 통하는 사이' :
-                 results.teamScore >= 65 ? '꽤 괜찮은 조합이에요' :
-                 results.teamScore >= 55 ? '노력하면 잘 맞을 수 있어요' :
-                 results.teamScore >= 45 ? '서로 좀 더 알아가야 해요' :
-                 '팀빌딩이 시급합니다...'}
-              </p>
+          {/* 팀 종합 점수 — 컴팩트 */}
+          <Card variant="bordered" className="p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <p className={cn('text-3xl font-bold', getScoreColor(results.teamScore))}>
+                  {results.teamScore}
+                </p>
+                <div>
+                  {teamName.trim() && (
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">{teamName.trim()}</p>
+                  )}
+                  <p className={cn('text-xs', getScoreColor(results.teamScore))}>
+                    {results.teamScore >= 85 ? '이 팀 해체하면 안 됩니다' :
+                     results.teamScore >= 75 ? '눈빛만 봐도 통하는 사이' :
+                     results.teamScore >= 65 ? '꽤 괜찮은 조합이에요' :
+                     results.teamScore >= 55 ? '노력하면 잘 맞을 수 있어요' :
+                     results.teamScore >= 45 ? '서로 좀 더 알아가야 해요' :
+                     '팀빌딩이 시급합니다...'}
+                  </p>
+                </div>
+              </div>
+              <CopyButton text={getShareUrl()} label="공유 🔗" />
             </div>
-
-            {/* 팀 오행 분포 */}
-            <div className="mt-4">
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2 text-center">팀 오행 분포</p>
-              <div className="flex gap-1.5 justify-center">
-                {Object.entries(results.teamOhang).map(([ohang, count]) => (
-                  <div key={ohang} className={cn('px-3 py-2 rounded-lg text-center text-xs font-medium', OHANG_BG[ohang])}>
-                    <p className="font-bold text-sm">{ohang}</p>
-                    <p>{count}</p>
+            {/* 오행 분포 인라인 */}
+            <div className="flex gap-1 mt-3">
+              {Object.entries(results.teamOhang).map(([ohang, count]) => (
+                <div key={ohang} className={cn('flex-1 py-1 rounded text-center text-[10px] font-medium', OHANG_BG[ohang])}>
+                  <span className="font-bold">{ohang}</span> {count}
                   </div>
                 ))}
               </div>
-              {Object.entries(results.teamOhang).some(([_, v]) => v === 0) && (
-                <p className="text-xs text-amber-600 dark:text-amber-400 text-center mt-2">
-                  ⚠️ 부족한 오행: {Object.entries(results.teamOhang).filter(([_, v]) => v === 0).map(([k]) => k).join(', ')}
-                </p>
-              )}
-              {/* 팀 오행 코멘트 */}
-              <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3 leading-relaxed">
-                {results.teamOhangComment}
-              </p>
-            </div>
           </Card>
 
           {/* 관계도 */}
@@ -933,26 +920,6 @@ export function TeamSajuCompatibility() {
             </div>
           </Card>
 
-          {/* 공유 + 새로 만들기 */}
-          <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <CopyButton text={getShareUrl()} label="모임 공유하기 🔗" />
-            <Button
-              variant="secondary"
-              onClick={() => {
-                setResults(null);
-                setIsSample(false);
-                setMembers([
-                  { id: String(Date.now()), name: '', birthDate: '' },
-                  { id: String(Date.now() + 1), name: '', birthDate: '' },
-                ]);
-                setTeamName('');
-                setSelectedMember(null);
-                window.history.replaceState(null, '', window.location.pathname);
-              }}
-            >
-              새로 만들기
-            </Button>
-          </div>
         </>
       )}
 
