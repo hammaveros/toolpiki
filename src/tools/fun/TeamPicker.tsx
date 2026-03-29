@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { toPng } from 'html-to-image';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 interface Team {
@@ -233,7 +232,7 @@ export function TeamPicker() {
     if (teams.length === 0) return '';
     const data = { teams };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/tools/team-picker#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   const saveAllAsImage = async () => {

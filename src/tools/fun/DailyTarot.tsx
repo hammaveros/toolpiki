@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 // 메이저 아르카나 22장
@@ -340,7 +339,7 @@ export function DailyTarot() {
     if (!result || !card) return '';
     const data = { card: card.name, reversed: result.isReversed };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/tools/daily-tarot#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   const canDraw = !result || result.date !== getTodayString();

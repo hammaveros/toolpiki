@@ -5,7 +5,6 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 const COLORS = [
@@ -166,7 +165,7 @@ export function RouletteSelectorEn() {
     if (!result) return '';
     const data = { items, result };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/roulette-selector-en#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

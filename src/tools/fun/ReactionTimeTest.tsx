@@ -5,7 +5,6 @@ import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { cn } from '@/lib/utils/cn';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 type GameState = 'idle' | 'waiting' | 'go' | 'tooSoon' | 'result';
@@ -143,7 +142,7 @@ export function ReactionTimeTest() {
     if (!stats || results.length === 0) return '';
     const data = { results: results.map(r => r.time), avg: stats.average };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/tools/reaction-time-test#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // URL hash에서 공유 데이터 복원

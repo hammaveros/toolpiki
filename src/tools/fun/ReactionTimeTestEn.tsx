@@ -5,7 +5,6 @@ import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { cn } from '@/lib/utils/cn';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 type GameState = 'idle' | 'waiting' | 'go' | 'tooSoon' | 'result';
@@ -141,7 +140,7 @@ export function ReactionTimeTestEn() {
     if (!stats || results.length === 0) return '';
     const data = { results: results.map(r => r.time), avg: stats.average };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/reaction-time-test-en#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

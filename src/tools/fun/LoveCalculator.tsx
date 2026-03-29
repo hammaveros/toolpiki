@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 interface LoveResult {
@@ -90,7 +89,7 @@ export function LoveCalculator() {
     if (!result) return '';
     const data = { n1: name1, n2: name2 };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/love-calculator-en#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // Load from URL hash

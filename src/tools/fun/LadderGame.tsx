@@ -5,7 +5,6 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 interface LadderPath {
@@ -435,7 +434,7 @@ export function LadderGame() {
     }));
     const data = { mappings };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/tools/ladder-game#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // URL hash에서 공유 데이터 복원

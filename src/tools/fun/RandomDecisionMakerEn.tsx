@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Textarea } from '@/components/ui/Textarea';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 type DecisionType = 'yesno' | 'custom' | 'number' | 'coin';
@@ -77,7 +76,7 @@ export function RandomDecisionMakerEn() {
     if (!result) return '';
     const data = { type, result };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/random-decision-maker-en#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

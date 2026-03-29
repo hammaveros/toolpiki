@@ -6,7 +6,6 @@ import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
 import { cn } from '@/lib/utils/cn';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 type LottoType = 'powerball' | 'megamillions';
@@ -149,7 +148,7 @@ export function UsLottoGenerator() {
       sets: results.map(s => ({ main: s.mainNumbers, special: s.specialNumber })),
     };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/us-lotto-generator-en#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // Restore shared data from URL hash

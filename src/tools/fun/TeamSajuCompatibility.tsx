@@ -6,7 +6,6 @@ import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { FaqSection } from '@/components/ui/FaqItem';
 import { cn } from '@/lib/utils/cn';
-import { siteConfig } from '@/data/site';
 
 // ========================================
 // 사주 계산 로직 (기존 SajuCompatibility에서 가져옴)
@@ -592,7 +591,7 @@ export function TeamSajuCompatibility() {
     const json = JSON.stringify(data);
     // UTF-8 → base64 (한글 지원)
     const encoded = btoa(unescape(encodeURIComponent(json)));
-    return `${siteConfig.url}/tools/team-saju#s=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#s=${encoded}`;
   }, [validMembers, teamName]);
 
   const getScoreColor = (score: number) => {

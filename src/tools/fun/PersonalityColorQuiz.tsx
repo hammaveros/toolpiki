@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 interface Question {
@@ -147,7 +146,7 @@ export function PersonalityColorQuiz() {
     if (!result) return '';
     const data = { color: result.name };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/personality-color-quiz-en#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   const progress = ((currentQuestion + 1) / QUESTIONS.length) * 100;

@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtonsEn } from '@/components/share/ResultShareButtonsEn';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 const ZODIAC_SIGNS = [
@@ -96,7 +95,7 @@ export function DailyHoroscope() {
     if (selectedSign === null || !sign) return '';
     const data = { sign: sign.name };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/en/tools/daily-horoscope-en#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   return (

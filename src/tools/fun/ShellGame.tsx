@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
-import { siteConfig } from '@/data/site';
 import { cn } from '@/lib/utils/cn';
 import { FaqSection } from '@/components/ui/FaqItem';
 
@@ -115,7 +114,7 @@ export function ShellGame() {
     const foundPrizes = revealedCups.filter(r => r.isPrize).length;
     const data = { found: foundPrizes, total: prizeCount, cups: cupCount };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/tools/shell-game#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // 현재까지 찾은 당첨 수

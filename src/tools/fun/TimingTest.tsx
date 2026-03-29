@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 type GameMode = '5' | '10' | '30';
@@ -95,7 +94,7 @@ export function TimingTest() {
   const getShareUrl = () => {
     const data = { target: targetSeconds, elapsed: elapsed.toFixed(3), diff: getDifference().toFixed(3) };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-    return `${siteConfig.url}/tools/timing-test#share=${encoded}`;
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
   // URL hash에서 공유 데이터 복원
