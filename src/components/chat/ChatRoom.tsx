@@ -203,18 +203,21 @@ export function ChatRoom() {
       return;
     }
 
-    await addDoc(collection(db, 'messages'), {
-      text: filtered,
-      nickname: nickname.name,
-      emoji: nickname.emoji,
-      uid,
-      type: 'message',
-      createdAt: serverTimestamp(),
-    });
-
-    // 2초 쿨다운
-    setCooldown(true);
-    setTimeout(() => setCooldown(false), 2000);
+    try {
+      await addDoc(collection(db, 'messages'), {
+        text: filtered,
+        nickname: nickname.name,
+        emoji: nickname.emoji,
+        uid,
+        type: 'message',
+        createdAt: serverTimestamp(),
+      });
+      setCooldown(true);
+      setTimeout(() => setCooldown(false), 2000);
+    } catch {
+      setToast('지금은 전송이 안 돼요 😢 잠시 후 다시 시도해주세요');
+      setTimeout(() => setToast(''), 4000);
+    }
   }, [uid, nickname, cooldown]);
 
   // 인터랙션: 커피 내리기
@@ -222,17 +225,21 @@ export function ChatRoom() {
     if (!uid || !nickname || cooldown) return;
     const { text } = getRandomInteraction('coffee');
 
-    await addDoc(collection(db, 'messages'), {
-      text,
-      nickname: nickname.name,
-      emoji: nickname.emoji,
-      uid,
-      type: 'interaction',
-      createdAt: serverTimestamp(),
-    });
-
-    setCooldown(true);
-    setTimeout(() => setCooldown(false), 10000);
+    try {
+      await addDoc(collection(db, 'messages'), {
+        text,
+        nickname: nickname.name,
+        emoji: nickname.emoji,
+        uid,
+        type: 'interaction',
+        createdAt: serverTimestamp(),
+      });
+      setCooldown(true);
+      setTimeout(() => setCooldown(false), 10000);
+    } catch {
+      setToast('지금은 안 돼요 😢');
+      setTimeout(() => setToast(''), 3000);
+    }
   }, [uid, nickname, cooldown]);
 
   // 간식 카운터
@@ -254,17 +261,21 @@ export function ChatRoom() {
       displayText = `${text} (${newCount}번째 간식 소매넣기!)`;
     }
 
-    await addDoc(collection(db, 'messages'), {
-      text: displayText,
-      nickname: nickname.name,
-      emoji: nickname.emoji,
-      uid,
-      type: 'interaction',
-      createdAt: serverTimestamp(),
-    });
-
-    setCooldown(true);
-    setTimeout(() => setCooldown(false), 10000);
+    try {
+      await addDoc(collection(db, 'messages'), {
+        text: displayText,
+        nickname: nickname.name,
+        emoji: nickname.emoji,
+        uid,
+        type: 'interaction',
+        createdAt: serverTimestamp(),
+      });
+      setCooldown(true);
+      setTimeout(() => setCooldown(false), 10000);
+    } catch {
+      setToast('지금은 안 돼요 😢');
+      setTimeout(() => setToast(''), 3000);
+    }
   }, [nickname, cooldown, snackCount, uid]);
 
   // 시간 포맷
