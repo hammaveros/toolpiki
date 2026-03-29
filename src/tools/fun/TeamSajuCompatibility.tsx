@@ -899,6 +899,13 @@ export function TeamSajuCompatibility() {
           </Card>
 
 
+          {/* 공유 섹션 */}
+          <Card>
+            <div className="text-center py-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">📮 결과를 팀원에게 공유해보세요!</p>
+              <CopyButton text={getShareUrl()} label="🔗 팀원에게 공유하기" />
+            </div>
+          </Card>
         </>
       )}
 
