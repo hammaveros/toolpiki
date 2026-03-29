@@ -445,7 +445,7 @@ function SeoContent() {
         faqs={[
           {
             question: 'Is reaction time genetic or can it be trained?',
-            answer: 'Basic nerve conduction speed is genetic, but prediction and decision-making speed can be improved through training. Even pro gamers improve their reaction times through consistent practice.',
+            answer: 'Basic neural response speed is genetic, but prediction and decision-making speed can be improved through training. Even pro gamers improve their reaction times through consistent practice.',
           },
           {
             question: 'Does reaction time decrease with age?',
