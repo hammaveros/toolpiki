@@ -184,7 +184,7 @@ export const toolsEn: ToolMeta[] = [
   },
   {
     slug: 'reading-time-calculator-en',
-    name: 'Reading & Presentation Time Calculator',
+    name: 'Reading Time Calculator',
     description: 'Calculate reading time, speaking time, slide-based estimates, and reverse-calculate word count from target time.',
     category: 'text',
     tags: ['reading', 'time', 'presentation', 'slides', 'speech'],
