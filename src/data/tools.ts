@@ -1600,6 +1600,24 @@ export const tools: ToolMeta[] = [
       { question: '짧은 시간에도 효과적인 휴식이 가능한가요?', answer: '네, 10분 명상, 5분 스트레칭도 효과적입니다. 가용 시간에 맞는 방법을 추천합니다.' },
     ],
   },
+  {
+    slug: 'chat',
+    name: '랜선탕비실',
+    description: '잠깐 쉬어가세요. 익명으로 편하게 수다 떠는 온라인 탕비실.',
+    category: 'fun',
+    tags: ['채팅', '탕비실', '익명', '실시간'],
+    icon: '☕',
+    featured: true,
+    keywords: ['랜선탕비실', '익명 채팅', '실시간 채팅', '쉬는 시간', '직장인 채팅'],
+    externalUrl: '/chat',
+    relatedSlugs: ['reaction-time-test', 'team-picker'],
+    seoTitle: '랜선탕비실 - 익명 실시간 채팅',
+    seoDescription: '잠깐 쉬어가세요. 익명으로 편하게 수다 떠는 온라인 탕비실.',
+    faqs: [
+      { question: '회원가입이 필요한가요?', answer: '아니요, 접속하면 랜덤 닉네임이 자동 생성되어 바로 채팅할 수 있습니다.' },
+      { question: '채팅 내용은 저장되나요?', answer: '24시간 후 자동 삭제됩니다. 완전 익명이에요.' },
+    ],
+  },
 
   {
     slug: 'letter-qr',
