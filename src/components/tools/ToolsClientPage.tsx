@@ -48,8 +48,9 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
   const toolsPath = isEnglish ? '/en/tools' : '/tools';
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { recentTools, isLoaded: recentLoaded, removeRecent } = useRecentTools();
+  const { recentTools, isLoaded: recentLoaded } = useRecentTools();
   const [searchQuery, setSearchQuery] = useState('');
+  const [hiddenRecent, setHiddenRecent] = useState<Set<string>>(new Set());
 
   const effectiveSearch = initialSearch || searchQuery;
   const category = isMainPage ? undefined : (searchParams.get('category') || undefined);
@@ -87,10 +88,11 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
   const recentToolsList = useMemo(() => {
     if (!recentLoaded) return [];
     return recentTools
+      .filter((slug) => !hiddenRecent.has(slug))
       .map((slug) => searchFilteredTools.find((t) => t.slug === slug))
       .filter((t): t is ToolMeta => t !== undefined)
       .slice(0, 8);
-  }, [recentTools, searchFilteredTools, recentLoaded]);
+  }, [recentTools, searchFilteredTools, recentLoaded, hiddenRecent]);
 
   const filteredTools = useMemo(() => {
     if (category === 'popular') return popularTools;
@@ -184,6 +186,14 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
               >
                 <span className="text-base">{tool.icon}</span>
                 <span className="text-gray-700 dark:text-gray-300 font-medium">{tool.name}</span>
+                <button
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setHiddenRecent(prev => new Set(prev).add(tool.slug)); }}
+                  className="text-gray-300 dark:text-gray-600 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity ml-0.5"
+                >
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
               </Link>
             ))}
           </div>
