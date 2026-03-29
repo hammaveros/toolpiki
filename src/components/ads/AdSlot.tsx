@@ -49,15 +49,13 @@ export function AdSlot({ format = 'auto', slotId = '5499882149', className, resp
           return;
         }
         attempts++;
-        if (attempts >= 30) {
+        if (attempts >= 5) {
           if (!pushed.current) setFilled(false);
           return;
         }
-        // 처음 10번은 200ms, 그 후 500ms
-        const delay = attempts <= 10 ? 200 : 500;
-        timerId = setTimeout(poll, delay);
+        timerId = setTimeout(poll, 500);
       };
-      timerId = setTimeout(poll, 200);
+      timerId = setTimeout(poll, 500);
       return () => clearTimeout(timerId);
     }
   }, [pushAd]);
