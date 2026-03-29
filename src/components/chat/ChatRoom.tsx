@@ -125,11 +125,10 @@ export function ChatRoom() {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const initialScrollDone = useRef(false);
 
-  // 최초 로드 시 채팅 맨 아래로 (컨테이너 내부만)
+  // 채팅 컨테이너 내부만 맨 아래로 (페이지 스크롤 절대 건들지 않음)
   useEffect(() => {
-    if (messages.length > 0 && !initialScrollDone.current && chatContainerRef.current) {
+    if (messages.length > 0 && chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-      initialScrollDone.current = true;
     }
   }, [messages]);
 
