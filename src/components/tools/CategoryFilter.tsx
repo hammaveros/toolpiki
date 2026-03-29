@@ -8,6 +8,7 @@ interface CategoryFilterProps {
   activeCategory?: string;
   onCategoryChange?: (category: string | undefined) => void;
   toolCounts?: Record<string, number>;
+  isEnglish?: boolean;
 }
 
 export function CategoryFilter({
@@ -15,6 +16,7 @@ export function CategoryFilter({
   activeCategory,
   onCategoryChange,
   toolCounts,
+  isEnglish,
 }: CategoryFilterProps) {
   return (
     <div className="flex flex-nowrap gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none sm:flex-wrap sm:justify-center">
@@ -22,7 +24,7 @@ export function CategoryFilter({
         active={!activeCategory}
         onClick={() => onCategoryChange?.(undefined)}
       >
-        전체
+        {isEnglish ? 'All' : '전체'}
       </FilterButton>
       {categories.map((category) => (
         <FilterButton
@@ -43,6 +45,7 @@ export function CategoryFilter({
 }
 
 const CATEGORY_ACTIVE_COLORS: Record<string, string> = {
+  popular: 'bg-red-500',
   text: 'bg-blue-500',
   encoding: 'bg-purple-500',
   formatter: 'bg-emerald-500',

@@ -165,6 +165,7 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
           activeCategory={category}
           onCategoryChange={handleCategoryChange}
           toolCounts={toolCounts}
+          isEnglish={isEnglish}
         />
       </div>
 
