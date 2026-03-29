@@ -128,7 +128,7 @@ export function ChatRoom() {
   useEffect(() => {
     const container = chatContainerRef.current;
     if (!container) return;
-    const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 150;
+    const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 80;
     if (isNearBottom) {
       messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
@@ -184,22 +184,21 @@ export function ChatRoom() {
     return () => clearInterval(interval);
   }, []);
 
-  // 입장 처리
-  const handleJoin = useCallback(async (nick: { name: string; emoji: string }) => {
+  // 입장 처리 (파베 저장 안 함 - 로컬에서만 표시)
+  const handleJoin = useCallback((nick: { name: string; emoji: string }) => {
     setNickname(nick);
     saveNickname(nick);
     setJoined(true);
 
-    if (uid) {
-      await addDoc(collection(db, 'messages'), {
-        text: `🌿 ${nick.emoji} ${nick.name} 님이 탕비실에 들어왔어요`,
-        nickname: nick.name,
-        emoji: nick.emoji,
-        uid,
-        type: 'system',
-        createdAt: serverTimestamp(),
-      });
-    }
+    setMessages((prev) => [...prev, {
+      id: `join-${Date.now()}`,
+      text: `🌿 ${nick.emoji} ${nick.name} 님이 탕비실에 들어왔어요`,
+      nickname: nick.name,
+      emoji: nick.emoji,
+      uid: uid || '',
+      type: 'system',
+      createdAt: null,
+    }]);
   }, [uid]);
 
   // 메시지 전송
@@ -238,23 +237,24 @@ export function ChatRoom() {
     setTimeout(() => setCooldown(false), 2000);
   }, [uid, nickname, cooldown]);
 
-  // 인터랙션: 커피 내리기
-  const handleCoffee = useCallback(async () => {
-    if (!uid || !nickname || cooldown) return;
+  // 인터랙션: 커피 내리기 (로컬에서만)
+  const handleCoffee = useCallback(() => {
+    if (!nickname || cooldown) return;
     const msg = getRandomInteraction('coffee');
 
-    await addDoc(collection(db, 'messages'), {
+    setMessages((prev) => [...prev, {
+      id: `coffee-${Date.now()}`,
       text: msg,
       nickname: nickname.name,
       emoji: nickname.emoji,
-      uid,
+      uid: uid || '',
       type: 'interaction',
-      createdAt: serverTimestamp(),
-    });
+      createdAt: null,
+    }]);
 
     setCooldown(true);
     setTimeout(() => setCooldown(false), 3000);
-  }, [uid, nickname, cooldown]);
+  }, [nickname, cooldown, uid]);
 
   // 간식 카운터
   const [snackCount, setSnackCount] = useState(() => {
@@ -262,27 +262,28 @@ export function ChatRoom() {
     return Number(localStorage.getItem('tangbisil-snack-count') || '0');
   });
 
-  // 인터랙션: 간식 훔치기
-  const handleSnack = useCallback(async () => {
-    if (!uid || !nickname || cooldown) return;
+  // 인터랙션: 간식 훔치기 (로컬에서만)
+  const handleSnack = useCallback(() => {
+    if (!nickname || cooldown) return;
     const newCount = snackCount + 1;
     setSnackCount(newCount);
     localStorage.setItem('tangbisil-snack-count', String(newCount));
 
     const msg = getRandomInteraction('snack');
 
-    await addDoc(collection(db, 'messages'), {
+    setMessages((prev) => [...prev, {
+      id: `snack-${Date.now()}`,
       text: `${msg} (${newCount}번째 간식 훔치기!)`,
       nickname: nickname.name,
       emoji: nickname.emoji,
-      uid,
+      uid: uid || '',
       type: 'interaction',
-      createdAt: serverTimestamp(),
-    });
+      createdAt: null,
+    }]);
 
     setCooldown(true);
     setTimeout(() => setCooldown(false), 3000);
-  }, [uid, nickname, cooldown, snackCount]);
+  }, [nickname, cooldown, snackCount, uid]);
 
   // 시간 포맷
   const formatTime = (ts: Timestamp | null) => {
