@@ -35,7 +35,7 @@ function CategorySection({ category: cat, tools: catTools, basePath = '/tools' }
 
 const POPULAR_SLUGS_KR = [
   'saju-reading', 'team-saju', 'qr-generator', 'json-formatter',
-  'mermaid-diagram', 'reaction-time-test', 'pomodoro-timer', 'server-time',
+  'mermaid-diagram', 'reaction-time-test', 'pomodoro-timer', 'letter-qr',
 ];
 
 const POPULAR_SLUGS_EN = [

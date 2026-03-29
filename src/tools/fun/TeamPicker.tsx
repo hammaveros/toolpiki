@@ -16,6 +16,42 @@ interface Team {
 type ViewMode = 'instant' | 'animated';
 type AnimSpeed = 'fast' | 'slow';
 
+// Seeded PRNG (mulberry32)
+function mulberry32(seed: number) {
+  return function () {
+    let t = (seed += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+// Seeded shuffle (Fisher-Yates)
+function seededShuffle<T>(arr: T[], rng: () => number): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Deterministic team division from seed + inputs
+function divideWithSeed(members: string[], teamCount: number, seed: number): Team[] {
+  const rng = mulberry32(seed);
+  const shuffled = seededShuffle(members, rng);
+  const teams: Team[] = Array.from({ length: teamCount }, (_, i) => ({
+    name: `${i + 1}팀`,
+    members: [],
+  }));
+  const assignments = shuffled.map((name, idx) => ({ name, teamIdx: idx % teamCount }));
+  const shuffledAssignments = seededShuffle(assignments, rng);
+  shuffledAssignments.forEach(({ name, teamIdx }) => {
+    teams[teamIdx].members.push(name);
+  });
+  return teams;
+}
+
 // 로컬스토리지 키
 const STORAGE_KEY = 'team-picker-names';
 
@@ -36,6 +72,7 @@ export function TeamPicker() {
   const [assignedCount, setAssignedCount] = useState(0);
   const [totalToAssign, setTotalToAssign] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
+  const [currentSeed, setCurrentSeed] = useState<number | null>(null);
   const animTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const allTeamsRef = useRef<HTMLDivElement>(null);
   const restoredFromShare = useRef(false);

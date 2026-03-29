@@ -8,11 +8,22 @@ import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
 import { FaqSection } from '@/components/ui/FaqItem';
 
-// Fisher-Yates shuffle
+// Fisher-Yates shuffle (random)
 function shuffle<T>(array: T[]): T[] {
   const result = [...array];
   for (let i = result.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+// Seeded shuffle for reproducible results
+function shuffleWithSeed(arr: string[], seed: number): string[] {
+  const result = [...arr];
+  for (let i = result.length - 1; i > 0; i--) {
+    seed = (seed * 16807 + 0) % 2147483647;
+    const j = Math.floor((seed / 2147483647) * (i + 1));
     [result[i], result[j]] = [result[j], result[i]];
   }
   return result;
@@ -24,6 +35,8 @@ export function OrderPicker() {
   const [input, setInput] = useState('');
   const [result, setResult] = useState<string[] | null>(null);
   const [isShuffling, setIsShuffling] = useState(false);
+  const [currentSeed, setCurrentSeed] = useState<number | null>(null);
+  const [isFromShare, setIsFromShare] = useState(false);
 
   // 로컬 스토리지에서 복원
   useEffect(() => {
@@ -50,8 +63,11 @@ export function OrderPicker() {
 
     setIsShuffling(true);
     setResult(null);
+    setIsFromShare(false);
 
-    // 셔플 애니메이션 (12회, 1.5배 길게)
+    const seed = Math.floor(Math.random() * 2147483646) + 1;
+
+    // 셔플 애니메이션 (12회)
     let count = 0;
     const interval = setInterval(() => {
       count++;
@@ -59,7 +75,9 @@ export function OrderPicker() {
 
       if (count >= 12) {
         clearInterval(interval);
-        setResult(shuffle(items));
+        const finalResult = shuffleWithSeed(items, seed);
+        setResult(finalResult);
+        setCurrentSeed(seed);
         setIsShuffling(false);
       }
     }, 100);
@@ -70,13 +88,13 @@ export function OrderPicker() {
     : '';
 
   const getShareUrl = () => {
-    if (!result) return '';
-    const data = { order: result };
+    if (!result || !currentSeed) return '';
+    const data = { s: currentSeed, n: items };
     const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
     return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
   };
 
-  // URL hash에서 공유 데이터 복원
+  // URL hash에서 공유 데이터 복원 (seed 기반 재현)
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const hash = window.location.hash;
@@ -84,9 +102,21 @@ export function OrderPicker() {
       try {
         const decoded = decodeURIComponent(atob(hash.slice(7)));
         const parsed = JSON.parse(decoded);
-        if (parsed.order && Array.isArray(parsed.order)) {
+        // 새 형식: seed + names
+        if (parsed.s && parsed.n && Array.isArray(parsed.n)) {
+          const names = parsed.n as string[];
+          const seed = parsed.s as number;
+          setInput(names.join(', '));
+          setResult(shuffleWithSeed(names, seed));
+          setCurrentSeed(seed);
+          setIsFromShare(true);
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+        // 구 형식 호환
+        else if (parsed.order && Array.isArray(parsed.order)) {
           setInput(parsed.order.join(', '));
           setResult(parsed.order);
+          setIsFromShare(true);
           window.history.replaceState(null, '', window.location.pathname);
         }
       } catch {
@@ -119,6 +149,11 @@ export function OrderPicker() {
 
       {result && (
         <Card variant="bordered" className="p-4">
+          {isFromShare && (
+            <div className="mb-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-sm text-blue-700 dark:text-blue-300">
+              🔗 공유된 순번 결과입니다 (입력: {items.join(', ')})
+            </div>
+          )}
           <div>
             <div className="flex justify-between items-center mb-3">
               <p className="text-sm font-medium">결과</p>
