@@ -55,6 +55,8 @@ export function ChatRoom() {
         setNickname(saved);
         setJoined(true);
       }
+    }).catch(() => {
+      setFirebaseError(true);
     });
   }, []);
 
@@ -183,7 +185,12 @@ export function ChatRoom() {
 
   // 메시지 전송
   const handleSend = useCallback(async (text: string) => {
-    if (!uid || !nickname || cooldown) return;
+    if (!uid) {
+      setToast('연결 중이에요... 잠시만 기다려주세요');
+      setTimeout(() => setToast(''), 3000);
+      return;
+    }
+    if (!nickname || cooldown) return;
 
     // 도배 체크
     lastMsgsRef.current.push(text);
