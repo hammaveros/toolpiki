@@ -28,7 +28,7 @@ export function AdSlot({ format = 'auto', slotId = '5499882149', className, resp
   const containerRef = useRef<HTMLDivElement>(null);
   const insRef = useRef<HTMLModElement>(null);
   const pushed = useRef(false);
-  const [filled, setFilled] = useState(true);
+  const [filled, setFilled] = useState(!adsenseFailedGlobal);
 
   const pushAd = useCallback(() => {
     if (pushed.current) return;

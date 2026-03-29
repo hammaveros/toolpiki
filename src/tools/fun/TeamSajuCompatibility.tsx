@@ -896,12 +896,6 @@ export function TeamSajuCompatibility() {
             </div>
           </Card>
 
-          {/* (베스트/주의 조합은 위 관계도 아래로 이동됨) */}
-          {false && results.bestPair && (
-            <div>
-            </div>
-          )}
-
 
         </>
       )}
