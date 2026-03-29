@@ -143,10 +143,36 @@ function getPairComment(animal1: string, animal2: string, score: number): string
     const key2 = `${animal2}${animal1}`;
     return comments[key1] || comments[key2] || `${animal1}와 ${animal2}의 기운이 환상적으로 맞아떨어지는 조합`;
   }
-  if (score >= 70) return `${animal1}와 ${animal2}, 서로 다른 매력이 오히려 좋은 케미를 만드는 사이`;
-  if (score >= 55) return `${animal1}와 ${animal2}, 특별히 충돌은 없지만 서로 더 알아가면 좋아질 관계`;
-  if (score >= 40) return `${animal1}와 ${animal2}, 의견 충돌이 있을 수 있지만 그만큼 성장하는 관계`;
-  return `${animal1}와 ${animal2}, 정반대 성향이라 이해하려는 노력이 필요한 사이`;
+  if (score >= 70) {
+    const comments = [
+      `${animal1}의 직감과 ${animal2}의 실행력이 만나면 뭘 해도 결과가 좋아`,
+      `서로 다른 매력이 오히려 좋은 케미를 만드는 조합. 같이 있으면 자연스럽게 시너지가 남`,
+      `${animal1}가 방향을 잡으면 ${animal2}가 따라오는 자연스러운 호흡이 있어`,
+    ];
+    return comments[(animal1.length + animal2.length) % comments.length];
+  }
+  if (score >= 55) {
+    const comments = [
+      `${animal1}와 ${animal2}, 큰 충돌은 없지만 서로 더 알아가면 의외의 케미 발견 가능`,
+      `처음엔 어색할 수 있는데 시간이 지나면 편해지는 타입. 급하게 친해지려 하지 말 것`,
+      `서로의 장점을 인정하면 꽤 괜찮은 파트너가 될 수 있는 관계`,
+    ];
+    return comments[(animal1.length + animal2.length) % comments.length];
+  }
+  if (score >= 40) {
+    const comments = [
+      `${animal1}와 ${animal2}, 의견 충돌이 잦을 수 있지만 그만큼 새로운 관점을 얻는 관계`,
+      `서로 양보하는 연습이 필요해. 근데 갈등을 잘 풀면 오히려 단단해지는 사이`,
+      `처음에 기싸움이 있을 수 있는데, 역할 분담을 명확히 하면 좋아져`,
+    ];
+    return comments[(animal1.length + animal2.length) % comments.length];
+  }
+  const comments = [
+    `${animal1}와 ${animal2}, 정반대 성향이라 서로 이해하는 데 시간이 걸려. 하지만 그래서 배우는 것도 많아`,
+    `극과극 조합이지만, 서로 존중하면 팀에 다양성을 가져다주는 귀한 관계`,
+    `쉽지 않은 조합이지만, 이 긴장감이 팀을 더 날카롭게 만들 수 있어`,
+  ];
+  return comments[(animal1.length + animal2.length) % comments.length];
 }
 
 // 오행 기반 역할 분류
@@ -800,6 +826,30 @@ export function TeamSajuCompatibility() {
             )}
           </Card>
 
+          {/* 베스트/주의 조합 */}
+          {results.bestPair && results.worstPair && results.pairs.length > 1 && (
+            <div className="grid grid-cols-2 gap-3">
+              <Card variant="bordered" className="p-3 text-center">
+                <p className="text-[10px] text-gray-500 dark:text-gray-400">🏆 베스트</p>
+                <p className="text-xs font-semibold text-gray-900 dark:text-white mt-0.5">
+                  {results.bestPair.member1} & {results.bestPair.member2}
+                </p>
+                <p className={cn('text-lg font-bold', getScoreColor(results.bestPair.score))}>
+                  {results.bestPair.score}
+                </p>
+              </Card>
+              <Card variant="bordered" className="p-3 text-center">
+                <p className="text-[10px] text-gray-500 dark:text-gray-400">⚡ 주의</p>
+                <p className="text-xs font-semibold text-gray-900 dark:text-white mt-0.5">
+                  {results.worstPair.member1} & {results.worstPair.member2}
+                </p>
+                <p className={cn('text-lg font-bold', getScoreColor(results.worstPair.score))}>
+                  {results.worstPair.score}
+                </p>
+              </Card>
+            </div>
+          )}
+
           {/* 오늘의 주인공 */}
           {(results.todayHighlight.lucky || results.todayHighlight.charm || results.todayHighlight.wealth) && (
             <Card variant="bordered" className="p-5">
@@ -846,27 +896,9 @@ export function TeamSajuCompatibility() {
             </div>
           </Card>
 
-          {/* 베스트/워스트 조합 */}
-          {results.bestPair && results.worstPair && results.pairs.length > 1 && (
-            <div className="grid grid-cols-2 gap-3">
-              <Card variant="bordered" className="p-4">
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">베스트 조합 🏆</p>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                  {results.bestPair.member1} & {results.bestPair.member2}
-                </p>
-                <p className={cn('text-lg font-bold', getScoreColor(results.bestPair.score))}>
-                  {results.bestPair.score}점
-                </p>
-              </Card>
-              <Card variant="bordered" className="p-4">
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">주의 조합 ⚡</p>
-                <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                  {results.worstPair.member1} & {results.worstPair.member2}
-                </p>
-                <p className={cn('text-lg font-bold', getScoreColor(results.worstPair.score))}>
-                  {results.worstPair.score}점
-                </p>
-              </Card>
+          {/* (베스트/주의 조합은 위 관계도 아래로 이동됨) */}
+          {false && results.bestPair && (
+            <div>
             </div>
           )}
 
