@@ -256,11 +256,13 @@ interface PairResult {
 // ========================================
 
 export function TeamSajuCompatibility() {
-  const [teamName, setTeamName] = useState('');
+  const [teamName, setTeamName] = useState('우리팀');
   const [members, setMembers] = useState<Member[]>([
-    { id: '1', name: '', birthDate: '' },
-    { id: '2', name: '', birthDate: '' },
-    { id: '3', name: '', birthDate: '' },
+    { id: '1', name: '김민수', birthDate: '1995-03-14' },
+    { id: '2', name: '이서연', birthDate: '1997-08-22' },
+    { id: '3', name: '박지훈', birthDate: '1994-12-05' },
+    { id: '4', name: '최유나', birthDate: '1996-06-30' },
+    { id: '5', name: '정도현', birthDate: '1998-01-17' },
   ]);
   const [analyzing, setAnalyzing] = useState(false);
   const [results, setResults] = useState<{
@@ -457,14 +459,33 @@ export function TeamSajuCompatibility() {
           <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
             구성원 ({members.length}/20)
           </h3>
-          <Button
-            variant="secondary"
-            onClick={addMember}
-            disabled={members.length >= 20}
-            className="text-xs px-3 py-1"
-          >
-            + 추가
-          </Button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => {
+                const samples = [
+                  { name: '김민수', birthDate: '1995-03-14' },
+                  { name: '이서연', birthDate: '1997-08-22' },
+                  { name: '박지훈', birthDate: '1994-12-05' },
+                  { name: '최유나', birthDate: '1996-06-30' },
+                  { name: '정도현', birthDate: '1998-01-17' },
+                ];
+                setMembers(samples.map((s, i) => ({ id: String(Date.now() + i), ...s })));
+                setTeamName('우리팀');
+                setResults(null);
+              }}
+              className="text-xs px-3 py-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+            >
+              샘플
+            </button>
+            <Button
+              variant="secondary"
+              onClick={addMember}
+              disabled={members.length >= 20}
+              className="text-xs px-3 py-1"
+            >
+              + 추가
+            </Button>
+          </div>
         </div>
 
         <div className="space-y-3">
