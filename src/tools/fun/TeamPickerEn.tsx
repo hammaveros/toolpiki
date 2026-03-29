@@ -66,7 +66,7 @@ export function TeamPickerEn() {
         });
       }
 
-      // 균등 분배 후 배정 순서를 랜덤으로 섞어서 예측 불가능하게
+      // Shuffle assignment order after even distribution for unpredictability
       const assignments: Array<{ name: string; teamIdx: number }> = shuffled.map((name, idx) => ({
         name,
         teamIdx: idx % teamCount,

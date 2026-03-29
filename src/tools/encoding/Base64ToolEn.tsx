@@ -95,7 +95,7 @@ export function Base64ToolEn() {
 
   const handleExample = () => {
     if (mode === 'encode') {
-      setInput('Hello, World! 안녕하세요!');
+      setInput('Hello, World! This is a test.');
     } else {
       setInput('SGVsbG8sIFdvcmxkISDslYjrhZXtlZjshLjsmpQh');
     }
