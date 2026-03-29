@@ -184,14 +184,6 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
               >
                 <span className="text-base">{tool.icon}</span>
                 <span className="text-gray-700 dark:text-gray-300 font-medium">{tool.name}</span>
-                <button
-                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); removeRecent(tool.slug); }}
-                  className="text-gray-300 dark:text-gray-600 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity ml-0.5"
-                >
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <path d="M18 6L6 18M6 6l12 12" />
-                  </svg>
-                </button>
               </Link>
             ))}
           </div>

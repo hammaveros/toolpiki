@@ -696,21 +696,21 @@ export function TeamSajuCompatibility() {
               <select
                 value={member.birthTime}
                 onChange={(e) => updateMember(member.id, 'birthTime', e.target.value)}
-                className="w-28 px-1 py-1.5 text-[10px] rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
+                className="w-36 px-1 py-1.5 text-[10px] rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
               >
                 <option value="">모름</option>
-                <option value="23">23~01시 (子)</option>
-                <option value="01">01~03시 (丑)</option>
-                <option value="03">03~05시 (寅)</option>
-                <option value="05">05~07시 (卯)</option>
-                <option value="07">07~09시 (辰)</option>
-                <option value="09">09~11시 (巳)</option>
-                <option value="11">11~13시 (午)</option>
-                <option value="13">13~15시 (未)</option>
-                <option value="15">15~17시 (申)</option>
-                <option value="17">17~19시 (酉)</option>
-                <option value="19">19~21시 (戌)</option>
-                <option value="21">21~23시 (亥)</option>
+                <option value="23">자시 (23:00~01:00)</option>
+                <option value="01">축시 (01:00~03:00)</option>
+                <option value="03">인시 (03:00~05:00)</option>
+                <option value="05">묘시 (05:00~07:00)</option>
+                <option value="07">진시 (07:00~09:00)</option>
+                <option value="09">사시 (09:00~11:00)</option>
+                <option value="11">오시 (11:00~13:00)</option>
+                <option value="13">미시 (13:00~15:00)</option>
+                <option value="15">신시 (15:00~17:00)</option>
+                <option value="17">유시 (17:00~19:00)</option>
+                <option value="19">술시 (19:00~21:00)</option>
+                <option value="21">해시 (21:00~23:00)</option>
               </select>
               <button
                 onClick={() => removeMember(member.id)}
