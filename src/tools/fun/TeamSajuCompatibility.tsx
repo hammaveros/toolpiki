@@ -124,6 +124,86 @@ const YUKAP: Record<string, string> = { 자: '축', 축: '자', 인: '해', 해:
 const SAMHAP: Record<string, string[]> = { 자: ['자', '진', '신'], 축: ['축', '사', '유'], 인: ['인', '오', '술'], 묘: ['묘', '미', '해'], 진: ['자', '진', '신'], 사: ['축', '사', '유'], 오: ['인', '오', '술'], 미: ['묘', '미', '해'], 신: ['자', '진', '신'], 유: ['축', '사', '유'], 술: ['인', '오', '술'], 해: ['묘', '미', '해'] };
 const SANGCHUNG: Record<string, string> = { 자: '오', 오: '자', 축: '미', 미: '축', 인: '신', 신: '인', 묘: '유', 유: '묘', 진: '술', 술: '진', 사: '해', 해: '사' };
 
+// 띠별 1:1 코멘트 생성
+function getPairComment(animal1: string, animal2: string, score: number): string {
+  if (score >= 85) {
+    const comments: Record<string, string> = {
+      '쥐소': '꼼꼼한 쥐와 묵직한 소가 만나면 서로 빈 곳을 채워주는 찰떡 조합',
+      '호랑이돼지': '용감한 호랑이와 넉넉한 돼지, 서로에게 힘이 되는 든든한 사이',
+      '토끼개': '센스 있는 토끼와 의리의 개, 말 안 해도 통하는 관계',
+      '용닭': '큰 그림의 용과 완벽주의 닭, 함께하면 대단한 결과물이 나오는 조합',
+      '뱀원숭이': '직감의 뱀과 재치의 원숭이, 함께하면 어떤 문제도 풀어내는 브레인팀',
+      '말양': '열정의 말과 포근한 양, 에너지가 자연스럽게 순환하는 시너지 조합',
+    };
+    const key1 = `${animal1}${animal2}`;
+    const key2 = `${animal2}${animal1}`;
+    return comments[key1] || comments[key2] || `${animal1}와 ${animal2}의 기운이 환상적으로 맞아떨어지는 조합`;
+  }
+  if (score >= 70) return `${animal1}와 ${animal2}, 서로 다른 매력이 오히려 좋은 케미를 만드는 사이`;
+  if (score >= 55) return `${animal1}와 ${animal2}, 특별히 충돌은 없지만 서로 더 알아가면 좋아질 관계`;
+  if (score >= 40) return `${animal1}와 ${animal2}, 의견 충돌이 있을 수 있지만 그만큼 성장하는 관계`;
+  return `${animal1}와 ${animal2}, 정반대 성향이라 이해하려는 노력이 필요한 사이`;
+}
+
+// 오행 기반 역할 분류
+function getOhangRole(ohang: Record<string, number>): { role: string; desc: string } {
+  const sorted = Object.entries(ohang).sort((a, b) => b[1] - a[1]);
+  const dominant = sorted[0][0];
+  const roles: Record<string, { role: string; desc: string }> = {
+    목: { role: '기획자', desc: '새로운 아이디어와 시작을 이끄는 타입' },
+    화: { role: '분위기 메이커', desc: '열정과 에너지로 팀에 활기를 불어넣는 타입' },
+    토: { role: '조율자', desc: '팀의 균형을 잡고 갈등을 중재하는 안정형 타입' },
+    금: { role: '실행가', desc: '결정하면 바로 실행하는 추진력의 타입' },
+    수: { role: '참모', desc: '깊은 사고와 분석으로 전략을 세우는 타입' },
+  };
+  return roles[dominant] || { role: '만능', desc: '다방면에 고른 능력의 타입' };
+}
+
+// 팀 오행 코멘트
+function getTeamOhangComment(ohang: Record<string, number>): string {
+  const total = Object.values(ohang).reduce((s, v) => s + v, 0);
+  const sorted = Object.entries(ohang).sort((a, b) => b[1] - a[1]);
+  const dominant = sorted[0];
+  const missing = sorted.filter(([_, v]) => v === 0).map(([k]) => k);
+
+  const dominantComments: Record<string, string> = {
+    목: '목 기운이 강해서 창의적이고 추진력 있는 팀. 새로운 시도를 잘하지만 마무리에 신경 쓸 것',
+    화: '화 기운이 강해서 열정 넘치고 분위기 좋은 팀. 가끔 과열되면 쉬어가는 여유 필요',
+    토: '토 기운이 강해서 안정적이고 현실 감각 좋은 팀. 변화에 소극적일 수 있으니 도전 목표 설정 추천',
+    금: '금 기운이 강해서 실행력과 결단력이 뛰어난 팀. 유연성이 부족할 수 있으니 의견 수렴 중요',
+    수: '수 기운이 강해서 분석력과 전략이 뛰어난 팀. 실행이 느릴 수 있으니 데드라인 설정 추천',
+  };
+
+  let comment = dominantComments[dominant[0]] || '균형 잡힌 팀';
+  if (missing.length > 0) {
+    const missingNames: Record<string, string> = { 목: '창의성', 화: '열정', 토: '안정감', 금: '추진력', 수: '전략적 사고' };
+    comment += `. ${missing.map(m => missingNames[m] || m).join(', ')}이 부족할 수 있으니 의식적으로 보완하면 좋아요`;
+  }
+  return comment;
+}
+
+// 오늘의 주인공 (오늘 일간 오행과 맞는 멤버)
+function getTodayHighlight(members: MemberSaju[]): { lucky: MemberSaju | null; charm: MemberSaju | null; wealth: MemberSaju | null } {
+  const today = new Date();
+  const todaySaju = calculateSaju(today.getFullYear(), today.getMonth() + 1, today.getDate());
+  const todayOhang = CHEONGAN_OHANG[todaySaju.day.gan];
+  const ohangOrder = ['목', '화', '토', '금', '수'];
+  const todayIdx = ohangOrder.indexOf(todayOhang);
+
+  // 행운: 오늘 오행과 상생(받는) 관계
+  const luckyOhang = ohangOrder[(todayIdx + 4) % 5];
+  // 매력운: 오늘 오행과 동일
+  const charmOhang = todayOhang;
+  // 재물운: 오늘 오행이 극하는 오행
+  const wealthOhang = ohangOrder[(todayIdx + 2) % 5];
+
+  const lucky = members.find(m => m.dayGanOhang === luckyOhang) || null;
+  const charm = members.find(m => m.dayGanOhang === charmOhang) || null;
+  const wealth = members.find(m => m.dayGanOhang === wealthOhang) || null;
+
+  return { lucky, charm, wealth };
+}
+
 function getPairScore(ji1: string, ji2: string): { score: number; relation: string } {
   if (YUKAP[ji1] === ji2) return { score: 95, relation: '육합' };
   if (SAMHAP[ji1]?.includes(ji2)) return { score: 85, relation: '삼합' };
@@ -163,9 +243,12 @@ interface MemberSaju extends Member {
 interface PairResult {
   member1: string;
   member2: string;
+  animal1: string;
+  animal2: string;
   score: number;
   relation: string;
   ohangRelation: string;
+  comment: string;
 }
 
 // ========================================
@@ -185,8 +268,11 @@ export function TeamSajuCompatibility() {
     pairs: PairResult[];
     teamScore: number;
     teamOhang: Record<string, number>;
+    teamOhangComment: string;
     bestPair: PairResult | null;
     worstPair: PairResult | null;
+    todayHighlight: { lucky: MemberSaju | null; charm: MemberSaju | null; wealth: MemberSaju | null };
+    roles: { name: string; role: string; desc: string }[];
   } | null>(null);
 
   // URL 파라미터에서 복원
@@ -204,11 +290,11 @@ export function TeamSajuCompatibility() {
           name: m.name || '',
           birthDate: m.birthDate || '',
         })));
-        // 공유 링크에서 온 경우 자동 분석
+        // 공유 링크에서 온 경우 자동 분석 (약간 딜레이 후)
         setTimeout(() => {
           const btn = document.querySelector('[data-analyze-btn]') as HTMLButtonElement;
-          if (btn) btn.click();
-        }, 500);
+          if (btn && !btn.disabled) btn.click();
+        }, 300);
       }
     } catch { /* ignore */ }
   }, []);
@@ -265,9 +351,12 @@ export function TeamSajuCompatibility() {
         pairs.push({
           member1: m1.name,
           member2: m2.name,
+          animal1: m1.animal,
+          animal2: m2.animal,
           score,
           relation: `${yearResult.relation}/${dayResult.relation}`,
           ohangRelation: ohangRel,
+          comment: getPairComment(m1.animal, m2.animal, score),
         });
       }
     }
@@ -280,14 +369,21 @@ export function TeamSajuCompatibility() {
 
     const teamScore = pairs.length > 0 ? Math.round(pairs.reduce((s, p) => s + p.score, 0) / pairs.length) : 0;
     const sorted = [...pairs].sort((a, b) => b.score - a.score);
+    const roles = memberSajus.map(m => {
+      const r = getOhangRole(m.ohang);
+      return { name: m.name, ...r };
+    });
 
     setResults({
       members: memberSajus,
       pairs,
       teamScore,
       teamOhang,
+      teamOhangComment: getTeamOhangComment(teamOhang),
       bestPair: sorted[0] || null,
       worstPair: sorted[sorted.length - 1] || null,
+      todayHighlight: getTodayHighlight(memberSajus),
+      roles,
     });
     setAnalyzing(false);
   }, [validMembers]);
@@ -472,6 +568,56 @@ export function TeamSajuCompatibility() {
                   ⚠️ 부족한 오행: {Object.entries(results.teamOhang).filter(([_, v]) => v === 0).map(([k]) => k).join(', ')}
                 </p>
               )}
+              {/* 팀 오행 코멘트 */}
+              <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3 leading-relaxed">
+                {results.teamOhangComment}
+              </p>
+            </div>
+          </Card>
+
+          {/* 오늘의 주인공 */}
+          {(results.todayHighlight.lucky || results.todayHighlight.charm || results.todayHighlight.wealth) && (
+            <Card variant="bordered" className="p-5">
+              <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                오늘의 주인공 · {new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' })}
+              </h3>
+              <div className="grid grid-cols-3 gap-2">
+                {results.todayHighlight.lucky && (
+                  <div className="text-center p-3 bg-green-50 dark:bg-green-900/20 rounded-xl">
+                    <p className="text-lg mb-1">🍀</p>
+                    <p className="text-[10px] text-gray-500 dark:text-gray-400">행운</p>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">{results.todayHighlight.lucky.name}</p>
+                  </div>
+                )}
+                {results.todayHighlight.charm && (
+                  <div className="text-center p-3 bg-pink-50 dark:bg-pink-900/20 rounded-xl">
+                    <p className="text-lg mb-1">💖</p>
+                    <p className="text-[10px] text-gray-500 dark:text-gray-400">매력운</p>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">{results.todayHighlight.charm.name}</p>
+                  </div>
+                )}
+                {results.todayHighlight.wealth && (
+                  <div className="text-center p-3 bg-amber-50 dark:bg-amber-900/20 rounded-xl">
+                    <p className="text-lg mb-1">💰</p>
+                    <p className="text-[10px] text-gray-500 dark:text-gray-400">재물운</p>
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white">{results.todayHighlight.wealth.name}</p>
+                  </div>
+                )}
+              </div>
+            </Card>
+          )}
+
+          {/* 팀원 역할 */}
+          <Card variant="bordered" className="p-5">
+            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">오행 기반 팀 역할</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {results.roles.map((r, i) => (
+                <div key={i} className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl text-center">
+                  <p className="text-sm font-semibold text-gray-900 dark:text-white">{r.name}</p>
+                  <p className="text-xs font-medium text-blue-600 dark:text-blue-400 mt-0.5">{r.role}</p>
+                  <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-0.5">{r.desc}</p>
+                </div>
+              ))}
             </div>
           </Card>
 
@@ -540,13 +686,18 @@ export function TeamSajuCompatibility() {
                   .map((pair, i) => {
                     const other = pair.member1 === selectedMember ? pair.member2 : pair.member1;
                     return (
-                      <div key={i} className={cn('flex items-center gap-3 p-3 rounded-lg', getScoreBg(pair.score))}>
-                        <span className="text-lg">{getScoreEmoji(pair.score)}</span>
-                        <span className="font-medium text-gray-900 dark:text-white flex-1">{other}</span>
-                        <span className={cn('text-sm font-bold', getScoreColor(pair.score))}>{pair.score}점</span>
-                        <span className={cn('text-xs font-medium px-2 py-0.5 rounded-full', getScoreBg(pair.score), getScoreColor(pair.score))}>
-                          {getScoreLabel(pair.score)}
-                        </span>
+                      <div key={i} className={cn('p-3 rounded-xl', getScoreBg(pair.score))}>
+                        <div className="flex items-center gap-3">
+                          <span className="text-lg">{getScoreEmoji(pair.score)}</span>
+                          <span className="font-medium text-gray-900 dark:text-white flex-1">{other}</span>
+                          <span className={cn('text-sm font-bold', getScoreColor(pair.score))}>{pair.score}점</span>
+                          <span className={cn('text-xs font-medium px-2 py-0.5 rounded-full', getScoreBg(pair.score), getScoreColor(pair.score))}>
+                            {getScoreLabel(pair.score)}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1.5 ml-8">
+                          {pair.comment}
+                        </p>
                       </div>
                     );
                   })}
