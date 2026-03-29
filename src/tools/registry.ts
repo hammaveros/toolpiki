@@ -204,6 +204,7 @@ const toolComponents: Record<string, ComponentType> = {
   'letter-qr-en': dynamic(() => import('./fun/LetterQrEn').then(m => ({ default: m.LetterQrEn }))),
   'saju-reading': dynamic(() => import('./fun/SajuReading').then(m => ({ default: m.SajuReading }))),
   'saju-compatibility': dynamic(() => import('./fun/SajuCompatibility').then(m => ({ default: m.SajuCompatibility }))),
+  'team-saju': dynamic(() => import('./fun/TeamSajuCompatibility').then(m => ({ default: m.TeamSajuCompatibility }))),
   'team-picker': dynamic(() => import('./fun/TeamPicker').then(m => ({ default: m.TeamPicker }))),
   'team-picker-en': dynamic(() => import('./fun/TeamPickerEn').then(m => ({ default: m.TeamPickerEn }))),
   'typing-game': dynamic(() => import('./fun/TypingGame').then(m => ({ default: m.TypingGame }))),
