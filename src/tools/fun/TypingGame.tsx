@@ -430,6 +430,23 @@ export function TypingGame() {
   const [gameState, setGameState] = useState<'idle' | 'playing' | 'gameover'>('idle');
   const [gameMode, setGameMode] = useState<GameMode>('survival');
   const [difficulty, setDifficulty] = useState<Difficulty>('normal');
+  const [copied, setCopied] = useState(false);
+  const [sharedResult, setSharedResult] = useState<{ s: number; w: number; a: number; m: string } | null>(null);
+
+  // URL hash에서 공유 데이터 복원
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const hash = window.location.hash;
+    if (hash.startsWith('#share=')) {
+      try {
+        const decoded = decodeURIComponent(atob(hash.slice(7)));
+        const parsed = JSON.parse(decoded);
+        if (parsed.w !== undefined && parsed.a !== undefined) {
+          setSharedResult(parsed);
+        }
+      } catch { /* invalid share data */ }
+    }
+  }, []);
   const [words, setWords] = useState<FallingWord[]>([]);
   const [input, setInput] = useState('');
   const [stats, setStats] = useState({
@@ -550,6 +567,34 @@ export function TypingGame() {
     spawnTimerRef.current = null;
     timeAttackTimerRef.current = null;
   }, []);
+
+  const handleShare = useCallback(() => {
+    if (gameState !== 'gameover') return;
+    let data: { s?: number; w: number; a: number; m: string };
+    if (gameMode === 'sentence') {
+      const wpm = sentenceStats.startTime && sentenceStats.totalChars > 0
+        ? Math.round(sentenceStats.totalChars / ((Date.now() - sentenceStats.startTime) / 60000))
+        : 0;
+      const acc = sentenceStats.totalChars > 0
+        ? Math.round((sentenceStats.correctChars / sentenceStats.totalChars) * 100)
+        : 100;
+      data = { w: wpm, a: acc, m: 'sentence' };
+    } else {
+      const endTime = stats.endTime || Date.now();
+      const minutes = (endTime - stats.startTime) / 60000;
+      const wpm = minutes < 0.1 ? 0 : Math.round(stats.totalChars / minutes);
+      const acc = stats.correctWords + stats.wrongWords > 0
+        ? Math.round((stats.correctWords / (stats.correctWords + stats.wrongWords)) * 100)
+        : 100;
+      data = { s: stats.score, w: wpm, a: acc, m: gameMode };
+    }
+    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const url = `${window.location.origin}${window.location.pathname}#share=${encoded}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [gameState, gameMode, stats, sentenceStats]);
 
   // 입력 처리
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -679,6 +724,17 @@ export function TypingGame() {
 
   return (
     <div className="space-y-4">
+      {sharedResult && (
+        <Card variant="bordered" className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-300 dark:border-yellow-700">
+          <p className="text-center text-sm text-gray-600 dark:text-gray-400 mb-1">🏆 친구의 기록</p>
+          <p className="text-center text-lg font-bold text-yellow-700 dark:text-yellow-300">
+            {sharedResult.m === 'sentence' ? '긴문장' : sharedResult.m === 'timeattack' ? '타임어택' : '서바이벌'} 모드
+            {sharedResult.s !== undefined && ` | ${sharedResult.s}점`} | {sharedResult.w}타/분 | 정확도 {sharedResult.a}%
+          </p>
+          <p className="text-center text-sm text-gray-500 mt-2">나도 도전해보세요! 👇</p>
+        </Card>
+      )}
+
       {/* 시작 화면 */}
       {gameState === 'idle' && (
         <Card variant="bordered" className="p-6">
@@ -881,9 +937,14 @@ export function TypingGame() {
               <p className="text-2xl font-bold text-yellow-600">{stats.maxCombo} COMBO</p>
             </div>
           </div>
-          <div className="flex justify-center gap-3">
-            <Button onClick={startGame}>다시 하기</Button>
-            <Button variant="secondary" onClick={() => setGameState('idle')}>처음으로</Button>
+          <div className="flex flex-col items-center gap-2">
+            <div className="flex gap-3">
+              <Button onClick={startGame}>다시 하기</Button>
+              <Button variant="secondary" onClick={() => setGameState('idle')}>처음으로</Button>
+            </div>
+            <Button variant="secondary" onClick={handleShare}>
+              {copied ? '✅ 복사됨!' : '🔗 결과 공유하기'}
+            </Button>
           </div>
         </Card>
       )}
@@ -921,9 +982,14 @@ export function TypingGame() {
               <p className="text-2xl font-bold text-orange-600">{sentenceStats.totalChars}자</p>
             </div>
           </div>
-          <div className="flex justify-center gap-3">
-            <Button onClick={startGame}>다시 하기</Button>
-            <Button variant="secondary" onClick={() => setGameState('idle')}>처음으로</Button>
+          <div className="flex flex-col items-center gap-2">
+            <div className="flex gap-3">
+              <Button onClick={startGame}>다시 하기</Button>
+              <Button variant="secondary" onClick={() => setGameState('idle')}>처음으로</Button>
+            </div>
+            <Button variant="secondary" onClick={handleShare}>
+              {copied ? '✅ 복사됨!' : '🔗 결과 공유하기'}
+            </Button>
           </div>
         </Card>
       )}

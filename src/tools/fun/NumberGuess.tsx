@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { FaqSection } from '@/components/ui/FaqItem';
@@ -25,6 +25,34 @@ export function NumberGuess() {
   const [game, setGame] = useState<GameState | null>(null);
   const [input, setInput] = useState('');
   const [message, setMessage] = useState('');
+  const [copied, setCopied] = useState(false);
+  const [sharedResult, setSharedResult] = useState<{ a: number; d: string; r: number } | null>(null);
+
+  // URL hash에서 공유 데이터 복원
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const hash = window.location.hash;
+    if (hash.startsWith('#share=')) {
+      try {
+        const decoded = decodeURIComponent(atob(hash.slice(7)));
+        const parsed = JSON.parse(decoded);
+        if (parsed.a && parsed.d && parsed.r) {
+          setSharedResult(parsed);
+        }
+      } catch { /* invalid share data */ }
+    }
+  }, []);
+
+  const handleShare = useCallback(() => {
+    if (!game || game.status !== 'won') return;
+    const data = { a: game.attempts, d: difficulty.name, r: difficulty.range };
+    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    const url = `${window.location.origin}${window.location.pathname}#share=${encoded}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }, [game, difficulty]);
 
   const startGame = useCallback((diff: typeof difficulties[0]) => {
     setDifficulty(diff);
@@ -96,6 +124,16 @@ export function NumberGuess() {
 
   return (
     <div className="space-y-4 max-w-md mx-auto">
+      {sharedResult && (
+        <Card variant="bordered" className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-300 dark:border-yellow-700">
+          <p className="text-center text-sm text-gray-600 dark:text-gray-400 mb-1">🏆 친구의 기록</p>
+          <p className="text-center text-lg font-bold text-yellow-700 dark:text-yellow-300">
+            {sharedResult.d} (1-{sharedResult.r}) 난이도에서 {sharedResult.a}번만에 정답!
+          </p>
+          <p className="text-center text-sm text-gray-500 mt-2">나도 도전해보세요! 👇</p>
+        </Card>
+      )}
+
       {!game ? (
         <Card variant="bordered" className="p-6 text-center">
           <h2 className="text-xl font-bold mb-4">숫자 맞추기 게임</h2>
@@ -158,10 +196,15 @@ export function NumberGuess() {
             )}
 
             {game.status === 'won' && (
-              <div className="flex gap-2 justify-center">
-                <Button onClick={() => startGame(difficulty)}>다시 하기</Button>
-                <Button variant="secondary" onClick={() => setGame(null)}>
-                  난이도 변경
+              <div className="flex flex-col items-center gap-2">
+                <div className="flex gap-2">
+                  <Button onClick={() => startGame(difficulty)}>다시 하기</Button>
+                  <Button variant="secondary" onClick={() => setGame(null)}>
+                    난이도 변경
+                  </Button>
+                </div>
+                <Button variant="secondary" onClick={handleShare}>
+                  {copied ? '✅ 복사됨!' : '🔗 결과 공유하기'}
                 </Button>
               </div>
             )}

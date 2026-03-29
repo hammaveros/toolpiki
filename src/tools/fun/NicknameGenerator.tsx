@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
@@ -414,6 +414,36 @@ export function NicknameGenerator() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [filter, setFilter] = useState<string>('');
   const [customWord, setCustomWord] = useState<string>('');
+  const [sharedNickname, setSharedNickname] = useState<string | null>(null);
+  const [shareCopied, setShareCopied] = useState(false);
+
+  // URL 해시에서 공유된 닉네임 파싱
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const hash = window.location.hash;
+    if (hash.includes('share=')) {
+      try {
+        const encoded = hash.split('share=')[1];
+        const decoded = JSON.parse(decodeURIComponent(atob(encoded)));
+        if (decoded.n) {
+          setSharedNickname(decoded.n);
+        }
+      } catch {}
+    }
+  }, []);
+
+  const getShareUrl = useCallback((nickname: string) => {
+    const data = { n: nickname };
+    const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    return `${window.location.origin}${window.location.pathname}#share=${encoded}`;
+  }, []);
+
+  const handleShareNickname = useCallback((nickname: string) => {
+    navigator.clipboard.writeText(getShareUrl(nickname)).then(() => {
+      setShareCopied(true);
+      setTimeout(() => setShareCopied(false), 2000);
+    }).catch(() => {});
+  }, [getShareUrl]);
 
   const handleGenerate = useCallback(() => {
     const maxLen = style === 'funny' ? 6 : 4;
@@ -433,6 +463,20 @@ export function NicknameGenerator() {
 
   return (
     <div className="space-y-2">
+      {/* 공유된 닉네임 표시 */}
+      {sharedNickname && (
+        <Card variant="bordered" className="p-5 text-center bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">공유받은 닉네임</p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white mb-3">🎯 {sharedNickname}</p>
+          <div className="flex gap-2 justify-center">
+            <CopyButton text={sharedNickname} label="복사" />
+            <Button variant="secondary" size="sm" onClick={() => { setSharedNickname(null); window.history.replaceState(null, '', window.location.pathname); }}>
+              직접 만들기
+            </Button>
+          </div>
+        </Card>
+      )}
+
       {/* 설정 패널 */}
       <Card variant="bordered" className="p-5">
         <div className="space-y-5">
@@ -553,6 +597,21 @@ export function NicknameGenerator() {
             <p className="text-center text-sm text-gray-400 py-8">
               &apos;{filter}&apos; 포함된 닉네임이 없어요. 다시 생성해 보세요!
             </p>
+          )}
+
+          {/* 선택된 닉네임 공유 */}
+          {selectedIndex !== null && filteredNicknames[selectedIndex] && (
+            <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex items-center justify-center gap-3">
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                선택: <strong className="text-gray-900 dark:text-white">{filteredNicknames[selectedIndex]}</strong>
+              </span>
+              <button
+                onClick={() => handleShareNickname(filteredNicknames[selectedIndex])}
+                className="px-3 py-1.5 text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+              >
+                {shareCopied ? '✅ 링크 복사됨!' : '🔗 결과 공유하기'}
+              </button>
+            </div>
           )}
         </Card>
       )}

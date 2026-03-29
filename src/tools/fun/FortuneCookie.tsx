@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { ResultShareButtons } from '@/components/share/ResultShareButtons';
-import { siteConfig } from '@/data/site';
 import { FaqSection } from '@/components/ui/FaqItem';
 
 type FortuneCategory = 'comfort' | 'motivation' | 'relationship' | 'life' | 'humor' | 'all';
@@ -325,6 +324,30 @@ export function FortuneCookie() {
   const [recentFortunes, setRecentFortunes] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<FortuneCategory>('all');
   const [selectedMood, setSelectedMood] = useState<MoodType>(null);
+  const [sharedFortune, setSharedFortune] = useState<string | null>(null);
+  const [shareCopied, setShareCopied] = useState(false);
+
+  // URL 해시에서 공유된 포춘 파싱
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const hash = window.location.hash;
+    if (hash.includes('share=')) {
+      try {
+        const encoded = hash.split('share=')[1];
+        const decoded = JSON.parse(decodeURIComponent(atob(encoded)));
+        if (decoded.f) {
+          setSharedFortune(decoded.f);
+          // 해당 카테고리 찾기
+          const matched = fortunes.find(f => f.text === decoded.f);
+          if (matched) {
+            setFortune(matched);
+          } else {
+            setFortune({ text: decoded.f, category: 'comfort' });
+          }
+        }
+      } catch {}
+    }
+  }, []);
   // 감정 기반 필터링
   const getFilteredFortunes = useCallback(() => {
     if (selectedMood) {
@@ -460,12 +483,16 @@ export function FortuneCookie() {
           </>
         )}
 
+
         {isOpening && (
           <div className="text-6xl animate-bounce">🥠</div>
         )}
 
         {fortune && !isOpening && currentCatInfo && (
           <>
+            {sharedFortune && (
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">공유받은 문장</p>
+            )}
             <div className="flex items-center gap-2 mb-4">
               <span className={`px-3 py-1 rounded-full text-sm ${currentCatInfo.bg}`}>
                 {currentCatInfo.emoji} {currentCatInfo.label}
@@ -477,13 +504,27 @@ export function FortuneCookie() {
             </p>
             <div className="flex gap-3 flex-wrap justify-center">
               <Button onClick={openCookie} variant="secondary">
-                다시 열기
+                {sharedFortune ? '나도 열기' : '다시 열기'}
               </Button>
               <CopyButton text={fortune.text} label="복사" />
+              <button
+                onClick={() => {
+                  const data = { f: fortune.text };
+                  const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
+                  const shareUrl = `${window.location.origin}${window.location.pathname}#share=${encoded}`;
+                  navigator.clipboard.writeText(shareUrl).then(() => {
+                    setShareCopied(true);
+                    setTimeout(() => setShareCopied(false), 2000);
+                  }).catch(() => {});
+                }}
+                className="px-4 py-2 text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+              >
+                {shareCopied ? '✅ 링크 복사됨!' : '🔗 결과 공유하기'}
+              </button>
             </div>
             <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 w-full max-w-md">
               <ResultShareButtons
-                url={`${siteConfig.url}/tools/fortune-cookie`}
+                url={(() => { try { const data = { f: fortune.text }; const encoded = btoa(encodeURIComponent(JSON.stringify(data))); return `${typeof window !== 'undefined' ? window.location.origin + window.location.pathname : ''}#share=${encoded}`; } catch { return typeof window !== 'undefined' ? window.location.origin + window.location.pathname : ''; } })()}
                 title="🥠 오늘의 포춘쿠키"
                 description={fortune.text}
               />
