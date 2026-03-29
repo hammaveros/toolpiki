@@ -47,9 +47,14 @@ function CategorySection({ category: cat, tools: catTools, basePath = '/tools' }
   );
 }
 
-const POPULAR_SLUGS = [
+const POPULAR_SLUGS_KR = [
   'saju-reading', 'team-saju', 'qr-generator', 'json-formatter',
   'mermaid-diagram', 'reaction-time-test', 'pomodoro-timer', 'server-time',
+];
+
+const POPULAR_SLUGS_EN = [
+  'qr-generator-en', 'json-formatter-en', 'mermaid-diagram-en', 'reaction-time-test-en',
+  'pomodoro-timer-en', 'character-counter-en', 'server-time-en', 'us-lotto-generator-en',
 ];
 
 function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch = '', isEnglish = false }: ToolsClientPageProps) {
@@ -74,11 +79,12 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
     );
   }, [tools, effectiveSearch]);
 
+  const popularSlugs = isEnglish ? POPULAR_SLUGS_EN : POPULAR_SLUGS_KR;
   const popularTools = useMemo(() => {
-    return POPULAR_SLUGS
+    return popularSlugs
       .map((slug) => tools.find((t) => t.slug === slug))
       .filter((t): t is ToolMeta => t !== undefined);
-  }, [tools]);
+  }, [tools, popularSlugs]);
 
   const toolCounts = useMemo(() => {
     const counts: Record<string, number> = {};
