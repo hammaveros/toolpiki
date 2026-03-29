@@ -1256,7 +1256,7 @@ export const tools: ToolMeta[] = [
     description: '두 사람의 사주를 비교하여 애정, 사업, 친구 궁합을 분석합니다.',
     category: 'fun',
     tags: ['사주', '궁합', '연애', '사업'],
-    icon: '💕',
+    icon: '✨',
     featured: true,
     keywords: ['사주 궁합', '연애 궁합', '애정 궁합', '사업 궁합', '띠 궁합', '무료 궁합'],
     relatedSlugs: ['saju-reading', 'birthday-compatibility', 'name-compatibility'],
