@@ -33,7 +33,6 @@ export function ChatRoom() {
   const [onlineCount, setOnlineCount] = useState(0);
   const [headerQuote, setHeaderQuote] = useState('');
   const [toast, setToast] = useState('');
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   const lastMsgsRef = useRef<string[]>([]);
   const ambientTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -123,16 +122,7 @@ export function ChatRoom() {
     };
   }, [uid, joined, nickname]);
 
-  // 자동 스크롤 (하단 근처일 때만, 컨테이너 내부만)
   const chatContainerRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const container = chatContainerRef.current;
-    if (!container) return;
-    const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 80;
-    if (isNearBottom) {
-      container.scrollTop = container.scrollHeight;
-    }
-  }, [messages]);
 
   // 분위기 메시지 (30초 이상 새 메시지 없으면)
   useEffect(() => {
@@ -348,7 +338,6 @@ export function ChatRoom() {
             type={msg.type}
           />
         ))}
-        <div ref={messagesEndRef} />
       </div>
 
       {/* 인터랙션 버튼 */}
