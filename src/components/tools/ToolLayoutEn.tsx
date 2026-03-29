@@ -20,6 +20,16 @@ const ENTERTAINMENT_SLUGS_EN = new Set([
   'fortune-cookie-en',
 ]);
 
+const CATEGORY_BADGE_EN: Record<string, { label: string; color: string }> = {
+  text: { label: '📝 Text', color: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' },
+  encoding: { label: '🔐 Encoding', color: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' },
+  formatter: { label: '📋 Format', color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' },
+  image: { label: '🖼️ Image', color: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' },
+  color: { label: '🎨 Color', color: 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400' },
+  calculator: { label: '🔢 Calculate', color: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400' },
+  fun: { label: '🎮 Fun & Tests', color: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400' },
+};
+
 interface ToolLayoutEnProps {
   meta: ToolMeta;
   children: ReactNode;
@@ -42,40 +52,51 @@ function ToolLayoutEnContent({ meta, children }: ToolLayoutEnProps) {
       <JsonLd data={breadcrumb} />
 
       <article className="container mx-auto px-4 py-1 md:py-2">
-        {!focusMode && (
-          <div className="mb-1">
-            <Link
-              href="/en/tools"
-              className={cn(
-                'inline-flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500',
-                'hover:text-gray-600 dark:hover:text-gray-400 transition-colors'
-              )}
-            >
-              <ArrowLeftIcon size={12} />
-              <span>All Tools</span>
-            </Link>
-            <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-              {meta.name}
-            </h1>
-            <div className="flex items-center justify-between">
-              <p className="text-gray-600 dark:text-gray-400 text-sm flex-1">
-                {meta.description}
-              </p>
-              <ShareButtonsEn
-                url={`https://toolpiki.com/en/tools/${meta.slug}`}
-                title={meta.name}
-                description={meta.description}
-                className="ml-3 flex-shrink-0"
-              />
+        {!focusMode && (() => {
+          const badge = CATEGORY_BADGE_EN[meta.category];
+          return (
+            <div className="mb-6 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-blue-50/50 dark:from-[var(--bg-surface)] dark:via-[var(--bg-surface)] dark:to-indigo-950/20 border border-gray-200 dark:border-[var(--border-subtle)] p-5 md:p-6">
+              <div className="flex items-center justify-between mb-4">
+                <Link
+                  href="/en/tools"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-[var(--bg-elevated)] rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                >
+                  <ArrowLeftIcon size={12} />
+                  All Tools
+                </Link>
+                <ShareButtonsEn
+                  url={`https://toolpiki.com/en/tools/${meta.slug}`}
+                  title={meta.name}
+                  description={meta.description}
+                />
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-4xl md:text-5xl flex-shrink-0" role="img" aria-hidden="true">
+                  {meta.icon}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+                      {meta.name}
+                    </h1>
+                    {badge && (
+                      <span className={cn('inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold', badge.color)}>
+                        {badge.label}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                    {meta.description}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
 
         {focusMode && (
-          <div className="flex items-center gap-2 mb-4">
-            <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-              {meta.name}
-            </h1>
+          <div className="mb-4">
+            <h1 className="text-xl font-bold text-gray-900 dark:text-white">{meta.name}</h1>
           </div>
         )}
 
@@ -146,32 +167,47 @@ function ToolLayoutEnFallback({ meta, children }: ToolLayoutEnProps) {
       <JsonLd data={breadcrumb} />
 
       <article className="container mx-auto px-4 py-1 md:py-2">
-        <div className="mb-1">
-          <Link
-            href="/en/tools"
-            className={cn(
-              'inline-flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500',
-              'hover:text-gray-600 dark:hover:text-gray-400 transition-colors'
-            )}
-          >
-            <ArrowLeftIcon size={12} />
-            <span>All Tools</span>
-          </Link>
-          <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-            {meta.name}
-          </h1>
-          <div className="flex items-center justify-between">
-            <p className="text-gray-600 dark:text-gray-400 text-sm flex-1">
-              {meta.description}
-            </p>
-            <ShareButtonsEn
-              url={`https://toolpiki.com/en/tools/${meta.slug}`}
-              title={meta.name}
-              description={meta.description}
-              className="ml-3 flex-shrink-0"
-            />
-          </div>
-        </div>
+        {(() => {
+          const badge = CATEGORY_BADGE_EN[meta.category];
+          return (
+            <div className="mb-6 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-blue-50/50 dark:from-[var(--bg-surface)] dark:via-[var(--bg-surface)] dark:to-indigo-950/20 border border-gray-200 dark:border-[var(--border-subtle)] p-5 md:p-6">
+              <div className="flex items-center justify-between mb-4">
+                <Link
+                  href="/en/tools"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-[var(--bg-elevated)] rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                >
+                  <ArrowLeftIcon size={12} />
+                  All Tools
+                </Link>
+                <ShareButtonsEn
+                  url={`https://toolpiki.com/en/tools/${meta.slug}`}
+                  title={meta.name}
+                  description={meta.description}
+                />
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="text-4xl md:text-5xl flex-shrink-0" role="img" aria-hidden="true">
+                  {meta.icon}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+                      {meta.name}
+                    </h1>
+                    {badge && (
+                      <span className={cn('inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold', badge.color)}>
+                        {badge.label}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                    {meta.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
 
         <div className="tool-content">{children}</div>
 
