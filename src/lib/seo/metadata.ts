@@ -61,7 +61,7 @@ export function generateBaseMetadata(): Metadata {
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: 'summary',
       title: `${siteConfig.name} - ${siteConfig.defaultTitle}`,
       description: siteConfig.defaultDescription,
       images: [`${siteConfig.url}/og-image.png`],
@@ -82,7 +82,7 @@ export function generateToolMetadata(tool: ToolMeta): Metadata {
   const url = `${siteConfig.url}/tools/${tool.slug}`;
 
   // SEO 최적화된 타이틀/설명 우선 사용
-  const title = tool.seoTitle || tool.name;
+  const title = tool.name;
   const description = tool.seoDescription || tool.description;
 
   // 도구별 특화 키워드 (간결하게)
@@ -121,7 +121,7 @@ export function generateToolMetadata(tool: ToolMeta): Metadata {
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: 'summary',
       title: `${title} | ToolPiki`,
       description,
       images: [`${siteConfig.url}/og-image.png`],
@@ -160,7 +160,7 @@ export function generateToolsPageMetadata(): Metadata {
       locale: siteConfig.locale,
     },
     twitter: {
-      card: 'summary_large_image',
+      card: 'summary',
       title,
       description,
     },

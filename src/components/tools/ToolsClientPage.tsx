@@ -15,6 +15,12 @@ interface ToolsClientPageProps {
   initialSearch?: string;
 }
 
+const POPULAR_SLUGS = [
+  'saju-reading', 'saju-compatibility', 'json-formatter', 'mermaid-diagram',
+  'team-picker', 'letter-qr', 'server-time', 'reaction-time-test',
+  'pomodoro-timer', 'reading-time-calculator', 'interest-calculator',
+];
+
 function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch = '' }: ToolsClientPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -35,13 +41,23 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
     );
   }, [tools, effectiveSearch]);
 
+  const popularTools = useMemo(() => {
+    return POPULAR_SLUGS
+      .map((slug) => tools.find((t) => t.slug === slug))
+      .filter((t): t is ToolMeta => t !== undefined);
+  }, [tools]);
+
   const toolCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     categories.forEach((cat) => {
-      counts[cat.slug] = searchFilteredTools.filter((t) => t.category === cat.slug).length;
+      if (cat.slug === 'popular') {
+        counts[cat.slug] = popularTools.length;
+      } else {
+        counts[cat.slug] = searchFilteredTools.filter((t) => t.category === cat.slug).length;
+      }
     });
     return counts;
-  }, [searchFilteredTools, categories]);
+  }, [searchFilteredTools, categories, popularTools]);
 
   const recentToolsList = useMemo(() => {
     if (!recentLoaded) return [];
@@ -52,21 +68,28 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
   }, [recentTools, searchFilteredTools, recentLoaded]);
 
   const filteredTools = useMemo(() => {
+    if (category === 'popular') return popularTools;
     if (category) return searchFilteredTools.filter((tool) => tool.category === category);
     return searchFilteredTools;
-  }, [searchFilteredTools, category]);
+  }, [searchFilteredTools, category, popularTools]);
 
   const toolsByCategory = useMemo(() => {
     if (category) return null;
     const grouped: { category: CategoryMeta; tools: ToolMeta[] }[] = [];
     categories.forEach((cat) => {
-      const categoryTools = searchFilteredTools.filter((t) => t.category === cat.slug);
-      if (categoryTools.length > 0) {
-        grouped.push({ category: cat, tools: categoryTools });
+      if (cat.slug === 'popular') {
+        if (popularTools.length > 0) {
+          grouped.push({ category: cat, tools: popularTools });
+        }
+      } else {
+        const categoryTools = searchFilteredTools.filter((t) => t.category === cat.slug);
+        if (categoryTools.length > 0) {
+          grouped.push({ category: cat, tools: categoryTools });
+        }
       }
     });
     return grouped;
-  }, [searchFilteredTools, categories, category]);
+  }, [searchFilteredTools, categories, category, popularTools]);
 
   const handleCategoryChange = (newCategory: string | undefined) => {
     if (newCategory) {

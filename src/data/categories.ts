@@ -9,6 +9,11 @@ export interface CategoryGroup {
 
 export const categoryGroups: CategoryGroup[] = [
   {
+    name: '인기',
+    icon: '🔥',
+    categories: ['popular'],
+  },
+  {
     name: '텍스트 & 데이터',
     icon: '📄',
     categories: ['text', 'encoding', 'formatter'],
@@ -26,11 +31,11 @@ export const categoryGroups: CategoryGroup[] = [
 ];
 
 export const categories: Record<CategorySlug, CategoryMeta> = {
-  fun: {
-    slug: 'fun',
-    name: '재미/테스트',
-    description: '반응속도, 랜덤 생성기, 심리테스트, 추천 등',
-    icon: '🎮',
+  popular: {
+    slug: 'popular',
+    name: '인기 도구',
+    description: '가장 많이 사용되는 인기 도구 모음',
+    icon: '🔥',
     order: 1,
   },
   text: {
@@ -74,6 +79,13 @@ export const categories: Record<CategorySlug, CategoryMeta> = {
     description: '텍스트 및 데이터 인코딩/디코딩 변환 도구',
     icon: '🔐',
     order: 7,
+  },
+  fun: {
+    slug: 'fun',
+    name: '재미/테스트',
+    description: '반응속도, 랜덤 생성기, 심리테스트, 추천 등',
+    icon: '🎮',
+    order: 8,
   },
 };
 

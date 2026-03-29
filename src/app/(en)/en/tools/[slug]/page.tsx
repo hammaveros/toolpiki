@@ -28,8 +28,7 @@ export async function generateMetadata({
     return { title: 'Tool Not Found' };
   }
 
-  // SEO 최적화된 타이틀/설명 우선 사용
-  const title = tool.seoTitle || `${tool.name} Online`;
+  const title = tool.name;
   const description = tool.seoDescription || tool.description;
 
   const canonicalSlug = slug;

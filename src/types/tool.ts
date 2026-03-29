@@ -1,5 +1,6 @@
 // 카테고리 슬러그 타입
 export type CategorySlug =
+  | 'popular'
   | 'text'
   | 'encoding'
   | 'formatter'
