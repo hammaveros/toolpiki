@@ -150,13 +150,13 @@ function getOhangRole(ohang: Record<string, number>): { role: string; desc: stri
   const sorted = Object.entries(ohang).sort((a, b) => b[1] - a[1]);
   const dominant = sorted[0][0];
   const roles: Record<string, { role: string; desc: string }> = {
-    목: { role: '기획자', desc: '새로운 아이디어와 시작을 이끄는 타입' },
-    화: { role: '분위기 메이커', desc: '열정과 에너지로 팀에 활기를 불어넣는 타입' },
-    토: { role: '조율자', desc: '팀의 균형을 잡고 갈등을 중재하는 안정형 타입' },
-    금: { role: '실행가', desc: '결정하면 바로 실행하는 추진력의 타입' },
-    수: { role: '참모', desc: '깊은 사고와 분석으로 전략을 세우는 타입' },
+    목: { role: '아이디어뱅크', desc: '새싹처럼 아이디어가 샘솟는 창의 담당' },
+    화: { role: '텐션 담당', desc: '어디서든 분위기 띄우는 에너지 뿜뿜형' },
+    토: { role: '밸런서', desc: '흔들려도 중심 잡아주는 팀의 안전벨트' },
+    금: { role: '불도저', desc: '일단 시작하면 끝을 보는 추진력 만렙' },
+    수: { role: '브레인', desc: '조용히 핵심을 꿰뚫는 전략가 타입' },
   };
-  return roles[dominant] || { role: '만능', desc: '다방면에 고른 능력의 타입' };
+  return roles[dominant] || { role: '올라운더', desc: '뭐든 평균 이상 해내는 만능형' };
 }
 
 // 팀 오행 코멘트
@@ -255,15 +255,145 @@ interface PairResult {
 // 메인 컴포넌트
 // ========================================
 
+// 다각형 관계도
+function RelationPolygon({
+  members,
+  pairs,
+  selectedMember,
+  onSelectMember,
+}: {
+  members: MemberSaju[];
+  pairs: PairResult[];
+  selectedMember: string | null;
+  onSelectMember: (name: string | null) => void;
+}) {
+  const n = members.length;
+  if (n < 2) return null;
+
+  const size = 320;
+  const cx = size / 2;
+  const cy = size / 2;
+  const radius = size / 2 - 50;
+
+  // 꼭짓점 좌표 (12시 방향부터 시계방향)
+  const points = members.map((_, i) => {
+    const angle = (2 * Math.PI * i) / n - Math.PI / 2;
+    return { x: cx + radius * Math.cos(angle), y: cy + radius * Math.sin(angle) };
+  });
+
+  const getLineColor = (score: number) => {
+    if (score >= 85) return '#10b981';
+    if (score >= 70) return '#3b82f6';
+    if (score >= 55) return '#9ca3af';
+    if (score >= 40) return '#f59e0b';
+    return '#ef4444';
+  };
+
+  const getLineWidth = (score: number) => {
+    if (score >= 85) return 3;
+    if (score >= 70) return 2.5;
+    if (score >= 55) return 1.5;
+    return 1;
+  };
+
+  return (
+    <div className="flex justify-center">
+      <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-xs" style={{ maxHeight: 320 }}>
+        {/* 연결선 */}
+        {pairs.map((pair, idx) => {
+          const i1 = members.findIndex(m => m.name === pair.member1);
+          const i2 = members.findIndex(m => m.name === pair.member2);
+          if (i1 < 0 || i2 < 0) return null;
+          const p1 = points[i1];
+          const p2 = points[i2];
+          const isHighlighted = selectedMember === pair.member1 || selectedMember === pair.member2;
+          const isDimmed = selectedMember && !isHighlighted;
+          return (
+            <g key={idx}>
+              <line
+                x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y}
+                stroke={getLineColor(pair.score)}
+                strokeWidth={isHighlighted ? getLineWidth(pair.score) + 1 : getLineWidth(pair.score)}
+                opacity={isDimmed ? 0.15 : isHighlighted ? 1 : 0.5}
+                strokeLinecap="round"
+              />
+              {/* 중간에 점수 표시 (선택된 멤버 관련선만) */}
+              {isHighlighted && (
+                <text
+                  x={(p1.x + p2.x) / 2}
+                  y={(p1.y + p2.y) / 2 - 4}
+                  textAnchor="middle"
+                  className="text-[9px] font-bold fill-gray-600 dark:fill-gray-300"
+                >
+                  {pair.score}
+                </text>
+              )}
+            </g>
+          );
+        })}
+
+        {/* 꼭짓점 (멤버) */}
+        {members.map((m, i) => {
+          const p = points[i];
+          const isSelected = selectedMember === m.name;
+          const isDimmed = selectedMember && !isSelected && !pairs.some(
+            pair => (pair.member1 === selectedMember && pair.member2 === m.name) ||
+                    (pair.member2 === selectedMember && pair.member1 === m.name)
+          );
+          return (
+            <g
+              key={m.id}
+              onClick={() => onSelectMember(isSelected ? null : m.name)}
+              className="cursor-pointer"
+            >
+              <circle
+                cx={p.x} cy={p.y}
+                r={isSelected ? 22 : 18}
+                className={cn(
+                  'transition-all duration-200',
+                  isSelected
+                    ? 'fill-blue-500 dark:fill-blue-400'
+                    : isDimmed
+                      ? 'fill-gray-200 dark:fill-gray-700'
+                      : 'fill-white dark:fill-gray-800'
+                )}
+                stroke={isSelected ? '#3b82f6' : '#d1d5db'}
+                strokeWidth={isSelected ? 2.5 : 1.5}
+              />
+              <text
+                x={p.x} y={p.y + 1}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                className={cn(
+                  'text-[10px] font-semibold pointer-events-none',
+                  isSelected ? 'fill-white' : isDimmed ? 'fill-gray-400 dark:fill-gray-500' : 'fill-gray-800 dark:fill-gray-200'
+                )}
+              >
+                {m.name.length > 3 ? m.name.slice(0, 3) : m.name}
+              </text>
+              {/* 이름 아래 띠 표시 */}
+              <text
+                x={p.x} y={p.y + 14 + (isSelected ? 4 : 0)}
+                textAnchor="middle"
+                className="text-[8px] fill-gray-400 dark:fill-gray-500 pointer-events-none"
+              >
+                {m.animal}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
 export function TeamSajuCompatibility() {
   const [isSample, setIsSample] = useState(true);
-  const [teamName, setTeamName] = useState('우리팀');
+  const [teamName, setTeamName] = useState('샘플팀');
   const [members, setMembers] = useState<Member[]>([
-    { id: '1', name: '김민수', birthDate: '1995-03-14' },
-    { id: '2', name: '이서연', birthDate: '1997-08-22' },
-    { id: '3', name: '박지훈', birthDate: '1994-12-05' },
-    { id: '4', name: '최유나', birthDate: '1996-06-30' },
-    { id: '5', name: '정도현', birthDate: '1998-01-17' },
+    { id: '1', name: '김테스트', birthDate: '1995-03-14' },
+    { id: '2', name: '이테스트', birthDate: '1997-08-22' },
+    { id: '3', name: '박테스트', birthDate: '1994-12-05' },
   ]);
   const [analyzing, setAnalyzing] = useState(false);
   const [results, setResults] = useState<{
@@ -313,13 +443,7 @@ export function TeamSajuCompatibility() {
   }, [members.length]);
 
   const updateMember = useCallback((id: string, field: 'name' | 'birthDate', value: string) => {
-    if (isSample) {
-      // 샘플 상태에서 입력 시작하면 → 해당 멤버만 남기고 나머지 비우기
-      setIsSample(false);
-      setTeamName('');
-      setMembers(prev => prev.map(m => m.id === id ? { ...m, [field]: value } : { ...m, name: '', birthDate: '' }));
-      return;
-    }
+    if (isSample) setIsSample(false);
     setMembers(prev => prev.map(m => m.id === id ? { ...m, [field]: value } : m));
   }, [isSample]);
 
@@ -398,6 +522,14 @@ export function TeamSajuCompatibility() {
     setAnalyzing(false);
   }, [validMembers]);
 
+  // 자동 분석: validMembers가 2명 이상이면 자동 실행
+  useEffect(() => {
+    if (validMembers.length >= 2 && !analyzing && !results) {
+      handleAnalyze();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const getShareUrl = useCallback(() => {
     if (!validMembers.length) return '';
     const data = {
@@ -471,14 +603,15 @@ export function TeamSajuCompatibility() {
             <button
               onClick={() => {
                 const samples = [
-                  { name: '김민수', birthDate: '1995-03-14' },
-                  { name: '이서연', birthDate: '1997-08-22' },
-                  { name: '박지훈', birthDate: '1994-12-05' },
-                  { name: '최유나', birthDate: '1996-06-30' },
-                  { name: '정도현', birthDate: '1998-01-17' },
+                  { name: '김테스트', birthDate: '1995-03-14' },
+                  { name: '이테스트', birthDate: '1997-08-22' },
+                  { name: '박테스트', birthDate: '1994-12-05' },
+                  { name: '최테스트', birthDate: '1996-06-30' },
+                  { name: '정테스트', birthDate: '1998-01-17' },
                 ];
                 setMembers(samples.map((s, i) => ({ id: String(Date.now() + i), ...s })));
-                setTeamName('우리팀');
+                setTeamName('샘플팀');
+                setIsSample(true);
                 setResults(null);
                 setIsSample(false);
               }}
@@ -497,36 +630,34 @@ export function TeamSajuCompatibility() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
           {members.map((member, idx) => (
-            <div key={member.id} className="flex items-center gap-2">
-              <span className="text-xs text-gray-400 w-5 flex-shrink-0">{idx + 1}</span>
+            <div key={member.id} className="flex items-center gap-1.5 p-2 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
+              <span className="text-[10px] text-gray-400 w-4 flex-shrink-0 text-center">{idx + 1}</span>
               <input
                 type="text"
                 value={member.name}
                 onChange={(e) => updateMember(member.id, 'name', e.target.value)}
                 placeholder="이름"
                 maxLength={10}
-                className="flex-1 min-w-0 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                className="w-16 min-w-0 px-2 py-1.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
               />
               <input
                 type="date"
                 value={member.birthDate}
                 onChange={(e) => updateMember(member.id, 'birthDate', e.target.value)}
-                className="w-36 px-3 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+                className="flex-1 min-w-0 px-2 py-1.5 text-xs rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
               />
               <button
                 onClick={() => removeMember(member.id)}
                 disabled={members.length <= 2}
                 className={cn(
-                  'p-1.5 rounded-lg transition-colors flex-shrink-0',
-                  members.length <= 2
-                    ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed'
-                    : 'text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
+                  'p-1 rounded transition-colors flex-shrink-0',
+                  members.length <= 2 ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed' : 'text-gray-400 hover:text-red-500'
                 )}
                 aria-label="삭제"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
@@ -603,6 +734,44 @@ export function TeamSajuCompatibility() {
                 {results.teamOhangComment}
               </p>
             </div>
+          </Card>
+
+          {/* 관계도 */}
+          <Card variant="bordered" className="p-5">
+            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 text-center">
+              관계도 · 이름을 눌러보세요
+            </h3>
+            <RelationPolygon
+              members={results.members}
+              pairs={results.pairs}
+              selectedMember={selectedMember}
+              onSelectMember={setSelectedMember}
+            />
+            {/* 선택된 멤버 상세 궁합 */}
+            {selectedMember && (
+              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 space-y-2">
+                <p className="text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2">
+                  {selectedMember}의 관계
+                </p>
+                {results.pairs
+                  .filter(p => p.member1 === selectedMember || p.member2 === selectedMember)
+                  .sort((a, b) => b.score - a.score)
+                  .map((pair, i) => {
+                    const other = pair.member1 === selectedMember ? pair.member2 : pair.member1;
+                    return (
+                      <div key={i} className={cn('p-3 rounded-xl', getScoreBg(pair.score))}>
+                        <div className="flex items-center gap-2">
+                          <span className="text-base">{getScoreEmoji(pair.score)}</span>
+                          <span className="font-medium text-sm text-gray-900 dark:text-white flex-1">{other}</span>
+                          <span className={cn('text-sm font-bold', getScoreColor(pair.score))}>{pair.score}</span>
+                          <span className={cn('text-[10px] font-medium', getScoreColor(pair.score))}>{getScoreLabel(pair.score)}</span>
+                        </div>
+                        <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-1 ml-7">{pair.comment}</p>
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
           </Card>
 
           {/* 오늘의 주인공 */}
