@@ -310,7 +310,7 @@ export function ChatRoom() {
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-64px)] w-full bg-[#FAF6F1] dark:bg-[#1C1917]">
+    <div className="flex flex-col h-[calc(100vh-200px)] w-full bg-[#FAF6F1] dark:bg-[#1C1917] rounded-xl border border-[#E8DFD4] dark:border-[#3D3530] overflow-hidden">
       {/* 헤더 */}
       <div className="border-b border-[#E8DFD4] dark:border-[#3D3530] px-4 py-3 text-center flex-shrink-0">
         <div className="flex items-center justify-center gap-2 mb-1">
