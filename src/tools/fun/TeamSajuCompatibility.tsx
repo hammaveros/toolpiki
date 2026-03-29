@@ -696,21 +696,21 @@ export function TeamSajuCompatibility() {
               <select
                 value={member.birthTime}
                 onChange={(e) => updateMember(member.id, 'birthTime', e.target.value)}
-                className="w-14 px-0.5 py-1.5 text-[10px] rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
+                className="w-28 px-1 py-1.5 text-[10px] rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:border-blue-500 outline-none"
               >
                 <option value="">모름</option>
-                <option value="23">子時</option>
-                <option value="01">丑時</option>
-                <option value="03">寅時</option>
-                <option value="05">卯時</option>
-                <option value="07">辰時</option>
-                <option value="09">巳時</option>
-                <option value="11">午時</option>
-                <option value="13">未時</option>
-                <option value="15">申時</option>
-                <option value="17">酉時</option>
-                <option value="19">戌時</option>
-                <option value="21">亥時</option>
+                <option value="23">23~01시 (子)</option>
+                <option value="01">01~03시 (丑)</option>
+                <option value="03">03~05시 (寅)</option>
+                <option value="05">05~07시 (卯)</option>
+                <option value="07">07~09시 (辰)</option>
+                <option value="09">09~11시 (巳)</option>
+                <option value="11">11~13시 (午)</option>
+                <option value="13">13~15시 (未)</option>
+                <option value="15">15~17시 (申)</option>
+                <option value="17">17~19시 (酉)</option>
+                <option value="19">19~21시 (戌)</option>
+                <option value="21">21~23시 (亥)</option>
               </select>
               <button
                 onClick={() => removeMember(member.id)}
