@@ -1,6 +1,7 @@
 'use client';
 
 import { Suspense } from 'react';
+import { usePathname } from 'next/navigation';
 import { Header, Footer } from '@/components/layout';
 import { HeaderAdBanner } from '@/components/ads/HeaderAdBanner';
 import { FooterAdBanner } from '@/components/ads/FooterAdBanner';
@@ -10,15 +11,18 @@ export default function Template({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isChatPage = pathname === '/chat';
+
   return (
     <>
       <Suspense fallback={null}>
         <Header />
       </Suspense>
-      <HeaderAdBanner />
+      {!isChatPage && <HeaderAdBanner />}
       <main className="flex-1">{children}</main>
-      <FooterAdBanner />
-      <Footer />
+      {!isChatPage && <FooterAdBanner />}
+      {!isChatPage && <Footer />}
     </>
   );
 }
