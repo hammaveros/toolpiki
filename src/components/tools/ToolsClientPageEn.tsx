@@ -157,12 +157,10 @@ function ToolsClientPageEnContent({ tools, categories, isMainPage, initialSearch
         <div className="space-y-8">
           {toolsByCategory.map(({ category: cat, tools: catTools }) => (
             <section key={cat.slug}>
-              <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
-                <span>{cat.icon}</span>
-                {cat.name}
-                <span className="text-xs text-gray-400 dark:text-gray-500">
-                  ({catTools.length})
-                </span>
+              <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+                <span aria-hidden="true">{cat.icon}</span>
+                {cat.name} Tools
+                <span className="text-sm font-normal text-gray-400 dark:text-gray-500">({catTools.length})</span>
               </h2>
               <div className="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
                 {catTools.map((tool) => (

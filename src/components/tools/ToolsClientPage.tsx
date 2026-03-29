@@ -123,9 +123,9 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
       {/* 최근 사용 */}
       {showPersonalSections && (
         <div className="mb-8">
-          <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 flex items-center gap-2">
-            🕘 최근 사용
-          </h2>
+          <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 flex items-center gap-2">
+            <span aria-hidden="true">🕘</span> 최근 사용
+          </h3>
           <div className="flex flex-wrap gap-2">
             {recentToolsList.map((tool) => (
               <Link
@@ -163,9 +163,9 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
           {toolsByCategory.map(({ category: cat, tools: catTools }) => (
             <section key={cat.slug}>
               <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
-                <span className="text-xl">{cat.icon}</span>
-                {cat.name}
-                <span className="text-sm font-normal text-gray-400 dark:text-gray-500">{catTools.length}</span>
+                <span className="text-xl" aria-hidden="true">{cat.icon}</span>
+                {cat.name} 도구
+                <span className="text-sm font-normal text-gray-400 dark:text-gray-500">({catTools.length}개)</span>
               </h2>
               <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {catTools.map((tool) => (

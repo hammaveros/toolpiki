@@ -15,16 +15,16 @@ export default function HomePage() {
       <section className="relative hero-grid">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50/80 via-white/60 to-white dark:from-indigo-950/40 dark:via-[#0f1117]/80 dark:to-[#0f1117] pointer-events-none" />
         <div className="relative max-w-5xl mx-auto px-4 pt-14 pb-10 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-3">
+          <p className="text-4xl md:text-5xl font-extrabold mb-3">
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               ToolPiki
             </span>
-          </h1>
-          <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 mb-2">
-            웹에서 바로 쓰는 무료 온라인 도구 모음
           </p>
+          <h1 className="text-base md:text-lg text-gray-500 dark:text-gray-400 mb-2">
+            설치 없이 바로 쓰는 100가지 무료 온라인 도구
+          </h1>
           <p className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
-            <span className="text-blue-600 dark:text-blue-400">100+</span> 무료 도구
+            글자수세기, QR코드, 이미지 압축 <span className="text-blue-600 dark:text-blue-400">외 100+</span>
           </p>
 
           {/* 검색창 */}
