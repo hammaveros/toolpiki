@@ -341,6 +341,60 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📌 2026년 최저임금 정보
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          2026년 최저임금은 시급 기준으로 결정되며, 주 40시간 근무 기준 월급과 연봉은 다음과 같습니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">구분</th>
+                <th className="text-left py-2 px-2">금액</th>
+                <th className="text-left py-2 px-2">산출 기준</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">시급</td><td className="font-mono">10,030원</td><td>최저임금위원회 고시</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">일급 (8시간)</td><td className="font-mono">80,240원</td><td>시급 × 8시간</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">월급 (주 40시간)</td><td className="font-mono">약 2,096,270원</td><td>시급 × 209시간 (주휴 포함)</td></tr>
+              <tr><td className="py-2 px-2 font-medium">연봉 환산</td><td className="font-mono">약 25,155,240원</td><td>월급 × 12개월</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">※ 주 40시간 근무, 주휴수당 포함 기준. 실제 금액은 근로 조건에 따라 다를 수 있습니다.</p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          💵 연봉별 실수령액 예시
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          부양가족 1인(본인), 비과세 월 20만원 기준 대략적인 실수령 월급입니다. 실제 금액은 회사 공제 항목에 따라 다를 수 있습니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">세전 연봉</th>
+                <th className="text-left py-2 px-2">월 실수령액 (약)</th>
+                <th className="text-left py-2 px-2">공제율 (약)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">3,000만원</td><td className="font-mono">약 224만원</td><td>~10.5%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">4,000만원</td><td className="font-mono">약 291만원</td><td>~12.5%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">5,000만원</td><td className="font-mono">약 354만원</td><td>~15%</td></tr>
+              <tr><td className="py-2 px-2 font-medium">7,000만원</td><td className="font-mono">약 476만원</td><td>~18.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">※ 위 금액은 2026년 4대보험 요율 + 간이세액 기준 추정치이며, 정확한 금액은 위 계산기를 이용하세요.</p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[

@@ -243,6 +243,50 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📋 연령별 정상 BMI 범위
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          같은 BMI라도 연령에 따라 건강 의미가 달라집니다. 아래는 대한비만학회 및 WHO 자료를 참고한 연령별 권장 BMI 범위입니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">연령대</th>
+                <th className="text-left py-2 px-2">권장 BMI</th>
+                <th className="text-left py-2 px-2">참고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">20대</td><td className="font-mono">18.5 ~ 22.9</td><td>근육량이 가장 높은 시기, 표준 기준 적용</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">30대</td><td className="font-mono">18.5 ~ 23.5</td><td>기초대사량 감소 시작, 체중 관리 필요</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">40대</td><td className="font-mono">18.5 ~ 24.0</td><td>내장지방 증가 주의, 허리둘레 함께 체크</td></tr>
+              <tr><td className="py-2 px-2 font-medium">50대 이상</td><td className="font-mono">20.0 ~ 25.0</td><td>저체중이 더 위험, 약간 높은 BMI가 유리</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">※ 개인 건강 상태에 따라 다를 수 있으며, 정확한 판단은 전문의 상담을 권장합니다.</p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔍 마른 비만 자가진단
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          마른 비만(Skinny Fat)은 BMI가 정상 범위(18.5~22.9)인데 체지방률이 높은 상태를 말합니다.
+          겉으로 보기에 날씬하지만 근육은 적고 내장지방이 많아 대사증후군 위험이 높습니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>체지방률 기준</strong>: 남성 25% 이상, 여성 30% 이상이면 마른 비만 의심</li>
+          <li><strong>허리둘레</strong>: 남성 90cm(35인치), 여성 85cm(33인치) 이상이면 복부 비만</li>
+          <li><strong>주요 원인</strong>: 운동 부족, 극단적 식이 제한(요요), 근력 운동 없이 유산소만 수행</li>
+          <li><strong>개선 방법</strong>: 단백질 섭취 증가 + 근력 운동 병행이 핵심</li>
+        </ul>
+        <p className="text-xs text-gray-500 mt-2">체성분 분석기(인바디 등)로 체지방률과 근육량을 정확히 측정하는 것을 권장합니다.</p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[

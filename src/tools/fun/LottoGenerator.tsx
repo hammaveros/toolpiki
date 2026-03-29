@@ -385,6 +385,67 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔢 자주 나온 로또 번호
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          역대 로또 추첨에서 가장 많이 나온 번호 TOP 10입니다. 참고용 통계이며, 모든 번호의 당첨 확률은 동일합니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">순위</th>
+                <th className="text-left py-2 px-2">번호</th>
+                <th className="text-left py-2 px-2">출현 횟수</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">1</td><td className="font-mono font-medium">34</td><td>약 210회+</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">2</td><td className="font-mono font-medium">27</td><td>약 208회+</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">3</td><td className="font-mono font-medium">12</td><td>약 207회+</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">4</td><td className="font-mono font-medium">33</td><td>약 205회+</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">5</td><td className="font-mono font-medium">17</td><td>약 204회+</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">6</td><td className="font-mono font-medium">1</td><td>약 203회+</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">7</td><td className="font-mono font-medium">40</td><td>약 202회+</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">8</td><td className="font-mono font-medium">13</td><td>약 201회+</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">9</td><td className="font-mono font-medium">45</td><td>약 200회+</td></tr>
+              <tr><td className="py-2 px-2">10</td><td className="font-mono font-medium">18</td><td>약 199회+</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">※ 통계는 참고용이며 매 회차 추첨은 독립 사건입니다. 과거 출현 빈도가 미래 당첨을 보장하지 않습니다.</p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          💰 당첨금 세금 계산
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          로또 당첨금은 금액에 따라 소득세와 지방소득세가 부과됩니다. 3억원 초과분에는 더 높은 세율이 적용됩니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">등수</th>
+                <th className="text-left py-2 px-2">세율</th>
+                <th className="text-left py-2 px-2">세금 계산</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">1등 (3억 초과분)</td><td className="font-mono">33%</td><td>소득세 30% + 지방소득세 3%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">1등 (3억 이하분)</td><td className="font-mono">22%</td><td>소득세 20% + 지방소득세 2%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">2등</td><td className="font-mono">22%</td><td>대부분 3억 이하</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">3등</td><td className="font-mono">22%</td><td>약 150만원 내외</td></tr>
+              <tr><td className="py-2 px-2 font-medium">4등·5등</td><td className="font-mono">비과세</td><td>5만원·5천원 (세금 없음)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">예: 1등 20억 당첨 시 → 3억 × 22% + 17억 × 33% = 약 6.27억원 세금, 실수령 약 13.73억원</p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[

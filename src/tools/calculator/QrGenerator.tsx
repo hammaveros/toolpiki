@@ -375,6 +375,41 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🏆 QR코드 활용 사례 10가지
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>명함</strong>: vCard QR코드로 연락처 저장을 원터치로, 종이 명함 없이도 네트워킹</li>
+          <li><strong>와이파이 공유</strong>: 카페·숙소에서 비밀번호 안내 대신 스캔 한 번으로 접속</li>
+          <li><strong>메뉴판</strong>: 식당 테이블에 QR 부착, 비대면 주문 및 메뉴 확인</li>
+          <li><strong>출석 체크</strong>: 강의실·행사장에서 QR 스캔으로 실시간 출석 관리</li>
+          <li><strong>모바일 결제</strong>: 간편결제 QR코드로 현금 없이 매장·자판기 결제</li>
+          <li><strong>이벤트·프로모션</strong>: 전단지·포스터에 이벤트 페이지 QR 삽입, 참여율 측정 가능</li>
+          <li><strong>제품 패키지</strong>: 사용 설명서·성분 정보·리뷰 페이지로 바로 연결</li>
+          <li><strong>부동산</strong>: 매물 안내판에 QR 부착, 상세 정보·사진·연락처 제공</li>
+          <li><strong>이력서·포트폴리오</strong>: 인쇄 이력서에 QR 추가, 온라인 포트폴리오 즉시 연결</li>
+          <li><strong>교육 자료</strong>: 교재·워크시트에 QR 삽입, 동영상 강의·참고자료 바로 접근</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🎯 QR코드 인식 잘 되는 크기/색상 가이드
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          QR코드를 만들었는데 잘 안 읽힌다면 크기, 여백, 색상 문제일 가능성이 높습니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>최소 크기</strong>: 인쇄물은 2cm × 2cm 이상, 현수막·간판은 스캔 거리에 비례 (1m 거리당 약 10cm)</li>
+          <li><strong>여백(Quiet Zone)</strong>: QR코드 테두리에 셀 4개 이상의 흰색 여백 확보 필수</li>
+          <li><strong>색상 대비</strong>: 전경과 배경의 명도 차이가 클수록 인식률 상승, 최소 40% 이상 대비 유지</li>
+          <li><strong>권장 색상</strong>: 검정 전경 + 흰색 배경이 가장 안정적, 어두운 남색·진녹색도 가능</li>
+          <li><strong>피해야 할 색상</strong>: 노란색·연한 파스텔 전경, 빨강+녹색 조합 (색약자 인식 불가)</li>
+          <li><strong>인쇄 해상도</strong>: 최소 300dpi 권장, 72dpi 웹 이미지를 그대로 인쇄하면 흐릿해짐</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[

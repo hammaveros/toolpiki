@@ -185,6 +185,45 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚖️ JSON vs XML vs YAML 비교
+        </h2>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">항목</th>
+                <th className="text-left py-2 px-2">JSON</th>
+                <th className="text-left py-2 px-2">XML</th>
+                <th className="text-left py-2 px-2">YAML</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">가독성</td><td>보통</td><td>낮음 (태그 많음)</td><td>높음 (들여쓰기 기반)</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">파일 크기</td><td>작음</td><td>큼 (태그 오버헤드)</td><td>가장 작음</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">주석 지원</td><td>불가</td><td>가능</td><td>가능</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">배열 표현</td><td>네이티브 지원</td><td>반복 태그</td><td>- 기호</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">주 사용처</td><td>API, 웹 통신</td><td>문서, SOAP, 설정</td><td>설정 파일 (K8s, CI/CD)</td></tr>
+              <tr><td className="py-2 px-2 font-medium">파싱 속도</td><td>빠름</td><td>느림</td><td>보통</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🚨 자주 발생하는 JSON 오류 TOP 5
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>Trailing Comma</strong>: 마지막 항목 뒤에 쉼표 (<code className="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded">{`{"a":1,}`}</code>) — JSON은 trailing comma를 허용하지 않음</li>
+          <li><strong>작은따옴표 사용</strong>: 키/값에 작은따옴표 (<code className="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded">{`{'name':'홍길동'}`}</code>) — 반드시 큰따옴표만 사용</li>
+          <li><strong>undefined / NaN / Infinity</strong>: JavaScript에는 있지만 JSON에는 없는 값 — <code className="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded">null</code>로 대체</li>
+          <li><strong>주석 포함</strong>: <code className="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded">{`// 주석`}</code>이나 <code className="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded">{`/* */`}</code> — 표준 JSON은 주석 불가 (JSONC 사용 필요)</li>
+          <li><strong>따옴표 없는 키</strong>: <code className="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded">{`{name: "값"}`}</code> — JavaScript 객체 문법이지 JSON이 아님</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[

@@ -765,6 +765,49 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🧾 예금 이자 세금 계산법
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          예금 이자를 받으면 자동으로 세금이 원천징수됩니다. 실수령액을 정확히 알려면 세금 구조를 이해해야 합니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>이자소득세 14%</strong> + <strong>지방소득세 1.4%</strong> = 총 <strong>15.4%</strong>가 원천징수됩니다.</li>
+          <li><strong>계산 예시</strong>: 이자 100만 원 발생 시 → 세금 154,000원 → 실수령 846,000원</li>
+          <li><strong>금융소득종합과세</strong>: 연간 이자+배당 소득이 2,000만 원을 초과하면 다른 소득과 합산하여 종합소득세율(6~45%)이 적용됩니다.</li>
+          <li><strong>비과세/세금우대</strong>: ISA 계좌(비과세 한도 200~400만 원), 조합 예금(세금우대 3,000만 원), 청년희망적금 등을 활용하면 세금을 줄일 수 있습니다.</li>
+          <li><strong>세후 실질 수익률</strong>: 표면 금리 5%라면 세후 약 4.23%가 실질 수익률입니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🏦 파킹통장 vs 정기예금 비교
+        </h2>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">항목</th>
+                <th className="text-left py-2 px-2">파킹통장</th>
+                <th className="text-left py-2 px-2">정기예금</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">금리</td><td>보통 2~3%대</td><td>보통 3~4%대</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">입출금</td><td>자유롭게 가능</td><td>만기 전 출금 시 금리 손해</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">이자 지급</td><td>매일 계산, 월 지급</td><td>만기 일시 지급</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">적합한 용도</td><td>비상금, 단기 대기자금</td><td>목돈 운용, 확정 수익</td></tr>
+              <tr><td className="py-2 px-2 font-medium">추천 상황</td><td>언제든 쓸 돈, 금리 상승 대기</td><td>1년 이상 안 쓸 돈</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          자금 성격에 따라 분산 배치하는 것이 가장 효율적입니다. 생활비 3개월분은 파킹통장에, 나머지는 정기예금에 넣는 전략이 일반적입니다.
+        </p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[

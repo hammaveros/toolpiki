@@ -412,6 +412,35 @@ function SeoContent() {
         </p>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📋 자기소개서/입사지원서 글자수 기준
+        </h2>
+        <div className="text-sm leading-relaxed space-y-1">
+          <p><strong>삼성그룹:</strong> 항목당 300~700자 (공백 포함)</p>
+          <p><strong>현대자동차:</strong> 항목당 500~1,000자</p>
+          <p><strong>LG그룹:</strong> 항목당 500자 내외</p>
+          <p><strong>SK그룹:</strong> 항목당 400~800자</p>
+          <p><strong>대학 입시 자소서:</strong> 항목당 1,000~1,500자</p>
+          <p><strong>공무원 자소서:</strong> 항목당 200~500자</p>
+          <p className="text-xs text-gray-500 mt-2">※ 기업/학교마다 다르므로 반드시 공고를 확인하세요.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🎯 글자수 세기가 필요한 순간
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>자기소개서 작성</strong>: 채용 공고의 글자수 제한에 맞춰야 할 때</li>
+          <li><strong>SNS 게시글</strong>: 인스타그램 캡션(2,200자), 트위터(280자) 등 제한 확인</li>
+          <li><strong>블로그 글</strong>: SEO에 유리한 본문 길이(1,500~3,000자) 확인</li>
+          <li><strong>문자 발송</strong>: SMS(70자)/LMS(2,000바이트) 구분 확인</li>
+          <li><strong>유튜브 제목</strong>: 검색 노출에 최적인 60자 이내 확인</li>
+          <li><strong>논문/보고서</strong>: 초록(Abstract) 글자수 제한 확인</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
@@ -422,6 +451,10 @@ function SeoContent() {
           {
             question: '한글과 영어 글자수가 다르게 계산되나요?',
             answer: '글자수는 동일하게 1자로 계산됩니다. 다만 바이트 수는 다릅니다. 한글은 3바이트(UTF-8), 영어는 1바이트입니다.',
+          },
+          {
+            question: '자소서에서 공백 포함/미포함 어떤 걸 봐야 하나요?',
+            answer: '대부분의 채용 공고는 "공백 포함" 기준입니다. 특별한 명시가 없으면 공백 포함 글자수로 작성하세요.',
           },
           {
             question: '줄바꿈도 글자수에 포함되나요?',

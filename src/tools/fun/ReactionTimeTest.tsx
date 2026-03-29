@@ -403,6 +403,46 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🚀 반응속도 높이는 방법
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>충분한 수면 (7~8시간)</strong>: 수면 부족은 반응속도를 최대 30% 저하시킵니다. 일정한 수면 패턴이 가장 중요합니다.</li>
+          <li><strong>규칙적인 유산소 운동</strong>: 주 3~4회 30분 이상 운동은 신경 전달 속도와 집중력을 동시에 향상시킵니다.</li>
+          <li><strong>에임 트레이닝 게임</strong>: Aim Lab, KovaaK&apos;s 같은 에임 트레이너로 매일 15~20분 연습하면 2~4주 내 체감 가능합니다.</li>
+          <li><strong>카페인 적정 섭취</strong>: 100~200mg(커피 1~2잔) 카페인은 일시적으로 반응속도를 10~15% 개선합니다. 과다 섭취는 역효과.</li>
+          <li><strong>스트레칭과 손 워밍업</strong>: 게임 전 손목·손가락 스트레칭 5분이 초반 반응속도를 크게 높여줍니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🎮 프로게이머 평균 반응속도
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          e스포츠 종목별 프로 선수들의 평균 반응속도입니다. 종목 특성에 따라 요구되는 반응 유형이 다릅니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">종목</th>
+                <th className="text-left py-2 px-2">평균 반응속도</th>
+                <th className="text-left py-2 px-2">특징</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">발로란트 / CS2</td><td className="font-mono">140~170ms</td><td>순수 에임 반응, 프리파이어 판단</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">리그 오브 레전드</td><td className="font-mono">160~200ms</td><td>스킬 회피·타이밍 반응, 예측 중심</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">오버워치 2</td><td className="font-mono">150~180ms</td><td>트래킹 에임 + 순간 반응 복합</td></tr>
+              <tr><td className="py-2 px-2 font-medium">격투 게임 (철권 등)</td><td className="font-mono">130~160ms</td><td>프레임 단위 반응 (16.6ms = 1프레임)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">※ 실제 게임에서는 순수 반응속도 외에 예측, 게임 센스, 상황 판단이 더 중요합니다.</p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[

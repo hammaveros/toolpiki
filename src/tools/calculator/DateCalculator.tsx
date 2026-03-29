@@ -309,6 +309,47 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🗓️ 2026년 주요 D-day 목록
+        </h2>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">이벤트</th>
+                <th className="text-left py-2 px-2">날짜</th>
+                <th className="text-left py-2 px-2">비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">설날</td><td className="font-mono">2026.02.17</td><td>음력 1월 1일 (화)</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">추석</td><td className="font-mono">2026.10.05</td><td>음력 8월 15일 (월)</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">대학수학능력시험</td><td className="font-mono">2026.11.19</td><td>매년 11월 셋째 주 목요일</td></tr>
+              <tr><td className="py-2 px-2 font-medium">크리스마스</td><td className="font-mono">2026.12.25</td><td>금요일</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">※ 음력 날짜는 연도마다 달라지므로 참고용입니다.</p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          💕 기념일 계산법
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          연인, 부부 기념일을 계산할 때 가장 많이 찾는 날짜입니다. &quot;날짜 더하기&quot; 모드에서 만난 날을 시작일로 설정하세요.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>100일</strong>: 시작일 + 99일 (만난 날이 1일째)</li>
+          <li><strong>200일</strong>: 시작일 + 199일</li>
+          <li><strong>300일</strong>: 시작일 + 299일</li>
+          <li><strong>1주년</strong>: 시작일 + 365일 (윤년 포함 시 366일)</li>
+          <li><strong>1000일</strong>: 시작일 + 999일 (약 2년 9개월)</li>
+        </ul>
+        <p className="text-xs text-gray-500 mt-2">팁: 만난 날을 1일로 세는 게 일반적이므로 원하는 일수에서 1을 빼고 더하세요.</p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[

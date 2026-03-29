@@ -397,6 +397,34 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔄 원금균등 vs 원리금균등 차이
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          두 방식의 핵심 차이는 &quot;매월 갚는 원금이 같은가, 총 상환액이 같은가&quot;입니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>원금균등</strong>: 매월 동일한 원금을 상환하고, 이자는 남은 잔액에 대해 계산. 초기 상환액이 크지만 갈수록 줄어들며, <strong>총 이자가 적습니다</strong>.</li>
+          <li><strong>원리금균등</strong>: 매월 상환 총액(원금+이자)이 동일. 예산 관리가 쉽고 초기 부담이 낮지만, 초반에는 이자 비중이 높아 <strong>총 이자가 더 많습니다</strong>.</li>
+          <li><strong>예시 (1억, 연 5%, 20년)</strong>: 원금균등 총 이자 약 5,020만 원, 원리금균등 총 이자 약 5,840만 원으로 약 820만 원 차이가 납니다.</li>
+          <li><strong>선택 기준</strong>: 초기 자금 여유가 있으면 원금균등, 매월 고정 지출을 선호하면 원리금균등이 유리합니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          💡 대출 이자 절약 팁
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>중도상환 활용</strong>: 여유 자금이 생기면 중도상환으로 원금을 줄이세요. 3년 후에는 중도상환수수료가 면제되는 경우가 많습니다.</li>
+          <li><strong>금리 비교는 필수</strong>: 시중은행, 인터넷전문은행, 보험사, 상호금융까지 비교하면 0.5%p 이상 차이 나기도 합니다. 금융감독원 금리비교 사이트 활용을 추천합니다.</li>
+          <li><strong>거치기간 최소화</strong>: 거치기간 동안은 원금이 줄지 않아 이자만 나가므로, 꼭 필요한 경우가 아니면 거치기간을 줄이는 것이 총 이자 절감에 효과적입니다.</li>
+          <li><strong>대출 기간 단축</strong>: 같은 금리라도 기간이 절반이면 총 이자는 절반 이하로 줄어듭니다. 월 상환 부담이 가능하다면 기간을 줄여보세요.</li>
+          <li><strong>금리인하요구권</strong>: 승진, 연봉 인상, 신용등급 상승 시 은행에 금리 인하를 요청할 수 있는 법적 권리입니다.</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[

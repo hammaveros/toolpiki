@@ -423,6 +423,46 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔍 웹사이트 이미지 최적화와 SEO
+        </h2>
+        <p className="text-sm leading-relaxed">
+          구글은 Core Web Vitals를 검색 순위 지표로 사용하며, 그 중 <strong>LCP(Largest Contentful Paint)</strong>는 페이지에서 가장 큰 콘텐츠가 표시되는 시간을 측정합니다.
+          대부분의 웹페이지에서 가장 큰 콘텐츠는 이미지이므로, 이미지 최적화가 곧 LCP 개선이자 SEO 점수 향상입니다.
+          LCP 2.5초 이내가 &quot;좋음&quot; 등급이며, 이미지 압축과 포맷 변환만으로도 1~3초 단축이 가능합니다.
+          이미지가 무거운 사이트는 이탈률이 높아지고, 모바일 검색에서 특히 불리합니다.
+          구글 PageSpeed Insights에서 &quot;이미지를 차세대 형식으로 제공&quot; 항목이 뜬다면 WebP 변환이 필요하다는 신호입니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📊 WebP vs JPG vs PNG 용량 비교
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          동일한 1920×1080 사진 기준 대략적인 파일 크기 비교입니다. 실제 용량은 이미지 복잡도에 따라 달라집니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">형식</th>
+                <th className="text-left py-2 px-2">품질 80%</th>
+                <th className="text-left py-2 px-2">품질 60%</th>
+                <th className="text-left py-2 px-2">무손실</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">JPG</td><td>~250KB</td><td>~150KB</td><td>-</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">PNG</td><td>-</td><td>-</td><td>~2MB</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">WebP</td><td>~170KB</td><td>~100KB</td><td>~1.2MB</td></tr>
+              <tr><td className="py-2 px-2 font-mono">절감률 (WebP vs JPG)</td><td>약 30% ↓</td><td>약 33% ↓</td><td>-</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
