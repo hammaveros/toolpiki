@@ -23,7 +23,7 @@ export default function HomePageEn() {
           <h1 className="text-base md:text-lg text-gray-500 dark:text-gray-400 mb-2">
             100+ Free Online Tools — No Signup Required
           </h1>
-          <p className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+          <p className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-6">
             JSON, QR Code, Image Compress <span className="text-blue-600 dark:text-blue-400">& 100+</span>
           </p>
 
