@@ -98,14 +98,15 @@ export function ChatRoom() {
       });
     }, 15000);
 
-    // presence 구독
-    const thirtySecsAgo = Timestamp.fromDate(new Date(Date.now() - 30000));
-    const q = query(
-      collection(db, 'presence'),
-      where('lastSeen', '>', thirtySecsAgo),
-    );
-    const unsub = onSnapshot(q, (snapshot) => {
-      setOnlineCount(snapshot.size);
+    // presence 구독 (전체 구독 후 클라이언트 필터링)
+    const unsub = onSnapshot(collection(db, 'presence'), (snapshot) => {
+      const now = Date.now();
+      let count = 0;
+      snapshot.forEach((d) => {
+        const lastSeen = d.data().lastSeen?.toDate?.();
+        if (lastSeen && now - lastSeen.getTime() < 60000) count++;
+      });
+      setOnlineCount(count);
     });
 
     // 퇴장 시 삭제
@@ -309,7 +310,7 @@ export function ChatRoom() {
   }
 
   return (
-    <div className="flex flex-col h-[100dvh] max-w-2xl mx-auto bg-[#FAF6F1] dark:bg-[#1C1917] fixed inset-0 z-40">
+    <div className="flex flex-col h-[calc(100vh-64px)] w-full bg-[#FAF6F1] dark:bg-[#1C1917]">
       {/* 헤더 */}
       <div className="border-b border-[#E8DFD4] dark:border-[#3D3530] px-4 py-3 text-center flex-shrink-0">
         <div className="flex items-center justify-center gap-2 mb-1">

@@ -1,12 +1,25 @@
-import type { Metadata } from 'next';
-import { ChatRoom } from '@/components/chat/ChatRoom';
+'use client';
 
-export const metadata: Metadata = {
-  title: '랜선탕비실 - 익명 실시간 채팅',
-  description: '잠깐 쉬어가세요. 익명으로 편하게 수다 떠는 온라인 탕비실.',
-  keywords: ['랜선탕비실', '익명 채팅', '실시간 채팅', '쉬는 시간'],
-};
+import { ChatRoom } from '@/components/chat/ChatRoom';
+import { AdSlot } from '@/components/ads/AdSlot';
 
 export default function ChatPage() {
-  return <ChatRoom />;
+  return (
+    <div className="flex justify-center gap-4 px-4 h-[calc(100vh-64px)]">
+      {/* 왼쪽 광고 - PC만 */}
+      <div className="hidden xl:flex flex-col items-center pt-4 w-[160px] flex-shrink-0">
+        <AdSlot format="vertical" className="sticky top-20" />
+      </div>
+
+      {/* 채팅방 */}
+      <div className="w-full max-w-2xl">
+        <ChatRoom />
+      </div>
+
+      {/* 오른쪽 광고 - PC만 */}
+      <div className="hidden xl:flex flex-col items-center pt-4 w-[160px] flex-shrink-0">
+        <AdSlot format="vertical" className="sticky top-20" />
+      </div>
+    </div>
+  );
 }
