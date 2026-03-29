@@ -227,24 +227,23 @@ export function ChatRoom() {
     setTimeout(() => setCooldown(false), 2000);
   }, [uid, nickname, cooldown]);
 
-  // 인터랙션: 커피 내리기 (로컬에서만)
-  const handleCoffee = useCallback(() => {
-    if (!nickname || cooldown) return;
+  // 인터랙션: 커피 내리기
+  const handleCoffee = useCallback(async () => {
+    if (!uid || !nickname || cooldown) return;
     const msg = getRandomInteraction('coffee');
 
-    setMessages((prev) => [...prev, {
-      id: `coffee-${Date.now()}`,
+    await addDoc(collection(db, 'messages'), {
       text: msg,
       nickname: nickname.name,
       emoji: nickname.emoji,
-      uid: uid || '',
+      uid,
       type: 'interaction',
-      createdAt: null,
-    }]);
+      createdAt: serverTimestamp(),
+    });
 
     setCooldown(true);
     setTimeout(() => setCooldown(false), 5000);
-  }, [nickname, cooldown, uid]);
+  }, [uid, nickname, cooldown]);
 
   // 간식 카운터
   const [snackCount, setSnackCount] = useState(() => {
@@ -252,24 +251,23 @@ export function ChatRoom() {
     return Number(localStorage.getItem('tangbisil-snack-count') || '0');
   });
 
-  // 인터랙션: 간식 훔치기 (로컬에서만)
-  const handleSnack = useCallback(() => {
-    if (!nickname || cooldown) return;
+  // 인터랙션: 간식 훔치기
+  const handleSnack = useCallback(async () => {
+    if (!uid || !nickname || cooldown) return;
     const newCount = snackCount + 1;
     setSnackCount(newCount);
     localStorage.setItem('tangbisil-snack-count', String(newCount));
 
     const msg = getRandomInteraction('snack');
 
-    setMessages((prev) => [...prev, {
-      id: `snack-${Date.now()}`,
+    await addDoc(collection(db, 'messages'), {
       text: `${msg} (${newCount}번째 간식 훔치기!)`,
       nickname: nickname.name,
       emoji: nickname.emoji,
-      uid: uid || '',
+      uid,
       type: 'interaction',
-      createdAt: null,
-    }]);
+      createdAt: serverTimestamp(),
+    });
 
     setCooldown(true);
     setTimeout(() => setCooldown(false), 5000);
