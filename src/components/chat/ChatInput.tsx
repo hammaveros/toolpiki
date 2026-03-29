@@ -38,6 +38,7 @@ export function ChatInput({ onSend, disabled, cooldown }: ChatInputProps) {
             onKeyDown={handleKeyDown}
             placeholder={cooldown ? '잠시만요...' : '☕ 한마디 남기기...'}
             disabled={disabled || cooldown}
+            autoFocus
             rows={1}
             className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-[#292524] border border-[#E8DFD4] dark:border-[#3D3530] text-sm text-[#5C4A3A] dark:text-[#D4B896] placeholder:text-[#C4B8A8] dark:placeholder:text-[#5C5048] resize-none focus:outline-none focus:ring-2 focus:ring-[#D4A574]/50 disabled:opacity-50"
             style={{ maxHeight: 80 }}

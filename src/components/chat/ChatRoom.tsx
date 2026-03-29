@@ -313,7 +313,7 @@ export function ChatRoom() {
   return (
     <div className="flex flex-col h-full w-full bg-[#FAF6F1] dark:bg-[#1C1917] overflow-hidden">
       {/* 헤더 */}
-      <div className="border-b border-[#E8DFD4] dark:border-[#3D3530] px-4 py-3 text-center flex-shrink-0">
+      <div className="border-b border-[#E8DFD4] dark:border-[#3D3530] px-4 py-2 text-center flex-shrink-0">
         <div className="flex items-center justify-center gap-2 mb-1">
           <span className="text-lg">☕</span>
           <h1 className="text-lg font-bold text-[#5C4A3A] dark:text-[#D4B896]">랜선탕비실</h1>
@@ -352,7 +352,7 @@ export function ChatRoom() {
       </div>
 
       {/* 인터랙션 버튼 */}
-      <div className="flex justify-center gap-2 px-4 py-2 border-t border-[#E8DFD4] dark:border-[#3D3530]">
+      <div className="flex justify-center gap-2 px-4 py-1.5 border-t border-[#E8DFD4] dark:border-[#3D3530]">
         <button
           onClick={handleCoffee}
           disabled={cooldown}
