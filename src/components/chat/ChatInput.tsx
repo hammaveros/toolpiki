@@ -17,7 +17,7 @@ export function ChatInput({ onSend, disabled, cooldown }: ChatInputProps) {
     if (!trimmed || disabled || cooldown) return;
     onSend(trimmed);
     setText('');
-    inputRef.current?.focus();
+    setTimeout(() => inputRef.current?.focus(), 50);
   }, [text, disabled, cooldown, onSend]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
