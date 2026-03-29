@@ -7,20 +7,24 @@ import { Footer } from '@/components/layout/Footer';
 
 const popularToolsKr = [
   { slug: 'saju-reading', name: '사주풀이', icon: '☯️' },
-  { slug: 'json-formatter', name: 'JSON 포맷터', icon: '📋' },
-  { slug: 'image-compress', name: '이미지 압축', icon: '📦' },
-  { slug: 'qr-generator', name: 'QR 코드 생성', icon: '📱' },
-  { slug: 'reaction-time-test', name: '반응속도 테스트', icon: '⚡' },
   { slug: 'team-saju', name: '사주팀플', icon: '👥' },
+  { slug: 'qr-generator', name: 'QR코드 생성기', icon: '📱' },
+  { slug: 'json-formatter', name: 'JSON 포맷터', icon: '{}' },
+  { slug: 'mermaid-diagram', name: '머메이드 다이어그램', icon: '📊' },
+  { slug: 'reaction-time-test', name: '반응속도 테스트', icon: '⚡' },
+  { slug: 'pomodoro-timer', name: '뽀모도로 타이머', icon: '🍅' },
+  { slug: 'server-time', name: '서버 시간 측정', icon: '🌐' },
 ];
 
 const popularToolsEn = [
-  { slug: 'json-formatter-en', name: 'JSON Formatter', icon: '📋' },
-  { slug: 'image-compress-en', name: 'Image Compress', icon: '📦' },
   { slug: 'qr-generator-en', name: 'QR Generator', icon: '📱' },
-  { slug: 'character-counter-en', name: 'Character Counter', icon: '🔢' },
+  { slug: 'json-formatter-en', name: 'JSON Formatter', icon: '{}' },
+  { slug: 'mermaid-diagram-en', name: 'Mermaid Diagram', icon: '📊' },
   { slug: 'reaction-time-test-en', name: 'Reaction Test', icon: '⚡' },
-  { slug: 'color-converter-en', name: 'Color Converter', icon: '🎨' },
+  { slug: 'pomodoro-timer-en', name: 'Pomodoro Timer', icon: '🍅' },
+  { slug: 'character-counter-en', name: 'Character Counter', icon: '🔢' },
+  { slug: 'server-time-en', name: 'Server Time', icon: '🌐' },
+  { slug: 'us-lotto-generator-en', name: 'US Lotto Generator', icon: '🎰' },
 ];
 
 export default function NotFound() {
@@ -71,7 +75,7 @@ export default function NotFound() {
             <p className="text-xs text-gray-400 dark:text-gray-500 mb-4">
               {isEn ? 'Try one of these instead' : '이런 도구는 어때요?'}
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {popularTools.map((tool) => (
                 <Link
                   key={tool.slug}
