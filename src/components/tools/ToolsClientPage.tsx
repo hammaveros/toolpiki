@@ -16,9 +16,9 @@ interface ToolsClientPageProps {
 }
 
 const POPULAR_SLUGS = [
-  'saju-reading', 'team-saju', 'chat', 'json-formatter', 'mermaid-diagram',
+  'saju-reading', 'team-saju', 'json-formatter', 'mermaid-diagram',
   'team-picker', 'letter-qr', 'server-time', 'reaction-time-test',
-  'pomodoro-timer', 'reading-time-calculator', 'interest-calculator',
+  'pomodoro-timer', 'reading-time-calculator', 'interest-calculator', 'qr-generator',
 ];
 
 function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch = '' }: ToolsClientPageProps) {
