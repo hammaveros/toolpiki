@@ -378,6 +378,8 @@ function RelationPolygon({
               className="cursor-pointer"
               opacity={isDimmed ? 0.3 : 1}
             >
+              {/* 클릭 히트 영역 */}
+              <circle cx={p.x} cy={p.y + 8} r={28} fill="transparent" />
               {/* 띠 이모지 — 크게 */}
               <text
                 x={p.x} y={p.y - 2}
