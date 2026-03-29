@@ -16,6 +16,9 @@ declare global {
   }
 }
 
+// 전역: 구글 광고 로드 실패 기억 (페이지 내 재시도 방지)
+let adsenseFailedGlobal = false;
+
 /**
  * Google AdSense 광고 슬롯 컴포넌트
  * - 반응형: data-ad-format + data-full-width-responsive
@@ -38,6 +41,10 @@ export function AdSlot({ format = 'auto', slotId = '5499882149', className, resp
   }, []);
 
   useEffect(() => {
+    if (adsenseFailedGlobal) {
+      setFilled(false);
+      return;
+    }
     if (typeof window.adsbygoogle !== 'undefined') {
       pushAd();
     } else {
@@ -50,6 +57,7 @@ export function AdSlot({ format = 'auto', slotId = '5499882149', className, resp
         }
         attempts++;
         if (attempts >= 5) {
+          adsenseFailedGlobal = true;
           if (!pushed.current) setFilled(false);
           return;
         }
