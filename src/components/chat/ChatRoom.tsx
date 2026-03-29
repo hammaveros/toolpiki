@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { db, auth } from '@/lib/firebase';
 import { signInAnonymously } from 'firebase/auth';
 import {
-  collection, addDoc, query, orderBy, limit, onSnapshot,
+  collection, addDoc, query, orderBy, limit, onSnapshot, limitToLast,
   serverTimestamp, where, Timestamp, doc, setDoc, deleteDoc,
 } from 'firebase/firestore';
 import { filterMessage } from '@/lib/chat/filter';
@@ -67,7 +67,7 @@ export function ChatRoom() {
       collection(db, 'messages'),
       where('createdAt', '>', twentyFourHoursAgo),
       orderBy('createdAt', 'asc'),
-      limit(30),
+      limit(100),
     );
 
     const unsub = onSnapshot(q, (snapshot) => {
