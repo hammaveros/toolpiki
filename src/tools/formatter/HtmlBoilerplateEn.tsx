@@ -276,7 +276,7 @@ function SeoContent() {
           🏗️ What is HTML Boilerplate?
         </h2>
         <p className="text-sm leading-relaxed">
-          An HTML boilerplate is the basic HTML structure needed when starting a new web page.
+          An HTML boilerplate is the basic HTML structure needed for any new HTML page.
           It auto-generates repetitive code like DOCTYPE, meta tags, charset, and viewport settings,
           plus optional Open Graph tags, Twitter Cards, and CSS/JS library CDN links.
           Start new projects with a standards-compliant HTML foundation in just a few clicks.
@@ -332,7 +332,7 @@ function SeoContent() {
           },
           {
             question: 'Where should I put Google Analytics code?',
-            answer: 'Traditionally placed before </body>, but Google recommends placing it in <head>. This tool generates it at the bottom of body; adjust manually if needed.',
+            answer: 'Traditionally placed before </body>, but Google recommends placing it in <head>. This tool generates it just before the closing body tag; adjust manually if needed.',
           },
         ]}
       />

@@ -273,7 +273,7 @@ function SeoContent() {
         faqs={[
           { question: 'How are horoscopes generated?', answer: 'Horoscopes are randomly generated for entertainment purposes. They are not based on actual astrological calculations.' },
           { question: 'Should I take my horoscope seriously?', answer: 'No, this is purely for fun! Horoscopes are not scientifically proven and should not be used for important life decisions.' },
-          { question: 'Why do horoscopes change daily?', answer: 'Each day generates new random predictions to give you fresh content to enjoy every day.' },
+          { question: 'Why do horoscopes change daily?', answer: 'Each day generates new random predictions so there is always something new.' },
         ]}
       />
     </div>

@@ -206,7 +206,7 @@ function SeoContent() {
         </h2>
         <p className="text-sm leading-relaxed">
           Unix timestamp represents the number of seconds elapsed since January 1, 1970 00:00:00 UTC (Unix Epoch).
-          It provides a timezone-independent way to represent the same moment globally, making it standard for cross-system time exchange.
+          It's a timezone-independent way to represent any moment in time, making it standard for cross-system time exchange.
           This tool converts between timestamps and human-readable dates, auto-detecting seconds (10 digits) and milliseconds (13 digits).
           View and copy the current timestamp in real-time.
         </p>

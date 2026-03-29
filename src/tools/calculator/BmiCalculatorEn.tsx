@@ -247,7 +247,7 @@ function SeoContent() {
         faqs={[
           {
             question: 'Why are Asian BMI standards different from Western ones?',
-            answer: 'Asians have higher body fat percentage and more visceral fat at the same BMI, increasing cardiovascular disease risk. Therefore, 23+ is classified as overweight, lower than the WHO standard of 25+.',
+            answer: 'Asians have higher body fat percentage and more visceral fat at the same BMI, increasing cardiovascular disease risk. For this reason, some guidelines use 23 as the overweight threshold for Asian populations.',
           },
           {
             question: 'My BMI is normal but I have belly fat. Why?',

@@ -153,7 +153,7 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔒 What is Hash Generator?</h2>
         <p className="text-sm leading-relaxed">
-          A hash function is a one-way function that converts data of any length into a fixed-length hash value.
+          A hash function takes any input and produces a fixed-length output called a hash.
           The same input always produces the same hash, but recovering the original from the hash is impossible.
           It is widely used for file integrity verification, password storage, digital signatures, and blockchain.
           This tool supports MD5, SHA-1, SHA-256, SHA-384, and SHA-512 algorithms.

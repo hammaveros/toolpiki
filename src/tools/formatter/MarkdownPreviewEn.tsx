@@ -16,7 +16,7 @@ function SeoContent() {
           Markdown is a lightweight text-based markup language that allows creating formatted documents with simple syntax.
           It is widely used in GitHub README files, blog posts, and technical documentation.
           This tool converts markdown syntax to HTML in real-time for preview,
-          and the converted HTML can be copied and pasted directly into websites or blogs.
+          and the you can copy the rendered HTML directly into websites or blogs.
         </p>
       </section>
 

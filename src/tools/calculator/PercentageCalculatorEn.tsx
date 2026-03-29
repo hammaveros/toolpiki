@@ -163,7 +163,7 @@ function SeoContent() {
             <tbody>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">A% of B</td><td className="font-mono">A/100 × B</td><td>20% discount on $500</td></tr>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">A is what % of B?</td><td className="font-mono">A/B × 100</td><td>30 is what % of 100?</td></tr>
-              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">A + B% increase</td><td className="font-mono">A × (1 + B/100)</td><td>$50k salary + 10% raise</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">A + B% increase</td><td className="font-mono">A × (1 + B/100)</td><td>$50,000 salary + 10% raise</td></tr>
               <tr><td className="py-2 px-2 font-medium">A - B% decrease</td><td className="font-mono">A × (1 - B/100)</td><td>Stock $100 down 15%</td></tr>
             </tbody>
           </table>

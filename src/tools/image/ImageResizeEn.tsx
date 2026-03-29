@@ -265,7 +265,7 @@ function SeoContent() {
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
           <li><strong>Keep aspect ratio</strong>: Prevents image distortion</li>
           <li><strong>Avoid upscaling</strong>: Enlarging beyond original size reduces quality</li>
-          <li><strong>File size savings</strong>: Reducing by 50% cuts file size by ~75%</li>
+          <li><strong>File size savings</strong>: Reducing dimensions by 50% cuts file size by ~75%</li>
           <li><strong>Batch processing</strong>: Useful for formatting multiple images to same specs</li>
         </ul>
       </section>

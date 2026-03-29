@@ -295,7 +295,7 @@ function SeoContent() {
           <li><strong>Party game:</strong> Calculate compatibility between friends</li>
           <li><strong>Ice breaker:</strong> Start fun conversations with new people</li>
           <li><strong>Social media:</strong> Share your results with friends</li>
-          <li><strong>Celebrity crush:</strong> Test your compatibility with your favorite stars</li>
+          <li><strong>Celebrity crush:</strong> Test your compatibility with your favorite celebrities</li>
         </ul>
       </section>
 

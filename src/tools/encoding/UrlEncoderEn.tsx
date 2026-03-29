@@ -184,7 +184,7 @@ function SeoContent() {
           URL encoding (Percent-encoding) converts characters that are not allowed in URLs into %XX format.
           It's essential for safely transmitting URLs containing spaces, special characters, or non-ASCII characters.
           Following RFC 3986, reserved characters and non-ASCII characters are first converted to UTF-8 byte sequences,
-          then each byte is represented as %HH. It is one of the most fundamental encoding methods in web development.
+          then each byte is represented as %HH. It is one of the most commonly used encoding techniques in web development.
         </p>
       </section>
 

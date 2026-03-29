@@ -103,7 +103,7 @@ export function HomeContentEn() {
         </h2>
         <ul className="list-disc list-inside space-y-1 ml-2">
           <li>Text and files you input are processed in your browser only and never sent to any server.</li>
-          <li>However, connection info (IP, browser, etc.) may be collected for service operation and analytics.</li>
+          <li>Note: Tool processing happens entirely in your browser. However, connection info (IP, browser, etc.) may be collected for service operation and analytics.</li>
           <li>Features like favorites and recent history use your browser's local storage, which stays on your device only.</li>
           <li>Ads may be displayed to support the service, and advertising partners may use cookies.</li>
           <li>For more details, please see our <a href="/en/privacy" className="text-blue-600 dark:text-blue-400 underline">Privacy Policy</a>.</li>
@@ -156,7 +156,7 @@ export function HomeContentEn() {
               Q. Can I request a new tool?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Yes! If you have a tool suggestion, please send us feedback and we'll consider adding it.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Yes! If you have a tool suggestion, please submit a request and we'll consider adding it.</p>
           </details>
         </div>
       </section>
