@@ -36,9 +36,15 @@ export function ChatMessage({ nickname, emoji, text, time, isMine, type }: ChatM
   if (isMine) {
     return (
       <div className="flex justify-end mb-3 animate-fade-in">
-        <div className="flex items-end gap-1.5 max-w-[75%]">
-          <div className="bg-[#D4A574]/20 dark:bg-[#D4A574]/10 border border-[#D4A574]/30 dark:border-[#D4A574]/20 px-3.5 py-2 rounded-2xl rounded-br-md">
-            <p className="text-sm text-[#5C4A3A] dark:text-[#D4B896] break-words whitespace-pre-wrap">{text}</p>
+        <div className="max-w-[75%]">
+          <div className="flex items-center justify-end gap-1 mb-0.5">
+            <span className="text-xs font-medium text-[#D4A574] dark:text-[#D4A574]/80">{nickname}</span>
+            <span className="text-sm">{emoji}</span>
+          </div>
+          <div className="flex items-end gap-1.5 justify-end">
+            <div className="bg-[#D4A574]/20 dark:bg-[#D4A574]/10 border border-[#D4A574]/30 dark:border-[#D4A574]/20 px-3.5 py-2 rounded-2xl rounded-br-md">
+              <p className="text-sm text-[#5C4A3A] dark:text-[#D4B896] break-words whitespace-pre-wrap">{text}</p>
+            </div>
           </div>
         </div>
       </div>
