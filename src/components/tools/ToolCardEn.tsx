@@ -31,8 +31,8 @@ const CATEGORY_ICON_BG: Record<string, string> = {
 };
 
 export const ToolCardEn = memo(function ToolCardEn({ tool, compact = false, showRemove = false, onRemove }: ToolCardEnProps) {
-  const isExternal = !!tool.externalUrl;
   const href = tool.externalUrl || `/en/tools/${tool.slug}`;
+  const isExternal = !!tool.externalUrl && !tool.externalUrl.startsWith('/');
   const borderColor = CATEGORY_BORDER[tool.category] || 'border-l-gray-400';
   const iconBg = CATEGORY_ICON_BG[tool.category] || 'bg-gray-100 dark:bg-gray-800';
   const linkProps = isExternal ? { target: '_blank' as const, rel: 'noopener noreferrer' } : {};

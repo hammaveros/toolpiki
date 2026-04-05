@@ -11,8 +11,8 @@ export function generateBaseMetadata(): Metadata {
   return {
     metadataBase: new URL(siteConfig.url),
     title: {
-      default: `${siteConfig.name} - ${siteConfig.defaultTitle}`,
-      template: `%s | ${siteConfig.name}`,
+      default: `ToolPiki (툴피키) - ${siteConfig.defaultTitle}`,
+      template: `%s | ToolPiki (툴피키)`,
     },
     description: siteConfig.defaultDescription,
     keywords: siteConfig.defaultKeywords,
