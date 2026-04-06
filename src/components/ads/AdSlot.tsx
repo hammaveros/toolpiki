@@ -117,7 +117,10 @@ export function AdSlot({ format = 'auto', slotId = '5499882149', className, resp
       <ins
         ref={insRef}
         className="adsbygoogle"
-        style={{ display: 'block' }}
+        style={{
+          display: 'block',
+          ...(format === 'horizontal' ? { minHeight: '90px' } : {}),
+        }}
         data-ad-client="ca-pub-3612035754086019"
         data-ad-slot={slotId}
         data-ad-format={format}
