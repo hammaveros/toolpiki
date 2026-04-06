@@ -1028,7 +1028,7 @@ function SeoContent() {
     <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-8 text-gray-700 dark:text-gray-300">
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          팀 사주 궁합이란?
+          👥 팀 사주 궁합이란?
         </h2>
         <p className="text-sm leading-relaxed">
           팀 사주 궁합은 여러 명의 사주를 한번에 분석하여 팀 내 모든 조합의 궁합을 확인하는 도구입니다.
@@ -1040,7 +1040,7 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          분석 방법
+          📊 분석 방법
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
           <li><strong>년주 궁합</strong>: 띠(12지신) 간의 육합, 삼합, 상충 관계를 분석합니다.</li>
@@ -1050,12 +1050,49 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🌿 팀 오행 균형이 중요한 이유
+        </h2>
+        <div className="text-sm leading-relaxed space-y-3">
+          <p>
+            동양 역학에서는 목(木)·화(火)·토(土)·금(金)·수(水) 다섯 가지 기운이 고르게 갖춰져야
+            조화를 이룬다고 봅니다. 팀 단위에서도 각 오행이 대표하는 역할이 고르게 분포되면
+            다양한 상황에 유연하게 대응할 수 있습니다.
+          </p>
+          <ul className="list-disc list-inside space-y-1">
+            <li><strong>목(木) - 기획자</strong>: 새로운 아이디어와 성장 방향을 제시하는 역할</li>
+            <li><strong>화(火) - 리더</strong>: 팀에 에너지를 불어넣고 분위기를 이끄는 역할</li>
+            <li><strong>토(土) - 중재자</strong>: 갈등을 조율하고 안정감을 주는 역할</li>
+            <li><strong>금(金) - 실행자</strong>: 결단력 있게 일을 마무리짓는 역할</li>
+            <li><strong>수(水) - 전략가</strong>: 상황을 분석하고 유연하게 대응하는 역할</li>
+          </ul>
+          <p>
+            팀 분석 결과에서 특정 오행이 부족하다면, 해당 역할을 의식적으로 보완하는 것이 도움이 됩니다.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          💡 활용 예시
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>조별 과제</strong>: 같은 조원끼리 궁합을 확인하고 역할 분담 참고</li>
+          <li><strong>회사 팀빌딩</strong>: 신규 팀 구성 시 재미 요소로 활용, 아이스브레이킹</li>
+          <li><strong>동아리/모임</strong>: 멤버 간 궁합 랭킹으로 친목 도모</li>
+          <li><strong>커플 모임</strong>: 여러 커플의 궁합을 한눈에 비교</li>
+          <li><strong>가족 궁합</strong>: 온 가족의 사주를 한번에 분석하여 가족 오행 밸런스 확인</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
           { question: '최대 몇 명까지 분석할 수 있나요?', answer: '최대 20명까지 분석 가능합니다. 20명이면 190개의 1:1 조합이 계산됩니다.' },
           { question: '공유 링크로 다른 사람도 볼 수 있나요?', answer: '네, 공유 링크에 구성원 정보가 포함되어 있어 링크를 받은 사람도 같은 결과를 볼 수 있습니다.' },
           { question: '사주 궁합 결과를 실제로 믿어도 되나요?', answer: '재미와 오락 목적의 도구입니다. 실제 팀 구성은 능력, 성격, 경험 등을 종합적으로 고려하세요.' },
+          { question: '팀 오행 균형이 안 맞으면 어떻게 하나요?', answer: '부족한 오행이 담당하는 역할(기획, 리더십, 중재, 실행, 전략)을 팀원이 의식적으로 분담하면 됩니다. 재미 참고용이니 가볍게 활용하세요.' },
         ]}
       />
     </div>

@@ -1162,32 +1162,128 @@ export function SajuCompatibility() {
         </div>
       )}
 
-      {/* SEO 콘텐츠 */}
-      <div className="prose dark:prose-invert max-w-none">
-        <h2 className="text-xl font-semibold mb-4">사주 궁합이란?</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
-          사주 궁합은 두 사람의 사주팔자를 비교하여 애정, 사업, 우정 등 다양한 관계에서의 조화를 분석합니다.
-          일간(日干)의 오행 관계, 띠 궁합, 일지(日支)의 합충 등을 종합적으로 고려합니다.
-        </p>
+      <SeoContent />
+    </div>
+  );
+}
 
-        <FaqSection
-          title="자주 묻는 질문"
-          faqs={[
-            {
-              question: '궁합 점수가 낮으면 안 좋은 건가요?',
-              answer: '점수는 참고용입니다. 궁합이 낮아도 서로 노력하면 좋은 관계를 유지할 수 있고, 높아도 갈등이 있을 수 있습니다.',
-            },
-            {
-              question: '어떤 관계 궁합이 가장 중요한가요?',
-              answer: '관계의 목적에 따라 다릅니다. 연인/부부는 애정 궁합, 동업자는 사업 궁합을 중점적으로 보시면 됩니다.',
-            },
-            {
-              question: '시간까지 입력해야 정확한가요?',
-              answer: '태어난 시간을 입력하면 시주(時柱)가 추가되어 오행 분석과 궁합이 더 정확해집니다. 모르면 "시간을 모릅니다"를 체크하세요.',
-            },
-          ]}
-        />
-      </div>
+function SeoContent() {
+  return (
+    <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-8 text-gray-700 dark:text-gray-300">
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔮 사주 궁합이란?
+        </h2>
+        <p className="text-sm leading-relaxed">
+          사주 궁합은 두 사람의 사주팔자(四柱八字)를 비교하여 애정, 사업, 우정 등 다양한 관계에서의
+          조화를 분석하는 동양 역학의 전통적인 방법입니다. 각자의 생년월일시를 기반으로 년주, 월주, 일주, 시주를
+          산출하고, 일간(日干)의 오행 관계, 띠 궁합, 일지(日支)의 합충 등을 종합적으로 고려합니다.
+          재미와 참고 목적으로 활용하시되, 실제 관계에서는 서로의 노력과 이해가 가장 중요합니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📊 궁합 분석 요소
+        </h2>
+        <div className="text-sm leading-relaxed space-y-3">
+          <div>
+            <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">오행 상생·상극 관계</h3>
+            <p>두 사람의 일간 오행이 상생(목→화→토→금→수) 관계이면 자연스럽게 도움을 주고받는 사이이고,
+            상극(목→토→수→화→금) 관계이면 갈등이 생기기 쉬운 조합입니다. 같은 오행(비겁)이면 경쟁과 동질감이 공존합니다.</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">띠(12지신) 궁합</h3>
+            <p>육합(六合): 자-축, 인-해, 묘-술, 진-유, 사-신, 오-미 조합은 천생연분으로 불립니다.
+            삼합(三合): 신-자-진(수), 해-묘-미(목), 인-오-술(화), 사-유-축(금) 세 띠가 모이면 큰 시너지를 냅니다.
+            상충(相沖): 자-오, 축-미, 인-신, 묘-유, 진-술, 사-해는 성향 차이가 큰 조합입니다.</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-1">일지 합충 관계</h3>
+            <p>일지는 배우자궁으로도 불리며, 연애·결혼 궁합에서 특히 중요합니다.
+            일지가 합(合)이면 서로 끌리는 매력이 강하고, 충(沖)이면 의견 차이가 잦을 수 있습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🌿 오행(五行) 기본 성격
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="text-sm w-full border-collapse">
+            <thead>
+              <tr className="border-b border-gray-200 dark:border-gray-700">
+                <th className="text-left py-2 pr-4 font-semibold">오행</th>
+                <th className="text-left py-2 pr-4 font-semibold">천간</th>
+                <th className="text-left py-2 font-semibold">성격 특성</th>
+              </tr>
+            </thead>
+            <tbody className="space-y-1">
+              <tr className="border-b border-gray-100 dark:border-gray-800">
+                <td className="py-2 pr-4">🌳 목(木)</td>
+                <td className="py-2 pr-4">갑, 을</td>
+                <td className="py-2">성장 지향적, 인자함, 추진력, 곧은 성격</td>
+              </tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800">
+                <td className="py-2 pr-4">🔥 화(火)</td>
+                <td className="py-2 pr-4">병, 정</td>
+                <td className="py-2">열정적, 표현력, 예의 바름, 급한 성격</td>
+              </tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800">
+                <td className="py-2 pr-4">🏔️ 토(土)</td>
+                <td className="py-2 pr-4">무, 기</td>
+                <td className="py-2">안정적, 신뢰감, 포용력, 고집이 있음</td>
+              </tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800">
+                <td className="py-2 pr-4">⚔️ 금(金)</td>
+                <td className="py-2 pr-4">경, 신</td>
+                <td className="py-2">결단력, 의리, 깔끔함, 차가운 인상</td>
+              </tr>
+              <tr>
+                <td className="py-2 pr-4">💧 수(水)</td>
+                <td className="py-2 pr-4">임, 계</td>
+                <td className="py-2">지혜로움, 유연함, 적응력, 변덕스러움</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          💡 궁합 결과 해석 팁
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>80점 이상</strong>: 오행과 띠 모두 좋은 조합. 자연스럽게 잘 맞을 가능성이 높습니다.</li>
+          <li><strong>60~79점</strong>: 보완할 부분이 있지만 서로 노력하면 좋은 관계를 유지할 수 있습니다.</li>
+          <li><strong>40~59점</strong>: 성향 차이가 있어 의식적인 배려가 필요한 조합입니다.</li>
+          <li><strong>40점 미만</strong>: 상극 요소가 많지만, 오히려 서로에게 부족한 부분을 채워줄 수도 있습니다.</li>
+          <li>궁합은 <strong>재미 참고용</strong>이며, 실제 관계의 질은 소통과 노력에 달려 있습니다.</li>
+        </ul>
+      </section>
+
+      <FaqSection
+        title="자주 묻는 질문"
+        faqs={[
+          {
+            question: '궁합 점수가 낮으면 안 좋은 건가요?',
+            answer: '점수는 참고용입니다. 궁합이 낮아도 서로 노력하면 좋은 관계를 유지할 수 있고, 높아도 갈등이 있을 수 있습니다. 오행 상극 관계는 오히려 서로 부족한 부분을 채워주는 보완적 관계가 되기도 합니다.',
+          },
+          {
+            question: '어떤 관계 궁합이 가장 중요한가요?',
+            answer: '관계의 목적에 따라 다릅니다. 연인/부부는 애정 궁합과 일지 합충을 중점적으로, 동업자는 사업 궁합과 오행 상생을, 친구는 우정 궁합을 참고하시면 됩니다.',
+          },
+          {
+            question: '시간까지 입력해야 정확한가요?',
+            answer: '태어난 시간을 입력하면 시주(時柱)가 추가되어 오행 분석과 궁합이 더 정확해집니다. 모르면 "시간을 모릅니다"를 체크하세요. 시간 없이도 년주·월주·일주 기반의 분석은 충분히 의미 있습니다.',
+          },
+          {
+            question: '사주 궁합과 띠 궁합은 어떻게 다른가요?',
+            answer: '띠 궁합은 태어난 해(년지)만으로 보는 간단한 방법이고, 사주 궁합은 년월일시 네 기둥 전체를 분석하는 더 상세한 방법입니다. 이 도구는 두 가지를 모두 종합하여 분석합니다.',
+          },
+        ]}
+      />
     </div>
   );
 }
