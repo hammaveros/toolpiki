@@ -53,7 +53,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['duplicate-line-remover', 'character-counter'],
     seoTitle: '줄바꿈 제거 - 엔터/공백 한 번에 정리',
     seoDescription: '엔터와 여분의 공백을 즉시 정리. PDF 복사 텍스트나 이메일 본문 정돈에 안성맞춤.',
-    seoContent: '## 줄바꿈 제거란?\n\n텍스트 안에 섞여 있는 불필요한 엔터와 공백을 단번에 정돈합니다. PDF 문서 복사, 이메일 본문, 웹 페이지에서 가져온 텍스트 등에 흔히 끼어드는 불규칙한 줄바꿈을 말끔히 없앨 수 있습니다.',
+    seoContent: '## 줄바꿈 제거란?\n\n텍스트 안에 섞여 있는 불필요한 엔터와 공백을 단번에 정돈합니다. PDF 문서 복사, 이메일 본문, 웹 페이지에서 가져온 텍스트 등에 흔히 끼어드는 불규칙한 줄바꿈을 말끔히 없앨 수 있습니다. 줄바꿈을 완전히 삭제하거나 스페이스 한 칸으로 치환하는 옵션을 제공하며, 여러 칸 연속된 공백도 자동으로 한 칸으로 축소해 줍니다. 복사·붙여넣기로 발생하는 서식 깨짐을 한 번의 클릭으로 해결할 수 있습니다.',
     faqs: [
       { question: 'PDF에서 복사한 텍스트에 줄바꿈이 왜 생기나요?', answer: 'PDF는 레이아웃이 고정된 인쇄 포맷이기 때문에, 복사할 때 줄 끝마다 엔터가 함께 붙어 나옵니다.' },
       { question: '줄바꿈을 공백으로 바꿀 수 있나요?', answer: '물론입니다. 줄바꿈을 아예 없애거나, 스페이스 한 칸으로 치환하는 옵션 중 골라 쓸 수 있습니다.' },
@@ -71,7 +71,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['line-break-remover', 'text-sorter'],
     seoTitle: '중복 줄 제거 - 중복 텍스트 자동 삭제',
     seoDescription: '겹치는 줄을 찾아 자동 삭제합니다. 이메일 리스트나 데이터 정돈에 편리합니다.',
-    seoContent: '## 중복 줄 제거란?\n\n텍스트 안에서 동일한 줄을 자동 감지하여 첫 등장만 남기고 나머지를 삭제합니다. 메일 목록 정돈, 데이터 클렌징, 소스 코드 중복 라인 정리 등에 활용됩니다. 대소문자 구분 여부와 빈 줄 처리 옵션도 설정할 수 있습니다.',
+    seoContent: '## 중복 줄 제거란?\n\n텍스트 안에서 동일한 줄을 자동 감지하여 첫 등장만 남기고 나머지를 삭제합니다. 메일 목록 정돈, 데이터 클렌징, 소스 코드 중복 라인 정리 등에 활용됩니다. 대소문자 구분 여부와 빈 줄 처리 옵션도 설정할 수 있습니다. 엑셀에서 복사한 명단이나 로그 파일에서 반복되는 항목을 정리할 때 특히 편리하며, 원본 줄 순서를 그대로 유지한 채 중복만 골라내 제거합니다.',
     faqs: [
       { question: '대소문자가 다른 줄도 중복으로 처리되나요?', answer: '기본 설정에서는 대소문자를 구별하여 "Hello"와 "hello"를 서로 다른 줄로 봅니다. 대소문자 무시 옵션을 활성화하면 같은 줄로 인식합니다.' },
       { question: '빈 줄도 제거되나요?', answer: '빈 줄 제거 옵션을 켜면 전부 삭제됩니다. 기본값에서는 빈 줄 하나만 남기고 나머지를 없앱니다.' },
@@ -89,7 +89,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['duplicate-line-remover', 'case-converter'],
     seoTitle: '텍스트 정렬 - 가나다순/알파벳순 정렬기',
     seoDescription: '텍스트 줄을 가나다순·알파벳순·역순·길이순으로 재배열합니다. 명단이나 데이터 목록 정리에 편리.',
-    seoContent: '## 텍스트 정렬이란?\n\n입력된 텍스트 줄들을 지정한 기준에 따라 재배열해 주는 도구입니다. 가나다순, 알파벳순, 역순, 문자열 길이순 등 다양한 기준을 선택할 수 있어서 이름 명단, 파일 목록, 데이터 항목 등을 깔끔하게 정돈할 때 유용합니다.',
+    seoContent: '## 텍스트 정렬이란?\n\n입력된 텍스트 줄들을 지정한 기준에 따라 재배열해 주는 도구입니다. 가나다순, 알파벳순, 역순, 문자열 길이순 등 다양한 기준을 선택할 수 있어서 이름 명단, 파일 목록, 데이터 항목 등을 깔끔하게 정돈할 때 유용합니다. 숫자 크기 기준 정렬(Natural Sort) 옵션도 제공하므로 파일명처럼 숫자가 포함된 항목도 올바른 순서로 배치할 수 있으며, 결과를 한 번에 복사하여 바로 활용할 수 있습니다.',
     faqs: [
       { question: '한글과 영어가 섞인 목록도 정렬되나요?', answer: '혼합 목록도 정렬 가능합니다. 보통 영문이 앞쪽, 한글이 뒤쪽에 배치됩니다.' },
       { question: '숫자가 포함된 텍스트는 어떻게 정렬되나요?', answer: '문자열 기준이므로 "2"가 "10"보다 뒤에 올 수 있습니다. 숫자 크기 기준 정렬(Natural Sort)이 필요하면 해당 옵션을 켜세요.' },
@@ -108,7 +108,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['uuid-generator', 'hash-generator'],
     seoTitle: '랜덤 문자열 생성기 - 안전한 비밀번호 만들기',
     seoDescription: '영대·소문자, 숫자, 특수기호를 조합한 무작위 문자열 생성. 비밀번호·인증코드 제작에 적합합니다.',
-    seoContent: '## 랜덤 문자열 생성기란?\n\n보안용 비밀번호나 인증 토큰에 적합한 무작위 문자열을 즉석에서 만들어 줍니다. 영대문자·소문자·숫자·특수문자 포함 여부와 길이를 세밀하게 설정할 수 있어 API 키, 세션 토큰, 일회용 코드 등에 폭넓게 활용됩니다.',
+    seoContent: '## 랜덤 문자열 생성기란?\n\n보안용 비밀번호나 인증 토큰에 적합한 무작위 문자열을 즉석에서 만들어 줍니다. 영대문자·소문자·숫자·특수문자 포함 여부와 길이를 세밀하게 설정할 수 있어 API 키, 세션 토큰, 일회용 코드 등에 폭넓게 활용됩니다. 생성 과정은 모두 브라우저 내에서 처리되어 외부 서버로 전송되지 않으므로 안전하며, 한 번에 여러 개의 문자열을 일괄 생성할 수도 있습니다.',
     faqs: [
       { question: '안전한 비밀번호 길이는 몇 자인가요?', answer: '12자 이상이 권장됩니다. 영대·소문자, 숫자, 특수문자를 골고루 섞으면 보안이 크게 향상됩니다.' },
       { question: '생성된 문자열이 저장되나요?', answer: '전혀 저장되지 않습니다. 모든 과정이 사용자의 브라우저 안에서만 처리되며 외부로 전송되지 않습니다.' },
@@ -126,7 +126,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['case-converter', 'character-counter'],
     seoTitle: '한영 타자 변환 - 영타→한글, 한타→영문',
     seoDescription: '한영키 실수로 입력된 텍스트를 복구. gksrmf → 한글, ㅎ둠ㅎ → hello로 변환.',
-    seoContent: '## 한영 타자 변환이란?\n\n키보드 입력 언어가 잘못된 상태에서 타이핑한 텍스트를 원래 의도한 언어로 복구해 줍니다. "gksrmf"을 "한글"로, "ㅎ둠ㅎ"를 "hello"로 되돌릴 수 있습니다. 한영키 실수 때문에 다시 치기 귀찮을 때 특히 요긴합니다.',
+    seoContent: '## 한영 타자 변환이란?\n\n키보드 입력 언어가 잘못된 상태에서 타이핑한 텍스트를 원래 의도한 언어로 복구해 줍니다. "gksrmf"을 "한글"로, "ㅎ둠ㅎ"를 "hello"로 되돌릴 수 있습니다. 한영키 실수 때문에 다시 치기 귀찮을 때 특히 요긴합니다. 쌍자음·겹받침 등 복잡한 한글 조합도 정확하게 처리하며, 영타→한글과 한타→영문 두 가지 모드를 모두 지원하여 방향에 관계없이 즉시 복구할 수 있습니다.',
     faqs: [
       { question: '영타로 친 한글은 어떻게 변환하나요?', answer: '"영타→한글" 모드를 고르세요. "gksrmf"처럼 영문 키 배열로 입력된 텍스트가 "한글"로 돌아옵니다.' },
       { question: '한글로 친 영어는 어떻게 변환하나요?', answer: '"한타→영문" 모드를 선택하면 됩니다. "ㅗ디ㅣㅐ"가 "hello"로 복원됩니다.' },
@@ -144,7 +144,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['character-counter', 'random-string-generator'],
     seoTitle: '더미 텍스트 생성기 - Lorem Ipsum & 한글',
     seoDescription: 'Lorem Ipsum과 한글 더미 텍스트를 생성합니다. 웹 디자인·앱 목업·프로토타입에 활용하세요.',
-    seoContent: '## 더미 텍스트 생성기란?\n\n디자인 시안이나 프로토타입 제작 시 자리를 채울 임시 텍스트를 만들어 줍니다. 전통적인 Lorem Ipsum뿐 아니라 한글 더미 텍스트도 지원하며, 문단 수나 문장 수를 지정해 원하는 분량으로 생성할 수 있습니다.',
+    seoContent: '## 더미 텍스트 생성기란?\n\n디자인 시안이나 프로토타입 제작 시 자리를 채울 임시 텍스트를 만들어 줍니다. 전통적인 Lorem Ipsum뿐 아니라 한글 더미 텍스트도 지원하며, 문단 수나 문장 수를 지정해 원하는 분량으로 생성할 수 있습니다. 웹사이트 시안, 앱 목업, 프레젠테이션 슬라이드 등 레이아웃 확인이 필요한 모든 작업에 활용 가능하며, 결과를 클립보드로 바로 복사하여 편집기에 붙여넣기만 하면 됩니다.',
     faqs: [
       { question: 'Lorem Ipsum이 뭔가요?', answer: '출판·인쇄 업계에서 500여 년간 사용되어 온 표준 채우기 텍스트입니다. 라틴어와 비슷하게 생겼지만 실제 의미는 없습니다.' },
       { question: '한글 더미 텍스트도 생성할 수 있나요?', answer: '지원합니다. 한국어 기반 디자인 목업을 만들 때 유용합니다.' },
@@ -162,7 +162,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['character-counter', 'duplicate-line-remover'],
     seoTitle: '텍스트 비교 (Diff) - 두 텍스트 차이 확인',
     seoDescription: '두 텍스트를 줄 단위로 대조하고, 추가·삭제·변경 구간을 색으로 구분합니다.',
-    seoContent: '## 텍스트 비교(Diff)란?\n\n두 텍스트를 줄 단위로 대조하여 어디가 달라졌는지 시각적으로 알려 줍니다. 새로 추가된 구간은 녹색, 삭제된 구간은 빨간색으로 강조됩니다. 코드 리뷰, 문서 버전 검토, 계약서 수정 확인 등에 활용됩니다.',
+    seoContent: '## 텍스트 비교(Diff)란?\n\n두 텍스트를 줄 단위로 대조하여 어디가 달라졌는지 시각적으로 알려 줍니다. 새로 추가된 구간은 녹색, 삭제된 구간은 빨간색으로 강조됩니다. 코드 리뷰, 문서 버전 검토, 계약서 수정 확인 등에 활용됩니다. 줄 단위뿐 아니라 단어 단위의 세밀한 비교도 가능하며, 길이에 제한 없이 대용량 텍스트도 처리할 수 있어 실무에서 두 버전 간 변경 사항을 빠르게 파악하는 데 유용합니다.',
     faqs: [
       { question: 'Diff가 뭔가요?', answer: '두 텍스트 사이의 차이를 감지하는 기능입니다. 소프트웨어 개발에서 코드 변경 이력을 검토할 때 많이 씁니다.' },
       { question: '색상은 무엇을 의미하나요?', answer: '녹색은 새로 들어간 내용, 빨간색은 빠진 내용입니다. 수정된 줄은 빨간색(원본)과 녹색(변경본)이 함께 나타납니다.' },
@@ -180,7 +180,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['character-counter', 'duplicate-line-remover'],
     seoTitle: '단어 빈도 분석기 - 키워드 빈도수 확인',
     seoDescription: '텍스트 속 단어 등장 횟수를 내림차순으로 집계. SEO 키워드 점검·에세이 분석에 유용.',
-    seoContent: '## 단어 빈도 분석기란?\n\n텍스트를 넣으면 각 단어가 몇 차례 등장했는지 집계하여 빈도순으로 나열합니다. SEO 키워드 밀도 점검, 에세이 반복 표현 파악, 콘텐츠 품질 개선 등에 도움이 됩니다.',
+    seoContent: '## 단어 빈도 분석기란?\n\n텍스트를 넣으면 각 단어가 몇 차례 등장했는지 집계하여 빈도순으로 나열합니다. SEO 키워드 밀도 점검, 에세이 반복 표현 파악, 콘텐츠 품질 개선 등에 도움이 됩니다. 한글과 영어 모두 분석 가능하며, 띄어쓰기를 기준으로 단어를 나누어 빈도순으로 내림차순 정렬합니다. 블로그 글이나 웹 페이지에서 특정 키워드가 적절히 사용되었는지 한눈에 확인할 수 있습니다.',
     faqs: [
       { question: 'SEO 키워드 분석에 어떻게 활용하나요?', answer: '웹 페이지나 블로그 글의 텍스트를 넣으면, 핵심 키워드가 충분히 포함되어 있는지 빈도로 확인할 수 있습니다.' },
       { question: '한글도 분석되나요?', answer: '한글·영어 모두 분석 가능합니다. 띄어쓰기를 기준으로 단어를 나누어 집계합니다.' },
@@ -198,7 +198,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['character-counter', 'reading-time-calculator'],
     seoTitle: '메시지 길이 체크 - 이메일/슬랙/SMS 적정 길이',
     seoDescription: '이메일·슬랙·SMS 등 채널별 적정 분량을 체크하고, 효과적인 커뮤니케이션을 위한 가이드를 제공합니다.',
-    seoContent: '## 메시지 길이 체크란?\n\n메시지를 붙여넣으면 이메일 제목, 슬랙 메시지, SMS, 트윗 등 각 채널의 권장 길이와 비교하여 피드백을 줍니다. 수신자에게 효과적으로 전달되는 분량인지 미리 확인할 수 있습니다.',
+    seoContent: '## 메시지 길이 체크란?\n\n메시지를 붙여넣으면 이메일 제목, 슬랙 메시지, SMS, 트윗 등 각 채널의 권장 길이와 비교하여 피드백을 줍니다. 수신자에게 효과적으로 전달되는 분량인지 미리 확인할 수 있습니다. 이메일 제목(50자 이내), SMS(70자), 트윗(280자) 등 각 플랫폼의 글자 제한을 기준으로 초과 여부를 실시간 피드백하며, 모바일에서 잘리지 않는 최적의 길이를 가이드해 줍니다.',
     faqs: [
       { question: '이메일 제목의 적정 길이는?', answer: '50자 이내가 좋습니다. 모바일 화면에서 잘리지 않으면서 읽기 편한 길이입니다.' },
       { question: 'SMS 문자 최대 글자수는?', answer: '한글 기준 SMS 70자, LMS 2,000자가 발송 한도입니다.' },
@@ -258,7 +258,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['base64', 'html-entity'],
     seoTitle: 'URL 인코더/디코더 - URL 특수문자 변환',
     seoDescription: 'URL 속 특수문자를 퍼센트 인코딩으로 전환하거나 디코딩. 한글 URL·쿼리스트링 처리에 필수.',
-    seoContent: '## URL 인코더/디코더란?\n\nURL 규격에 맞지 않는 문자를 퍼센트 인코딩(%XX)으로 치환하거나, 인코딩된 문자열을 원래 텍스트로 되돌려 줍니다. 한글이 포함된 URL이나 쿼리 파라미터를 다룰 때 반드시 필요한 도구입니다.',
+    seoContent: '## URL 인코더/디코더란?\n\nURL 규격에 맞지 않는 문자를 퍼센트 인코딩(%XX)으로 치환하거나, 인코딩된 문자열을 원래 텍스트로 되돌려 줍니다. 한글이 포함된 URL이나 쿼리 파라미터를 다룰 때 반드시 필요한 도구입니다. encodeURIComponent와 동일한 방식으로 처리하며, 전체 URL 또는 특정 파라미터만 선택적으로 인코딩할 수 있습니다. 깨져 보이는 한글 URL을 디코딩하여 원래 텍스트를 확인하는 용도로도 많이 쓰입니다.',
     faqs: [
       { question: 'URL 인코딩이 필요한 이유는?', answer: 'URL 표준에서는 영문·숫자·일부 기호만 허용하므로, 한글이나 공백 같은 문자는 %XX 형태로 인코딩해야 합니다.' },
       { question: '%20과 +의 차이는?', answer: '둘 다 공백을 나타내지만, 경로(Path)에서는 %20을, 쿼리 파라미터에서는 + 기호를 주로 씁니다.' },
@@ -276,7 +276,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['url-encoder', 'unicode-converter'],
     seoTitle: 'HTML 엔티티 변환 - 특수문자 인코딩/디코딩',
     seoDescription: '&, <, > 등을 HTML 엔티티로 인코딩·디코딩. XSS 방어와 안전한 출력에 필수.',
-    seoContent: '## HTML 엔티티 변환이란?\n\nHTML 마크업으로 오인될 수 있는 특수문자(&, <, >, ", \')를 안전한 엔티티 표기로 변환해 줍니다. 사용자 입력에 포함된 스크립트 실행을 차단(XSS 방지)하거나, 특수문자를 그대로 화면에 표시해야 할 때 필수적입니다.',
+    seoContent: '## HTML 엔티티 변환이란?\n\nHTML 마크업으로 오인될 수 있는 특수문자(&, <, >, ", \')를 안전한 엔티티 표기로 변환해 줍니다. 사용자 입력에 포함된 스크립트 실행을 차단(XSS 방지)하거나, 특수문자를 그대로 화면에 표시해야 할 때 필수적입니다. &amp;, &lt;, &gt;, &quot;, &#39; 등 대표 엔티티뿐 아니라 유니코드 숫자 엔티티(&#XXXX;) 형식도 지원합니다. 블로그 글이나 CMS에 코드 조각을 삽입할 때, 태그가 렌더링되지 않도록 사전 변환하는 용도로 활용하면 편리합니다.',
     faqs: [
       { question: 'HTML 엔티티가 뭔가요?', answer: '&amp;, &lt;, &gt;처럼 특수문자를 코드로 표기하는 방식입니다. 브라우저가 태그로 해석하지 않고 글자 그대로 보여 줍니다.' },
       { question: 'XSS 방지와 어떤 관련이 있나요?', answer: '입력값에 <script>가 포함되면 악성 스크립트가 동작할 수 있습니다. 엔티티로 치환하면 단순 텍스트로만 출력됩니다.' },
@@ -294,7 +294,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['unicode-converter', 'html-entity'],
     seoTitle: '유니코드 변환기 - UTF-8/16진수 코드 변환',
     seoDescription: '문자 ↔ 유니코드·UTF-8·Hex 코드 즉시 전환. 이모지·특수문자 코드 파악에 유용.',
-    seoContent: '## 유니코드 변환기란?\n\n문자를 유니코드(U+XXXX), UTF-8 바이트 시퀀스, 16진수(Hex) 값으로 상호 전환합니다. 이모지의 코드포인트 확인, 특수문자 디버깅, 인코딩 불일치 문제 진단 등에 활용됩니다.',
+    seoContent: '## 유니코드 변환기란?\n\n문자를 유니코드(U+XXXX), UTF-8 바이트 시퀀스, 16진수(Hex) 값으로 상호 전환합니다. 이모지의 코드포인트 확인, 특수문자 디버깅, 인코딩 불일치 문제 진단 등에 활용됩니다. 한글 자모 분해, 유니코드 이스케이프 시퀀스(\\uXXXX) 생성, HTML 숫자 엔티티 변환 등 다양한 표현을 한 화면에서 확인할 수 있어 다국어 개발이나 문자 인코딩 관련 문제 해결에 매우 유용합니다.',
     faqs: [
       { question: '유니코드란 무엇인가요?', answer: '지구상 모든 문자에 고유 번호를 매긴 국제 표준 체계입니다. 한글·이모지·특수기호 전부 유니코드에 등록되어 있습니다.' },
       { question: 'UTF-8과 유니코드의 차이는?', answer: '유니코드는 문자마다 부여된 번호 체계이고, UTF-8은 그 번호를 실제 바이트로 저장하는 인코딩 규칙입니다. 웹에서 가장 보편적으로 쓰입니다.' },
@@ -312,7 +312,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['base64', 'hash-generator'],
     seoTitle: 'JWT 디코더 - JWT 토큰 구조 분석',
     seoDescription: 'JWT 토큰을 분해해 Header·Payload·Signature를 확인합니다. 인증 디버깅에 필수.',
-    seoContent: '## JWT 디코더란?\n\nJWT(JSON Web Token)를 붙여넣으면 Header, Payload, Signature 세 파트를 풀어서 보여 줍니다. 사용자 클레임, 만료 시각 등 토큰에 담긴 정보를 빠르게 파악할 수 있어 인증 로직 디버깅에 매우 유용합니다.',
+    seoContent: '## JWT 디코더란?\n\nJWT(JSON Web Token)를 붙여넣으면 Header, Payload, Signature 세 파트를 풀어서 보여 줍니다. 사용자 클레임, 만료 시각 등 토큰에 담긴 정보를 빠르게 파악할 수 있어 인증 로직 디버깅에 매우 유용합니다. 만료 시각(exp)을 사람이 읽기 쉬운 날짜로 변환해 주고, 토큰 서명 알고리즘(HS256, RS256 등)도 함께 표시합니다. 모든 처리가 브라우저에서만 이루어지므로 민감한 토큰을 외부 서비스에 붙여넣을 필요가 없어 보안 면에서도 안심할 수 있습니다.',
     faqs: [
       { question: 'JWT란 무엇인가요?', answer: 'JSON Web Token의 줄임말로, 인증 정보를 전달하기 위한 토큰입니다. Header·Payload·Signature 세 구획으로 나뉘어 있습니다.' },
       { question: 'JWT 디코딩은 보안상 위험하지 않나요?', answer: 'Payload는 평문이라 누구든 읽을 수 있으며, 위변조 방지는 Signature가 담당합니다. 따라서 민감 데이터는 Payload에 넣으면 안 됩니다.' },
@@ -331,7 +331,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['base64', 'random-string-generator'],
     seoTitle: '해시 생성기 - MD5/SHA256 해시값 생성',
     seoDescription: 'MD5·SHA-1·SHA-256·SHA-512 해시값을 즉시 산출. 무결성 검증·비밀번호 해싱에 활용.',
-    seoContent: '## 해시 생성기란?\n\n텍스트를 넣으면 MD5, SHA-1, SHA-256, SHA-512 등 주요 해시 알고리즘의 결과값을 한꺼번에 산출합니다. 파일 무결성 확인, 비밀번호 해싱, 체크섬 대조 등에 폭넓게 쓰입니다.',
+    seoContent: '## 해시 생성기란?\n\n텍스트를 넣으면 MD5, SHA-1, SHA-256, SHA-512 등 주요 해시 알고리즘의 결과값을 한꺼번에 산출합니다. 파일 무결성 확인, 비밀번호 해싱, 체크섬 대조 등에 폭넓게 쓰입니다. 동일한 입력은 항상 동일한 해시값을 생성하므로 데이터 변조 여부를 검증하기에 적합하며, 보안 용도로는 충돌 위험이 낮은 SHA-256 이상의 알고리즘을 권장합니다. 결과를 클립보드에 바로 복사할 수 있습니다.',
     faqs: [
       { question: '해시와 암호화의 차이는?', answer: '해시는 단방향이라 원래 값으로 되돌릴 수 없고, 암호화는 복호화 키가 있으면 원문 복구가 가능합니다.' },
       { question: 'MD5는 안전한가요?', answer: '충돌 취약점이 알려져 있어 보안 용도로는 적합하지 않습니다. SHA-256 이상을 권장합니다.' },
@@ -372,7 +372,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['json-formatter', 'yaml-json-converter'],
     seoTitle: 'JSON-CSV 변환기 - JSON ↔ CSV 상호 변환',
     seoDescription: 'JSON 배열 → CSV, CSV → JSON 즉시 전환. 엑셀 연동이나 API 데이터 정리에 안성맞춤.',
-    seoContent: '## JSON-CSV 변환기란?\n\nJSON 배열을 쉼표 구분 형식(CSV)으로 바꾸거나, CSV 데이터를 JSON 배열로 전환합니다. 엑셀 데이터를 API에 투입하거나, API 결과를 스프레드시트에서 분석해야 할 때 편리합니다.',
+    seoContent: '## JSON-CSV 변환기란?\n\nJSON 배열을 쉼표 구분 형식(CSV)으로 바꾸거나, CSV 데이터를 JSON 배열로 전환합니다. 엑셀 데이터를 API에 투입하거나, API 결과를 스프레드시트에서 분석해야 할 때 편리합니다. REST API 응답을 엑셀로 정리하거나, 대량의 스프레드시트 데이터를 JSON 형태로 변환하여 서버에 전송하는 등 데이터 파이프라인 구축 시 필수적인 도구입니다. 변환 결과를 즉시 복사하거나 파일로 다운로드할 수 있어 반복 작업의 생산성을 크게 높여 줍니다.',
     faqs: [
       { question: 'CSV란 무엇인가요?', answer: 'Comma Separated Values의 약어로, 값을 쉼표로 구분하는 텍스트 파일 형식입니다. 엑셀이나 구글 시트에서 바로 열 수 있습니다.' },
       { question: '중첩된 JSON도 CSV로 변환되나요?', answer: '1단계 깊이의 배열만 직접 변환됩니다. 중첩 객체는 평탄화되거나 문자열로 처리됩니다.' },
@@ -390,7 +390,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['json-formatter', 'sql-formatter'],
     seoTitle: 'XML 포맷터 - XML 정렬 및 들여쓰기',
     seoDescription: 'XML을 Beautify로 가독성 높이거나 Minify로 크기 절감. SOAP 응답·설정 파일 분석에 유용.',
-    seoContent: '## XML 포맷터란?\n\nXML을 깔끔하게 들여쓰기(Beautify)하거나 한 줄로 압축(Minify)하는 도구입니다. SOAP API 응답 해석, 설정 파일 검토, 데이터 교환 문서 점검 등에 활용됩니다.',
+    seoContent: '## XML 포맷터란?\n\nXML을 깔끔하게 들여쓰기(Beautify)하거나 한 줄로 압축(Minify)하는 도구입니다. SOAP API 응답 해석, 설정 파일 검토, 데이터 교환 문서 점검 등에 활용됩니다. 한 줄로 뭉쳐진 XML 응답을 계층 구조로 펼쳐 보면 태그 간 관계를 한눈에 파악할 수 있고, 배포 전에는 압축하여 전송량을 절감할 수 있습니다. 태그 미닫힘이나 속성 오류 같은 문법 문제도 즉시 발견해 디버깅 시간을 줄여 줍니다.',
     faqs: [
       { question: 'XML과 JSON의 차이는?', answer: 'XML은 <태그> 형식, JSON은 {중괄호} 형식입니다. JSON이 가볍고 간결하며, XML은 스키마 검증 등 엄격한 구조를 지원합니다.' },
       { question: 'XML 문법 오류는 어떻게 확인하나요?', answer: 'XML을 붙여넣으면 태그 미닫힘, 속성 오류 등을 자동으로 감지해 줍니다.' },
@@ -408,7 +408,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['json-formatter', 'xml-formatter'],
     seoTitle: 'SQL 포맷터 - SQL 쿼리 정렬 및 들여쓰기',
     seoDescription: 'SQL 쿼리를 키워드별로 줄바꿈·들여쓰기. SELECT·INSERT·UPDATE 등 모든 SQL 문법 지원.',
-    seoContent: '## SQL 포맷터란?\n\n한 줄로 뭉친 SQL 쿼리를 키워드 기준으로 줄바꿈하고 들여쓰기를 넣어 읽기 쉽게 정돈합니다. 복잡한 JOIN이나 서브쿼리도 구조가 한눈에 들어오도록 정리해 줍니다. 코드 리뷰·문서 작성·쿼리 디버깅에 활용됩니다.',
+    seoContent: '## SQL 포맷터란?\n\n한 줄로 뭉친 SQL 쿼리를 키워드 기준으로 줄바꿈하고 들여쓰기를 넣어 읽기 쉽게 정돈합니다. 복잡한 JOIN이나 서브쿼리도 구조가 한눈에 들어오도록 정리해 줍니다. 코드 리뷰·문서 작성·쿼리 디버깅에 활용되며, MySQL·PostgreSQL·Oracle·SQL Server 등 주요 데이터베이스 문법을 폭넓게 지원합니다. 들여쓰기 깊이와 대소문자 스타일을 취향에 맞게 설정할 수 있어, 팀 코딩 컨벤션에 맞춘 일관된 쿼리 포맷을 유지하는 데 도움이 됩니다.',
     faqs: [
       { question: '어떤 SQL 문법을 지원하나요?', answer: 'MySQL, PostgreSQL, Oracle, SQL Server 등 표준 SQL 키워드를 폭넓게 지원합니다.' },
       { question: '한 줄로 된 긴 쿼리도 정리되나요?', answer: 'SELECT, FROM, WHERE, JOIN 같은 키워드마다 줄을 바꾸고 들여쓰기를 적용합니다.' },
@@ -426,7 +426,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['json-formatter', 'sql-formatter'],
     seoTitle: 'CSS/JS 압축/해제 - Minify & Beautify',
     seoDescription: 'CSS·JS 코드 Minify로 파일 크기 절감, Beautify로 가독성 확보.',
-    seoContent: '## CSS/JS 압축/해제란?\n\nCSS·JavaScript 코드의 공백·줄바꿈·주석을 제거(Minify)하여 파일 크기를 줄이거나, 압축된 코드에 들여쓰기를 복원(Beautify)하여 분석하기 쉽게 만듭니다. 웹 퍼포먼스 최적화와 코드 리딩에 모두 유용합니다.',
+    seoContent: '## CSS/JS 압축/해제란?\n\nCSS·JavaScript 코드의 공백·줄바꿈·주석을 제거(Minify)하여 파일 크기를 줄이거나, 압축된 코드에 들여쓰기를 복원(Beautify)하여 분석하기 쉽게 만듭니다. 웹 퍼포먼스 최적화와 코드 리딩에 모두 유용합니다. Minify를 적용하면 통상 30~50%의 용량 절감 효과를 얻을 수 있어 페이지 로딩 속도가 눈에 띄게 개선됩니다. 반대로 난독화된 서드파티 코드를 Beautify하면 구조를 파악하기 쉬워져 디버깅과 학습에 큰 도움이 됩니다.',
     faqs: [
       { question: '압축(Minify)하면 얼마나 용량이 줄어드나요?', answer: '코드 구성에 따라 다르지만 통상 30~50% 정도 줄어듭니다. 공백·줄바꿈·주석이 전부 제거됩니다.' },
       { question: '압축된 코드도 정상 동작하나요?', answer: '기능에는 영향이 없습니다. 불필요한 화이트스페이스와 주석만 걷어내기 때문입니다.' },
@@ -444,7 +444,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['json-formatter', 'character-counter'],
     seoTitle: '마크다운 미리보기 - 실시간 MD 편집기',
     seoDescription: '마크다운 입력 즉시 HTML 렌더링. GitHub README·블로그 포스트 작성 시 유용.',
-    seoContent: '## 마크다운 미리보기란?\n\n마크다운(Markdown) 문법으로 텍스트를 작성하면 옆 패널에서 HTML 렌더링 결과를 실시간으로 보여 줍니다. GitHub README, 기술 블로그, 문서 초안 등을 작성하면서 최종 모습을 바로 확인할 수 있습니다.',
+    seoContent: '## 마크다운 미리보기란?\n\n마크다운(Markdown) 문법으로 텍스트를 작성하면 옆 패널에서 HTML 렌더링 결과를 실시간으로 보여 줍니다. GitHub README, 기술 블로그, 문서 초안 등을 작성하면서 최종 모습을 바로 확인할 수 있습니다. GitHub Flavored Markdown(GFM)을 지원하여 테이블, 체크리스트, 코드 블록, 수식 등 확장 문법도 정확하게 렌더링됩니다. 작성한 결과물을 HTML로 내보내거나 클립보드에 복사하여 바로 활용할 수 있어 문서 작업 효율이 크게 올라갑니다.',
     faqs: [
       { question: '마크다운이란 무엇인가요?', answer: '# 제목, **굵게**, - 목록 같은 간단한 기호로 서식을 표현하는 경량 마크업 언어입니다.' },
       { question: 'GitHub README에서 사용하는 문법과 같나요?', answer: 'GitHub Flavored Markdown(GFM)을 지원하므로 테이블, 체크리스트, 코드 블록 등을 쓸 수 있습니다.' },
@@ -462,7 +462,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['json-formatter', 'json-csv-converter'],
     seoTitle: 'YAML-JSON 변환기 - YAML ↔ JSON 상호 변환',
     seoDescription: 'YAML ↔ JSON 즉시 전환. Kubernetes·Docker Compose 등 설정 파일 포맷 변경에 유용.',
-    seoContent: '## YAML-JSON 변환기란?\n\nYAML 포맷과 JSON 포맷을 서로 전환하는 도구입니다. Kubernetes, Docker Compose 등 YAML 기반 설정 파일을 JSON 시스템에 넘기거나 그 반대 작업이 필요할 때 유용합니다.',
+    seoContent: '## YAML-JSON 변환기란?\n\nYAML 포맷과 JSON 포맷을 서로 전환하는 도구입니다. Kubernetes, Docker Compose 등 YAML 기반 설정 파일을 JSON 시스템에 넘기거나 그 반대 작업이 필요할 때 유용합니다. YAML→JSON 변환 과정에서 들여쓰기 오류나 문법 문제를 자동으로 감지해 주므로, 설정 파일을 배포하기 전 검증 용도로도 활용할 수 있습니다. 주석이 포함된 YAML도 안전하게 처리하며, 변환 결과를 즉시 복사하여 프로젝트에 적용할 수 있습니다.',
     faqs: [
       { question: 'YAML과 JSON의 차이는?', answer: 'YAML은 들여쓰기로 구조를 잡아 가독성이 좋고, JSON은 중괄호·따옴표를 써서 기계 파싱에 유리합니다.' },
       { question: 'Kubernetes는 왜 YAML을 사용하나요?', answer: '사람이 읽고 편집하기 쉽고 주석을 달 수 있어서 설정 파일용으로 선호됩니다.' },
@@ -480,7 +480,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['url-encoder', 'json-formatter'],
     seoTitle: 'URL 쿼리 파라미터 파서 - URL 분석 도구',
     seoDescription: 'URL 속 쿼리 파라미터를 분리·편집·재조립. 개발 디버깅이나 UTM 분석에 안성맞춤.',
-    seoContent: '## URL 쿼리 파라미터 파서란?\n\nURL의 쿼리 파라미터(?key=value)를 테이블 형태로 분리하고, 값을 편집한 뒤 다시 URL로 재조립합니다. API 디버깅, UTM 파라미터 분석, 딥링크 생성 등에 활용됩니다.',
+    seoContent: '## URL 쿼리 파라미터 파서란?\n\nURL의 쿼리 파라미터(?key=value)를 테이블 형태로 분리하고, 값을 편집한 뒤 다시 URL로 재조립합니다. API 디버깅, UTM 파라미터 분석, 딥링크 생성 등에 활용됩니다. 복잡하게 인코딩된 URL도 자동으로 디코딩하여 사람이 읽을 수 있는 형태로 보여 주며, 파라미터를 추가·삭제·수정한 뒤 한 클릭으로 완성된 URL을 복사할 수 있어 마케팅 트래킹 링크 제작이나 API 테스트 시 시간을 크게 절약해 줍니다.',
     faqs: [
       { question: 'UTM 파라미터란 무엇인가요?', answer: 'Google Analytics에서 유입 경로를 추적하기 위한 파라미터입니다. utm_source, utm_medium, utm_campaign 등으로 구성됩니다.' },
       { question: 'URL의 ? 뒤에 있는 부분이 뭔가요?', answer: '쿼리 스트링(Query String)이라고 합니다. key=value 쌍으로 서버에 추가 데이터를 보냅니다.' },
@@ -498,7 +498,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['markdown-preview', 'html-entity', 'minifier'],
     seoTitle: 'HTML 미리보기 - 실시간 웹 에디터',
     seoDescription: 'HTML·CSS·JS를 입력하면 즉시 렌더링. 반응형 뷰포트 전환·코드 스니펫 실행에 유용.',
-    seoContent: '## HTML 미리보기란?\n\nHTML·CSS·JavaScript 코드를 입력하면 결과물이 바로 렌더링되는 온라인 에디터입니다. 웹 프로토타이핑, 코드 스니펫 실험, 웹 기초 학습에 적합하며, 모바일·태블릿·데스크탑 뷰포트 전환으로 반응형 테스트도 할 수 있습니다.',
+    seoContent: '## HTML 미리보기란?\n\nHTML·CSS·JavaScript 코드를 입력하면 결과물이 바로 렌더링되는 온라인 에디터입니다. 웹 프로토타이핑, 코드 스니펫 실험, 웹 기초 학습에 적합하며, 모바일·태블릿·데스크탑 뷰포트 전환으로 반응형 테스트도 할 수 있습니다. CDN을 통한 외부 라이브러리 로딩도 지원하여, Bootstrap·Tailwind 등 프레임워크 기반 레이아웃을 빠르게 시험해 볼 수 있습니다. 샌드박스 환경에서 JavaScript가 안전하게 실행되므로 alert, console.log 등 동작 확인도 가능합니다.',
     faqs: [
       { question: '외부 라이브러리를 사용할 수 있나요?', answer: '<script src>나 <link href> 태그를 통해 CDN에서 외부 라이브러리를 불러올 수 있습니다.' },
       { question: 'JavaScript가 실행되나요?', answer: '샌드박스 환경에서 실행됩니다. alert나 console.log 같은 기능도 테스트 가능합니다.' },
@@ -516,7 +516,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['html-preview', 'box-shadow-generator'],
     seoTitle: 'Flexbox 플레이그라운드 - CSS Flexbox 학습',
     seoDescription: 'Flexbox 속성을 슬라이더로 조절하며 실시간 레이아웃 미리보기. 코드 복사도 한 클릭.',
-    seoContent: '## Flexbox 플레이그라운드란?\n\nCSS Flexbox 속성값을 직접 조절하면서 레이아웃 변화를 실시간으로 관찰하는 학습 도구입니다. 컨테이너·아이템 속성을 바꾸고 완성된 코드를 바로 복사할 수 있습니다.',
+    seoContent: '## Flexbox 플레이그라운드란?\n\nCSS Flexbox 속성값을 직접 조절하면서 레이아웃 변화를 실시간으로 관찰하는 학습 도구입니다. 컨테이너·아이템 속성을 바꾸고 완성된 코드를 바로 복사할 수 있습니다. justify-content, align-items, flex-direction 등 주요 속성을 슬라이더와 버튼으로 쉽게 전환하며, flex-grow·shrink·basis 같은 아이템 속성도 개별 조절이 가능합니다. 완성된 CSS 코드를 한 클릭으로 복사하여 프로젝트에 바로 적용할 수 있어 학습과 실무를 동시에 해결합니다.',
     faqs: [
       { question: 'justify-content와 align-items 차이?', answer: 'justify-content는 주축(가로 or 세로) 방향 정렬, align-items는 교차축 방향 정렬을 담당합니다.' },
       { question: 'flex-grow, shrink, basis는?', answer: 'grow는 여유 공간 분배 비율, shrink는 공간 부족 시 줄어드는 비율, basis는 아이템의 기본 크기를 뜻합니다.' },
@@ -533,7 +533,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['html-preview', 'markdown-preview'],
     seoTitle: 'OG 태그 미리보기 - SNS 공유 미리보기',
     seoDescription: 'OG 메타 태그 편집과 Facebook·Twitter·카카오톡 공유 미리보기. 완성된 코드 즉시 복사.',
-    seoContent: '## OG 태그 미리보기란?\n\nOpen Graph 메타 태그 값을 입력하면 Facebook, Twitter, 카카오톡, LinkedIn 등에서 공유될 때 어떻게 보이는지 즉시 미리보기합니다. 완성된 meta 태그 코드를 복사해 바로 적용할 수 있습니다.',
+    seoContent: '## OG 태그 미리보기란?\n\nOpen Graph 메타 태그 값을 입력하면 Facebook, Twitter, 카카오톡, LinkedIn 등에서 공유될 때 어떻게 보이는지 즉시 미리보기합니다. 완성된 meta 태그 코드를 복사해 바로 적용할 수 있습니다. og:title, og:description, og:image 등 핵심 속성을 편집하면서 각 플랫폼별 카드 레이아웃 차이를 한 화면에서 비교할 수 있어, SNS 마케팅이나 블로그 공유 최적화에 매우 실용적입니다. 권장 이미지 크기(1200x630px)와 글자수 제한도 안내합니다.',
     faqs: [
       { question: '권장 이미지 크기는?', answer: '1200×630px(비율 1.91:1)이면 대부분의 SNS 플랫폼에서 깔끔하게 표시됩니다.' },
       { question: 'OG 태그를 수정했는데 미리보기가 안 바뀌어요', answer: 'SNS 플랫폼이 기존 OG 정보를 캐싱합니다. Facebook 공유 디버거나 Twitter 카드 검증기를 통해 캐시를 갱신하세요.' },
@@ -594,7 +594,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['image-resize', 'image-convert'],
     seoTitle: '이미지 압축 - 사진 용량 줄이기',
     seoDescription: '화질은 유지하면서 이미지 용량 최대 80% 절감. 웹 속도 최적화·이메일 첨부에 딱.',
-    seoContent: '## 이미지 압축이란?\n\n눈에 띄는 화질 손실 없이 이미지 파일 크기를 줄이는 도구입니다. 웹 페이지 로딩 속도 개선, 이메일 첨부 용량 한도 대응, 클라우드 저장 공간 절약 등에 활용됩니다.',
+    seoContent: '## 이미지 압축이란?\n\n눈에 띄는 화질 손실 없이 이미지 파일 크기를 줄이는 도구입니다. 웹 페이지 로딩 속도 개선, 이메일 첨부 용량 한도 대응, 클라우드 저장 공간 절약 등에 활용됩니다. 슬라이더로 압축률을 자유롭게 조절하며 원본과 압축본의 화질 차이를 실시간으로 비교할 수 있습니다. JPG·PNG·WebP 등 주요 포맷을 지원하며, 70~80% 품질 설정 시 육안으로 거의 차이를 느낄 수 없는 수준에서 파일 크기를 크게 절감할 수 있습니다.',
     faqs: [
       { question: '압축하면 화질이 많이 떨어지나요?', answer: '70~80% 품질로 압축하면 눈으로 거의 구별할 수 없습니다. 슬라이더로 압축률을 자유롭게 조절하세요.' },
       { question: '어떤 포맷이 압축에 유리한가요?', answer: 'JPG는 손실 압축으로 크게 줄일 수 있고, WebP는 동일 화질 대비 JPG보다 약 30% 더 작습니다.' },
@@ -612,7 +612,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['image-compress', 'image-resize'],
     seoTitle: '이미지 포맷 변환 - PNG/JPG/WebP 변환',
     seoDescription: 'PNG·JPG·WebP·GIF 포맷 상호 전환. 투명 배경 유지, 웹 최적화 등 목적별로 선택.',
-    seoContent: '## 이미지 포맷 변환이란?\n\n이미지를 PNG, JPG, WebP, GIF 등 여러 형식으로 바꿔 줍니다. 투명 배경이 필요하면 PNG, 웹 속도가 중요하면 WebP, 범용 호환이 필요하면 JPG 등 목적에 맞게 고를 수 있습니다.',
+    seoContent: '## 이미지 포맷 변환이란?\n\n이미지를 PNG, JPG, WebP, GIF 등 여러 형식으로 바꿔 줍니다. 투명 배경이 필요하면 PNG, 웹 속도가 중요하면 WebP, 범용 호환이 필요하면 JPG 등 목적에 맞게 고를 수 있습니다. 변환 시 품질 옵션을 설정하여 파일 크기와 화질 사이의 균형을 맞출 수 있으며, 여러 장의 이미지를 한꺼번에 변환하는 일괄 처리도 지원합니다. 브라우저에서 직접 처리되므로 이미지가 외부 서버로 전송되지 않아 개인 사진도 안심하고 변환할 수 있습니다.',
     faqs: [
       { question: 'PNG와 JPG의 차이는?', answer: 'PNG는 투명 배경 지원과 무손실 품질이 장점이고, JPG는 투명도는 없지만 파일이 훨씬 가볍습니다.' },
       { question: 'WebP란 무엇인가요?', answer: 'Google이 만든 웹 전용 이미지 포맷입니다. JPG·PNG 대비 비슷한 화질에서 파일 크기가 작아 대부분의 모던 브라우저가 지원합니다.' },
@@ -630,7 +630,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['image-resize', 'image-rotate'],
     seoTitle: '이미지 자르기 - 원하는 영역만 크롭',
     seoDescription: '이미지에서 필요한 영역만 크롭. 1:1·4:3·16:9 고정 비율 또는 자유 비율 선택 가능.',
-    seoContent: '## 이미지 자르기란?\n\n이미지 위에서 원하는 부분을 드래그하여 잘라냅니다. 자유 비율은 물론 1:1, 4:3, 16:9 등 고정 비율 크롭을 지원하여 프로필 사진, 유튜브 썸네일, 배너 제작에 적합합니다.',
+    seoContent: '## 이미지 자르기란?\n\n이미지 위에서 원하는 부분을 드래그하여 잘라냅니다. 자유 비율은 물론 1:1, 4:3, 16:9 등 고정 비율 크롭을 지원하여 프로필 사진, 유튜브 썸네일, 배너 제작에 적합합니다. 크롭 영역을 마우스로 직접 그리고 위치를 미세 조정할 수 있으며, 원본 해상도 범위 안에서 잘라내므로 화질 손실이 없습니다. 인스타그램 피드(1:1), 유튜브 썸네일(16:9), 카카오톡 프로필 등 자주 쓰이는 규격을 원클릭으로 선택할 수 있어 빠르게 작업할 수 있습니다.',
     faqs: [
       { question: '1:1 비율은 어디에 사용하나요?', answer: '인스타그램 피드 사진, 카카오톡 프로필 등 정사각형 이미지가 필요한 곳에 씁니다.' },
       { question: '16:9 비율은 어디에 사용하나요?', answer: '유튜브 썸네일, PPT 슬라이드, 와이드 모니터 배경화면 등에 주로 사용됩니다.' },
@@ -648,7 +648,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['image-crop', 'image-resize'],
     seoTitle: '이미지 회전/뒤집기 - 90도 회전 & 반전',
     seoDescription: '이미지 90도/180도/270도 회전, 좌우·상하 반전. 사진 방향 보정에 유용. 무료 온라인 도구.',
-    seoContent: '## 이미지 회전/뒤집기란?\n\n이미지를 시계·반시계 방향으로 90도씩 돌리거나, 좌우·상하 축으로 뒤집습니다. 스마트폰으로 촬영한 사진의 방향 보정, 미러 이미지 제작 등에 활용됩니다.',
+    seoContent: '## 이미지 회전/뒤집기란?\n\n이미지를 시계·반시계 방향으로 90도씩 돌리거나, 좌우·상하 축으로 뒤집습니다. 스마트폰으로 촬영한 사진의 방향 보정, 미러 이미지 제작 등에 활용됩니다. EXIF 회전 정보로 인해 옆으로 누워 보이는 사진도 한 번의 클릭으로 바로잡을 수 있으며, 회전·반전은 픽셀 위치만 재배치하는 작업이므로 화질 저하가 전혀 없습니다. 셀카 미러링, 디자인 대칭 이미지 제작, 스캔 문서 방향 보정 등 일상적인 이미지 편집에 폭넓게 사용됩니다.',
     faqs: [
       { question: '스마트폰 사진이 옆으로 누워있어요', answer: 'EXIF 회전 정보 때문입니다. 90도 회전으로 간단히 바로잡을 수 있습니다.' },
       { question: '좌우 반전(미러)은 언제 사용하나요?', answer: '셀카를 거울에서 보던 방향으로 뒤집거나, 디자인 작업에서 대칭 이미지를 만들 때 씁니다.' },
@@ -666,7 +666,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['base64', 'image-convert'],
     seoTitle: 'Base64 이미지 변환 - 이미지 ↔ Base64',
     seoDescription: '이미지 ↔ Base64(Data URI) 상호 전환. CSS 인라인 이미지·이메일 템플릿에 유용.',
-    seoContent: '## Base64 이미지 변환이란?\n\n이미지를 Base64 문자열(Data URI)로 인코딩하거나, Base64 텍스트를 이미지로 되돌리는 도구입니다. CSS 인라인 배경, 이메일 템플릿 삽입, 소형 아이콘 번들링 등에 활용됩니다.',
+    seoContent: '## Base64 이미지 변환이란?\n\n이미지를 Base64 문자열(Data URI)로 인코딩하거나, Base64 텍스트를 이미지로 되돌리는 도구입니다. CSS 인라인 배경, 이메일 템플릿 삽입, 소형 아이콘 번들링 등에 활용됩니다. HTML·CSS에 직접 삽입하면 추가 HTTP 요청 없이 이미지를 로딩할 수 있어 수 KB 이하의 작은 아이콘이나 로고에 효과적입니다. 단, 원본 대비 약 33% 용량이 증가하므로 큰 이미지에는 적합하지 않으며, 소형 에셋 최적화 용도로 사용하는 것이 권장됩니다.',
     faqs: [
       { question: '이미지를 Base64로 변환하면 좋은 점은?', answer: 'HTML·CSS에 직접 삽입 가능해 추가 HTTP 요청 없이 로딩됩니다. 수 KB 이하 소형 아이콘에 효과적입니다.' },
       { question: 'Base64로 변환하면 용량이 커지나요?', answer: '원본 대비 약 33% 증가합니다. 따라서 작은 이미지에만 적용하는 것이 좋습니다.' },
@@ -684,7 +684,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['image-resize', 'image-convert'],
     seoTitle: '파비콘 생성기 - 이미지를 ICO로 변환',
     seoDescription: '이미지를 파비콘(ICO)으로 변환. 16·32·48px 다중 크기를 하나의 파일에 담습니다.',
-    seoContent: '## 파비콘 생성기란?\n\n이미지를 브라우저 탭·북마크에 표시되는 파비콘(favicon.ico)으로 변환합니다. 16×16, 32×32, 48×48 등 여러 크기를 한 ICO 파일에 포함시켜 다양한 환경에 대응합니다.',
+    seoContent: '## 파비콘 생성기란?\n\n이미지를 브라우저 탭·북마크에 표시되는 파비콘(favicon.ico)으로 변환합니다. 16×16, 32×32, 48×48 등 여러 크기를 한 ICO 파일에 포함시켜 다양한 환경에 대응합니다. PNG·JPG 등 일반 이미지를 업로드하면 자동으로 크기를 조정하고 ICO 형식으로 묶어 주므로, 별도의 이미지 편집 프로그램 없이도 웹사이트용 파비콘을 간편하게 제작할 수 있습니다. 모바일 홈 화면 아이콘(180×180)이나 고해상도 디스플레이용 크기도 함께 생성됩니다.',
     faqs: [
       { question: '파비콘이란 무엇인가요?', answer: '브라우저 탭이나 즐겨찾기 목록에 표시되는 소형 아이콘으로, 사이트 브랜딩에 중요한 역할을 합니다.' },
       { question: '어떤 크기로 만들어야 하나요?', answer: '16×16과 32×32는 기본입니다. 모바일·고해상도 디스플레이를 위해 180×180이나 192×192도 추가하면 좋습니다.' },
@@ -702,7 +702,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['image-convert', 'image-compress'],
     seoTitle: 'MP4 ↔ GIF 변환기 - 동영상/GIF 상호 변환',
     seoDescription: 'MP4↔GIF 상호 변환. 시작 시점·길이·FPS·해상도 조절 가능. 움짤 제작에 딱.',
-    seoContent: '## MP4 GIF 변환기란?\n\nMP4·WebM 동영상에서 원하는 구간을 골라 GIF 애니메이션으로 만들거나, GIF를 MP4로 전환합니다. 시작 시점, 재생 길이, FPS, 해상도를 조절하여 SNS·메신저용 움짤을 간편하게 만들 수 있습니다.',
+    seoContent: '## MP4 GIF 변환기란?\n\nMP4·WebM 동영상에서 원하는 구간을 골라 GIF 애니메이션으로 만들거나, GIF를 MP4로 전환합니다. 시작 시점, 재생 길이, FPS, 해상도를 조절하여 SNS·메신저용 움짤을 간편하게 만들 수 있습니다. GIF는 트위터·디스코드·슬랙 등 대부분의 플랫폼에서 자동 재생되어 리액션이나 시연용으로 널리 쓰이며, 반대로 용량이 큰 GIF를 MP4로 전환하면 동일 화질에서 파일 크기를 10~50배까지 줄일 수 있어 웹 성능 최적화에 효과적입니다.',
     faqs: [
       { question: 'GIF 파일 용량이 너무 커요', answer: 'GIF는 태생적으로 용량이 큽니다. 해상도·FPS를 낮추거나 재생 길이를 줄이면 효과적으로 용량을 줄일 수 있습니다.' },
       { question: '트위터/디스코드에 움짤 올리려면?', answer: '대부분 15MB 이하 GIF를 지원합니다. 5초 이내·480p 이하로 맞추는 것을 권합니다.' },
@@ -743,7 +743,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['color-converter', 'gradient-generator'],
     seoTitle: '색상 팔레트 생성기 - 조화로운 색 조합',
     seoDescription: '기준 색상에서 보색·유사색·삼각배색 팔레트를 자동 생성. UI·브랜딩 디자인에 활용.',
-    seoContent: '## 색상 팔레트 생성기란?\n\n하나의 기준 색상을 선택하면 색채 이론(보색, 유사색, 삼각배색, 사각배색)에 따라 어울리는 팔레트를 자동으로 구성합니다. UI 디자인, 웹사이트 테마, 브랜드 컬러 선정에 활용됩니다.',
+    seoContent: '## 색상 팔레트 생성기란?\n\n하나의 기준 색상을 선택하면 색채 이론(보색, 유사색, 삼각배색, 사각배색)에 따라 어울리는 팔레트를 자동으로 구성합니다. UI 디자인, 웹사이트 테마, 브랜드 컬러 선정에 활용됩니다. 주색 1개를 기준으로 보조색과 강조색을 자동 추천하므로 색상 이론에 익숙하지 않은 분도 조화로운 배색을 쉽게 만들 수 있습니다. 생성된 팔레트의 HEX·RGB 코드를 한 클릭으로 복사하여 CSS나 디자인 툴에 바로 적용할 수 있습니다.',
     faqs: [
       { question: '보색이란 무엇인가요?', answer: '색상환에서 정반대 위치의 색으로, 강한 대비 효과를 줍니다. 예를 들어 빨강의 보색은 청록입니다.' },
       { question: '유사색이란 무엇인가요?', answer: '색상환에서 이웃한 색들로, 부드럽고 안정감 있는 조화를 이룹니다. 빨강-주황-노랑이 대표적입니다.' },
@@ -761,7 +761,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['color-converter', 'palette-generator'],
     seoTitle: '그라데이션 생성기 - CSS Gradient 코드 생성',
     seoDescription: '선형·원형 CSS 그라데이션을 시각 에디터로 만들고 코드 한 클릭 복사.',
-    seoContent: '## 그라데이션 생성기란?\n\nlinear(선형)·radial(원형) CSS 그라데이션을 시각 에디터로 구성하고 완성된 코드를 복사합니다. 색상 추가·제거, 각도·위치 조절이 자유로워 웹 배경이나 버튼 스타일링에 유용합니다.',
+    seoContent: '## 그라데이션 생성기란?\n\nlinear(선형)·radial(원형) CSS 그라데이션을 시각 에디터로 구성하고 완성된 코드를 복사합니다. 색상 추가·제거, 각도·위치 조절이 자유로워 웹 배경이나 버튼 스타일링에 유용합니다. 색상 스톱 포인트를 원하는 만큼 추가하여 3색 이상의 복합 그라데이션도 손쉽게 만들 수 있으며, 각 색상의 위치(%)를 드래그로 미세 조정할 수 있습니다. 완성된 CSS 코드를 즉시 복사하여 프로젝트에 적용할 수 있고, 인기 있는 그라데이션 프리셋도 제공합니다.',
     faqs: [
       { question: 'linear-gradient와 radial-gradient의 차이는?', answer: 'linear는 직선 방향으로, radial은 한 점에서 바깥으로 퍼지는 형태입니다.' },
       { question: '그라데이션 방향은 어떻게 조절하나요?', answer: 'to right 같은 키워드나 45deg 같은 각도 값으로 방향을 지정합니다.' },
@@ -779,7 +779,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['color-converter', 'color-blender'],
     seoTitle: '색상 대비 체커 - WCAG 접근성 검사',
     seoDescription: '텍스트-배경 명암비를 WCAG AA/AAA 기준으로 검사. 접근성 높은 디자인 필수 도구.',
-    seoContent: '## 색상 대비 체커란?\n\n텍스트 색상과 배경 색상의 명암비(Contrast Ratio)를 산출하고, WCAG AA·AAA 접근성 기준 충족 여부를 보여 줍니다. 저시력자나 색각이상자도 읽기 쉬운 웹 디자인을 위해 반드시 확인해야 하는 도구입니다.',
+    seoContent: '## 색상 대비 체커란?\n\n텍스트 색상과 배경 색상의 명암비(Contrast Ratio)를 산출하고, WCAG AA·AAA 접근성 기준 충족 여부를 보여 줍니다. 저시력자나 색각이상자도 읽기 쉬운 웹 디자인을 위해 반드시 확인해야 하는 도구입니다. AA 기준은 일반 텍스트 4.5:1, 큰 텍스트 3:1의 대비를 요구하며, AAA는 이보다 더 엄격한 7:1, 4.5:1을 충족해야 합니다. 색상을 입력하면 실시간으로 대비율과 통과 여부가 표시되므로 디자인 단계에서 접근성 문제를 사전에 예방할 수 있습니다.',
     faqs: [
       { question: 'WCAG AA와 AAA 기준은?', answer: 'AA: 일반 텍스트 4.5:1, 큰 텍스트 3:1 대비 필요. AAA: 더 엄격하게 7:1, 4.5:1을 요구합니다.' },
       { question: '대비율이 왜 중요한가요?', answer: '대비가 부족하면 시력이 약한 사용자가 글을 읽기 힘들고, 일부 국가에서는 법적 접근성 의무가 있습니다.' },
@@ -797,7 +797,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['color-converter', 'palette-generator'],
     seoTitle: '이미지 색상 추출 - 사진에서 컬러 피킹',
     seoDescription: '이미지 위 클릭으로 HEX·RGB 색상 코드 추출. 디자인 레퍼런스에서 색상 따기에 유용.',
-    seoContent: '## 이미지 색상 추출이란?\n\n이미지를 올리고 원하는 지점을 클릭하면 해당 픽셀의 HEX·RGB 코드가 표시됩니다. 레퍼런스 이미지에서 색상을 따거나 사진의 컬러 톤을 분석할 때 활용됩니다.',
+    seoContent: '## 이미지 색상 추출이란?\n\n이미지를 올리고 원하는 지점을 클릭하면 해당 픽셀의 HEX·RGB 코드가 표시됩니다. 레퍼런스 이미지에서 색상을 따거나 사진의 컬러 톤을 분석할 때 활용됩니다. 스포이드처럼 정확한 픽셀 단위 색상을 추출할 수 있으며, 이미지의 주요 색상을 자동으로 분석하여 팔레트 형태로도 제공합니다. JPG·PNG·GIF·WebP 등 일반적인 이미지 포맷을 모두 지원하고, 추출된 색상 코드를 한 클릭으로 복사하여 디자인 작업에 바로 활용할 수 있습니다.',
     faqs: [
       { question: '스포이드 도구처럼 사용할 수 있나요?', answer: '이미지 위를 클릭하면 해당 픽셀의 정확한 색상값을 바로 뽑아냅니다.' },
       { question: '주요 색상을 자동으로 추출할 수 있나요?', answer: '이미지의 주요 컬러를 자동 분석하여 팔레트 형태로 보여 줍니다.' },
@@ -815,7 +815,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['color-converter', 'contrast-checker'],
     seoTitle: '색상 블렌딩 - 두 색의 중간색 생성',
     seoDescription: '두 색 사이 중간색을 단계별로 산출. 그라데이션 중간값 파악·팔레트 확장에 유용.',
-    seoContent: '## 색상 블렌딩이란?\n\n두 색을 지정하면 그 사이의 중간색들을 원하는 단계 수만큼 산출합니다. 그라데이션 중간 지점 색상 파악, 팔레트 보강, 부드러운 색 전환 설계에 활용됩니다.',
+    seoContent: '## 색상 블렌딩이란?\n\n두 색을 지정하면 그 사이의 중간색들을 원하는 단계 수만큼 산출합니다. 그라데이션 중간 지점 색상 파악, 팔레트 보강, 부드러운 색 전환 설계에 활용됩니다. RGB 값을 가중 평균하여 자연스러운 색 전이를 만들어 주며, 슬라이더로 단계 수를 자유롭게 조절할 수 있습니다. 생성된 중간색의 HEX·RGB 코드를 각각 복사할 수 있어, CSS 그라데이션 작업이나 UI 컬러 시스템 구축 시 정확한 중간값을 빠르게 파악하는 데 유용합니다.',
     faqs: [
       { question: '두 색을 섞으면 어떤 색이 나오나요?', answer: 'RGB 값을 가중 평균하여 중간색을 산출합니다. 빨강+파랑은 보라, 빨강+노랑은 주황 등이 됩니다.' },
       { question: '단계별 색상을 몇 개까지 생성할 수 있나요?', answer: '슬라이더로 단계 수를 자유롭게 설정할 수 있으며, 5~10단계 정도가 일반적으로 적합합니다.' },
@@ -833,7 +833,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['contrast-checker', 'color-converter'],
     seoTitle: '색맹 시뮬레이터 - 색각이상 시뮬레이션',
     seoDescription: '적색맹·녹색맹·청색맹 시뮬레이션으로 색각이상자의 시야를 체험. 접근성 디자인 검증 필수.',
-    seoContent: '## 색맹 시뮬레이터란?\n\n이미지를 올리면 적색맹(Protanopia)·녹색맹(Deuteranopia)·청색맹(Tritanopia) 등 색각이상자의 시야를 재현합니다. 모든 사용자가 정보를 구별할 수 있도록 접근성 높은 디자인을 만들 때 꼭 필요한 도구입니다.',
+    seoContent: '## 색맹 시뮬레이터란?\n\n이미지를 올리면 적색맹(Protanopia)·녹색맹(Deuteranopia)·청색맹(Tritanopia) 등 색각이상자의 시야를 재현합니다. 모든 사용자가 정보를 구별할 수 있도록 접근성 높은 디자인을 만들 때 꼭 필요한 도구입니다. 남성 인구의 약 8%가 색각이상을 갖고 있어, 웹·앱 디자인에서 색상만으로 정보를 전달하면 상당수의 사용자가 불편을 겪게 됩니다. 시뮬레이션 결과를 보고 색상 외에 아이콘·텍스트 라벨을 병행하거나 명암 대비를 높이는 등의 개선 방향을 잡을 수 있습니다.',
     faqs: [
       { question: '색맹과 색약의 차이는?', answer: '색맹은 특정 색을 아예 구분 못 하고, 색약은 구분이 어려운 상태입니다. 남성 인구의 약 8%가 색각이상을 갖고 있습니다.' },
       { question: '가장 흔한 색각이상은?', answer: '적녹색맹이 압도적으로 많습니다. 빨강과 초록 계열을 구별하기 힘든 유형입니다.' },
@@ -851,7 +851,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['border-radius-generator', 'gradient-generator'],
     seoTitle: 'Box Shadow 생성기 - CSS 그림자 편집기',
     seoDescription: 'box-shadow를 슬라이더로 조절하며 실시간 미리보기. 다중 레이어·프리셋 지원, 코드 즉시 복사.',
-    seoContent: '## Box Shadow 생성기란?\n\nCSS box-shadow를 시각 에디터에서 디자인합니다. 오프셋·블러·스프레드·색상을 슬라이더로 미세 조절하고 결과를 실시간으로 확인할 수 있습니다.',
+    seoContent: '## Box Shadow 생성기란?\n\nCSS box-shadow를 시각 에디터에서 디자인합니다. 오프셋·블러·스프레드·색상을 슬라이더로 미세 조절하고 결과를 실시간으로 확인할 수 있습니다. 여러 레이어를 겹쳐 입체적이고 복합적인 그림자 효과를 구현할 수 있으며, inset 옵션으로 요소 내부에 오목한 그림자도 만들 수 있습니다. 자주 쓰이는 그림자 프리셋을 제공하여 빠르게 시작할 수 있고, 완성된 CSS 코드를 한 클릭으로 복사하여 프로젝트에 바로 적용할 수 있습니다.',
     faqs: [
       { question: '여러 그림자를 겹칠 수 있나요?', answer: '여러 레이어를 겹쳐 입체적이고 복합적인 그림자 효과를 구현할 수 있습니다.' },
       { question: 'inset 그림자란?', answer: '요소 내부로 들어가는 그림자 효과입니다. 오목하게 눌린 느낌을 표현할 때 씁니다.' },
@@ -868,7 +868,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['box-shadow-generator', 'gradient-generator'],
     seoTitle: 'Border Radius 생성기 - CSS 둥근 모서리 편집기',
     seoDescription: 'border-radius를 시각 에디터로 조절. 모서리 개별 값 설정, px·% 단위 지원.',
-    seoContent: '## Border Radius 생성기란?\n\nCSS border-radius 값을 시각 에디터로 설정합니다. 네 모서리를 개별·일괄로 조절하며 미리보기에서 결과를 즉시 확인할 수 있습니다.',
+    seoContent: '## Border Radius 생성기란?\n\nCSS border-radius 값을 시각 에디터로 설정합니다. 네 모서리를 개별·일괄로 조절하며 미리보기에서 결과를 즉시 확인할 수 있습니다. 좌상·우상·우하·좌하 모서리에 각각 다른 값을 부여하여 비대칭 둥근 모서리를 만들 수 있고, px과 % 단위를 자유롭게 전환할 수 있습니다. 50%를 지정하면 완전한 원형이 되며, 완성된 CSS 코드를 한 클릭으로 복사하여 버튼·카드·아바타 등 다양한 UI 요소에 바로 적용할 수 있습니다.',
     faqs: [
       { question: '모서리마다 다른 값을 줄 수 있나요?', answer: '링크 모드를 끄면 좌상·우상·우하·좌하 모서리를 각각 다른 값으로 설정할 수 있습니다.' },
       { question: 'px과 %의 차이는?', answer: 'px은 절대 크기, %는 요소 치수 대비 상대 크기입니다. 50%를 주면 완전한 원이 됩니다.' },
@@ -908,7 +908,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['date-calculator', 'base-converter'],
     seoTitle: '유닉스 타임스탬프 변환 - Unix Epoch 변환',
     seoDescription: 'Unix 타임스탬프 ↔ 날짜 즉시 전환. API 개발·로그 분석 필수 도구.',
-    seoContent: '## 유닉스 타임스탬프 변환이란?\n\nEpoch(1970-01-01 00:00:00 UTC)부터 경과한 초(또는 밀리초)를 사람이 읽을 수 있는 날짜로 전환하거나 그 반대를 수행합니다. API 개발·서버 로그 분석·디버깅에 필수적입니다.',
+    seoContent: '## 유닉스 타임스탬프 변환이란?\n\nEpoch(1970-01-01 00:00:00 UTC)부터 경과한 초(또는 밀리초)를 사람이 읽을 수 있는 날짜로 전환하거나 그 반대를 수행합니다. API 개발·서버 로그 분석·디버깅에 필수적이며, 초 단위(10자리)와 밀리초 단위(13자리)를 자동 감지합니다. UTC와 로컬 시간대 결과를 동시에 확인할 수 있어 글로벌 서비스 개발 시 시간대 혼동을 방지할 수 있습니다.',
     faqs: [
       { question: 'Unix Epoch란 무엇인가요?', answer: '1970-01-01 00:00:00 UTC를 0으로 잡고 그로부터 흐른 초(또는 밀리초) 수입니다. 컴퓨터가 시간을 다루는 보편적 방식입니다.' },
       { question: '밀리초와 초의 차이는?', answer: '10자리이면 초 단위(1609459200), 13자리이면 밀리초 단위(1609459200000)를 의미합니다.' },
@@ -926,7 +926,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['unit-converter', 'date-calculator'],
     seoTitle: '퍼센트 계산기 - 할인율, 증감률 계산',
     seoDescription: '다양한 퍼센트 계산: A의 B%? 할인가? 증감률? 부가세 포함가? 등 일상 계산 총정리.',
-    seoContent: '## 퍼센트 계산기란?\n\n여러 형태의 퍼센트 계산을 지원합니다. "200의 15%는 얼마?", "60은 300의 몇%?", "30% 할인 적용가?", "40에서 56으로 증가율?" 같은 일상적 계산을 즉시 해결합니다.',
+    seoContent: '## 퍼센트 계산기란?\n\n여러 형태의 퍼센트 계산을 지원합니다. "200의 15%는 얼마?", "60은 300의 몇%?", "30% 할인 적용가?", "40에서 56으로 증가율?" 같은 일상적 계산을 즉시 해결합니다. 부가세 포함·제외가 계산, 팁 비율 산출, 시험 점수 환산 등 다양한 상황에 대응하며, 공식까지 함께 표시되어 계산 과정을 직접 이해할 수 있습니다.',
     faqs: [
       { question: '100의 20%는 얼마인가요?', answer: '100 × 0.20 = 20입니다. 원래 값에 (퍼센트 ÷ 100)을 곱해 구합니다.' },
       { question: '할인율과 증가율 계산 공식은?', answer: '할인가 = 원가 × (1 - 할인율/100), 증가율 = (새값 - 원값) ÷ 원값 × 100 입니다.' },
@@ -944,7 +944,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['percentage', 'base-converter'],
     seoTitle: '단위 변환기 - 길이/무게/온도/면적 변환',
     seoDescription: '길이·무게·온도·면적·부피·속도 등 물리 단위 즉시 전환. 해외 쇼핑·여행에 유용.',
-    seoContent: '## 단위 변환기란?\n\ncm↔inch, kg↔lb, °C↔°F, ㎡↔평 등 다양한 물리 단위를 즉석에서 전환합니다. 해외 직구, 레시피 환산, 부동산 평수 계산, 여행 준비 등에 활용됩니다.',
+    seoContent: '## 단위 변환기란?\n\ncm↔inch, kg↔lb, °C↔°F, ㎡↔평 등 다양한 물리 단위를 즉석에서 전환합니다. 해외 직구 시 사이즈 확인, 요리 레시피의 oz·cup 환산, 부동산 평수↔제곱미터 변환, 해외여행 시 마일↔km 전환 등 일상 곳곳에서 활용됩니다. 입력과 동시에 결과가 표시되어 빠르고 편리합니다.',
     faqs: [
       { question: '1인치는 몇 cm인가요?', answer: '1인치는 2.54cm입니다. 인치에 2.54를 곱하면 cm로 바꿀 수 있습니다.' },
       { question: '1평은 몇 제곱미터인가요?', answer: '1평은 약 3.3058㎡입니다. 평수에 3.3을 곱하면 대략적인 ㎡를 구할 수 있습니다.' },
@@ -962,7 +962,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['unix-timestamp', 'unicode-converter'],
     seoTitle: '진수 변환기 - 2진수/8진수/10진수/16진수',
     seoDescription: '2진수·8진수·10진수·16진수 즉시 전환. 프로그래밍 학습·디버깅에 유용.',
-    seoContent: '## 진수 변환기란?\n\n숫자를 Binary(2진)·Octal(8진)·Decimal(10진)·Hexadecimal(16진) 사이에서 자유롭게 전환합니다. 프로그래밍 학습, 컴퓨터 공학 과제, 메모리 주소 분석 등에 활용됩니다.',
+    seoContent: '## 진수 변환기란?\n\n숫자를 Binary(2진)·Octal(8진)·Decimal(10진)·Hexadecimal(16진) 사이에서 자유롭게 전환합니다. 프로그래밍 학습, 컴퓨터 공학 과제, 메모리 주소 분석, 색상 코드 해석 등에 활용됩니다. 하나의 값을 입력하면 나머지 세 진수 결과가 동시에 표시되어 비교가 편리하며, 비트 연산 이해에도 도움이 됩니다.',
     faqs: [
       { question: '2진수와 16진수는 어떤 관계인가요?', answer: '16진수 1자리가 2진수 4자리에 정확히 대응합니다. 0xF는 2진수 1111과 같습니다.' },
       { question: '프로그래밍에서 16진수를 왜 쓰나요?', answer: '메모리 주소나 색상 코드(#FF0000) 같은 곳에서 2진수보다 짧고 읽기 편하기 때문입니다.' },
@@ -980,7 +980,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['json-formatter', 'character-counter'],
     seoTitle: '정규식 테스터 - 정규표현식 실시간 테스트',
     seoDescription: '정규표현식 패턴 작성 및 실시간 매칭 테스트. 결과 하이라이트·그룹 캡처 지원.',
-    seoContent: '## 정규식 테스터란?\n\nRegex 패턴을 입력하면 테스트 텍스트에서 매칭 결과가 즉시 하이라이트됩니다. 캡처 그룹별 매칭 내용도 표시되어 문자열 검증·추출 로직을 개발할 때 필수적입니다.',
+    seoContent: '## 정규식 테스터란?\n\nRegex 패턴을 입력하면 테스트 텍스트에서 매칭 결과가 즉시 하이라이트됩니다. 캡처 그룹별 매칭 내용도 표시되어 문자열 검증·추출 로직을 개발할 때 필수적입니다. g·i·m 플래그 토글을 지원하며, 이메일·전화번호·URL 등 자주 쓰는 패턴 예제도 제공하여 정규식 입문자도 쉽게 시작할 수 있습니다.',
     faqs: [
       { question: '정규표현식이란?', answer: '문자열 안에서 특정 패턴을 탐색·치환하는 표현식입니다. 이메일 유효성 검사, 전화번호 추출 등에 쓰입니다.' },
       { question: '자주 쓰는 정규식 패턴은?', answer: '이메일: ^[\\w.-]+@[\\w.-]+\\.\\w+$, 한국 휴대폰: ^01[016789]-\\d{3,4}-\\d{4}$, 숫자만: ^\\d+$ 등이 대표적입니다.' },
@@ -999,7 +999,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['base64', 'url-encoder'],
     seoTitle: 'QR코드 생성기 - 무료 QR 코드 만들기',
     seoDescription: 'URL·텍스트·연락처를 QR코드로 생성. 크기·색상 설정 후 PNG 다운로드.',
-    seoContent: '## QR코드 생성기란?\n\nURL·텍스트·연락처 정보를 QR코드 이미지로 만들어 줍니다. 크기와 전경·배경 색상을 지정하고 PNG로 내려받아 명함·포스터·웹사이트 등에 활용할 수 있습니다.',
+    seoContent: '## QR코드 생성기란?\n\nURL·텍스트·연락처 정보를 QR코드 이미지로 만들어 줍니다. 크기와 전경·배경 색상을 자유롭게 지정하고 PNG로 내려받아 명함·포스터·웹사이트·전단지 등에 활용할 수 있습니다. 와이파이 접속 정보를 담은 QR코드도 생성 가능하여 매장·사무실에서 비밀번호 공유 없이 편리하게 연결할 수 있습니다.',
     faqs: [
       { question: 'QR코드에 얼마나 많은 정보를 담을 수 있나요?', answer: '숫자 최대 약 3,000자, 영문 약 2,000자까지 담을 수 있습니다. URL은 200자 이내로 유지하는 것이 좋습니다.' },
       { question: 'QR코드 색상을 바꿔도 스캔되나요?', answer: '색상 변경이 가능하지만, 코드와 배경의 대비가 충분해야 합니다. 짙은 코드 + 밝은 배경 조합이 인식률이 가장 좋습니다.' },
@@ -1017,7 +1017,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['random-string-generator', 'hash-generator'],
     seoTitle: 'UUID 생성기 - UUID/GUID 생성',
     seoDescription: 'UUID v4(랜덤) 형식의 고유 ID 생성. 개발, 데이터베이스 설계에 유용합니다.',
-    seoContent: '## UUID 생성기란?\n\nUUID v4(랜덤 기반) 형식의 고유 식별자를 즉석에서 만들어 줍니다. 128비트 랜덤 값이라 중복 확률이 사실상 0에 가깝습니다. DB 기본키, API 토큰, 세션 식별자 등에 폭넓게 쓰입니다.',
+    seoContent: '## UUID 생성기란?\n\nUUID v4(랜덤 기반) 형식의 고유 식별자를 즉석에서 만들어 줍니다. 128비트 랜덤 값이라 중복 확률이 사실상 0에 가깝습니다. DB 기본키, API 토큰, 세션 식별자, 파일 이름 등에 폭넓게 쓰입니다. 한 번에 여러 개를 일괄 생성하고 클립보드에 복사할 수 있어, 테스트 데이터 준비나 마이그레이션 작업에서 시간을 크게 절약해 줍니다.',
     faqs: [
       { question: 'UUID가 중복될 가능성은?', answer: '사실상 불가능합니다. 122비트 랜덤 공간이라 10억 개를 찍어내도 충돌 확률은 천문학적으로 낮습니다.' },
       { question: 'UUID v4와 v1의 차이는?', answer: 'v1은 MAC 주소와 타임스탬프로 생성되고, v4는 순수 랜덤입니다. 보안 측면에서는 v4가 우수합니다.' },
@@ -1035,7 +1035,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['uuid-generator', 'random-string-generator'],
     seoTitle: '더미 데이터 생성기 - 테스트 데이터 생성',
     seoDescription: '테스트용 가짜 데이터 생성. 이름, 이메일, 주소, 전화번호 등 다양한 필드 지원. JSON/CSV 출력.',
-    seoContent: '## 더미 데이터 생성기란?\n\n개발·테스트 목적의 가짜 데이터를 한꺼번에 만들어 줍니다. 이름·이메일·전화번호·주소·회사명 등 다양한 필드를 조합하고 JSON 또는 CSV로 내보낼 수 있습니다.',
+    seoContent: '## 더미 데이터 생성기란?\n\n개발·테스트 목적의 가짜 데이터를 한꺼번에 만들어 줍니다. 이름·이메일·전화번호·주소·회사명·날짜·UUID 등 다양한 필드를 자유롭게 조합하고 JSON 또는 CSV 형식으로 내보낼 수 있습니다. 프론트엔드 목업, API 응답 시뮬레이션, 데이터베이스 시딩 등 실무 개발 워크플로에 바로 투입 가능합니다.',
     faqs: [
       { question: '어떤 데이터를 생성할 수 있나요?', answer: '이름·이메일·전화번호·주소·회사명·직업·날짜·숫자·UUID·Lorem Ipsum 등을 조합해 생성 가능합니다.' },
       { question: '몇 건까지 생성 가능한가요?', answer: '한 번에 최대 100건까지 일괄 생성할 수 있습니다.' },
@@ -1053,7 +1053,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['date-calculator', 'unix-timestamp'],
     seoTitle: '타이머/스톱워치 - 뽀모도로 타이머',
     seoDescription: '카운트다운 타이머, 스톱워치, 뽀모도로(25분 집중) 타이머. 공부, 업무에 유용합니다.',
-    seoContent: '## 타이머/스톱워치란?\n\n카운트다운·경과 시간 측정·뽀모도로(25분 집중+5분 휴식) 세 가지 모드를 하나의 도구에서 제공합니다. 공부·업무 집중·운동 등 시간 관리에 활용하세요.',
+    seoContent: '## 타이머/스톱워치란?\n\n카운트다운·경과 시간 측정·뽀모도로(25분 집중+5분 휴식) 세 가지 모드를 하나의 도구에서 제공합니다. 공부·업무 집중·운동 인터벌·요리 시간 관리 등 다양한 상황에서 활용할 수 있으며, 종료 시 알림음과 브라우저 알림으로 다른 작업 중에도 시간 완료를 놓치지 않습니다.',
     faqs: [
       { question: '뽀모도로 기법이란?', answer: '25분 집중과 5분 휴식을 반복하는 시간 관리 기법입니다. 4세트를 마치면 15~30분간 긴 휴식을 갖습니다.' },
       { question: '브라우저를 닫으면 타이머가 사라지나요?', answer: '탭을 닫거나 새로고침하면 리셋됩니다. 사용 중에는 탭을 열어 두세요.' },
@@ -1090,7 +1090,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['percentage', 'unit-converter'],
     seoTitle: '비율 계산기 - 화면 비율, 황금비 계산',
     seoDescription: '16:9, 4:3 등 화면 비율 계산, 이미지 종횡비 계산, 황금비 계산. 디자인에 유용.',
-    seoContent: '## 비율 계산기란?\n\n화면·이미지의 종횡비(Aspect Ratio)를 산출합니다. 한쪽 치수를 입력하면 16:9, 4:3 등 선택한 비율에 맞는 나머지 값이 자동 계산됩니다. 황금비(1:1.618) 계산도 지원합니다.',
+    seoContent: '## 비율 계산기란?\n\n화면·이미지의 종횡비(Aspect Ratio)를 산출합니다. 한쪽 치수를 입력하면 16:9, 4:3, 21:9 등 선택한 비율에 맞는 나머지 값이 자동 계산됩니다. 황금비(1:1.618) 계산도 지원하여 로고·레이아웃 디자인에 활용할 수 있으며, 영상 편집 시 해상도 맞춤이나 썸네일 크기 설정에도 편리합니다.',
     faqs: [
       { question: '16:9 비율이란?', answer: '가로 16 대 세로 9 비율로, HD·FHD·4K 등 대부분의 모니터와 TV에서 채택하고 있습니다.' },
       { question: '황금비(1:1.618)란?', answer: '자연과 예술에서 가장 조화롭다고 여겨지는 비율입니다. 로고 디자인, 레이아웃 설계 등에 활용됩니다.' },
@@ -1108,7 +1108,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['date-calculator', 'bmi-calculator'],
     seoTitle: '나이 계산기 - 만 나이, 한국 나이, 띠',
     seoDescription: '생년월일로 만 나이, 한국 나이, 띠, 생존 일수 계산. 다음 생일까지 D-day도 확인.',
-    seoContent: '## 나이 계산기란?\n\n생년월일을 넣으면 만 나이, 한국 나이(세는 나이), 12지 띠, 생존 일수, 다음 생일까지 남은 일수를 한꺼번에 보여 줍니다. 2023년부터 한국 공식 나이 기준은 만 나이입니다.',
+    seoContent: '## 나이 계산기란?\n\n생년월일을 넣으면 만 나이, 한국 나이(세는 나이), 12지 띠, 생존 일수, 다음 생일까지 남은 일수를 한꺼번에 보여 줍니다. 2023년부터 한국 공식 나이 기준이 만 나이로 통일되어 혼란이 줄었지만, 여전히 일상에서 세는 나이를 쓰는 경우가 있어 두 가지를 함께 확인할 수 있도록 구성했습니다.',
     faqs: [
       { question: '만 나이와 한국 나이의 차이는?', answer: '만 나이는 생일을 지나야 한 살이 늘고, 한국 나이는 태어난 해 기준으로 1월 1일마다 올라갑니다. 2023년부터 만 나이가 공식 기준입니다.' },
       { question: '띠(12지신)는 어떻게 계산하나요?', answer: '출생 연도를 12로 나눈 나머지에 따라 결정됩니다. 쥐→소→호랑이→토끼… 순으로 12간지가 순환합니다.' },
@@ -1126,7 +1126,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['unit-converter', 'age-calculator'],
     seoTitle: 'BMI 계산기 - 체질량지수, 비만도 확인',
     seoDescription: '키와 체중으로 BMI(체질량지수) 계산. 저체중, 정상, 과체중, 비만 판정. 이상체중 안내.',
-    seoContent: '## BMI 계산기란?\n\n키(cm)와 체중(kg)을 넣으면 BMI = 체중/(키m)²를 산출합니다. 18.5 미만 저체중, 18.5~23 정상, 23~25 과체중, 25 이상 비만으로 분류하며 이상 체중도 안내합니다.',
+    seoContent: '## BMI 계산기란?\n\n키(cm)와 체중(kg)을 넣으면 BMI = 체중/(키m)²를 산출합니다. 아시아(한국) 기준으로 18.5 미만 저체중, 18.5~23 정상, 23~25 과체중, 25 이상 비만으로 분류하며, 정상 범위에 해당하는 이상 체중도 함께 안내합니다. 근육량이 많으면 BMI가 높아도 비만이 아닐 수 있으므로 참고 지표로 활용하세요.',
     faqs: [
       { question: 'BMI 정상 범위는?', answer: 'WHO 기준 18.5~24.9, 아시아(한국) 기준 18.5~22.9가 정상 범위입니다.' },
       { question: 'BMI가 높으면 무조건 비만인가요?', answer: '반드시 그렇지는 않습니다. 근육량이 많으면 BMI가 높아도 비만이 아닐 수 있어 체지방률도 함께 봐야 합니다.' },
@@ -1145,7 +1145,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['lotto-generator', 'uuid-generator'],
     seoTitle: '랜덤 추첨기 - 숫자/목록 무작위 뽑기',
     seoDescription: '숫자 범위 또는 목록에서 무작위 추첨. 제비뽑기, 당첨자 추첨, 순서 정하기에 유용.',
-    seoContent: '## 랜덤 추첨기란?\n\n숫자 범위(1~100 등)에서 무작위 숫자를 뽑거나 목록 중 항목을 무작위로 골라 줍니다. 이벤트 당첨자 선정, 제비뽑기, 팀 분배, 발표 순서 결정 등에 활용됩니다.',
+    seoContent: '## 랜덤 추첨기란?\n\n숫자 범위(1~100 등)에서 무작위 숫자를 뽑거나 목록 중 항목을 무작위로 골라 줍니다. 이벤트 당첨자 선정, 제비뽑기, 팀 분배, 발표 순서 결정 등에 활용됩니다. 중복 제외 옵션으로 한 번에 여러 개를 뽑을 수 있으며, 모든 처리가 브라우저에서만 이루어져 공정성이 보장됩니다.',
     faqs: [
       { question: '추첨 결과가 조작되지 않나요?', answer: 'JavaScript Math.random() 기반의 완전한 무작위입니다. 모든 처리가 사용자 브라우저 안에서만 진행됩니다.' },
       { question: '중복 없이 여러 개를 뽑을 수 있나요?', answer: '중복 제외 옵션을 켜면 이미 뽑힌 항목은 다시 등장하지 않습니다.' },
@@ -1163,7 +1163,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['unit-converter', 'ratio-calculator'],
     seoTitle: 'CSS 단위 변환기 - px/rem/em/vw 변환',
     seoDescription: 'px, rem, em, pt, vw, vh CSS 단위 상호 변환. 기준 폰트 크기 설정 가능.',
-    seoContent: '## CSS 단위 변환기란?\n\nCSS에서 쓰이는 px·rem·em·pt·vw·vh 단위를 즉시 상호 전환합니다. 기준 폰트 크기(기본 16px)를 설정하면 rem·em 변환 결과가 정확해집니다.',
+    seoContent: '## CSS 단위 변환기란?\n\nCSS에서 쓰이는 px·rem·em·pt·vw·vh 단위를 즉시 상호 전환합니다. 기준 폰트 크기(기본 16px)를 설정하면 rem·em 변환 결과가 정확해집니다. 반응형 웹 디자인에서 px을 rem으로 전환하거나, 디자인 시안의 pt 값을 px로 확인할 때 특히 유용하며, 결과를 바로 복사해 코드에 붙여넣을 수 있습니다.',
     faqs: [
       { question: 'rem과 em의 차이는?', answer: 'rem은 html 루트 폰트 크기 기준이고, em은 부모 요소의 폰트 크기 기준입니다. rem이 일관성이 높아 더 자주 쓰입니다.' },
       { question: '1rem은 몇 px인가요?', answer: '브라우저 기본값은 1rem = 16px입니다. html { font-size }를 바꾸면 값이 달라집니다.' },
@@ -1182,7 +1182,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['loan-calculator', 'interest-calculator', 'bmi-calculator'],
     seoTitle: '연봉 계산기 - 실수령액, 4대보험, 소득세 계산',
     seoDescription: '연봉으로 월 실수령액 계산. 국민연금, 건강보험, 소득세 등 공제 항목별 확인. 2025년 기준.',
-    seoContent: '## 연봉 계산기란?\n\n세전 연봉을 넣으면 국민연금·건강보험·장기요양·고용보험과 소득세·지방소득세를 공제한 뒤 실제 손에 쥐는 월급을 산출합니다.',
+    seoContent: '## 연봉 계산기란?\n\n세전 연봉을 넣으면 국민연금·건강보험·장기요양·고용보험과 소득세·지방소득세를 공제한 뒤 실제 손에 쥐는 월급을 산출합니다. 비과세 항목(식대 등)과 부양가족 수를 설정하면 더 정확한 결과를 얻을 수 있으며, 각 공제 항목별 금액이 상세히 표시되어 급여 명세서를 미리 파악하기 좋습니다.',
     faqs: [
       { question: '비과세 금액이란?', answer: '식대(월 20만 원 한도)나 차량유지비처럼 과세 대상에서 빠지는 금액을 말합니다.' },
       { question: '부양가족 수는 어떻게 계산하나요?', answer: '본인 포함, 배우자·부모·자녀 등 소득이 없거나 적은 가족 수를 말합니다.' },
@@ -1201,7 +1201,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['interest-calculator', 'salary-calculator', 'percentage'],
     seoTitle: '대출 상환 계산기 - 월 상환금, 이자 계산',
     seoDescription: '대출 원금, 이자율, 기간으로 월 상환금 계산. 원리금균등/원금균등/만기일시 비교. 상환 스케줄 CSV 다운로드.',
-    seoContent: '## 대출 상환 계산기란?\n\n대출 원금·연이율·기간을 입력하면 월 상환금과 총 이자를 산출합니다. 원리금균등·원금균등·만기일시 세 방식의 결과를 나란히 비교하고 월별 상환 스케줄도 확인 가능합니다.',
+    seoContent: '## 대출 상환 계산기란?\n\n대출 원금·연이율·기간을 입력하면 월 상환금과 총 이자를 산출합니다. 원리금균등·원금균등·만기일시 세 방식의 결과를 나란히 비교하고 월별 상환 스케줄도 확인 가능합니다. 거치기간 설정과 CSV 다운로드를 지원하여 주택담보대출·전세대출·사업자 대출 등 다양한 상환 시나리오를 미리 시뮬레이션할 수 있습니다.',
     faqs: [
       { question: '거치기간이란?', answer: '원금은 갚지 않고 이자만 내는 기간입니다. 입주 전 주택담보대출이나 사업자 대출에서 많이 쓰입니다.' },
       { question: '어떤 상환 방식이 유리한가요?', answer: '총 이자 부담은 원금균등이 적으나 초기 상환액이 큽니다. 소득 상황에 맞춰 선택하세요.' },
@@ -1219,7 +1219,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['loan-calculator', 'salary-calculator', 'percentage'],
     seoTitle: '이자 계산기 - 단리/복리 이자 계산',
     seoDescription: '단리, 복리 이자 계산. 원금, 이율, 기간 입력으로 만기 금액 확인. 월/분기/연 복리 비교.',
-    seoContent: '## 이자 계산기란?\n\n원금·이율·기간을 넣으면 단리 또는 복리로 이자 및 만기 수령액을 산출합니다. 예금·적금 수익률 비교, 투자 시뮬레이션, 대출 이자 추정 등에 활용됩니다.',
+    seoContent: '## 이자 계산기란?\n\n원금·이율·기간을 넣으면 단리 또는 복리로 이자 및 만기 수령액을 산출합니다. 예금·적금 수익률 비교, 투자 시뮬레이션, 대출 이자 추정 등에 활용됩니다. 월·분기·반기·연 단위 복리 주기를 선택하여 결과를 비교할 수 있으며, 기간이 길수록 단리와 복리의 차이가 얼마나 벌어지는지 직접 확인할 수 있습니다.',
     faqs: [
       { question: '복리 주기란?', answer: '이자를 원금에 가산하는 빈도를 뜻합니다. 월 복리는 매달, 분기 복리는 3개월마다 이자가 재투자됩니다.' },
       { question: '단리 vs 복리 차이는?', answer: '단리는 원금에만 이자를 매기고, 복리는 이자에도 이자가 쌓여 기간이 길수록 차이가 급격히 벌어집니다.' },
@@ -1281,7 +1281,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['saju-compatibility', 'saju-reading', 'team-picker'],
     seoTitle: '사주팀플 - 최대 20명 단체 궁합 분석',
     seoDescription: '팀원 최대 20명의 사주를 한번에 분석합니다. 모든 1:1 조합 궁합 + 팀 오행 균형 확인. 공유 링크로 팀원과 결과를 나눠보세요.',
-    seoContent: '## 팀 사주 궁합이란?\n\n팀 사주 궁합은 여러 명의 사주를 한번에 분석하여 팀 내 모든 조합의 궁합을 확인하는 도구입니다. 최대 20명까지 참여 가능하며, 팀 전체의 오행 균형도 함께 분석합니다.',
+    seoContent: '## 팀 사주 궁합이란?\n\n팀 사주 궁합은 여러 명의 사주를 한번에 분석하여 팀 내 모든 조합의 궁합을 확인하는 도구입니다. 최대 20명까지 참여 가능하며, 모든 1:1 조합의 궁합 점수와 팀 전체의 오행(목·화·토·금·수) 균형도 함께 분석합니다. 공유 링크로 팀원들과 결과를 나눌 수 있어 회식이나 워크숍에서 아이스브레이킹 콘텐츠로 활용하기 좋습니다.',
     faqs: [
       { question: '최대 몇 명까지 분석할 수 있나요?', answer: '20명까지 참여할 수 있으며, 20명이면 총 190가지 1:1 조합이 산출됩니다.' },
       { question: '공유 링크로 다른 사람도 볼 수 있나요?', answer: '공유 링크 안에 팀명과 구성원 정보가 담겨 있어 같은 결과 페이지를 볼 수 있습니다.' },
@@ -1299,7 +1299,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['birthday-compatibility', 'fortune-cookie'],
     seoTitle: '오늘의 타로 - 무료 타로 카드 뽑기',
     seoDescription: '오늘의 타로 카드를 무료로 뽑아보세요. 메이저 아르카나 22장 중 1장으로 오늘의 조언을 확인!',
-    seoContent: '## 오늘의 타로란?\n\n메이저 아르카나 22장 가운데 한 장을 무료로 뽑을 수 있습니다. 정방향·역방향 해석과 함께 오늘의 조언 메시지를 전합니다. 하루 1회 한정이며 자정에 리셋됩니다.',
+    seoContent: '## 오늘의 타로란?\n\n메이저 아르카나 22장 가운데 한 장을 무료로 뽑을 수 있습니다. 정방향·역방향 해석과 함께 오늘 하루를 위한 조언 메시지를 전합니다. 하루 1회 한정이며 자정에 리셋되므로 매일 아침 가벼운 마음으로 카드를 뽑아 보세요. 결과를 친구에게 링크로 공유하는 기능도 제공합니다.',
     faqs: [
       { question: '하루에 몇 번 뽑을 수 있나요?', answer: '하루 한 번만 뽑을 수 있으며, 자정(00:00)이 되면 다시 뽑기가 활성화됩니다.' },
       { question: '역방향은 나쁜 의미인가요?', answer: '역방향이 곧 부정을 뜻하지 않습니다. 다른 관점에서의 메시지를 전하며, 내면 성찰이나 주의 사항을 안내합니다.' },
@@ -1356,7 +1356,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['random-picker', 'ladder-game'],
     seoTitle: '룰렛 선택기 - 돌려서 무작위 선택',
     seoDescription: '항목을 입력하고 룰렛을 돌려 무작위 선택. 점심 메뉴, 당번 정하기에 재미있게!',
-    seoContent: '## 룰렛 선택기란?\n\n선택지를 넣고 룰렛을 돌리면 무작위로 하나가 결정됩니다. 점심 메뉴 정하기, 청소 당번 배정, 게임 벌칙 결정 등에 긴장감과 함께 활용하세요!',
+    seoContent: '## 룰렛 선택기란?\n\n선택지를 넣고 룰렛을 돌리면 무작위로 하나가 결정됩니다. 점심 메뉴 정하기, 청소 당번 배정, 게임 벌칙 결정, 여행지 선택 등에 긴장감과 함께 활용하세요! 2~20개 항목을 자유롭게 추가할 수 있고, 회전 애니메이션이 서서히 멈추며 결과가 공개되어 다 같이 보는 재미가 있습니다.',
     faqs: [
       { question: '룰렛이 멈추는 위치는 조작할 수 있나요?', answer: '조작 불가합니다. 전 항목이 동일한 확률로 선택됩니다.' },
       { question: '항목을 몇 개까지 추가할 수 있나요?', answer: '2개에서 20개까지 넣을 수 있습니다. 20개가 넘으면 가독성이 떨어질 수 있습니다.' },
@@ -1375,7 +1375,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['roulette-selector', 'order-picker'],
     seoTitle: '사다리 타기 - 공정한 무작위 매칭',
     seoDescription: '참가자와 결과를 입력하면 사다리로 무작위 매칭. 당번, 역할 정하기에 공정하게!',
-    seoContent: '## 사다리 타기란?\n\n참가자 이름과 결과(벌칙, 역할 등)를 넣으면 가로선이 무작위로 배치된 사다리로 매칭됩니다. 술래 정하기, 역할 배정, 벌칙 결정 등에 공정하게 쓸 수 있습니다.',
+    seoContent: '## 사다리 타기란?\n\n참가자 이름과 결과(벌칙, 역할 등)를 넣으면 가로선이 무작위로 배치된 사다리로 매칭됩니다. 술래 정하기, 역할 배정, 벌칙 결정, 선물 교환 등에 공정하게 쓸 수 있습니다. 2~20명까지 지원하며, 사다리를 타는 과정이 애니메이션으로 보여져 결과 발표의 긴장감을 더해 줍니다.',
     faqs: [
       { question: '사다리 결과는 공정한가요?', answer: '완전한 랜덤입니다. 가로선 배치가 무작위이므로 모든 참가자의 확률이 동일합니다.' },
       { question: '참가자 수 제한이 있나요?', answer: '2명부터 20명까지 지원합니다. 인원이 많을수록 가로선이 늘어나 사다리가 복잡해집니다.' },
@@ -1412,7 +1412,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['lotto-generator', 'random-string-generator'],
     seoTitle: '반응속도 테스트 - 반사신경 측정',
     seoDescription: '화면이 바뀌면 클릭! 반응속도를 밀리초 단위로 정밀 측정. 평균 200~250ms가 정상.',
-    seoContent: '## 반응속도 테스트란?\n\n화면이 빨간색에서 녹색으로 전환되는 순간 최대한 빨리 클릭하세요. 밀리초(ms) 단위로 반응 시간을 정밀 측정합니다. 일반인 평균은 200~250ms이고, 프로 게이머는 150ms 이하를 기록하기도 합니다.',
+    seoContent: '## 반응속도 테스트란?\n\n화면이 빨간색에서 녹색으로 전환되는 순간 최대한 빨리 클릭하세요. 밀리초(ms) 단위로 반응 시간을 정밀 측정합니다. 일반인 평균은 200~250ms이고, 프로 게이머는 150ms 이하를 기록하기도 합니다. 5회 측정 후 평균·최솟값·최댓값을 종합 리포트로 보여 주어 자신의 반사신경 수준을 객관적으로 파악할 수 있습니다.',
     faqs: [
       { question: '평균 반응속도는 얼마인가요?', answer: '보통 200~250ms가 평균입니다. 150ms 이하면 상당히 빠른 편이고, 300ms 이상이면 느린 축에 듭니다.' },
       { question: '반응속도는 훈련으로 빨라질 수 있나요?', answer: '꾸준히 연습하면 10~20% 정도 향상이 가능합니다. 프로 게이머 중에는 반복 훈련으로 150ms 아래를 기록하는 경우도 있습니다.' },
@@ -1431,7 +1431,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['reaction-time-test', 'random-string-generator', 'uuid-generator'],
     seoTitle: '로또 번호 생성기 - 무작위 로또 번호 추첨',
     seoDescription: '1~45 중 중복 없는 6개 번호 무작위 생성. 보너스 번호 포함. 행운을 빌어요!',
-    seoContent: '## 로또 번호 생성기란?\n\n한국 로또 6/45 규칙에 따라 1~45에서 중복 없이 6개 번호를 랜덤 추출합니다. 보너스 번호도 선택적으로 함께 만들 수 있으며, 번호 고민을 가볍게 해결해 줍니다.',
+    seoContent: '## 로또 번호 생성기란?\n\n한국 로또 6/45 규칙에 따라 1~45에서 중복 없이 6개 번호를 랜덤 추출합니다. 보너스 번호도 선택적으로 함께 만들 수 있으며, 번호 고민을 가볍게 해결해 줍니다. 한 번에 여러 세트를 생성할 수 있고, 번호가 오름차순으로 정렬되어 표시됩니다. 1등 당첨 확률은 약 814만 분의 1이니 재미로 즐겨 주세요!',
     faqs: [
       { question: '로또 번호가 정말 무작위인가요?', answer: '완전한 랜덤이며 각 번호의 선택 확률은 균일합니다. 이전 생성 결과가 다음 결과에 영향을 주지 않습니다.' },
       { question: '이 번호로 당첨될 확률은?', answer: '1등 당첨 확률은 약 814만 분의 1입니다. 어떤 조합을 고르든 확률은 동일합니다.' },
@@ -1449,7 +1449,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['random-decision-maker', 'nickname-generator'],
     seoTitle: '포춘 쿠키 - 오늘의 랜덤 문장',
     seoDescription: '버튼을 누르면 오늘을 위한 짧은 메시지가 나옵니다. 가볍게 쉬어가세요.',
-    seoContent: '## 포춘 쿠키란?\n\n버튼을 누르면 중국 식당 포춘 쿠키처럼 짧은 메시지가 나타납니다. 격려·위로·재치 있는 조언 등 다양한 문구로 하루를 환기해 보세요.',
+    seoContent: '## 포춘 쿠키란?\n\n버튼을 누르면 중국 식당 포춘 쿠키처럼 짧은 메시지가 나타납니다. 격려·위로·재치 있는 조언 등 수백 종류의 문구가 준비되어 있어 매번 새로운 메시지를 만날 수 있습니다. 짧은 휴식 시간에 기분 전환이 필요할 때, 또는 친구에게 응원 메시지를 보내고 싶을 때 가볍게 활용하기 좋습니다.',
     faqs: [
       { question: '포춘 쿠키는 운세인가요?', answer: '운세가 아니라 기분 전환용 랜덤 메시지입니다. 긍정적인 문구로 구성되어 있습니다.' },
       { question: '같은 문장이 계속 나올 수 있나요?', answer: '수백 종류의 문구가 준비되어 있어 연속으로 같은 메시지가 뜰 가능성은 매우 낮습니다.' },
@@ -1468,7 +1468,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['random-string-generator', 'lotto-generator'],
     seoTitle: '랜덤 닉네임 생성기 - 한글 닉네임 조합 추천',
     seoDescription: '한글 닉네임 랜덤 생성. 6가지 스타일, 내 단어 조합, 필터 기능 지원.',
-    seoContent: '## 랜덤 닉네임 생성기란?\n\n게임·SNS·커뮤니티용 한글 닉네임을 자동 조합합니다. 감성·강한·귀여운·무난·게임·웃긴 6가지 테마와 내 단어 결합 기능을 탑재했습니다.',
+    seoContent: '## 랜덤 닉네임 생성기란?\n\n게임·SNS·커뮤니티용 한글 닉네임을 자동 조합합니다. 감성·강한·귀여운·무난·게임·웃긴 6가지 테마 중 원하는 스타일을 선택할 수 있으며, 내 이름이나 별명을 넣으면 그 단어가 포함된 닉네임을 생성해 줍니다. 마음에 드는 닉네임은 바로 클립보드에 복사하여 사용할 수 있습니다.',
     faqs: [
       { question: '내 단어 조합은 어떻게 사용하나요?', answer: '원하는 단어(이름, 별명 등)를 넣으면 해당 단어가 포함된 닉네임을 자동으로 만들어 줍니다.' },
       { question: '생성된 닉네임이 이미 사용 중일 수 있나요?', answer: '실제 서비스의 닉네임 중복 여부는 체크하지 않습니다. 마음에 든다면 직접 해당 서비스에서 확인하세요.' },
@@ -1486,7 +1486,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['reaction-time-test', 'timing-test'],
     seoTitle: '색상 인지 테스트 - 색 구별 능력 측정',
     seoDescription: '비슷한 색상 중 같은 색 찾기. 미세한 색 차이를 구별하는 능력을 테스트합니다.',
-    seoContent: '## 색상 인지 테스트란?\n\n미세하게 다른 색상 타일 중에서 정확히 같은 색을 골라내는 테스트입니다. 레벨이 올라갈수록 차이가 작아집니다. 디자이너·예술가의 색감 민감도를 측정해 보세요.',
+    seoContent: '## 색상 인지 테스트란?\n\n미세하게 다른 색상 타일 중에서 정확히 같은 색을 골라내는 테스트입니다. 레벨이 올라갈수록 색 차이가 미세해져 난이도가 높아집니다. 디자이너·예술가·일러스트레이터의 색감 민감도를 측정하거나, 일상적인 색 구별 능력을 점검하는 데 활용하세요. 모니터 캘리브레이션 상태에 따라 결과가 달라질 수 있습니다.',
     faqs: [
       { question: '색상 인지 능력은 훈련으로 좋아지나요?', answer: '훈련으로 어느 정도 향상 가능합니다. 디자이너·화가처럼 색을 자주 다루는 사람일수록 민감도가 높습니다.' },
       { question: '모니터에 따라 결과가 달라지나요?', answer: '모니터 캘리브레이션 상태에 따라 결과가 달라질 수 있습니다. IPS 패널이 TN 패널보다 색 재현력이 뛰어납니다.' },
@@ -1521,7 +1521,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['random-picker', 'roulette-selector'],
     seoTitle: '무작위 결정기 - Yes/No 동전 던지기',
     seoDescription: '결정 장애 해결! Yes/No, 동전 던지기, 숫자 뽑기로 빠르게 결정합니다.',
-    seoContent: '## 무작위 결정기란?\n\n고르지 못하겠을 때 대신 결정해 줍니다. Yes/No, 동전 던지기(앞/뒤), 숫자 뽑기, 커스텀 선택지 등 여러 모드를 제공합니다. 결정 장애 해소의 도우미!',
+    seoContent: '## 무작위 결정기란?\n\n고르지 못하겠을 때 대신 결정해 줍니다. Yes/No, 동전 던지기(앞/뒤), 숫자 뽑기, 커스텀 선택지 등 여러 모드를 제공합니다. 결정 장애를 깔끔하게 해소해 주며, 모든 결과는 완전한 무작위입니다. 랜덤 결과에 대한 자신의 반응을 관찰하면 실은 마음속에 이미 있던 답을 발견하는 데 도움이 됩니다.',
     faqs: [
       { question: '결과가 정말 무작위인가요?', answer: 'JavaScript의 랜덤 함수로 동작하므로 결과는 완전한 무작위입니다.' },
       { question: '동전 던지기의 앞면/뒷면 확률은?', answer: '앞면·뒷면 각각 정확히 50%입니다. 실제 동전과 달리 물리적 편향이 전혀 없습니다.' },
@@ -1539,7 +1539,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['ladder-game', 'roulette-selector'],
     seoTitle: '순번 정하기 - 무작위 순서 생성',
     seoDescription: '이름/항목 입력 후 무작위 순서 생성. 발표 순서, 회의 순서 공정하게 정하기.',
-    seoContent: '## 순번 정하기란?\n\n이름이나 항목을 넣으면 무작위로 섞어 순서를 매겨 줍니다. 발표 순서, 회의 발언 순, 게임 진행 순서를 공정하게 결정할 때 유용합니다.',
+    seoContent: '## 순번 정하기란?\n\n이름이나 항목을 넣으면 무작위로 섞어 순서를 매겨 줍니다. 발표 순서, 회의 발언 순, 게임 진행 순서, 수업 발표 순번을 공정하게 결정할 때 유용합니다. 줄바꿈으로 항목을 구분하여 입력하면 인원 제한 없이 사용 가능하며, 결과를 복사하여 메신저로 바로 공유할 수 있습니다.',
     faqs: [
       { question: '순서가 공정한가요?', answer: '완전한 랜덤이며, 모든 항목이 같은 확률로 각 위치에 배치됩니다.' },
       { question: '몇 명까지 순번을 정할 수 있나요?', answer: '인원 제한 없이 사용 가능합니다. 줄바꿈으로 항목을 구분하여 입력하면 됩니다.' },
@@ -1577,7 +1577,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['rest-recommender', 'menu-recommender'],
     seoTitle: '주말 뭐할지 - 주말 활동 추천',
     seoDescription: '에너지, 예산, 동행인 선택하면 주말 활동 추천. 주말 계획 세우기에 유용.',
-    seoContent: '## 주말 뭐할지란?\n\n에너지 수준·예산·동행인을 고르면 어울리는 주말 활동을 추천합니다. 주말 계획이 막연할 때 아이디어를 얻기 좋습니다.',
+    seoContent: '## 주말 뭐할지란?\n\n에너지 수준·예산·동행인을 고르면 어울리는 주말 활동을 추천합니다. 주말 계획이 막연할 때 구체적인 아이디어를 얻기 좋으며, 혼자·커플·친구·가족 등 동행인 유형에 따라 맞춤 추천이 달라집니다. 저예산부터 고예산까지 상황에 맞는 활동을 비교표로 보여 주어 빠르게 결정할 수 있습니다.',
     faqs: [
       { question: '혼자 할 수 있는 활동도 추천하나요?', answer: '동행인을 "혼자"로 설정하면 1인용 활동을 추천합니다.' },
       { question: '예산별로 다른 추천이 나오나요?', answer: '저예산·중간·고예산에 따라 추천 활동이 달라집니다.' },
@@ -1594,7 +1594,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['weekend-recommender', 'menu-recommender'],
     seoTitle: '휴식 방식 추천 - 피로 유형별 휴식법',
     seoDescription: '피로 유형, 시간, 스타일 선택하면 휴식 방법 추천. 효과적인 휴식을 취하세요.',
-    seoContent: '## 휴식 방식 추천이란?\n\n피로 유형(신체·정신·감정), 가용 시간, 선호 스타일을 고르면 맞춤형 휴식법을 제안합니다. 무작정 쉬기보다 자신에게 맞는 방식으로 쉬어야 회복이 빠릅니다.',
+    seoContent: '## 휴식 방식 추천이란?\n\n피로 유형(신체·정신·감정), 가용 시간, 선호 스타일을 고르면 맞춤형 휴식법을 제안합니다. 무작정 쉬기보다 자신에게 맞는 방식으로 쉬어야 회복이 빠릅니다. 10분 명상부터 주말 하루 힐링 코스까지 시간대별 추천이 가능하며, 신체 피로엔 스트레칭, 정신 피로엔 산책, 감정 피로엔 취미 활동 등 유형에 따른 구체적 방법을 안내합니다.',
     faqs: [
       { question: '피로 유형별로 휴식법이 다른가요?', answer: '신체 피로에는 스트레칭·수면, 정신 피로에는 명상·산책, 감정 피로에는 취미·대화 등 서로 다른 방법이 추천됩니다.' },
       { question: '짧은 시간에도 효과적인 휴식이 가능한가요?', answer: '10분 명상이나 5분 스트레칭도 충분히 효과가 있습니다. 가용 시간에 맞는 방법을 알려 드립니다.' },
@@ -1671,6 +1671,7 @@ export const tools: ToolMeta[] = [
     relatedSlugs: ['typing-practice', 'reaction-time-test'],
     seoTitle: '타자 게임 - 떨어지는 단어 타자 연습',
     seoDescription: '위에서 떨어지는 단어를 입력하는 타자 게임! 난이도 선택, 타수 측정, 점수 경쟁까지.',
+    seoContent: '## 타자 게임이란?\n\n화면 위에서 떨어지는 단어를 정확하고 빠르게 입력하여 점수를 올리는 타자 연습 게임입니다. 쉬움·보통·어려움 세 가지 난이도를 제공하며, 난이도가 높을수록 단어가 길어지고 낙하 속도가 빨라집니다. 분당 타자 수(CPM)와 정확도를 실시간으로 측정해 주므로 자신의 타이핑 실력을 객관적으로 파악하고 향상시키는 데 도움이 됩니다. 게임 오버 시 최종 점수와 통계를 확인할 수 있습니다.',
     faqs: [
       { question: '게임 방법이 어떻게 되나요?', answer: '위에서 내려오는 단어를 정확히 타이핑하고 Enter 또는 Space로 제출하세요. 바닥에 닿는 단어가 생기면 라이프가 깎입니다.' },
       { question: '난이도는 어떤 차이가 있나요?', answer: '쉬움: 짧은 단어+느린 속도, 보통: 중간 길이+중간 속도, 어려움: 긴 문장+빠른 속도로 진행됩니다.' },
@@ -1762,6 +1763,8 @@ export const tools: ToolMeta[] = [
     keywords: ['코드 비교', 'Diff', '텍스트 비교', '파일 비교'],
     relatedSlugs: ['text-diff', 'json-formatter'],
     seoTitle: '코드 비교 - 두 텍스트/코드 차이점 비교 도구',
+    seoDescription: '두 코드·텍스트의 차이를 줄 단위로 비교. Unified/Split 뷰 지원, 추가·삭제 하이라이트.',
+    seoContent: '## 코드 비교란?\n\n두 버전의 코드나 텍스트를 줄 단위로 비교하여 추가·삭제·변경된 부분을 색상으로 하이라이트해 줍니다. Unified View(위아래 통합)와 Split View(좌우 분할) 두 가지 모드를 지원하며, Git diff와 동일한 LCS 알고리즘을 사용합니다. 코드 리뷰, 설정 파일 변경점 확인, 문서 버전 비교 등 개발·운영 업무에서 변경 사항을 빠르게 파악할 때 유용합니다.',
     faqs: [
       { question: 'Unified View와 Split View 차이는?', answer: 'Unified는 위아래로 순서대로, Split은 좌우 나란히 보여 줍니다. 짧은 코드에는 Unified, 긴 코드에는 Split이 읽기 편합니다.' },
       { question: 'Git diff와 같은 건가요?', answer: '원리가 유사합니다. LCS(최장 공통 부분 수열) 알고리즘으로 차이를 산출합니다.' },
@@ -1873,6 +1876,7 @@ export const tools: ToolMeta[] = [
       { question: '어떤 형식의 줄번호를 제거할 수 있나요?', answer: '"1. ", "1: ", "1) ", "1] ", "1 " 등 흔히 쓰이는 줄번호 패턴을 자동 인식하여 없앱니다.' },
       { question: '시작 번호를 0부터 시작할 수 있나요?', answer: '시작 번호를 0으로 설정하면 0번부터 줄번호가 붙습니다.' },
       { question: '코드의 줄번호도 제거되나요?', answer: '줄 앞쪽의 줄번호 패턴만 삭제합니다. 본문이나 코드 안의 숫자는 건드리지 않습니다.' },
+      { question: '빈 줄에도 번호가 붙나요?', answer: '기본 설정에서는 빈 줄에도 번호가 추가됩니다. 빈 줄 제외 옵션을 켜면 내용이 있는 줄에만 번호를 매길 수 있습니다.' },
     ],
   },
   {
@@ -1886,6 +1890,8 @@ export const tools: ToolMeta[] = [
     keywords: ['인터넷 속도 테스트', '속도 측정', '다운로드 속도', '업로드 속도', '핑 테스트'],
     relatedSlugs: ['ip-lookup', 'file-size-calculator'],
     seoTitle: '인터넷 속도 테스트 - 다운로드/업로드 속도 측정',
+    seoDescription: '다운로드·업로드 속도와 핑(지연 시간)을 Cloudflare 기반으로 측정합니다. 설치 없이 브라우저에서 바로 확인.',
+    seoContent: '## 인터넷 속도 테스트란?\n\nCloudflare 글로벌 네트워크를 활용하여 다운로드·업로드 속도와 핑(지연 시간)을 측정합니다. 설치 없이 브라우저에서 바로 실행 가능하며, 결과가 실시간으로 표시됩니다. Wi-Fi와 유선 연결 성능 비교, ISP 계약 속도 검증, 화상 회의·게임 환경 점검 등에 유용합니다.',
     faqs: [
       { question: '측정 결과가 계약 속도보다 낮아요', answer: 'Wi-Fi 환경, 시간대별 트래픽 혼잡, 공유기 성능 등 여러 변수가 작용합니다. 유선 연결로 측정하면 더 정확한 값을 얻을 수 있습니다.' },
       { question: '핑이 낮을수록 좋은 건가요?', answer: '핑은 낮을수록 유리합니다. 20ms 이하이면 우수, 100ms를 넘으면 온라인 게임이나 화상 회의에서 지연이 체감될 수 있습니다.' },
@@ -1938,6 +1944,8 @@ export const tools: ToolMeta[] = [
     keywords: ['뽀모도로', '집중 타이머', '25분 타이머', '생산성 타이머'],
     relatedSlugs: ['timer'],
     seoTitle: '뽀모도로 타이머 - 25분 집중 생산성 타이머',
+    seoDescription: '25분 집중+5분 휴식 사이클로 생산성을 높이는 뽀모도로 타이머. 4세트 후 긴 휴식 자동 전환.',
+    seoContent: '## 뽀모도로 타이머란?\n\n뽀모도로 기법(Pomodoro Technique)에 기반한 집중 타이머입니다. 25분 집중과 5분 휴식을 한 세트로 반복하며, 4세트를 마치면 15~30분의 긴 휴식으로 자동 전환됩니다. 집중·휴식 시간을 자유롭게 설정할 수 있어 자신만의 리듬에 맞춰 사용할 수 있으며, 시각적 진행 표시와 알림음으로 몰입을 돕습니다.',
     faqs: [
       { question: '뽀모도로 기법이란?', answer: '25분 집중+5분 휴식을 한 세트로 반복하는 시간 관리 기법입니다. 4세트 후 15~30분 긴 휴식을 갖습니다.' },
       { question: '시간을 변경할 수 있나요?', answer: '설정에서 집중·휴식 시간을 자유롭게 조절할 수 있습니다.' },
