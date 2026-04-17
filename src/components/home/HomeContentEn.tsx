@@ -8,56 +8,62 @@ export function HomeContentEn() {
       {/* About */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          About ToolPiki
+          What is ToolPiki?
         </h2>
+        <p className="leading-relaxed mb-3">
+          ToolPiki is a collection of browser-based utilities designed to handle the small, repetitive tasks that eat into your day.
+          Whether you need to tidy up a JSON payload, shrink an image before uploading, or look up a color code, you can do it here in seconds without installing anything.
+        </p>
+        <p className="leading-relaxed mb-3">
+          Privacy is built in by default. Every tool runs locally in your browser, which means your data never leaves your device.
+          There are no accounts to create, no subscriptions to manage, and no hidden paywalls.
+        </p>
         <p className="leading-relaxed">
-          ToolPiki is a free online utility website that provides everyday tools you can use directly in your browser.
-          No software installation or sign-up required — just open your browser and instantly handle tasks like text conversion, image editing, data formatting, and color code conversion.
-          Text and files you input are processed entirely in your browser and never sent to any server.
-          The site works seamlessly on both desktop and mobile devices, helping you save time on repetitive tasks.
+          The site is fully responsive and works equally well on desktops, tablets, and phones.
+          Over 100 tools are available today, and new ones are added regularly based on user feedback.
         </p>
       </section>
 
       {/* Categories */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          Tool Categories
+          What Can You Do Here?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📝 Text Tools</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📝 Text Processing</h3>
             <p className="text-sm">
-              Character counter, case converter, line break remover, duplicate line remover, text sorter, and diff comparison for all your document processing needs.
+              Count characters, sort lines, strip whitespace, analyze word frequency, or compare two blocks of text side by side — perfect for writers and data wranglers.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🔐 Encoding/Decoding</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🔐 Encoding & Hashing</h3>
             <p className="text-sm">
-              Base64, URL encoding, HTML entities, Unicode, Morse code, JWT decoder, and hash generators for various data transformation needs.
+              Encode or decode Base64, URLs, and HTML entities. Generate hashes, inspect JWTs, or convert between Unicode formats — all common developer tasks in one place.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📋 Formatters</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📋 Code Formatters</h3>
             <p className="text-sm">
-              JSON, XML, SQL, YAML formatters and converters, CSS/JS minifier, and Markdown preview — useful for developers and general users alike.
+              Beautify or minify JSON, XML, SQL, YAML, CSS, and JavaScript. Quickly clean up messy code or prepare compressed output for production.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🖼️ Image Tools</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🖼️ Image Editing</h3>
             <p className="text-sm">
-              Resize, compress, convert (PNG/JPG/WebP), crop, rotate images, Base64 conversion, and favicon generator — all directly in your browser.
+              Compress, resize, crop, rotate, and convert images between PNG, JPG, and WebP. Create favicons or extract Base64 strings — no software needed.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🎨 Color Tools</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🎨 Color Utilities</h3>
             <p className="text-sm">
-              HEX, RGB, HSL color code conversion, palette generator, gradient creator, contrast checker, and image color picker for design work.
+              Convert between HEX, RGB, and HSL. Generate palettes, build gradients, check accessibility contrast ratios, or extract dominant colors from an image.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🔢 Calculators & Generators</h3>
             <p className="text-sm">
-              UUID generator, QR code creator, date calculator, percentage calculator, number base converter, unit converter, and password generator.
+              Create UUIDs, QR codes, and secure passwords. Calculate date differences, convert units and number bases, or compute percentages on the fly.
             </p>
           </Card>
         </div>
@@ -66,18 +72,18 @@ export function HomeContentEn() {
       {/* How to Use */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          How to Use
+          Getting Started
         </h2>
         <div className="space-y-2">
-          <p>All ToolPiki tools follow the same simple workflow:</p>
+          <p>Every tool follows the same straightforward workflow:</p>
           <ol className="list-decimal list-inside space-y-1 ml-2">
-            <li>Search for a tool or browse by category on the main page.</li>
-            <li>Enter text or upload a file on the tool page.</li>
-            <li>Adjust settings as needed and click the convert/run button.</li>
-            <li>Review the result, then copy or download it.</li>
+            <li>Type a keyword in the search bar or pick a category from the homepage.</li>
+            <li>Paste your data or drag and drop a file onto the tool page.</li>
+            <li>Tweak any options and hit the action button — results appear instantly.</li>
+            <li>Copy the output to your clipboard or download it as a file.</li>
           </ol>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-            You can add frequently used tools to your favorites for quick access. Your recently used tools are also saved automatically.
+            Tap the star icon on any tool to bookmark it for faster access next time. Your recent activity is also tracked automatically.
           </p>
         </div>
       </section>
@@ -85,28 +91,28 @@ export function HomeContentEn() {
       {/* Disclaimer */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          Results & Disclaimer
+          Things to Keep in Mind
         </h2>
         <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>All tool outputs are provided for reference only. Please verify results for critical tasks.</li>
-          <li>Image processing creates new output files without modifying your original files.</li>
-          <li>Some features may behave differently depending on your browser. We recommend using the latest version of Chrome, Firefox, Safari, or Edge.</li>
-          <li>Large file processing may be slow or fail due to browser memory limitations.</li>
-          <li>Users are responsible for verifying results. The service provider does not guarantee accuracy.</li>
+          <li>Outputs are intended as a helpful reference. For mission-critical work, always double-check the results.</li>
+          <li>Image tools generate new files and never alter your originals.</li>
+          <li>Older browsers may not support every feature. We recommend the latest version of Chrome, Edge, Safari, or Firefox.</li>
+          <li>Extremely large files may exceed your browser's memory limit and cause processing to stop.</li>
+          <li>You are responsible for how you use the results. We do not guarantee 100% accuracy.</li>
         </ul>
       </section>
 
       {/* Privacy & Ads */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          Privacy & Advertising
+          Data Protection & Ads
         </h2>
         <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>Text and files you input are processed in your browser only and never sent to any server.</li>
-          <li>Note: Tool processing happens entirely in your browser. However, connection info (IP, browser, etc.) may be collected for service operation and analytics.</li>
-          <li>Features like favorites and recent history use your browser's local storage, which stays on your device only.</li>
-          <li>Ads may be displayed to support the service, and advertising partners may use cookies.</li>
-          <li>For more details, please see our <a href="/en/privacy" className="text-blue-600 dark:text-blue-400 underline">Privacy Policy</a>.</li>
+          <li>Your inputs and uploaded files stay in your browser and are never transmitted to an external server.</li>
+          <li>Anonymous usage statistics (page views, device info) may be collected to help improve the service.</li>
+          <li>Bookmarks and recent history are stored in your browser's local storage and remain on your device only.</li>
+          <li>Ads may appear to help cover operating costs, and ad networks may place cookies on your device.</li>
+          <li>For full details, please review our <a href="/en/privacy" className="text-blue-600 dark:text-blue-400 underline">Privacy Policy</a>.</li>
         </ul>
       </section>
 
@@ -118,45 +124,45 @@ export function HomeContentEn() {
         <div className="space-y-2">
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. Do I need to create an account?
+              Q. Is everything really free?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. No, all tools are free to use without registration.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Yes — every tool is free with no usage limits and no hidden premium tiers.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. Where are my uploaded files stored?
+              Q. Could my data be leaked?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Files are processed only in your browser and are never sent to any server. Data is cleared when you close the page.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. No. All processing happens inside your browser. Nothing you type or upload is ever sent to a server.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. Can I use these tools on mobile?
+              Q. Do the tools work offline?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Yes, all tools are optimized for mobile browsers.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Once the page has loaded, most tools will continue to function even if your internet connection drops.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. Is there a file size limit?
+              Q. Are my bookmarks synced across devices?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Due to browser memory constraints, very large files (tens of MB) may be difficult to process.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Bookmarks are saved to your browser's local storage, so they only exist on the device where you set them.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. What should I do if I encounter an error?
+              Q. Which browsers are supported?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Try refreshing the page or using a different browser. If the issue persists, please contact us.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Any modern browser — Chrome, Edge, Safari, or Firefox — running a recent version will work perfectly.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. Can I request a new tool?
+              Q. How can I suggest a tool or report a bug?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Yes! If you have a tool suggestion, please submit a request and we'll consider adding it.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Use the feedback link at the bottom of any page. We review every submission and respond as quickly as possible.</p>
           </details>
         </div>
       </section>

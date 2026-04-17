@@ -3,7 +3,7 @@ import { siteConfig } from '@/data/site';
 
 export const metadata: Metadata = {
   title: 'Contact - ToolPiki',
-  description: 'Send us your inquiries, feedback, or bug reports about ToolPiki.',
+  description: 'Get in touch with ToolPiki for feedback, bug reports, or tool requests.',
 };
 
 export default function ContactPageEn() {
@@ -15,8 +15,12 @@ export default function ContactPageEn() {
         Contact
       </h1>
 
+      <p className="text-gray-700 dark:text-gray-300 mb-4">
+        Found a bug, have a feature idea, or just want to say hello?
+        We are happy to hear from you.
+      </p>
       <p className="text-gray-700 dark:text-gray-300 mb-6">
-        For bug reports, feature requests, or any other inquiries, please reach out via email.
+        Drop us an email and we will respond as soon as we can.
       </p>
 
       <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mb-6">

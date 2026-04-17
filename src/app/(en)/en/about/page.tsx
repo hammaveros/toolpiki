@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About - ToolPiki',
-  description: 'ToolPiki is a free online web tools collection. Text conversion, image editing, encoding, and more.',
+  description: 'ToolPiki is a free, browser-based toolkit for everyday tasks. No signup required.',
 };
 
 export default function AboutPageEn() {
@@ -18,24 +18,27 @@ export default function AboutPageEn() {
             What is ToolPiki?
           </h2>
           <p className="text-gray-700 dark:text-gray-300">
-            ToolPiki is a free online utility service that provides commonly needed web tools.
-            Anyone can use it without registration, and all processing happens in your browser,
-            so your data is never sent to our servers.
+            ToolPiki is a free, browser-based toolkit built for everyday productivity.
+            The name combines &quot;Tool&quot; and &quot;Pick&quot; — pick the tool you need, use it instantly.
+            No downloads, no accounts, no data leaving your device.
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 mt-2">
+            Everything runs client-side, meaning your input never touches our servers.
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">
-            Available Tools
+            Tool Categories
           </h2>
           <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
-            <li><strong>Text Tools</strong> - Character counter, case converter, text diff, etc.</li>
-            <li><strong>Encoding/Decoding</strong> - Base64, URL encoding, hash generator, etc.</li>
-            <li><strong>Formatters</strong> - JSON, SQL, CSS formatter and minifier</li>
-            <li><strong>Image Tools</strong> - Image compression, conversion, resize</li>
-            <li><strong>Color Tools</strong> - Color converter, palette generator</li>
-            <li><strong>Calculators</strong> - Age calculator, unit converter, regex tester</li>
-            <li><strong>Fun Tools</strong> - Lottery generator, tarot, personality tests, etc.</li>
+            <li><strong>Text</strong> - Character counter, diff checker, word frequency analyzer, and more</li>
+            <li><strong>Encoding</strong> - Base64, URL encoding, hash generation, and more</li>
+            <li><strong>Formatters</strong> - JSON, CSS, HTML, SQL code beautifiers</li>
+            <li><strong>Image</strong> - Compression, format conversion, resizing</li>
+            <li><strong>Color</strong> - HEX/RGB/HSL conversion, palette builder</li>
+            <li><strong>Calculators</strong> - Unit conversion, QR generator, regex tester, and more</li>
+            <li><strong>Fun</strong> - Horoscope, personality quizzes, random pickers, and more</li>
           </ul>
         </section>
 
@@ -44,11 +47,12 @@ export default function AboutPageEn() {
             About the Project
           </h2>
           <p className="text-gray-700 dark:text-gray-300">
-            ToolPiki is an independent project run by an individual developer.
-            It is not affiliated with any company, agency, or organization.
+            ToolPiki is a solo side project maintained by a single developer.
+            It is not associated with any company or organization,
+            and has no revenue streams other than advertising.
           </p>
           <p className="text-gray-700 dark:text-gray-300 mt-2">
-            Feedback for service improvement is always welcome.
+            Got an idea for a new tool or spotted a bug? We would love to hear from you.
           </p>
         </section>
 
@@ -57,7 +61,7 @@ export default function AboutPageEn() {
             Contact
           </h2>
           <p className="text-gray-700 dark:text-gray-300">
-            If you have any questions, please contact us at the email below.
+            Have a question or suggestion? Send us an email and we will get back to you.
           </p>
           <p className="text-gray-700 dark:text-gray-300 mt-2">
             Email:{' '}

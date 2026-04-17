@@ -8,63 +8,62 @@ export function HomeContent() {
       {/* 사이트 소개 */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          툴피키(ToolPiki) 소개
+          툴피키(ToolPiki)란?
         </h2>
         <p className="leading-relaxed mb-3">
-          툴피키(ToolPiki)는 일상과 업무에서 자주 필요한 작은 도구들을 웹에서 바로 사용할 수 있도록 제공하는 무료 온라인 유틸리티 사이트입니다.
-          별도의 프로그램 설치나 회원가입 없이, 브라우저만 있으면 텍스트 변환, 이미지 편집, 데이터 포맷 정리, 색상 코드 변환 등 다양한 작업을 즉시 처리할 수 있습니다.
+          툴피키(ToolPiki)는 매일 반복되는 귀찮은 작업을 몇 초 만에 끝낼 수 있도록 도와주는 웹 기반 도구 모음입니다.
+          JSON 정리가 급할 때, 이미지 크기를 빠르게 줄여야 할 때, 색상 코드를 변환해야 할 때 — 검색하고 프로그램 깔 필요 없이 바로 해결할 수 있습니다.
         </p>
         <p className="leading-relaxed mb-3">
-          모든 도구는 브라우저에서 직접 처리되므로 입력한 텍스트나 업로드 파일이 서버로 전송되지 않습니다.
-          개인정보가 포함된 문서도 안심하고 처리할 수 있으며, 인터넷 연결이 불안정해도 대부분의 기능을 사용할 수 있습니다.
+          가장 큰 특징은 데이터가 내 컴퓨터 밖으로 나가지 않는다는 점입니다. 모든 처리가 브라우저 안에서 이루어지기 때문에 민감한 정보가 담긴 파일도 걱정 없이 다룰 수 있습니다.
+          별도의 로그인이나 결제도 없습니다.
         </p>
         <p className="leading-relaxed">
-          PC와 모바일 환경 모두 편하게 사용할 수 있습니다.
-          개발자, 디자이너, 마케터, 학생, 직장인 등 누구나 반복적인 단순 작업 시간을 줄이고 생산성을 높일 수 있습니다.
-          현재 100개 이상의 도구를 제공하며, 계속해서 새로운 도구를 추가하고 있습니다.
+          데스크톱은 물론 스마트폰, 태블릿에서도 동일하게 동작합니다.
+          현재 100여 가지 도구를 갖추고 있으며, 사용자 의견을 반영해 꾸준히 업데이트하고 있습니다.
         </p>
       </section>
 
       {/* 카테고리 소개 */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          주요 도구 카테고리
+          어떤 도구가 있나요?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📝 텍스트 도구</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📝 텍스트 처리</h3>
             <p className="text-sm">
-              글자수 세기, 대소문자 변환, 줄바꿈 제거, 중복 줄 제거, 텍스트 정렬 및 비교 등 문서 작업에 필요한 텍스트 처리 기능을 제공합니다.
+              글자수 확인, 줄 정렬, 공백 정리, 단어 빈도 분석, 두 텍스트 비교 등 글을 쓰거나 데이터를 정리할 때 유용한 기능을 모았습니다.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🔐 인코딩/디코딩</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🔐 인코딩/변환</h3>
             <p className="text-sm">
-              Base64, URL 인코딩, HTML 엔티티, 유니코드, 모스부호, JWT 디코딩 등 다양한 데이터 변환 도구를 지원합니다.
+              Base64, URL 인코딩, 해시 생성, JWT 분석, 유니코드 변환 등 개발 중 자주 쓰이는 데이터 변환 기능을 한 곳에서 이용할 수 있습니다.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📋 포맷/변환</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">📋 코드 포맷터</h3>
             <p className="text-sm">
-              JSON, XML, SQL, YAML 포맷 정리 및 변환, CSS/JS 압축, 마크다운 미리보기 등 개발자와 일반 사용자 모두에게 유용한 포맷터를 제공합니다.
+              JSON, XML, SQL, YAML 등 코드를 보기 좋게 정리하거나 CSS/JS를 압축하는 등 포맷 관련 도구를 지원합니다.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🖼️ 이미지 도구</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🖼️ 이미지 편집</h3>
             <p className="text-sm">
-              이미지 리사이즈, 압축, 포맷 변환(PNG/JPG/WebP), 자르기, 회전, Base64 변환, 파비콘 생성 등 이미지 편집 기능을 브라우저에서 바로 사용할 수 있습니다.
+              이미지 압축, 크기 조절, 포맷 변환, 자르기, 배경 제거, 파비콘 만들기 등 간단한 이미지 작업을 설치 없이 처리합니다.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🎨 색상 도구</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🎨 색상 관련</h3>
             <p className="text-sm">
-              HEX, RGB, HSL 색상 코드 변환, 팔레트 생성, 그라데이션 생성, 명도 대비 검사, 이미지 색상 추출 등 디자인 작업에 필요한 색상 관련 기능을 제공합니다.
+              색상 코드 변환(HEX/RGB/HSL), 팔레트 추천, 그라데이션 생성, 접근성 대비 검사 등 디자인 워크플로에 도움이 되는 도구입니다.
             </p>
           </Card>
           <Card variant="bordered" className="p-4 bg-white dark:bg-gray-900">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🔢 계산/생성 도구</h3>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">🔢 계산기/생성기</h3>
             <p className="text-sm">
-              UUID 생성, QR코드 생성, 날짜 계산, 퍼센트 계산, 진법 변환, 단위 환산, 비밀번호 생성 등 실용적인 계산 및 데이터 생성 도구를 제공합니다.
+              UUID, QR코드, 비밀번호 생성부터 날짜 차이 계산, 단위 환산, 진법 변환까지 다양한 생성 및 계산 도구를 제공합니다.
             </p>
           </Card>
         </div>
@@ -73,18 +72,18 @@ export function HomeContent() {
       {/* 사용 방법 */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          사용 방법
+          이용 방법
         </h2>
         <div className="space-y-2">
-          <p>ToolPiki의 모든 도구는 동일한 방식으로 간편하게 사용할 수 있습니다.</p>
+          <p>복잡한 절차 없이 누구나 바로 사용할 수 있습니다.</p>
           <ol className="list-decimal list-inside space-y-1 ml-2">
-            <li>메인 페이지에서 필요한 도구를 검색하거나 카테고리에서 선택합니다.</li>
-            <li>도구 페이지에서 텍스트를 입력하거나 파일을 업로드합니다.</li>
-            <li>필요한 옵션을 설정한 후 변환/실행 버튼을 클릭합니다.</li>
-            <li>결과를 확인하고, 복사하거나 다운로드합니다.</li>
+            <li>상단 검색창에 키워드를 입력하거나, 카테고리 목록에서 원하는 도구를 찾습니다.</li>
+            <li>도구 화면에서 데이터를 입력하거나 파일을 드래그 앤 드롭합니다.</li>
+            <li>옵션을 조정하고 실행하면 즉시 결과가 표시됩니다.</li>
+            <li>결과를 클립보드에 복사하거나 파일로 내려받을 수 있습니다.</li>
           </ol>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-            자주 사용하는 도구는 즐겨찾기에 추가하여 빠르게 접근할 수 있으며, 최근 사용한 도구 목록도 자동으로 저장됩니다.
+            별표 아이콘을 눌러 즐겨찾기에 등록하면, 다음에 더 빠르게 접근할 수 있습니다. 최근 사용 이력도 자동 기록됩니다.
           </p>
         </div>
       </section>
@@ -92,28 +91,28 @@ export function HomeContent() {
       {/* 주의사항 */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          결과 확인 및 주의사항
+          알아두면 좋은 점
         </h2>
         <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>모든 도구의 결과는 참고용으로 제공되며, 중요한 작업에는 결과를 다시 한번 확인해 주세요.</li>
-          <li>이미지 변환, 압축 등의 작업은 원본 파일을 직접 수정하지 않으며, 별도의 결과 파일이 생성됩니다.</li>
-          <li>브라우저 환경에 따라 일부 기능의 동작이 다를 수 있습니다. 최신 버전의 Chrome, Firefox, Safari, Edge 사용을 권장합니다.</li>
-          <li>대용량 파일 처리 시 브라우저 메모리 제한으로 인해 처리 속도가 느려지거나 실패할 수 있습니다.</li>
-          <li>도구 사용 결과에 대한 최종 책임은 사용자에게 있으며, 서비스 제공자는 결과의 정확성을 보장하지 않습니다.</li>
+          <li>도구의 출력 결과는 참고 목적이므로, 업무용으로 사용할 경우 반드시 재확인 바랍니다.</li>
+          <li>이미지 관련 도구는 원본을 건드리지 않고 새 파일을 생성합니다.</li>
+          <li>구형 브라우저에서는 일부 기능이 정상 동작하지 않을 수 있으니 최신 브라우저를 권장합니다.</li>
+          <li>파일 크기가 매우 클 경우 브라우저 자체 메모리 한계로 처리가 중단될 수 있습니다.</li>
+          <li>결과물의 활용은 전적으로 사용자 책임이며, 정확도를 100% 보증하지 않습니다.</li>
         </ul>
       </section>
 
       {/* 개인정보/쿠키/광고 안내 */}
       <section className="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-          개인정보 및 광고 안내
+          데이터 보호 및 광고 정책
         </h2>
         <ul className="list-disc list-inside space-y-1 ml-2">
-          <li>도구에 입력한 텍스트나 업로드 파일은 서버로 전송되지 않으며, 브라우저에서만 처리됩니다.</li>
-          <li>다만 서비스 운영/통계를 위해 접속 정보(IP, 브라우저 등)가 자동 수집될 수 있습니다.</li>
-          <li>즐겨찾기, 최근 사용 기록은 브라우저 로컬 스토리지에 저장되며, 사용자 기기에만 남습니다.</li>
-          <li>서비스 운영을 위해 광고가 표시될 수 있으며, 광고 제공업체의 쿠키가 사용될 수 있습니다.</li>
-          <li>자세한 내용은 <a href="/privacy" className="text-blue-600 dark:text-blue-400 underline">개인정보처리방침</a> 페이지를 참고해 주세요.</li>
+          <li>입력 데이터와 첨부 파일은 사용자의 브라우저 내에서만 처리되며, 외부 서버로 전송되지 않습니다.</li>
+          <li>서비스 품질 개선을 위해 방문 통계(페이지뷰, 기기 정보 등)가 익명으로 수집될 수 있습니다.</li>
+          <li>즐겨찾기와 최근 사용 기록은 로컬 스토리지에 보관되므로 본인 기기에서만 유지됩니다.</li>
+          <li>운영비 충당을 위해 광고가 게재될 수 있으며, 광고 네트워크에서 쿠키를 활용할 수 있습니다.</li>
+          <li>보다 자세한 사항은 <a href="/privacy" className="text-blue-600 dark:text-blue-400 underline">개인정보처리방침</a>을 참고해 주세요.</li>
         </ul>
       </section>
 
@@ -125,45 +124,45 @@ export function HomeContent() {
         <div className="space-y-2">
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. 회원가입이 필요한가요?
+              Q. 완전 무료인가요?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 아니요, 모든 도구는 회원가입 없이 무료로 사용할 수 있습니다.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 네, 모든 기능을 무료로 제한 없이 이용하실 수 있습니다. 숨겨진 유료 기능은 없습니다.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. 업로드한 파일은 어디에 저장되나요?
+              Q. 내 데이터가 외부로 유출될 위험이 있나요?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 파일은 서버로 전송되지 않으며, 브라우저에서만 처리됩니다. 페이지를 닫으면 데이터는 사라집니다.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 아닙니다. 모든 작업은 브라우저 안에서 처리되며, 입력 내용이 서버로 전송되는 일은 없습니다.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. 모바일에서도 사용할 수 있나요?
+              Q. 인터넷 연결이 끊겨도 작동하나요?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 네, 모든 도구는 모바일 브라우저에서도 사용할 수 있도록 최적화되어 있습니다.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 처음 페이지를 로드한 뒤에는 대부분의 도구가 오프라인에서도 정상 동작합니다.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. 처리할 수 있는 파일 크기에 제한이 있나요?
+              Q. 즐겨찾기 기록이 다른 기기에서도 보이나요?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 브라우저 메모리 제한에 따라 대용량 파일(수십 MB 이상)은 처리가 어려울 수 있습니다.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 즐겨찾기는 각 브라우저의 로컬 스토리지에 저장되므로, 다른 기기에서는 동기화되지 않습니다.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. 오류가 발생하면 어떻게 하나요?
+              Q. 어떤 브라우저를 써야 하나요?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 페이지를 새로고침하거나 다른 브라우저에서 시도해 보세요. 문제가 지속되면 하단의 연락처로 알려주세요.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. Chrome, Edge, Safari, Firefox 등 최신 버전이라면 문제없이 사용할 수 있습니다.</p>
           </details>
           <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">
-              Q. 새로운 도구를 요청할 수 있나요?
+              Q. 도구 제안이나 버그 제보는 어떻게 하나요?
               <span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
-            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 네, 필요한 도구가 있다면 문의를 통해 알려주시면 검토 후 추가해 보겠습니다.</p>
+            <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">A. 페이지 하단의 피드백 링크를 통해 의견을 보내주시면 빠르게 반영하겠습니다.</p>
           </details>
         </div>
       </section>
