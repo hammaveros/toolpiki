@@ -194,6 +194,27 @@ export function JsonCsvConverter() {
     setError('');
   };
 
+  const handleSample = () => {
+    setError('');
+    setOutput('');
+    if (mode === 'json-to-csv') {
+      const sample = [
+        { id: 1, name: '홍길동', age: 30, city: '서울', active: true },
+        { id: 2, name: '김철수', age: 25, city: '부산', active: false },
+        { id: 3, name: '이영희', age: 28, city: '대구, 경북', active: true },
+        { id: 4, name: '박민수', age: 35, city: '인천', active: true },
+      ];
+      setInput(JSON.stringify(sample, null, 2));
+    } else {
+      const sample = `id,name,age,city,active
+1,홍길동,30,서울,true
+2,김철수,25,부산,false
+3,이영희,28,"대구, 경북",true
+4,박민수,35,인천,true`;
+      setInput(sample);
+    }
+  };
+
   return (
     <div className="space-y-2">
       {/* 모드 선택 탭 */}
@@ -228,6 +249,11 @@ export function JsonCsvConverter() {
       <TwoColumnLayout
         leftLabel={mode === 'json-to-csv' ? 'JSON' : 'CSV'}
         rightLabel={mode === 'json-to-csv' ? 'CSV' : 'JSON'}
+        leftHeader={
+          <Button variant="secondary" size="sm" onClick={handleSample}>
+            예시 데이터
+          </Button>
+        }
         rightHeader={output ? <CopyButton text={output} /> : undefined}
         left={
           <Textarea

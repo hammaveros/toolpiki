@@ -194,6 +194,27 @@ export function JsonCsvConverterEn() {
     setError('');
   };
 
+  const handleSample = () => {
+    setError('');
+    setOutput('');
+    if (mode === 'json-to-csv') {
+      const sample = [
+        { id: 1, name: 'John Doe', age: 30, city: 'New York', active: true },
+        { id: 2, name: 'Jane Smith', age: 25, city: 'Los Angeles', active: false },
+        { id: 3, name: 'Bob Lee', age: 28, city: 'Austin, TX', active: true },
+        { id: 4, name: 'Alice Kim', age: 35, city: 'Seattle', active: true },
+      ];
+      setInput(JSON.stringify(sample, null, 2));
+    } else {
+      const sample = `id,name,age,city,active
+1,John Doe,30,New York,true
+2,Jane Smith,25,Los Angeles,false
+3,Bob Lee,28,"Austin, TX",true
+4,Alice Kim,35,Seattle,true`;
+      setInput(sample);
+    }
+  };
+
   return (
     <div className="space-y-2">
       {/* Mode selection and buttons */}
@@ -225,6 +246,11 @@ export function JsonCsvConverterEn() {
       <TwoColumnLayout
         leftLabel={mode === 'json-to-csv' ? 'JSON' : 'CSV'}
         rightLabel={mode === 'json-to-csv' ? 'CSV' : 'JSON'}
+        leftHeader={
+          <Button variant="secondary" size="sm" onClick={handleSample}>
+            Sample Data
+          </Button>
+        }
         rightHeader={output ? <CopyButton text={output} /> : undefined}
         left={
           <Textarea
