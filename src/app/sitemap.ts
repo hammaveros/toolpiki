@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { tools } from '@/data/tools';
 import { siteConfig } from '@/data/site';
+import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
 
 export const dynamic = 'force-static';
 
@@ -60,12 +61,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const toolPages: MetadataRoute.Sitemap = tools.map((tool) => ({
-    url: `${baseUrl}/tools/${tool.slug}`,
-    lastModified: TOOL_DATES[tool.slug] ? new Date(TOOL_DATES[tool.slug]) : BUILD_DATE,
-    changeFrequency: 'weekly' as const,
-    priority: tool.featured ? 0.95 : 0.9,
-  }));
+  // AdSense 정책 회색지대(사주/운세/타로/궁합/복권 등)는 noindex 처리하므로 sitemap에서도 제외
+  const toolPages: MetadataRoute.Sitemap = tools
+    .filter((tool) => !isRestrictedSlug(tool.slug))
+    .map((tool) => ({
+      url: `${baseUrl}/tools/${tool.slug}`,
+      lastModified: TOOL_DATES[tool.slug] ? new Date(TOOL_DATES[tool.slug]) : BUILD_DATE,
+      changeFrequency: 'weekly' as const,
+      priority: tool.featured ? 0.95 : 0.9,
+    }));
 
   return [...staticPages, ...toolPages];
 }

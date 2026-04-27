@@ -220,6 +220,28 @@ const toolComponents: Record<string, ComponentType> = {
   'menu-recommender': dynamic(() => import('./recommender/MenuRecommender').then(m => ({ default: m.MenuRecommender }))),
   'weekend-recommender': dynamic(() => import('./recommender/WeekendRecommender').then(m => ({ default: m.WeekendRecommender }))),
   'rest-recommender': dynamic(() => import('./recommender/RestRecommender').then(m => ({ default: m.RestRecommender }))),
+
+  // jsspace 이식 도구 (10개 KR + 10개 EN)
+  'emoji-picker': dynamic(() => import('./text/EmojiPicker').then(m => ({ default: m.EmojiPicker }))),
+  'emoji-picker-en': dynamic(() => import('./text/EmojiPickerEn').then(m => ({ default: m.EmojiPickerEn }))),
+  'morse-code': dynamic(() => import('./encoding/MorseCode').then(m => ({ default: m.MorseCode }))),
+  'morse-code-en': dynamic(() => import('./encoding/MorseCodeEn').then(m => ({ default: m.MorseCodeEn }))),
+  'ascii-converter': dynamic(() => import('./encoding/AsciiConverter').then(m => ({ default: m.AsciiConverter }))),
+  'ascii-converter-en': dynamic(() => import('./encoding/AsciiConverterEn').then(m => ({ default: m.AsciiConverterEn }))),
+  'hex-viewer': dynamic(() => import('./encoding/HexViewer').then(m => ({ default: m.HexViewer }))),
+  'hex-viewer-en': dynamic(() => import('./encoding/HexViewerEn').then(m => ({ default: m.HexViewerEn }))),
+  'http-status-code': dynamic(() => import('./formatter/HttpStatusCode').then(m => ({ default: m.HttpStatusCode }))),
+  'http-status-code-en': dynamic(() => import('./formatter/HttpStatusCodeEn').then(m => ({ default: m.HttpStatusCodeEn }))),
+  'batch-color-converter': dynamic(() => import('./color/BatchColorConverter').then(m => ({ default: m.BatchColorConverter }))),
+  'batch-color-converter-en': dynamic(() => import('./color/BatchColorConverterEn').then(m => ({ default: m.BatchColorConverterEn }))),
+  'meeting-cost-calculator': dynamic(() => import('./calculator/MeetingCostCalculator').then(m => ({ default: m.MeetingCostCalculator }))),
+  'meeting-cost-calculator-en': dynamic(() => import('./calculator/MeetingCostCalculatorEn').then(m => ({ default: m.MeetingCostCalculatorEn }))),
+  'invoice-generator': dynamic(() => import('./calculator/InvoiceGenerator').then(m => ({ default: m.InvoiceGenerator }))),
+  'invoice-generator-en': dynamic(() => import('./calculator/InvoiceGeneratorEn').then(m => ({ default: m.InvoiceGeneratorEn }))),
+  'color-blindness-image': dynamic(() => import('./image/ColorBlindness').then(m => ({ default: m.ColorBlindness }))),
+  'color-blindness-image-en': dynamic(() => import('./image/ColorBlindnessEn').then(m => ({ default: m.ColorBlindnessEn }))),
+  'pros-cons-comparator': dynamic(() => import('./calculator/ProsConsComparator').then(m => ({ default: m.ProsConsComparator }))),
+  'pros-cons-comparator-en': dynamic(() => import('./calculator/ProsConsComparatorEn').then(m => ({ default: m.ProsConsComparatorEn }))),
 };
 
 /**

@@ -4,7 +4,6 @@ import { tools } from '@/data/tools';
 import { categoryList } from '@/data/categories';
 import { ToolsClientPage } from '@/components/tools/ToolsClientPage';
 import { HomeContent } from '@/components/home/HomeContent';
-import { ChatWidget } from '@/components/chat/ChatWidget';
 import { useState } from 'react';
 
 export default function HomePage() {
@@ -59,8 +58,6 @@ export default function HomePage() {
 
       {/* 카테고리 필터 + 도구 그리드 */}
       <section className="max-w-6xl mx-auto px-4 py-6">
-        {/* 랜선 탕비실 위젯 */}
-        <ChatWidget />
         <ToolsClientPage tools={tools} categories={categoryList} isMainPage initialSearch={searchQuery} />
       </section>
 

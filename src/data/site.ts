@@ -10,7 +10,7 @@ export const siteConfig = {
   // SEO 기본값 (메인은 허브 역할, 도구 키워드는 도구 페이지에서)
   defaultTitle: '툴피키(ToolPiki) - 무료 온라인 도구 | 글자수세기, QR코드 생성, 이미지 압축',
   defaultDescription:
-    '툴피키(ToolPiki) - 설치 없이 바로 쓰는 무료 웹 도구 모음. 글자수 세기, QR코드 생성기, 이미지 압축, JSON 포맷터, Base64 변환, 사주풀이, 반응속도 테스트 등 100개 이상의 유틸리티를 무료로 제공합니다.',
+    '툴피키(ToolPiki) - 설치 없이 바로 쓰는 무료 웹 도구 모음. 글자수 세기, QR코드 생성기, 이미지 압축, JSON 포맷터, Base64 변환, 색상 변환, HTTP 상태 코드, 모스부호 변환 등 100개 이상의 실용 유틸리티를 회원가입 없이 무료로 제공합니다.',
   defaultKeywords: [
     '툴피키',
     'ToolPiki',
@@ -21,8 +21,8 @@ export const siteConfig = {
     '이미지 압축',
     'JSON 포맷터',
     'Base64 변환',
-    '사주풀이',
-    '반응속도 테스트',
+    '색상 변환',
+    '개발자 도구',
   ],
 
   // 소셜

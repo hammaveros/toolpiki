@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { AdSlot } from './AdSlot';
 import { KakaoAdfit } from './KakaoAdfit';
+import { isRestrictedPath } from '@/lib/seo/restricted-slugs';
 
 /**
  * 상단 광고 배너
@@ -11,8 +13,12 @@ import { KakaoAdfit } from './KakaoAdfit';
  * - 모바일: 320x50 수평형
  */
 export function HeaderAdBanner({ disableFallback = false }: { disableFallback?: boolean }) {
+  const pathname = usePathname();
   const [mobileBlocked, setMobileBlocked] = useState(false);
   const [pcBlocked, setPcBlocked] = useState(false);
+
+  // AdSense 정책상 회색지대(사주/운세/타로/궁합/복권/채팅)에서는 광고 미노출
+  if (isRestrictedPath(pathname)) return null;
 
   const mobileHasAd = !mobileBlocked || (!disableFallback && mobileBlocked);
   const pcHasAd = !pcBlocked || (!disableFallback && pcBlocked);

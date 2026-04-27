@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
+import { isRestrictedPath } from '@/lib/seo/restricted-slugs';
 
 interface KakaoAdfitProps {
   unit: string;
@@ -13,11 +15,13 @@ interface KakaoAdfitProps {
 let sdkAppended = false;
 
 export function KakaoAdfit({ unit, width, height, className = '' }: KakaoAdfitProps) {
+  const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const initialized = useRef(false);
 
   useEffect(() => {
     if (!containerRef.current || initialized.current) return;
+    if (isRestrictedPath(pathname)) return;
     initialized.current = true;
 
     // ins 엘리먼트 생성
@@ -37,7 +41,9 @@ export function KakaoAdfit({ unit, width, height, className = '' }: KakaoAdfitPr
       script.async = true;
       document.head.appendChild(script);
     }
-  }, [unit, width, height]);
+  }, [unit, width, height, pathname]);
+
+  if (isRestrictedPath(pathname)) return null;
 
   return <div ref={containerRef} className={className} />;
 }

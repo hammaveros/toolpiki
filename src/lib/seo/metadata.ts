@@ -2,9 +2,24 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/data/site';
 import type { ToolMeta } from '@/types';
 import { toolsEn } from '@/data/tools-en';
+import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
 
 // EN slug 존재 여부 빠른 조회용
 const enSlugSet = new Set(toolsEn.map(t => t.slug));
+
+const NOINDEX_ROBOTS = {
+  index: false,
+  follow: true,
+  nocache: true,
+  googleBot: {
+    index: false,
+    follow: true,
+    noimageindex: true,
+    'max-snippet': 0,
+    'max-image-preview': 'none' as const,
+    'max-video-preview': 0,
+  },
+} as const;
 
 // 기본 메타데이터 생성
 export function generateBaseMetadata(): Metadata {
@@ -79,7 +94,11 @@ export function generateBaseMetadata(): Metadata {
 
 // 도구 페이지 메타데이터 생성
 export function generateToolMetadata(tool: ToolMeta): Metadata {
-  const url = `${siteConfig.url}/tools/${tool.slug}`;
+  // EN 도구는 /en/tools/<slug>, KR 도구는 /tools/<slug>
+  const isEn = tool.slug.endsWith('-en');
+  const url = isEn
+    ? `${siteConfig.url}/en/tools/${tool.slug}`
+    : `${siteConfig.url}/tools/${tool.slug}`;
 
   // SEO 최적화된 타이틀/설명 우선 사용
   const title = tool.name;
@@ -90,13 +109,23 @@ export function generateToolMetadata(tool: ToolMeta): Metadata {
 
   const canonicalUrl = url;
 
+  const restricted = isRestrictedSlug(tool.slug);
+
   return {
     title,
     description,
     keywords,
+    ...(restricted ? { robots: NOINDEX_ROBOTS } : {}),
     alternates: {
       canonical: canonicalUrl,
       languages: (() => {
+        if (isEn) {
+          const krSlug = tool.slug.replace(/-en$/, '');
+          return {
+            'en': canonicalUrl,
+            'ko': `${siteConfig.url}/tools/${krSlug}`,
+          };
+        }
         const enSlug = `${tool.slug}-en`;
         return {
           'ko': canonicalUrl,

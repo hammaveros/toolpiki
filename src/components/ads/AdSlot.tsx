@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
+import { isRestrictedPath } from '@/lib/seo/restricted-slugs';
 
 interface AdSlotProps {
   format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle' | 'autorelaxed';
@@ -25,10 +27,12 @@ let adsenseFailedGlobal = false;
  * - 광고 미충전 시 컨테이너 숨김
  */
 export function AdSlot({ format = 'auto', slotId = '5499882149', className, responsive = true, onBlocked }: AdSlotProps) {
+  const pathname = usePathname();
+  const restricted = isRestrictedPath(pathname);
   const containerRef = useRef<HTMLDivElement>(null);
   const insRef = useRef<HTMLModElement>(null);
   const pushed = useRef(false);
-  const [filled, setFilled] = useState(!adsenseFailedGlobal);
+  const [filled, setFilled] = useState(!adsenseFailedGlobal && !restricted);
 
   const pushAd = useCallback(() => {
     if (pushed.current) return;
@@ -41,6 +45,10 @@ export function AdSlot({ format = 'auto', slotId = '5499882149', className, resp
   }, []);
 
   useEffect(() => {
+    if (restricted) {
+      setFilled(false);
+      return;
+    }
     if (adsenseFailedGlobal) {
       setFilled(false);
       return;
@@ -66,7 +74,7 @@ export function AdSlot({ format = 'auto', slotId = '5499882149', className, resp
       timerId = setTimeout(poll, 500);
       return () => clearTimeout(timerId);
     }
-  }, [pushAd]);
+  }, [pushAd, restricted]);
 
   useEffect(() => {
     if (!insRef.current) return;

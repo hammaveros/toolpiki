@@ -2,8 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getToolBySlugEn, getAllToolSlugsEn } from '@/data/tools-en';
 import { ToolLayoutEn } from '@/components/tools/ToolLayoutEn';
-import { siteConfig } from '@/data/site';
-import { tools } from '@/data/tools';
+import { generateToolMetadata } from '@/lib/seo/metadata';
 
 // Tool component registry (reuse KR components)
 import { getToolComponent } from '@/tools/registry';
@@ -17,7 +16,7 @@ export async function generateStaticParams() {
   return getAllToolSlugsEn().map((slug) => ({ slug }));
 }
 
-// Generate metadata
+// Generate metadata (회색지대 슬러그는 generateToolMetadata 안에서 noindex가 자동 적용됨)
 export async function generateMetadata({
   params,
 }: ToolPageEnProps): Promise<Metadata> {
@@ -28,33 +27,7 @@ export async function generateMetadata({
     return { title: 'Tool Not Found' };
   }
 
-  const title = tool.name;
-  const description = tool.seoDescription || tool.description;
-
-  const canonicalSlug = slug;
-
-  return {
-    title,
-    description,
-    keywords: tool.keywords,
-    openGraph: {
-      title: `${title} | ToolPiki`,
-      description,
-      type: 'website',
-      locale: 'en_US',
-    },
-    alternates: {
-      canonical: `${siteConfig.url}/en/tools/${canonicalSlug}`,
-      languages: (() => {
-        const krSlug = canonicalSlug.replace(/-en$/, '');
-        const hasKrVersion = tools.some(t => t.slug === krSlug);
-        return {
-          ...(hasKrVersion ? { 'ko': `${siteConfig.url}/tools/${krSlug}` } : {}),
-          'en': `${siteConfig.url}/en/tools/${canonicalSlug}`,
-        };
-      })(),
-    },
-  };
+  return generateToolMetadata(tool);
 }
 
 export default async function ToolPageEn({ params }: ToolPageEnProps) {

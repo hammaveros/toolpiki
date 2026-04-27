@@ -24,7 +24,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Tally characters, words, and sentences as you type. Browser-based, private, and unlimited. Great for social media posts and academic writing.',
     seoContent:
-      '## Character Counter Overview\n\nKeep tabs on every character, word, sentence, and paragraph while you write. The counter refreshes with each keystroke so you always know exactly where you stand. Whether you are drafting a tweet, polishing an essay, or meeting a strict word limit, this tool gives you the numbers without distractions. Everything runs locally in your browser — nothing is stored or transmitted.',
+      '## What is the Character Counter?\n\nThe Character Counter is a real-time text analysis tool that tracks the total number of characters, words, sentences, paragraphs, and bytes in any block of text. As you type or paste content, every metric refreshes instantly so you always know how far you have written. It is built for anyone working against a length limit — students hitting essay word counts, marketers shaping social posts, or developers preparing copy for a UI. The tool runs entirely in your browser, which means nothing leaves your device and there are no upload limits to worry about.\n\n## Key Features\n\n- Live counts for characters with and without spaces\n- Word, sentence, and paragraph tallies updated on every keystroke\n- Byte size calculation for UTF-8 encoded text\n- Works fully offline once the page loads\n- No sign-up, no quota, and no advertisements interrupting your work\n\n## Use Cases\n\n- Drafting a tweet, LinkedIn post, or Instagram caption with strict character ceilings\n- Meeting an academic word-count requirement for essays and dissertations\n- Reviewing meta titles and descriptions for SEO before publishing\n- Sizing up product copy, push notifications, or push subjects\n\n## Tips & Notes\n\n- The byte counter is helpful when targeting fields stored as VARCHAR or TEXT columns.\n- If you want to exclude code blocks or tables, paste only the prose you intend to count.\n- The counter ignores trailing whitespace differently depending on the metric — toggle counts with and without spaces to confirm.',
     faqs: [
       {
         question: 'What does this character counter include?',
@@ -55,7 +55,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Transform text capitalization instantly — UPPER, lower, Title, Sentence, or alternating. Ideal for fixing headings, code identifiers, and messy copy.',
     seoContent:
-      '## About Case Converter\n\nPaste or type any text and pick the capitalization style you need. The converter handles UPPERCASE, lowercase, Title Case, Sentence case, and the playful aLtErNaTiNg pattern. It is especially handy when you receive an all-caps email or need to reformat headings across an entire document. Numbers and special characters stay untouched — only letters are affected.',
+      '## What is the Case Converter?\n\nThe Case Converter rewrites any block of text in the capitalization style you choose without retyping a single word. It supports UPPERCASE, lowercase, Title Case, Sentence case, and the playful aLtErNaTiNg pattern. Whether you are cleaning up an all-caps email forwarded by a colleague, normalizing variable names from snake_case to PascalCase, or preparing headings for a blog post, the converter saves you from manual editing. Letters are the only characters affected, so numbers, punctuation, and emoji pass through untouched.\n\n## How to Use\n\n1. Paste or type your text into the input box.\n2. Click the case option you need — UPPER, lower, Title, Sentence, or aLt.\n3. Copy the converted result with one click and paste it wherever needed.\n4. Use the swap button to compare before and after states.\n\n## Use Cases\n\n- Polishing headlines and subheadings to follow a consistent style guide\n- Repairing forwarded emails that arrive ENTIRELY IN UPPERCASE\n- Reformatting product names, navigation labels, and form field copy\n- Preparing camelCase or PascalCase identifiers for code from human-readable lists\n\n## Tips & Notes\n\n- Title Case capitalizes every major word; Sentence case only capitalizes the first word of each sentence.\n- The aLtErNaTiNg style is great for memes, but avoid it in professional writing.\n- For multilingual text, capitalization rules follow standard locale-aware conversions in your browser.',
     faqs: [
       {
         question: 'What case options are available?',
@@ -82,7 +82,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Strip line breaks, carriage returns, and extra whitespace from pasted text. Great for content copied from PDFs or emails.',
     seoContent:
-      '## About Line Break Remover\n\nWhen you copy text from a PDF, email, or terminal output, unwanted line breaks often tag along. This tool collapses those breaks and trims redundant spaces so you get a single, tidy paragraph. Optionally keep double-break paragraph separators while removing single newlines.',
+      '## What is the Line Break Remover?\n\nWhen you copy text out of a PDF, email message, terminal output, or scanned document, the original line wrapping tags along and turns flowing prose into a column of awkward fragments. The Line Break Remover scans your input, strips unwanted newlines and carriage returns, and collapses repeated spaces so the text reads as one clean paragraph again. You can choose to keep blank lines between paragraphs or merge everything into a single block, depending on the context.\n\n## How to Use\n\n1. Paste the broken-up text into the input area.\n2. Pick whether to preserve double line breaks (paragraph separators).\n3. Optionally enable space normalization to collapse runs of spaces.\n4. Copy the cleaned-up output and paste it into your destination.\n\n## Use Cases\n\n- Cleaning quotes pulled from PDFs before pasting into Word, Google Docs, or Notion\n- Reformatting email replies that contain hard wrapping at 72 characters\n- Tidying server logs or stack traces that wrap mid-sentence\n- Preparing content for translation memory or AI prompt input\n\n## Tips & Notes\n\n- If your original document used single newlines for paragraphs, disable the preserve-double-break option.\n- Tabs and other invisible whitespace can also be flattened by the space normalization toggle.\n- The tool runs entirely in your browser, so even confidential text stays on your device.',
     faqs: [
       {
         question: 'What does this tool remove?',
@@ -110,7 +110,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Drop duplicate lines from any text while preserving the original order. Handy for cleaning email lists, server logs, and datasets.',
     seoContent:
-      '## About Duplicate Line Remover\n\nFeed in a list and this tool keeps only the first appearance of each unique line, discarding every repeat. The original order stays the same, which matters when sequence is important. Works well for tidying mailing lists, server log entries, CSV rows, and any text where repetition is unwanted.',
+      '## What is the Duplicate Line Remover?\n\nThe Duplicate Line Remover scans a list of lines and keeps only the first appearance of each unique entry, discarding any subsequent copies. The original ordering of the surviving lines is preserved, which matters when sequence carries meaning — log lines, ranked lists, or ordered datasets all stay readable after deduplication. It is a quick way to tidy mailing lists, prune CSV rows that were accidentally duplicated during exports, or remove repeating error lines from a noisy log file.\n\n## How to Use\n\n1. Paste your list (one item per line) into the input box.\n2. Optionally toggle case sensitivity if "Hello" and "hello" should be treated the same.\n3. Optionally trim whitespace before comparison so " apple" and "apple" match.\n4. Click run and copy the deduplicated output.\n\n## Use Cases\n\n- Cleaning up email contact lists imported from CSV\n- Reducing noise in server logs that repeat the same warning\n- Building unique vocabulary lists from raw text dumps\n- Normalizing config files where keys may appear twice\n\n## Tips & Notes\n\n- Pair this tool with the Text Sorter when you want both ordering and deduplication.\n- The default comparison is case-sensitive and whitespace-aware, so adjust the toggles when needed.\n- Empty lines are preserved unless you explicitly remove them.',
     faqs: [
       {
         question: 'Does it preserve the original order?',
@@ -138,7 +138,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Arrange lines of text alphabetically, numerically, or by length. Optionally strip duplicates during the sort.',
     seoContent:
-      '## About Text Sorter\n\nDrop in a block of text and sort every line the way you need: A-Z, Z-A, numerically, or by character length. An optional deduplication toggle removes repeats on the fly. Useful for organizing name lists, sorting dictionary entries, or tidying up configuration values.',
+      '## What is the Text Sorter?\n\nThe Text Sorter takes any block of multi-line text and reorders the lines according to the rule you select. Standard alphabetical sorting (A-Z and Z-A) is available alongside numerical sorting that recognizes leading numbers, and length-based sorting that ranks by how many characters each line contains. An optional deduplication switch removes repeated lines as part of the sort, so you get a clean, ordered output in a single step.\n\n## How to Use\n\n1. Paste a list of lines into the input area.\n2. Choose a sort mode: alphabetical, reverse alphabetical, numerical, or by line length.\n3. Toggle deduplication if you also want to drop repeats.\n4. Copy the sorted output for your downstream task.\n\n## Use Cases\n\n- Alphabetizing reading lists, mailing addresses, or staff rosters\n- Ranking log lines numerically to find the highest error counts\n- Sorting CSS class names or import statements before committing code\n- Tidying glossary entries and dictionary terms for documentation\n\n## Tips & Notes\n\n- Numerical sort treats lines like "12 apples" as 12, so use it whenever lines start with a number.\n- The length sort breaks ties by their original order, preserving relative position when possible.\n- Combine with the Duplicate Line Remover if you want a more granular workflow.',
     faqs: [
       {
         question: 'What sorting options are available?',
@@ -171,7 +171,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Produce secure random strings using the Web Crypto API. Configure length, character sets, and quantity for passwords, tokens, and keys.',
     seoContent:
-      '## About Random String Generator\n\nThis generator relies on the Web Crypto API to deliver unpredictable output suitable for passwords, bearer tokens, and API secrets. Toggle uppercase, lowercase, digits, and symbols independently, set the desired length, and generate one string or a batch. Because the randomness source is cryptographic, the output is safe for security-sensitive use.',
+      '## What is the Random String Generator?\n\nThe Random String Generator produces unpredictable strings using the browser-native Web Crypto API, the same cryptographic randomness source used by modern encryption libraries. You decide how long each string should be, which character classes to include — uppercase, lowercase, digits, and symbols — and how many strings to generate at once. Because the entropy source is cryptographically secure, the output is safe for sensitive applications such as passwords, bearer tokens, recovery codes, and API secrets.\n\n## Key Features\n\n- True cryptographic randomness via window.crypto.getRandomValues\n- Independent toggles for uppercase letters, lowercase letters, numbers, and symbols\n- Configurable length from short PIN codes to long high-entropy keys\n- Bulk mode for generating many strings simultaneously\n- Copy each string with one click or copy the whole batch\n\n## Use Cases\n\n- Generating strong unique passwords for personal or shared accounts\n- Creating API keys, session tokens, or webhook secrets during development\n- Producing temporary recovery codes or invitation slugs for sign-up flows\n- Seeding test fixtures with realistic random identifiers\n\n## Tips & Notes\n\n- For passwords, aim for at least 16 characters with all four character classes enabled.\n- Avoid storing generated tokens in plain text; pair them with a hashing or encryption strategy.\n- The tool never sends data to a server, so the generated strings are visible only to you.',
     faqs: [
       {
         question: 'Is it cryptographically secure?',
@@ -204,7 +204,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Produce Lorem Ipsum filler text sized by paragraphs, sentences, or words. One-click copy for fast prototyping.',
     seoContent:
-      '## About Lorem Ipsum Generator\n\nNeed placeholder text for a design comp, slide deck, or development build? Specify how many paragraphs, sentences, or individual words you want and the generator delivers classic Lorem Ipsum output ready to paste. It saves designers and developers from inventing throwaway copy during the prototyping phase.',
+      '## What is the Lorem Ipsum Generator?\n\nLorem Ipsum is the standard filler text used by designers, typographers, and developers since the 1500s. The generator produces classic dummy content sized exactly the way you need — by paragraphs, sentences, or individual words — so you can fill mockups, slide decks, and development environments without inventing throwaway copy. The text is meaningless on purpose, which keeps reviewers focused on layout, typography, and visual hierarchy instead of the words themselves.\n\n## How to Use\n\n1. Choose paragraphs, sentences, or words as your unit of measurement.\n2. Enter how many of that unit you need.\n3. Click generate to get an immediate output block.\n4. Copy the result and paste it into your design tool, code editor, or CMS.\n\n## Use Cases\n\n- Filling Figma, Sketch, or Adobe XD mockups with realistic copy lengths\n- Populating CMS placeholders during front-end development\n- Demonstrating responsive layouts at different content lengths\n- Stress-testing typography and spacing in design systems\n\n## Tips & Notes\n\n- Replace Lorem Ipsum with real content as soon as it is available — placeholder text can ship to production by accident.\n- For multi-language designs, generate enough text to cover the longest expected translation.\n- Pair with the Character Counter when you need to match a specific word or character target.',
     faqs: [
       {
         question: 'What is Lorem Ipsum used for?',
@@ -232,7 +232,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Lay two documents next to each other and instantly see every change highlighted. Supports line-level and word-level diffs.',
     seoContent:
-      '## About Text Diff\n\nDrop the original and revised versions into separate panels and the tool marks up every difference using color-coded highlights. Green marks new content, red marks removed content, and unchanged sections remain neutral. Switch between line-by-line and word-by-word modes depending on how granular you need the comparison.',
+      '## What is the Text Diff Tool?\n\nText Diff places the original and revised versions of any document side by side and highlights every change with color-coded markers. Additions are shown in green, deletions in red, and unchanged content is left in its neutral state. The tool can switch between line-level diffs (compare whole lines at a time) and word-level diffs (catch changes that happen mid-line). This makes it ideal for reviewing edits in shared documents, code snippets, or any text where small revisions matter.\n\n## Key Features\n\n- Side-by-side and inline diff views\n- Line-level and word-level granularity\n- Clear additions and deletions with consistent color coding\n- Handles multi-paragraph text without truncation\n- Works fully in your browser with no upload\n\n## Use Cases\n\n- Reviewing copy edits between draft versions of an article\n- Comparing configuration files or environment variable lists\n- Spotting subtle changes in legal contracts, terms, or policies\n- Auditing content updates before publishing on a CMS\n\n## Tips & Notes\n\n- Use word-level mode when small typo corrections need to be highlighted clearly.\n- For very large documents, line-level mode is faster and easier to scan.\n- The tool ignores trailing whitespace by default; toggle the option if whitespace differences matter.',
     faqs: [
       {
         question: 'How are differences shown?',
@@ -260,7 +260,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Discover which words dominate your text. View occurrence counts, percentages, and rankings. Helpful for SEO audits and essay refinement.',
     seoContent:
-      '## About Word Frequency Counter\n\nPaste any block of text and receive an ordered breakdown of every word along with its frequency count and share of the total. Filter out common stop words to focus on meaningful terms. The data is useful for SEO keyword-density checks, academic vocabulary analysis, and spotting overused phrases in your writing.',
+      '## What is the Word Frequency Counter?\n\nThe Word Frequency Counter analyzes any block of text and produces a sortable table showing how often each word appears, along with its share of the overall word count. By default the tool counts every distinct token, but it can also filter out common English stop words such as "the", "is", and "and" so the output focuses on meaningful vocabulary. The result is a quick view of which terms dominate your writing — perfect for SEO audits, content reviews, or spotting unintentional repetition.\n\n## How to Use\n\n1. Paste your text into the input box.\n2. Choose whether to include or exclude stop words.\n3. Sort the result by frequency or alphabetically.\n4. Copy the table or export it as CSV for further analysis.\n\n## Use Cases\n\n- Checking SEO keyword density before publishing a blog post or landing page\n- Identifying overused words in essays, novels, or marketing copy\n- Building vocabulary lists from articles for language learning\n- Comparing the dominant terms across multiple pieces of content\n\n## Tips & Notes\n\n- Stop word filtering keeps the analysis focused on content-bearing terms.\n- Punctuation is stripped automatically so words are counted regardless of trailing commas or periods.\n- The tool is case-insensitive by default so "Apple" and "apple" merge into a single count.',
     faqs: [
       {
         question: 'Does it count common words like "the" and "is"?',
@@ -292,7 +292,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Verify your message stays within platform character caps for SMS, Twitter/X, Instagram, and email subjects before you hit send.',
     seoContent:
-      '## About Message Length Checker\n\nType or paste your message and pick the target platform. A live progress bar shows how close you are to the limit — and flashes a warning the moment you exceed it. Presets cover SMS (160), Twitter/X (280), Instagram captions (2,200), email subject lines, and more. A quick sanity check before publishing saves you from truncated posts.',
+      '## What is the Message Length Checker?\n\nEvery messaging platform has its own character ceiling — SMS allows 160 characters per segment, Twitter/X caps tweets at 280, Instagram captions stop at 2,200, and email subject lines are recommended to stay under 60. The Message Length Checker compares your draft against the limits of each platform in real time so you know whether your post will be truncated, split into multiple SMS segments, or rejected entirely. A live progress bar fills as you type and turns red once you cross the threshold.\n\n## Key Features\n\n- Live tracking against multiple platform presets\n- SMS segment counter that flags when a message will be split\n- Visual progress bar with clear warning state\n- Works for both English text and emoji-heavy content\n- One-click copy of the validated message\n\n## Use Cases\n\n- Drafting tweets, threads, and replies that fit Twitter/X limits\n- Preparing SMS marketing campaigns and confirming segment counts\n- Writing Instagram captions, Facebook posts, and LinkedIn updates without truncation\n- Crafting email subject lines that stay visible in mobile inbox previews\n\n## Tips & Notes\n\n- Some platforms count emoji as multiple characters because of their UTF-16 representation.\n- For SMS, sticking under 160 characters keeps the message in a single segment and lowers cost.\n- Always preview the post on the actual platform — line breaks may render differently.',
     faqs: [
       {
         question: 'What platforms are supported?',
@@ -328,7 +328,7 @@ export const toolsEn: ToolMeta[] = [
     seoDescription:
       'Figure out reading duration, speaking pace, slide timing, and how many words you need to fill a given time slot. Built for writers and presenters.',
     seoContent:
-      '## Reading & Presentation Time Calculator\n\nThree distinct modes cover every timing scenario. Text Input mode outputs both silent reading and spoken delivery estimates using independent speed sliders. Slide Calculator multiplies your slide count by a configurable per-slide duration. Target Time mode works in reverse: enter your available minutes and get back the word count required. Separate WPM settings for reading versus speaking ensure presentation estimates stay realistic.',
+      '## What is the Reading & Presentation Time Calculator?\n\nThis calculator estimates how long it takes to read or speak a block of text and helps presenters plan slide-driven sessions to the minute. Three distinct modes cover every common scenario. Text Input mode counts the words in your draft and reports both silent reading time and spoken delivery time using separate words-per-minute settings. Slide Calculator multiplies your slide count by a configurable per-slide duration. Target Time mode works in reverse — enter the minutes you have on stage and the calculator returns the word count you should aim for in your script.\n\n## Key Features\n\n- Independent reading speed (150-350 WPM) and speaking speed (100-230 WPM) sliders\n- Slide-based timing with adjustable per-slide minute budget\n- Reverse mode that converts a target duration into a word count target\n- Instant updates as you type or change settings\n- No login or account required\n\n## Use Cases\n\n- Estimating how long a blog post or article will take readers to finish\n- Sizing a keynote, lecture, or sales pitch before recording or rehearsing\n- Planning the ideal slide count for a 15, 30, or 60 minute presentation\n- Writing voice-over scripts that match a fixed video length\n\n## Tips & Notes\n\n- Speaking is slower than reading because of pauses, emphasis, and audience interaction.\n- Always rehearse out loud at least once — actual delivery often runs longer than the estimate.\n- For non-native English audiences, lower the WPM setting to give listeners more processing time.',
     faqs: [
       {
         question: 'How is speaking time different from reading time?',
@@ -454,6 +454,200 @@ export const toolsEn: ToolMeta[] = [
   { slug: 'password-strength-en', name: 'Password Strength Checker', description: 'Evaluate any password for length, complexity, common patterns, and estimated crack time — all client-side.', category: 'calculator', tags: ['password', 'security', 'strength'], icon: '🔐', keywords: ['password strength', 'password checker', 'password security', 'password test'], relatedSlugs: ['hash-generator-en', 'random-string-generator-en'], seoTitle: 'Password Strength Checker - Free Security Analysis Tool', seoDescription: 'Evaluate password security by analyzing length, complexity, common patterns, and estimated crack time. Everything runs in your browser.', seoContent: 'Password Strength Checker evaluates passwords for length, character diversity, common patterns, and dictionary word matches. It estimates brute-force crack time and assigns a strength score from very weak to very strong. All analysis runs entirely in your browser — your password is never transmitted to any server, ensuring complete privacy while you build stronger credentials.', faqs: [{ question: 'How long should a secure password be?', answer: 'At least 12 characters is recommended. Combining uppercase, lowercase, numbers, and symbols makes it stronger.' }, { question: 'Is my password saved?', answer: 'No, all analysis is done in your browser. Nothing is sent to any server.' }] },
   { slug: 'screen-ruler-en', name: 'Screen Pixel Ruler', description: 'Drag a selection rectangle on screen to measure element dimensions in pixels, with optional mm conversion.', category: 'calculator', tags: ['pixel', 'measure', 'screen'], icon: '📏', keywords: ['pixel measure', 'screen ruler', 'pixel ruler', 'design tool'], relatedSlugs: ['image-resize-en', 'css-unit-converter-en'], seoTitle: 'Screen Pixel Ruler - Free Online Measurement Tool', seoDescription: 'Drag a rectangle on screen to measure element dimensions in pixels. Optional millimeter conversion based on your display DPI.', seoContent: 'Drag a selection rectangle anywhere on screen to measure width and height in pixels. Optionally convert pixel values to millimeters by entering your monitor DPI for physical-unit accuracy. Every measurement is saved to a history list so you can compare dimensions of multiple elements without re-measuring. Ideal for UI designers and front-end developers.', faqs: [{ question: 'Are the mm values accurate?', answer: 'Accuracy depends on DPI settings. Verify your monitor DPI for precise measurements.' }, { question: 'Can I measure multiple areas?', answer: 'Yes, measurements are saved to a list for easy comparison.' }] },
   { slug: 'pomodoro-timer-en', name: 'Pomodoro Timer', description: 'Work in focused 25-minute sprints with 5-minute breaks. A longer rest follows every four cycles.', category: 'calculator', tags: ['pomodoro', 'timer', 'focus', 'productivity'], icon: '🍅', featured: true, keywords: ['pomodoro timer', 'focus timer', '25 minute timer', 'productivity timer'], relatedSlugs: ['timer-en'], seoTitle: 'Pomodoro Timer - 25 Min Focus Productivity Timer', seoDescription: 'Work in 25-minute focused sprints with 5-minute breaks. Customize intervals, track sessions, and stay productive with audio alerts.', seoContent: 'Stay productive with 25-minute focus sessions followed by 5-minute breaks. After every 4 cycles a longer 15-minute rest kicks in automatically. Customize focus duration, break length, and long-break interval to fit your workflow. Audio notifications alert you when each phase ends, and a built-in session counter tracks how many cycles you complete.', faqs: [{ question: 'What is the Pomodoro Technique?', answer: 'A time management method: 25 minutes of focused work followed by a 5-minute break. After 4 cycles, take a longer 15-minute break.' }, { question: 'Can I customize the times?', answer: 'Yes, adjust focus time, break time, and long break interval in the settings.' }] },
+
+  // ========================================
+  // jsspace Ports (10)
+  // ========================================
+  {
+    slug: 'emoji-picker-en',
+    name: 'Emoji Picker',
+    description: 'Search any emoji by keyword or category and copy it to the clipboard with a single click.',
+    category: 'text',
+    tags: ['emoji', 'emoticon', 'copy', 'search'],
+    icon: '😀',
+    keywords: ['emoji picker', 'emoji search', 'copy emoji', 'emoticons online', 'emoji keyboard', 'emoji finder'],
+    relatedSlugs: ['character-counter-en', 'unicode-converter-en'],
+    seoTitle: 'Emoji Picker - Free Online Emoji Search and Copy Tool',
+    seoDescription: 'Browse thousands of emojis by category, search by keyword, and copy any emoji to your clipboard with a single click. Free, fast, browser-based.',
+    seoContent: '## What is the Emoji Picker?\n\nThe Emoji Picker is a free, browser-based tool that lets you explore thousands of Unicode emojis grouped into intuitive categories — smileys, people, animals, food, travel, objects, symbols, and flags. Each emoji is one click away from your clipboard, ready to paste into any app that supports text input.\n\n## Who is it for?\n\n- Social media writers who add a personal touch to posts and replies on Instagram, Twitter/X, and Threads.\n- Marketers and newsletter authors who want eye-catching subject lines without inflating word counts.\n- Note takers in Notion, Obsidian, or Google Docs who use emojis as visual section anchors.\n- Designers and product managers who sprinkle emojis into wireframes, presentations, and changelog entries.\n\n## How to use it\n\n1. Type a keyword such as "heart", "fire", or "smile" in the search field. Browse by category if you prefer to explore.\n2. Click any emoji to copy it to your clipboard automatically — no extra confirmation needed.\n3. Paste the emoji into any text field with Ctrl+V (or Cmd+V on macOS).\n\n## Tips for great emoji usage\n\n- The same emoji may render slightly differently on iOS, Android, Windows, and macOS because each platform ships its own emoji font. Check critical posts on the platforms your audience uses.\n- Restraint matters. One or two well-placed emojis lift the tone, while a wall of emojis can make text hard to scan.\n- Older operating systems may not have the latest emojis, so newly released characters might appear as a blank box on legacy devices.',
+    faqs: [
+      { question: 'How do I find a specific emoji?', answer: 'Type a keyword like "heart", "smile", or "food" in the search box. You can also browse the category tabs to explore visually.' },
+      { question: 'Where can I paste the copied emoji?', answer: 'Anywhere that accepts text — social apps, messaging apps, email, Notion, Slack, code comments, and more. Emojis are standard Unicode characters.' },
+      { question: 'Will the emoji look the same on every device?', answer: 'Not exactly. iOS, Android, Windows, and macOS each render emojis using their own designs, so the same character can look slightly different across platforms.' },
+      { question: 'What if a newer emoji shows as a blank box?', answer: 'Older operating systems may not include the newest emojis. Update the device or use an alternative emoji that renders correctly on your audience\'s platforms.' },
+    ],
+  },
+  {
+    slug: 'morse-code-en',
+    name: 'Morse Code Translator',
+    description: 'Convert text into Morse code (dots and dashes) or decode Morse signals back into readable text in both directions.',
+    category: 'encoding',
+    tags: ['morse', 'code', 'translator', 'dots', 'dashes'],
+    icon: '📡',
+    keywords: ['morse code translator', 'morse code converter', 'text to morse', 'morse decoder', 'sos morse', 'amateur radio'],
+    relatedSlugs: ['ascii-converter-en', 'base64-en'],
+    seoTitle: 'Morse Code Translator - Free Text to Morse Converter',
+    seoDescription: 'Translate plain text into Morse code or decode dot-and-dash sequences back to text. Useful for amateur radio practice, puzzles, and education.',
+    seoContent: '## What is the Morse Code Translator?\n\nMorse code represents Latin letters and numerals as combinations of short signals (dots) and long signals (dashes). This bidirectional translator turns plain text into Morse code and converts Morse code back into text in real time, making it a handy companion for learning, puzzles, and communication exercises.\n\n## When is it useful?\n\n- Amateur radio operators (HAM) practicing or studying for licensing exams.\n- Game designers, escape-room creators, and tabletop RPG hosts crafting coded clues.\n- Educators introducing students to the basics of digital signaling and information theory.\n- Hobbyists learning the famous SOS distress signal or other emergency communications.\n\n## Morse code basics\n\n- A dot (·) is the shortest signal. A dash (—) is three times the length of a dot.\n- Within a single character, the gap between signals equals one dot.\n- Between letters, leave a gap of three dots; between words, leave a gap of seven dots.\n- Standard international Morse covers A-Z, 0-9, and a small set of punctuation marks.\n\n## Caveats\n\nInternational Morse code does not natively support non-Latin alphabets. If you need to encode a phrase in another language, romanize it first. Also note that this tool produces a text representation of dots, dashes, and spacing — actual on-air timing in real radio communications may vary slightly.',
+    faqs: [
+      { question: 'How is SOS written in Morse code?', answer: 'SOS is "··· ——— ···" (three dots, three dashes, three dots). It is the universally recognized distress signal because of how easy it is to remember and transmit.' },
+      { question: 'Can I encode non-English text?', answer: 'International Morse code is defined for Latin letters and digits. For other scripts, romanize the text first and then encode the Latin form.' },
+      { question: 'How long is a dash compared to a dot?', answer: 'A dash is three times the length of a dot. The gap between letters is three dots long, and the gap between words is seven dots long.', },
+      { question: 'Can I copy the Morse output?', answer: 'Yes. The output is plain text containing dots, dashes, and spaces, so you can paste it into any chat, document, or note-taking app.' },
+    ],
+  },
+  {
+    slug: 'ascii-converter-en',
+    name: 'ASCII Code Converter',
+    description: 'Convert characters into ASCII codes (decimal, hex, binary) and convert ASCII values back into readable characters.',
+    category: 'encoding',
+    tags: ['ascii', 'code', 'character', 'convert', 'binary'],
+    icon: '💻',
+    keywords: ['ascii converter', 'ascii code', 'char to ascii', 'ascii to char', 'ascii table', 'character encoding'],
+    relatedSlugs: ['unicode-converter-en', 'base-converter-en'],
+    seoTitle: 'ASCII Code Converter - Free Character to ASCII Tool',
+    seoDescription: 'Convert characters to ASCII codes and ASCII codes back to characters. Display values in decimal, hexadecimal, octal, and binary.',
+    seoContent: '## What is the ASCII Code Converter?\n\nASCII (American Standard Code for Information Interchange) is a 7-bit character encoding that maps 128 characters — Latin letters, digits, common punctuation, and control characters — to numbers between 0 and 127. Despite its age, ASCII remains foundational: every modern encoding (UTF-8, UTF-16) is built to be backwards-compatible with it.\n\n## What can this tool do?\n\n- Convert any character (letters, digits, symbols) into its ASCII code.\n- Display each value in decimal, hexadecimal, octal, and binary side by side.\n- Decode comma-, space-, or newline-separated lists of ASCII numbers back into a string.\n- Inspect how uppercase and lowercase letters relate to each other through their numeric values.\n\n## Useful facts to remember\n\n- Uppercase \'A\' is 65, lowercase \'a\' is 97. The difference is exactly 32 (2 to the 5th power), which is why bitwise operations can flip case so easily.\n- The digit characters \'0\' through \'9\' start at 48, so subtracting \'0\' from a digit character yields its numeric value.\n- Codes 0-31 are non-printable control characters such as newline, tab, and bell.\n- Anything outside the 128-character range — Korean Hangul, Japanese kana, emojis — falls outside ASCII and requires Unicode encodings.\n\n## Where it helps\n\nLearning low-level character handling, debugging C-style strings, exploring byte streams in network protocols, and prepping for coding interviews that involve bit manipulation.',
+    faqs: [
+      { question: 'What is ASCII code 65?', answer: 'ASCII code 65 is the uppercase letter "A". The lowercase counterpart "a" is 97, exactly 32 numbers higher.' },
+      { question: 'How many characters does standard ASCII define?', answer: 'Standard ASCII defines 128 characters in the range 0-127, including Latin letters, digits, punctuation, and control codes.' },
+      { question: 'Can ASCII represent non-Latin scripts like Korean?', answer: 'No. ASCII covers only Latin letters and basic punctuation. Use Unicode encodings (UTF-8, UTF-16) for Korean, Japanese, Chinese, or emoji characters.' },
+      { question: 'Can I view results in binary or hexadecimal?', answer: 'Yes. Each conversion result shows the value in decimal, hexadecimal, octal, and binary so you can pick the format that fits your task.' },
+    ],
+  },
+  {
+    slug: 'hex-viewer-en',
+    name: 'Hex/Binary Viewer',
+    description: 'Upload any file and inspect its raw bytes side by side as hexadecimal values and ASCII characters.',
+    category: 'encoding',
+    tags: ['hex', 'binary', 'file', 'viewer', 'analyzer'],
+    icon: '🔬',
+    keywords: ['hex viewer', 'binary viewer', 'file analyzer', 'hexadecimal', 'hexdump online', 'file signature'],
+    relatedSlugs: ['base64-en', 'hash-generator-en'],
+    seoTitle: 'Hex/Binary Viewer - Online File Hex Analyzer',
+    seoDescription: 'View raw file bytes in hexadecimal alongside the ASCII representation. Analyze headers, magic numbers, and binary structures right in your browser.',
+    seoContent: '## What is the Hex/Binary Viewer?\n\nA hex viewer (also known as a hex dump) shows the raw bytes of a file using hexadecimal notation. Every byte is rendered as two hex digits and lined up next to its ASCII equivalent, giving you a precise window into the data that text editors usually mangle. This makes it the right tool for spotting file signatures, inspecting binary headers, and understanding how a file is actually laid out on disk.\n\n## Common use cases\n\n- Verifying that a file really is a PNG, JPEG, PDF, ZIP, or other expected format by checking its magic number.\n- Hunting for invisible characters such as BOMs, zero-width spaces, or unusual line endings inside text files.\n- Studying binary formats — fonts, executables, compressed archives — and learning how their headers are structured.\n- Reviewing packet captures, memory dumps, or other forensic artifacts during security work.\n\n## Reading the layout\n\n1. **Offset column**: shows the position of the first byte on each line, expressed in hexadecimal.\n2. **Hex column**: lists each byte as two hex digits, typically 16 bytes per line.\n3. **ASCII column**: renders the same bytes as printable ASCII characters; non-printable bytes are shown as a dot (.) so the line stays aligned.\n\n## Famous file signatures\n\n- PNG: 89 50 4E 47 0D 0A 1A 0A\n- JPEG: FF D8 FF\n- PDF: 25 50 44 46 (the literal characters "%PDF")\n- ZIP: 50 4B 03 04 (the literal characters "PK..")\n\n## Privacy and performance\n\nFiles never leave your browser; everything is processed locally. Very large files can slow the page down because the entire byte array must be scanned, so prefer pagination or sampling when working with multi-megabyte content.',
+    faqs: [
+      { question: 'Which file types can I analyze?', answer: 'Any file. The hex viewer is format-agnostic, but it is most useful for binary formats — images, fonts, archives, and executables — where headers and signatures matter.' },
+      { question: 'What does the ASCII column show?', answer: 'It maps each byte to its ASCII character. Non-printable bytes (control characters, binary data) are replaced with a dot so each row keeps a fixed width.' },
+      { question: 'Can I open very large files?', answer: 'Performance depends on your device. For files larger than a few tens of megabytes, page through smaller chunks instead of loading everything at once.' },
+      { question: 'Are my files uploaded to a server?', answer: 'No. The viewer runs entirely in your browser, so your files are never transmitted to any server.' },
+    ],
+  },
+  {
+    slug: 'http-status-code-en',
+    name: 'HTTP Status Code Reference',
+    description: 'Search HTTP status codes (1xx-5xx), filter by category, and read the meaning and typical usage of each one.',
+    category: 'formatter',
+    tags: ['http', 'status', 'api', 'rest'],
+    icon: '📡',
+    keywords: ['http status codes', 'http error codes', '404 meaning', '500 error', '301 redirect', 'rest api response codes'],
+    relatedSlugs: ['url-query-parser-en', 'json-formatter-en'],
+    seoTitle: 'HTTP Status Code Reference - Searchable 1xx-5xx Cheat Sheet',
+    seoDescription: 'Complete HTTP status code reference covering informational, success, redirection, client error, and server error responses. Search and filter instantly.',
+    seoContent: '## What are HTTP status codes?\n\nWhenever a web server responds to a client request — whether from a browser, a mobile app, or an API consumer — it includes a three-digit status code that summarizes how the request was handled. The first digit places the response into one of five families, each with a clear meaning.\n\n## The five status families\n\n- **1xx Informational**: the request was received and processing continues. (100 Continue, 101 Switching Protocols)\n- **2xx Success**: the request was completed successfully. (200 OK, 201 Created, 204 No Content)\n- **3xx Redirection**: further action is required to fulfill the request. (301 Moved Permanently, 302 Found, 304 Not Modified)\n- **4xx Client Errors**: the request was malformed or unauthorized. (400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 429 Too Many Requests)\n- **5xx Server Errors**: the server failed to fulfill an apparently valid request. (500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable, 504 Gateway Timeout)\n\n## Codes that confuse people\n\n- **301 vs 302**: 301 is permanent (search engines update their index), while 302 is temporary.\n- **401 vs 403**: 401 means "you have not authenticated yet"; 403 means "you are authenticated but not allowed".\n- **502 vs 503 vs 504**: 502 indicates a bad upstream response, 503 signals service unavailability or overload, 504 means an upstream request timed out.\n\n## Best practices\n\nDesigning a clean API means choosing status codes intentionally. Validation failures usually deserve 400 or 422; missing authentication should return 401; insufficient permissions return 403; non-existent resources return 404. Consistent codes let clients branch on the status alone instead of parsing error messages.',
+    faqs: [
+      { question: 'What is the difference between 200 and 201?', answer: '200 means a generic successful response, while 201 specifically signals that a new resource was created. POST endpoints often return 201 after creating a record.' },
+      { question: 'Is 500 caused by the user?', answer: 'No. 500 indicates an unexpected server-side error. Issues caused by the client (bad input, missing auth, etc.) are reported with 4xx codes.' },
+      { question: 'How do 401 and 403 differ?', answer: '401 means "you have not signed in yet"; the client should authenticate and retry. 403 means "you are authenticated, but you are not authorized to access this resource".' },
+      { question: 'When should I use 404 versus 410?', answer: '404 means the resource is currently missing — it might come back. 410 explicitly states the resource is permanently gone, which helps search engines de-index it faster.' },
+    ],
+  },
+  {
+    slug: 'batch-color-converter-en',
+    name: 'Batch Color Converter',
+    description: 'Convert many color codes between HEX, RGB, and HSL at once. Paste a list and get a clean conversion table in seconds.',
+    category: 'color',
+    tags: ['batch', 'color', 'convert', 'hex', 'rgb', 'hsl'],
+    icon: '🎨',
+    keywords: ['batch color converter', 'multiple color conversion', 'bulk color converter', 'design system colors', 'color migration'],
+    relatedSlugs: ['color-converter-en', 'palette-generator-en'],
+    seoTitle: 'Batch Color Converter - Bulk HEX, RGB, HSL Converter',
+    seoDescription: 'Paste a list of HEX, RGB, or HSL colors and convert them all at once. Ideal for design system migrations and palette cleanup.',
+    seoContent: '## What is the Batch Color Converter?\n\nProjects often pile up dozens or hundreds of color codes scattered across CSS files, design specs, and documentation. The Batch Color Converter takes a list of colors — written in HEX (#RRGGBB), RGB (rgb(0,0,0)), or HSL (hsl(0,0%,0%)) — and converts every entry to the format you choose, all in a single pass.\n\n## Where it helps\n\n- Cleaning up a design system and consolidating colors into a single canonical format.\n- Migrating a legacy RGB-based codebase to HSL for easier tonal manipulation.\n- Producing dual-format swatches (HEX and HSL, for example) for design-engineer handoffs.\n- Collecting brand colors from multiple sources into one normalized table.\n\n## Input formats\n\n- One color per line for clarity, or comma-separated lists for compact pasting.\n- HEX, RGB, and HSL formats can be mixed in the same input — the parser detects each entry automatically.\n- Invalid lines are flagged in the result so you can fix typos quickly.\n\n## Tips\n\n- HSL is great for design systems because lightness (L) maps directly to tonal steps (e.g., 100/200/...//900). Convert your existing colors to HSL first to plan tonal scales.\n- Copy the result table into a spreadsheet, Notion, or your CSS variables file — formatting carries over cleanly.\n- All conversions happen locally in the browser, so no color data leaves your machine.',
+    faqs: [
+      { question: 'How many colors can I convert at once?', answer: 'There is no hard cap, but very large batches may slow the page down. For best performance, work in groups of a few hundred entries at a time.' },
+      { question: 'Can I mix HEX, RGB, and HSL inputs?', answer: 'Yes. Each line is parsed independently, so a single batch can contain mixed formats. The output unifies them into the format you choose.' },
+      { question: 'How do I export the results?', answer: 'Copy the formatted table from the output area. It pastes cleanly into spreadsheets, Notion documents, Figma notes, or CSS variable files.' },
+      { question: 'Are my color codes uploaded anywhere?', answer: 'No. The conversion is done entirely in your browser. The input list never leaves your device.' },
+    ],
+  },
+  {
+    slug: 'meeting-cost-calculator-en',
+    name: 'Meeting Cost Calculator',
+    description: 'Estimate how much a meeting really costs by combining attendees, duration, and average salaries.',
+    category: 'calculator',
+    tags: ['meeting', 'cost', 'calculator', 'productivity', 'roi'],
+    icon: '💰',
+    keywords: ['meeting cost calculator', 'meeting roi', 'time cost', 'salary based cost', 'meeting tax', 'productivity calculator'],
+    relatedSlugs: ['salary-calculator', 'pomodoro-timer-en'],
+    seoTitle: 'Meeting Cost Calculator - Free Meeting ROI Calculator',
+    seoDescription: 'Estimate the real cost of a meeting based on attendees, duration, and salary inputs. Use it to question recurring meetings and protect focus time.',
+    seoContent: '## What is the Meeting Cost Calculator?\n\nMeetings are never free. Every attendee is paid for the time they spend in the room, which means each meeting consumes a measurable amount of company budget. The Meeting Cost Calculator turns three simple inputs — number of attendees, meeting duration, and an average annual salary — into a clear dollar figure that captures the actual cost of pulling those people away from their other work.\n\n## Who benefits from it?\n\n- Team leads who want to question recurring meetings and protect focus time.\n- Founders and executives who need a quick reality check on how much time is being spent in synchronous work.\n- Consultants and freelancers building hourly billing rates that reflect their true opportunity cost.\n- Anyone advocating for an "async-first" culture who needs a concrete number to support the case.\n\n## How the calculation works\n\nMeeting cost = number of attendees × average hourly rate × duration in hours\n\nThe hourly rate is derived from the average salary by dividing it by a standard yearly working time (typically 2,080 hours, or 40 hours × 52 weeks). The result panel also extrapolates the cost over a year, so a "weekly status meeting" reveals its true annual price tag.\n\n## Practical tips\n\n- Drop the calculated number into the meeting invite description. Knowing that a 60-minute meeting with 10 senior engineers costs thousands of dollars often reshapes the agenda.\n- Treat the result as a conservative estimate. Real costs include benefits, office overhead, and opportunity cost — easily 1.5x to 2x the salary-only number.\n- All calculations happen entirely in your browser; salary inputs stay private.',
+    faqs: [
+      { question: 'How is the meeting cost calculated?', answer: 'Cost equals attendees multiplied by average hourly rate multiplied by meeting duration. The hourly rate comes from dividing annual salary by standard working hours (typically 2,080 per year).' },
+      { question: 'Is the result the actual cost to the company?', answer: 'It is a conservative estimate. The real cost is higher once you add benefits, taxes, office overhead, and opportunity cost — typically 1.5x to 2x the salary-only figure.' },
+      { question: 'How can I reduce meeting costs quickly?', answer: 'Invite only the people who must make the decision, share an agenda in advance, and time-box each topic. Status updates can often be replaced by written messages.' },
+      { question: 'Are my salary numbers shared anywhere?', answer: 'No. All inputs are processed locally in your browser. No salary or attendance data leaves your device.' },
+    ],
+  },
+  {
+    slug: 'invoice-generator-en',
+    name: 'Invoice Generator',
+    description: 'Build clean invoices and quotes with line items, tax calculations, and one-click PDF export.',
+    category: 'calculator',
+    tags: ['invoice', 'billing', 'quote', 'pdf'],
+    icon: '📄',
+    keywords: ['invoice generator', 'create invoice', 'free invoice maker', 'quote maker', 'freelance invoice', 'simple billing'],
+    relatedSlugs: ['percentage-en', 'date-calculator-en'],
+    seoTitle: 'Invoice Generator - Free Online Invoice and Quote Builder',
+    seoDescription: 'Create invoices and quotes with line items, automatic tax calculation, and PDF export. Perfect for freelancers, consultants, and small teams.',
+    seoContent: '## What is the Invoice Generator?\n\nFreelancers, consultants, and small teams need to send invoices and quotes regularly, but recreating the document layout every time is a chore. This generator turns that recurring task into a fill-in-the-blank flow: enter your business details, the recipient, line items, and tax rate, then print or save as PDF in one step.\n\n## Key features\n\n- Issuer and recipient sections with company name, registration number, contact details, and address.\n- Unlimited line items with automatic subtotal calculation per row and across the whole invoice.\n- Configurable tax rate (defaulting to 10%) with totals broken down into subtotal, tax, and grand total.\n- Issue date, due date, and reference number fields for tracking.\n- Print preview that doubles as the PDF export path: choose "Save as PDF" in the print dialog.\n- All processing happens locally — no client data is sent to any server.\n\n## Suggested workflow\n\n1. Fill in your business details once and screenshot or note them so you can copy them into future invoices quickly.\n2. Add each deliverable as a line item with a clear description, unit price, and quantity. The total updates automatically.\n3. Adjust the tax rate to match your jurisdiction.\n4. Click Print, choose "Save as PDF", and download the file.\n5. Attach the PDF to an email or upload it to a project workspace and you are done.\n\n## Notes\n\n- The generator focuses on simple invoices and quotes. For formal tax invoices that require government-issued numbers, use your country\'s official system in parallel.\n- Logos and signatures can be added by editing the exported PDF in a separate tool.\n- Because everything is processed in the browser, sensitive billing data stays on your device.',
+    faqs: [
+      { question: 'Can I save the invoice as a PDF?', answer: 'Yes. Click Print, then choose "Save as PDF" (or your printer\'s PDF option) in the print dialog. The result is a ready-to-send PDF file.' },
+      { question: 'How is tax calculated?', answer: 'The tool applies the tax rate you set (default 10%) to the subtotal. The result panel breaks down the subtotal, tax amount, and grand total separately.' },
+      { question: 'Can I add a company logo?', answer: 'Not directly. The generator produces a clean text-based layout. To include a logo, save the PDF and add the logo afterward using a PDF editor.' },
+      { question: 'Is my billing data uploaded somewhere?', answer: 'No. Everything is processed entirely in your browser. Your client information, line items, and amounts never leave your device.' },
+    ],
+  },
+  {
+    slug: 'color-blindness-image-en',
+    name: 'Image Color Blindness Simulator',
+    description: 'Upload an image and preview how it appears to users with protanopia, deuteranopia, tritanopia, or achromatopsia.',
+    category: 'image',
+    tags: ['colorblind', 'accessibility', 'simulator', 'a11y'],
+    icon: '👁️',
+    keywords: ['color blindness simulator', 'colorblind test', 'accessibility checker', 'color vision', 'wcag colors', 'a11y'],
+    relatedSlugs: ['color-blind-simulator-en', 'contrast-checker-en', 'image-convert-en'],
+    seoTitle: 'Image Color Blindness Simulator - Accessibility Preview',
+    seoDescription: 'Upload an image and preview how it looks to users with the four most common types of color vision deficiency. Improve your design accessibility.',
+    seoContent: '## What is the Image Color Blindness Simulator?\n\nRoughly 8% of men and 0.5% of women experience some form of color vision deficiency. Designs that rely on color alone — to indicate states, separate categories, or highlight data — risk excluding those users entirely. This simulator takes any image you upload and renders four classic color-blindness perspectives next to the original so you can spot accessibility issues at a glance.\n\n## Supported color vision deficiencies\n\n- **Protanopia (red-blind)**: reduced sensitivity to red light, making red and green appear similar.\n- **Deuteranopia (green-blind)**: the most common form of red-green color blindness; greens and reds blend together.\n- **Tritanopia (blue-blind)**: difficulty distinguishing blue and yellow. Less common.\n- **Achromatopsia (total color blindness)**: little to no color perception, with the world appearing in grayscale.\n\n## Where this tool shines\n\n- Auditing charts, dashboards, and infographics that rely on color-coded data.\n- Validating UI states ("success", "warning", "error") that should remain distinguishable beyond hue.\n- Reviewing marketing creative, ads, and packaging mockups before they reach a global audience.\n- Checking educational materials, exam questions, and signage for color-only cues.\n\n## Accessibility checklist\n\n- Pair color with shape, icon, pattern, or label so the meaning is conveyed in multiple ways.\n- Use sufficient luminance contrast so the message survives even when color is reduced.\n- Prefer color-blind-safe palettes (for example blue/orange) when possible.\n- The simulator runs entirely in your browser; uploaded images never leave your device.',
+    faqs: [
+      { question: 'What is this tool used for?', answer: 'It quickly verifies whether a chart, illustration, or interface still communicates clearly to users with color vision deficiencies.' },
+      { question: 'Which types of color blindness are covered?', answer: 'Protanopia (red-blind), Deuteranopia (green-blind), Tritanopia (blue-blind), and Achromatopsia (total color blindness).' },
+      { question: 'Any tips for color-blind-friendly design?', answer: 'Combine color with another channel (icons, text labels, patterns), maintain strong luminance contrast, and pick palettes that remain distinguishable when desaturated.' },
+      { question: 'Does my image get uploaded?', answer: 'No. The image is processed locally in the browser. Nothing is uploaded to any server.' },
+    ],
+  },
+  {
+    slug: 'pros-cons-comparator-en',
+    name: 'Pros and Cons Comparator',
+    description: 'List the pros and cons of two options, weight each item by importance, and compare the totals to make a clearer decision.',
+    category: 'calculator',
+    tags: ['pros', 'cons', 'compare', 'decision', 'analysis'],
+    icon: '⚖️',
+    keywords: ['pros and cons', 'decision maker', 'compare options', 'pros cons list', 'weighted decision', 'pros cons calculator'],
+    relatedSlugs: ['random-decision-maker-en', 'random-picker-en'],
+    seoTitle: 'Pros and Cons Comparator - Weighted Decision Tool',
+    seoDescription: 'Compare two options by listing weighted pros and cons. Visualize totals to make better-informed decisions for jobs, purchases, and life choices.',
+    seoContent: '## What is the Pros and Cons Comparator?\n\nWhen a tough decision is in front of you, a classic pros-and-cons list still works wonders — but only if you weigh each point by how much it really matters. This comparator lets you list the pros and cons for two options, assign each item an importance score from 1 to 5, and instantly see weighted totals so you can tell which option comes out ahead in a structured way.\n\n## Great for decisions like\n\n- Switching between two job offers or career paths.\n- Choosing between competing big-ticket purchases (laptops, cameras, appliances).\n- Picking between two cities or neighborhoods to live in.\n- Comparing programs, schools, fitness routines, or vacation plans.\n- Weighing two product directions during planning sessions.\n\n## Why weighting matters\n\nA naive pros-and-cons count treats every bullet equally. Weighting solves that: a single deal-breaking con can outweigh several minor pros, and a single life-changing pro can offset a handful of small drawbacks. Pick a 1-5 scale where 1 means "nice to have" and 5 means "this could flip the entire decision".\n\n## Practical tips\n\n- Draft the list quickly, then sleep on it and revisit. Weights often shift overnight.\n- If totals are close, look at the maximum-weight con on each side — a single critical risk can make a tie obvious.\n- Treat the result as a thinking aid, not a verdict. The biggest value is the clarity that comes from organizing your thoughts.',
+    faqs: [
+      { question: 'How should I assign weights?', answer: 'Use a 1 to 5 scale where 1 means "nice to have" and 5 means "this single point could change the decision". Be consistent across both options.' },
+      { question: 'Can I compare more than two options?', answer: 'The tool focuses on two options at a time. For larger sets, run a tournament — compare two options, keep the winner, and repeat until one remains.' },
+      { question: 'What if the totals are very close?', answer: 'Inspect the most heavily weighted cons on each side. A single severe risk can be reason enough to favor the option without it, even when overall totals match.' },
+      { question: 'Should I follow the result blindly?', answer: 'No. The comparator is a structured way to surface your priorities. Use it to clarify your thinking, then make the call based on context only you can see.' },
+    ],
+  },
 ];
 
 // Get tool by slug

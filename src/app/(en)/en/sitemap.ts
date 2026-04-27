@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { toolsEn } from '@/data/tools-en';
 import { siteConfig } from '@/data/site';
+import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
 
 export const dynamic = 'force-static';
 
@@ -48,12 +49,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const toolPages: MetadataRoute.Sitemap = toolsEn.map((tool) => ({
-    url: `${baseUrl}/tools/${tool.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'weekly' as const,
-    priority: tool.featured ? 0.95 : 0.9,
-  }));
+  // AdSense 정책 회색지대 도구는 noindex라 sitemap에서도 제외
+  const toolPages: MetadataRoute.Sitemap = toolsEn
+    .filter((tool) => !isRestrictedSlug(tool.slug))
+    .map((tool) => ({
+      url: `${baseUrl}/tools/${tool.slug}`,
+      lastModified: BUILD_DATE,
+      changeFrequency: 'weekly' as const,
+      priority: tool.featured ? 0.95 : 0.9,
+    }));
 
   return [...staticPages, ...toolPages];
 }

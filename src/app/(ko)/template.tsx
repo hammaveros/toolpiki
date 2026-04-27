@@ -5,9 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Header, Footer } from '@/components/layout';
 import { HeaderAdBanner } from '@/components/ads/HeaderAdBanner';
 import { FooterAdBanner } from '@/components/ads/FooterAdBanner';
-
-// 광고를 표시하지 않을 경로
-const AD_EXCLUDED_PATHS = ['/chat'];
+import { isRestrictedPath } from '@/lib/seo/restricted-slugs';
 
 export default function Template({
   children,
@@ -15,7 +13,7 @@ export default function Template({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const showAds = !AD_EXCLUDED_PATHS.includes(pathname);
+  const showAds = !isRestrictedPath(pathname);
 
   return (
     <>
