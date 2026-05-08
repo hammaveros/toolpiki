@@ -11,6 +11,7 @@ export const NOINDEX_SLUGS_KR: ReadonlySet<string> = new Set([
   'name-compatibility',
   'fortune-cookie',
   'lotto-generator',
+  'chat',
 ]);
 
 export const NOINDEX_SLUGS_EN: ReadonlySet<string> = new Set([

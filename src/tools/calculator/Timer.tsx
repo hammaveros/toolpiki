@@ -369,6 +369,49 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🍅 뽀모도로 기법이란?
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          뽀모도로 기법은 1980년대 후반 프란체스코 시릴로(Francesco Cirillo)가 고안한 시간 관리 방법입니다.
+          이름은 그가 사용한 토마토 모양 주방 타이머에서 유래했습니다(이탈리아어로 토마토를 뽀모도로라고 함).
+          25분 집중과 5분 휴식을 1세트로 두고, 4세트마다 15~30분의 긴 휴식을 갖는 단순한 구조입니다.
+          짧은 인터벌이 뇌의 피로를 줄이고, 마감 효과를 활용해 집중도를 끌어올린다는 점이 핵심입니다.
+        </p>
+        <p className="text-sm leading-relaxed">
+          이 도구의 뽀모도로 모드는 표준 25/5/15 타이밍을 그대로 따릅니다.
+          작업 페이즈가 끝나면 자동으로 휴식 페이즈로 넘어가고, 4번째 작업 후에는 긴 휴식이 적용됩니다.
+          완료한 뽀모도로 횟수가 카운트되어 하루 작업량을 추적할 수 있습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🆚 타이머 vs 스톱워치 vs 뽀모도로
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          세 모드는 시간을 다루는 방향이 다릅니다. 상황에 맞게 골라 쓰면 됩니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>타이머(카운트다운)</strong>: 정해진 시간이 끝나는 순간이 중요할 때 (라면 3분, 명상 10분, 발표 5분 제한 등)</li>
+          <li><strong>스톱워치(카운트업)</strong>: 시작부터 끝까지 얼마나 걸렸는지가 중요할 때 (운동 기록, 작업 소요 시간 측정, 인터뷰 길이 측정 등)</li>
+          <li><strong>뽀모도로</strong>: 긴 시간을 나눠서 일정 리듬으로 반복하고 싶을 때 (장시간 공부, 글쓰기, 코딩 세션 등)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📚 시간 관리가 가져오는 변화
+        </h2>
+        <p className="text-sm leading-relaxed">
+          시간을 측정하기 시작하면 막연하던 작업이 구체적인 숫자로 보입니다.
+          예를 들어 보고서 작성에 평소 얼마나 걸리는지 알게 되면, 다음 일정을 잡을 때 현실적인 추정이 가능합니다.
+          또한 짧은 시간 제한은 파킨슨 법칙(일은 주어진 시간만큼 늘어난다)을 역으로 활용해 작업을 압축시키는 효과가 있습니다.
+          공부할 때는 한 번에 길게 앉아 있는 것보다 25~50분 단위로 끊고 쉬는 편이 장기 기억으로 옮기기 유리하다고 알려져 있습니다.
+        </p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
@@ -383,6 +426,14 @@ function SeoContent() {
           {
             question: '스톱워치 랩 기록은 저장되나요?',
             answer: '랩 기록은 현재 세션에서만 유지됩니다. 페이지를 새로고침하면 초기화되며, 서버에 저장되지 않습니다.',
+          },
+          {
+            question: '뽀모도로 25분/5분 시간을 바꿀 수 있나요?',
+            answer: '현재 버전은 표준 25/5/15분 사이클로 고정되어 있습니다. 표준 시간이 가장 널리 검증된 구성이며, 다른 길이를 원하면 일반 타이머 모드를 활용해 직접 설정할 수 있습니다.',
+          },
+          {
+            question: '백그라운드 탭에서 타이머가 부정확한 이유는?',
+            answer: '브라우저는 보이지 않는 탭의 setInterval 정확도를 줄여 배터리를 아낍니다. 정확한 마감이 필요한 작업은 화면에 탭을 켜둔 상태로 사용하는 것이 좋습니다.',
           },
         ]}
       />

@@ -186,6 +186,52 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📐 자주 쓰는 백분율 공식 정리
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          업무에서 자주 쓰는 퍼센트 공식들을 한눈에 정리했습니다. 헷갈릴 때 참고하세요.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">개념</th>
+                <th className="text-left py-2 px-2">공식</th>
+                <th className="text-left py-2 px-2">예시</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">증감률</td><td className="font-mono">(나중값 - 처음값) ÷ 처음값 × 100</td><td>1만→1.2만 = +20%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">할인율</td><td className="font-mono">(정상가 - 할인가) ÷ 정상가 × 100</td><td>5만→4만 = 20% 할인</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">원가 마진율</td><td className="font-mono">(판매가 - 원가) ÷ 원가 × 100</td><td>원가 1만, 판매 1.5만 = 50%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">매출 마진율</td><td className="font-mono">(판매가 - 원가) ÷ 판매가 × 100</td><td>원가 1만, 판매 1.5만 ≈ 33.3%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">달성률</td><td className="font-mono">실적 ÷ 목표 × 100</td><td>목표 100, 실적 85 = 85%</td></tr>
+              <tr><td className="py-2 px-2 font-medium">성장률(CAGR 단일기)</td><td className="font-mono">(끝 ÷ 시작) - 1</td><td>100→121 (1년) = 21%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🛒 실무 활용 사례
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          퍼센트 계산은 분야를 가리지 않고 등장합니다. 자주 쓰이는 상황을 정리했습니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>쇼핑/리테일</strong>: 할인가 계산, 쿠폰 중복 적용 후 최종가, 적립 포인트 환산</li>
+          <li><strong>회계/세무</strong>: 부가세 포함/미포함 변환, 원천징수 3.3% 차감 후 실수령액</li>
+          <li><strong>마케팅</strong>: 전환율(CVR), 클릭률(CTR), 이탈률(Bounce Rate) 계산</li>
+          <li><strong>인사/급여</strong>: 연봉 인상률, 성과급 비율, 4대보험 공제 후 실수령액</li>
+          <li><strong>학업/시험</strong>: 점수 환산, 출석률, 정답률, 등수 백분위(상위 몇 %)</li>
+          <li><strong>건강</strong>: 체지방률 변화, 목표 체중까지의 감량 비율</li>
+          <li><strong>투자</strong>: 수익률, 손실률, 매수가 대비 현재가 등락률</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
@@ -200,6 +246,14 @@ function SeoContent() {
           {
             question: '증가율과 감소율 중 어느 것이 더 큰 영향을 미치나요?',
             answer: '같은 퍼센트라면 감소의 영향이 더 큽니다. 100에서 20% 증가 후 20% 감소하면 96이 되어 4%가 손실됩니다.',
+          },
+          {
+            question: '원가 마진율과 매출 마진율은 어떻게 다른가요?',
+            answer: '같은 이익이라도 분모가 다릅니다. 원가 1만, 판매 1.5만일 때 원가 마진율은 5천 ÷ 1만 = 50%, 매출 마진율은 5천 ÷ 1.5만 ≈ 33.3%입니다. 보통 유통/소매에서는 매출 마진율을 더 자주 씁니다.',
+          },
+          {
+            question: '퍼센트(%)와 퍼센트포인트(%p)는 어떻게 다른가요?',
+            answer: '퍼센트는 비율의 변화이고 퍼센트포인트는 절댓값의 차이입니다. 금리가 3%에서 5%로 오른 경우, "2%p 인상" 또는 "약 66.7% 인상"이라고 표현합니다. 둘을 섞어 쓰면 의미가 완전히 달라지니 주의하세요.',
           },
         ]}
       />

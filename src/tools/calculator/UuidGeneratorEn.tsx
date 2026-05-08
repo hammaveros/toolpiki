@@ -195,6 +195,60 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔍 UUID Versions in Detail
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          A closer look at the most commonly used versions helps you pick the right one.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>v1 (time + MAC)</strong>: Embeds the generation time so you can extract a timestamp later. The downside is that it leaks part of the host MAC address, which is a concern in security-sensitive contexts.</li>
+          <li><strong>v4 (random)</strong>: Built on 122 bits of randomness. It is the most common choice, untraceable, and easy to implement, which is why most languages ship it as the default. This tool generates v4.</li>
+          <li><strong>v7 (time + random)</strong>: Standardized in RFC 9562 (2024). The leading bytes carry a millisecond Unix timestamp, so the values are sortable and produce friendlier B-tree index locality than v4. It is gaining traction as a primary key in distributed systems.</li>
+          <li><strong>v5 (namespace hash)</strong>: Always returns the same UUID for the same namespace and name pair. Useful when you need a deterministic ID derived from inputs like a URL or DNS name.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🆚 UUID vs GUID vs ULID
+        </h2>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">Identifier</th>
+                <th className="text-left py-2 px-2">Length</th>
+                <th className="text-left py-2 px-2">Sortable?</th>
+                <th className="text-left py-2 px-2">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">UUID</td><td>36 chars (with dashes)</td><td>Only v7</td><td>RFC standard, most widely supported</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">GUID</td><td>36 chars</td><td>Same as UUID</td><td>Microsoft terminology, technically a UUID</td></tr>
+              <tr><td className="py-2 px-2 font-medium">ULID</td><td>26 chars (Crockford Base32)</td><td>Time-sortable</td><td>Popular before UUID v7, shorter and URL-friendly</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🛡️ Security Considerations
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          A UUID is "unique" but not necessarily "secret." Where you place it changes what you need to think about.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>Not a substitute for secrets</strong>: For auth tokens or password reset links, generate a dedicated random string (for example 32 random bytes) instead of a UUID. The 122 random bits in v4 may look strong, but the value is meant to be an identifier, not a secret.</li>
+          <li><strong>Predictability</strong>: v1 leaks the timestamp and MAC fragment, so avoid exposing it directly in public APIs. v4 and v7 random parts are not predictable.</li>
+          <li><strong>Enumeration protection</strong>: Replacing auto-increment IDs with UUIDs prevents trivial guesses like /users/1, /users/2, adding a layer of defense against IDOR-style issues. Do not use it as a replacement for proper authorization checks though.</li>
+          <li><strong>Logs and URLs</strong>: UUIDs end up in server logs, search engines, and analytics. Treat sensitive resources with explicit access checks regardless of how unguessable the URL looks.</li>
+          <li><strong>Random source</strong>: This tool uses the browser's <code>crypto.randomUUID()</code>, which is backed by the OS-level cryptographically secure random number generator.</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
@@ -209,6 +263,14 @@ function SeoContent() {
           {
             question: 'What is the UUID format?',
             answer: 'The format is xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx. The 4 indicates version (v4), and y is one of 8, 9, a, or b.',
+          },
+          {
+            question: 'Will UUID primary keys hurt database performance?',
+            answer: 'Random UUIDs like v4 scatter index pages and can slow down writes on large tables. If that is a concern, consider UUID v7 or ULID. Both keep index locality close to that of an auto-increment key while still being globally unique.',
+          },
+          {
+            question: 'Is it OK to use a UUID as an authentication token?',
+            answer: 'Not recommended. The 122 random bits in UUID v4 look strong, but the value is designed to be an identifier rather than a secret. For session tokens or password reset links, generate a dedicated random string of at least 32 bytes.',
           },
         ]}
       />

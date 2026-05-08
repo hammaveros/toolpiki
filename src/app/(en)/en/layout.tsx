@@ -1,7 +1,5 @@
 import { Suspense } from 'react';
 import { HeaderEn, FooterEn } from '@/components/layout';
-import { HeaderAdBanner } from '@/components/ads/HeaderAdBanner';
-import { FooterAdBanner } from '@/components/ads/FooterAdBanner';
 import { generateOrganizationJsonLdEn, generateWebSiteJsonLdEn } from '@/lib/seo/jsonld-en';
 
 export default function EnLayout({
@@ -27,9 +25,7 @@ export default function EnLayout({
       <Suspense fallback={null}>
         <HeaderEn />
       </Suspense>
-      <HeaderAdBanner disableFallback />
-      <main className="flex-1">{children}</main>
-      <FooterAdBanner disableFallback />
+      {children}
       <FooterEn />
     </>
   );

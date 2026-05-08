@@ -118,9 +118,6 @@ export function AdSlot({ format = 'auto', slotId = '5499882149', className, resp
       ref={containerRef}
       className={className}
       aria-label="광고 영역"
-      tabIndex={-1}
-      style={{ outline: 'none' }}
-      onFocus={(e) => e.preventDefault()}
     >
       <ins
         ref={insRef}

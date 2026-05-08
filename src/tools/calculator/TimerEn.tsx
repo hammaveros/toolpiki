@@ -367,6 +367,49 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🍅 What Is the Pomodoro Technique?
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s.
+          The name comes from the tomato-shaped kitchen timer he used (pomodoro means tomato in Italian).
+          One cycle consists of 25 minutes of focused work followed by a 5-minute break, with a longer 15 to 30 minute break after every four cycles.
+          The short intervals reduce mental fatigue while the deadline pressure helps boost concentration.
+        </p>
+        <p className="text-sm leading-relaxed">
+          The Pomodoro mode in this tool follows the standard 25/5/15 timing.
+          When a work phase ends it automatically transitions to a break, and a long break kicks in after the fourth work session.
+          Completed pomodoros are counted so you can track how much focused work you have done in a day.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🆚 Timer vs Stopwatch vs Pomodoro
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          The three modes treat time in different directions. Pick the one that matches your situation.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>Timer (count down)</strong>: When the moment a fixed duration ends matters (3-minute noodles, 10-minute meditation, 5-minute speech limit)</li>
+          <li><strong>Stopwatch (count up)</strong>: When you care how long something takes from start to finish (workout records, task duration, interview length)</li>
+          <li><strong>Pomodoro</strong>: When you want to break a long session into a steady rhythm (extended study, writing, coding sessions)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📚 Why Time Tracking Helps
+        </h2>
+        <p className="text-sm leading-relaxed">
+          Once you start measuring time, vague tasks turn into concrete numbers.
+          Knowing roughly how long a report normally takes lets you make realistic estimates for the next deadline.
+          Short time limits also flip Parkinson's law in your favor (work tends to expand to fill available time), compressing tasks into tighter windows.
+          For studying, splitting sessions into 25 to 50 minute blocks with short breaks is generally considered better for moving information into long-term memory than one extended sitting.
+        </p>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
@@ -381,6 +424,14 @@ function SeoContent() {
           {
             question: 'Are stopwatch lap records saved?',
             answer: 'Lap records persist only during the current session. Refreshing the page resets them, and nothing is saved to any server.',
+          },
+          {
+            question: 'Can I change the 25 / 5 minute Pomodoro durations?',
+            answer: 'The current version uses the standard 25/5/15 cycle. The standard timing is the most widely validated configuration. If you need a different length, use the regular Timer mode and configure it manually.',
+          },
+          {
+            question: 'Why does the timer drift in a background tab?',
+            answer: 'Browsers reduce the precision of setInterval in hidden tabs to save battery. For deadlines that need to be exact, keep the tab visible while the timer runs.',
           },
         ]}
       />

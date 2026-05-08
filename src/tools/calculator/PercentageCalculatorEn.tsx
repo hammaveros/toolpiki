@@ -182,6 +182,52 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📐 Common Percentage Formulas
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          A quick reference to formulas you will run into in everyday work and study.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">Concept</th>
+                <th className="text-left py-2 px-2">Formula</th>
+                <th className="text-left py-2 px-2">Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Percent change</td><td className="font-mono">(new - old) ÷ old × 100</td><td>$100 → $120 = +20%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Discount rate</td><td className="font-mono">(list - sale) ÷ list × 100</td><td>$50 → $40 = 20% off</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Markup (on cost)</td><td className="font-mono">(price - cost) ÷ cost × 100</td><td>Cost $10, price $15 = 50%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Margin (on revenue)</td><td className="font-mono">(price - cost) ÷ price × 100</td><td>Cost $10, price $15 ≈ 33.3%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Achievement rate</td><td className="font-mono">actual ÷ target × 100</td><td>Target 100, actual 85 = 85%</td></tr>
+              <tr><td className="py-2 px-2 font-medium">Growth rate (1 period)</td><td className="font-mono">(end ÷ start) - 1</td><td>100 → 121 over a year = 21%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🛒 Real-world Use Cases
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          Percentage math shows up everywhere. Here are situations where this calculator comes in handy.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>Shopping / Retail</strong>: Final price after discounts, stacking coupons, reward point conversion</li>
+          <li><strong>Accounting / Tax</strong>: Adding or removing sales tax, take-home pay after withholding</li>
+          <li><strong>Marketing</strong>: Conversion rate (CVR), click-through rate (CTR), bounce rate</li>
+          <li><strong>HR / Payroll</strong>: Salary raises, bonus percentages, deductions from gross pay</li>
+          <li><strong>Academics</strong>: Score conversion, attendance rate, accuracy, percentile ranking</li>
+          <li><strong>Health</strong>: Body fat percentage change, progress toward a weight goal</li>
+          <li><strong>Investing</strong>: Return on investment, drawdown, percent change versus purchase price</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
@@ -196,6 +242,14 @@ function SeoContent() {
           {
             question: 'Why does 20% up then 20% down not equal the original?',
             answer: 'The decrease applies to the larger increased amount. Starting at 100: +20% = 120, then -20% of 120 = 96. You lose 4%.',
+          },
+          {
+            question: 'What is the difference between markup and margin?',
+            answer: 'They share the same profit but use different denominators. With cost $10 and price $15, markup on cost is $5 / $10 = 50% while margin on revenue is $5 / $15 ≈ 33.3%. Retailers usually quote margin on revenue.',
+          },
+          {
+            question: 'What is the difference between percent (%) and percentage point (pp)?',
+            answer: 'Percent is a relative change, percentage point is an absolute change. If a rate moves from 3% to 5%, it is a 2 pp increase or roughly a 66.7% increase. Mixing the two changes the meaning entirely, so be careful when reporting numbers.',
           },
         ]}
       />
