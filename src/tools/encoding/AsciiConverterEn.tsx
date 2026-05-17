@@ -182,10 +182,9 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">💻 What is ASCII Converter?</h2>
         <p className="text-sm leading-relaxed">
-          ASCII was standardised in 1963 by ANSI X3.4 as a 7-bit code that maps the integers 0 through 127 onto English letters, digits, punctuation, and a handful of control characters.
-          Its teletype origins are still visible today through <code>\n</code> (LF, 10), <code>\r</code> (CR, 13), and <code>\t</code> (TAB, 9), which carry over into every modern programming language.
-          This tool decomposes a string character by character and shows each code in decimal, hexadecimal, and binary, or rebuilds text from any of those forms.
-          It is especially handy while learning C, Java, or Python and verifying how a string is actually stored in memory.
+          <strong className="text-gray-900 dark:text-white">ASCII is a 7-bit code that maps integers 0–127 to English letters, digits, and punctuation.</strong>{' '}
+          <strong>Standardised in 1963 by ANSI X3.4</strong>, its teletype origins are still visible today through <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\n</code> (LF, 10), <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\r</code> (CR, 13), and <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\t</code> (TAB, 9), which carry over into every modern programming language.
+          This tool decomposes a string character by character and shows each code in <strong>decimal, hexadecimal, and binary</strong>, or rebuilds text from any of those forms.
         </p>
       </section>
 
@@ -206,12 +205,17 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🧠 Handy ASCII Tricks</h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
-          <li><strong>Case toggle in one bit</strong>: 'A' (65) and 'a' (97) differ only at bit 5. Flipping that bit with <code>code ^ 0x20</code> swaps case in a single CPU instruction, faster than any string method.</li>
-          <li><strong>Digit to integer</strong>: classic <code>atoi</code> implementations rely on <code>'9' - '0' = 9</code>. The subtraction works because digits occupy a contiguous block from 48 to 57.</li>
-          <li><strong>Alphabet test</strong>: range checks 65–90 and 97–122 outperform regex by an order of magnitude and dominate embedded firmware parsing.</li>
-          <li><strong>HTTP parsing</strong>: every protocol delimiter — <code>:</code> (58), space (32), and CRLF (13, 10) — lives in ASCII, which is why byte-level HTTP/1.1 parsers stay simple and portable.</li>
+          <li><strong>Case toggle in one bit</strong>: &apos;A&apos; (65) and &apos;a&apos; (97) differ only at bit 5. Flipping that bit with <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">code ^ 0x20</code> swaps case in a <strong>single CPU instruction</strong>.</li>
+          <li><strong>Digit to integer</strong>: classic <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">atoi</code> relies on <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&apos;9&apos; - &apos;0&apos; = 9</code>. The subtraction works because digits occupy a contiguous block from 48 to 57.</li>
+          <li><strong>Alphabet test</strong>: range checks 65–90 and 97–122 <strong>outperform regex by an order of magnitude</strong> and dominate embedded firmware parsing.</li>
+          <li><strong>HTTP parsing</strong>: every protocol delimiter — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">:</code> (58), space (32), CRLF (13, 10) — lives in ASCII, which is why <strong>byte-level HTTP/1.1 parsers stay simple</strong>.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Good to Know</p>
+        <p className="text-blue-800 dark:text-blue-300"><strong>The first 128 Unicode code points are identical to ASCII.</strong> English-only data behaves the same either way — the difference shows up once you bring in non-Latin scripts, emoji, or math symbols, which need a <strong>Unicode encoding like UTF-8</strong>.</p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

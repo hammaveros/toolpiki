@@ -205,11 +205,18 @@ function SeoContent() {
           🎨 색상 블렌더란?
         </h2>
         <p className="text-sm leading-relaxed">
-          색상 블렌더는 두 색상 사이의 중간 색상을 자동으로 생성하는 도구입니다.
-          시작 색상과 끝 색상을 선택하고 단계 수를 지정하면, 부드럽게 변화하는 색상 시퀀스를 얻을 수 있습니다.
-          그라데이션 디자인, 색상 팔레트 제작, UI 테마 설계 등 다양한 용도로 활용됩니다.
-          생성된 색상은 HEX 코드로 제공되며, CSS 변수로 바로 복사하여 사용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">색상 블렌더는 두 색상 사이의 <strong>중간 색</strong>을 자동으로 생성하는 도구입니다.</strong>{' '}
+          시작 색상과 끝 색상을 선택하고 <strong>단계 수</strong>를 지정하면, 부드럽게 변화하는 색상 시퀀스를 얻을 수 있습니다.
+          그라데이션 디자인, <strong>색상 팔레트</strong> 제작, UI 테마 설계 등 다양한 용도로 활용됩니다.
+          생성된 색상은 <strong>HEX 코드</strong>로 제공되며, CSS 변수로 바로 복사하여 사용할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 디자인 팁</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            시작색을 <strong>brand-500</strong>으로 잡고 <strong>9단계</strong>로 뽑으면 Tailwind의 100~900 톤이 한 번에 만들어져 디자인 토큰 정의가 깔끔해집니다.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -253,10 +260,10 @@ function SeoContent() {
           🧪 두 색을 고를 때 체크할 것
         </h2>
         <p className="text-sm leading-relaxed">
-          블렌딩 결과의 품질은 출발/도착 색의 채도 차이와 색조 거리에 크게 좌우됩니다.
-          색조가 180° 떨어진 보색(예: 파랑-주황)은 RGB 보간 시 중간이 탁한 회갈색으로 빠지기 쉬워 HSL을 권장하며,
+          블렌딩 결과의 품질은 출발/도착 색의 <strong>채도 차이</strong>와 <strong>색조 거리</strong>에 크게 좌우됩니다.
+          색조가 <strong>180° 떨어진 보색</strong>(예: 파랑-주황)은 RGB 보간 시 중간이 탁한 회갈색으로 빠지기 쉬워 <strong>HSL</strong>을 권장하며,
           색조 차이가 60° 이하인 인접 색은 어떤 방식으로 보간해도 결과가 안정적입니다.
-          또한 명도(L) 차이가 40 이상 벌어져야 단계가 시각적으로 구별되며,
+          또한 <strong>명도(L) 차이가 40 이상</strong> 벌어져야 단계가 시각적으로 구별되며,
           차이가 10 미만이면 사람 눈에는 같은 색으로 보일 수 있다는 점도 고려하세요.
         </p>
       </section>

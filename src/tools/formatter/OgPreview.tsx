@@ -221,11 +221,9 @@ function SeoContent() {
           📱 카톡으로 링크 보낼 때 보이는 그 카드, 미리 만들어보기
         </h2>
         <p className="text-sm leading-relaxed">
-          블로그 글이나 랜딩 페이지를 카카오톡·페이스북·X(트위터)에 공유했을 때 자동으로 따라붙는 썸네일 카드를 결정하는 게 바로 Open Graph 태그입니다.
-          이 도구는 og:title, og:description, og:image, og:url 같은 값을 입력하면 세 플랫폼에서 어떻게 보일지 실시간으로 시뮬레이션해 주고,
-          그대로 복사해 &lt;head&gt; 안에 붙여 넣을 수 있는 메타 태그 코드까지 만들어 줍니다.
-          배포 전에 카드가 깨지거나 이미지가 잘리지 않는지 확인하는 용도로 가장 자주 사용됩니다.
-          입력값은 어디에도 저장되지 않고 브라우저 안에서만 처리됩니다.
+          <strong className="text-gray-900 dark:text-white">SNS 공유 시 보이는 썸네일 카드를 결정하는 것이 바로 Open Graph 태그입니다.</strong>{' '}
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">og:title</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">og:description</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">og:image</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">og:url</code>을 입력하면 <strong>카카오톡·페이스북·X(트위터)</strong> 세 플랫폼에서 어떻게 보일지 실시간 시뮬레이션됩니다.
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&lt;head&gt;</code>에 그대로 붙여넣을 수 있는 메타 태그 코드까지 자동 생성하며, 입력값은 <strong>브라우저 안에서만</strong> 처리됩니다.
         </p>
       </section>
 
@@ -267,6 +265,14 @@ function SeoContent() {
           <li><strong>og:image:width / og:image:height</strong>도 같이 적어주면 일부 메신저가 카드를 더 빠르게 그립니다.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 캐시 함정</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          OG 태그를 수정해도 카카오톡·페이스북·X는 <strong>이전 정보를 길게 캐시</strong>합니다.
+          반드시 <strong>카카오 OG 캐시 초기화</strong>, <strong>페이스북 Sharing Debugger</strong>, <strong>X Card Validator</strong>에서 강제 갱신을 거치세요.
+        </p>
+      </div>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">

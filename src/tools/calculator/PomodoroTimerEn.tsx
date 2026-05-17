@@ -299,11 +299,16 @@ function SeoContent() {
           🍅 What is Pomodoro Timer?
         </h2>
         <p className="text-sm leading-relaxed">
-          The Pomodoro Technique is a time management method alternating 25-minute focus sessions with 5-minute breaks.
-          Created by Francesco Cirillo in the 1980s, it takes its name from his tomato-shaped kitchen timer.
-          This tool lets you customize focus time, short breaks, and long breaks, with a circular progress display to visualize progress.
-          After 4 completed cycles, it automatically switches to a long break (15 min) to maintain sustainable focus.
+          <strong className="text-gray-900 dark:text-white">The Pomodoro Technique alternates 25-minute focus sessions with 5-minute breaks.</strong>{' '}
+          Created by <strong>Francesco Cirillo</strong> in the 1980s—the name comes from his tomato-shaped kitchen timer.
+          Customize <strong>focus time, short breaks, and long breaks</strong>, with a <strong>circular progress display</strong> to visualize progress.
+          After <strong>4 completed cycles</strong>, it automatically switches to a long break (15 min) for sustainable focus.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">Short intervals <strong>reduce mental fatigue</strong> and use deadline pressure to keep your focus sharp.</p>
+        </div>
       </section>
 
       <section>

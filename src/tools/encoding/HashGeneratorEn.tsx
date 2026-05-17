@@ -153,10 +153,11 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔒 What is Hash Generator?</h2>
         <p className="text-sm leading-relaxed">
-          A cryptographic hash compresses arbitrary input into a fixed-length fingerprint and exhibits the avalanche effect: changing a single bit of the input scrambles the entire output.
-          This page generates five hashes in parallel — MD5, SHA-1, SHA-256, SHA-384, and SHA-512 — so you can compare digests side by side.
-          SHA-2 algorithms run on the browser's built-in Web Crypto API (<code>crypto.subtle.digest</code>); MD5, which is no longer part of that API, uses a self-contained pure-JS implementation.
-          Nothing leaves your machine — the text you paste is hashed locally and is never transmitted.
+          <strong className="text-gray-900 dark:text-white">A cryptographic hash compresses arbitrary input into a fixed-length fingerprint.</strong>{' '}
+          It exhibits the <strong>avalanche effect</strong>: changing a single bit of the input scrambles the entire output.
+          This page generates <strong>five hashes in parallel — MD5, SHA-1, SHA-256, SHA-384, and SHA-512</strong> — so you can compare digests side by side.
+          SHA-2 algorithms run on the browser&apos;s built-in <strong>Web Crypto API</strong> (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">crypto.subtle.digest</code>); MD5 uses a self-contained pure-JS implementation.
+          <strong>Nothing leaves your machine</strong> — the text you paste is hashed locally and is never transmitted.
         </p>
       </section>
 
@@ -185,13 +186,18 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📜 A Short Timeline of Breaks</h2>
-        <p className="text-sm leading-relaxed">
-          <strong>MD5</strong> arrived in 1991, but cryptanalysis chipped away at it for over a decade until Wang Xiaoyun's team published practical collisions in 2004. By 2008 researchers had forged a working CA certificate with it. Today it survives only as a non-cryptographic checksum.
-          <strong>SHA-1</strong> followed in 1995. Google's 2017 SHAttered attack produced two distinct PDFs sharing a SHA-1 digest, and TLS certificate authorities had already begun deprecating it by then.
-          <strong>SHA-256</strong> remains the workhorse — it secures Bitcoin's proof-of-work, TLS handshakes, and most digital signatures via 64 rounds of compression yielding a 256-bit output.
-          Higher-assurance environments reach for SHA-384, SHA-512, or the structurally different SHA-3 (Keccak), standardised by NIST in 2015.
-        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">MD5 (1991)</strong> — <strong>Wang Xiaoyun&apos;s team published practical collisions in 2004</strong>. By 2008 researchers had forged a working CA certificate with it. Today it survives only as a non-cryptographic checksum.</li>
+          <li><strong className="text-gray-900 dark:text-white">SHA-1 (1995)</strong> — Google&apos;s <strong>2017 SHAttered attack</strong> produced two distinct PDFs sharing a SHA-1 digest. TLS certificate authorities had already begun deprecating it.</li>
+          <li><strong className="text-gray-900 dark:text-white">SHA-256 (the workhorse)</strong> — secures Bitcoin&apos;s proof-of-work, TLS handshakes, and most digital signatures via <strong>64 rounds of compression</strong>.</li>
+          <li><strong className="text-gray-900 dark:text-white">SHA-384/512, SHA-3 (Keccak)</strong> — higher-assurance environments use these, with <strong>SHA-3 standardised by NIST in 2015</strong>.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 p-4 text-sm">
+        <p className="font-semibold text-red-900 dark:text-red-200 mb-1">🔒 Security Note</p>
+        <p className="text-red-800 dark:text-red-300"><strong>SHA-256 is too fast for password storage</strong>. A modern GPU can try billions of guesses per second. Use a purpose-built password hash with a tunable cost: <strong>bcrypt, scrypt, or Argon2</strong> — always paired with a unique per-user salt.</p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

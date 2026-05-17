@@ -166,10 +166,10 @@ function SeoContent() {
           🔤 What Is a Case Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          A case converter transforms text between different letter case formats instantly.
-          It supports UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, kebab-case,
-          CONSTANT_CASE, and more. Whether you are naming programming variables, formatting titles,
-          or converting API response keys, this tool handles all case transformations in one place.
+          <strong className="text-gray-900 dark:text-white">A case converter transforms text between different letter case formats instantly.</strong>{' '}
+          It supports <strong>UPPERCASE</strong>, <strong>lowercase</strong>, Title Case, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">camelCase</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">PascalCase</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">snake_case</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">kebab-case</code>,
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">CONSTANT_CASE</code>, and more. Whether you are naming programming variables, formatting titles,
+          or converting API response keys, this tool handles <strong>all case transformations in one place</strong>.
         </p>
       </section>
 
@@ -177,15 +177,22 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           📋 Case Types Explained
         </h2>
-        <div className="text-sm leading-relaxed space-y-2">
-          <p><strong>camelCase:</strong> First word lowercase, subsequent words capitalized. Used for JavaScript/Java variables (e.g., userName)</p>
-          <p><strong>PascalCase:</strong> Every word capitalized. Used for class names and components (e.g., UserProfile)</p>
-          <p><strong>snake_case:</strong> Words joined by underscores. Used in Python and Ruby (e.g., user_name)</p>
-          <p><strong>kebab-case:</strong> Words joined by hyphens. Used in URLs and CSS classes (e.g., user-name)</p>
-          <p><strong>CONSTANT_CASE:</strong> All uppercase with underscores. Used for constants (e.g., MAX_COUNT)</p>
-          <p><strong>Title Case:</strong> First letter of each word capitalized. Used for headings and titles</p>
-        </div>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>camelCase:</strong> First word lowercase, subsequent words capitalized. JavaScript/Java variables (e.g., <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">userName</code>)</li>
+          <li><strong>PascalCase:</strong> Every word capitalized. Class names and components (e.g., <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">UserProfile</code>)</li>
+          <li><strong>snake_case:</strong> Words joined by underscores. Python and Ruby (e.g., <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">user_name</code>)</li>
+          <li><strong>kebab-case:</strong> Words joined by hyphens. URLs and CSS classes (e.g., <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">user-name</code>)</li>
+          <li><strong>CONSTANT_CASE:</strong> All uppercase with underscores. Constants (e.g., <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">MAX_COUNT</code>)</li>
+          <li><strong>Title Case:</strong> First letter of each word capitalized. Headings and titles</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Quick tip</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          Use <strong>camelCase</strong> for variables, <strong>PascalCase</strong> for classes/types, and <strong>CONSTANT_CASE</strong> for constants. This is the most common convention across modern code styles.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

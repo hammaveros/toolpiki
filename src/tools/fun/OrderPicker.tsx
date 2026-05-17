@@ -210,11 +210,18 @@ function SeoContent() {
           🔢 순번 정하기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          순번 정하기는 여러 항목이나 사람들의 순서를 무작위로 결정하는 도구입니다.
-          Fisher-Yates 셔플 알고리즘을 사용하여 모든 순열이 동일한 확률로 나오도록 보장합니다.
+          <strong className="text-gray-900 dark:text-white">순번 정하기는 여러 항목이나 사람들의 순서를 무작위로 결정하는 도구입니다.</strong>{' '}
+          <strong>Fisher-Yates 셔플 알고리즘</strong>을 사용하여 <strong>모든 순열이 동일한 확률</strong>로 나오도록 보장합니다.
           발표 순서, 게임 턴, 회의 발언 순서, 심사 순서 등 순번이 결과에 영향을 줄 수 있는 모든 상황에서 공정하게 사용할 수 있습니다.
-          결과는 링크로 공유할 수 있어 원격으로도 활용 가능합니다.
+          결과는 <strong>링크로 공유</strong>할 수 있어 원격으로도 활용 가능합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎲 공정성 보장</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            Fisher-Yates 알고리즘은 첫 번째 자리든 마지막 자리든 <strong>동일한 확률</strong>로 배치되도록 수학적으로 검증된 방식입니다.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -256,10 +263,10 @@ function SeoContent() {
           사용 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>콤마(,)로 항목을 구분하면 편리합니다</li>
-          <li>최소 2개 이상의 항목이 필요합니다</li>
-          <li>결과가 마음에 안 들면 "다시 섞기"로 새로운 순서를 생성하세요</li>
-          <li>공유 기능으로 결과를 팀원들에게 전달할 수 있습니다</li>
+          <li><strong>콤마(,) 구분</strong> — 여러 항목을 한 번에 붙여넣기 가능</li>
+          <li><strong>최소 2개</strong> 이상의 항목이 필요합니다</li>
+          <li>결과가 마음에 안 들면 <strong>"다시 섞기"</strong>로 새 순서를 생성</li>
+          <li><strong>공유 링크</strong>로 팀원들에게 결과 전달 가능</li>
         </ul>
       </section>
 

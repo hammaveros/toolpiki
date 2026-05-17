@@ -183,21 +183,28 @@ function SeoContent() {
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">What is a Message Length Checker?</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          A message length checker helps you ensure your messages fit within the recommended character limits for different communication platforms.
-          Each platform has its own optimal length for maximum engagement. Emails with subject lines under 50 characters and body summaries under 150 characters tend to have higher open and response rates.
-          Slack and Teams messages are most effective when kept under 100 characters so recipients can read them without scrolling.
-          Standard SMS messages are limited to 160 characters for Latin-based text. Exceeding this limit causes the message to be split into multiple segments, which may increase costs and reduce readability.
-          Twitter/X enforces a strict 280-character cap, making every character count for concise communication.
+          <strong className="text-gray-900 dark:text-white">A message length checker ensures your messages fit within the recommended character limits for different communication platforms.</strong>{' '}
+          Emails with subject lines under <strong>50 characters</strong> and body summaries under <strong>150 characters</strong> tend to have higher open and response rates.
+          Slack and Teams messages are most effective under <strong>100 characters</strong> so recipients read them without scrolling.
+          Standard SMS messages are limited to <strong>160 characters</strong> for Latin-based text — exceeding this causes message segmentation and increased costs.
+          Twitter/X enforces a strict <strong>280-character cap</strong>.
         </p>
       </div>
 
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Platform Limits at a Glance</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Understanding platform-specific character limits is essential for effective digital communication. SMS messages using GSM-7 encoding support up to 160 characters per segment, while Unicode messages (used for non-Latin scripts or special characters) are limited to 70 characters per segment.
-          Push notifications on iOS typically display around 110 characters on the lock screen, so keeping alerts short ensures the full message is visible.
-          Marketing emails with preview text under 90 characters perform best since most email clients truncate longer previews.
-          This tool provides real-time visual feedback with a progress bar and status indicators (Short, Optimal, Slightly Long, Too Long), along with character count, word count, and line count to help you craft the perfect message every time.
+          SMS using <strong>GSM-7 encoding</strong> supports up to 160 characters per segment, while <strong>Unicode messages</strong> (non-Latin scripts or special characters) are limited to 70 characters per segment.
+          iOS push notifications typically display around <strong>110 characters</strong> on the lock screen.
+          Marketing emails with preview text under <strong>90 characters</strong> perform best since most email clients truncate longer previews.
+          The tool provides real-time visual feedback with a <strong>progress bar and status indicators</strong> (Short, Optimal, Slightly Long, Too Long).
+        </p>
+      </div>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Cost tip</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          For bulk SMS campaigns, every extra segment multiplies cost. Stay under <strong>160 characters per message</strong> to keep sending fees minimal.
         </p>
       </div>
 

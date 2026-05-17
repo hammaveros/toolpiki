@@ -186,10 +186,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔗 URL 인코딩이란?</h2>
         <p className="text-sm leading-relaxed">
-          URL 인코딩(Percent-encoding)은 1994년 RFC 1738에서 처음 규정되고 2005년 RFC 3986으로 정비된 표준으로, URL이 허용하는 안전한 ASCII 문자 외의 모든 문자를 <code>%XX</code> 형식으로 바꿉니다.
-          내부적으로는 입력을 UTF-8 바이트로 만들고, 각 바이트를 2자리 16진수로 표현하기 때문에 한글 한 글자(3바이트)는 <code>%XX%XX%XX</code>처럼 9문자로 늘어납니다.
-          공백을 비롯해 <code>?</code>, <code>#</code>, <code>&amp;</code>, <code>=</code>처럼 URL 구조에 의미가 있는 글자가 파라미터 값 안에 들어가야 할 때 반드시 거쳐야 하는 변환입니다.
-          잘못 처리하면 GET 요청이 의도와 다른 키-값 쌍으로 파싱되어 버그를 일으키므로, 쿼리스트링을 직접 조립할 때는 거의 항상 인코딩이 필요합니다.
+          <strong className="text-gray-900 dark:text-white">URL 인코딩(Percent-encoding)은 URL이 허용하지 않는 문자를 %XX 형식으로 바꾸는 표준입니다.</strong>{' '}
+          1994년 <strong>RFC 1738</strong>에서 처음 규정되고 2005년 <strong>RFC 3986</strong>으로 정비되었습니다.
+          내부적으로는 입력을 <strong>UTF-8 바이트</strong>로 만들고 각 바이트를 2자리 16진수로 표현하기 때문에, 한글 한 글자(3바이트)는 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%XX%XX%XX</code>처럼 9문자로 늘어납니다.
+          공백을 비롯해 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">?</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">#</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&amp;</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">=</code>처럼 URL 구조에 의미가 있는 글자가 파라미터 값 안에 들어가야 할 때 반드시 거쳐야 하는 변환입니다.
         </p>
       </section>
 
@@ -197,26 +197,31 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">⚙️ encodeURI vs encodeURIComponent</h2>
         <div className="text-sm space-y-3">
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-            <h3 className="font-semibold mb-1">encodeURIComponent (권장)</h3>
-            <p>쿼리 파라미터 값을 인코딩할 때 사용합니다. =, &amp;, ?, /, : 등 URL 구분자까지 모두 인코딩하므로 파라미터 값에 특수문자가 포함되어도 안전합니다.</p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded mt-1 inline-block">?name=encodeURIComponent("홍길동&친구")</code>
+            <h3 className="font-semibold mb-1"><code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">encodeURIComponent</code> (권장)</h3>
+            <p><strong>쿼리 파라미터 값</strong>을 인코딩할 때 사용합니다. =, &amp;, ?, /, : 등 <strong>URL 구분자까지 모두 인코딩</strong>하므로 파라미터 값에 특수문자가 포함되어도 안전합니다.</p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded mt-1 inline-block">?name=encodeURIComponent(&quot;홍길동&amp;친구&quot;)</code>
           </div>
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-            <h3 className="font-semibold mb-1">encodeURI (전체 URL)</h3>
-            <p>전체 URL을 인코딩할 때 사용합니다. :, /, ?, #, & 등 URL 구조에 필요한 문자는 보존하고 나머지만 인코딩합니다.</p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded mt-1 inline-block">encodeURI("https://example.com/검색?q=테스트")</code>
+            <h3 className="font-semibold mb-1"><code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">encodeURI</code> (전체 URL)</h3>
+            <p><strong>전체 URL</strong>을 인코딩할 때 사용합니다. :, /, ?, #, &amp; 등 <strong>URL 구조에 필요한 문자는 보존</strong>하고 나머지만 인코딩합니다.</p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded mt-1 inline-block">encodeURI(&quot;https://example.com/검색?q=테스트&quot;)</code>
           </div>
         </div>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">⚡ 실수하기 쉬운 포인트 3가지</h2>
-        <p className="text-sm leading-relaxed">
-          첫째, <strong>&amp;를 인코딩하지 않은 경우</strong>입니다. 검색어에 &amp;가 들어가면 그 뒤가 다른 파라미터로 잘려나가서 검색이 이상하게 동작합니다. 파라미터 값에는 항상 <code>encodeURIComponent</code>를 쓰세요.
-          둘째, <strong>이미 인코딩된 값을 또 인코딩</strong>하는 경우입니다. <code>%20</code>이 <code>%2520</code>이 되어 서버는 공백 대신 &quot;%20&quot; 문자열을 받게 됩니다. <code>fetch</code>나 <code>URL</code> 객체로 만든 URL을 다시 인코딩하지 마세요.
-          셋째, <strong>+ 기호 처리</strong>입니다. 쿼리스트링에서 +는 RFC 3986엔 없지만 폼 인코딩 관습으로 공백을 의미합니다. <code>encodeURIComponent</code>는 +를 그대로 두므로, 사용자가 입력한 진짜 +를 보존하려면 추가로 <code>%2B</code>로 치환해야 합니다.
-        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">&amp;를 인코딩하지 않음</strong> — 검색어에 &amp;가 들어가면 그 뒤가 다른 파라미터로 잘려나갑니다. 파라미터 값에는 항상 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">encodeURIComponent</code>를 쓰세요.</li>
+          <li><strong className="text-gray-900 dark:text-white">이중 인코딩</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%20</code>이 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%2520</code>이 되어 서버가 공백 대신 &quot;%20&quot; 문자열을 받습니다. <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">fetch</code>나 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">URL</code> 객체로 만든 URL을 다시 인코딩하지 마세요.</li>
+          <li><strong className="text-gray-900 dark:text-white">+ 기호 처리</strong> — 쿼리스트링의 +는 폼 인코딩 관습으로 공백을 의미합니다. 진짜 +를 보존하려면 추가로 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%2B</code>로 치환해야 합니다.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 알아두면 좋은 점</p>
+        <p className="text-blue-800 dark:text-blue-300">한글 URL이 길어 보이는 건 정상입니다. <strong>&quot;가&quot;는 UTF-8로 3바이트라 %EA%B0%80</strong>로 변환됩니다. 카카오톡·슬랙은 미리보기 단계에서 자동으로 다시 디코딩해 보여줍니다.</p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

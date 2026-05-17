@@ -265,11 +265,16 @@ function SeoContent() {
           📅 What is Date Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Date Calculator computes the duration between two dates or adds/subtracts days from a specific date.
-          Use it for event countdowns, project deadlines, contract periods, and travel planning.
-          Results are shown in multiple formats: days, weeks, hours, and years/months/days breakdown.
-          Quick buttons let you apply common intervals (7, 30, 90 days) with one click.
+          <strong className="text-gray-900 dark:text-white">Date Calculator computes the duration between two dates or adds/subtracts days from a specific date.</strong>{' '}
+          Use it for <strong>event countdowns, project deadlines, contract periods, and travel planning</strong>.
+          Results are shown in multiple formats: <strong>days, weeks, hours, and years/months/days</strong> breakdown.
+          <strong>Quick buttons</strong> let you apply common intervals (7, 30, 90 days) with one click.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">The <strong>years/months/days</strong> breakdown handles leap years and varying month lengths correctly—no "30 days = 1 month" approximation.</p>
+        </div>
       </section>
 
       <section>

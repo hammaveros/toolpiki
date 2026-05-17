@@ -346,11 +346,16 @@ function SeoContent() {
           💰 What is Loan Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Loan Calculator helps you estimate monthly payments and total interest by entering principal, interest rate, and loan term.
-          It works for all types of loans including mortgages, auto loans, personal loans, and student loans.
-          Compare three repayment methods—fixed payment (amortization), fixed principal, and interest-only—to find the best option for your situation.
-          View the monthly amortization schedule and download it as CSV for your financial planning.
+          <strong className="text-gray-900 dark:text-white">Loan Calculator estimates monthly payments and total interest from principal, interest rate, and term.</strong>{' '}
+          Works for all types of loans including <strong>mortgages, auto loans, personal loans, and student loans</strong>.
+          Compare three methods—<strong>fixed payment (amortization), fixed principal, and interest-only</strong>—to find the best option.
+          View the monthly amortization schedule and <strong>download it as CSV</strong> for your financial planning.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>Fixed payment</strong> keeps every month the same; <strong>fixed principal</strong> shrinks over time. Fixed-principal pays less total interest.</p>
+        </div>
       </section>
 
       <section>

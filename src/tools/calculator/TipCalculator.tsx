@@ -208,11 +208,16 @@ function SeoContent() {
           💵 What is Tip Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Tip Calculator is an essential tool for calculating gratuity at restaurants, cafes, and service establishments.
-          Simply enter your bill amount and select a tip percentage to instantly see the tip amount and total.
-          The bill split feature divides costs evenly among multiple people, perfect for group dining.
-          Preset buttons for common US tipping rates (15%, 18%, 20%, 25%) make quick selections easy.
+          <strong className="text-gray-900 dark:text-white">Tip Calculator is an essential tool for calculating gratuity at restaurants, cafes, and service establishments.</strong>{' '}
+          Enter your <strong>bill amount and tip percentage</strong> to instantly see the tip amount and total.
+          <strong>Bill split feature</strong> divides costs evenly among multiple people—perfect for group dining.
+          <strong>Preset buttons</strong> for common US rates (15%, 18%, 20%, 25%) make quick selections easy.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">In the US, <strong>18-20%</strong> is the standard restaurant tip. Higher percentages signal exceptional service.</p>
+        </div>
       </section>
 
       <section>

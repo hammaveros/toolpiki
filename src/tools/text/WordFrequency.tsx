@@ -254,10 +254,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📊 단어 빈도 분석이란?</h2>
         <p className="text-sm leading-relaxed">
-          단어 빈도 분석(Word Frequency Analysis)은 텍스트에서 각 단어가 몇 번 등장하는지를 세어 빈도순으로 정렬하는 텍스트 마이닝의 기본 기법입니다.
-          문서의 핵심 주제와 키워드를 빠르게 파악할 수 있으며, 블로그 글, 학술 논문, 마케팅 카피, 뉴스 기사 등 다양한 텍스트에 적용할 수 있습니다.
-          이 도구는 한글 조사 자동 제거 기능을 제공하여 한국어 텍스트에서도 정확한 빈도 분석 결과를 얻을 수 있습니다.
-          최소 글자수 필터, 대소문자 무시, 정렬 방식 변경 등 세밀한 옵션으로 원하는 분석 결과를 도출해 보세요.
+          <strong className="text-gray-900 dark:text-white">단어 빈도 분석은 텍스트에서 각 단어의 등장 횟수를 세어 빈도순으로 정렬하는 텍스트 마이닝 기법</strong>입니다.
+          문서의 <strong>핵심 주제와 키워드</strong>를 빠르게 파악할 수 있으며, 블로그·학술 논문·마케팅 카피·뉴스 기사 등에 적용됩니다.
+          <strong>한글 조사 자동 제거</strong> 기능으로 한국어 텍스트에서도 정확한 분석이 가능하고,
+          최소 글자수 필터·대소문자 무시·정렬 방식 변경 등 세밀한 옵션을 제공합니다.
         </p>
       </section>
 
@@ -288,6 +288,13 @@ function SeoContent() {
           </p>
         </div>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 SEO 활용 팁</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          타깃 키워드 비율이 <strong>1~3%</strong> 범위인지 확인하세요. 부족하면 자연스러운 문맥으로 추가, 초과하면 <strong>동의어로 분산</strong>해 키워드 스터핑 페널티를 피하는 것이 좋습니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

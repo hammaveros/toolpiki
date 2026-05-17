@@ -326,11 +326,16 @@ function SeoContent() {
           ⏱️ What is Timer & Stopwatch?
         </h2>
         <p className="text-sm leading-relaxed">
-          An all-in-one time management tool combining timer, stopwatch, and Pomodoro functionality.
-          Perfect for cooking, exercise, study, work, and any situation requiring precise time tracking.
-          Quick preset buttons let you set common durations like 1, 3, or 5 minutes with a single click.
-          The stopwatch lap feature records interval times for comparison and analysis.
+          <strong className="text-gray-900 dark:text-white">An all-in-one time management tool combining timer, stopwatch, and Pomodoro functionality.</strong>{' '}
+          Perfect for <strong>cooking, exercise, study, and work</strong>—any situation requiring precise time tracking.
+          <strong>Quick preset buttons</strong> let you set common durations like 1, 3, or 5 minutes with a single click.
+          The <strong>stopwatch lap feature</strong> records interval times for comparison and analysis.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">One screen with <strong>3 modes</strong> (timer, stopwatch, Pomodoro)—no need for separate apps.</p>
+        </div>
       </section>
 
       <section>
@@ -372,9 +377,9 @@ function SeoContent() {
           🍅 What Is the Pomodoro Technique?
         </h2>
         <p className="text-sm leading-relaxed mb-3">
-          The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s.
+          <strong>The Pomodoro Technique</strong> is a time management method developed by <strong>Francesco Cirillo</strong> in the late 1980s.
           The name comes from the tomato-shaped kitchen timer he used (pomodoro means tomato in Italian).
-          One cycle consists of 25 minutes of focused work followed by a 5-minute break, with a longer 15 to 30 minute break after every four cycles.
+          One cycle consists of <strong>25 minutes of focused work followed by a 5-minute break</strong>, with a longer 15 to 30 minute break after every four cycles.
           The short intervals reduce mental fatigue while the deadline pressure helps boost concentration.
         </p>
         <p className="text-sm leading-relaxed">

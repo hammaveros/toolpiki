@@ -414,11 +414,16 @@ function SeoContent() {
           📶 인터넷 속도 테스트란?
         </h2>
         <p className="text-sm leading-relaxed">
-          인터넷 속도 테스트는 현재 인터넷 연결의 다운로드 속도, 업로드 속도, 응답 시간(핑)을 측정하는 도구입니다.
-          Cloudflare의 글로벌 엣지 서버를 활용하여 정확한 속도를 측정합니다.
-          다양한 크기의 파일(100KB~5MB)을 전송하여 실제 사용 환경에 가까운 결과를 제공합니다.
-          게임, 영상 스트리밍, 화상 회의 등 용도에 맞는 속도인지 확인해보세요.
+          <strong className="text-gray-900 dark:text-white">인터넷 속도 테스트는 다운로드, 업로드, 응답 시간(핑)을 측정하는 도구입니다.</strong>{' '}
+          <strong>Cloudflare의 글로벌 엣지 서버</strong>를 활용하여 정확한 속도를 측정합니다.
+          다양한 크기의 파일(<strong>100KB~5MB</strong>)을 전송하여 실제 사용 환경에 가까운 결과를 제공합니다.
+          <strong>게임, 영상 스트리밍, 화상 회의</strong> 등 용도에 맞는 속도인지 확인해보세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>게임에는 핑(ping)</strong>이, <strong>스트리밍에는 다운로드 대역폭</strong>이 더 중요합니다.</p>
+        </div>
       </section>
 
       <section>

@@ -795,11 +795,18 @@ function SeoContent() {
           What is Team Picker?
         </h2>
         <p className="text-sm leading-relaxed">
-          Team Picker is a tool that randomly divides participants into your desired number of teams.
-          Choose between 2 to 8 teams, and members are automatically distributed evenly using a round-robin method, even when numbers do not divide equally.
-          All participants are shuffled randomly before team assignment, ensuring fair and unbiased team formation.
+          <strong className="text-gray-900 dark:text-white">Team Picker randomly divides participants into your desired number of teams.</strong>{' '}
+          Choose <strong>2 to 8 teams</strong> — members are distributed evenly via <strong>round-robin</strong>, even when numbers don't split equally.
+          All participants are shuffled randomly before assignment, ensuring <strong>fair team formation</strong>.
           Perfect for sports matches, project groups, board games, workshops, and more.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎲 Even Distribution</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>7 people into 3 teams</strong> → 3, 2, 2. Round-robin guarantees <strong>at most 1-person difference</strong>.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -846,10 +853,10 @@ function SeoContent() {
           Tips
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Enter names separated by comma (,) or newline</li>
-          <li>Click team names in results to customize them</li>
-          <li>Participant lists are saved for your next visit</li>
-          <li>Use share feature to send team assignments</li>
+          <li><strong>Comma or newline</strong> separated names</li>
+          <li><strong>Click team names</strong> to customize them</li>
+          <li><strong>Auto-saved</strong> — participant lists persist on next visit</li>
+          <li><strong>Share feature</strong> sends team assignments</li>
         </ul>
       </section>
 

@@ -16,10 +16,10 @@ function SeoContent() {
           📄 What is XML Formatter?
         </h2>
         <p className="text-sm leading-relaxed">
-          XML (eXtensible Markup Language) is a markup language for structuring, storing, and transmitting data.
-          XML Formatter indents compressed XML according to hierarchy for readability, or removes whitespace to reduce file size.
-          It is used for API response analysis, config file editing (pom.xml, web.xml), SOAP message debugging,
-          and RSS/Atom feed verification across various development workflows.
+          <strong className="text-gray-900 dark:text-white">Format, minify, and validate XML in one step.</strong>{' '}
+          Indent with <strong>1-8 spaces</strong> for readability, or strip whitespace to shrink files.
+          Used for <strong>API response analysis</strong>, config editing (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">pom.xml</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">web.xml</code>),
+          <strong> SOAP debugging</strong>, and RSS/Atom feed inspection.
         </p>
       </section>
 
@@ -77,6 +77,14 @@ function SeoContent() {
           </table>
         </div>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Common Mistake</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          XML is <strong>case-sensitive</strong>. <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`<Item>`}</code> and <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`</item>`}</code> are <strong>different tags</strong> and will fail to parse.
+          Also remember to escape <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`<`}</code> and <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`&`}</code> as <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">&amp;lt;</code> and <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">&amp;amp;</code>.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

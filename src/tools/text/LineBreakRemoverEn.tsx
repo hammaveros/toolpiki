@@ -88,10 +88,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔧 What Is a Line Break Remover?</h2>
         <p className="text-sm leading-relaxed">
-          A line break remover is a tool that strips or converts newline characters from text, turning multi-line content into a clean single-line or properly formatted output.
-          When you copy text from PDFs, emails, or web pages, unwanted line breaks can disrupt the flow of your content.
-          These stray line breaks can cause formatting issues in documents, code editors, spreadsheets, and messaging apps.
-          This tool offers four distinct modes — line breaks to spaces, remove all whitespace, normalize whitespace, and remove empty lines — so you can pick the right cleanup strategy for any situation.
+          <strong className="text-gray-900 dark:text-white">A line break remover strips or converts newline characters from text, turning multi-line content into clean, single-line or properly formatted output.</strong>{' '}
+          When you copy text from <strong>PDFs, emails, or web pages</strong>, unwanted line breaks can disrupt the flow of your content.
+          These stray line breaks cause formatting issues in documents, code editors, spreadsheets, and messaging apps.
+          This tool offers <strong>four distinct modes</strong> — line breaks to spaces, remove all whitespace, normalize whitespace, and remove empty lines.
         </p>
       </section>
 
@@ -116,6 +116,13 @@ function SeoContent() {
           <li><code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">\r</code> (CR) — Used by legacy Mac OS (pre-OS X)</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Which mode to pick</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          Use <strong>Line Breaks to Spaces</strong> to keep words separated, <strong>Remove All Whitespace</strong> to glue everything together, or <strong>Normalize Whitespace</strong> to preserve paragraph breaks.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

@@ -330,11 +330,18 @@ function SeoContent() {
           🔄 What is Batch Color Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          Batch Color Converter transforms multiple color codes to HEX, RGB, or HSL formats simultaneously.
-          It automatically recognizes various input formats including HEX (#FF5733), RGB (rgb(255,87,51)), RGBA, HSL, and HSLA.
-          Process dozens of colors at once by separating them with line breaks, making bulk operations efficient.
+          <strong className="text-gray-900 dark:text-white">Batch Color Converter transforms multiple color codes to <strong>HEX</strong>, <strong>RGB</strong>, or <strong>HSL</strong> simultaneously.</strong>{' '}
+          It automatically recognizes various input formats including <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">#FF5733</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">rgb(255,87,51)</code>, RGBA, HSL, and HSLA.
+          Process <strong>dozens of colors</strong> at once by separating them with line breaks, making bulk operations efficient.
           Perfect for design system development, CSS migration, and color documentation tasks.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 Usage Tip</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            Paste an entire Figma color style export to convert all values into <strong>RGB / HEX / HSL</strong> at once, speeding up design handoff.
+          </p>
+        </div>
       </section>
 
       <section>

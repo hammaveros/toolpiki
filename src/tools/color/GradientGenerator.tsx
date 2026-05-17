@@ -224,11 +224,18 @@ function SeoContent() {
           🌈 그라데이션 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          그라데이션 생성기는 CSS 그라데이션을 시각적으로 만들 수 있는 온라인 도구입니다.
-          선형(linear), 원형(radial), 원뿔형(conic) 세 가지 타입을 지원하며,
+          <strong className="text-gray-900 dark:text-white">그라데이션 생성기는 CSS 그라데이션을 시각적으로 만드는 온라인 도구입니다.</strong>{' '}
+          <strong>선형</strong>(linear), <strong>원형</strong>(radial), <strong>원뿔형</strong>(conic) 세 가지 타입을 지원하며,
           색상, 각도, 위치를 자유롭게 조절하여 원하는 배경 효과를 만들 수 있습니다.
-          생성된 CSS 코드를 복사하여 웹사이트에 바로 적용할 수 있습니다.
+          생성된 CSS 코드를 복사하여 웹사이트에 <strong>바로 적용</strong>할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 디자인 팁</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            <code className="px-1 py-0.5 rounded bg-white/60 dark:bg-gray-800 text-xs font-mono">135°</code>는 좌상단→우하단의 가장 자연스러운 대각선이라 <strong>SaaS 히어로 배경</strong>에서 가장 흔히 쓰입니다.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -272,11 +279,11 @@ function SeoContent() {
           🎯 유형별 추천 사용처
         </h2>
         <p className="text-sm leading-relaxed">
-          선형 그라데이션은 헤더 배너, 카드 배경, 버튼 등 정적인 영역에 가장 흔히 쓰이며,
-          135° 각도와 두 색 조합만으로도 충분히 모던한 인상을 줍니다.
-          원형(radial)은 중심에서 퍼지는 빛 효과나 카드의 spot highlight, 다크 테마의 vignette 처리에 유용하고,
-          conic은 도넛 차트 배경, 로딩 스피너, 컬러 휠 같은 회전 모티프에서 빛납니다.
-          모바일에서는 그라데이션 영역이 크면 GPU 합성 비용이 들 수 있으니 헤더 전체 대신 카드 단위로 분할해 적용하는 것이 성능에 유리합니다.
+          <strong>선형 그라데이션</strong>은 헤더 배너, 카드 배경, 버튼 등 정적인 영역에 가장 흔히 쓰이며,
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">135°</code> 각도와 두 색 조합만으로도 충분히 모던한 인상을 줍니다.
+          <strong>원형(radial)</strong>은 중심에서 퍼지는 빛 효과나 카드의 spot highlight, 다크 테마의 vignette 처리에 유용하고,
+          <strong>conic</strong>은 도넛 차트 배경, 로딩 스피너, 컬러 휠 같은 회전 모티프에서 빛납니다.
+          모바일에서는 그라데이션 영역이 크면 <strong>GPU 합성 비용</strong>이 들 수 있으니 헤더 전체 대신 카드 단위로 분할해 적용하는 것이 성능에 유리합니다.
         </p>
       </section>
 

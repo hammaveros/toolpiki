@@ -221,10 +221,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📊 What Is Word Frequency Analysis?</h2>
         <p className="text-sm leading-relaxed">
-          Word frequency analysis is a fundamental text mining technique that counts how many times each word appears in a given text and ranks them by occurrence.
-          It allows you to quickly identify the core topics, recurring themes, and most-used keywords within any document.
-          This tool is applicable to a wide range of content including blog posts, academic papers, marketing copy, news articles, and social media data.
-          With options like minimum word length filtering, case-insensitive matching, and flexible sorting, you can fine-tune the analysis to get exactly the insights you need.
+          <strong className="text-gray-900 dark:text-white">Word frequency analysis counts how many times each word appears in a text and ranks them by occurrence.</strong>{' '}
+          It lets you quickly identify <strong>core topics, recurring themes, and most-used keywords</strong> in any document.
+          Applicable to <strong>blog posts, academic papers, marketing copy, news articles</strong>, and social media data.
+          With <strong>minimum word length filtering</strong>, case-insensitive matching, and flexible sorting, you can fine-tune the analysis.
         </p>
       </section>
 
@@ -256,6 +256,13 @@ function SeoContent() {
           </p>
         </div>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 SEO tip</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          Aim for a primary keyword density in the <strong>1-3% range</strong>. If it&apos;s too low, add natural mentions. If it&apos;s too high, <strong>swap some instances with synonyms</strong> to avoid keyword-stuffing penalties.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

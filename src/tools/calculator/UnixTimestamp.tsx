@@ -208,11 +208,16 @@ function SeoContent() {
           🕐 Unix 타임스탬프란?
         </h2>
         <p className="text-sm leading-relaxed">
-          Unix 타임스탬프는 1970년 1월 1일 00:00:00 UTC(Unix Epoch)부터 경과한 초를 나타내는 숫자입니다.
-          시간대와 무관하게 전 세계에서 동일한 시점을 표현할 수 있어 시스템 간 시간 교환에 표준으로 사용됩니다.
-          이 도구는 타임스탬프와 사람이 읽을 수 있는 날짜를 상호 변환하며, 초(10자리)와 밀리초(13자리)를 자동 인식합니다.
-          실시간으로 현재 타임스탬프를 확인하고 복사할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">Unix 타임스탬프는 1970년 1월 1일 00:00:00 UTC(Unix Epoch)부터 경과한 초를 나타내는 숫자입니다.</strong>{' '}
+          시간대와 무관하게 전 세계에서 <strong>동일한 시점을 표현</strong>할 수 있어 시스템 간 시간 교환에 표준으로 사용됩니다.
+          이 도구는 타임스탬프와 사람이 읽을 수 있는 날짜를 상호 변환하며, <strong>초(10자리)와 밀리초(13자리)</strong>를 자동 인식합니다.
+          <strong>실시간으로 현재 타임스탬프</strong>를 확인하고 복사할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 주의</p>
+          <p className="text-amber-800 dark:text-amber-300"><strong>2038년 1월 19일</strong>에 32-bit 정수 타임스탬프 오버플로(Y2K38 문제)가 발생합니다. 최신 시스템은 64-bit를 사용합니다.</p>
+        </div>
       </section>
 
       <section>

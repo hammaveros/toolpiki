@@ -311,11 +311,18 @@ function SeoContent() {
           🎨 What is Box Shadow Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Box Shadow Generator is a visual tool for editing CSS box-shadow properties with real-time preview.
-          Adjust X/Y offset, blur, spread, color, and opacity using sliders, and layer multiple shadows together.
+          <strong className="text-gray-900 dark:text-white">Box Shadow Generator is a visual tool for editing CSS <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">box-shadow</code> properties with real-time preview.</strong>{' '}
+          Adjust <strong>X/Y offset</strong>, <strong>blur</strong>, <strong>spread</strong>, color, and opacity using sliders, and <strong>layer</strong> multiple shadows together.
           Start quickly with presets like soft, hard, neon, and inset shadows, then customize to match your design.
           Generated CSS code can be instantly copied and applied to your development workflow.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 Design Tip</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            Layer a <strong>close shadow</strong> (small, dark) with a <strong>distant shadow</strong> (large, blurry) to break the flat look and create realistic depth.
+          </p>
+        </div>
       </section>
 
       <section>

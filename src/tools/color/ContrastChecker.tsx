@@ -229,11 +229,18 @@ function SeoContent() {
           ♿ 색상 대비 검사기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          색상 대비 검사기는 텍스트와 배경 사이의 명도 대비율을 측정하는 웹 접근성 도구입니다.
-          WCAG(Web Content Accessibility Guidelines) 2.1 기준에 따라 AA/AAA 등급 충족 여부를 실시간으로 확인할 수 있습니다.
-          시각 장애가 있는 사용자도 콘텐츠를 읽을 수 있도록 보장하는 것은 법적 요구사항이기도 합니다.
+          <strong className="text-gray-900 dark:text-white">색상 대비 검사기는 텍스트와 배경의 <strong>명도 대비율</strong>을 측정하는 웹 접근성 도구입니다.</strong>{' '}
+          <strong>WCAG 2.1</strong> 기준에 따라 <strong>AA/AAA 등급</strong> 충족 여부를 실시간으로 확인할 수 있습니다.
+          시각 장애가 있는 사용자도 콘텐츠를 읽을 수 있도록 보장하는 것은 <strong>법적 요구사항</strong>이기도 합니다.
           디자인 단계에서 대비율을 검사하면 접근성 문제를 사전에 예방할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ WCAG 기준</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            일반 텍스트는 <strong>4.5:1</strong>(AA), 큰 텍스트는 <strong>3:1</strong>이 최소이며, <strong>버튼 테두리·아이콘</strong>도 인접 배경과 3:1 이상 대비가 필요합니다(SC 1.4.11).
+          </p>
+        </div>
       </section>
 
       <section>
@@ -278,10 +285,10 @@ function SeoContent() {
           📐 대비율 계산 원리
         </h2>
         <p className="text-sm leading-relaxed">
-          대비율은 (L1 + 0.05) / (L2 + 0.05) 공식으로 계산되며, L1은 밝은 색, L2는 어두운 색의 상대 휘도입니다.
-          상대 휘도는 sRGB의 R/G/B 값을 감마 보정한 뒤 0.2126·R + 0.7152·G + 0.0722·B로 가중 평균합니다.
-          녹색 가중치가 가장 큰 이유는 사람 눈이 녹색 영역에 가장 민감하기 때문이며,
-          그래서 채도 높은 노랑(#FFFF00)은 흰 배경에서 1.07:1로 거의 보이지 않고, 채도 낮은 파랑은 같은 RGB 합산값이라도 대비가 더 높게 측정됩니다.
+          대비율은 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">(L1 + 0.05) / (L2 + 0.05)</code> 공식으로 계산되며, L1은 밝은 색, L2는 어두운 색의 <strong>상대 휘도</strong>입니다.
+          상대 휘도는 sRGB의 R/G/B 값을 감마 보정한 뒤 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">0.2126·R + 0.7152·G + 0.0722·B</code>로 가중 평균합니다.
+          <strong>녹색 가중치</strong>가 가장 큰 이유는 사람 눈이 녹색 영역에 가장 민감하기 때문이며,
+          그래서 채도 높은 노랑(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">#FFFF00</code>)은 흰 배경에서 <strong>1.07:1</strong>로 거의 보이지 않고, 채도 낮은 파랑은 같은 RGB 합산값이라도 대비가 더 높게 측정됩니다.
         </p>
       </section>
 

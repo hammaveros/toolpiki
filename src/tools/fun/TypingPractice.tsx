@@ -229,10 +229,17 @@ function SeoContent() {
           ⌨️ 타이핑 연습이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          타이핑 연습은 실제 문장을 따라 입력하면서 키보드 타이핑 실력을 향상시키는 도구입니다.
-          게임과 달리 실전에 가까운 문장을 사용하여, 실무나 일상에서 바로 활용할 수 있는 타이핑 능력을 길러줍니다.
-          실시간으로 타수와 정확도가 측정되어 자신의 실력을 객관적으로 파악할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">타이핑 연습은 실제 문장을 따라 입력하면서 키보드 실력을 향상시키는 도구입니다.</strong>{' '}
+          게임과 달리 <strong>실전에 가까운 문장</strong>을 사용하여, 실무나 일상에서 바로 활용할 수 있는 타이핑 능력을 길러줍니다.
+          실시간으로 <strong>타수와 정확도</strong>가 측정되어 자신의 실력을 객관적으로 파악할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">⌨️ 실력 기준</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            일반적으로 <strong>분당 300타 이상</strong>이면 빠른 편, <strong>400타 이상</strong>이면 매우 빠른 수준입니다.
+          </p>
+        </div>
       </section>
 
       <FaqSection

@@ -456,11 +456,16 @@ function SeoContent() {
           📄 What is Invoice Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Invoice Generator creates professional invoices and estimates by entering items, quantities, and prices.
-          Simply fill in your business information and client details, set the tax rate, and calculations are automatic.
-          Export your invoice via browser print function as PDF or print directly on paper.
-          No software installation required - create clean, professional invoices right in your browser, perfect for freelancers and small businesses.
+          <strong className="text-gray-900 dark:text-white">Invoice Generator creates professional invoices and estimates from items, quantities, and prices.</strong>{' '}
+          Fill in your business and client details, set the <strong>tax rate</strong>, and calculations are automatic.
+          Export via <strong>browser print function</strong> as PDF or print directly on paper.
+          No software installation required—create clean, professional invoices right in your browser, perfect for <strong>freelancers and small businesses</strong>.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">No signup, no install—<strong>print-ready PDF</strong> directly from your browser. All data stays on your device.</p>
+        </div>
       </section>
 
       <section>

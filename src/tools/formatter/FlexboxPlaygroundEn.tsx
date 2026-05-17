@@ -322,11 +322,9 @@ function SeoContent() {
           📦 What is Flexbox Playground?
         </h2>
         <p className="text-sm leading-relaxed">
-          Flexbox Playground is an interactive tool for visually learning and experimenting with CSS Flexbox layouts.
-          Adjust container properties like flex-direction, justify-content, and align-items,
-          as well as individual item properties like flex-grow, flex-shrink, and order in real-time
-          to see how each property affects the layout instantly.
-          The configured properties are auto-generated as CSS code ready to copy and use.
+          <strong className="text-gray-900 dark:text-white">Interactive playground to learn CSS Flexbox by toggling properties in real time.</strong>{' '}
+          Tweak <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">flex-direction</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">justify-content</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">align-items</code>, plus item-level <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">flex-grow</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">order</code> and see results instantly.
+          Settings are <strong>auto-converted to CSS</strong> ready to copy into your project.
         </p>
       </section>
 
@@ -360,12 +358,20 @@ function SeoContent() {
           💡 Flexbox Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>Perfect Centering</strong>: Use justify-content: center + align-items: center</li>
-          <li><strong>Even Distribution</strong>: Use space-between to push first/last items to edges</li>
-          <li><strong>Responsive Grid</strong>: Combine flex-wrap: wrap with flex-basis for auto-wrapping</li>
-          <li><strong>Reorder Items</strong>: Use order property to change visual order without changing HTML</li>
+          <li><strong>Perfect Centering</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">justify-content: center</code> + <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">align-items: center</code></li>
+          <li><strong>Even Distribution</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">space-between</code> pushes first/last items to edges</li>
+          <li><strong>Responsive Grid</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">flex-wrap: wrap</code> + <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">flex-basis</code> for auto-wrapping</li>
+          <li><strong>Reorder Items</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">order</code> changes visual order without touching HTML</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Flex vs Grid</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          <strong>1D layouts</strong> (nav bars, single rows of cards) belong to <strong>Flexbox</strong>; <strong>2D layouts</strong> (full-page grids) belong to <strong>CSS Grid</strong>.
+          Forcing one to do both gets messy fast.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

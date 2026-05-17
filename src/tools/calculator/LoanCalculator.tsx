@@ -355,11 +355,16 @@ function SeoContent() {
           💰 대출 상환 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          대출 상환 계산기는 원금, 금리, 기간을 입력해 월 상환금과 총 이자를 미리 계산하는 도구입니다.
-          주택담보대출, 전세자금대출, 신용대출 등 모든 유형의 대출에 사용할 수 있습니다.
-          원리금균등, 원금균등, 만기일시 세 가지 상환방식을 비교하여 자신에게 유리한 방식을 선택하세요.
-          월별 상환 스케줄을 확인하고 CSV로 다운로드해 재정 계획에 활용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">대출 상환 계산기는 원금·금리·기간으로 월 상환금과 총 이자를 미리 계산하는 도구입니다.</strong>{' '}
+          <strong>주택담보대출, 전세자금대출, 신용대출</strong> 등 모든 유형의 대출에 사용할 수 있습니다.
+          <strong>원리금균등, 원금균등, 만기일시</strong> 세 가지 상환방식을 비교하여 자신에게 유리한 방식을 선택하세요.
+          월별 상환 스케줄을 확인하고 <strong>CSV로 다운로드</strong>해 재정 계획에 활용할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>원리금균등</strong>은 매월 같은 금액, <strong>원금균등</strong>은 매월 점점 줄어드는 금액. 총 이자는 원금균등이 더 적습니다.</p>
+        </div>
       </section>
 
       <section>

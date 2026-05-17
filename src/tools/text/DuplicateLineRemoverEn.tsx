@@ -117,9 +117,9 @@ function SeoContent() {
           What is Duplicate Line Remover?
         </h2>
         <p className="text-sm leading-relaxed">
-          The Duplicate Line Remover is a utility that scans your text line by line and automatically removes any repeated lines,
-          keeping only the first occurrence. Instead of manually comparing and deleting duplicates, simply paste your text and get
-          a clean, deduplicated result instantly. It is widely used for cleaning up server logs, refining datasets, removing
+          <strong className="text-gray-900 dark:text-white">The Duplicate Line Remover scans text line by line and automatically removes repeated lines, keeping only the first occurrence.</strong>{' '}
+          Instead of manually comparing and deleting duplicates, simply <strong>paste your text</strong> and get
+          a clean, deduplicated result instantly. It is widely used for <strong>server logs</strong>, refining datasets, removing
           duplicate email addresses, tidying up code, and many other text processing tasks.
         </p>
       </section>
@@ -128,23 +128,30 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           Common Use Cases
         </h2>
-        <div className="text-sm leading-relaxed space-y-2">
-          <p><strong>Server Log Cleanup:</strong> When the same error messages or request logs repeat, removing duplicates helps you quickly identify the core issues without scrolling through redundant entries.</p>
-          <p><strong>Email and Contact Lists:</strong> After merging contacts from multiple sources, use this tool to eliminate duplicate email addresses or phone numbers in one step.</p>
-          <p><strong>Data Cleaning:</strong> When working with CSV or plain text data that contains repeated rows, extract only unique entries to create a clean dataset ready for analysis.</p>
-          <p><strong>Code Cleanup:</strong> Quickly find and remove accidentally duplicated import statements, configuration values, or list items in your source code.</p>
-        </div>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>Server Log Cleanup:</strong> When the same error messages or request logs repeat, removing duplicates helps you quickly identify core issues.</li>
+          <li><strong>Email and Contact Lists:</strong> After merging contacts from multiple sources, eliminate duplicate email addresses or phone numbers in one step.</li>
+          <li><strong>Data Cleaning:</strong> Extract <strong>only unique entries</strong> from CSV or plain text data to create a clean dataset ready for analysis.</li>
+          <li><strong>Code Cleanup:</strong> Quickly find and remove duplicated import statements, configuration values, or list items.</li>
+        </ul>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           Options Explained
         </h2>
-        <div className="text-sm leading-relaxed space-y-2">
-          <p><strong>Case Sensitive:</strong> When enabled, &quot;Hello&quot; and &quot;hello&quot; are treated as different lines. When disabled, lines are compared in a case-insensitive manner, so variations in capitalization are considered duplicates.</p>
-          <p><strong>Trim Whitespace:</strong> When enabled, leading and trailing whitespace (spaces, tabs) are stripped from each line before comparison. This means lines that differ only in indentation will be treated as duplicates.</p>
-        </div>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>Case Sensitive:</strong> When enabled, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Hello</code> and <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">hello</code> are treated as different lines. When disabled, capitalization variations are considered duplicates.</li>
+          <li><strong>Trim Whitespace:</strong> Strips leading and trailing whitespace before comparison, so lines that <strong>differ only in indentation</strong> are treated as duplicates.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Quick tip</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          Turn <strong>case-sensitive off</strong> for emails and usernames, but keep it <strong>on for code or identifiers</strong> where capitalization carries meaning.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

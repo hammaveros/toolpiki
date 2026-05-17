@@ -203,11 +203,18 @@ function SeoContent() {
           🎨 What is Color Code Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          Color Code Converter transforms colors between HEX, RGB, HSL, and other formats instantly.
-          Pick colors visually with the color picker or fine-tune with RGB sliders.
+          <strong className="text-gray-900 dark:text-white">Color Code Converter transforms <strong>HEX</strong>, <strong>RGB</strong>, and <strong>HSL</strong> formats instantly in both directions.</strong>{' '}
+          Pick colors visually with the color picker or fine-tune with <strong>RGB sliders</strong>.
           Essential for web development, graphic design, and UI/UX work where different color formats are needed.
-          Copy converted values with a single click for immediate use in your projects.
+          Copy converted values with a <strong>single click</strong> for immediate use in your projects.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 Design Tip</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            Define design tokens in <strong>HSL</strong> and store runtime values as <strong>HEX</strong> like <code className="px-1 py-0.5 rounded bg-white/60 dark:bg-gray-800 text-xs font-mono">#3B82F6</code>. Adjust only lightness to derive hover/active tones easily.
+          </p>
+        </div>
       </section>
 
       <section>

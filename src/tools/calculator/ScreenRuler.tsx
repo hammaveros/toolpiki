@@ -297,11 +297,16 @@ function SeoContent() {
           📏 화면 자란?
         </h2>
         <p className="text-sm leading-relaxed">
-          화면 자는 모니터에서 영역을 드래그하여 픽셀 단위로 크기를 측정하는 도구입니다.
-          DPI(인치당 픽셀 수) 설정을 기준으로 mm, 인치 단위로도 환산합니다.
-          UI/UX 디자인, 웹 개발, 이미지 크기 확인 등에 필수적인 도구입니다.
-          여러 영역을 동시에 측정하고 기록으로 남길 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">화면 자는 모니터에서 영역을 드래그하여 픽셀 단위로 크기를 측정하는 도구입니다.</strong>{' '}
+          <strong>DPI(인치당 픽셀 수)</strong> 설정을 기준으로 <strong>mm·인치 단위</strong>로도 환산합니다.
+          <strong>UI/UX 디자인, 웹 개발, 이미지 크기 확인</strong> 등에 필수적인 도구입니다.
+          <strong>여러 영역을 동시에 측정</strong>하고 기록으로 남길 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">설치형 자 앱 없이 <strong>브라우저에서 바로 측정</strong>. 디자인 검수나 마진 확인이 즉시 가능합니다.</p>
+        </div>
       </section>
 
       <section>

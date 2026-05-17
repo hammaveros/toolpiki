@@ -134,9 +134,9 @@ function SeoContent() {
           JSON 포맷터란?
         </h2>
         <p className="text-sm leading-relaxed">
-          JSON(JavaScript Object Notation) 데이터 교환 형식을 보기 좋게 정리하는 도구입니다.
-          압축된 JSON을 들여쓰기와 줄바꿈으로 정렬(Prettify)하거나,
-          불필요한 공백을 제거하여 압축(Minify)합니다. API 응답 분석,
+          <strong className="text-gray-900 dark:text-white">JSON 데이터를 한 번에 정렬·검증·압축하는 도구입니다.</strong>{' '}
+          압축된 JSON을 <strong>2/4 스페이스</strong> 또는 탭으로 <strong>정렬(Prettify)</strong>하거나,
+          공백을 제거해 <strong>압축(Minify)</strong>합니다. <strong>API 응답 분석</strong>,
           설정 파일 편집, 데이터베이스 레코드 확인, 디버깅에 필수적인 도구입니다.
         </p>
       </section>
@@ -178,12 +178,20 @@ function SeoContent() {
           JSON 문법 규칙
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>키는 반드시 큰따옴표로 감싸야 합니다 (작은따옴표 불가)</li>
-          <li>문자열 값은 큰따옴표 사용, 숫자/불리언/null은 따옴표 없이</li>
-          <li>마지막 항목 뒤에 쉼표(trailing comma) 불가</li>
-          <li>주석 사용 불가 (JSON5, JSONC는 지원)</li>
+          <li>키는 <strong>반드시 큰따옴표</strong>로 감싸야 합니다 (작은따옴표 불가)</li>
+          <li>문자열 값은 큰따옴표 사용, <strong>숫자/불리언/null</strong>은 따옴표 없이</li>
+          <li>마지막 항목 뒤에 <strong>쉼표(trailing comma)</strong> 불가</li>
+          <li><strong>주석 사용 불가</strong> (JSON5, JSONC는 지원)</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 자주 하는 실수</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          JavaScript 객체 리터럴(<code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`{key: 'val'}`}</code>)을 JSON으로 착각하는 경우가 가장 많습니다.
+          <strong> JSON은 항상 큰따옴표</strong>(<code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`{"key":"val"}`}</code>)만 허용합니다.
+        </p>
+      </div>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">

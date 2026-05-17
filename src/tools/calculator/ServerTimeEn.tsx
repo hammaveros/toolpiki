@@ -642,11 +642,16 @@ function SeoContent() {
           ⏱️ What is Server Time?
         </h2>
         <p className="text-sm leading-relaxed">
-          Server Time is a precision timing tool for ticketing, reservations, and time-sensitive events.
-          Uses performance.now() API with drift correction to minimize JavaScript timer inaccuracies.
-          Measures network round-trip time (RTT) to help you understand when your clicks reach the server.
-          Time alarm feature lets you set notifications for exact moments, perfect for ticketing preparation.
+          <strong className="text-gray-900 dark:text-white">Server Time is a precision timing tool for ticketing, reservations, and time-sensitive events.</strong>{' '}
+          Uses <strong>performance.now() API</strong> with drift correction to minimize JavaScript timer inaccuracies.
+          Measures <strong>network round-trip time (RTT)</strong> to help you understand when your clicks reach the server.
+          <strong>Time alarm feature</strong> lets you set notifications for exact moments, perfect for ticketing preparation.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">Ticketing success depends on <strong>clicking RTT-early</strong>. Check your RTT and prepare your click in advance.</p>
+        </div>
       </section>
 
       <section>

@@ -190,10 +190,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔍 What Is a Regex Generator?</h2>
         <p className="text-sm leading-relaxed">
-          A regular expression (regex) is a sequence of characters that defines a search pattern, widely used for string matching and data validation.
-          Writing regex from scratch can be tricky because the syntax is not always intuitive, especially for complex patterns.
-          This regex generator provides over 20 ready-to-use preset patterns for common use cases like email validation, phone numbers, URLs, IP addresses, and more.
-          Simply pick a preset, tweak it if needed, and test it against your own input in real time — no guesswork required.
+          <strong className="text-gray-900 dark:text-white">A regular expression (regex) is a sequence of characters that defines a search pattern, widely used for string matching and data validation.</strong>{' '}
+          Writing regex from scratch can be tricky because the syntax is not always intuitive.
+          This generator provides <strong>over 20 ready-to-use preset patterns</strong> for common use cases like <strong>email validation</strong>, phone numbers, URLs, IP addresses, and more.
+          Simply pick a preset, tweak it if needed, and <strong>test it against your own input in real time</strong>.
         </p>
       </section>
 
@@ -295,6 +295,13 @@ function SeoContent() {
           <li><strong className="text-gray-800 dark:text-gray-200">m (multiline)</strong> — Makes ^ and $ match the start and end of each line, rather than the entire string.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Debugging tip</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          If your regex isn&apos;t matching as expected, double-check your <strong>flags (g, i, m)</strong> and make sure you escaped special characters (<code className="px-1 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900 text-xs font-mono">. * + ? ( ) [ ] {'{'} {'}'} \ ^ $ |</code>) with a backslash.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

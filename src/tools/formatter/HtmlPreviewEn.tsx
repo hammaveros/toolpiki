@@ -78,10 +78,9 @@ function SeoContent() {
           🌐 What is HTML Preview?
         </h2>
         <p className="text-sm leading-relaxed">
-          HTML Preview is a tool that renders HTML, CSS, and JavaScript code in real-time as you type.
-          Without saving files or refreshing your browser, you can instantly see your code changes,
-          making it ideal for web prototyping, educational purposes, and testing code snippets.
-          Test responsive designs with mobile (375px), tablet (768px), and desktop (1024px) viewport presets.
+          <strong className="text-gray-900 dark:text-white">Write HTML, CSS, and JavaScript and see the result render in real time.</strong>{' '}
+          No file saves or browser refreshes — ideal for <strong>prototyping</strong>, teaching, and testing code snippets.
+          Preview responsive designs with <strong>mobile (375px), tablet (768px), and desktop (1024px)</strong> viewport presets.
         </p>
       </section>
 
@@ -114,13 +113,21 @@ function SeoContent() {
           💡 Usage Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Write HTML, CSS, and JS in a single file to quickly test ideas</li>
-          <li>Check layout across different screen sizes before applying media queries</li>
-          <li>Preview code snippets before embedding in blogs or documentation</li>
-          <li>Debug CSS animations and transitions in real-time</li>
-          <li>Load external CDN libraries via &lt;script&gt; tags for testing</li>
+          <li>Write <strong>HTML/CSS/JS</strong> in a single file to quickly test ideas</li>
+          <li>Check layout across different screen sizes before applying <strong>media queries</strong></li>
+          <li>Preview <strong>code snippets</strong> before embedding in blogs or documentation</li>
+          <li>Debug <strong>CSS animations and transitions</strong> in real-time</li>
+          <li>Load external <strong>CDN libraries</strong> via <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&lt;script&gt;</code> tags for testing</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Pro Tip</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          Code lives in <strong>browser memory only</strong> and is lost on refresh — copy important work beforehand.
+          For JS errors, open <strong>F12 DevTools Console</strong> to see messages immediately.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

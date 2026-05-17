@@ -234,11 +234,16 @@ function SeoContent() {
           📐 단위 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          단위 변환기는 길이, 무게, 온도, 면적, 부피, 데이터 용량을 다양한 단위로 변환하는 도구입니다.
-          미터법(SI), 야드파운드법(미국/영국), 한국 전통 단위(평, 근)를 모두 지원합니다.
-          입력과 동시에 모든 단위로의 변환 결과를 실시간으로 확인할 수 있습니다.
-          요리, 운동, 여행, 부동산, 개발 등 일상과 업무에서 필수적인 도구입니다.
+          <strong className="text-gray-900 dark:text-white">단위 변환기는 길이·무게·온도·면적·부피·데이터 용량을 다양한 단위로 변환하는 도구입니다.</strong>{' '}
+          <strong>미터법(SI), 야드파운드법(미국/영국), 한국 전통 단위(평, 근)</strong>를 모두 지원합니다.
+          입력과 동시에 모든 단위로의 변환 결과를 <strong>실시간으로 확인</strong>할 수 있습니다.
+          <strong>요리, 운동, 여행, 부동산, 개발</strong> 등 일상과 업무에서 필수적인 도구입니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">한국 부동산은 <strong>평(3.3㎡)</strong>, 미국 운동은 <strong>lbs/마일</strong>이 표준. 익숙한 단위로 빠르게 환산하세요.</p>
+        </div>
       </section>
 
       <section>

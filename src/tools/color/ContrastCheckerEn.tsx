@@ -229,11 +229,18 @@ function SeoContent() {
           ♿ What is Contrast Checker?
         </h2>
         <p className="text-sm leading-relaxed">
-          Contrast Checker measures the luminance contrast ratio between text and background colors for web accessibility testing.
-          It verifies compliance with WCAG (Web Content Accessibility Guidelines) 2.1 standards in real-time, showing AA and AAA level pass/fail status.
-          Ensuring content is readable for users with visual impairments is both a best practice and often a legal requirement.
+          <strong className="text-gray-900 dark:text-white">Contrast Checker measures the <strong>luminance contrast ratio</strong> between text and background colors for web accessibility testing.</strong>{' '}
+          It verifies compliance with <strong>WCAG 2.1</strong> standards in real-time, showing <strong>AA and AAA</strong> level pass/fail status.
+          Ensuring content is readable for users with visual impairments is both a best practice and often a <strong>legal requirement</strong>.
           Testing contrast ratios during the design phase helps prevent accessibility issues before deployment.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ WCAG Standards</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            Normal text requires <strong>4.5:1</strong> (AA), large text <strong>3:1</strong>, and <strong>UI components</strong> like button borders and icons also need 3:1 against adjacent backgrounds (SC 1.4.11).
+          </p>
+        </div>
       </section>
 
       <section>

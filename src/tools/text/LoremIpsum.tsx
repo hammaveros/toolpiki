@@ -244,38 +244,40 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Lorem Ipsum이란?</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Lorem Ipsum은 인쇄 및 조판 업계에서 사용하는 표준 더미 텍스트입니다.
-          기원전 45년경 로마의 철학자 키케로(Cicero)가 쓴 &quot;De Finibus Bonorum et Malorum&quot;(선과 악의 극한에 대하여)에서 유래했으며,
-          1500년대 한 익명의 인쇄공이 활자 견본용으로 사용하면서 널리 퍼지기 시작했습니다.
-          500년이 넘는 세월 동안 인쇄 산업의 표준 더미 텍스트로 자리잡아 왔으며,
-          디지털 시대에 들어서면서 전자 조판 소프트웨어와 웹 디자인에서도 핵심적으로 활용되고 있습니다.
-          실제 의미가 없는 라틴어 단어 조합이기 때문에 디자인 작업 시 텍스트 내용에 주의가 분산되지 않아
-          레이아웃과 타이포그래피 자체에 집중할 수 있다는 장점이 있습니다.
+          <strong className="text-gray-900 dark:text-white">Lorem Ipsum은 인쇄·조판 업계에서 사용하는 표준 더미 텍스트</strong>입니다.
+          <strong>기원전 45년경 로마의 철학자 키케로</strong>가 쓴 &quot;De Finibus Bonorum et Malorum&quot;(선과 악의 극한에 대하여)에서 유래했으며,
+          <strong>1500년대 익명의 인쇄공</strong>이 활자 견본용으로 사용하면서 널리 퍼졌습니다.
+          <strong>500년이 넘는 세월</strong> 동안 표준으로 자리잡아 디지털 시대 전자 조판과 웹 디자인에서도 핵심적으로 활용됩니다.
+          실제 의미 없는 라틴어 조합이라 디자인 작업 시 <strong>레이아웃과 타이포그래피에 집중</strong>할 수 있습니다.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">활용 사례</h2>
-        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Lorem Ipsum은 다양한 분야에서 폭넓게 사용됩니다.
-          웹 디자인에서는 시안이나 목업 작업 시 실제 콘텐츠가 준비되기 전 레이아웃의 텍스트 영역을 채우는 데 활용됩니다.
-          UI/UX 프로토타이핑에서는 버튼, 카드, 모달 등 컴포넌트 안에 텍스트가 들어갔을 때의 시각적 균형을 미리 확인할 수 있습니다.
-          인쇄 레이아웃에서는 포스터, 브로셔, 잡지 편집 시 본문 영역의 글꼴 크기, 줄 간격, 여백 등을 테스트하는 용도로 씁니다.
-          앱 개발에서는 서버 데이터가 아직 없을 때 화면을 채워서 전체적인 사용자 경험을 시뮬레이션할 수 있습니다.
-          한글 더미 텍스트도 함께 지원하므로 한국어 프로젝트의 자간, 행간 테스트에도 활용해 보세요.
-        </p>
+        <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside">
+          <li><strong>웹 디자인 목업</strong> — 실제 콘텐츠 전에 레이아웃 텍스트 영역을 채워 시안 작성</li>
+          <li><strong>UI/UX 프로토타이핑</strong> — 버튼·카드·모달 안 텍스트의 시각적 균형 확인</li>
+          <li><strong>인쇄 레이아웃</strong> — 포스터·브로셔·잡지 본문의 글꼴·줄간격·여백 테스트</li>
+          <li><strong>앱 개발</strong> — 서버 데이터가 없을 때 화면 시뮬레이션</li>
+          <li><strong>한글 더미 텍스트</strong> 지원 — 한국어 프로젝트의 자간·행간 테스트</li>
+        </ul>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">더미 텍스트 대안</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Lorem Ipsum 외에도 다양한 더미 텍스트 대안이 있습니다.
-          &quot;한글 입숨&quot;은 한국어 특유의 자간과 행간을 테스트하기에 적합하고,
-          &quot;Hipster Ipsum&quot;이나 &quot;Bacon Ipsum&quot;처럼 재미있는 주제의 더미 텍스트도 존재합니다.
-          프로젝트의 성격에 따라 적절한 더미 텍스트를 선택하면 작업의 분위기를 살릴 수 있습니다.
-          다만 고객사나 의뢰인에게 시안을 보여줄 때는 전통적인 Lorem Ipsum이 가장 무난한 선택입니다.
+          Lorem Ipsum 외에도 <strong>한글 입숨</strong>(한국어 자간·행간 테스트용), <strong>Hipster Ipsum</strong>, <strong>Bacon Ipsum</strong>처럼
+          주제별 더미 텍스트가 존재합니다. 프로젝트 성격에 따라 분위기를 살리는 더미 텍스트를 고를 수 있지만,
+          <strong>고객사 시안 발표 시에는 전통적인 Lorem Ipsum이 가장 무난</strong>합니다.
         </p>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 알아두기</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          Lorem Ipsum은 <strong>퍼블릭 도메인</strong>이라 저작권 걱정 없이 상업적으로도 자유롭게 사용할 수 있습니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

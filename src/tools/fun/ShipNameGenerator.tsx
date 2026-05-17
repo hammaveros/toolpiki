@@ -179,11 +179,18 @@ function SeoContent() {
           💑 What is Ship Name Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Create couple names (portmanteaus) by combining two names into one unique blended name.
-          Like &quot;Brangelina&quot; (Brad + Angelina) or &quot;Bennifer&quot; (Ben + Jennifer).
-          Uses multiple algorithms to generate up to 5 different combinations.
-          Perfect for fan fiction, fandom culture, couples, or just for fun with friends!
+          <strong className="text-gray-900 dark:text-white">Create couple names (portmanteaus) by combining two names into one unique blended name.</strong>{' '}
+          Like <strong>&quot;Brangelina&quot;</strong> (Brad + Angelina) or <strong>&quot;Bennifer&quot;</strong> (Ben + Jennifer).
+          Uses multiple algorithms to generate <strong>up to 5 different combinations</strong>.
+          Perfect for fan fiction, fandom culture, couples, or fun with friends!
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">💡 Tip</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>Swap name order</strong> for different combos. <strong>Longer names</strong> produce more interesting blends.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -230,10 +237,10 @@ function SeoContent() {
           💡 Creative Uses
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li><strong>Fan fiction:</strong> Create names for your favorite fictional couples</li>
-          <li><strong>Social media:</strong> Create a couple account name</li>
-          <li><strong>Wedding hashtags:</strong> Get inspiration for unique wedding hashtags</li>
-          <li><strong>Friend groups:</strong> Create fun names for best friend duos</li>
+          <li><strong>Fan fiction</strong> — names for favorite fictional couples</li>
+          <li><strong>Social media</strong> — couple account names</li>
+          <li><strong>Wedding hashtags</strong> — inspiration for unique tags</li>
+          <li><strong>Friend groups</strong> — fun names for best-friend duos</li>
         </ul>
       </section>
 

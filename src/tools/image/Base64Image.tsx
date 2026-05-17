@@ -232,10 +232,9 @@ function SeoContent() {
           🖼️ Base64 이미지 변환이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          Base64 이미지 변환은 이미지 파일을 텍스트 문자열로 인코딩하거나, 반대로 Base64 문자열을 이미지로 디코딩하는 도구입니다.
-          Base64로 인코딩된 이미지는 HTML, CSS, JavaScript 코드에 직접 삽입할 수 있어 외부 파일 의존성을 줄일 수 있습니다.
-          이메일 템플릿, 단일 HTML 파일 배포, API 데이터 전송 등에서 널리 활용됩니다.
-          모든 처리는 브라우저에서 이루어지므로 이미지가 외부 서버로 전송되지 않아 안전합니다.
+          <strong className="text-gray-900 dark:text-white">이미지를 텍스트 문자열로 인코딩/디코딩하는 도구.</strong>{' '}
+          <strong>Base64</strong>로 변환된 이미지는 <strong>HTML/CSS/JavaScript</strong> 코드에 직접 삽입할 수 있어 외부 파일 의존성을 줄입니다.
+          이메일 템플릿, 단일 HTML 배포, <strong>API 데이터 전송</strong>에 널리 쓰이며, 처리는 전부 브라우저에서 이뤄져 외부 서버로 전송되지 않습니다.
         </p>
       </section>
 
@@ -267,12 +266,18 @@ function SeoContent() {
           💡 Base64 이미지 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>작은 이미지에 적합</strong>: 아이콘, 로고 등 10KB 미만 이미지에 권장</li>
-          <li><strong>Data URL 접두사</strong>: CSS/HTML에서 사용 시 data:image/... 형식 필요</li>
-          <li><strong>용량 증가</strong>: Base64 인코딩 시 원본 대비 약 33% 크기 증가</li>
-          <li><strong>캐싱 불가</strong>: 인라인 이미지는 브라우저 캐싱 불가, 반복 다운로드</li>
-          <li><strong>이메일 첨부</strong>: HTML 이메일에 이미지 직접 삽입 시 유용</li>
+          <li><strong>작은 이미지에 적합</strong> — 아이콘/로고 등 <strong>10KB 미만</strong> 권장</li>
+          <li><strong>Data URL 접두사</strong> — CSS/HTML 사용 시 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">data:image/...</code> 형식 필요</li>
+          <li><strong>용량 증가</strong> — 인코딩 시 원본 대비 <strong>약 33% 증가</strong></li>
+          <li><strong>캐싱 불가</strong> — 인라인 이미지는 브라우저 <strong>캐싱 불가</strong>, 반복 다운로드</li>
+          <li><strong>이메일 첨부</strong> — HTML 이메일 직접 삽입에 유용</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 주의</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            <strong>큰 이미지는 외부 파일</strong>로 두는 게 낫습니다. 인라인 Base64는 캐싱이 안 돼 페이지 로딩이 느려집니다.
+          </p>
+        </div>
       </section>
 
       <FaqSection

@@ -329,11 +329,16 @@ function SeoContent() {
           📐 비율 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          비율 계산기는 이미지, 영상, 화면의 종횡비(Aspect Ratio)를 계산하고 변환하는 도구입니다.
-          원본 크기에서 비율을 자동 추출하고, 같은 비율로 다른 크기를 계산할 수 있습니다.
-          16:9, 4:3 등 일반적인 비율 프리셋과 황금비(1:1.618) 계산 기능도 제공합니다.
-          디자이너, 개발자, 영상 편집자, 사진가에게 필수적인 도구입니다.
+          <strong className="text-gray-900 dark:text-white">비율 계산기는 이미지·영상·화면의 종횡비(Aspect Ratio)를 계산하고 변환하는 도구입니다.</strong>{' '}
+          원본 크기에서 <strong>비율을 자동 추출</strong>하고, 같은 비율로 다른 크기를 계산할 수 있습니다.
+          <strong>16:9, 4:3</strong> 등 일반적인 비율 프리셋과 <strong>황금비(1:1.618)</strong> 계산 기능도 제공합니다.
+          <strong>디자이너, 개발자, 영상 편집자, 사진가</strong>에게 필수적인 도구입니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">유튜브·넷플릭스는 <strong>16:9</strong>, 인스타그램은 <strong>1:1 또는 4:5</strong>, 영화는 <strong>2.35:1</strong>이 표준입니다.</p>
+        </div>
       </section>
 
       <section>

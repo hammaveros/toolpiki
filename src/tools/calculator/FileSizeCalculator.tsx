@@ -163,11 +163,16 @@ function SeoContent() {
           💾 파일 크기 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          파일 크기 계산기는 B, KB, MB, GB, TB, PB 단위를 상호 변환하고, 인터넷 속도별 다운로드 예상 시간을 계산하는 도구입니다.
-          컴퓨터에서 사용하는 이진 단위(1024 기준)를 적용하여 정확한 변환값을 제공합니다.
-          대용량 파일 전송 시간 예측, 저장장치 용량 계획, 클라우드 스토리지 관리 등에 필수적인 도구입니다.
-          일반 인터넷부터 기가 인터넷, USB 전송 속도까지 다양한 환경을 지원합니다.
+          <strong className="text-gray-900 dark:text-white">파일 크기 계산기는 B, KB, MB, GB, TB, PB 단위 변환과 다운로드 예상 시간을 계산합니다.</strong>{' '}
+          컴퓨터에서 사용하는 <strong>이진 단위(1024 기준)</strong>를 적용하여 정확한 변환값을 제공합니다.
+          <strong>대용량 파일 전송, 저장장치 용량 계획, 클라우드 스토리지 관리</strong> 등에 필수적인 도구입니다.
+          일반 인터넷부터 <strong>기가 인터넷, USB 전송 속도</strong>까지 다양한 환경을 지원합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 주의</p>
+          <p className="text-amber-800 dark:text-amber-300"><strong>1 KB = 1024 B</strong>(이진)와 <strong>1 KB = 1000 B</strong>(십진)는 다릅니다. HDD 제조사는 십진을, OS는 이진을 사용합니다.</p>
+        </div>
       </section>
 
       <section>

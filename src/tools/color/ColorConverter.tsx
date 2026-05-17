@@ -206,11 +206,18 @@ function SeoContent() {
           🎨 색상 코드 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          색상 코드 변환기는 HEX, RGB, HSL 등 다양한 색상 형식을 상호 변환하는 온라인 도구입니다.
-          컬러 피커로 시각적으로 색상을 선택하거나, RGB 슬라이더로 세밀하게 조절할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">색상 코드 변환기는 <strong>HEX</strong>, <strong>RGB</strong>, <strong>HSL</strong> 형식을 한 번에 상호 변환하는 도구입니다.</strong>{' '}
+          컬러 피커로 시각적으로 색상을 선택하거나, <strong>RGB 슬라이더</strong>로 세밀하게 조절할 수 있습니다.
           웹 개발, 그래픽 디자인, UI/UX 작업에서 다양한 형식의 색상 코드가 필요할 때 유용합니다.
-          변환된 값은 클릭 한 번으로 복사하여 바로 사용할 수 있습니다.
+          변환된 값은 <strong>클릭 한 번</strong>으로 복사하여 바로 사용할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 디자인 팁</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            디자인 시스템은 <strong>HSL</strong>로 정의하고 런타임은 <code className="px-1 py-0.5 rounded bg-white/60 dark:bg-gray-800 text-xs font-mono">#3B82F6</code> 같은 <strong>HEX</strong>로 저장하면 명도만 조정해 hover/active 톤을 쉽게 만들 수 있습니다.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -254,11 +261,11 @@ function SeoContent() {
           🔬 색공간의 작은 차이가 만드는 큰 결과
         </h2>
         <p className="text-sm leading-relaxed">
-          같은 색이라도 색공간에 따라 값이 다르게 표현됩니다.
-          예를 들어 Tailwind의 blue-500(#3B82F6)을 RGB로 보면 (59, 130, 246)이고 HSL로 보면 hsl(217, 91%, 60%)인데,
-          여기서 명도(L)만 60 → 80으로 올리면 blue-300 비슷한 톤이 만들어지지만 RGB로 같은 작업을 하려면 세 채널을 각각 계산해야 합니다.
-          반대로 RGB는 캔버스에 픽셀 단위로 색을 찍을 때 한 번에 처리하기 좋아 이미지 합성에 유리합니다.
-          그래서 디자인 시스템은 HSL로 정의하되 런타임에서는 HEX/RGB로 저장하는 하이브리드 방식이 자주 쓰입니다.
+          같은 색이라도 <strong>색공간</strong>에 따라 값이 다르게 표현됩니다.
+          예를 들어 Tailwind의 blue-500(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">#3B82F6</code>)을 RGB로 보면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">(59, 130, 246)</code>이고 HSL로 보면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">hsl(217, 91%, 60%)</code>인데,
+          여기서 <strong>명도(L)</strong>만 60 → 80으로 올리면 blue-300 비슷한 톤이 만들어지지만 RGB로 같은 작업을 하려면 <strong>세 채널</strong>을 각각 계산해야 합니다.
+          반대로 RGB는 캔버스에 픽셀 단위로 색을 찍을 때 한 번에 처리하기 좋아 <strong>이미지 합성</strong>에 유리합니다.
+          그래서 디자인 시스템은 HSL로 정의하되 런타임에서는 HEX/RGB로 저장하는 <strong>하이브리드 방식</strong>이 자주 쓰입니다.
         </p>
       </section>
 

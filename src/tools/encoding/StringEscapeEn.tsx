@@ -192,10 +192,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔤 What is String Escape?</h2>
         <p className="text-sm leading-relaxed">
-          Whenever data travels between two grammars — say, from raw user text into a JSON document, an SQL query, or a regex pattern — characters that belong to the destination grammar can hijack the parse.
-          Escaping marks each of those characters as &quot;just a character, please&quot;.
-          For instance, an embedded double quote in JSON has to become <code>\&quot;</code>, and a single quote inside a SQL literal has to be doubled to <code>''</code> to block injection.
-          This tool covers six common contexts — JSON, JavaScript, HTML, URL, Regex, SQL — and runs after a 300 ms debounce so it doesn't fight your typing.
+          <strong className="text-gray-900 dark:text-white">Escaping marks special characters as &quot;just a character, please&quot;.</strong>{' '}
+          Whenever data travels between two grammars — say, from raw user text into a JSON document, an SQL query, or a regex pattern — <strong>characters that belong to the destination grammar can hijack the parse</strong>.
+          For instance, an embedded double quote in JSON has to become <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\&quot;</code>, and a single quote inside a SQL literal has to be doubled to <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&apos;&apos;</code> to <strong>block injection</strong>.
+          This tool covers <strong>six common contexts — JSON, JavaScript, HTML, URL, Regex, SQL</strong> — and runs after a <strong>300 ms debounce</strong>.
         </p>
       </section>
 
@@ -204,19 +204,19 @@ function SeoContent() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <h3 className="font-semibold mb-1">JSON / JavaScript</h3>
-            <p>Escapes \\, ", ', newlines (\\n), tabs (\\t) with backslash prefix.</p>
+            <p>Escapes <strong>\\, &quot;, &apos;, newlines (\\n), tabs (\\t)</strong> with backslash prefix.</p>
           </div>
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <h3 className="font-semibold mb-1">HTML</h3>
-            <p>Converts &lt;, &gt;, &amp;, ", ' to HTML entities (&amp;lt; etc.).</p>
+            <p>Converts <strong>&lt;, &gt;, &amp;, &quot;, &apos;</strong> to HTML entities (&amp;lt; etc.).</p>
           </div>
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <h3 className="font-semibold mb-1">Regex</h3>
-            <p>Escapes regex special characters like . * + ? ^ $ with backslash.</p>
+            <p>Escapes regex meta characters <strong>. * + ? ^ $</strong> with backslash.</p>
           </div>
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <h3 className="font-semibold mb-1">SQL</h3>
-            <p>Doubles single quotes ('' → '') to prevent SQL injection attacks.</p>
+            <p><strong>Doubles single quotes</strong> (&apos; → &apos;&apos;) to <strong>prevent SQL injection</strong>.</p>
           </div>
         </div>
       </section>
@@ -224,12 +224,17 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🧪 Quick Real-World Scenarios</h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
-          <li><strong>Pasting a JSON sample into source code</strong>: line breaks and inner quotes immediately trip your editor. Run it through JSON mode once and the result drops straight into a string literal.</li>
-          <li><strong>Hot-fixing a query in a maintenance script</strong>: parameter binding is always preferable, but when you must inline a value, SQL mode doubles single quotes the way ANSI SQL expects, neutralising the classic <code>' OR 1=1 --</code> trick.</li>
-          <li><strong>Matching a Windows path with regex</strong>: a path like <code>C:\\Users\\name</code> contains backslashes that regex treats as escape openers. Regex mode produces a literal-safe pattern in one click.</li>
-          <li><strong>Embedding code samples in Markdown</strong>: not every renderer respects backticks consistently. HTML mode keeps angle brackets from collapsing into stray tags.</li>
+          <li><strong>Pasting a JSON sample into source code</strong>: line breaks and inner quotes immediately trip your editor. Run it through <strong>JSON mode</strong> and the result drops straight into a string literal.</li>
+          <li><strong>Hot-fixing a query</strong>: parameter binding is always preferable, but when you must inline a value, <strong>SQL mode</strong> doubles single quotes the way ANSI SQL expects, neutralising the classic <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&apos; OR 1=1 --</code> trick.</li>
+          <li><strong>Matching a Windows path with regex</strong>: a path like <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">C:\\Users\\name</code> contains backslashes that regex treats as escape openers. <strong>Regex mode</strong> produces a literal-safe pattern.</li>
+          <li><strong>Embedding code samples in Markdown</strong>: <strong>HTML mode</strong> keeps angle brackets from collapsing into stray tags.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 p-4 text-sm">
+        <p className="font-semibold text-red-900 dark:text-red-200 mb-1">🔒 Security Note</p>
+        <p className="text-red-800 dark:text-red-300">Skipping escaping leads to <strong>XSS and SQL injection</strong> — injection has stayed near the top of the <strong>OWASP Top 10 for over a decade</strong>. Prefer <strong>parameter binding</strong> for SQL whenever possible.</p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

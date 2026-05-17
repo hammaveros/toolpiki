@@ -122,11 +122,16 @@ function SeoContent() {
           🌐 IP 주소 조회란?
         </h2>
         <p className="text-sm leading-relaxed">
-          IP 주소 조회는 현재 인터넷에 연결된 기기의 공인 IP 주소와 위치 정보를 확인하는 도구입니다.
-          인터넷 서비스 제공업체(ISP), 도시, 지역, 국가, 좌표, 타임존 등 다양한 정보를 표시합니다.
-          VPN이나 프록시가 정상 작동하는지 확인하거나, 원격 접속 설정 시 자신의 IP를 파악하는 데 유용합니다.
-          ipinfo.io API를 통해 실시간으로 조회하며, 브라우저에서 바로 확인 가능합니다.
+          <strong className="text-gray-900 dark:text-white">IP 주소 조회는 현재 기기의 공인 IP 주소와 위치 정보를 확인하는 도구입니다.</strong>{' '}
+          <strong>ISP, 도시, 지역, 국가, 좌표, 타임존</strong> 등 다양한 정보를 표시합니다.
+          <strong>VPN/프록시 작동 확인</strong>이나 원격 접속 설정 시 자신의 IP를 파악하는 데 유용합니다.
+          <strong>ipinfo.io API</strong>를 통해 실시간으로 조회하며, 브라우저에서 바로 확인 가능합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>VPN을 켰을 때</strong> 표시되는 IP/위치가 바뀌었다면 정상 작동하는 것입니다. 동일하다면 누수(leak)일 수 있어요.</p>
+        </div>
       </section>
 
       <section>

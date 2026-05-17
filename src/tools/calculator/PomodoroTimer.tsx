@@ -299,11 +299,16 @@ function SeoContent() {
           🍅 뽀모도로 타이머란?
         </h2>
         <p className="text-sm leading-relaxed">
-          뽀모도로 기법은 25분 집중 후 5분 휴식을 반복하는 시간 관리 방법론입니다.
-          1980년대 이탈리아의 프란체스코 시릴로가 토마토 모양 주방 타이머로 시작한 것에서 유래했습니다.
-          이 도구는 집중 시간, 짧은 휴식, 긴 휴식을 자유롭게 설정할 수 있으며, 원형 프로그레스로 진행 상황을 시각적으로 확인합니다.
-          4회 완료 시 자동으로 긴 휴식(15분)으로 전환되어 장시간 집중을 도와줍니다.
+          <strong className="text-gray-900 dark:text-white">뽀모도로 기법은 25분 집중 후 5분 휴식을 반복하는 시간 관리 방법론입니다.</strong>{' '}
+          1980년대 이탈리아의 <strong>프란체스코 시릴로</strong>가 토마토 모양 주방 타이머로 시작한 것에서 유래했습니다.
+          <strong>집중 시간, 짧은 휴식, 긴 휴식</strong>을 자유롭게 설정할 수 있으며, <strong>원형 프로그레스</strong>로 진행 상황을 시각적으로 확인합니다.
+          <strong>4회 완료 시</strong> 자동으로 긴 휴식(15분)으로 전환되어 장시간 집중을 도와줍니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">짧은 인터벌이 <strong>뇌의 피로를 줄이고</strong>, 마감 효과를 활용해 집중력을 끌어올립니다.</p>
+        </div>
       </section>
 
       <section>

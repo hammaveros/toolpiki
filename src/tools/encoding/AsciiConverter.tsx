@@ -182,10 +182,9 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">💻 ASCII 변환기란?</h2>
         <p className="text-sm leading-relaxed">
-          ASCII는 1963년 ANSI X3.4 위원회가 표준화한 7비트 문자 코드로, 0~127 사이 정수에 영문 알파벳·숫자·기호·제어 문자를 배치한 가장 오래된 텍스트 인코딩 중 하나입니다.
-          전신용 텔레타이프에서 출발한 만큼 0~31에 줄바꿈, 종이이송 같은 제어 코드가 들어 있어 지금도 <code>\n</code>(LF, 10), <code>\r</code>(CR, 13), <code>\t</code>(TAB, 9) 같은 형태로 그 흔적이 남아 있습니다.
-          이 도구는 문자열을 한 글자씩 분해해 10진수, 16진수, 2진수 세 가지 표기로 보여주거나, 반대로 코드 시퀀스를 다시 텍스트로 복원합니다.
-          C/Java/Python 같은 언어 학습 중 문자 ↔ 코드 변환을 빠르게 확인할 때 유용합니다.
+          <strong className="text-gray-900 dark:text-white">ASCII는 0~127 사이 정수에 영문 알파벳·숫자·기호를 매핑한 7비트 문자 코드입니다.</strong>{' '}
+          <strong>1963년 ANSI X3.4 위원회가 표준화</strong>한 가장 오래된 텍스트 인코딩 중 하나로, 전신용 텔레타이프에서 출발한 만큼 0~31에 제어 코드가 들어 있어 지금도 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\n</code>(LF, 10), <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\r</code>(CR, 13), <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\t</code>(TAB, 9) 같은 형태로 그 흔적이 남아 있습니다.
+          이 도구는 문자열을 <strong>10진수, 16진수, 2진수 세 가지 표기</strong>로 보여주거나, 반대로 코드 시퀀스를 다시 텍스트로 복원합니다.
         </p>
       </section>
 
@@ -206,12 +205,17 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🧠 외워두면 편한 ASCII 트릭</h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
-          <li><strong>대소문자 변환은 32 차이</strong>: 'A'(65)와 'a'(97)의 거리는 32입니다. 비트 단위로는 6번째 비트만 다르기 때문에 <code>code ^ 0x20</code> 한 줄로 대소문자를 뒤집을 수 있습니다.</li>
-          <li><strong>숫자 문자를 정수로</strong>: 입력 검증할 때 <code>'9' - '0' = 9</code>처럼 ASCII 코드 차이로 자릿수를 뽑아냅니다. atoi 구현의 핵심 트릭입니다.</li>
-          <li><strong>알파벳인지 검사</strong>: 65~90 또는 97~122 범위 검사로 한 줄에 끝납니다. 정규식보다 훨씬 빠르고, 임베디드 환경에서 자주 보입니다.</li>
-          <li><strong>HTTP 헤더 파싱</strong>: <code>:</code>(58), 공백(32), <code>\r\n</code>(13, 10) 같은 구분자가 모두 ASCII이므로 바이트 단위 파서가 가능합니다.</li>
+          <li><strong>대소문자 변환은 32 차이</strong>: &apos;A&apos;(65)와 &apos;a&apos;(97)의 거리는 32. 비트 단위로는 6번째 비트만 다르므로 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">code ^ 0x20</code> 한 줄로 대소문자를 뒤집을 수 있습니다.</li>
+          <li><strong>숫자 문자를 정수로</strong>: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&apos;9&apos; - &apos;0&apos; = 9</code>처럼 ASCII 코드 차이로 자릿수를 뽑아냅니다. <strong>atoi 구현의 핵심 트릭</strong>입니다.</li>
+          <li><strong>알파벳인지 검사</strong>: 65~90 또는 97~122 범위 검사로 한 줄에 끝납니다. <strong>정규식보다 훨씬 빠르고</strong>, 임베디드 환경에서 자주 보입니다.</li>
+          <li><strong>HTTP 헤더 파싱</strong>: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">:</code>(58), 공백(32), <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\r\n</code>(13, 10) 같은 구분자가 모두 ASCII이므로 <strong>바이트 단위 파서</strong>가 가능합니다.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 알아두면 좋은 점</p>
+        <p className="text-blue-800 dark:text-blue-300"><strong>유니코드의 첫 128자는 ASCII와 그대로 같습니다.</strong> 영문만 다룬다면 두 표 차이를 거의 느끼지 않습니다. 한글·이모지처럼 그 너머의 문자가 등장할 때만 <strong>UTF-8 같은 별도 인코딩</strong>이 필요합니다.</p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

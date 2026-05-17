@@ -122,11 +122,16 @@ function SeoContent() {
           🌐 What is IP Lookup?
         </h2>
         <p className="text-sm leading-relaxed">
-          IP Lookup displays your public IP address and geolocation information for your current internet connection.
-          It shows details like ISP, city, region, country, coordinates, and timezone.
-          Useful for verifying VPN connections, setting up remote access, or troubleshooting network issues.
-          Data is fetched in real-time from ipinfo.io API directly in your browser.
+          <strong className="text-gray-900 dark:text-white">IP Lookup displays your public IP address and geolocation information.</strong>{' '}
+          Shows details like <strong>ISP, city, region, country, coordinates, and timezone</strong>.
+          Useful for <strong>verifying VPN connections</strong>, setting up remote access, or troubleshooting network issues.
+          Data is fetched in real-time from <strong>ipinfo.io API</strong> directly in your browser.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">If your <strong>IP and location change</strong> when you toggle a VPN, it's working. If they don't, you may have a leak.</p>
+        </div>
       </section>
 
       <section>

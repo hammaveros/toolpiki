@@ -287,10 +287,10 @@ function SeoContent() {
           🏗️ HTML 보일러플레이트란?
         </h2>
         <p className="text-sm leading-relaxed">
-          HTML 보일러플레이트(Boilerplate)는 새 웹페이지를 시작할 때 필요한 기본 HTML 구조를 말합니다.
-          DOCTYPE, 메타태그, 문자셋, 뷰포트 설정 등 매번 작성해야 하는 반복적인 코드를 자동으로 생성해주며,
-          Open Graph 태그, Twitter Card, CSS/JS 라이브러리 CDN 링크까지 옵션으로 추가할 수 있습니다.
-          새 프로젝트를 시작할 때 몇 번의 클릭으로 표준을 준수하는 HTML 시작점을 얻을 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">새 웹페이지에 필요한 기본 HTML 구조를 몇 번의 클릭으로 만들어줍니다.</strong>{' '}
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">DOCTYPE</code>, 메타태그, <strong>문자셋·뷰포트</strong>,
+          <strong> Open Graph·Twitter Card</strong>, CSS/JS 라이브러리 CDN까지 옵션으로 추가합니다.
+          표준을 준수하는 HTML 시작점을 즉시 확보하세요.
         </p>
       </section>
 
@@ -323,12 +323,20 @@ function SeoContent() {
           💡 HTML 템플릿 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>viewport</strong>: 모바일 반응형 디자인에 필수, 항상 포함 권장</li>
-          <li><strong>description</strong>: 검색 엔진에 표시되는 설명, SEO에 중요</li>
-          <li><strong>Open Graph</strong>: 카카오톡, 페이스북 등에서 링크 공유 시 미리보기 표시</li>
-          <li><strong>Tailwind CDN</strong>: 빠른 프로토타이핑에 유용, 프로덕션은 빌드 버전 사용</li>
+          <li><strong>viewport</strong> — 모바일 반응형에 <strong>필수</strong>, 항상 포함 권장</li>
+          <li><strong>description</strong> — 검색 엔진에 표시되는 설명, <strong>SEO에 직결</strong></li>
+          <li><strong>Open Graph</strong> — 카카오톡·페이스북 공유 시 <strong>썸네일 미리보기</strong></li>
+          <li><strong>Tailwind CDN</strong> — 빠른 프로토타이핑용, 프로덕션은 <strong>빌드 버전</strong> 사용</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 팁</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">og:image</code>는 <strong>1200x630</strong> 비율을 권장합니다. 카카오톡은 캐시가 강해 한 번 잘못 노출되면 <strong>며칠간</strong> 잘못된 이미지가 보입니다.
+          공유 전 페북 디버거로 미리 확인하세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

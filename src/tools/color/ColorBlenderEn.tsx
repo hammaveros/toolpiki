@@ -205,11 +205,18 @@ function SeoContent() {
           🎨 What is Color Blender?
         </h2>
         <p className="text-sm leading-relaxed">
-          Color Blender automatically generates intermediate colors between two selected colors.
-          Choose a start and end color, specify the number of steps, and get a smooth color sequence.
-          Perfect for gradient design, color palette creation, UI theme development, and data visualization.
-          All generated colors are provided as HEX codes with CSS variable output ready for copy-paste.
+          <strong className="text-gray-900 dark:text-white">Color Blender automatically generates <strong>intermediate colors</strong> between two selected colors.</strong>{' '}
+          Choose a start and end color, specify the number of <strong>steps</strong>, and get a smooth color sequence.
+          Perfect for gradient design, <strong>color palette</strong> creation, UI theme development, and data visualization.
+          All generated colors are provided as <strong>HEX codes</strong> with CSS variable output ready for copy-paste.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 Design Tip</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            Pick your <strong>brand-500</strong> as the start color and generate <strong>9 steps</strong> to instantly produce Tailwind-style 100~900 tone scales.
+          </p>
+        </div>
       </section>
 
       <section>

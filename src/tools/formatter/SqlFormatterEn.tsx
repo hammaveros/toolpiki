@@ -15,10 +15,10 @@ function SeoContent() {
           🗃️ What is SQL Formatter?
         </h2>
         <p className="text-sm leading-relaxed">
-          SQL Formatter is a tool that formats complex SQL queries for better readability.
-          It adds line breaks and indentation by keywords like SELECT, FROM, WHERE, and JOIN to clearly show query structure.
-          Essential for code review, query optimization, documentation, and maintaining consistent style in team collaboration.
-          Supports MySQL, PostgreSQL, Oracle, SQL Server, and standard SQL syntax.
+          <strong className="text-gray-900 dark:text-white">Auto-format complex SQL queries by keyword for readability.</strong>{' '}
+          Adds line breaks and indentation around <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">SELECT</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">FROM</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">WHERE</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">JOIN</code> to expose query structure.
+          Essential for <strong>code review</strong>, query optimization, documentation, and <strong>team style consistency</strong>.
+          Supports <strong>MySQL/PostgreSQL/Oracle/SQL Server</strong> and standard SQL.
         </p>
       </section>
 
@@ -59,12 +59,20 @@ function SeoContent() {
           💡 SQL Style Guide
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Keywords uppercase, table/column names lowercase</li>
-          <li>Use explicit JOINs (INNER JOIN, LEFT JOIN, etc.)</li>
-          <li>Write each SELECT column on a new line</li>
-          <li>Break lines by AND/OR in WHERE conditions</li>
+          <li><strong>Keywords uppercase</strong>, table/column names <strong>lowercase</strong></li>
+          <li>Use <strong>explicit JOINs</strong> (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">INNER JOIN</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">LEFT JOIN</code>, etc.)</li>
+          <li>Write <strong>each SELECT column on a new line</strong></li>
+          <li>Break lines by <strong>AND/OR</strong> in <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">WHERE</code> conditions</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Pro Tip</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          Use the <strong>formatted version</strong> when sharing queries in Slack or tickets, and the <strong>minified version</strong> when embedding into code or logs.
+          Matching format to context cuts review time in half.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

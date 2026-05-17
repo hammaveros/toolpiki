@@ -15,10 +15,9 @@ function SeoContent() {
           🔄 YAML ↔ JSON 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          YAML(YAML Ain't Markup Language)과 JSON(JavaScript Object Notation)은 모두 데이터 직렬화 포맷이지만
-          문법이 다릅니다. YAML은 들여쓰기 기반으로 사람이 읽기 쉽고, JSON은 중괄호와 따옴표를 사용해 기계 처리에 적합합니다.
-          이 도구는 두 형식을 양방향으로 변환하여 Docker Compose, Kubernetes, GitHub Actions 등
-          다양한 설정 파일 작업과 API 응답 분석에 활용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">YAML과 JSON을 양방향으로 즉시 변환합니다.</strong>{' '}
+          <strong>YAML</strong>은 들여쓰기 기반으로 <strong>사람이 읽기 쉽고</strong>, <strong>JSON</strong>은 중괄호와 따옴표로 <strong>기계 처리</strong>에 적합합니다.
+          <strong>Docker Compose, Kubernetes, GitHub Actions</strong> 같은 설정 파일과 API 응답 분석에 바로 활용하세요.
         </p>
       </section>
 
@@ -50,12 +49,20 @@ function SeoContent() {
           💡 활용 사례
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Docker Compose YAML을 JSON으로 변환하여 프로그램에서 파싱</li>
-          <li>Kubernetes 매니페스트를 JSON으로 변환하여 API 전송</li>
-          <li>JSON API 응답을 YAML로 변환하여 가독성 있게 확인</li>
-          <li>GitHub Actions 워크플로우 디버깅</li>
+          <li><strong>Docker Compose</strong> YAML을 JSON으로 변환하여 프로그램에서 파싱</li>
+          <li><strong>Kubernetes 매니페스트</strong>를 JSON으로 변환하여 API 전송</li>
+          <li><strong>JSON API 응답</strong>을 YAML로 변환하여 가독성 있게 확인</li>
+          <li><strong>GitHub Actions</strong> 워크플로우 디버깅</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ YAML 들여쓰기 주의</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          YAML은 <strong>탭(Tab)을 들여쓰기로 허용하지 않습니다.</strong> 반드시 <strong>스페이스</strong>로 통일하세요.
+          또한 <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">on</code>, <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">yes</code> 같은 값은 <strong>불린으로 자동 변환</strong>되므로 문자열이면 따옴표로 감싸세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

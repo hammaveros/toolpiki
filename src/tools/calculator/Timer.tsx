@@ -328,11 +328,16 @@ function SeoContent() {
           ⏱️ 타이머 & 스톱워치란?
         </h2>
         <p className="text-sm leading-relaxed">
-          타이머, 스톱워치, 뽀모도로를 한 곳에서 사용할 수 있는 올인원 시간 관리 도구입니다.
-          요리, 운동, 공부, 업무 등 다양한 상황에서 정확한 시간 측정이 필요할 때 유용합니다.
-          빠른 설정 버튼으로 1분, 3분, 5분 등 자주 쓰는 시간을 원클릭으로 설정할 수 있습니다.
-          스톱워치의 랩 기능으로 구간별 시간을 기록하고 비교할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">타이머, 스톱워치, 뽀모도로를 한 곳에서 사용할 수 있는 올인원 시간 관리 도구입니다.</strong>{' '}
+          <strong>요리, 운동, 공부, 업무</strong> 등 다양한 상황에서 정확한 시간 측정이 필요할 때 유용합니다.
+          <strong>빠른 설정 버튼</strong>으로 1분, 3분, 5분 등 자주 쓰는 시간을 원클릭으로 설정할 수 있습니다.
+          스톱워치의 <strong>랩 기능</strong>으로 구간별 시간을 기록하고 비교할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">하나의 화면에서 <strong>3가지 모드</strong>(타이머·스톱워치·뽀모도로)를 전환할 수 있어 별도 앱이 필요 없습니다.</p>
+        </div>
       </section>
 
       <section>
@@ -374,9 +379,9 @@ function SeoContent() {
           🍅 뽀모도로 기법이란?
         </h2>
         <p className="text-sm leading-relaxed mb-3">
-          뽀모도로 기법은 1980년대 후반 프란체스코 시릴로(Francesco Cirillo)가 고안한 시간 관리 방법입니다.
+          <strong>뽀모도로 기법</strong>은 1980년대 후반 <strong>프란체스코 시릴로(Francesco Cirillo)</strong>가 고안한 시간 관리 방법입니다.
           이름은 그가 사용한 토마토 모양 주방 타이머에서 유래했습니다(이탈리아어로 토마토를 뽀모도로라고 함).
-          25분 집중과 5분 휴식을 1세트로 두고, 4세트마다 15~30분의 긴 휴식을 갖는 단순한 구조입니다.
+          <strong>25분 집중과 5분 휴식</strong>을 1세트로 두고, 4세트마다 15~30분의 긴 휴식을 갖는 단순한 구조입니다.
           짧은 인터벌이 뇌의 피로를 줄이고, 마감 효과를 활용해 집중도를 끌어올린다는 점이 핵심입니다.
         </p>
         <p className="text-sm leading-relaxed">

@@ -670,11 +670,16 @@ function SeoContent() {
           ⏱️ 서버 시간이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          서버 시간은 티케팅, 예약, 이벤트 응모 등 정확한 타이밍이 중요한 상황을 위한 고정밀 시간 도구입니다.
-          performance.now() API를 활용한 드리프트 보정으로 JavaScript 타이머 오차를 최소화합니다.
-          네트워크 왕복 시간(RTT) 측정으로 클릭이 서버에 도달하는 시간을 파악할 수 있습니다.
-          시간 알림 기능으로 정확한 시점에 알림을 받을 수 있어 티케팅 준비에 유용합니다.
+          <strong className="text-gray-900 dark:text-white">서버 시간은 티케팅·예약·이벤트 응모 등 정확한 타이밍이 중요한 상황을 위한 고정밀 시간 도구입니다.</strong>{' '}
+          <strong>performance.now() API</strong>를 활용한 드리프트 보정으로 JavaScript 타이머 오차를 최소화합니다.
+          <strong>네트워크 왕복 시간(RTT) 측정</strong>으로 클릭이 서버에 도달하는 시간을 파악할 수 있습니다.
+          <strong>시간 알림 기능</strong>으로 정확한 시점에 알림을 받을 수 있어 티케팅 준비에 유용합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">티케팅 성공률은 <strong>RTT만큼 빠른 클릭</strong>에 달려있습니다. RTT를 확인하고 미리 클릭을 준비하세요.</p>
+        </div>
       </section>
 
       <section>

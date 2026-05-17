@@ -181,10 +181,11 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📡 What is Morse Code Converter?</h2>
         <p className="text-sm leading-relaxed">
-          Morse code dates back to 1837 when Samuel Morse and Alfred Vail patented a telegraph code that represents every character with combinations of two symbols — a short signal (dit) and a long one (dah).
-          The international variant, agreed in 1851 and later folded into ITU standards, replaced the maritime use of Morse in 1999 when GMDSS took over, yet it remains in daily use by amateur radio operators and aviation navigation beacons.
-          This tool converts text to Morse, decodes Morse back to text, and plays the result as actual audio by synthesising a 600 Hz sine wave through the Web Audio API.
-          The SOS signal (<code>··· --- ···</code>) was standardised in Berlin in 1906 and has remained unchanged ever since.
+          <strong className="text-gray-900 dark:text-white">Morse code represents every character with combinations of dits and dahs.</strong>{' '}
+          It dates back to <strong>1837 when Samuel Morse and Alfred Vail</strong> patented a telegraph code.
+          The international variant, agreed in 1851 and later folded into <strong>ITU standards</strong>, replaced maritime use in 1999 when GMDSS took over, yet remains in daily use by <strong>amateur radio operators and aviation navigation beacons</strong>.
+          This tool converts text to Morse, decodes back, and <strong>plays actual audio</strong> by synthesising a 600 Hz sine wave through the Web Audio API.
+          The <strong>SOS signal (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">··· --- ···</code>)</strong> was standardised in Berlin in 1906 and has remained unchanged ever since.
         </p>
       </section>
 
@@ -223,6 +224,11 @@ function SeoContent() {
           </table>
         </div>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Good to Know</p>
+        <p className="text-blue-800 dark:text-blue-300">Despite popular legend, <strong>SOS was not chosen as an acronym for &quot;Save Our Souls&quot;</strong> — the letters were picked because the pattern is unmistakable on a key. It should be sent as <strong>one continuous group</strong> without the usual inter-character gap.</p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

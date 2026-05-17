@@ -128,7 +128,9 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📋 What is a Text Sorter?</h2>
         <p className="text-sm leading-relaxed">
-          A text sorter is a tool that rearranges multiple lines of text based on a specific sorting criterion. Whether you need to alphabetize a list of names, organize keywords, sort data entries by length, or shuffle items randomly, this tool handles it instantly. Instead of manually cutting, pasting, and reordering lines one by one, you can sort hundreds of lines in a single click with accurate and consistent results every time.
+          <strong className="text-gray-900 dark:text-white">A text sorter rearranges multiple lines of text based on a specific sorting criterion.</strong>{' '}
+          Whether you need to <strong>alphabetize names</strong>, organize keywords, sort entries <strong>by length</strong>, or <strong>shuffle randomly</strong>, this tool handles it instantly.
+          Instead of manually cutting, pasting, and reordering, you can sort <strong>hundreds of lines in a single click</strong> with consistent results.
         </p>
       </section>
 
@@ -154,6 +156,13 @@ function SeoContent() {
           <li>Use case-sensitive mode for precise sorting control</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Sorting tip</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          Keep <strong>case-sensitive OFF</strong> for natural human-readable lists. Turn it <strong>ON</strong> only when matching code identifiers or constants where case carries meaning.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

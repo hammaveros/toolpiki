@@ -15,10 +15,10 @@ function SeoContent() {
           📊 What is JSON ↔ CSV Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          JSON (JavaScript Object Notation) and CSV (Comma-Separated Values) are both formats for data storage and transfer.
-          JSON is commonly used for API communication, while CSV is preferred for spreadsheet work.
-          This tool converts between the two formats bidirectionally, allowing you to open API data in Excel
-          or convert spreadsheet data to JSON for use in web applications.
+          <strong className="text-gray-900 dark:text-white">Convert JSON and CSV in both directions instantly.</strong>{' '}
+          <strong>JSON</strong> (JavaScript Object Notation) is commonly used for <strong>API communication</strong>,
+          while <strong>CSV</strong> (Comma-Separated Values) is preferred for <strong>spreadsheet work</strong>.
+          Open API data in Excel or push Excel data into a web app without any setup.
         </p>
       </section>
 
@@ -50,12 +50,20 @@ function SeoContent() {
           💡 Use Cases
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Convert REST API responses to CSV for Excel analysis</li>
-          <li>Convert Excel data to JSON for web app uploads</li>
-          <li>Open database dumps in spreadsheets</li>
-          <li>Generate and convert test data formats</li>
+          <li>Convert <strong>REST API responses</strong> to CSV for Excel analysis</li>
+          <li>Convert <strong>Excel data</strong> to JSON for web app uploads</li>
+          <li>Open <strong>database dumps</strong> in spreadsheets</li>
+          <li>Generate and convert <strong>test data</strong> formats</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Pro Tip</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          Flatten nested JSON before CSV conversion with a <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">flatten</code> step so each value lands in its own cell.
+          When going CSV → JSON, <strong>true/false</strong> and <strong>numeric</strong> values are auto-typed.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

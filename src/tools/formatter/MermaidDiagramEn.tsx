@@ -652,10 +652,9 @@ function SeoContent() {
           What is Mermaid?
         </h2>
         <p className="text-sm leading-relaxed">
-          Mermaid is a text-based diagramming tool that lets you create diagrams and charts using simple syntax.
-          Without any graphic editor, you can create flowcharts, sequence diagrams, ER diagrams,
-          Gantt charts, pie charts, mind maps, and more. It is natively supported by GitHub, Notion, GitLab,
-          and widely used in technical documentation and engineering blogs.
+          <strong className="text-gray-900 dark:text-white">Create diagrams and charts purely from text — no graphic editor needed.</strong>{' '}
+          Mermaid handles <strong>flowcharts, sequence, ER, Gantt, pie, and mind-map</strong> diagrams plus more from a simple syntax.
+          Natively supported in <strong>GitHub, Notion, and GitLab</strong>, making it the de facto standard for technical docs.
         </p>
       </section>
 
@@ -728,12 +727,21 @@ function SeoContent() {
           Tips
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>GitHub automatically renders Mermaid code blocks in README files</li>
-          <li>Use /mermaid blocks in Notion to embed diagrams</li>
-          <li>Export as SVG for crisp display at any resolution</li>
-          <li>Set direction with TD (top-down), LR (left-right), BT (bottom-top), RL (right-left)</li>
+          <li><strong>GitHub README</strong> auto-renders <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">```mermaid</code> code blocks</li>
+          <li>In <strong>Notion</strong>, type <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">/mermaid</code> to embed a diagram</li>
+          <li><strong>Export as SVG</strong> for crisp display at any resolution</li>
+          <li>Set direction with <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">TD</code> (top-down), <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">LR</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">BT</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">RL</code></li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Pick the Right Diagram</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          <strong>API call flows</strong> → <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">sequenceDiagram</code>,
+          <strong> DB schemas</strong> → <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">erDiagram</code>,
+          <strong> state machines</strong> → <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">stateDiagram-v2</code>. Don't force everything into a single flowchart.
+        </p>
+      </div>
 
       <FaqSection
         title="FAQ"

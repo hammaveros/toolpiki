@@ -154,11 +154,16 @@ function SeoContent() {
           🔑 UUID 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          UUID(Universally Unique Identifier)는 전 세계적으로 고유한 128비트 식별자입니다.
-          이 도구는 UUID 버전 4(랜덤)를 생성하며, 충돌 확률이 천문학적으로 낮아 실질적으로 고유합니다.
-          데이터베이스 기본키, API 토큰, 세션 ID, 파일명 등 중복이 허용되지 않는 곳에 사용합니다.
-          Web Crypto API를 사용해 암호학적으로 안전한 난수를 기반으로 생성합니다.
+          <strong className="text-gray-900 dark:text-white">UUID(Universally Unique Identifier)는 전 세계적으로 고유한 128비트 식별자입니다.</strong>{' '}
+          이 도구는 <strong>UUID 버전 4(랜덤)</strong>를 생성하며, 충돌 확률이 천문학적으로 낮아 실질적으로 고유합니다.
+          <strong>데이터베이스 기본키, API 토큰, 세션 ID, 파일명</strong> 등 중복이 허용되지 않는 곳에 사용합니다.
+          <strong>Web Crypto API</strong>를 사용해 암호학적으로 안전한 난수를 기반으로 생성합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">v4는 <strong>122비트 난수</strong>로 충돌 확률이 사실상 0이며, 가장 널리 쓰입니다.</p>
+        </div>
       </section>
 
       <section>
@@ -201,7 +206,7 @@ function SeoContent() {
           🔍 UUID 버전별 차이 자세히 보기
         </h2>
         <p className="text-sm leading-relaxed mb-3">
-          가장 자주 쓰이는 v1, v4, v7의 특성을 정리하면 선택 기준이 잡힙니다.
+          가장 자주 쓰이는 <strong>v1, v4, v7</strong>의 특성을 정리하면 선택 기준이 잡힙니다.
         </p>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
           <li><strong>v1 (시간 + MAC)</strong>: 생성 시간이 안에 들어가 있어 타임스탬프 추출이 가능합니다. 다만 기기 MAC 주소 일부가 노출돼 보안에 민감한 환경에서는 권장되지 않습니다.</li>
@@ -239,8 +244,13 @@ function SeoContent() {
           🛡️ 보안 고려사항
         </h2>
         <p className="text-sm leading-relaxed mb-3">
-          UUID는 "고유"하지만 "비밀스럽다"는 뜻은 아닙니다. 사용 위치에 따라 주의할 점이 다릅니다.
+          <strong>UUID는 "고유"하지만 "비밀스럽다"는 뜻은 아닙니다.</strong> 사용 위치에 따라 주의할 점이 다릅니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 주의</p>
+          <p className="text-amber-800 dark:text-amber-300">UUID는 <strong>식별자</strong>이지 <strong>시크릿</strong>이 아닙니다. 인증 토큰으로 사용하지 마세요.</p>
+        </div>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
           <li><strong>비밀 토큰으로 부적합</strong>: 인증 토큰, 비밀번호 재설정 링크 등은 UUID 대신 충분한 엔트로피의 무작위 문자열(예: 32바이트 랜덤)을 사용하세요. UUID v4의 무작위 비트는 122비트라 충분해 보이지만, 의미상 "ID"이지 "시크릿"이 아닙니다.</li>
           <li><strong>예측 가능성</strong>: v1은 타임스탬프와 MAC을 노출하므로 공개 API 응답에 그대로 쓰지 않는 편이 좋습니다. v4와 v7의 랜덤 부분은 예측 불가능합니다.</li>

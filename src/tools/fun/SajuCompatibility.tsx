@@ -1175,11 +1175,17 @@ function SeoContent() {
           🔮 사주 궁합이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          사주 궁합은 두 사람의 사주팔자(四柱八字)를 비교하여 애정, 사업, 우정 등 다양한 관계에서의
-          조화를 분석하는 동양 역학의 전통적인 방법입니다. 각자의 생년월일시를 기반으로 년주, 월주, 일주, 시주를
-          산출하고, 일간(日干)의 오행 관계, 띠 궁합, 일지(日支)의 합충 등을 종합적으로 고려합니다.
+          <strong className="text-gray-900 dark:text-white">사주 궁합은 두 사람의 사주팔자(四柱八字)를 비교하여 조화를 분석하는 동양 역학의 전통적인 방법입니다.</strong>{' '}
+          각자의 생년월일시로 <strong>년주·월주·일주·시주</strong>를 산출하고, <strong>일간의 오행 관계</strong>, <strong>띠 궁합</strong>, <strong>일지의 합충</strong> 등을 종합 고려합니다.
           재미와 참고 목적으로 활용하시되, 실제 관계에서는 서로의 노력과 이해가 가장 중요합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 재미용</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            <strong>참고·오락</strong> 목적의 분석입니다. 실제 관계는 <strong>서로의 노력과 이해</strong>로 만들어집니다.
+          </p>
+        </div>
       </section>
 
       <section>

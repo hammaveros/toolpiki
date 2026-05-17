@@ -1031,11 +1031,17 @@ function SeoContent() {
           👥 팀 사주 궁합이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          팀 사주 궁합은 여러 명의 사주를 한번에 분석하여 팀 내 모든 조합의 궁합을 확인하는 도구입니다.
-          최대 20명까지 참여할 수 있으며, 각 구성원의 일간 오행, 띠, 사주 정보를 바탕으로
-          모든 1:1 조합의 궁합 점수를 계산합니다. 팀 전체의 오행 균형도 함께 확인할 수 있어
-          조별 과제, 프로젝트 팀, 동아리, 회사 팀 구성 등에서 재미로 활용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">팀 사주 궁합은 여러 명의 사주를 한번에 분석하여 팀 내 모든 조합의 궁합을 확인하는 도구입니다.</strong>{' '}
+          <strong>최대 20명</strong>까지 참여할 수 있으며, 각 구성원의 <strong>일간 오행, 띠, 사주</strong> 정보를 바탕으로 <strong>모든 1:1 조합</strong>의 궁합 점수를 계산합니다.
+          팀 전체의 <strong>오행 균형</strong>도 확인할 수 있어 조별 과제, 프로젝트 팀, 동아리, 회사 팀 구성 등에서 재미로 활용할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 재미용</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            <strong>20명이면 190개 조합</strong>이 계산됩니다. 실제 팀 구성은 <strong>능력·성격·경험</strong>을 종합 고려하세요.
+          </p>
+        </div>
       </section>
 
       <section>

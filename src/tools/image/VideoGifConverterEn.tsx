@@ -357,10 +357,10 @@ function SeoContent() {
           🎬 What is Video to GIF Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          Video to GIF Converter transforms video files into animated GIFs online.
-          Perfect for sharing short clips on social media, messaging apps, blogs, and emails.
-          Fine-tune start time, duration, resolution, frame rate, and quality to create exactly what you need.
-          All processing happens in your browser - no videos are uploaded to any server, ensuring complete privacy.
+          <strong className="text-gray-900 dark:text-white">Transforms video files into animated GIFs online.</strong>{' '}
+          Perfect for sharing short clips on <strong>social media, messaging apps, blogs, and emails</strong>.
+          Fine-tune <strong>start time, duration, resolution, FPS, and quality</strong> to get exactly what you need.
+          All processing happens in your browser — no server uploads, complete privacy.
         </p>
       </section>
 
@@ -392,12 +392,19 @@ function SeoContent() {
           💡 GIF Conversion Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>Reduce file size</strong>: Lower duration, FPS, and width for much smaller files</li>
-          <li><strong>256 color limit</strong>: GIFs only support 256 colors, simpler videos work better</li>
-          <li><strong>Loop effect</strong>: Choose clips where start and end connect naturally</li>
-          <li><strong>Reaction GIFs</strong>: Pick short, impactful moments for best results</li>
-          <li><strong>Size limits</strong>: Most platforms prefer under 15MB, Twitter under 5MB</li>
+          <li><strong>Reduce file size</strong> — lower <strong>duration/FPS/width</strong> for much smaller files</li>
+          <li><strong>256 color limit</strong> — GIFs support only <strong>256 colors</strong>, simpler videos work better</li>
+          <li><strong>Loop effect</strong> — choose clips where start and end connect naturally</li>
+          <li><strong>Reaction GIFs</strong> — pick short, impactful moments</li>
+          <li><strong>Size limits</strong> — most platforms prefer <strong>under 15MB</strong>, Twitter <strong>under 5MB</strong></li>
         </ul>
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Size warning</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/50 text-xs font-mono">3s × 15fps × 480px</code> usually hits <strong>5-10MB</strong>.
+            For larger clips, <strong>MP4 is more efficient</strong> than GIF.
+          </p>
+        </div>
       </section>
 
       <FaqSection

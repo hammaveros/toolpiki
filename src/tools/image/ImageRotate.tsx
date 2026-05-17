@@ -216,10 +216,10 @@ function SeoContent() {
           🔄 이미지 회전/뒤집기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          이미지 회전/뒤집기 도구는 사진의 방향을 수정하거나 거울 효과를 적용할 수 있는 온라인 도구입니다.
-          스마트폰으로 촬영한 사진이 회전되어 있거나, 스캔한 문서의 방향이 맞지 않을 때 간편하게 수정할 수 있습니다.
-          별도 프로그램 설치 없이 브라우저에서 바로 작업하며, 모든 처리는 로컬에서 이루어져 개인정보가 안전합니다.
-          실시간 미리보기로 결과를 확인하며 원하는 각도로 정확하게 조절할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">사진 방향을 수정하거나 거울 효과를 적용하는 도구.</strong>{' '}
+          <strong>스마트폰 촬영 사진</strong>이 회전되어 있거나 <strong>스캔 문서</strong> 방향이 잘못됐을 때 간편하게 수정합니다.
+          설치 없이 브라우저에서 바로 동작하며, 모든 처리는 <strong>로컬</strong>에서 이뤄져 개인정보가 안전합니다.
+          <strong>실시간 미리보기</strong>로 결과를 확인하며 정확하게 조절할 수 있습니다.
         </p>
       </section>
 
@@ -252,12 +252,20 @@ function SeoContent() {
           💡 이미지 회전 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>EXIF 방향 문제</strong>: 카메라 방향 정보가 잘못 기록된 사진도 직접 회전하여 수정</li>
-          <li><strong>스캔 문서</strong>: 스캐너로 잘못 스캔된 문서 방향 교정</li>
-          <li><strong>셀카 반전</strong>: 좌우 뒤집기로 원래 방향 복원</li>
-          <li><strong>조합 사용</strong>: 회전과 뒤집기를 함께 적용하여 다양한 효과 가능</li>
-          <li><strong>원본 보존</strong>: 적용 전 미리보기로 확인, 다운로드 시 새 파일로 저장</li>
+          <li><strong>EXIF 방향 문제</strong> — 카메라 방향 정보가 잘못 기록된 사진 직접 회전</li>
+          <li><strong>스캔 문서</strong> — 잘못 스캔된 문서 방향 교정</li>
+          <li><strong>셀카 반전</strong> — <strong>좌우 뒤집기</strong>로 원래 방향 복원</li>
+          <li><strong>조합 사용</strong> — 회전 + 뒤집기로 다양한 효과</li>
+          <li><strong>원본 보존</strong> — 적용 전 미리보기 확인, 새 파일로 저장</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 p-4 text-sm">
+          <p className="font-semibold text-emerald-900 dark:text-emerald-200 mb-1">💡 무손실 회전</p>
+          <p className="text-emerald-800 dark:text-emerald-300">
+            <code className="px-1 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-xs font-mono">90°</code> /
+            <code className="px-1 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-xs font-mono">180°</code> /
+            <code className="px-1 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-xs font-mono">270°</code> 직각 회전은 <strong>화질 손실 없음</strong>. PNG로 저장됩니다.
+          </p>
+        </div>
       </section>
 
       <FaqSection

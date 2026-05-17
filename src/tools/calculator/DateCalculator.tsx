@@ -267,11 +267,16 @@ function SeoContent() {
           📅 날짜 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          날짜 계산기는 두 날짜 사이의 기간을 계산하거나, 특정 날짜에서 일수를 더하고 빼는 도구입니다.
-          D-day 계산, 프로젝트 일정 관리, 계약 기간 산정, 여행 일정 계획 등 다양한 상황에서 활용됩니다.
-          결과를 일, 주, 시간, 년/월/일 단위로 동시에 보여주어 필요한 형태로 바로 확인할 수 있습니다.
-          빠른 버튼으로 자주 사용하는 기간(7일, 30일, 90일 등)을 원클릭으로 적용합니다.
+          <strong className="text-gray-900 dark:text-white">날짜 계산기는 두 날짜 사이의 기간을 계산하거나 특정 날짜에서 일수를 더하고 빼는 도구입니다.</strong>{' '}
+          <strong>D-day, 프로젝트 일정, 계약 기간, 여행 계획</strong> 등 다양한 상황에서 활용됩니다.
+          결과를 <strong>일, 주, 시간, 년/월/일</strong> 단위로 동시에 보여주어 필요한 형태로 바로 확인할 수 있습니다.
+          <strong>빠른 버튼</strong>으로 7일, 30일, 90일 등을 원클릭으로 적용합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>년/월/일 단위</strong>는 윤년·각 달의 일수를 정확히 반영해 단순한 "30일 = 1개월" 오류를 피합니다.</p>
+        </div>
       </section>
 
       <section>

@@ -211,11 +211,18 @@ function SeoContent() {
           ⭐ What is Daily Horoscope?
         </h2>
         <p className="text-sm leading-relaxed">
-          Get daily astrological predictions based on your zodiac sign.
-          Each sign is associated with one of four elements: Fire, Earth, Air, or Water.
-          Check your love, career, and health forecasts along with lucky numbers and colors.
+          <strong className="text-gray-900 dark:text-white">Get daily astrological predictions based on your zodiac sign.</strong>{' '}
+          Each sign is associated with one of <strong>four elements</strong>: Fire, Earth, Air, or Water.
+          Check your <strong>love</strong>, <strong>career</strong>, and <strong>health</strong> forecasts along with lucky numbers and colors.
           Perfect for starting your day with a little cosmic guidance!
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Just for Fun</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            Horoscopes are <strong>randomly generated for entertainment</strong>. Do not use them for major life decisions.
+          </p>
+        </div>
       </section>
 
       <section>

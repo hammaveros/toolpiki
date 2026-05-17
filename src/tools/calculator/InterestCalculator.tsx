@@ -723,11 +723,16 @@ function SeoContent() {
           💵 이자 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          이자 계산기는 원금, 이율, 기간을 입력해 단리/복리 이자와 만기 수령액을 계산하는 도구입니다.
-          예금, 적금, CMA, 채권, 투자 수익률 등 다양한 금융상품의 이자를 미리 계산할 수 있습니다.
-          정기 적립 모드로 적금의 복리 효과를 확인하고, 상품 비교로 최적의 선택을 하세요.
-          목표 역산 기능으로 필요한 원금, 이율, 기간을 역으로 계산할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">이자 계산기는 원금·이율·기간으로 단리/복리 이자와 만기 수령액을 계산하는 도구입니다.</strong>{' '}
+          <strong>예금, 적금, CMA, 채권, 투자 수익률</strong> 등 다양한 금융상품의 이자를 미리 계산할 수 있습니다.
+          <strong>정기 적립 모드</strong>로 적금의 복리 효과를 확인하고, <strong>상품 비교</strong>로 최적의 선택을 하세요.
+          <strong>목표 역산 기능</strong>으로 필요한 원금, 이율, 기간을 역으로 계산할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>복리</strong>는 이자에 이자가 붙기 때문에, 기간이 길수록 <strong>단리와의 차이</strong>가 기하급수적으로 커집니다.</p>
+        </div>
       </section>
 
       <section>

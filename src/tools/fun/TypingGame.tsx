@@ -1017,10 +1017,17 @@ function SeoContent() {
           ⌨️ 온라인 타이핑 게임이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          타이핑 게임은 키보드 입력 속도와 정확도를 재미있게 향상시킬 수 있는 도구입니다.
-          단순히 빠르게 치는 것이 아니라, 정확하게 입력하는 습관을 기르는 것이 핵심입니다.
-          서바이벌, 타임어택, 긴 문장 모드 등 다양한 게임 방식으로 지루하지 않게 연습할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">타이핑 게임은 키보드 입력 속도와 정확도를 재미있게 향상시킬 수 있는 도구입니다.</strong>{' '}
+          단순히 빠르게 치는 것이 아니라, <strong>정확하게 입력하는 습관</strong>을 기르는 것이 핵심입니다.
+          <strong>서바이벌</strong>, <strong>타임어택</strong>, <strong>긴 문장</strong> 모드 등 다양한 방식으로 지루하지 않게 연습할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">⌨️ 콤보 시스템</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>5콤보 1.5배</strong>, <strong>10콤보 2배</strong>, <strong>20콤보 3배</strong> 점수. 연속 정답으로 점수를 폭발시키세요.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -1048,11 +1055,11 @@ function SeoContent() {
           📈 타이핑 속도 향상 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>키보드를 보지 않고 치는 터치 타이핑을 연습하세요</li>
-          <li>처음에는 속도보다 정확도에 집중하세요</li>
-          <li>매일 10~15분씩 꾸준히 연습하는 것이 효과적입니다</li>
-          <li>올바른 손가락 위치(홈 포지션)를 유지하세요</li>
-          <li>쉬운 난이도부터 시작해서 점차 올리는 것이 좋습니다</li>
+          <li><strong>터치 타이핑</strong> — 키보드를 보지 않고 치기 연습</li>
+          <li><strong>정확도 우선</strong>, 속도는 그 다음</li>
+          <li><strong>매일 10~15분</strong> 꾸준한 연습이 핵심</li>
+          <li><strong>홈 포지션</strong> 손가락 위치 유지</li>
+          <li><strong>쉬운 난이도부터</strong> 점진적으로 상승</li>
         </ul>
       </section>
 

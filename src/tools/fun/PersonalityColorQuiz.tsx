@@ -252,11 +252,18 @@ function SeoContent() {
           🎨 What is Personality Color Quiz?
         </h2>
         <p className="text-sm leading-relaxed">
-          A fun quiz that matches you with a color reflecting your personality based on 5 simple questions.
-          Discover if you are Passionate Red (Leader), Calm Blue (Thinker), Joyful Yellow (Optimist), or Balanced Green (Peacemaker).
-          Based on color psychology concepts, this quiz is designed for entertainment and light self-reflection.
-          Share your results with friends and compare personality colors!
+          <strong className="text-gray-900 dark:text-white">A fun quiz that matches you with a color reflecting your personality.</strong>{' '}
+          Based on <strong>5 simple questions</strong>, discover if you are <strong>Red (Leader)</strong>, <strong>Blue (Thinker)</strong>, <strong>Yellow (Optimist)</strong>, or <strong>Green (Peacemaker)</strong>.
+          Inspired by color psychology, designed for entertainment and light self-reflection.
+          Share your results with friends and compare colors!
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Just for Fun</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            This is <strong>not a psychological assessment</strong>. Use it for light self-reflection only.
+          </p>
+        </div>
       </section>
 
       <section>

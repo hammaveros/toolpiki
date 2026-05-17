@@ -290,11 +290,18 @@ function SeoContent() {
           📐 Border Radius 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          Border Radius 생성기는 CSS border-radius 속성을 시각적으로 편집하는 도구입니다.
-          네 모서리를 개별적으로 또는 연결하여 동시에 조절할 수 있으며, px와 % 단위를 지원합니다.
-          알약, 드롭, 리프 등 프리셋으로 특수 모양을 빠르게 만들 수 있고, 실시간 미리보기로 결과를 즉시 확인합니다.
+          <strong className="text-gray-900 dark:text-white">Border Radius 생성기는 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">border-radius</code> 속성을 시각적으로 편집하는 도구입니다.</strong>{' '}
+          네 모서리를 <strong>개별</strong> 또는 <strong>연결</strong>해서 조절할 수 있으며, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">px</code>와 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%</code> 단위를 지원합니다.
+          알약, 드롭, 리프 등 <strong>프리셋</strong>으로 특수 모양을 빠르게 만들 수 있고, 실시간 미리보기로 결과를 즉시 확인합니다.
           버튼, 카드, 아바타, 뱃지 등 다양한 UI 요소의 모서리 스타일링에 활용할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 디자인 팁</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            디자인 시스템에서는 <strong>4px 배수</strong>(4, 8, 12, 16…)로 라운드 토큰을 정의하면 컴포넌트 간 일관성이 자연스럽게 맞춰집니다.
+          </p>
+        </div>
       </section>
 
       <section>

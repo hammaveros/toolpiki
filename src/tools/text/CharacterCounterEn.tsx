@@ -374,11 +374,10 @@ function SeoContent() {
           📝 What Is a Character Counter?
         </h2>
         <p className="text-sm leading-relaxed">
-          A character counter is a tool that instantly calculates the number of characters, words, sentences,
-          paragraphs, and bytes in your text. It's essential for checking platform character limits like
-          Twitter (280 characters), Instagram captions (2,200 characters), and YouTube titles (100 characters).
-          It also helps optimize SEO meta tags by ensuring your title stays under 60 characters
-          and your description within 155-160 characters.
+          <strong className="text-gray-900 dark:text-white">A character counter calculates characters, words, sentences, paragraphs, and bytes in real time.</strong>{' '}
+          It's essential for checking platform limits like <strong>Twitter (280)</strong>, <strong>Instagram captions (2,200)</strong>, and YouTube titles (100 characters).
+          It also helps optimize SEO meta tags by keeping the <strong>title under 60 characters</strong>
+          and the <strong>description within 155-160 characters</strong>.
         </p>
       </section>
 
@@ -402,12 +401,18 @@ function SeoContent() {
           💡 Understanding Byte Size
         </h2>
         <p className="text-sm leading-relaxed">
-          Different characters use different amounts of storage. In UTF-8 encoding, English letters and numbers
-          use 1 byte each, while characters from other scripts (Chinese, Japanese, Korean, etc.) typically use 3 bytes.
-          Emojis can use 4 bytes. This is important when working with database field limits, API payload sizes,
-          or SMS messages (160 characters for standard SMS, 70 for Unicode).
+          Different characters use different storage. In UTF-8, <strong>English letters and numbers use 1 byte</strong> each,
+          while <strong>CJK characters (Chinese, Japanese, Korean) use 3 bytes</strong>. <strong>Emojis can use 4 bytes</strong>.
+          This matters for database field limits, API payload sizes, or SMS messages (160 characters standard, 70 for Unicode).
         </p>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Writing tip</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          For SEO, aim for a <strong>title under 60 characters</strong> and a <strong>meta description under 160</strong> so they aren't truncated in search results.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

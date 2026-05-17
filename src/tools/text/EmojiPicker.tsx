@@ -192,35 +192,40 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">이모지 검색이란?</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          이모지(Emoji)는 감정, 사물, 동작 등을 시각적으로 표현하는 유니코드 기반의 그림 문자입니다.
-          이모지 검색 도구를 사용하면 수백 개의 이모지를 카테고리별로 탐색하거나, 키워드로 원하는 이모지를 빠르게 찾아 클릭 한 번으로 복사할 수 있습니다.
-          스마일, 하트, 동물, 음식, 여행, 기호 등 11개 카테고리로 분류되어 있어 원하는 이모지를 쉽게 찾을 수 있으며,
-          최근 사용한 이모지는 자동으로 저장되어 반복 사용 시 편리합니다.
+          <strong className="text-gray-900 dark:text-white">이모지(Emoji)는 감정·사물·동작을 시각적으로 표현하는 유니코드 기반의 그림 문자</strong>입니다.
+          이모지 검색 도구를 사용하면 수백 개의 이모지를 <strong>카테고리별</strong>로 탐색하거나 <strong>키워드 검색</strong>으로 빠르게 찾아 <strong>클릭 한 번에 복사</strong>할 수 있습니다.
+          스마일, 하트, 동물, 음식, 여행, 기호 등 11개 카테고리로 분류되어 있으며,
+          <strong>최근 사용 이모지는 자동 저장</strong>되어 반복 사용 시 편리합니다.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">이모지의 역사와 발전</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          이모지는 1999년 일본의 NTT 도코모에서 처음 개발되었습니다. 당시 휴대전화 사용자들이 짧은 문자로 감정을 전달하기 어려웠기 때문에,
-          시각적인 아이콘을 통해 커뮤니케이션을 돕고자 만들어졌습니다. 초기에는 12x12 픽셀의 단순한 그림 176개로 시작했지만,
-          2010년 유니코드 컨소시엄에 공식 포함되면서 전 세계적으로 표준화되었습니다.
-          현재 유니코드 15.1 기준으로 3,700개 이상의 이모지가 등록되어 있으며, 매년 새로운 이모지가 추가되고 있습니다.
-          피부색 다양성, 성별 중립 이모지, 국기 이모지 등 포용성을 반영한 업데이트도 지속적으로 이루어지고 있습니다.
+          이모지는 <strong>1999년 일본 NTT 도코모</strong>에서 처음 개발되었습니다. 당시 짧은 문자로 감정을 전달하기 어려웠던 사용자들을 위해
+          시각 아이콘으로 커뮤니케이션을 돕고자 만들어졌습니다. 초기 <strong>12×12 픽셀의 단순한 그림 176개</strong>로 시작해,
+          <strong>2010년 유니코드 컨소시엄에 공식 포함</strong>되며 전 세계적으로 표준화되었습니다.
+          현재 <strong>유니코드 15.1 기준 3,700개 이상</strong>의 이모지가 등록되어 있고, 매년 새로운 이모지가 추가됩니다.
+          피부색 다양성, 성별 중립 이모지, 국기 이모지 등 포용성을 반영한 업데이트도 지속되고 있습니다.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">이모지 활용 팁</h2>
-        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          이모지는 단순한 채팅 도구를 넘어 다양한 분야에서 활용됩니다.
-          SNS 게시물에 이모지를 적절히 사용하면 클릭률과 참여율이 평균 25% 이상 높아진다는 연구 결과가 있습니다.
-          마케팅 이메일 제목에 이모지를 넣으면 오픈율이 증가하고, 프레젠테이션 슬라이드에서 핵심 포인트를 강조하는 데에도 효과적입니다.
-          블로그 글이나 문서에서 목록 앞에 이모지를 붙이면 가독성이 크게 향상됩니다.
-          다만, 공식 비즈니스 문서나 학술 자료에서는 사용을 자제하는 것이 좋으며,
-          이모지의 의미가 플랫폼(Apple, Google, Samsung 등)마다 미묘하게 다를 수 있으므로 주의가 필요합니다.
-        </p>
+        <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside">
+          <li><strong>SNS 게시물</strong>에 이모지를 쓰면 클릭률과 참여율이 평균 <strong>25% 이상</strong> 높아진다는 연구 결과가 있습니다.</li>
+          <li><strong>마케팅 이메일 제목</strong>에 이모지를 넣으면 오픈율이 증가합니다.</li>
+          <li><strong>프레젠테이션 슬라이드</strong>에서 핵심 포인트 강조에 효과적입니다.</li>
+          <li><strong>블로그/문서</strong>의 목록 앞에 붙이면 가독성이 크게 향상됩니다.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">⚠️ 주의</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          공식 비즈니스 문서나 학술 자료에서는 사용을 자제하는 것이 좋고, 동일한 이모지도 <strong>Apple·Google·Samsung 등 플랫폼마다 디자인이 달라 보일 수 있다</strong>는 점을 기억하세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

@@ -191,11 +191,10 @@ function SeoContent() {
           🔍 JSON 깊은 곳의 값, 한 줄로 꺼내기
         </h2>
         <p className="text-sm leading-relaxed">
-          JSONPath는 JSON 트리에서 원하는 값만 골라내는 미니 쿼리 언어입니다.
-          XPath가 XML을 다루듯 <span className="font-mono">$.store.books[0].title</span> 같은 표현식 한 줄로 깊이 4~5단계 객체 안의 값을 끄집어낼 수 있습니다.
-          이 도구는 왼쪽 입력란에 JSON을 넣고, 오른쪽에 경로 표현식을 적으면 300ms 디바운스로 즉시 결과를 보여줍니다.
-          모든 처리는 브라우저 안에서 일어나기 때문에 사내 API 응답이나 토큰이 포함된 페이로드를 그대로 붙여 넣어도
-          외부로 전송되지 않습니다. 작성해 둔 표현식은 jq, jsonpath-ng, Spring의 JsonPath 라이브러리에도 그대로 옮겨 쓸 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">JSONPath는 JSON 트리에서 원하는 값만 골라내는 미니 쿼리 언어입니다.</strong>{' '}
+          XPath가 XML을 다루듯 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">$.store.books[0].title</code> 한 줄로 <strong>4~5단계 깊이</strong>의 값을 꺼낼 수 있습니다.
+          이 도구는 <strong>300ms 디바운스</strong>로 즉시 결과를 보여주고, 모든 처리가 <strong>브라우저 안에서만 일어납니다</strong>.
+          작성한 표현식은 <strong>jq, jsonpath-ng, Spring JsonPath</strong> 라이브러리에 그대로 옮겨 쓸 수 있습니다.
         </p>
       </section>
 
@@ -241,11 +240,19 @@ function SeoContent() {
           💡 실수 줄이는 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>키 이름에 공백이나 하이픈이 있으면 <span className="font-mono">$[&apos;user-name&apos;]</span>처럼 대괄호 표기를 쓰세요. 점 표기는 식별자 규칙을 따릅니다.</li>
-          <li>결과가 <span className="font-mono">undefined</span>로 나오면 경로 중간에 null이 있거나 키 오타일 가능성이 큽니다. 점 하나 줄여서 부모 노드부터 확인해 보세요.</li>
-          <li>대규모 배열에서는 <span className="font-mono">[*]</span> 대신 <span className="font-mono">[0:10]</span> 같은 슬라이스로 먼저 표본을 확인하면 디버깅이 빠릅니다.</li>
+          <li>키 이름에 <strong>공백/하이픈</strong>이 있으면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">$[&apos;user-name&apos;]</code>처럼 대괄호 표기를 사용하세요.</li>
+          <li>결과가 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">undefined</code>면 <strong>경로 중간에 null</strong>이 있거나 <strong>키 오타</strong>일 가능성이 큽니다.</li>
+          <li>대규모 배열에서는 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">[*]</code> 대신 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">[0:10]</code> 슬라이스로 먼저 표본을 확인하면 빠릅니다.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 활용</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          여기서 검증한 경로는 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">kubectl get -o jsonpath=</code>, Postman <strong>Tests 스크립트</strong>,
+          <strong> Elasticsearch _source</strong> 추출에 그대로 붙여 쓸 수 있어 작업 시간이 크게 줄어듭니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

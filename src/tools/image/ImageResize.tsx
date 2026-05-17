@@ -227,10 +227,10 @@ function SeoContent() {
           🖼️ 이미지 리사이즈란?
         </h2>
         <p className="text-sm leading-relaxed">
-          이미지 리사이즈는 사진이나 그래픽의 해상도(가로×세로 픽셀)를 변경하는 작업입니다.
-          원본 비율을 유지하면서 크기를 줄이거나 키울 수 있고, 특정 크기(예: SNS 규격)에 맞게 조절할 수도 있습니다.
-          웹사이트 로딩 속도 최적화, SNS 업로드 규격 맞추기, 썸네일 제작, 이메일 첨부 용량 줄이기 등에 활용됩니다.
-          모든 처리는 브라우저에서 이루어지며 이미지가 서버로 전송되지 않습니다.
+          <strong className="text-gray-900 dark:text-white">사진/그래픽의 해상도(가로×세로 픽셀)를 변경하는 작업.</strong>{' '}
+          원본 <strong>비율 유지</strong>로 크기를 조절하거나 <strong>SNS 규격</strong>에 맞춰 자유 변경할 수 있고,
+          <strong>웹 로딩 최적화, 썸네일 제작, 이메일 첨부 용량 절감</strong>에 활용됩니다.
+          모든 처리는 브라우저에서 이뤄지며 서버로 전송되지 않습니다.
         </p>
       </section>
 
@@ -263,11 +263,19 @@ function SeoContent() {
           💡 리사이즈 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>비율 유지</strong>: 이미지 왜곡 방지를 위해 가로세로 비율 유지 권장</li>
-          <li><strong>확대 주의</strong>: 원본보다 크게 확대하면 화질이 저하됨</li>
-          <li><strong>용량 절감</strong>: 크기를 50% 줄이면 용량은 약 75% 감소</li>
-          <li><strong>배치 처리</strong>: 여러 이미지를 같은 규격으로 맞출 때 유용</li>
+          <li><strong>비율 유지</strong> — 이미지 왜곡 방지를 위해 가로세로 비율 잠금 권장</li>
+          <li><strong>확대 주의</strong> — 원본보다 크게 확대하면 <strong>화질 저하</strong></li>
+          <li><strong>용량 절감</strong> — 크기 <strong>50% 축소</strong> 시 용량 <strong>약 75% 감소</strong></li>
+          <li><strong>배치 처리</strong> — 여러 이미지를 같은 규격으로 맞출 때 유용</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 권장 크기</p>
+          <p className="text-blue-800 dark:text-blue-300">
+            웹 본문 이미지는 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">1920px</code> 이하,
+            인스타 피드는 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">1080×1080</code>,
+            유튜브 썸네일은 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">1280×720</code>이 표준입니다.
+          </p>
+        </div>
       </section>
 
       <FaqSection

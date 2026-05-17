@@ -182,20 +182,27 @@ function SeoContent() {
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">메시지 길이 체커란?</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          메시지 길이 체커는 이메일, 슬랙/팀즈, SMS, 카카오톡 등 플랫폼별 권장 메시지 길이를 실시간으로 확인할 수 있는 도구입니다.
-          각 플랫폼마다 효과적인 메시지 길이가 다릅니다. 이메일은 제목과 첫 문단 150자 이내로 핵심을 전달하는 것이 열람률을 높이고, 슬랙/팀즈는 스크롤 없이 읽을 수 있는 100자 내외가 이상적입니다.
-          SMS의 경우 한글 기준 70자(영문 160자)를 초과하면 장문 문자(LMS)로 전환되어 요금이 달라질 수 있으므로 글자수를 정확히 파악하는 것이 중요합니다.
-          카카오톡 메시지는 200자 이내가 가독성이 좋으며, 이를 초과하면 수신자가 메시지를 끝까지 읽지 않을 확률이 높아집니다.
+          <strong className="text-gray-900 dark:text-white">메시지 길이 체커는 이메일·슬랙/팀즈·SMS·카카오톡 등 플랫폼별 권장 메시지 길이를 실시간으로 확인할 수 있는 도구</strong>입니다.
+          이메일은 <strong>제목·첫 문단 150자 이내</strong>로 핵심을 전달하는 것이 열람률을 높이고, 슬랙/팀즈는 스크롤 없이 읽을 수 있는 <strong>100자 내외</strong>가 이상적입니다.
+          SMS는 <strong>한글 70자(영문 160자)</strong>를 초과하면 장문(LMS)으로 전환되어 요금이 달라지므로 정확한 글자수 파악이 중요합니다.
+          카카오톡 메시지는 <strong>200자 이내</strong>가 가독성이 좋습니다.
         </p>
       </div>
 
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">바이트와 글자수의 차이</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          SMS 발송 시 특히 중요한 것이 바이트(byte) 개념입니다. 한글 1자는 2바이트, 영문/숫자 1자는 1바이트로 계산됩니다.
-          국내 SMS 기준 한글 70자(80바이트)까지가 단문 문자이며, 이를 초과하면 장문(LMS, 2,000바이트)으로 자동 전환됩니다.
-          비즈니스 문자 발송, 마케팅 메시지, 알림톡 등을 작성할 때 글자수를 미리 체크하면 불필요한 비용 증가를 방지할 수 있습니다.
-          본 도구는 글자수, 단어수, 줄 수를 동시에 분석하고, 적정/약간 김/너무 김 상태를 시각적으로 표시하여 직관적인 메시지 길이 관리를 돕습니다.
+          SMS 발송 시 특히 중요한 것이 <strong>바이트(byte) 개념</strong>입니다. <strong>한글 1자 = 2바이트</strong>, <strong>영문/숫자 1자 = 1바이트</strong>로 계산됩니다.
+          국내 SMS 기준 <strong>한글 70자(80바이트)</strong>까지가 단문이며, 초과 시 <strong>장문(LMS, 2,000바이트)</strong>으로 자동 전환됩니다.
+          비즈니스 문자, 마케팅 메시지, 알림톡 작성 시 미리 체크하면 <strong>불필요한 비용 증가를 방지</strong>할 수 있습니다.
+          글자수·단어수·줄 수를 동시에 분석하고, 적정/약간 김/너무 김 상태를 시각적으로 표시합니다.
+        </p>
+      </div>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 비용 절감 팁</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          대량 SMS 발송 전에는 반드시 한 건의 길이가 <strong>80바이트(한글 약 40자)</strong>를 넘는지 확인하세요. <strong>단문 1건이 장문 1건보다 단가가 훨씬 저렴</strong>합니다.
         </p>
       </div>
 

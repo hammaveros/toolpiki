@@ -378,11 +378,16 @@ function SeoContent() {
           📶 What is Internet Speed Test?
         </h2>
         <p className="text-sm leading-relaxed">
-          Internet Speed Test measures your connection's download speed, upload speed, and latency (ping).
-          Uses Cloudflare's global edge servers for accurate measurements.
-          Tests with various file sizes (100KB-5MB) to provide results close to real-world usage.
-          Check if your speed is suitable for gaming, streaming, or video calls.
+          <strong className="text-gray-900 dark:text-white">Internet Speed Test measures your connection's download, upload, and latency (ping).</strong>{' '}
+          Uses <strong>Cloudflare's global edge servers</strong> for accurate measurements.
+          Tests with <strong>various file sizes (100KB-5MB)</strong> to provide results close to real-world usage.
+          Check if your speed is suitable for <strong>gaming, streaming, or video calls</strong>.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>Ping</strong> matters most for gaming; <strong>download bandwidth</strong> matters most for streaming.</p>
+        </div>
       </section>
 
       <section>

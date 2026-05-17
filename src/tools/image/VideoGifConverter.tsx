@@ -357,10 +357,10 @@ function SeoContent() {
           🎬 MP4 GIF 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          MP4 GIF 변환기는 동영상 파일을 애니메이션 GIF로 변환하는 온라인 도구입니다.
-          SNS, 메신저, 블로그, 이메일 등에서 짧은 클립을 간편하게 공유할 수 있습니다.
-          시작 시간, 길이, 해상도, 프레임레이트, 품질 등을 세밀하게 조절하여 원하는 결과물을 만들 수 있습니다.
-          모든 변환 작업은 브라우저에서 이루어지며, 영상이 서버로 업로드되지 않아 개인정보가 안전합니다.
+          <strong className="text-gray-900 dark:text-white">동영상 파일을 애니메이션 GIF로 변환하는 도구.</strong>{' '}
+          <strong>SNS, 메신저, 블로그, 이메일</strong>에서 짧은 클립을 간편하게 공유할 수 있습니다.
+          <strong>시작 시간, 길이, 해상도, FPS, 품질</strong>을 세밀하게 조절해 원하는 결과물을 만들 수 있고,
+          모든 변환은 브라우저에서 이뤄져 서버로 업로드되지 않습니다.
         </p>
       </section>
 
@@ -392,12 +392,19 @@ function SeoContent() {
           💡 GIF 변환 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>파일 크기 줄이기</strong>: 길이, FPS, 너비를 줄이면 용량이 크게 감소</li>
-          <li><strong>256색 제한</strong>: GIF는 256색만 표현 가능, 단순한 영상이 더 좋은 결과</li>
-          <li><strong>루프 GIF</strong>: 시작과 끝이 자연스럽게 연결되도록 편집하면 효과적</li>
-          <li><strong>움짤 제작</strong>: 리액션, 밈 등 짧고 임팩트 있는 장면 선택</li>
-          <li><strong>SNS 용량 제한</strong>: 대부분 15MB 이하 권장, 트위터는 5MB 이하</li>
+          <li><strong>파일 크기 줄이기</strong> — <strong>길이/FPS/너비</strong>를 줄이면 용량이 크게 감소</li>
+          <li><strong>256색 제한</strong> — GIF는 <strong>256색</strong>만 표현, 단순한 영상이 더 좋음</li>
+          <li><strong>루프 GIF</strong> — 시작/끝이 자연스럽게 연결되도록 편집</li>
+          <li><strong>움짤 제작</strong> — 리액션, 밈 등 짧고 임팩트 있는 장면 선택</li>
+          <li><strong>SNS 용량 제한</strong> — 대부분 <strong>15MB 이하</strong>, 트위터 <strong>5MB 이하</strong></li>
         </ul>
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 용량 폭증 주의</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/50 text-xs font-mono">3초 × 15fps × 480px</code>면 보통 <strong>5~10MB</strong>.
+            큰 GIF가 필요하면 차라리 <strong>MP4 그대로</strong> 쓰는 게 좋습니다.
+          </p>
+        </div>
       </section>
 
       <FaqSection

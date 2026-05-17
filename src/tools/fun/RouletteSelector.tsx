@@ -400,11 +400,18 @@ function SeoContent() {
           🎰 룰렛 돌리기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          룰렛 돌리기는 여러 선택지 중 하나를 무작위로 선정하는 시각적으로 재미있는 도구입니다.
-          최대 12개 항목을 추가하고, 화려한 색상과 부드러운 애니메이션으로 룰렛이 돌아가는 것을 감상하세요.
-          각 항목에 가중치(1~1000)를 설정하여 당첨 확률을 세밀하게 조절할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">룰렛 돌리기는 여러 선택지 중 하나를 무작위로 선정하는 시각적 도구입니다.</strong>{' '}
+          <strong>최대 12개 항목</strong>을 추가하고, 화려한 색상과 부드러운 애니메이션으로 룰렛이 돌아가는 것을 감상하세요.
+          각 항목에 <strong>가중치(1~1000)</strong>를 설정하여 당첨 확률을 세밀하게 조절할 수 있습니다.
           점심 메뉴, 당번 정하기, 경품 추첨, 발표 순서 등 다양한 상황에서 활용하세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🧮 확률 공식</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            각 항목 확률은 <strong>P(i) = w(i) / Σw</strong>. A=5, B=3, C=2면 각각 <strong>50% / 30% / 20%</strong>.
+          </p>
+        </div>
       </section>
 
       <section>

@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { FaqSection } from '@/components/ui/FaqItem';
 
 type MenuCategory = 'korean' | 'chinese' | 'japanese' | 'western' | 'snack' | 'fastfood';
 type Category = MenuCategory | 'all';
@@ -511,40 +512,71 @@ function MenuList({ menus, randomPick }: { menus: Menu[]; randomPick: Menu | nul
 
 function SeoContent() {
   return (
-    <section className="mt-12 prose prose-gray dark:prose-invert max-w-none">
-      <h2 className="text-xl font-semibold mb-4">오늘 뭐 먹지? 메뉴 추천기</h2>
-      <p className="text-gray-600 dark:text-gray-400 mb-6">
-        매일 반복되는 "오늘 뭐 먹지?" 고민을 해결해드립니다.
-        한식, 중식, 일식, 양식, 분식, 패스트푸드 등 109개의 다양한 메뉴 중에서
-        상황, 입맛, 예산, 시간에 맞는 메뉴를 추천받거나 랜덤으로 선택할 수 있습니다.
-      </p>
+    <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-8 text-gray-700 dark:text-gray-300">
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🍽️ 오늘 뭐 먹지? 메뉴 추천기
+        </h2>
+        <p className="text-sm leading-relaxed">
+          <strong className="text-gray-900 dark:text-white">매일 반복되는 메뉴 고민을 1분 안에 해결해주는 도구입니다.</strong>{' '}
+          <strong>한식·중식·일식·양식·분식·패스트푸드</strong> 109개의 메뉴 중에서
+          <strong>상황·입맛·예산·시간</strong>에 맞는 항목만 골라내고, 그래도 못 정하겠다면
+          <strong>랜덤 뽑기</strong>로 바로 결정할 수 있습니다.
+        </p>
+      </section>
 
-      <h2 className="text-xl font-semibold mb-4">기능 소개</h2>
-      <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2 mb-6">
-        <li><strong>카테고리 필터</strong> - 한식/중식/일식/양식/분식/패스트푸드</li>
-        <li><strong>상황별 추천</strong> - 혼밥, 여럿이서, 가볍게, 든든하게</li>
-        <li><strong>맛 선택</strong> - 매운거, 안매운거, 국물있는 음식</li>
-        <li><strong>예산 필터</strong> - 저렴하게, 적당히, 좀 써도 됨</li>
-        <li><strong>랜덤 선택</strong> - 고민 없이 바로 결정!</li>
-      </ul>
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔧 어떤 조건으로 거를 수 있나요?
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>카테고리</strong> — 한식 / 중식 / 일식 / 양식 / 분식 / 패스트푸드</li>
+          <li><strong>상황</strong> — 혼밥, 여럿이서, 가볍게, 든든하게</li>
+          <li><strong>맛</strong> — 매운 거, 안 매운 거, 국물 있는 메뉴</li>
+          <li><strong>예산</strong> — 저렴하게, 적당히, 좀 써도 됨</li>
+          <li><strong>시간</strong> — 빨리, 보통, 여유 있게</li>
+        </ul>
+      </section>
 
-      <h2 className="text-xl font-semibold mb-4">자주 묻는 질문</h2>
-      <div className="space-y-4">
-        <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
-          <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">메뉴는 몇 개나 있나요?<span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span></summary>
-          <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">
-            109개의 메뉴가 등록되어 있습니다. 한식 25개, 중식 18개, 일식 18개,
-            양식 18개, 분식 15개, 패스트푸드 15개로 구성되어 있습니다.
-          </p>
-        </details>
-        <details className="group bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
-          <summary className="flex items-center justify-between p-4 cursor-pointer text-sm font-semibold text-gray-900 dark:text-white">조건을 여러 개 선택하면 어떻게 되나요?<span className="ml-2 text-gray-400 group-open:rotate-180 transition-transform">▼</span></summary>
-          <p className="px-4 pb-4 text-sm text-gray-600 dark:text-gray-400">
-            선택한 모든 조건을 만족하는 메뉴만 필터링됩니다.
-            조건이 많을수록 결과가 줄어들 수 있으니 "상관없음"을 적절히 활용하세요.
-          </p>
-        </details>
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🍜 상황별 메뉴 추천
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>혼밥</strong> — 국밥, 김밥, 라멘, 덮밥류처럼 1인분이 자연스러운 메뉴</li>
+          <li><strong>여럿이</strong> — 삼겹살, 보쌈, 족발, 피자, 탕수육 같은 나눠 먹는 메뉴</li>
+          <li><strong>해장</strong> — 순대국, 콩나물국밥, 짬뽕, 우동 등 따뜻한 국물</li>
+          <li><strong>가볍게</strong> — 샐러드, 김밥, 우동, 샌드위치, 포케</li>
+          <li><strong>스트레스 받을 때</strong> — 매운 떡볶이, 짬뽕, 마라탕, 부대찌개</li>
+        </ul>
+      </section>
+
+      <div className="rounded-lg bg-rose-50 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900 p-4 text-sm">
+        <p className="font-semibold text-rose-900 dark:text-rose-200 mb-1">🎲 추천 사용 팁</p>
+        <p className="text-rose-800 dark:text-rose-300">
+          조건을 너무 많이 걸면 후보가 0개가 될 수 있습니다. 일단 <strong>카테고리</strong> 하나만 정해두고
+          나머지는 <strong>"상관없음"</strong>으로 둔 다음 랜덤을 돌려보세요. 그래도 마음에 안 들면 다시 뽑으면 됩니다.
+          정말 못 고르겠을 땐 <strong>오늘의 강력 추천</strong>이 매일 다른 메뉴를 골라줍니다.
+        </p>
       </div>
-    </section>
+
+      <FaqSection
+        title="자주 묻는 질문"
+        faqs={[
+          {
+            question: '메뉴는 몇 개나 있나요?',
+            answer: '109개의 메뉴가 등록되어 있습니다. 한식 25개, 중식 18개, 일식 18개, 양식 18개, 분식 15개, 패스트푸드 15개로 구성되어 있습니다.',
+          },
+          {
+            question: '조건을 여러 개 선택하면 어떻게 되나요?',
+            answer: '선택한 모든 조건을 만족하는 메뉴만 필터링됩니다. 조건이 많을수록 결과가 줄어들 수 있으니 "상관없음"을 적절히 활용하세요.',
+          },
+          {
+            question: '오늘의 강력 추천은 어떻게 정해지나요?',
+            answer: '날짜를 기반으로 한 점수와 약간의 랜덤성을 조합해 매일 다른 메뉴가 뜨도록 만들어져 있습니다. 포만감이 높거나 가성비 좋은 메뉴에 가산점이 붙습니다.',
+          },
+        ]}
+      />
+    </div>
   );
 }

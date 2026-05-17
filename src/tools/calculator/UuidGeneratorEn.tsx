@@ -153,11 +153,16 @@ function SeoContent() {
           🔑 What is UUID Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          UUID (Universally Unique Identifier) is a 128-bit identifier that is globally unique.
-          This tool generates UUID version 4 (random), with astronomically low collision probability making it practically unique.
-          Used for database primary keys, API tokens, session IDs, filenames, and anywhere duplicates are not allowed.
-          Powered by Web Crypto API for cryptographically secure random number generation.
+          <strong className="text-gray-900 dark:text-white">UUID (Universally Unique Identifier) is a 128-bit globally unique identifier.</strong>{' '}
+          This tool generates <strong>UUID version 4 (random)</strong>, with astronomically low collision probability making it practically unique.
+          Used for <strong>database primary keys, API tokens, session IDs, filenames</strong>, and anywhere duplicates are not allowed.
+          Powered by the <strong>Web Crypto API</strong> for cryptographically secure random number generation.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">v4 uses <strong>122 bits of randomness</strong>, making collisions effectively impossible. It's the most widely adopted version.</p>
+        </div>
       </section>
 
       <section>
@@ -238,8 +243,13 @@ function SeoContent() {
           🛡️ Security Considerations
         </h2>
         <p className="text-sm leading-relaxed mb-3">
-          A UUID is "unique" but not necessarily "secret." Where you place it changes what you need to think about.
+          <strong>A UUID is "unique" but not necessarily "secret."</strong> Where you place it changes what you need to think about.
         </p>
+
+        <div className="mt-4 mb-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Warning</p>
+          <p className="text-amber-800 dark:text-amber-300">A UUID is an <strong>identifier</strong>, not a <strong>secret</strong>. Don't use it as an authentication token.</p>
+        </div>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
           <li><strong>Not a substitute for secrets</strong>: For auth tokens or password reset links, generate a dedicated random string (for example 32 random bytes) instead of a UUID. The 122 random bits in v4 may look strong, but the value is meant to be an identifier, not a secret.</li>
           <li><strong>Predictability</strong>: v1 leaks the timestamp and MAC fragment, so avoid exposing it directly in public APIs. v4 and v7 random parts are not predictable.</li>

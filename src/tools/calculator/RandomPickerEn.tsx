@@ -317,11 +317,16 @@ function SeoContent() {
           🎲 What is Random Picker?
         </h2>
         <p className="text-sm leading-relaxed">
-          Random Picker generates random numbers within a specified range or selects items from a custom list.
-          Perfect for lottery number generation, raffle draws, winner selection, and determining order.
-          Uses cryptographically secure random number generation (crypto.getRandomValues) for truly unpredictable results.
-          Keeps a history of up to 10 previous draws for reference.
+          <strong className="text-gray-900 dark:text-white">Random Picker generates random numbers within a range or selects items from a custom list.</strong>{' '}
+          Perfect for <strong>lottery numbers, raffle draws, winner selection, and order determination</strong>.
+          Uses <strong>crypto.getRandomValues</strong> for cryptographically secure, truly unpredictable results.
+          Keeps a history of <strong>up to 10 previous draws</strong> for reference.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">Uses <strong>cryptographic randomness</strong>—far more fair than <code>Math.random()</code> for raffles and contests.</p>
+        </div>
       </section>
 
       <section>

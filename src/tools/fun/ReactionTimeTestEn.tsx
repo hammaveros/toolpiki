@@ -397,11 +397,18 @@ function SeoContent() {
           ⚡ What is Reaction Time Test?
         </h2>
         <p className="text-sm leading-relaxed">
-          Reaction Time Test measures how quickly you respond to visual stimuli in milliseconds (ms).
-          Click as fast as you can when the screen turns green across 5 rounds to get your average reaction time.
-          Average adult reaction time is 200-300ms, while professional gamers can achieve under 150ms.
-          Share your results to compare with friends or track your improvement over time.
+          <strong className="text-gray-900 dark:text-white">Reaction Time Test measures your response to visual stimuli in milliseconds.</strong>{' '}
+          Click as fast as you can when the screen turns <strong>green</strong> across <strong>5 rounds</strong> to get your average.
+          Average adult is <strong>200-300ms</strong>; pro gamers can hit <strong>under 150ms</strong>.
+          Share your results to compare with friends or track improvement over time.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">⚡ Skill Tiers</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>Under 150ms</strong> = elite (pro gamer). General adults average <strong>250-300ms</strong>.
+          </p>
+        </div>
       </section>
 
       <section>

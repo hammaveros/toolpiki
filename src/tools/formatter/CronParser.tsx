@@ -277,11 +277,10 @@ function SeoContent() {
           ⏰ Cron 표현식, 머리 아프지 않게 풀어보기
         </h2>
         <p className="text-sm leading-relaxed">
-          <span className="font-mono">0 9 * * 1-5</span> 같은 별표투성이 문자열을 보고 매번 검색하지 않아도 되도록 만든 도구입니다.
-          5칸짜리 표현식을 한국어로 풀어주고, 지금 시각 기준으로 다음에 실행될 시간 5개를 미리 보여줍니다.
-          AWS EventBridge, GitHub Actions의 schedule, Kubernetes CronJob, Spring @Scheduled, crontab 등
-          현장에서 만나는 거의 모든 Cron 표기를 분 단위까지 정확히 해석합니다. 입력은 모두 브라우저 안에서 처리하므로
-          민감한 운영 스크립트의 스케줄을 검증할 때도 안심하고 사용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">Cron 표현식을 한국어로 풀이하고 다음 실행 시각 5개를 미리 보여줍니다.</strong>{' '}
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">0 9 * * 1-5</code> 같은 별표투성이 문자열을 매번 검색할 필요가 없습니다.
+          <strong>AWS EventBridge</strong>, <strong>GitHub Actions schedule</strong>, <strong>Kubernetes CronJob</strong>, Spring <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">@Scheduled</code>, crontab까지 거의 모든 표기를 분 단위로 해석합니다.
+          입력은 <strong>브라우저 안에서만 처리</strong>되므로 운영 스크립트 검증에도 안전합니다.
         </p>
       </section>
 
@@ -354,6 +353,14 @@ function SeoContent() {
           <li><strong>매주 일요일은 0과 7 둘 다 가능</strong>: 시스템에 따라 다르므로 안전하게 0을 쓰세요.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 타임존 체크리스트</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          <strong>cron은 시스템 타임존</strong>을 따릅니다. UTC 서버에서 KST 오전 9시에 돌리려면 <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">0 0 * * *</code>로 적어야 합니다.
+          AWS EventBridge·GitHub Actions는 <strong>UTC 고정</strong>이니 환경별로 한 번 더 점검하세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

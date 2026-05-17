@@ -289,11 +289,16 @@ function SeoContent() {
           ⚖️ 장단점 비교 도구란?
         </h2>
         <p className="text-sm leading-relaxed">
-          장단점 비교 도구는 두 가지 선택지의 장점과 단점을 체계적으로 비교하는 의사결정 도구입니다.
-          각 항목에 1~3점의 가중치를 부여해 중요도를 반영하고, 점수 합계로 객관적인 결과를 도출합니다.
-          이직, 이사, 구매, 투자 등 어려운 선택 상황에서 감정보다 논리적으로 판단하는 데 도움이 됩니다.
-          모든 데이터는 브라우저에서만 처리되며 서버에 저장되지 않습니다.
+          <strong className="text-gray-900 dark:text-white">장단점 비교 도구는 두 가지 선택지의 장점과 단점을 체계적으로 비교하는 의사결정 도구입니다.</strong>{' '}
+          각 항목에 <strong>1~3점의 가중치</strong>를 부여해 중요도를 반영하고, 점수 합계로 객관적인 결과를 도출합니다.
+          <strong>이직, 이사, 구매, 투자</strong> 등 어려운 선택 상황에서 감정보다 논리적으로 판단하는 데 도움이 됩니다.
+          모든 데이터는 <strong>브라우저에서만 처리</strong>되며 서버에 저장되지 않습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">단순 나열이 아닌 <strong>가중치 기반 점수화</strong>로 직관에 휘둘리지 않는 결론을 얻을 수 있습니다.</p>
+        </div>
       </section>
 
       <section>

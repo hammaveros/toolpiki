@@ -240,10 +240,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔍 Hex Viewer란?</h2>
         <p className="text-sm leading-relaxed">
-          Hex Viewer는 파일을 바이트 단위로 풀어서 16진수(00~FF) 표와 ASCII 미리보기를 나란히 보여주는 도구입니다.
-          확장자가 무엇이든 디스크 위의 데이터는 결국 0~255 사이의 정수 시퀀스이므로, 헤더 몇 바이트만 읽으면 진짜 파일 형식을 가려낼 수 있습니다.
-          이 페이지는 행당 8/16/32바이트로 끊어 보여주고, 1KB 단위 페이지네이션으로 큰 파일도 부담 없이 훑을 수 있습니다.
-          업로드는 브라우저의 FileReader API로 처리되며 데이터가 네트워크로 빠져나가지 않아 압축 파일·이미지·실행 파일 등 민감한 데이터도 안심하고 검사할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">Hex Viewer는 파일을 바이트 단위로 풀어서 16진수와 ASCII 미리보기를 나란히 보여줍니다.</strong>{' '}
+          확장자가 무엇이든 디스크 위의 데이터는 결국 <strong>0~255 사이의 정수 시퀀스</strong>이므로, 헤더 몇 바이트만 읽으면 진짜 파일 형식을 가려낼 수 있습니다.
+          이 페이지는 <strong>행당 8/16/32바이트</strong>로 끊어 보여주고, <strong>1KB 단위 페이지네이션</strong>으로 큰 파일도 부담 없이 훑을 수 있습니다.
+          업로드는 브라우저의 <strong>FileReader API</strong>로 처리되며 데이터가 네트워크로 빠져나가지 않아 안심하고 검사할 수 있습니다.
         </p>
       </section>
 
@@ -264,13 +264,18 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🛠️ 이런 상황에서 써먹기 좋다</h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
-          <li><strong>잘못된 확장자 파악</strong>: 누가 보낸 &quot;photo.jpg&quot;가 사실은 ZIP일 수 있습니다. 첫 4바이트가 <code>50 4B 03 04</code>면 ZIP, <code>89 50 4E 47</code>이면 PNG입니다.</li>
-          <li><strong>BOM 확인</strong>: 텍스트 파일이 UTF-8 BOM(<code>EF BB BF</code>)이나 UTF-16 BOM(<code>FF FE</code>)을 달고 있는지 파악해 인코딩 오류 원인을 추적합니다.</li>
-          <li><strong>EXIF/메타데이터 위치 추정</strong>: JPEG의 <code>FF E1</code> 마커, PNG의 <code>tEXt</code>·<code>eXIf</code> 청크가 어디에 박혀 있는지 눈으로 확인합니다.</li>
-          <li><strong>망가진 파일 응급조치</strong>: 헤더 일부 손상으로 열리지 않는 PDF, ZIP 등을 정상 파일과 비교하면서 패치 위치를 찾을 때 유용합니다.</li>
-          <li><strong>CTF/리버스 엔지니어링 입문</strong>: ELF(<code>7F 45 4C 46</code>), Mach-O, PE 헤더의 기본 구조 학습에도 자주 등장합니다.</li>
+          <li><strong>잘못된 확장자 파악</strong>: &quot;photo.jpg&quot;가 사실은 ZIP일 수 있습니다. 첫 4바이트가 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">50 4B 03 04</code>면 ZIP, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">89 50 4E 47</code>이면 PNG입니다.</li>
+          <li><strong>BOM 확인</strong>: <strong>UTF-8 BOM</strong>(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">EF BB BF</code>)이나 <strong>UTF-16 BOM</strong>(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">FF FE</code>)을 달고 있는지 파악해 인코딩 오류 원인을 추적합니다.</li>
+          <li><strong>EXIF/메타데이터 위치 추정</strong>: JPEG의 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">FF E1</code> 마커, PNG의 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">tEXt</code>·<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">eXIf</code> 청크 위치를 눈으로 확인합니다.</li>
+          <li><strong>망가진 파일 응급조치</strong>: 헤더 일부 손상으로 열리지 않는 PDF, ZIP 등을 <strong>정상 파일과 비교</strong>하면서 패치 위치를 찾을 때 유용합니다.</li>
+          <li><strong>CTF/리버스 엔지니어링 입문</strong>: ELF(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">7F 45 4C 46</code>), Mach-O, PE 헤더의 기본 구조 학습에도 자주 등장합니다.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 알아두면 좋은 점</p>
+        <p className="text-blue-800 dark:text-blue-300">파일은 <strong>서버로 전송되지 않습니다.</strong> 브라우저의 <strong>FileReader API</strong>가 ArrayBuffer로 메모리에 올린 뒤 같은 페이지 안에서만 동작하므로, 외부 업로드가 금지된 환경에서도 안전합니다.</p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

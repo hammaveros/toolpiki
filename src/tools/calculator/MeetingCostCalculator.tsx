@@ -181,11 +181,16 @@ function SeoContent() {
           💰 회의 비용 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          회의 비용 계산기는 회의에 투입되는 인건비를 가시화하는 도구입니다.
-          참여 인원, 회의 시간, 평균 연봉을 입력하면 회의의 숨겨진 비용을 원 단위로 계산합니다.
-          연간 2,080 근무시간(주 40시간 × 52주) 기준으로 시급을 산출하여 정확한 비용을 추정합니다.
-          불필요한 회의를 줄이고 생산성을 높이는 의사결정에 참고할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">회의 비용 계산기는 회의에 투입되는 인건비를 가시화하는 도구입니다.</strong>{' '}
+          <strong>참여 인원, 회의 시간, 평균 연봉</strong>을 입력하면 회의의 숨겨진 비용을 원 단위로 계산합니다.
+          연간 <strong>2,080 근무시간</strong>(주 40시간 × 52주) 기준으로 시급을 산출해 정확한 비용을 추정합니다.
+          <strong>불필요한 회의를 줄이고 생산성을 높이는</strong> 의사결정에 참고할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">"잠깐의 회의"가 <strong>수십만 원</strong>이라는 사실이 드러나면, 회의 문화 개선에 강력한 근거가 됩니다.</p>
+        </div>
       </section>
 
       <section>

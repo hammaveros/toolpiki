@@ -138,11 +138,16 @@ function SeoContent() {
           🔢 진법 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          진법 변환기는 2진수, 8진수, 10진수, 16진수를 상호 변환하는 프로그래밍 필수 도구입니다.
-          컴퓨터는 모든 데이터를 0과 1(2진수)로 처리하지만, 사람이 읽기 편하도록 다양한 진법으로 표현합니다.
-          입력과 동시에 모든 진법 결과를 실시간으로 확인할 수 있어 빠른 변환이 가능합니다.
-          결과에 0b, 0o, 0x 접두사를 포함해 프로그래밍 언어에서 바로 사용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">진법 변환기는 2진수, 8진수, 10진수, 16진수를 상호 변환하는 프로그래밍 필수 도구입니다.</strong>{' '}
+          컴퓨터는 모든 데이터를 <strong>0과 1(2진수)</strong>로 처리하지만, 사람이 읽기 편하도록 다양한 진법으로 표현합니다.
+          <strong>실시간 변환</strong>으로 입력과 동시에 모든 진법 결과를 확인할 수 있습니다.
+          결과에 <strong>0b, 0o, 0x 접두사</strong>를 포함해 프로그래밍 언어에서 바로 사용할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">2진수 4자리 = 16진수 1자리. <strong>비트마스킹·메모리 디버깅</strong>에서 16진수가 짧고 직관적입니다.</p>
+        </div>
       </section>
 
       <section>

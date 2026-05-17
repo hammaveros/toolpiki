@@ -216,9 +216,9 @@ function SeoContent() {
           👁️ What Is a Color Blindness Simulator?
         </h2>
         <p className="text-sm leading-relaxed">
-          A color blindness simulator shows how people with color vision deficiency perceive images and designs.
-          It is an essential accessibility tool for web designers, app developers, and graphic designers to ensure
-          that content is readable and usable by everyone, regardless of their color vision.
+          <strong className="text-gray-900 dark:text-white">Shows how people with color vision deficiency perceive images and designs.</strong>{' '}
+          An essential <strong>accessibility</strong> tool for web designers, app developers, and graphic designers to ensure
+          content is <strong>readable for everyone</strong>, regardless of color vision.
         </p>
       </section>
 
@@ -226,20 +226,11 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           🔬 Types of Color Blindness
         </h2>
-        <div className="space-y-3 text-sm leading-relaxed">
-          <div>
-            <p className="font-medium">Red-Green Color Blindness (Most Common)</p>
-            <p>Affects about 8% of males and 0.5% of females worldwide. It makes it difficult to distinguish between red and green colors. Includes Protanopia (red-blind) and Deuteranopia (green-blind).</p>
-          </div>
-          <div>
-            <p className="font-medium">Blue-Yellow Color Blindness</p>
-            <p>Also known as Tritanopia, this type makes it hard to tell blue and yellow apart. It is less common than red-green color blindness.</p>
-          </div>
-          <div>
-            <p className="font-medium">Complete Color Blindness</p>
-            <p>A very rare condition where no colors can be perceived at all. Everything appears in shades of gray (Achromatopsia).</p>
-          </div>
-        </div>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">Red-Green</strong> — affects <strong>~8% of males</strong>, 0.5% females. Hard to distinguish red/green. Includes <strong>Protanopia</strong> and <strong>Deuteranopia</strong></li>
+          <li><strong className="text-gray-900 dark:text-white">Blue-Yellow</strong> — <strong>Tritanopia</strong>. Hard to tell blue/yellow apart. Less common than red-green</li>
+          <li><strong className="text-gray-900 dark:text-white">Complete</strong> — <strong>Achromatopsia</strong>. No color perception at all, everything in grayscale. Very rare</li>
+        </ul>
       </section>
 
       <section>
@@ -247,11 +238,17 @@ function SeoContent() {
           🎨 Accessible Design Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Never rely on color alone to convey information. Use patterns, icons, or text labels</li>
-          <li>Use blue-orange combinations instead of red-green for better distinction</li>
-          <li>Add visual cues like dashed lines or markers in charts and graphs</li>
-          <li>Ensure sufficient contrast ratio (WCAG recommends 4.5:1 minimum)</li>
+          <li><strong>Never rely on color alone</strong> — use patterns, icons, or text labels</li>
+          <li>Use <strong>blue-orange</strong> instead of red-green for better distinction</li>
+          <li>Add <strong>dashed lines or markers</strong> in charts and graphs</li>
+          <li>Ensure contrast ratio of <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">4.5:1</code> minimum (WCAG)</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Accessibility check</p>
+          <p className="text-blue-800 dark:text-blue-300">
+            About <strong>4.5% of the world</strong> has some color vision deficiency. Always preview your designs in <strong>red-green</strong> mode before shipping.
+          </p>
+        </div>
       </section>
 
       <FaqSection

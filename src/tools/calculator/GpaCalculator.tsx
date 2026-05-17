@@ -224,11 +224,16 @@ function SeoContent() {
           🎓 What is GPA Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          GPA Calculator helps students compute their Grade Point Average using the standard 4.0 scale used by most American universities.
-          Enter your courses, credit hours, and letter grades to instantly calculate your cumulative GPA.
-          The calculator shows Latin honors benchmarks (Summa Cum Laude, Magna Cum Laude, Cum Laude) based on your GPA.
-          Perfect for tracking academic progress, planning course loads, and preparing for graduate school applications.
+          <strong className="text-gray-900 dark:text-white">GPA Calculator helps students compute their Grade Point Average using the standard 4.0 scale.</strong>{' '}
+          Enter your <strong>courses, credit hours, and letter grades</strong> to instantly calculate your cumulative GPA.
+          Shows <strong>Latin honors benchmarks</strong> (Summa Cum Laude, Magna Cum Laude, Cum Laude) based on your GPA.
+          Perfect for <strong>tracking academic progress, planning course loads, and grad school applications</strong>.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">GPA is <strong>credit-weighted</strong>—a 4-credit course with an A counts twice as much as a 2-credit course with an A.</p>
+        </div>
       </section>
 
       <section>

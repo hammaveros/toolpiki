@@ -289,11 +289,16 @@ function SeoContent() {
           ⚖️ What is Pros and Cons Comparator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Pros and Cons Comparator is a decision-making tool for systematically comparing advantages and disadvantages of two options.
-          Assign weights (1-3) to each item to reflect importance and derive objective score-based results.
-          Helpful for job changes, relocations, purchases, investments, and other difficult choices requiring logic over emotion.
-          All data is processed locally in your browser and never saved to any server.
+          <strong className="text-gray-900 dark:text-white">Pros and Cons Comparator systematically compares the advantages and disadvantages of two options.</strong>{' '}
+          Assign <strong>weights (1-3)</strong> to each item to reflect importance and derive objective score-based results.
+          Helpful for <strong>job changes, relocations, purchases, and investments</strong>—any choice requiring logic over emotion.
+          All data is processed <strong>locally in your browser</strong> and never saved to any server.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">More than a list—<strong>weighted scoring</strong> keeps decisions grounded in priorities, not gut feelings.</p>
+        </div>
       </section>
 
       <section>

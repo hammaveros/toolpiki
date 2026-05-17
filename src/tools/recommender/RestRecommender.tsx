@@ -213,9 +213,10 @@ function SeoContent() {
           🧘 휴식 추천이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          지금 상태에 맞는 최적의 휴식 방법을 추천해주는 도구입니다.
-          피로도, 가용 시간, 실내/실외 선호, 에너지 수준 등을 고려하여
-          효과적으로 회복할 수 있는 휴식 방법을 제안합니다.
+          <strong className="text-gray-900 dark:text-white">지금 상태에 딱 맞는 휴식 방법을 찾아주는 도구입니다.</strong>{' '}
+          <strong>피로도</strong>, 쉴 수 있는 <strong>시간</strong>, 선호하는 휴식 <strong>스타일</strong>을 입력하면
+          신체적·정신적 회복에 도움이 되는 방법을 골라줍니다. 무작정 누워 있어도 피로가 안 풀린다면,
+          상황에 맞는 휴식부터 점검해보세요.
         </p>
       </section>
 
@@ -225,19 +226,48 @@ function SeoContent() {
         </h2>
         <div className="space-y-3 text-sm leading-relaxed">
           <div>
-            <p className="font-medium">신체적 휴식</p>
-            <p>수면, 낮잠, 스트레칭, 가벼운 산책 등 몸의 피로를 풀어주는 활동입니다. 장시간 앉아 일하는 사람에게 특히 중요합니다.</p>
+            <p className="font-semibold text-gray-900 dark:text-white mb-1">신체적 휴식</p>
+            <p>
+              <strong>수면, 낮잠, 스트레칭, 가벼운 산책</strong>처럼 몸의 피로를 풀어주는 활동입니다.
+              장시간 앉아 일하는 사람에게 특히 중요하며, <strong>근육 이완</strong>과 <strong>혈액 순환</strong>에 효과적입니다.
+            </p>
           </div>
           <div>
-            <p className="font-medium">정신적 휴식</p>
-            <p>명상, 음악 감상, 자연 감상 등 머리를 비우고 마음을 정리하는 활동입니다. 업무 스트레스가 높을 때 효과적입니다.</p>
+            <p className="font-semibold text-gray-900 dark:text-white mb-1">정신적 휴식</p>
+            <p>
+              <strong>명상, 음악 감상, 자연 감상</strong> 등 머리를 비우는 활동입니다.
+              업무 <strong>스트레스</strong>가 높을 때 효과적이고, 알림을 잠시 꺼두는 것만으로도 도움이 됩니다.
+            </p>
           </div>
           <div>
-            <p className="font-medium">사회적 휴식</p>
-            <p>혼자만의 시간을 갖거나, 반대로 친한 사람과 대화하는 것도 휴식이 됩니다. 자신에게 맞는 방식을 선택하세요.</p>
+            <p className="font-semibold text-gray-900 dark:text-white mb-1">사회적 휴식</p>
+            <p>
+              <strong>혼자만의 시간</strong>을 갖거나, 반대로 <strong>친한 사람과 대화</strong>하는 것도 휴식이 됩니다.
+              내향형은 혼자 충전, 외향형은 함께 충전이 효율적입니다.
+            </p>
           </div>
         </div>
       </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⏱️ 시간대별 휴식 가이드
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>5~10분</strong> — 심호흡, 가벼운 스트레칭, 차 한 잔, 창밖 보기</li>
+          <li><strong>15~30분</strong> — 파워 낮잠, 짧은 산책, 음악 감상, 명상</li>
+          <li><strong>1시간 이상</strong> — 목욕, 영화, 독서, 취미 활동, 친구와 대화</li>
+          <li><strong>반나절 이상</strong> — 아무것도 안 하기, 자연 속 산책, 푹 자기</li>
+        </ul>
+      </section>
+
+      <div className="rounded-lg bg-rose-50 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900 p-4 text-sm">
+        <p className="font-semibold text-rose-900 dark:text-rose-200 mb-1">🌿 휴식 팁</p>
+        <p className="text-rose-800 dark:text-rose-300">
+          몸이 피곤할 땐 가만히 누워있는 것보다 <strong>가벼운 스트레칭이나 목욕</strong>이 더 효과적인 경우가 많습니다.
+          반대로 정신적으로 지쳤을 땐 <strong>스마트폰을 잠시 내려놓고</strong> 멍하니 있는 것만으로도 회복이 빨라집니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

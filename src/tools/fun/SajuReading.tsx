@@ -1940,10 +1940,17 @@ function SeoContent() {
           📜 사주풀이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          사주(四柱)는 태어난 년, 월, 일, 시의 네 기둥을 의미합니다. 각 기둥은 천간과 지지로 이루어져
-          총 여덟 글자, 즉 팔자(八字)가 됩니다. 사주풀이는 이 팔자를 분석하여 타고난 성격, 재능,
-          운세 등을 해석하는 전통적인 방법입니다.
+          <strong className="text-gray-900 dark:text-white">사주(四柱)는 태어난 년·월·일·시의 네 기둥을 의미합니다.</strong>{' '}
+          각 기둥은 <strong>천간과 지지</strong>로 이루어져 총 <strong>여덟 글자(팔자, 八字)</strong>가 됩니다.
+          사주풀이는 이 팔자를 분석하여 타고난 성격, 재능, 운세 등을 해석하는 전통적인 방법입니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 재미용</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            이 도구는 <strong>양력 기준 근사 계산</strong>이며, 운명 예측이 아닌 <strong>참고·오락</strong> 목적입니다.
+          </p>
+        </div>
       </section>
 
       <section>

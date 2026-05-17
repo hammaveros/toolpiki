@@ -290,11 +290,18 @@ function SeoContent() {
           📐 What is Border Radius Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Border Radius Generator is a visual tool for editing CSS border-radius properties with instant preview.
-          Adjust all four corners individually or link them for uniform changes, supporting both px and % units.
-          Quickly create special shapes with presets like Pill, Drop, and Leaf, and see results in real-time.
+          <strong className="text-gray-900 dark:text-white">Border Radius Generator is a visual tool for editing CSS <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">border-radius</code> properties with instant preview.</strong>{' '}
+          Adjust all four corners <strong>individually</strong> or <strong>linked</strong> for uniform changes, supporting both <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">px</code> and <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%</code> units.
+          Quickly create special shapes with <strong>presets</strong> like Pill, Drop, and Leaf, and see results in real-time.
           Perfect for styling buttons, cards, avatars, badges, and other UI elements.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 Design Tip</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            Define radius tokens in <strong>multiples of 4px</strong> (4, 8, 12, 16…) to keep components visually consistent across your design system.
+          </p>
+        </div>
       </section>
 
       <section>

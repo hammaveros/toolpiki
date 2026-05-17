@@ -341,19 +341,26 @@ function SeoContent() {
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Reading Time & Presentation Time Calculator</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          This tool estimates how long it takes to read or present a given piece of text based on average reading and speaking speeds.
-          The average adult reads at approximately 200 to 250 words per minute (WPM), while speaking rates during presentations are typically 120 to 180 WPM due to natural pauses, emphasis, and audience interaction.
-          Three modes are available: text input for direct measurement, slide calculator for estimating presentation duration from slide count, and target time for working backwards to calculate how many words you need for a specific time slot.
+          <strong className="text-gray-900 dark:text-white">This tool estimates how long it takes to read or present a piece of text based on average reading and speaking speeds.</strong>{' '}
+          The average adult reads at <strong>200-250 WPM</strong>, while speaking rates during presentations are typically <strong>120-180 WPM</strong> due to pauses, emphasis, and audience interaction.
+          <strong>Three modes</strong> are available: text input for direct measurement, slide calculator for presentation duration, and target time for working backwards from a time slot to script length.
         </p>
       </div>
 
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Use Cases</h2>
-        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Content creators and bloggers can optimize article length for better readability. Research suggests that the ideal blog post length is around 1,000 to 2,000 words, roughly a 5 to 10 minute read.
-          Public speakers can use the slide calculator to plan presentations by entering their slide count and time per slide.
-          The target time feature helps when you know your time slot (e.g., a 15-minute talk) and need to figure out how long your script should be.
-          Students, podcast scriptwriters, and YouTube creators can also benefit from planning content length to fit intended time slots.
+        <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside">
+          <li><strong>Content creators &amp; bloggers</strong> — Ideal blog post length is <strong>1,000-2,000 words</strong>, a <strong>5-10 minute read</strong>.</li>
+          <li><strong>Public speakers</strong> — Use the slide calculator with slide count × time per slide for accurate planning.</li>
+          <li><strong>Target time mode</strong> — Know your <strong>15-minute time slot</strong>? Get the exact script length instantly.</li>
+          <li><strong>Podcast scriptwriters &amp; YouTubers</strong> — Plan content length to fit intended time slots.</li>
+        </ul>
+      </div>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Presentation tip</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          Real-world delivery runs <strong>1.3-1.6× slower than reading</strong> due to pauses and audience interaction. Plan script length accordingly.
         </p>
       </div>
 

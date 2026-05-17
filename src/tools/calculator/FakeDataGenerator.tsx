@@ -240,11 +240,16 @@ function SeoContent() {
           🎲 Fake Data Generator란?
         </h2>
         <p className="text-sm leading-relaxed">
-          Fake Data Generator는 개발 및 테스트용 더미 데이터를 빠르게 생성하는 도구입니다.
-          이름, 이메일, 전화번호, 주소, 회사명, 직업, 날짜, 숫자, UUID, 텍스트 등 다양한 필드를 조합하여 현실적인 테스트 데이터를 만듭니다.
-          JSON/CSV 형식으로 내보내기 가능하며, 한 번에 최대 100개의 레코드를 생성할 수 있습니다.
-          실제 개인정보 없이 안전하게 개발/테스트 환경을 구축할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">Fake Data Generator는 개발 및 테스트용 더미 데이터를 빠르게 생성하는 도구입니다.</strong>{' '}
+          <strong>이름, 이메일, 전화번호, 주소, 회사명, 직업, 날짜, 숫자, UUID, 텍스트</strong> 등 다양한 필드를 조합해 현실적인 테스트 데이터를 만듭니다.
+          <strong>JSON/CSV 형식</strong>으로 내보내기 가능하며, 한 번에 <strong>최대 100개의 레코드</strong>를 생성할 수 있습니다.
+          <strong>실제 개인정보 없이</strong> 안전하게 개발/테스트 환경을 구축할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">실제 사용자 데이터 없이 <strong>현실적인 더미 데이터</strong>를 만들어 GDPR·개인정보보호법 위반 위험을 피하세요.</p>
+        </div>
       </section>
 
       <section>

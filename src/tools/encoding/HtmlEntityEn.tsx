@@ -146,10 +146,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🏷️ What is HTML Entity Encoding?</h2>
         <p className="text-sm leading-relaxed">
-          HTML entities are character references that tell the browser parser to render a symbol literally instead of treating it as markup.
-          The classic case is a user comment like <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>: rendered raw, the script actually runs.
-          Encoded as <code>&amp;lt;script&amp;gt;</code>, it appears as plain text. This tool replaces eight characters in one pass — &amp;, &lt;, &gt;, &quot;, ', /, `, and = — covering the vectors listed in the OWASP XSS Prevention Cheat Sheet.
-          Beyond security, encoding is also handy when you need to embed code samples inside HTML, paste markup into an RSS &lt;description&gt; field, or store snippets in a CMS that would otherwise interpret the tags.
+          <strong className="text-gray-900 dark:text-white">HTML entities tell the browser parser to render symbols literally instead of as markup.</strong>{' '}
+          The classic case is a user comment like <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&lt;script&gt;alert(1)&lt;/script&gt;</code>: rendered raw, <strong>the script actually runs</strong>.
+          Encoded as <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&amp;lt;script&amp;gt;</code>, it appears as plain text.
+          This tool replaces <strong>eight characters in one pass — &amp;, &lt;, &gt;, &quot;, &apos;, /, `, and =</strong> — covering the vectors listed in the <strong>OWASP XSS Prevention Cheat Sheet</strong>.
         </p>
       </section>
 
@@ -179,14 +179,22 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🚨 Context Changes Everything</h2>
-        <p className="text-sm leading-relaxed">
-          Sanitizing user data once and reusing it everywhere is a common mistake. OWASP separates output contexts into at least five categories.
-          <strong> Body text</strong> is safe with the basic six-character entity swap. <strong>HTML attribute values</strong> need both quote characters escaped, otherwise an attacker can break out with a stray <code>&quot;</code>.
-          Content placed <strong>inside &lt;script&gt; blocks</strong> requires JavaScript string escaping (e.g. backslash-uXXXX) — HTML entities will not run there.
-          Inline <strong>style</strong> values need CSS escaping, and <strong>URL attributes</strong> such as href or src additionally require blocking the <code>javascript:</code> scheme.
-          When in doubt, prefer DOM APIs like <code>textContent</code> over assigning strings to <code>innerHTML</code>.
+        <p className="text-sm leading-relaxed mb-3">
+          <strong className="text-gray-900 dark:text-white">Sanitizing user data once and reusing it everywhere is a common mistake.</strong> OWASP separates output contexts into at least five categories.
         </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">Body text</strong> — safe with the basic six-character entity swap.</li>
+          <li><strong className="text-gray-900 dark:text-white">HTML attribute values</strong> — need both quote characters escaped, or an attacker breaks out with a stray <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&quot;</code>.</li>
+          <li><strong className="text-gray-900 dark:text-white">Inside &lt;script&gt; blocks</strong> — needs <strong>JavaScript string escaping</strong> (e.g. backslash-uXXXX); HTML entities will not run there.</li>
+          <li><strong className="text-gray-900 dark:text-white">Inline style values</strong> — need CSS escaping.</li>
+          <li><strong className="text-gray-900 dark:text-white">URL attributes</strong> (href, src) — additionally require blocking the <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">javascript:</code> scheme.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 p-4 text-sm">
+        <p className="font-semibold text-red-900 dark:text-red-200 mb-1">🔒 Security Note</p>
+        <p className="text-red-800 dark:text-red-300">React&apos;s <code className="px-1 py-0.5 rounded bg-red-100 dark:bg-red-900/40 text-xs font-mono">dangerouslySetInnerHTML</code> and Vue&apos;s <code className="px-1 py-0.5 rounded bg-red-100 dark:bg-red-900/40 text-xs font-mono">v-html</code> <strong>bypass auto-escaping</strong>. Always run such content through an entity encoder or a sanitizer like <strong>DOMPurify</strong> first.</p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

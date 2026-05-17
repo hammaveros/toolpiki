@@ -255,11 +255,16 @@ function SeoContent() {
           🔐 비밀번호 강도 검사란?
         </h2>
         <p className="text-sm leading-relaxed">
-          비밀번호 강도 검사는 입력한 비밀번호의 보안 수준을 실시간으로 분석하는 도구입니다.
-          길이, 대소문자, 숫자, 특수문자 조합을 점검하고 흔한 패턴(123, abc, qwerty)도 감지합니다.
-          100점 만점으로 점수화하여 매우 약함~매우 강함까지 5단계로 평가합니다.
-          입력한 비밀번호는 브라우저에서만 처리되어 서버로 전송되지 않습니다.
+          <strong className="text-gray-900 dark:text-white">비밀번호 강도 검사는 입력한 비밀번호의 보안 수준을 실시간으로 분석하는 도구입니다.</strong>{' '}
+          <strong>길이, 대소문자, 숫자, 특수문자</strong> 조합을 점검하고 <strong>흔한 패턴(123, abc, qwerty)</strong>도 감지합니다.
+          <strong>100점 만점</strong>으로 점수화하여 매우 약함~매우 강함까지 5단계로 평가합니다.
+          입력한 비밀번호는 <strong>브라우저에서만 처리</strong>되어 서버로 전송되지 않습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 주의</p>
+          <p className="text-amber-800 dark:text-amber-300">강도 점수가 높아도 <strong>다른 사이트에서 유출된 비밀번호</strong>는 위험합니다. 사이트마다 다른 비밀번호를 쓰세요.</p>
+        </div>
       </section>
 
       <section>

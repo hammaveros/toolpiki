@@ -192,37 +192,40 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">What is Emoji Picker?</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Emoji Picker is a free online tool that lets you browse, search, and copy emojis with a single click.
-          Emojis are Unicode-based pictographic characters used to express emotions, objects, actions, and ideas visually.
-          This tool organizes hundreds of emojis into 11 categories including Smileys, Hearts, Animals, Food, Travel, Objects, and Symbols,
-          making it easy to find the exact emoji you need. Recently used emojis are automatically saved so you can quickly reuse your favorites
-          without scrolling through the entire collection again.
+          <strong className="text-gray-900 dark:text-white">Emoji Picker is a free online tool that lets you browse, search, and copy emojis with a single click.</strong>{' '}
+          Emojis are <strong>Unicode-based pictographic characters</strong> used to express emotions, objects, actions, and ideas visually.
+          This tool organizes hundreds of emojis into <strong>11 categories</strong> including Smileys, Hearts, Animals, Food, Travel, Objects, and Symbols,
+          and <strong>recently used emojis are automatically saved</strong> so you can quickly reuse favorites.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">A Brief History of Emojis</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Emojis were first created in 1999 by Shigetaka Kurita at NTT DoCoMo in Japan. The original set consisted of just 176 simple
-          12x12 pixel icons designed to help mobile phone users convey emotions and context in short text messages.
-          In 2010, emojis were officially incorporated into the Unicode Standard, enabling cross-platform compatibility worldwide.
-          As of Unicode 15.1, there are over 3,700 registered emojis, with new ones added annually by the Unicode Consortium.
-          Modern emoji updates reflect growing diversity and inclusivity, including skin tone variations, gender-neutral options,
-          and cultural symbols from around the globe. Today, emojis have become a universal language transcending borders and generations.
+          Emojis were first created in <strong>1999 by Shigetaka Kurita at NTT DoCoMo</strong> in Japan. The original set consisted of just <strong>176 simple
+          12x12 pixel icons</strong> designed to help mobile phone users convey emotions and context in short text messages.
+          In <strong>2010, emojis were incorporated into the Unicode Standard</strong>, enabling cross-platform compatibility worldwide.
+          As of <strong>Unicode 15.1</strong>, there are over <strong>3,700 registered emojis</strong>, with new ones added annually by the Unicode Consortium.
+          Modern updates reflect growing diversity and inclusivity, including skin tone variations, gender-neutral options, and cultural symbols.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Emoji Usage Tips</h2>
-        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Emojis go far beyond casual messaging. Studies have shown that social media posts with emojis receive up to 25% higher engagement rates
-          compared to text-only posts. In email marketing, adding an emoji to your subject line can boost open rates significantly.
-          Emojis also work well in presentations to highlight key points, and in blog posts or documentation to improve readability with visual markers.
-          However, be mindful that emoji rendering varies across platforms such as Apple, Google, Samsung, and Microsoft,
-          so the same emoji may look slightly different to different recipients. For formal business documents or academic papers,
-          it is generally best to avoid emoji usage entirely.
-        </p>
+        <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside">
+          <li><strong>Social media posts</strong> with emojis receive up to <strong>25% higher engagement</strong> than text-only posts.</li>
+          <li><strong>Email subject lines</strong> with an emoji can significantly boost open rates.</li>
+          <li><strong>Presentations</strong> use emojis to highlight key points and visually anchor ideas.</li>
+          <li><strong>Blog posts and docs</strong> gain readability when list items begin with a relevant emoji.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">⚠️ Heads up</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          The same emoji may look different across <strong>Apple, Google, Samsung, and Microsoft</strong> platforms. Avoid emojis entirely in <strong>formal business documents or academic papers</strong>.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

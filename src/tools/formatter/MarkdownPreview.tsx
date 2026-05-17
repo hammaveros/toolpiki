@@ -13,10 +13,9 @@ function SeoContent() {
           📝 마크다운 미리보기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          마크다운(Markdown)은 텍스트 기반의 경량 마크업 언어로, 간단한 문법으로 서식이 있는 문서를 작성할 수 있습니다.
-          GitHub README, 블로그 포스트, 기술 문서 등에서 널리 사용됩니다.
-          이 도구는 마크다운 문법을 실시간으로 HTML로 변환하여 미리보기를 제공하며,
-          변환된 HTML 코드를 복사하여 웹사이트나 블로그에 바로 붙여넣을 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">마크다운을 실시간으로 HTML로 변환해 미리보고 복사합니다.</strong>{' '}
+          <strong>마크다운</strong>은 텍스트 기반의 경량 마크업 언어로, <strong>GitHub README</strong>, 블로그 포스트, 기술 문서에서 널리 사용됩니다.
+          변환된 HTML은 그대로 복사해 <strong>웹사이트·블로그·이메일</strong>에 붙여넣을 수 있습니다.
         </p>
       </section>
 
@@ -57,12 +56,20 @@ function SeoContent() {
           💡 마크다운 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>GitHub README 작성 시 프로젝트 설명, 설치 방법, 사용법을 구조화</li>
-          <li>기술 블로그에서 코드 스니펫과 함께 문서 작성</li>
-          <li>Notion, Obsidian 등 노트 앱에서 빠른 문서 작성</li>
-          <li>HTML로 변환 후 이메일이나 웹페이지에 활용</li>
+          <li><strong>GitHub README</strong> 작성 시 프로젝트 설명, 설치 방법, 사용법을 구조화</li>
+          <li><strong>기술 블로그</strong>에서 코드 스니펫과 함께 문서 작성</li>
+          <li><strong>Notion, Obsidian</strong> 등 노트 앱에서 빠른 문서 작성</li>
+          <li><strong>HTML 변환</strong> 후 이메일이나 웹페이지에 활용</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 팁</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          줄바꿈은 <strong>스페이스 2개 + 엔터</strong>로 처리하세요. 일반 엔터는 같은 문단으로 합쳐집니다.
+          또한 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">```언어명</code> 형식으로 코드블록을 열면 <strong>자동 신택스 하이라이팅</strong>이 적용됩니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

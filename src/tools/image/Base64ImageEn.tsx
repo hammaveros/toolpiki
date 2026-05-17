@@ -229,10 +229,10 @@ function SeoContent() {
           🖼️ What is Base64 Image Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          Base64 Image Converter encodes image files to text strings or decodes Base64 strings back to images.
-          Base64-encoded images can be embedded directly in HTML, CSS, or JavaScript code, eliminating external file dependencies.
-          Widely used for email templates, single-file HTML distribution, and API data transmission.
-          All processing happens in your browser, so images never leave your device - completely safe and private.
+          <strong className="text-gray-900 dark:text-white">Encode images to text strings or decode Base64 back to images.</strong>{' '}
+          <strong>Base64</strong>-encoded images embed directly in <strong>HTML/CSS/JavaScript</strong>, removing external file dependencies.
+          Widely used for email templates, single-file HTML distribution, and <strong>API data transmission</strong>.
+          All processing happens in your browser — images never leave your device.
         </p>
       </section>
 
@@ -264,12 +264,18 @@ function SeoContent() {
           💡 Base64 Image Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>Best for small images</strong>: Recommended for icons and logos under 10KB</li>
-          <li><strong>Data URL prefix</strong>: data:image/... format required for CSS/HTML usage</li>
-          <li><strong>Size increase</strong>: Base64 encoding adds about 33% to original size</li>
-          <li><strong>No caching</strong>: Inline images cannot be browser-cached, causing repeated downloads</li>
-          <li><strong>Email embedding</strong>: Useful for embedding images directly in HTML emails</li>
+          <li><strong>Best for small images</strong> — icons/logos under <strong>10KB</strong></li>
+          <li><strong>Data URL prefix</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">data:image/...</code> format required for CSS/HTML</li>
+          <li><strong>Size increase</strong> — encoding adds <strong>~33%</strong> to original</li>
+          <li><strong>No caching</strong> — inline images <strong>cannot be cached</strong>, repeated downloads</li>
+          <li><strong>Email embedding</strong> — useful for direct HTML email insertion</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Warning</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            For <strong>large images</strong>, keep them as external files. Inline Base64 skips caching, slowing page loads.
+          </p>
+        </div>
       </section>
 
       <FaqSection

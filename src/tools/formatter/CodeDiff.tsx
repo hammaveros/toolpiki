@@ -302,11 +302,10 @@ function SeoContent() {
           🔍 코드 비교 도구란?
         </h2>
         <p className="text-sm leading-relaxed">
-          두 버전의 텍스트가 어디서 어떻게 달라졌는지 라인 단위로 보여주는 도구입니다.
-          삭제된 줄은 빨간색, 새로 추가된 줄은 녹색으로 강조되고, 그대로 유지된 줄은 회색 톤으로 처리해서
-          한눈에 변경 흐름이 잡힙니다. 내부적으로는 Git이 쓰는 것과 동일한 Myers diff (O(ND)) 알고리즘을 사용하고,
-          최대 50,000줄까지 브라우저에서 바로 계산합니다. 서버로 코드를 전송하지 않기 때문에 사내 코드나 설정 파일을
-          올려도 외부로 새지 않습니다.
+          <strong className="text-gray-900 dark:text-white">두 버전의 텍스트가 어디서 달라졌는지 라인 단위로 비교합니다.</strong>{' '}
+          삭제는 <strong>빨간색</strong>, 추가는 <strong>녹색</strong>으로 강조되어 한눈에 변경 흐름이 잡힙니다.
+          내부적으로 <strong>Git과 동일한 Myers diff</strong> 알고리즘을 사용하며, 최대 <strong>50,000줄</strong>까지 브라우저에서 바로 계산합니다.
+          코드는 서버로 전송되지 않아 <strong>사내 코드·설정 파일</strong>도 안전하게 비교할 수 있습니다.
         </p>
       </section>
 
@@ -315,11 +314,11 @@ function SeoContent() {
           🛠️ 이런 상황에 써보세요
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>GitHub/GitLab 안 쓰는 사내 시스템에서 두 버전의 SQL 스키마를 비교할 때</li>
-          <li>장애 났을 때 어제 nginx.conf와 오늘 nginx.conf 사이 무엇이 바뀌었는지 빠르게 잡아낼 때</li>
-          <li>ChatGPT/Claude가 리팩토링한 코드와 원본을 나란히 두고 검토할 때</li>
-          <li>Postman으로 받은 두 번의 API 응답 JSON을 붙여서 어떤 필드가 추가/삭제됐는지 확인할 때</li>
-          <li>Slack으로 받은 코드 스니펫과 IDE에 있는 현재 코드를 비교할 때</li>
+          <li>GitHub/GitLab 안 쓰는 사내 시스템에서 <strong>두 버전의 SQL 스키마</strong>를 비교할 때</li>
+          <li>장애 시 어제와 오늘의 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">nginx.conf</code>가 어떻게 바뀌었는지 빠르게 잡아낼 때</li>
+          <li><strong>ChatGPT/Claude</strong>가 리팩토링한 코드와 원본을 나란히 검토할 때</li>
+          <li><strong>Postman API 응답 JSON</strong> 두 개를 붙여 필드 추가/삭제를 확인할 때</li>
+          <li><strong>Slack 코드 스니펫</strong>과 IDE 현재 코드를 비교할 때</li>
         </ul>
       </section>
 
@@ -348,11 +347,19 @@ function SeoContent() {
           💡 잘 쓰는 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>JSON/YAML 비교 전에 먼저 같은 포맷터로 정렬해두면 들여쓰기 차이로 인한 가짜 diff가 사라집니다.</li>
-          <li>로그 파일 비교 시 타임스탬프 열은 sed/awk로 제거하고 붙이면 실제 변경 라인만 보여요.</li>
-          <li>50,000줄 이상은 대용량으로 판단해 자르는 게 좋고, 큰 파일은 git diff --stat으로 먼저 후보를 좁히세요.</li>
+          <li><strong>JSON/YAML 비교 전</strong> 같은 포맷터로 정렬해두면 들여쓰기로 인한 <strong>가짜 diff</strong>가 사라집니다.</li>
+          <li>로그 파일 비교 시 <strong>타임스탬프 열</strong>은 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">sed/awk</code>로 제거하고 붙이면 실제 변경만 보입니다.</li>
+          <li><strong>50,000줄 이상</strong>은 대용량으로 자르고, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">git diff --stat</code>으로 먼저 후보를 좁히세요.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 가짜 diff 주의</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          <strong>줄바꿈 문자(CRLF vs LF)</strong>나 <strong>BOM</strong>이 다르면 내용이 같아도 전체가 변경으로 잡힙니다.
+          비교 전 에디터에서 줄바꿈 형식을 통일하세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

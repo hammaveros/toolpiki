@@ -196,43 +196,40 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">What is Lorem Ipsum?</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Lorem Ipsum is the standard dummy text used in the printing and typesetting industry.
-          It originates from &quot;De Finibus Bonorum et Malorum&quot; (On the Ends of Good and Evil),
-          a philosophical work written by the Roman statesman Cicero around 45 BC.
-          In the 1500s, an unknown printer scrambled sections of the text to create a type specimen book,
-          and it has remained the industry standard for placeholder text ever since.
-          Because Lorem Ipsum consists of semi-random Latin words with no meaningful content,
-          it allows designers and developers to focus on visual layout, typography, and spacing
-          without being distracted by readable text.
-          Over 500 years later, it continues to be the go-to choice for filling content areas in both print and digital media.
+          <strong className="text-gray-900 dark:text-white">Lorem Ipsum is the standard dummy text used in the printing and typesetting industry.</strong>{' '}
+          It originates from &quot;De Finibus Bonorum et Malorum&quot;, a philosophical work written by the <strong>Roman statesman Cicero around 45 BC</strong>.
+          In the <strong>1500s</strong>, an unknown printer scrambled sections of the text to create a type specimen book,
+          and it has remained the industry standard ever since. Because the text has no meaningful content,
+          it lets designers focus on <strong>layout, typography, and spacing</strong> instead of reading along.
+          Over <strong>500 years later</strong>, it remains the go-to choice for filling content areas in both print and digital media.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Common Use Cases</h2>
-        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Lorem Ipsum is widely used across many disciplines.
-          In web design, it fills text areas in mockups and wireframes before actual content is ready,
-          helping teams evaluate how a page will look with realistic text density.
-          For UI/UX prototyping, it helps visualize how text behaves inside components like buttons, cards, modals, and navigation menus.
-          In print layout, designers use it to test font sizes, line heights, margins, and column widths in posters, brochures, and magazines.
-          App developers rely on it to simulate realistic screens when backend data is not yet available.
-          Whether you need paragraphs for a blog template, sentences for a card layout, or individual words for tag clouds,
-          this generator lets you produce exactly the amount of placeholder text you need.
-        </p>
+        <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside">
+          <li><strong>Web design</strong> — fills text areas in mockups and wireframes to evaluate visual density before real content is ready.</li>
+          <li><strong>UI/UX prototyping</strong> — visualizes how text behaves inside buttons, cards, modals, and nav menus.</li>
+          <li><strong>Print layout</strong> — tests font sizes, line heights, margins, and column widths in posters, brochures, and magazines.</li>
+          <li><strong>App development</strong> — simulates realistic screens when backend data is not yet available.</li>
+        </ul>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Beyond Lorem Ipsum</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          While Lorem Ipsum remains the most popular choice, several alternative placeholder texts exist.
-          Options like Hipster Ipsum, Bacon Ipsum, and Cupcake Ipsum add a fun twist to dummy text generation.
-          Some designers prefer using real content samples in the target language to better test typography and readability.
-          However, for client-facing presentations and professional design reviews,
-          traditional Lorem Ipsum is still the safest and most universally understood option.
-          It keeps the focus on design decisions rather than content debates.
+          Alternative placeholder texts exist, including <strong>Hipster Ipsum</strong>, <strong>Bacon Ipsum</strong>, and <strong>Cupcake Ipsum</strong>.
+          Some designers prefer real content samples in the target language to better test typography. However, for
+          <strong>client-facing presentations and professional reviews</strong>, traditional Lorem Ipsum remains the safest, most universally understood option.
         </p>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Good to know</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          Lorem Ipsum is in the <strong>public domain</strong>, so you can use it freely in any commercial or personal project without attribution.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

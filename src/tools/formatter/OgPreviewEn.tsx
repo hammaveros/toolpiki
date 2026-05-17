@@ -220,9 +220,9 @@ function SeoContent() {
           📱 What is OG Preview?
         </h2>
         <p className="text-sm leading-relaxed">
-          Open Graph (OG) tags define the title, description, and image that appear when a webpage is shared on social media.
-          This tool lets you see in real-time how your link will appear on platforms like Facebook, Twitter, and LinkedIn.
-          The configured settings are generated as copy-ready meta tag code that you can paste directly into your website's &lt;head&gt; section.
+          <strong className="text-gray-900 dark:text-white">Open Graph tags control the thumbnail card that appears when a URL is shared on social.</strong>{' '}
+          Enter <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">og:title</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">og:description</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">og:image</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">og:url</code> and see live previews for <strong>Facebook, X (Twitter), and LinkedIn</strong>.
+          Generated meta-tag code is ready to paste straight into your <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&lt;head&gt;</code>.
         </p>
       </section>
 
@@ -255,13 +255,21 @@ function SeoContent() {
           💡 OG Image Optimization Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>Recommended size</strong>: 1200×630px (1.91:1 ratio) optimized for most platforms</li>
-          <li><strong>File format</strong>: JPG or PNG (PNG supports transparency)</li>
-          <li><strong>File size</strong>: Under 5MB, ideally under 1MB</li>
-          <li><strong>Center important content</strong>: Crop areas vary by platform</li>
-          <li><strong>Text overlay</strong>: Keep under 20% of image area (Facebook policy)</li>
+          <li><strong>Recommended size</strong> — <strong>1200×630px</strong> (1.91:1 ratio), optimized for every major platform</li>
+          <li><strong>File format</strong> — JPG or PNG (PNG supports transparency)</li>
+          <li><strong>File size</strong> — Under 5MB, ideally <strong>under 1MB</strong></li>
+          <li><strong>Center important content</strong> — Crop areas vary by platform</li>
+          <li><strong>Text overlay</strong> — Keep under <strong>20% of image area</strong> (Facebook guideline)</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Cache Trap</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          Updated OG tags will not appear right away — Facebook, X, and LinkedIn <strong>aggressively cache</strong> the previous values.
+          Force-refresh with the <strong>Facebook Sharing Debugger</strong>, <strong>X Card Validator</strong>, or <strong>LinkedIn Post Inspector</strong>.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

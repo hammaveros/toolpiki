@@ -302,11 +302,18 @@ function SeoContent() {
           👁️ What is Color Blindness Simulator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Color Blindness Simulator is an accessibility tool that shows how people with color vision deficiency perceive images.
-          It supports major types including Protanopia (red-blind), Deuteranopia (green-blind), Tritanopia (blue-blind), and Achromatopsia (total color blindness).
+          <strong className="text-gray-900 dark:text-white">Color Blindness Simulator is an <strong>accessibility tool</strong> that shows how people with color vision deficiency perceive images.</strong>{' '}
+          It supports major types including <strong>Protanopia</strong> (red-blind), <strong>Deuteranopia</strong> (green-blind), <strong>Tritanopia</strong> (blue-blind), and Achromatopsia (total color blindness).
           Compare both uploaded images and color palettes in real-time, making design reviews easy.
-          About 8% of males and 0.5% of females worldwide have color vision deficiency, making accessibility consideration essential.
+          About <strong>8% of males</strong> and 0.5% of females worldwide have color vision deficiency, making accessibility consideration essential.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Accessibility Check</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            Over <strong>99%</strong> of color blind users have <strong>red-green deficiency</strong>. Never rely on color alone — pair it with <strong>icons and text labels</strong>.
+          </p>
+        </div>
       </section>
 
       <section>

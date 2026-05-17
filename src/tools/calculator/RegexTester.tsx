@@ -269,11 +269,16 @@ function SeoContent() {
           🔍 정규식 테스터란?
         </h2>
         <p className="text-sm leading-relaxed">
-          정규표현식(Regular Expression)은 문자열에서 특정 패턴을 찾고 조작하는 강력한 도구입니다.
-          이 테스터는 정규식을 실시간으로 테스트하며, 매칭 결과를 하이라이트로 시각화합니다.
-          캡처 그룹, 플래그 설정, 문자열 치환까지 한 곳에서 확인할 수 있습니다.
-          이메일, URL, 전화번호 등 자주 쓰는 패턴 프리셋으로 빠르게 시작할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">정규표현식(Regular Expression)은 문자열에서 특정 패턴을 찾고 조작하는 강력한 도구입니다.</strong>{' '}
+          이 테스터는 정규식을 <strong>실시간으로 테스트</strong>하며, 매칭 결과를 <strong>하이라이트로 시각화</strong>합니다.
+          <strong>캡처 그룹, 플래그 설정, 문자열 치환</strong>까지 한 곳에서 확인할 수 있습니다.
+          <strong>이메일, URL, 전화번호</strong> 등 자주 쓰는 패턴 프리셋으로 빠르게 시작할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">정규식은 코드에 넣기 전 <strong>꼭 테스트</strong>하세요. 작은 실수 하나가 모든 입력을 잘못 처리할 수 있어요.</p>
+        </div>
       </section>
 
       <section>

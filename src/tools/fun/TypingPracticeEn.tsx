@@ -243,10 +243,17 @@ function SeoContent() {
           ⌨️ What Is Typing Practice?
         </h2>
         <p className="text-sm leading-relaxed">
-          Typing practice helps you improve your keyboard skills by typing real sentences.
-          Unlike typing games, this tool focuses on practical typing ability that you can use in everyday work.
-          Your typing speed (WPM) and accuracy are measured in real-time so you can track your progress objectively.
+          <strong className="text-gray-900 dark:text-white">Improve your keyboard skills by typing real sentences.</strong>{' '}
+          Unlike typing games, this tool focuses on <strong>practical typing ability</strong> usable in everyday work.
+          Your <strong>WPM</strong> and <strong>accuracy</strong> are measured in real-time so you can track progress objectively.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">⌨️ Skill Reference</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>60+ WPM</strong> is advanced, <strong>90+ WPM</strong> is expert level. Focus on <strong>95%+ accuracy</strong> first.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -280,10 +287,10 @@ function SeoContent() {
           💡 Effective Practice Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Start slow and maintain 95%+ accuracy before increasing speed</li>
-          <li>When you make a mistake, consciously check the key position</li>
-          <li>Practicing 10 minutes daily is more effective than occasional long sessions</li>
-          <li>Try different sentences to get comfortable with various letter combinations</li>
+          <li><strong>Slow first</strong> — maintain 95%+ accuracy before increasing speed</li>
+          <li><strong>On mistakes</strong> — consciously check the key position</li>
+          <li><strong>10 minutes daily</strong> beats occasional long sessions</li>
+          <li><strong>Variety</strong> — try different sentences for letter combos</li>
         </ul>
       </section>
 

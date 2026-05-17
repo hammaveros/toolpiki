@@ -490,11 +490,9 @@ function SeoContent() {
           🔍 What is Text Diff?
         </h2>
         <p className="text-sm leading-relaxed">
-          Text diff is a technique for comparing two pieces of text line by line to identify what has been
-          added, removed, or modified. Based on the Unix diff command, this concept has become
-          fundamental in software development, document management, and content editing. This tool lets you
-          perform instant text comparisons directly in your browser with no installation or sign-up required,
-          and all processing happens locally on your device.
+          <strong className="text-gray-900 dark:text-white">Text diff compares two pieces of text line by line to identify what has been added, removed, or modified.</strong>{' '}
+          Based on the <strong>Unix diff command</strong>, this concept has become fundamental in software development, document management, and content editing.
+          Perform <strong>instant comparisons directly in your browser</strong> with no installation required — all processing happens locally on your device.
         </p>
       </section>
 
@@ -523,13 +521,18 @@ function SeoContent() {
           </li>
         </ul>
         <p className="text-sm leading-relaxed mt-3">
-          Under the hood, this tool uses the Myers diff algorithm (the same algorithm used by Git) to compute
-          differences efficiently. Beyond simple line-level comparison, it also provides word-level
-          highlighting within modified lines so you can pinpoint exactly what changed. Two view modes are
-          available: Unified View shows all changes in a single list with addition (+) and deletion (-)
-          markers, while Split View places the original and modified text side by side for intuitive comparison.
+          Under the hood, this tool uses the <strong>Myers diff algorithm</strong> (the same one used by Git) to compute differences efficiently.
+          Beyond line-level comparison, it provides <strong>word-level highlighting</strong> within modified lines.
+          Two modes are available: <strong>Unified View</strong> (single list with + / - markers) and <strong>Split View</strong> (side-by-side comparison).
         </p>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">🔒 Privacy</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          All comparison happens <strong>locally in your browser</strong>. Sensitive code or documents never leave your device.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

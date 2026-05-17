@@ -411,11 +411,18 @@ function SeoContent() {
           🥤 컵 뒤집기 게임이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          컵 뒤집기 게임(Shell Game)은 여러 개의 컵 중 공(당첨)이 숨겨진 컵을 찾는 고전적인 운 게임입니다.
-          컵을 섞은 후 하나씩 뒤집어 당첨을 찾습니다. 컵 개수(3~10개)와 당첨 개수를 자유롭게 설정할 수 있어 난이도 조절이 가능합니다.
+          <strong className="text-gray-900 dark:text-white">컵 뒤집기 게임(Shell Game)은 여러 컵 중 공이 숨겨진 컵을 찾는 고전 운 게임입니다.</strong>{' '}
+          컵을 섞은 후 하나씩 뒤집어 당첨을 찾습니다. <strong>컵 개수(3~10개)</strong>와 <strong>당첨 개수</strong>를 자유롭게 설정해 난이도 조절이 가능합니다.
           친구들과 번갈아 플레이하며 누가 더 빨리, 더 적은 시도로 당첨을 찾는지 겨뤄보세요.
-          3D 애니메이션으로 컵이 뒤집히는 모습을 실감나게 볼 수 있습니다.
+          <strong>3D 애니메이션</strong>으로 컵이 뒤집히는 모습을 실감나게 볼 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎲 난이도 조절</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>컵을 늘리면</strong> 어렵고, <strong>당첨을 늘리면</strong> 쉬워집니다. 초보자는 3컵/1당첨부터 시작하세요.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -461,10 +468,10 @@ function SeoContent() {
           게임 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>컵이 섞이는 동안 공이 있는 컵을 눈으로 따라가보세요</li>
-          <li>섞는 속도가 빠르니 집중력이 중요합니다</li>
-          <li>당첨 개수를 늘리면 쉬워지고, 컵 개수를 늘리면 어려워집니다</li>
-          <li>통계에서 총 플레이 수와 찾은 당첨 수를 확인하세요</li>
+          <li><strong>시선 추적</strong> — 섞이는 동안 공이 있는 컵을 눈으로 따라가기</li>
+          <li><strong>집중력</strong>이 핵심 — 섞는 속도가 빠릅니다</li>
+          <li><strong>난이도 조절</strong> — 당첨↑ 쉬움, 컵↑ 어려움</li>
+          <li><strong>플레이 통계</strong>로 총 플레이 수와 찾은 당첨 수 확인</li>
         </ul>
       </section>
 

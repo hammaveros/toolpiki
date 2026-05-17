@@ -276,10 +276,9 @@ function SeoContent() {
           🏗️ What is HTML Boilerplate?
         </h2>
         <p className="text-sm leading-relaxed">
-          An HTML boilerplate is the basic HTML structure needed for any new HTML page.
-          It auto-generates repetitive code like DOCTYPE, meta tags, charset, and viewport settings,
-          plus optional Open Graph tags, Twitter Cards, and CSS/JS library CDN links.
-          Start new projects with a standards-compliant HTML foundation in just a few clicks.
+          <strong className="text-gray-900 dark:text-white">Generate a standards-compliant HTML starting point in a few clicks.</strong>{' '}
+          Auto-builds repetitive code — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">DOCTYPE</code>, meta tags, <strong>charset, viewport</strong>,
+          plus optional <strong>Open Graph, Twitter Card</strong>, and CSS/JS library CDN links.
         </p>
       </section>
 
@@ -312,12 +311,20 @@ function SeoContent() {
           💡 HTML Template Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>viewport</strong>: Essential for mobile responsive design, always include</li>
-          <li><strong>description</strong>: Shown in search results, important for SEO</li>
-          <li><strong>Open Graph</strong>: Displays link previews on social media like Facebook</li>
-          <li><strong>Tailwind CDN</strong>: Great for prototyping, use build version for production</li>
+          <li><strong>viewport</strong> — <strong>Essential</strong> for mobile responsive design</li>
+          <li><strong>description</strong> — Shown in search results, <strong>critical for SEO</strong></li>
+          <li><strong>Open Graph</strong> — <strong>Link previews</strong> on Facebook, Slack, Discord</li>
+          <li><strong>Tailwind CDN</strong> — Great for prototyping, use <strong>build version</strong> in production</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Pro Tip</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          Use <strong>1200x630</strong> for <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">og:image</code>. Facebook and LinkedIn cache aggressively — a bad first share can persist for <strong>days</strong>.
+          Validate with the Facebook Sharing Debugger before going live.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

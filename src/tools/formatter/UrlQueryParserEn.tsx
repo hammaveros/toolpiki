@@ -16,10 +16,10 @@ function SeoContent() {
           🔗 What is URL Query Parser?
         </h2>
         <p className="text-sm leading-relaxed">
-          URL Query Parser extracts and edits query parameters (?key=value format) from URLs.
-          Analyze UTM parameters in marketing URLs, debug API endpoint query strings,
-          and automatically decode encoded values for easy inspection.
-          Edited parameters are reconstructed into a new URL ready to copy and use.
+          <strong className="text-gray-900 dark:text-white">Extract, edit, and rebuild URL query parameters in one place.</strong>{' '}
+          Analyze <strong>UTM parameters</strong> in marketing URLs, debug <strong>API query strings</strong>,
+          and automatically <strong>decode</strong> percent-encoded values.
+          Edits are reassembled into a new URL ready to <strong>copy and use</strong>.
         </p>
       </section>
 
@@ -48,13 +48,20 @@ function SeoContent() {
           💡 UTM Parameter Guide
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>utm_source</strong>: Traffic source (google, facebook, newsletter)</li>
-          <li><strong>utm_medium</strong>: Marketing medium (cpc, email, social)</li>
-          <li><strong>utm_campaign</strong>: Campaign name (spring_sale, launch)</li>
-          <li><strong>utm_term</strong>: Search keywords (for paid search)</li>
-          <li><strong>utm_content</strong>: Content variation (for A/B testing)</li>
+          <li><strong>utm_source</strong> — Traffic source (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">google</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">facebook</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">newsletter</code>)</li>
+          <li><strong>utm_medium</strong> — Marketing medium (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">cpc</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">email</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">social</code>)</li>
+          <li><strong>utm_campaign</strong> — Campaign name (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">spring_sale</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">launch</code>)</li>
+          <li><strong>utm_term</strong> — Search keywords (for paid search)</li>
+          <li><strong>utm_content</strong> — Content variation (for A/B testing)</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Pro Tip</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          Keep UTM values <strong>all lowercase</strong>. <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">Google</code> and <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">google</code> register as <strong>different sources</strong> in GA, splitting your reports.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

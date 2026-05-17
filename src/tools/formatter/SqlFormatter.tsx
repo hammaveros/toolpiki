@@ -15,10 +15,10 @@ function SeoContent() {
           🗃️ SQL 포맷터란?
         </h2>
         <p className="text-sm leading-relaxed">
-          SQL 포맷터는 복잡한 SQL 쿼리를 읽기 쉽게 정렬하는 도구입니다.
-          SELECT, FROM, WHERE, JOIN 등 키워드별로 줄바꿈과 들여쓰기를 적용하여 쿼리 구조를 명확하게 보여줍니다.
-          코드 리뷰, 쿼리 최적화, 문서화, 팀 협업 시 일관된 스타일 유지에 필수적입니다.
-          MySQL, PostgreSQL, Oracle, SQL Server 등 표준 SQL 문법을 지원합니다.
+          <strong className="text-gray-900 dark:text-white">복잡한 SQL 쿼리를 키워드 기준으로 자동 정렬합니다.</strong>{' '}
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">SELECT</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">FROM</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">WHERE</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">JOIN</code> 등 주요 키워드별로 줄바꿈과 들여쓰기를 적용해 구조를 명확히 보여줍니다.
+          <strong>코드 리뷰</strong>, 쿼리 최적화, 문서화, <strong>팀 협업 시 일관된 스타일</strong> 유지에 필수.
+          <strong>MySQL/PostgreSQL/Oracle/SQL Server</strong> 등 표준 SQL을 지원합니다.
         </p>
       </section>
 
@@ -59,12 +59,20 @@ function SeoContent() {
           💡 SQL 스타일 가이드
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>키워드는 대문자, 테이블/컬럼명은 소문자 권장</li>
-          <li>JOIN은 명시적으로 (INNER JOIN, LEFT JOIN 등)</li>
-          <li>SELECT 절의 각 컬럼은 새 줄에 작성</li>
-          <li>WHERE 조건은 AND/OR별로 줄바꿈</li>
+          <li><strong>키워드는 대문자</strong>, 테이블/컬럼명은 <strong>소문자</strong> 권장</li>
+          <li><strong>JOIN은 명시적</strong>으로 (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">INNER JOIN</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">LEFT JOIN</code> 등)</li>
+          <li><code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">SELECT</code> 절의 <strong>각 컬럼은 새 줄</strong>에 작성</li>
+          <li><code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">WHERE</code> 조건은 <strong>AND/OR별로 줄바꿈</strong></li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 팁</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          <strong>슬랙·티켓에 쿼리 공유</strong>할 땐 정렬본을, <strong>코드/로그에 임베드</strong>할 땐 압축본을 사용하세요.
+          상황에 맞는 포맷이 리뷰 시간을 절반으로 줄입니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

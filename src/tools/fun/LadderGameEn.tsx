@@ -626,11 +626,18 @@ function SeoContent() {
           What is the Ladder Game (Ghost Leg)?
         </h2>
         <p className="text-sm leading-relaxed">
-          The Ladder Game, also known as Ghost Leg or Amidakuji, is a lottery method where participants choose a starting point at the top and follow vertical lines down, moving sideways whenever they encounter a horizontal line, until they reach a result at the bottom.
-          Since horizontal rungs are randomly placed, no one can predict which result they will get, ensuring a fair and unbiased selection.
-          Perfect for assigning chores, deciding who pays the bill, gift exchanges, presentation order, or any group decision.
-          Supports up to 8 participants with animated path visualization.
+          <strong className="text-gray-900 dark:text-white">The Ladder Game (Ghost Leg / Amidakuji) is a lottery method where participants follow vertical lines and shift sideways at horizontal rungs.</strong>{' '}
+          With <strong>randomly placed rungs</strong>, no one can predict the outcome — ensuring a <strong>fair and unbiased selection</strong>.
+          Perfect for chores, deciding who pays the bill, gift exchanges, presentation order, or any group decision.
+          Supports <strong>up to 8 participants</strong> with animated path visualization.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎲 Fair Draws</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            Every participant has an <strong>equal chance</strong> to reach any result. Enable <strong>"Hide Middle"</strong> for blind draws.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -677,11 +684,11 @@ function SeoContent() {
           Tips for Using
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Number of participants must match number of results (separate with commas)</li>
-          <li>Use "Hide Middle" option to conceal paths until results are revealed</li>
-          <li>Click "Shuffle Results" to randomize the order of outcomes</li>
-          <li>Click on a participant name to see their animated path</li>
-          <li>Share results with friends using the share buttons</li>
+          <li><strong>Match counts</strong> — participants must equal results (comma-separated)</li>
+          <li><strong>"Hide Middle"</strong> — conceal paths until results are revealed</li>
+          <li><strong>"Shuffle Results"</strong> randomizes outcome order</li>
+          <li><strong>Click a name</strong> to see their animated path</li>
+          <li><strong>Share buttons</strong> send results to friends</li>
         </ul>
       </section>
 

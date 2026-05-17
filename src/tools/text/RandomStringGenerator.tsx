@@ -143,37 +143,37 @@ function SeoContent() {
         <div>
           <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">랜덤 문자열 생성기란?</h2>
           <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            랜덤 문자열 생성기는 소문자, 대문자, 숫자, 특수문자를 조합하여 예측할 수 없는 무작위 문자열을 만들어주는 도구입니다.
-            이 도구는 브라우저의 Web Crypto API(<code>crypto.getRandomValues</code>)를 사용하여 암호학적으로 안전한(CSPRNG) 난수를 생성합니다.
-            일반적인 <code>Math.random()</code>과 달리 시드 추측이 불가능하기 때문에, 비밀번호나 토큰처럼 보안이 중요한 용도에도 안심하고 사용할 수 있습니다.
-            문자열 길이는 1자부터 256자까지, 한 번에 최대 100개까지 동시에 생성할 수 있어 대량 작업에도 편리합니다.
+            <strong className="text-gray-900 dark:text-white">랜덤 문자열 생성기는 소문자·대문자·숫자·특수문자를 조합해 예측 불가능한 무작위 문자열을 만들어주는 도구</strong>입니다.
+            브라우저 <strong>Web Crypto API</strong>(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">crypto.getRandomValues</code>)로 <strong>암호학적으로 안전한(CSPRNG)</strong> 난수를 생성합니다.
+            일반적인 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Math.random()</code>과 달리 시드 추측이 불가능해 비밀번호·토큰처럼 보안이 중요한 용도에도 안심하고 쓸 수 있습니다.
+            문자열 길이 <strong>1~256자</strong>, 한 번에 <strong>최대 100개</strong>까지 동시 생성할 수 있습니다.
           </p>
         </div>
 
         <div>
           <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">활용 사례</h2>
-          <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            <strong>임시 비밀번호 생성</strong> — 회원가입 시 초기 비밀번호나 비밀번호 재설정용 임시 비밀번호를 빠르게 만들 수 있습니다.
-            대소문자+숫자+특수문자를 포함한 12자 이상의 문자열을 권장합니다.
-            <br /><br />
-            <strong>API 키 및 토큰</strong> — 서버 간 통신에 사용되는 API 키, 세션 토큰, CSRF 토큰 등을 생성할 때 유용합니다.
-            보안을 위해 32자 이상의 영숫자 조합을 사용하는 것이 일반적입니다.
-            <br /><br />
-            <strong>테스트 데이터</strong> — 개발 환경에서 더미 데이터를 채울 때, 다양한 길이와 문자 구성의 랜덤 문자열이 필요합니다.
-            여러 개를 한꺼번에 생성하면 시간을 크게 절약할 수 있습니다.
-            <br /><br />
-            <strong>고유 식별자</strong> — UUID 외에도 짧고 읽기 쉬운 고유 코드(초대 코드, 쿠폰 코드, 주문 번호 등)를 만들 때 활용됩니다.
-          </p>
+          <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside">
+            <li><strong>임시 비밀번호 생성</strong> — 초기 비밀번호나 재설정 비밀번호. <strong>대소문자+숫자+특수문자 12자 이상</strong> 권장</li>
+            <li><strong>API 키 및 토큰</strong> — API 키, 세션 토큰, CSRF 토큰. <strong>32자 이상 영숫자 조합</strong>이 일반적</li>
+            <li><strong>테스트 데이터</strong> — 더미 데이터 일괄 생성으로 개발 시간 단축</li>
+            <li><strong>고유 식별자</strong> — 초대 코드, 쿠폰 코드, 주문 번호 등 짧고 읽기 쉬운 코드</li>
+          </ul>
         </div>
 
         <div>
           <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">보안 관련 팁</h2>
           <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            이 도구는 <code>crypto.getRandomValues</code>를 사용하므로 브라우저에서 제공하는 암호학적 난수 생성기(CSPRNG)를 활용합니다.
-            이는 <code>Math.random()</code> 같은 의사난수(PRNG)와는 근본적으로 다릅니다.
-            의사난수는 내부 상태(시드)를 알면 다음 값을 예측할 수 있지만, CSPRNG는 운영체제 수준의 엔트로피 소스를 사용하여 예측이 사실상 불가능합니다.
-            단, 생성된 문자열을 안전하게 전달하고 저장하는 것은 사용자의 책임입니다.
-            비밀번호는 반드시 해시(bcrypt, Argon2 등)하여 저장하고, API 키는 환경 변수로 관리하며, 민감한 문자열을 평문으로 공유하지 마세요.
+            이 도구는 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">crypto.getRandomValues</code>를 사용하므로 브라우저의 <strong>암호학적 난수 생성기(CSPRNG)</strong>를 활용합니다.
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Math.random()</code> 같은 의사난수(PRNG)는 내부 시드를 알면 예측 가능하지만,
+            <strong>CSPRNG는 운영체제 엔트로피</strong>를 사용해 예측이 사실상 불가능합니다.
+            다만, <strong>비밀번호는 bcrypt·Argon2로 해시 저장</strong>, API 키는 환경 변수로 관리하며 민감 문자열을 평문 공유하지 마세요.
+          </p>
+        </div>
+
+        <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+          <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">🔒 개인정보 안내</p>
+          <p className="text-indigo-800 dark:text-indigo-300">
+            모든 생성 작업은 <strong>브라우저 안에서만 처리</strong>되며 서버로 전송되지 않습니다. 오프라인에서도 사용 가능합니다.
           </p>
         </div>
 

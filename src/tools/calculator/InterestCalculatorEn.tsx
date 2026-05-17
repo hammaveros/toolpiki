@@ -701,11 +701,16 @@ function SeoContent() {
           💵 What is Interest Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Interest Calculator computes simple and compound interest along with maturity amounts using principal, rate, and time period.
-          Use it for savings accounts, CDs, bonds, investments, and any financial planning that involves interest.
-          The savings mode calculates compound interest with regular monthly deposits, while the compare mode helps find the best product.
-          Goal calculator works backwards to find required principal, rate, or time to reach your target amount.
+          <strong className="text-gray-900 dark:text-white">Interest Calculator computes simple and compound interest plus maturity amounts from principal, rate, and time.</strong>{' '}
+          Use it for <strong>savings accounts, CDs, bonds, investments</strong>, and any financial planning involving interest.
+          <strong>Savings mode</strong> calculates compound interest with regular monthly deposits; <strong>compare mode</strong> helps find the best product.
+          <strong>Goal calculator</strong> works backwards to find required principal, rate, or time to reach your target.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>Compound interest</strong> earns interest on interest—the gap between simple and compound grows exponentially over time.</p>
+        </div>
       </section>
 
       <section>

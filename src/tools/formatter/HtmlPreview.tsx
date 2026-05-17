@@ -78,10 +78,9 @@ function SeoContent() {
           🌐 HTML 미리보기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          HTML 미리보기는 HTML, CSS, JavaScript 코드를 작성하면 실시간으로 렌더링 결과를 보여주는 도구입니다.
-          별도의 파일 저장이나 브라우저 새로고침 없이 코드 변경 사항을 즉시 확인할 수 있어
-          웹 프로토타이핑, 교육 목적, 코드 스니펫 테스트에 매우 유용합니다.
-          모바일(375px), 태블릿(768px), 데스크탑(1024px) 크기로 반응형 디자인도 미리 테스트할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">HTML·CSS·JS를 한 곳에서 작성하고 결과를 즉시 확인하는 도구입니다.</strong>{' '}
+          파일 저장이나 새로고침 없이 <strong>실시간 렌더링</strong>되어 웹 프로토타이핑·교육·스니펫 테스트에 유용합니다.
+          <strong>모바일(375px), 태블릿(768px), 데스크탑(1024px)</strong> 크기로 반응형 디자인도 미리 테스트할 수 있습니다.
         </p>
       </section>
 
@@ -114,13 +113,21 @@ function SeoContent() {
           💡 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>HTML, CSS, JS를 하나의 파일에 작성하여 빠르게 아이디어 테스트</li>
-          <li>반응형 미디어 쿼리 적용 전 다양한 화면 크기에서 레이아웃 확인</li>
-          <li>블로그나 문서에 삽입할 코드 스니펫 미리 확인</li>
-          <li>CSS 애니메이션, 트랜지션 효과 실시간 디버깅</li>
-          <li>외부 CDN 라이브러리도 &lt;script&gt; 태그로 불러와서 테스트 가능</li>
+          <li><strong>HTML/CSS/JS</strong>를 하나의 파일에 작성하여 빠르게 아이디어 테스트</li>
+          <li><strong>반응형 미디어 쿼리</strong> 적용 전 다양한 화면 크기에서 레이아웃 확인</li>
+          <li>블로그나 문서에 삽입할 <strong>코드 스니펫</strong> 미리 확인</li>
+          <li><strong>CSS 애니메이션·트랜지션</strong> 효과 실시간 디버깅</li>
+          <li>외부 <strong>CDN 라이브러리</strong>도 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&lt;script&gt;</code> 태그로 불러와서 테스트 가능</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 팁</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          코드는 <strong>브라우저 메모리에만 저장</strong>되므로 새로고침 시 사라집니다. 중요한 코드는 미리 복사해두세요.
+          JS 오류는 <strong>F12 콘솔</strong>에서 바로 확인 가능합니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

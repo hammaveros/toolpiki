@@ -249,11 +249,18 @@ function SeoContent() {
           What is the Timing Test?
         </h2>
         <p className="text-sm leading-relaxed">
-          The Timing Test is a time perception game that challenges you to guess exactly how long a specific duration has passed without looking at a clock or timer.
-          Choose a target time of 5, 10, or 30 seconds, press start, then press stop when you feel the target time has elapsed.
-          Your result is measured to 0.001 second (millisecond) precision, and statistics like average and best records are tracked.
-          Test how accurate your internal body clock really is!
+          <strong className="text-gray-900 dark:text-white">Guess exactly how long a duration has passed — without looking at any clock.</strong>{' '}
+          Choose <strong>5/10/30 seconds</strong>, press start, then press stop when you feel the target has elapsed.
+          Measured to <strong>0.001 second (millisecond)</strong> precision, with average and best record tracking.
+          Test how accurate your <strong>internal body clock</strong> really is!
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎯 Skill Tiers</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            Within <strong>0.1s</strong> = elite timing sense. The <strong>10-second mode</strong> offers the most balanced challenge.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -310,11 +317,11 @@ function SeoContent() {
           Tips to Improve Your Timing
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Count numbers in your head at a steady rhythm (one, two, three...)</li>
-          <li>Use your heartbeat or breathing rhythm as a reference</li>
-          <li>Start with short durations (5s) and gradually try longer ones</li>
-          <li>Repeated practice helps calibrate your internal clock</li>
-          <li>Losing focus can make time feel like it passes faster</li>
+          <li><strong>Count silently</strong> at a steady rhythm (one, two, three...)</li>
+          <li><strong>Heartbeat or breathing</strong> as a reference rhythm</li>
+          <li><strong>Start at 5s</strong> and gradually try longer durations</li>
+          <li><strong>Repeated practice</strong> calibrates your internal clock</li>
+          <li><strong>Lost focus</strong> makes time feel faster — stay present</li>
         </ul>
       </section>
 

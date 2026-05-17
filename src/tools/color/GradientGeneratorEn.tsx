@@ -224,11 +224,18 @@ function SeoContent() {
           🌈 What is Gradient Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Gradient Generator creates CSS gradients visually with an intuitive interface.
-          Supports three types: linear, radial, and conic gradients.
-          Freely adjust colors, angles, and positions to create stunning background effects.
+          <strong className="text-gray-900 dark:text-white">Gradient Generator creates CSS gradients visually with an intuitive interface.</strong>{' '}
+          Supports three types: <strong>linear</strong>, <strong>radial</strong>, and <strong>conic</strong> gradients.
+          Freely adjust <strong>colors</strong>, <strong>angles</strong>, and positions to create stunning background effects.
           Copy the generated CSS code to apply directly to your website.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 Design Tip</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            <code className="px-1 py-0.5 rounded bg-white/60 dark:bg-gray-800 text-xs font-mono">135°</code> is the most natural top-left to bottom-right diagonal — a common choice for <strong>SaaS hero backgrounds</strong>.
+          </p>
+        </div>
       </section>
 
       <section>

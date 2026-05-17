@@ -883,10 +883,17 @@ function SeoContent() {
           ⌨️ What Is This Typing Game?
         </h2>
         <p className="text-sm leading-relaxed">
-          This typing game helps you improve your keyboard typing speed and accuracy in a fun way.
-          Instead of just typing fast, the focus is on building the habit of typing accurately.
-          With multiple game modes like Survival, Time Attack, and Long Sentence, practice never gets boring.
+          <strong className="text-gray-900 dark:text-white">Improve your keyboard speed and accuracy in a fun way.</strong>{' '}
+          Instead of just typing fast, the focus is on building the habit of <strong>typing accurately</strong>.
+          With <strong>Survival</strong>, <strong>Time Attack</strong>, and <strong>Long Sentence</strong> modes, practice never gets boring.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">⌨️ Combo System</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>5 combo = 1.5x</strong>, <strong>10 combo = 2x</strong>, <strong>20 combo = 3x</strong> score. Chain correct answers for huge scores.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -914,11 +921,11 @@ function SeoContent() {
           📈 Tips to Improve Typing Speed
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Practice touch typing without looking at the keyboard</li>
-          <li>Focus on accuracy first, then build up speed</li>
-          <li>Practice 10-15 minutes daily for consistent improvement</li>
-          <li>Keep your fingers on the home row position</li>
-          <li>Start with easy difficulty and gradually increase</li>
+          <li><strong>Touch typing</strong> — don't look at the keyboard</li>
+          <li><strong>Accuracy first</strong>, then build up speed</li>
+          <li><strong>10-15 minutes daily</strong> for consistent improvement</li>
+          <li><strong>Home row</strong> — keep fingers in correct position</li>
+          <li><strong>Easy first</strong> then gradually increase difficulty</li>
         </ul>
       </section>
 

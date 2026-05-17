@@ -300,11 +300,18 @@ function SeoContent() {
           💕 이름 궁합이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          두 사람의 이름 획수를 분석하여 궁합 점수를 계산하는 재미 도구입니다.
-          한글과 영문 이름 모두 지원하며, 같은 이름 조합은 항상 동일한 결과가 나와서 친구와 공유하기 좋습니다.
+          <strong className="text-gray-900 dark:text-white">두 사람의 이름 획수를 분석하여 궁합 점수를 계산하는 재미 도구입니다.</strong>{' '}
+          <strong>한글과 영문 이름</strong> 모두 지원하며, 같은 이름 조합은 항상 동일한 결과가 나와서 <strong>친구와 공유</strong>하기 좋습니다.
           친구, 연인, 가족, 동료 이름으로 재미삼아 테스트해보세요.
-          천생연분부터 미스터리 궁합까지 다양한 결과가 나옵니다.
+          <strong>천생연분부터 미스터리 궁합</strong>까지 다양한 결과가 나옵니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 재미용</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            실제 성명학과는 <strong>관련 없는 재미 도구</strong>입니다. 관계는 노력과 이해로 만들어가는 것!
+          </p>
+        </div>
       </section>
 
       <section>

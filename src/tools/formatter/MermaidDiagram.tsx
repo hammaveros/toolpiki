@@ -657,10 +657,9 @@ function SeoContent() {
           📊 머메이드 다이어그램이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          머메이드(Mermaid)는 텍스트 기반으로 다이어그램과 차트를 만드는 오픈소스 도구입니다.
-          복잡한 그래픽 편집기 없이도 간단한 문법만으로 플로우차트, 시퀀스 다이어그램, ER 다이어그램,
-          간트 차트, 파이 차트, 마인드맵 등 다양한 다이어그램을 만들 수 있습니다.
-          GitHub, Notion, GitLab 등에서 기본 지원하며, 개발 문서와 기술 블로그에서 널리 사용됩니다.
+          <strong className="text-gray-900 dark:text-white">텍스트만으로 다이어그램과 차트를 그리는 오픈소스 도구입니다.</strong>{' '}
+          그래픽 편집기 없이 <strong>플로우차트, 시퀀스, ER, 간트, 파이 차트, 마인드맵</strong> 등 9종 이상을 만들 수 있습니다.
+          <strong>GitHub·Notion·GitLab</strong>에서 기본 지원하여 개발 문서·기술 블로그에서 표준처럼 쓰입니다.
         </p>
       </section>
 
@@ -733,12 +732,21 @@ function SeoContent() {
           활용 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>GitHub README에 Mermaid 코드 블록을 넣으면 자동으로 다이어그램이 렌더링됩니다</li>
-          <li>Notion에서도 /mermaid 블록으로 다이어그램을 삽입할 수 있습니다</li>
-          <li>SVG로 내보내면 어떤 해상도에서도 선명하게 표시됩니다</li>
-          <li>다이어그램 방향은 TD(위→아래), LR(왼→오른), BT(아래→위), RL(오른→왼)로 설정</li>
+          <li><strong>GitHub README</strong>에 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">```mermaid</code> 코드 블록을 넣으면 자동 렌더링</li>
+          <li><strong>Notion</strong>에서도 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">/mermaid</code> 블록으로 삽입 가능</li>
+          <li><strong>SVG로 내보내기</strong>하면 어떤 해상도에서도 선명</li>
+          <li>방향은 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">TD</code>(위→아래), <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">LR</code>(왼→오), <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">BT</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">RL</code>로 설정</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 팁</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          <strong>API 호출 흐름</strong>은 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">sequenceDiagram</code>,
+          <strong> DB 스키마</strong>는 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">erDiagram</code>,
+          <strong> 상태 머신</strong>은 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">stateDiagram-v2</code>가 정답입니다. 한 종류로 다 그리려 하지 마세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

@@ -269,11 +269,16 @@ function SeoContent() {
           🔍 What is Regex Tester?
         </h2>
         <p className="text-sm leading-relaxed">
-          Regular Expressions (Regex) are powerful tools for finding and manipulating patterns in text.
-          This tester validates regex patterns in real-time with highlighted match visualization.
-          Test capture groups, flag settings, and string replacement all in one place.
-          Includes presets for common patterns like email, URL, and phone numbers to get started quickly.
+          <strong className="text-gray-900 dark:text-white">Regular Expressions (Regex) are powerful tools for finding and manipulating patterns in text.</strong>{' '}
+          This tester validates regex patterns in <strong>real-time</strong> with <strong>highlighted match visualization</strong>.
+          Test <strong>capture groups, flags, and string replacement</strong> all in one place.
+          Includes presets for <strong>email, URL, and phone number</strong> patterns to get started quickly.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">Always <strong>test regex before deploying</strong>—a single mistake can silently mishandle every input.</p>
+        </div>
       </section>
 
       <section>

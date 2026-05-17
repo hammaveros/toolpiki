@@ -184,32 +184,37 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔐 Base64 인코딩이란?</h2>
         <p className="text-sm leading-relaxed">
-          Base64는 1987년 RFC 1421 초안에 처음 등장한 이후 PEM, MIME(RFC 2045)을 거쳐 지금까지 표준으로 자리잡은 인코딩 방식입니다.
-          0~255의 바이너리 값을 6비트씩 끊어 A-Z, a-z, 0-9, +, / 의 64개 문자로 매핑하고, 4의 배수로 맞추기 위해 부족한 자리에 =(패딩)을 채웁니다.
-          쉽게 말하면 &quot;텍스트만 통과되는 통로에 바이너리를 끼워 보낼 때&quot; 쓰는 변환입니다.
-          크기는 약 4/3배(33%↑)로 늘지만, 라우터나 메일 게이트웨이가 데이터를 임의로 깨뜨리지 않도록 보호해 줍니다.
+          <strong className="text-gray-900 dark:text-white">Base64는 바이너리를 텍스트로 안전하게 옮기기 위한 인코딩입니다.</strong>{' '}
+          1987년 <strong>RFC 1421</strong> 초안에 처음 등장한 이후 PEM, MIME(RFC 2045)을 거쳐 지금까지 표준으로 자리잡았습니다.
+          0~255의 바이너리 값을 <strong>6비트씩 끊어 A-Z, a-z, 0-9, +, / 의 64개 문자</strong>로 매핑하고, 4의 배수로 맞추기 위해 부족한 자리에 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">=</code>(패딩)을 채웁니다.
+          크기는 <strong>약 4/3배(33%↑)</strong>로 늘지만, 라우터나 메일 게이트웨이가 데이터를 임의로 깨뜨리지 않도록 보호해 줍니다.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">💡 실무에서 자주 마주치는 상황</h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
-          <li><strong>이미지를 HTML에 임베드</strong>: 5KB 이하 아이콘은 <code>data:image/png;base64,iVBOR...</code> 형식으로 박아 넣어 HTTP 요청 1건을 줄이는 경우가 많습니다. CSS 스프라이트의 대체재로도 쓰입니다.</li>
+          <li><strong>이미지를 HTML에 임베드</strong>: 5KB 이하 아이콘은 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">data:image/png;base64,iVBOR...</code> 형식으로 박아 넣어 HTTP 요청 1건을 줄이는 경우가 많습니다. CSS 스프라이트의 대체재로도 쓰입니다.</li>
           <li><strong>API 응답에 PDF/이미지 포함</strong>: JSON에 바이너리를 그대로 넣을 수 없어 Base64 문자열로 감싸 보냅니다. AWS S3 pre-signed URL이 부담스러운 작은 미리보기에 적합합니다.</li>
-          <li><strong>Basic 인증 헤더</strong>: <code>Authorization: Basic dXNlcjpwYXNz</code> 형식. user:pass 를 Base64로 묶을 뿐 암호화가 아니므로 반드시 HTTPS와 함께 써야 합니다.</li>
-          <li><strong>JWT 토큰</strong>: Header와 Payload가 점(.)으로 구분되며 Base64url(패딩 없음, +→-, /→_) 변형을 사용합니다. 일반 Base64를 그대로 URL에 넣으면 +가 공백으로 해석되는 문제가 있습니다.</li>
+          <li><strong>Basic 인증 헤더</strong>: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Authorization: Basic dXNlcjpwYXNz</code> 형식. user:pass 를 Base64로 묶을 뿐 <strong>암호화가 아니므로 반드시 HTTPS와 함께</strong> 써야 합니다.</li>
+          <li><strong>JWT 토큰</strong>: Header와 Payload가 점(.)으로 구분되며 <strong>Base64url</strong>(패딩 없음, +→-, /→_) 변형을 사용합니다. 일반 Base64를 그대로 URL에 넣으면 +가 공백으로 해석되는 문제가 있습니다.</li>
           <li><strong>QR 코드용 페이로드 압축</strong>: 짧은 바이너리를 한 줄로 직렬화할 때 사용합니다.</li>
         </ul>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">⚠️ 인코딩 시 주의할 점</h2>
-        <p className="text-sm leading-relaxed">
-          첫째, <strong>한글이나 이모지처럼 UTF-8 멀티바이트 문자</strong>는 <code>btoa()</code>에 바로 넣으면 InvalidCharacterError가 납니다. 이 도구는 내부적으로 UTF-8 바이트로 변환한 뒤 Base64를 적용하므로 안전합니다.
-          둘째, <strong>줄바꿈(76자마다 \r\n)</strong>이 들어간 Base64는 MIME 표준에서 허용되지만 JSON이나 헤더에서는 빼야 합니다.
-          셋째, Base64 결과만 보고 원문을 추측하는 것은 매우 쉽기 때문에 비밀번호나 토큰을 &quot;가리는 용도&quot;로 쓰면 안 됩니다.
-        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">UTF-8 멀티바이트 문자</strong> — 한글이나 이모지를 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">btoa()</code>에 바로 넣으면 InvalidCharacterError가 납니다. 이 도구는 내부적으로 UTF-8 바이트로 변환한 뒤 Base64를 적용하므로 안전합니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">줄바꿈 처리</strong> — 76자마다 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\r\n</code>이 들어간 Base64는 MIME 표준에서 허용되지만 <strong>JSON이나 헤더에서는 빼야</strong> 합니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">원문 추측이 매우 쉬움</strong> — 비밀번호나 토큰을 &quot;가리는 용도&quot;로 쓰면 안 됩니다.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 p-4 text-sm">
+        <p className="font-semibold text-red-900 dark:text-red-200 mb-1">🔒 보안 주의</p>
+        <p className="text-red-800 dark:text-red-300">Base64는 누구나 1초 만에 풀 수 있는 인코딩일 뿐 <strong>암호화가 아닙니다</strong>. 비밀번호 보호에는 bcrypt/Argon2, 통신 보호에는 HTTPS/TLS를 써야 합니다.</p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

@@ -403,11 +403,18 @@ function SeoContent() {
           What is Shell Game?
         </h2>
         <p className="text-sm leading-relaxed">
-          Shell Game is a classic luck-based game where you flip cups to find hidden prizes (balls).
-          After the cups are shuffled, reveal them one by one to find the prizes. You can set the number of cups (3-10) and prizes for adjustable difficulty.
+          <strong className="text-gray-900 dark:text-white">Shell Game is a classic luck-based game where you flip cups to find hidden prizes.</strong>{' '}
+          After the cups are shuffled, reveal them one by one. Set the <strong>cup count (3-10)</strong> and <strong>prize count</strong> for adjustable difficulty.
           Take turns with friends and compete to see who finds prizes faster with fewer attempts.
-          Watch the cups flip with realistic 3D animation effects.
+          Enjoy realistic <strong>3D flip animation</strong>.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎲 Difficulty Control</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>More cups</strong> = harder; <strong>more prizes</strong> = easier. Beginners should start at 3 cups / 1 prize.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -453,10 +460,10 @@ function SeoContent() {
           Game Tips
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Try to follow the cup with the ball while shuffling</li>
-          <li>The shuffle is fast, so focus is key</li>
-          <li>More prizes = easier; more cups = harder</li>
-          <li>Check your stats for total plays and prizes found</li>
+          <li><strong>Eye tracking</strong> — follow the cup with the ball while shuffling</li>
+          <li><strong>Focus</strong> is key — the shuffle is fast</li>
+          <li><strong>Difficulty</strong> — more prizes = easier, more cups = harder</li>
+          <li><strong>Stats panel</strong> shows total plays and prizes found</li>
         </ul>
       </section>
 

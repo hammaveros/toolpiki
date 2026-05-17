@@ -492,11 +492,18 @@ function SeoContent() {
           🃏 오늘의 타로란?
         </h2>
         <p className="text-sm leading-relaxed">
-          타로의 메이저 아르카나 22장 중 1장을 무작위로 뽑아 오늘의 운세와 조언을 확인하는 도구입니다.
-          정방향과 역방향에 따라 다른 키워드와 조언을 제공합니다.
-          하루 1회만 뽑을 수 있어서 매일 아침 오늘의 방향성을 잡아보는 용도로 활용해 보세요.
-          자정에 리셋되니 내일 다시 새 카드를 만나보세요.
+          <strong className="text-gray-900 dark:text-white">메이저 아르카나 22장 중 1장을 무작위로 뽑아 오늘의 운세와 조언을 확인하는 도구입니다.</strong>{' '}
+          <strong>정방향과 역방향</strong>에 따라 다른 키워드와 조언을 제공합니다.
+          <strong>하루 1회</strong>만 뽑을 수 있어서 매일 아침 오늘의 방향성을 잡아보는 용도로 활용해 보세요.
+          <strong>자정에 리셋</strong>되니 내일 다시 새 카드를 만나보세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 재미용</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            실제 운세나 미래 예측이 아닌 <strong>오락 목적</strong>의 도구입니다. 가볍게 참고만 해주세요.
+          </p>
+        </div>
       </section>
 
       <section>

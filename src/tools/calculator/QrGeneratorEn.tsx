@@ -334,11 +334,16 @@ function SeoContent() {
           📱 What is QR Code Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          QR Code Generator converts URLs, text, Wi-Fi credentials, and contact information into scannable QR codes.
-          Perfect for business cards, posters, product packaging, and store signage.
-          Customize foreground and background colors, choose your preferred size, and download as PNG.
-          Wi-Fi QR codes allow automatic connection with a single scan, ideal for sharing guest network access.
+          <strong className="text-gray-900 dark:text-white">QR Code Generator converts URLs, text, Wi-Fi credentials, and contact info into scannable QR codes.</strong>{' '}
+          Perfect for <strong>business cards, posters, product packaging, and store signage</strong>.
+          Customize <strong>foreground and background colors</strong>, choose your preferred size, and download as <strong>PNG</strong>.
+          <strong>Wi-Fi QR codes</strong> allow automatic connection with a single scan—ideal for sharing guest network access.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">Foreground and background colors need <strong>strong contrast</strong> to scan reliably. Light QR on dark backgrounds can confuse scanners.</p>
+        </div>
       </section>
 
       <section>

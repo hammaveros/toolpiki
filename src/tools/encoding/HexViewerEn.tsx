@@ -240,10 +240,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔍 What is Hex Viewer?</h2>
         <p className="text-sm leading-relaxed">
-          Hex Viewer breaks a file apart byte by byte and renders the result as a 16-column grid of hexadecimal values (00–FF) alongside an ASCII preview.
-          Every file on disk — image, video, executable, archive — is ultimately a sequence of integers between 0 and 255, so reading the first few bytes is often enough to identify the real format regardless of the filename extension.
-          The page can show 8, 16, or 32 bytes per row and paginates in 1 KB chunks so even larger files stay responsive.
-          Uploads are handled with the browser's FileReader API; nothing leaves your device, which means you can inspect sensitive binaries safely.
+          <strong className="text-gray-900 dark:text-white">Hex Viewer breaks a file apart byte by byte alongside an ASCII preview.</strong>{' '}
+          Every file on disk — image, video, executable, archive — is ultimately a <strong>sequence of integers between 0 and 255</strong>, so reading the first few bytes is often enough to identify the real format regardless of the filename extension.
+          The page can show <strong>8, 16, or 32 bytes per row</strong> and paginates in <strong>1 KB chunks</strong> so even larger files stay responsive.
+          Uploads are handled with the browser&apos;s <strong>FileReader API</strong>; <strong>nothing leaves your device</strong>.
         </p>
       </section>
 
@@ -264,13 +264,18 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🛠️ Practical Things You Can Do Here</h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
-          <li><strong>Spot a renamed file</strong>: someone sends &quot;photo.jpg&quot; that's actually a ZIP. A leading <code>50 4B 03 04</code> betrays ZIP, while real JPEGs start with <code>FF D8 FF</code>.</li>
-          <li><strong>Check for BOM bytes</strong>: a text file beginning with <code>EF BB BF</code> carries a UTF-8 BOM; <code>FF FE</code> indicates UTF-16 LE. Stray BOMs are a frequent culprit behind encoding errors.</li>
-          <li><strong>Locate metadata blocks</strong>: scan for JPEG's <code>FF E1</code> EXIF marker or PNG's <code>tEXt</code> / <code>eXIf</code> chunk to find where embedded text lives before stripping or editing it.</li>
-          <li><strong>Repair broken archives</strong>: compare the header of a corrupted PDF or ZIP against a known-good copy to find exactly which bytes to patch.</li>
-          <li><strong>Learn binary formats</strong>: ELF (<code>7F 45 4C 46</code>), Mach-O, and PE headers all reveal themselves clearly in a hex view, which makes this a popular starting point for CTF challenges and reverse-engineering tutorials.</li>
+          <li><strong>Spot a renamed file</strong>: a leading <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">50 4B 03 04</code> betrays ZIP, while real JPEGs start with <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">FF D8 FF</code>.</li>
+          <li><strong>Check for BOM bytes</strong>: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">EF BB BF</code> carries a <strong>UTF-8 BOM</strong>; <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">FF FE</code> indicates <strong>UTF-16 LE</strong>. Stray BOMs are a frequent culprit behind encoding errors.</li>
+          <li><strong>Locate metadata blocks</strong>: scan for JPEG&apos;s <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">FF E1</code> EXIF marker or PNG&apos;s <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">tEXt</code> / <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">eXIf</code> chunk.</li>
+          <li><strong>Repair broken archives</strong>: compare the header of a corrupted PDF or ZIP against a <strong>known-good copy</strong> to find exactly which bytes to patch.</li>
+          <li><strong>Learn binary formats</strong>: ELF (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">7F 45 4C 46</code>), Mach-O, and PE headers all reveal themselves clearly — a popular starting point for <strong>CTF and reverse-engineering</strong>.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Good to Know</p>
+        <p className="text-blue-800 dark:text-blue-300">Files are <strong>not uploaded to a server</strong>. The browser <strong>FileReader API</strong> loads the file into a local ArrayBuffer and display logic runs entirely on the same page — safe under corporate policies forbidding external uploads.</p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

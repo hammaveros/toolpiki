@@ -191,13 +191,10 @@ function SeoContent() {
           🔍 Pluck Values Out of Deep JSON
         </h2>
         <p className="text-sm leading-relaxed">
-          JSONPath is a tiny query language for JSON, similar to how XPath works on XML.
-          With a single expression like <span className="font-mono">$.data.users[*].email</span> you can pull every email
-          out of a 4-level nested API response without writing a loop. Paste your JSON on the left, type the path on
-          the right, and the result appears after a 300ms debounce. Everything runs locally in your browser, so payloads
-          containing access tokens, internal IDs, or PII never leave the page. Expressions you craft here translate
-          almost directly to <span className="font-mono">jq</span>, Python <span className="font-mono">jsonpath-ng</span>,
-          and Spring&apos;s JsonPath library.
+          <strong className="text-gray-900 dark:text-white">JSONPath is a tiny query language for JSON — like XPath for XML.</strong>{' '}
+          One expression such as <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">$.data.users[*].email</code> pulls every email from a <strong>4-level nested API response</strong> without writing a loop.
+          Results appear after a <strong>300ms debounce</strong> and <strong>everything runs locally</strong>, so tokens and PII never leave the page.
+          Expressions transfer directly to <strong>jq, jsonpath-ng, and Spring JsonPath</strong>.
         </p>
       </section>
 
@@ -243,11 +240,19 @@ function SeoContent() {
           💡 Pitfall-Avoidance Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Keys with dashes or spaces (like <span className="font-mono">user-name</span>) need bracket notation: <span className="font-mono">$[&apos;user-name&apos;]</span>.</li>
-          <li>Getting <span className="font-mono">undefined</span>? Walk the path back one segment at a time—usually it&apos;s a typo or an unexpected null in the chain.</li>
-          <li>On huge arrays, start with <span className="font-mono">[0:5]</span> to peek at the shape before unleashing <span className="font-mono">[*]</span>.</li>
+          <li>Keys with <strong>dashes or spaces</strong> (like <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">user-name</code>) need bracket notation: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">$[&apos;user-name&apos;]</code>.</li>
+          <li>Getting <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">undefined</code>? Walk the path back one segment — usually it's a <strong>typo</strong> or an <strong>unexpected null</strong> in the chain.</li>
+          <li>On huge arrays, start with <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">[0:5]</code> to peek at the shape before unleashing <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">[*]</code>.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Real-World Use</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          Paths validated here drop straight into <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">kubectl get -o jsonpath=</code>, Postman <strong>Tests scripts</strong>,
+          and <strong>Elasticsearch _source</strong> extraction — saving hours of trial-and-error.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

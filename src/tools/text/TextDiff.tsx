@@ -492,10 +492,9 @@ function SeoContent() {
           🔍 텍스트 비교(Diff)란?
         </h2>
         <p className="text-sm leading-relaxed">
-          텍스트 비교(Diff)는 두 개의 텍스트를 줄 단위로 분석하여 어떤 부분이 추가, 삭제, 수정되었는지를
-          시각적으로 보여주는 도구입니다. 프로그래밍에서 유래한 diff는 원래 유닉스 명령어로, 두 파일 간의
-          차이를 계산하는 데 사용되었습니다. 현재는 코드 리뷰, 문서 변경 추적, 설정 파일 비교 등 다양한
-          분야에서 필수적으로 활용되고 있으며, 이 도구는 브라우저에서 별도 설치 없이 바로 사용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">텍스트 비교(Diff)는 두 텍스트를 줄 단위로 분석하여 추가·삭제·수정 부분을 시각적으로 보여주는 도구</strong>입니다.
+          프로그래밍에서 유래한 diff는 원래 <strong>유닉스 명령어</strong>로 두 파일의 차이를 계산하는 데 사용되었습니다.
+          현재는 <strong>코드 리뷰</strong>, 문서 변경 추적, 설정 파일 비교 등 다양한 분야에서 필수적으로 활용되고 있으며, <strong>설치 없이 브라우저에서 바로</strong> 사용할 수 있습니다.
         </p>
       </section>
 
@@ -523,11 +522,17 @@ function SeoContent() {
           </li>
         </ul>
         <p className="text-sm leading-relaxed mt-3">
-          이 도구는 Myers diff 알고리즘(Git이 사용하는 것과 동일)을 기반으로 동작하여 대용량 텍스트도
-          효율적으로 처리합니다. 단순 줄 비교뿐 아니라 수정된 줄 내에서 단어 단위 하이라이트도 지원합니다.
-          통합 뷰(Unified View)와 좌우 비교(Split View) 두 가지 모드를 제공하여 상황에 맞게 선택할 수 있습니다.
+          이 도구는 <strong>Myers diff 알고리즘</strong>(Git이 사용하는 것과 동일)을 기반으로 동작해 대용량 텍스트도 효율적으로 처리합니다.
+          단순 줄 비교뿐 아니라 <strong>수정된 줄 내 단어 단위 하이라이트</strong>도 지원하며, <strong>통합 뷰</strong>와 <strong>좌우 비교(Split View)</strong> 두 가지 모드를 제공합니다.
         </p>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">🔒 개인정보 안내</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          모든 비교 처리는 <strong>브라우저 내에서만</strong> 이루어집니다. 민감한 코드나 문서도 서버로 전송되지 않으니 안심하고 사용하세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

@@ -15,10 +15,9 @@ function SeoContent() {
           🔄 What is YAML ↔ JSON Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          YAML (YAML Ain't Markup Language) and JSON (JavaScript Object Notation) are both data serialization formats
-          with different syntax. YAML uses indentation and is human-readable, while JSON uses braces and quotes for machine processing.
-          This tool converts between the two formats bidirectionally, useful for Docker Compose, Kubernetes, GitHub Actions
-          config files and API response analysis.
+          <strong className="text-gray-900 dark:text-white">Convert YAML and JSON in both directions instantly.</strong>{' '}
+          <strong>YAML</strong> uses indentation and is <strong>human-readable</strong>, while <strong>JSON</strong> uses braces and quotes for <strong>machine processing</strong>.
+          Useful for <strong>Docker Compose, Kubernetes, GitHub Actions</strong> config files and API response analysis.
         </p>
       </section>
 
@@ -50,12 +49,20 @@ function SeoContent() {
           💡 Use Cases
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Convert Docker Compose YAML to JSON for programmatic parsing</li>
-          <li>Convert Kubernetes manifests to JSON for API submission</li>
-          <li>Convert JSON API responses to YAML for readable inspection</li>
-          <li>Debug GitHub Actions workflow files</li>
+          <li>Convert <strong>Docker Compose</strong> YAML to JSON for programmatic parsing</li>
+          <li>Convert <strong>Kubernetes manifests</strong> to JSON for API submission</li>
+          <li>Convert <strong>JSON API responses</strong> to YAML for readable inspection</li>
+          <li>Debug <strong>GitHub Actions</strong> workflow files</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ YAML Indentation Gotcha</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          YAML <strong>does not allow tabs</strong> for indentation — use <strong>spaces only</strong>.
+          Values like <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">on</code> and <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">yes</code> are <strong>auto-coerced to boolean</strong>, so wrap them in quotes if you need strings.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

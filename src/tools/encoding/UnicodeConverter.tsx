@@ -162,22 +162,26 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🌐 유니코드 변환기란?</h2>
         <p className="text-sm leading-relaxed">
-          유니코드는 1991년 1.0 발표 이후 매년 확장되어 2024년 기준 15만 자 이상의 문자에 고유 번호(코드 포인트, U+XXXX)를 부여하고 있습니다.
-          이 도구는 그 번호를 두 가지 형태로 보여줍니다. 하나는 JavaScript와 JSON에서 사용하는 <code>\uXXXX</code> 이스케이프 표기, 다른 하나는 실제 파일이나 네트워크에 흘러가는 UTF-8 바이트(HEX)입니다.
-          한글 &quot;가&quot;를 예로 들면 코드 포인트는 U+AC00, JS 표기는 <code>가</code>, UTF-8 바이트로는 <code>EA B0 80</code>입니다.
-          문자가 깨져 보일 때 어느 단계에서 잘못됐는지 추적하는 데 유용합니다.
+          <strong className="text-gray-900 dark:text-white">유니코드는 모든 문자에 고유 번호(코드 포인트)를 부여하는 표준입니다.</strong>{' '}
+          1991년 1.0 발표 이후 매년 확장되어 <strong>2024년 기준 15만 자 이상</strong>의 문자에 U+XXXX 형식의 번호가 매겨져 있습니다.
+          이 도구는 그 번호를 두 가지 형태로 보여줍니다: JavaScript와 JSON에서 사용하는 <strong><code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\uXXXX</code> 이스케이프 표기</strong>, 그리고 실제 파일이나 네트워크에 흘러가는 <strong>UTF-8 바이트(HEX)</strong>입니다.
+          한글 &quot;가&quot;를 예로 들면 코드 포인트는 <strong>U+AC00</strong>, UTF-8 바이트로는 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">EA B0 80</code>입니다.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">💡 자주 깨지는 상황과 해결법</h2>
-        <p className="text-sm leading-relaxed">
-          한글이 <strong>&quot;ê°€&quot; 비슷한 글자로 보인다면</strong> UTF-8 바이트가 Latin-1로 잘못 해석되는 경우입니다. DB 컬럼 캐릭터셋, HTTP <code>Content-Type</code> 헤더의 charset, 파일 BOM 셋 중 하나가 어긋났을 가능성이 큽니다.
-          <strong>물음표(?)나 □로 보이면</strong> 폰트에 글리프가 없는 게 아니라 인코딩 변환 중 손실됐을 가능성이 높습니다.
-          이모지처럼 <strong>BMP(U+0000~U+FFFF) 밖의 문자</strong>는 <code>\uXXXX</code> 한 번으로 표현할 수 없고 서러게이트 페어로 분리되거나 <code>\u&#123;1F600&#125;</code> 형식(ES6+)으로 적어야 합니다.
-          이 도구는 BMP 범위만 단일 \uXXXX로 변환하므로 이모지를 다룰 때는 결과값을 잘 살펴보세요.
-        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">한글이 &quot;ê°€&quot; 비슷한 글자로 보임</strong> — UTF-8 바이트가 Latin-1로 잘못 해석되는 경우. <strong>DB 컬럼 캐릭터셋, HTTP Content-Type charset, 파일 BOM</strong> 셋 중 하나가 어긋났을 가능성이 큽니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">물음표(?)나 □로 보임</strong> — 폰트 문제가 아니라 <strong>인코딩 변환 중 손실</strong>됐을 가능성이 높습니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">이모지 처리</strong> — BMP(U+0000~U+FFFF) 밖의 문자는 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\uXXXX</code> 한 번으로 표현할 수 없고 <strong>서러게이트 페어</strong>로 분리되거나 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\u&#123;1F600&#125;</code> 형식(ES6+)으로 적어야 합니다.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 알아두면 좋은 점</p>
+        <p className="text-blue-800 dark:text-blue-300"><strong>유니코드와 UTF-8은 다른 개념</strong>입니다. 유니코드는 &quot;번호표&quot;, UTF-8은 &quot;그 번호를 바이트로 저장하는 방법&quot;. UTF-8은 ASCII와 호환되며 영어 1바이트, 한글 3바이트, 이모지 4바이트로 가변 길이입니다.</p>
+      </div>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📋 변환 모드 안내</h2>

@@ -226,11 +226,16 @@ function SeoContent() {
           📏 CSS 단위 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          CSS 단위 변환기는 px, rem, em, pt, vw, vh 등 웹 개발에서 사용하는 단위를 상호 변환하는 도구입니다.
-          root font-size(기본 16px)와 viewport 크기를 기준으로 정확한 변환값을 계산합니다.
-          반응형 웹 디자인, 접근성 높은 폰트 크기 설정, 모바일/데스크톱 레이아웃 작업에 필수적입니다.
-          변환된 CSS 값을 원클릭으로 복사하여 바로 코드에 붙여넣을 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">CSS 단위 변환기는 px, rem, em, pt, vw, vh 등 웹 개발 단위를 상호 변환하는 도구입니다.</strong>{' '}
+          <strong>root font-size(기본 16px)</strong>와 <strong>viewport 크기</strong>를 기준으로 정확한 변환값을 계산합니다.
+          <strong>반응형 웹 디자인, 접근성, 모바일/데스크톱 레이아웃</strong> 작업에 필수적입니다.
+          변환된 CSS 값을 <strong>원클릭 복사</strong>해 바로 코드에 붙여넣을 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">접근성을 위해 폰트는 <strong>rem</strong>, 컴포넌트 내부 크기는 <strong>em</strong>, 화면 비율은 <strong>vw/vh</strong>를 추천합니다.</p>
+        </div>
       </section>
 
       <section>

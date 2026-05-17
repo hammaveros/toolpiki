@@ -134,10 +134,10 @@ function SeoContent() {
           📋 What is JSON Formatter?
         </h2>
         <p className="text-sm leading-relaxed">
-          JSON (JavaScript Object Notation) is the most widely used lightweight format for data exchange.
-          JSON Formatter prettifies compressed JSON with indentation and line breaks for readability,
-          or minifies it by removing unnecessary whitespace. It is an essential tool for API response analysis,
-          config file editing, database record inspection, and debugging during development.
+          <strong className="text-gray-900 dark:text-white">Format, validate, and minify JSON instantly in one place.</strong>{' '}
+          Prettify compressed JSON with <strong>2/4 space</strong> or tab indentation, or
+          <strong> minify</strong> by stripping whitespace. An essential tool for{' '}
+          <strong>API response analysis</strong>, config editing, database record inspection, and debugging.
         </p>
       </section>
 
@@ -178,12 +178,20 @@ function SeoContent() {
           💡 JSON Syntax Rules
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Keys must be wrapped in double quotes (single quotes not allowed)</li>
-          <li>String values use double quotes; numbers/booleans/null do not</li>
-          <li>Trailing commas after the last item are not allowed</li>
-          <li>Comments are not supported (JSON5, JSONC do support them)</li>
+          <li>Keys <strong>must</strong> be wrapped in <strong>double quotes</strong> (single quotes not allowed)</li>
+          <li>String values use double quotes; <strong>numbers/booleans/null</strong> do not</li>
+          <li><strong>Trailing commas</strong> after the last item are not allowed</li>
+          <li><strong>Comments</strong> are not supported (JSON5, JSONC do support them)</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Common Mistake</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          Mistaking JavaScript object literals (<code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`{key: 'val'}`}</code>) for JSON is the #1 error.
+          <strong> JSON always requires double quotes</strong> (<code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`{"key":"val"}`}</code>).
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

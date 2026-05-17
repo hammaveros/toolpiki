@@ -210,11 +210,18 @@ function SeoContent() {
           What is Order Picker?
         </h2>
         <p className="text-sm leading-relaxed">
-          Order Picker is a tool that randomly shuffles items or names to determine a fair sequence.
-          It uses the Fisher-Yates shuffle algorithm, mathematically proven to give every possible permutation an equal probability.
+          <strong className="text-gray-900 dark:text-white">Order Picker randomly shuffles items or names to determine a fair sequence.</strong>{' '}
+          It uses the <strong>Fisher-Yates shuffle algorithm</strong>, mathematically proven to give <strong>every permutation an equal probability</strong>.
           Perfect for presentation order, game turns, meeting speaking order, audition sequences, and any situation where order might affect outcomes.
-          Results can be shared via link for remote collaboration.
+          Results can be <strong>shared via link</strong> for remote collaboration.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎲 Fairness Guarantee</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            Fisher-Yates ensures <strong>every position has equal probability</strong> — first or last, the chance is exactly the same.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -256,10 +263,10 @@ function SeoContent() {
           Tips
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Use commas to separate items for easy entry</li>
-          <li>Minimum of 2 items required</li>
-          <li>Click "Shuffle Again" to generate a new random order</li>
-          <li>Use share feature to send results to team members</li>
+          <li><strong>Comma-separated</strong> — paste multiple items at once</li>
+          <li><strong>Minimum 2 items</strong> required</li>
+          <li>Click <strong>"Shuffle Again"</strong> for a new random order</li>
+          <li><strong>Share link</strong> sends results to team members</li>
         </ul>
       </section>
 

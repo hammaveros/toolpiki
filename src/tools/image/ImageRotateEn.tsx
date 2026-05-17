@@ -206,10 +206,10 @@ function SeoContent() {
           🔄 What is Image Rotate/Flip?
         </h2>
         <p className="text-sm leading-relaxed">
-          Image Rotate/Flip is an online tool that corrects photo orientation or applies mirror effects.
-          Easily fix smartphone photos that were saved rotated, or correct scanned documents with wrong orientation.
-          No software installation required - works directly in your browser with all processing done locally for privacy.
-          Real-time preview lets you see the exact result before applying and downloading.
+          <strong className="text-gray-900 dark:text-white">Corrects photo orientation or applies mirror effects online.</strong>{' '}
+          Easily fix <strong>smartphone photos</strong> saved rotated, or correct <strong>scanned documents</strong> with wrong orientation.
+          No install required — runs in your browser with all processing done <strong>locally</strong> for privacy.
+          <strong>Real-time preview</strong> shows the exact result before applying.
         </p>
       </section>
 
@@ -242,12 +242,20 @@ function SeoContent() {
           💡 Image Rotation Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>EXIF orientation issues</strong>: Fix photos with incorrect camera orientation metadata</li>
-          <li><strong>Scanned documents</strong>: Correct wrongly scanned document orientation</li>
-          <li><strong>Selfie correction</strong>: Use horizontal flip to restore original direction</li>
-          <li><strong>Combine operations</strong>: Apply rotation and flip together for various effects</li>
-          <li><strong>Preserve original</strong>: Preview before applying, download saves as new file</li>
+          <li><strong>EXIF orientation</strong> — fix photos with incorrect camera metadata</li>
+          <li><strong>Scanned documents</strong> — correct wrongly oriented scans</li>
+          <li><strong>Selfie correction</strong> — <strong>horizontal flip</strong> restores original direction</li>
+          <li><strong>Combine operations</strong> — rotation + flip for varied effects</li>
+          <li><strong>Preserve original</strong> — preview first, downloads as new file</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 p-4 text-sm">
+          <p className="font-semibold text-emerald-900 dark:text-emerald-200 mb-1">💡 Lossless rotation</p>
+          <p className="text-emerald-800 dark:text-emerald-300">
+            <code className="px-1 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-xs font-mono">90°</code> /
+            <code className="px-1 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-xs font-mono">180°</code> /
+            <code className="px-1 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-xs font-mono">270°</code> right-angle rotations have <strong>no quality loss</strong>. Saved as PNG.
+          </p>
+        </div>
       </section>
 
       <FaqSection

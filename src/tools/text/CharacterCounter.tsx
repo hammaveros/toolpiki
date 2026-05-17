@@ -377,9 +377,9 @@ function SeoContent() {
           📝 글자수 세기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          글자수 세기는 입력한 텍스트의 글자수, 단어수, 문장수, 문단수, 바이트 수를 실시간으로 계산하는 도구입니다.
-          트위터(280자), 인스타그램(2,200자), 네이버 블로그 제목(100자) 등 플랫폼별 글자수 제한을 확인하거나,
-          SEO 메타 태그(title 60자, description 160자)를 최적화할 때 유용합니다.
+          <strong className="text-gray-900 dark:text-white">글자수 세기는 텍스트의 글자/단어/문장/바이트 수를 실시간으로 계산하는 도구</strong>입니다.
+          <strong>트위터 280자</strong>, <strong>인스타그램 2,200자</strong>, 네이버 블로그 제목(100자) 등 플랫폼별 글자수 제한을 확인하거나,
+          SEO 메타 태그(<strong>title 60자</strong>, <strong>description 160자</strong>)를 최적화할 때 유용합니다.
           공백 포함/미포함 글자수를 동시에 확인할 수 있어, 원고 작성이나 과제 제출에도 활용됩니다.
         </p>
       </section>
@@ -404,12 +404,19 @@ function SeoContent() {
           💡 바이트 계산 기준
         </h2>
         <p className="text-sm leading-relaxed">
-          한글은 UTF-8 기준 3바이트, 영어/숫자는 1바이트로 계산됩니다.
-          SMS 발송 시 한글 70자(EUC-KR 기준), 영문 160자가 1건에 해당하며,
-          이를 초과하면 LMS(2,000바이트)로 전환됩니다.
+          <strong>한글은 UTF-8 기준 3바이트</strong>, 영어/숫자는 1바이트로 계산됩니다.
+          <strong>SMS 발송 시 한글 70자</strong>(EUC-KR 기준), <strong>영문 160자</strong>가 1건에 해당하며,
+          이를 초과하면 <strong>LMS(2,000바이트)</strong>로 전환됩니다.
           데이터베이스 필드 크기나 API 요청 제한을 확인할 때도 바이트 수 확인이 필요합니다.
         </p>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 쓰기 팁</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          채용 공고에 글자수가 명시되어 있다면 <strong>공백 포함</strong> 기준으로 확인하는 것이 안전합니다. 특별한 명시가 없다면 두 값 모두 점검하세요.
+        </p>
+      </div>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">

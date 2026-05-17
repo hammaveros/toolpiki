@@ -181,11 +181,16 @@ function SeoContent() {
           💰 What is Meeting Cost Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Meeting Cost Calculator visualizes the hidden labor costs of meetings.
-          Enter the number of participants, meeting duration, and average salary to calculate meeting costs in dollars.
-          Uses the standard 2,080 annual work hours (40 hours × 52 weeks) to derive hourly rates.
-          Make better decisions about which meetings are truly necessary for productivity.
+          <strong className="text-gray-900 dark:text-white">Meeting Cost Calculator visualizes the hidden labor costs of meetings.</strong>{' '}
+          Enter <strong>participants, duration, and average salary</strong> to calculate meeting costs in dollars.
+          Uses the standard <strong>2,080 annual work hours</strong> (40 hours × 52 weeks) to derive hourly rates.
+          Make better decisions about <strong>which meetings are truly necessary</strong> for productivity.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">When a "quick sync" reveals a <strong>$500+</strong> price tag, it becomes a powerful argument for reshaping meeting culture.</p>
+        </div>
       </section>
 
       <section>

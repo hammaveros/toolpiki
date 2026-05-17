@@ -317,11 +317,16 @@ function SeoContent() {
           🎲 랜덤 추첨기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          랜덤 추첨기는 지정한 범위에서 무작위 숫자를 뽑거나 목록에서 항목을 추첨하는 도구입니다.
-          로또 번호 생성, 제비뽑기, 당첨자 선정, 순서 정하기 등 다양한 상황에 활용할 수 있습니다.
-          암호학적으로 안전한 난수 생성기(crypto.getRandomValues)를 사용하여 예측 불가능한 진정한 무작위 결과를 제공합니다.
-          최대 10개의 추첨 기록을 저장하여 이전 결과를 확인할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">랜덤 추첨기는 지정한 범위에서 무작위 숫자를 뽑거나 목록에서 항목을 추첨하는 도구입니다.</strong>{' '}
+          <strong>로또 번호 생성, 제비뽑기, 당첨자 선정, 순서 정하기</strong> 등 다양한 상황에 활용할 수 있습니다.
+          <strong>crypto.getRandomValues</strong>를 사용하여 예측 불가능한 진정한 무작위 결과를 제공합니다.
+          최대 <strong>10개의 추첨 기록</strong>을 저장하여 이전 결과를 확인할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>암호학적 난수</strong>를 사용해 <code>Math.random()</code>보다 훨씬 공정한 결과를 보장합니다.</p>
+        </div>
       </section>
 
       <section>

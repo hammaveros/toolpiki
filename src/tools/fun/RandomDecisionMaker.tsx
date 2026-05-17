@@ -282,11 +282,18 @@ function SeoContent() {
           🎲 랜덤 결정 도구란?
         </h2>
         <p className="text-sm leading-relaxed">
-          랜덤 결정 도구는 선택하기 어려운 상황에서 운에 맡겨 무작위로 결과를 정해주는 유틸리티입니다.
-          Yes/No 결정, 동전 던지기, 숫자 범위 뽑기, 직접 입력한 선택지 중 고르기 등 4가지 모드를 지원합니다.
+          <strong className="text-gray-900 dark:text-white">랜덤 결정 도구는 선택하기 어려울 때 운에 맡겨 무작위로 결과를 정해주는 유틸리티입니다.</strong>{' '}
+          <strong>Yes/No 결정</strong>, <strong>동전 던지기</strong>, <strong>숫자 범위 뽑기</strong>, <strong>직접 입력 선택지</strong> 등 4가지 모드를 지원합니다.
           Yes 확률 조절 기능으로 원하는 비율로 결과를 조정할 수도 있습니다.
           결정 장애가 있을 때, 빠르게 결론을 내야 할 때 활용하세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🧠 결정 피로 줄이기</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            성인은 하루 평균 <strong>약 35,000번</strong>의 결정을 내립니다. 사소한 건 무작위 장치에 맡기면 <strong>인지 부담</strong>이 줄어듭니다.
+          </p>
+        </div>
       </section>
 
       <section>

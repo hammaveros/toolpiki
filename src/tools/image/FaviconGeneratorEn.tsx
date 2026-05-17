@@ -205,10 +205,9 @@ function SeoContent() {
           ⭐ What is Favicon Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Favicon Generator creates website favicons in all required sizes from a single source image.
-          Upload one image and automatically generate icons for browser tabs, bookmarks, iOS/Android home screens, and PWA splash screens.
-          All platforms require different icon sizes - this tool creates them all at once.
-          Download icons individually or all at once, with ready-to-use HTML code included.
+          <strong className="text-gray-900 dark:text-white">Creates website favicons in all required sizes from a single source image.</strong>{' '}
+          Upload once and auto-generate icons for <strong>browser tabs, bookmarks, iOS/Android home screens, and PWA splash screens</strong>.
+          Download icons individually or all at once, with ready-to-use <strong>HTML code</strong> included.
         </p>
       </section>
 
@@ -241,12 +240,19 @@ function SeoContent() {
           💡 Tips for Great Favicons
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>Square source</strong>: Use 512x512 or larger square images</li>
-          <li><strong>Simple design</strong>: Keep it recognizable at small sizes</li>
-          <li><strong>Transparent background</strong>: PNG format supports transparency</li>
-          <li><strong>Brand colors</strong>: Use core logo colors for recognition</li>
-          <li><strong>Test small</strong>: Make sure it looks good at 16x16</li>
+          <li><strong>Square source</strong> — use <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">512x512</code> or larger</li>
+          <li><strong>Simple design</strong> — recognizable at small sizes</li>
+          <li><strong>Transparent background</strong> — <strong>PNG</strong> supports transparency</li>
+          <li><strong>Brand colors</strong> — use core logo colors for recognition</li>
+          <li><strong>Test small</strong> — make sure it works at <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">16x16</code></li>
         </ul>
+        <div className="mt-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 p-4 text-sm">
+          <p className="font-semibold text-emerald-900 dark:text-emerald-200 mb-1">💡 Design tip</p>
+          <p className="text-emerald-800 dark:text-emerald-300">
+            <strong>Use a symbol, not text</strong>. Letters disappear at <code className="px-1 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-xs font-mono">16x16</code>,
+            but simple shapes or a single initial stay legible.
+          </p>
+        </div>
       </section>
 
       <FaqSection

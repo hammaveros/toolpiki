@@ -361,11 +361,18 @@ function SeoContent() {
           🔮 생년월일 궁합이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          두 사람의 생년월일을 기반으로 띠 궁합(12지신)과 별자리 궁합을 종합 분석하는 도구입니다.
-          띠 40%와 별자리 60%를 가중 평균하여 종합 점수를 산출합니다.
+          <strong className="text-gray-900 dark:text-white">두 사람의 생년월일로 띠(12지신)와 별자리 궁합을 종합 분석하는 도구입니다.</strong>{' '}
+          <strong>띠 40%, 별자리 60%</strong>로 가중 평균하여 종합 점수를 산출합니다.
           연인, 친구, 가족, 동료와의 궁합을 재미로 확인해보세요.
-          각 띠와 별자리의 특성을 바탕으로 조언도 제공합니다.
+          각 띠와 별자리의 특성을 바탕으로 <strong>맞춤 조언</strong>도 제공합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 재미용</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            실제 운세나 관계 예측과는 <strong>관련 없는 재미 도구</strong>입니다. 가볍게 즐겨주세요.
+          </p>
+        </div>
       </section>
 
       <section>

@@ -165,11 +165,16 @@ function SeoContent() {
           💾 What is File Size Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          File Size Calculator converts between B, KB, MB, GB, TB, and PB units and estimates download times for various internet speeds.
-          It uses binary units (1024-based) as used by operating systems for accurate conversions.
-          Essential for planning large file transfers, storage capacity, and cloud storage management.
-          Supports speeds from standard internet to gigabit and USB transfer rates.
+          <strong className="text-gray-900 dark:text-white">File Size Calculator converts between B, KB, MB, GB, TB, and PB units and estimates download times.</strong>{' '}
+          Uses <strong>binary units (1024-based)</strong>, matching how operating systems count storage.
+          Essential for <strong>large file transfers, storage capacity planning, and cloud storage management</strong>.
+          Supports speeds from standard internet to <strong>gigabit and USB transfer rates</strong>.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Warning</p>
+          <p className="text-amber-800 dark:text-amber-300"><strong>1 KB = 1024 B</strong> (binary) ≠ <strong>1 KB = 1000 B</strong> (decimal). HDD manufacturers use decimal; OSes use binary.</p>
+        </div>
       </section>
 
       <section>

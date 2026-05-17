@@ -153,10 +153,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔒 해시 생성기란?</h2>
         <p className="text-sm leading-relaxed">
-          해시 함수는 임의 길이의 입력을 고정 길이의 출력으로 압축하는 단방향 함수입니다.
-          1바이트가 바뀌어도 결과 전체가 완전히 다른 값으로 튀어 오르는 &quot;눈사태 효과(Avalanche Effect)&quot;가 핵심 특성입니다.
-          이 도구는 입력 텍스트로 MD5, SHA-1, SHA-256, SHA-384, SHA-512 다섯 가지 해시를 동시에 뽑아 줍니다.
-          MD5와 SHA-1을 제외한 SHA-2 계열은 브라우저의 Web Crypto API(<code>crypto.subtle.digest</code>)를 그대로 사용하므로 로컬에서 즉시 계산되며 네트워크 전송이 없습니다.
+          <strong className="text-gray-900 dark:text-white">해시는 임의 길이 입력을 고정 길이 지문으로 압축하는 단방향 함수입니다.</strong>{' '}
+          1바이트가 바뀌어도 결과 전체가 완전히 다른 값으로 튀어 오르는 <strong>&quot;눈사태 효과(Avalanche Effect)&quot;</strong>가 핵심 특성입니다.
+          이 도구는 <strong>MD5, SHA-1, SHA-256, SHA-384, SHA-512 다섯 가지 해시</strong>를 동시에 뽑아 줍니다.
+          SHA-2 계열은 브라우저의 <strong>Web Crypto API</strong>(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">crypto.subtle.digest</code>)를 그대로 사용하므로 <strong>로컬에서 즉시 계산</strong>되며 네트워크 전송이 없습니다.
         </p>
       </section>
 
@@ -185,13 +185,18 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📜 알고리즘별 역사와 깨진 시점</h2>
-        <p className="text-sm leading-relaxed">
-          <strong>MD5</strong>는 1991년에 발표되었지만 1995년 약점이 지적되었고 2004년 Wang Xiaoyun 팀이 충돌(collision) 공격을 실용화하면서 사실상 깨졌습니다. 2008년에는 가짜 SSL 인증서가 만들어진 사례도 있어 이제는 단순 체크섬 외에는 쓰지 않습니다.
-          <strong>SHA-1</strong>은 1995년 NSA가 설계했고 2017년 구글이 두 개의 서로 다른 PDF로 같은 SHA-1을 만드는 SHAttered 공격을 공개하면서 폐기 권고가 굳어졌습니다.
-          현재 산업 표준인 <strong>SHA-256</strong>은 비트코인 작업증명에 쓰이며 64라운드 압축을 통해 256비트 다이제스트를 만듭니다.
-          더 큰 다이제스트가 필요한 정부 등급 시스템에서는 SHA-384, SHA-512 또는 차세대 표준인 SHA-3(Keccak)를 사용합니다.
-        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">MD5 (1991)</strong> — 1995년 약점 지적, <strong>2004년 Wang Xiaoyun 팀</strong>이 충돌 공격을 실용화하면서 사실상 깨졌습니다. 2008년에는 가짜 SSL 인증서가 만들어진 사례도 있어 단순 체크섬 외에는 쓰지 않습니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">SHA-1 (1995)</strong> — NSA 설계. <strong>2017년 구글의 SHAttered 공격</strong>으로 두 개의 서로 다른 PDF가 같은 SHA-1을 갖는 사례가 공개되며 폐기 권고가 굳어졌습니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">SHA-256 (현재 산업 표준)</strong> — 비트코인 작업증명에 쓰이며 <strong>64라운드 압축</strong>으로 256비트 다이제스트를 만듭니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">SHA-384/512, SHA-3(Keccak)</strong> — 더 큰 다이제스트가 필요한 정부 등급 시스템에서 사용합니다.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 p-4 text-sm">
+        <p className="font-semibold text-red-900 dark:text-red-200 mb-1">🔒 보안 주의</p>
+        <p className="text-red-800 dark:text-red-300">비밀번호 저장에 <strong>SHA-256은 부족합니다</strong>. GPU로 초당 수십억 번 시도가 가능하기 때문입니다. <strong>bcrypt, scrypt, Argon2</strong> 같은 의도적으로 느린 알고리즘과 <strong>사용자별 salt</strong>를 함께 써야 합니다.</p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

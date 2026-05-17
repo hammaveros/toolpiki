@@ -143,37 +143,37 @@ function SeoContent() {
         <div>
           <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">What is a Random String Generator?</h2>
           <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            A random string generator creates unpredictable sequences of characters by combining lowercase letters, uppercase letters, numbers, and special symbols.
-            This tool uses the browser&apos;s Web Crypto API (<code>crypto.getRandomValues</code>) to produce cryptographically secure random numbers (CSPRNG).
-            Unlike <code>Math.random()</code>, which relies on a predictable pseudo-random algorithm, CSPRNG draws from the operating system&apos;s entropy sources, making the output virtually impossible to predict.
-            You can generate strings from 1 to 256 characters long, and create up to 100 strings at once for batch operations.
+            <strong className="text-gray-900 dark:text-white">A random string generator creates unpredictable sequences of characters by combining lowercase letters, uppercase letters, numbers, and special symbols.</strong>{' '}
+            This tool uses the browser&apos;s <strong>Web Crypto API</strong> (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">crypto.getRandomValues</code>) to produce <strong>cryptographically secure random numbers (CSPRNG)</strong>.
+            Unlike <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Math.random()</code>, CSPRNG draws from the OS entropy sources, making the output virtually impossible to predict.
+            You can generate strings from <strong>1 to 256 characters</strong>, and create <strong>up to 100 strings at once</strong> for batch operations.
           </p>
         </div>
 
         <div>
           <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Common Use Cases</h2>
-          <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            <strong>Temporary Passwords</strong> — Quickly create initial passwords for user registration or password reset flows.
-            A combination of uppercase, lowercase, numbers, and symbols with at least 12 characters is recommended for strong security.
-            <br /><br />
-            <strong>API Keys and Tokens</strong> — Generate API keys, session tokens, CSRF tokens, and other secrets used for server-to-server communication.
-            For these use cases, alphanumeric strings of 32 characters or more are standard practice.
-            <br /><br />
-            <strong>Test Data</strong> — Fill development and staging environments with dummy data quickly.
-            Generating multiple random strings at once saves significant time when populating databases or testing input validation.
-            <br /><br />
-            <strong>Unique Identifiers</strong> — Create short, human-readable unique codes such as invitation codes, coupon codes, or order reference numbers that are distinct from standard UUIDs.
-          </p>
+          <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside">
+            <li><strong>Temporary Passwords</strong> — Initial passwords or reset tokens. Use <strong>12+ characters</strong> mixing upper/lower/digits/symbols.</li>
+            <li><strong>API Keys and Tokens</strong> — Session tokens, CSRF tokens, server-to-server keys. <strong>32+ alphanumeric chars</strong> is standard.</li>
+            <li><strong>Test Data</strong> — Populate dev/staging environments with realistic dummy strings in bulk.</li>
+            <li><strong>Unique Identifiers</strong> — Short readable codes like invitation codes, coupon codes, or order numbers.</li>
+          </ul>
         </div>
 
         <div>
           <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Security Tips</h2>
           <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            This tool leverages <code>crypto.getRandomValues</code>, which is a cryptographically secure pseudo-random number generator (CSPRNG) provided by the browser.
-            This is fundamentally different from <code>Math.random()</code>, a basic pseudo-random number generator (PRNG).
-            With PRNG, knowing the internal seed state allows an attacker to predict future outputs, whereas CSPRNG relies on OS-level entropy sources that make prediction practically infeasible.
-            However, how you transmit and store these strings is up to you.
-            Always hash passwords with algorithms like bcrypt or Argon2 before storing them, manage API keys through environment variables, and never share sensitive strings in plaintext.
+            This tool leverages <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">crypto.getRandomValues</code>, a <strong>cryptographically secure</strong> generator provided by the browser.
+            With PRNG (like <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Math.random()</code>), knowing the seed state lets an attacker predict outputs.
+            CSPRNG relies on OS-level entropy that makes prediction practically infeasible. However, transmission and storage are still your responsibility:
+            always <strong>hash passwords with bcrypt or Argon2</strong>, manage API keys via environment variables, and never share sensitive strings in plaintext.
+          </p>
+        </div>
+
+        <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+          <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">🔒 Privacy</p>
+          <p className="text-indigo-800 dark:text-indigo-300">
+            All generation happens <strong>entirely inside your browser</strong>. No data is sent to any server, and the tool works offline.
           </p>
         </div>
 

@@ -224,11 +224,18 @@ function SeoContent() {
           🎨 What is Color Perception Test?
         </h2>
         <p className="text-sm leading-relaxed">
-          Color Perception Test measures your ability to distinguish subtle color differences.
-          Find the exact matching color among 4 similar options in each round.
-          Difficulty increases across 10 rounds while tracking both accuracy and response time.
-          Perfect for designers, illustrators, photographers, and anyone curious about their color vision abilities.
+          <strong className="text-gray-900 dark:text-white">Color Perception Test measures your ability to distinguish subtle color differences.</strong>{' '}
+          Find the exact matching color among <strong>4 similar options</strong> in each round.
+          Difficulty increases across <strong>10 rounds</strong> while tracking both <strong>accuracy</strong> and <strong>response time</strong>.
+          Perfect for designers, illustrators, photographers, and anyone curious about their color vision.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎨 For Designers</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>90%+</strong> indicates designer-level color perception. Use a <strong>calibrated IPS monitor</strong> for the most accurate result.
+          </p>
+        </div>
       </section>
 
       <section>

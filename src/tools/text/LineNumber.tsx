@@ -188,10 +188,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📝 줄번호 추가/제거 도구란?</h2>
         <p className="text-sm leading-relaxed">
-          줄번호 추가 도구는 텍스트의 각 줄 앞에 자동으로 번호를 매겨주는 온라인 유틸리티입니다.
-          코드 스니펫을 공유하거나, 문서의 특정 줄을 참조해야 할 때, 또는 목록을 정리할 때 매우 유용합니다.
-          반대로 이미 줄번호가 붙어 있는 텍스트에서 번호만 깔끔하게 제거하는 기능도 함께 제공합니다.
-          별도의 프로그램 설치 없이 브라우저에서 바로 사용할 수 있으며, 입력과 동시에 실시간으로 결과가 반영됩니다.
+          <strong className="text-gray-900 dark:text-white">줄번호 추가 도구는 텍스트 각 줄 앞에 자동으로 번호를 매겨주는 온라인 유틸리티</strong>입니다.
+          <strong>코드 스니펫 공유</strong>, 문서 특정 줄 참조, 목록 정리에 매우 유용합니다.
+          반대로 <strong>이미 줄번호가 붙은 텍스트에서 번호만 제거</strong>하는 기능도 함께 제공합니다.
+          별도 설치 없이 브라우저에서 바로 사용할 수 있고, <strong>실시간 반영</strong>됩니다.
         </p>
       </section>
 
@@ -219,10 +219,17 @@ function SeoContent() {
           </div>
           <div>
             <strong className="text-gray-900 dark:text-white">자릿수 맞춤 (패딩)</strong>
-            <p className="mt-1 leading-relaxed">줄 수가 많을 때 번호 앞에 공백을 추가하여 자릿수를 맞춰줍니다. 예를 들어 100줄짜리 텍스트에서 1번 줄은 &quot;  1&quot;로 표시되어 깔끔하게 정렬됩니다. 코드처럼 정렬이 중요한 경우에 유용합니다.</p>
+            <p className="mt-1 leading-relaxed">줄 수가 많을 때 번호 앞에 공백을 추가하여 자릿수를 맞춰줍니다. 예를 들어 <strong>100줄짜리 텍스트에서 1번 줄은 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">  1</code></strong>로 표시되어 깔끔하게 정렬됩니다. <strong>코드처럼 정렬이 중요한 경우</strong>에 유용합니다.</p>
           </div>
         </div>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 활용 팁</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          코드 리뷰 공유에는 <strong>구분자 <code className="px-1 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900 text-xs font-mono">:</code> + 패딩 활성화</strong>가 가장 깔끔하고, 단순 목록 정리에는 <strong>구분자 <code className="px-1 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900 text-xs font-mono">.</code></strong>가 자연스럽습니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

@@ -809,11 +809,18 @@ function SeoContent() {
           👥 팀 뽑기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          팀 뽑기는 여러 명의 참가자를 원하는 수의 팀으로 무작위로 나누는 도구입니다.
-          2팀에서 최대 8팀까지 설정 가능하며, 인원이 딱 나누어 떨어지지 않아도 라운드 로빈 방식으로 자동 분배됩니다.
-          모든 참가자가 무작위로 섞인 후 팀에 배정되므로 공정한 팀 편성이 가능합니다.
+          <strong className="text-gray-900 dark:text-white">팀 뽑기는 여러 명의 참가자를 원하는 수의 팀으로 무작위로 나누는 도구입니다.</strong>{' '}
+          <strong>2팀에서 최대 8팀</strong>까지 설정 가능하며, 인원이 딱 나누어 떨어지지 않아도 <strong>라운드 로빈 방식</strong>으로 자동 분배됩니다.
+          모든 참가자가 무작위로 섞인 후 팀에 배정되므로 <strong>공정한 팀 편성</strong>이 가능합니다.
           스포츠 경기, 프로젝트 그룹, 보드게임, 워크샵 등 다양한 상황에서 활용하세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎲 균등 분배</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>7명을 3팀으로</strong> 나누면 → 3명, 2명, 2명. 라운드 로빈으로 <strong>최대 1명 차이</strong>만 발생합니다.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -860,10 +867,10 @@ function SeoContent() {
           사용 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>쉼표(,) 또는 줄바꿈으로 이름을 입력하세요</li>
-          <li>팀 이름은 결과 화면에서 클릭해 수정할 수 있습니다</li>
-          <li>참가자 목록은 다음 방문 시에도 유지됩니다</li>
-          <li>공유 기능으로 팀 편성 결과를 전달하세요</li>
+          <li><strong>쉼표(,) 또는 줄바꿈</strong>으로 이름 입력</li>
+          <li><strong>팀 이름 클릭</strong> — 결과 화면에서 직접 수정 가능</li>
+          <li><strong>자동 저장</strong> — 참가자 목록은 다음 방문에도 유지</li>
+          <li><strong>공유 기능</strong>으로 팀 편성 결과 전달</li>
         </ul>
       </section>
 

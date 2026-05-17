@@ -298,10 +298,10 @@ function SeoContent() {
           ✂️ What is Image Cropper?
         </h2>
         <p className="text-sm leading-relaxed">
-          Image Cropper is an online tool that lets you select and extract specific areas from photos.
-          Select your crop area by dragging, or enter precise pixel coordinates for exact control.
-          Perfect for creating profile pictures, removing unwanted backgrounds, and resizing for social media thumbnails.
-          No software installation needed - works directly in your browser with local processing to keep your images private.
+          <strong className="text-gray-900 dark:text-white">Select and extract specific areas from photos online.</strong>{' '}
+          Choose your crop area by <strong>dragging</strong>, or enter precise <strong>pixel coordinates</strong> for exact control.
+          Perfect for <strong>profile pictures, background removal, and social media thumbnails</strong>.
+          No install needed — runs in your browser with <strong>local processing</strong> for privacy.
         </p>
       </section>
 
@@ -334,12 +334,20 @@ function SeoContent() {
           💡 Image Cropping Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>Center your subject</strong>: Place people/products in the center for balanced composition</li>
-          <li><strong>Leave margins</strong>: For thumbnails with text overlay, leave space at top or bottom</li>
-          <li><strong>Platform specs</strong>: Each social media has different recommended ratios, use presets</li>
-          <li><strong>Maintain resolution</strong>: Cropping too small may result in low resolution output</li>
-          <li><strong>Precise cropping</strong>: Use pixel input for exact dimensions</li>
+          <li><strong>Center your subject</strong> — balanced composition for people/products</li>
+          <li><strong>Leave margins</strong> — keep <strong>top/bottom space</strong> for text overlays</li>
+          <li><strong>Platform specs</strong> — each social media uses different ratios, <strong>use presets</strong></li>
+          <li><strong>Maintain resolution</strong> — cropping too small reduces output quality</li>
+          <li><strong>Precise cropping</strong> — pixel input for exact dimensions</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Quick ratio pick</p>
+          <p className="text-blue-800 dark:text-blue-300">
+            Instagram feed: <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">1:1</code>,
+            YouTube thumbnail: <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">16:9</code>,
+            photo print: <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">3:2</code>.
+          </p>
+        </div>
       </section>
 
       <FaqSection

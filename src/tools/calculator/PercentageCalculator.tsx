@@ -144,11 +144,16 @@ function SeoContent() {
           🔢 퍼센트 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          퍼센트 계산기는 다양한 백분율 계산을 4가지 모드로 쉽게 해결하는 도구입니다.
-          할인가 계산, 비율 구하기, 증감률 적용 등 일상과 업무에서 자주 필요한 퍼센트 연산을 지원합니다.
-          계산 공식도 함께 표시되어 어떻게 계산되는지 원리를 이해할 수 있습니다.
-          쇼핑 할인 계산, 세금 계산, 성장률/감소율 분석, 성적 환산 등에 활용하세요.
+          <strong className="text-gray-900 dark:text-white">퍼센트 계산기는 다양한 백분율 계산을 4가지 모드로 쉽게 해결하는 도구입니다.</strong>{' '}
+          <strong>할인가 계산, 비율 구하기, 증감률 적용</strong> 등 일상과 업무에서 자주 필요한 퍼센트 연산을 지원합니다.
+          <strong>계산 공식</strong>도 함께 표시되어 어떻게 계산되는지 원리를 이해할 수 있습니다.
+          <strong>쇼핑 할인, 세금, 성장률, 성적 환산</strong> 등에 활용하세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>4가지 모드</strong>(퍼센트 값 / 비율 / 증가 / 감소)로 쇼핑·세금·성과 계산까지 한 번에 해결합니다.</p>
+        </div>
       </section>
 
       <section>
@@ -191,8 +196,13 @@ function SeoContent() {
           📐 자주 쓰는 백분율 공식 정리
         </h2>
         <p className="text-sm leading-relaxed mb-3">
-          업무에서 자주 쓰는 퍼센트 공식들을 한눈에 정리했습니다. 헷갈릴 때 참고하세요.
+          <strong>업무에서 자주 쓰는 퍼센트 공식</strong>들을 한눈에 정리했습니다. 헷갈릴 때 참고하세요.
         </p>
+
+        <div className="mb-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 주의</p>
+          <p className="text-amber-800 dark:text-amber-300"><strong>퍼센트(%)</strong>와 <strong>퍼센트포인트(%p)</strong>는 다릅니다. 3% → 5%는 "2%p 인상" 또는 "약 66.7% 인상"입니다.</p>
+        </div>
         <div className="overflow-x-auto text-sm">
           <table className="w-full text-xs">
             <thead>

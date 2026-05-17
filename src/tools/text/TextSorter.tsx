@@ -128,7 +128,9 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📋 텍스트 정렬이란?</h2>
         <p className="text-sm leading-relaxed">
-          텍스트 정렬은 여러 줄의 텍스트를 특정 기준에 따라 순서를 재배치하는 작업입니다. 이름 목록을 가나다순으로 정리하거나, 영어 단어를 알파벳순으로 나열하거나, 데이터를 길이순으로 분류하는 등 다양한 상황에서 활용됩니다. 수동으로 하나씩 옮기는 것은 시간이 오래 걸리고 실수가 발생하기 쉽지만, 이 도구를 사용하면 클릭 한 번으로 원하는 정렬 결과를 즉시 얻을 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">텍스트 정렬은 여러 줄의 텍스트를 특정 기준에 따라 순서를 재배치하는 작업</strong>입니다.
+          이름 목록을 <strong>가나다순</strong>으로 정리하거나, 영어 단어를 <strong>알파벳순</strong>으로 나열하거나, 데이터를 <strong>길이순</strong>으로 분류하는 등 다양한 상황에서 활용됩니다.
+          수동으로 옮기는 것은 시간이 오래 걸리고 실수가 잦지만, 이 도구는 <strong>클릭 한 번</strong>으로 정확한 결과를 즉시 제공합니다.
         </p>
       </section>
 
@@ -154,6 +156,13 @@ function SeoContent() {
           <li>대소문자 구분 옵션으로 정밀한 정렬 제어</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 정렬 팁</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          한글·영문 혼합 데이터는 <strong>대소문자 구분 옵션 OFF</strong>가 가장 자연스럽고, 코드처럼 정확한 매칭이 필요할 때만 <strong>ON</strong>으로 두세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

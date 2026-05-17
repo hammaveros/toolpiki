@@ -162,23 +162,26 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🌐 What is Unicode Converter?</h2>
         <p className="text-sm leading-relaxed">
-          The Unicode standard, first published in 1991 and now at version 15.1, assigns a unique code point (U+XXXX) to more than 150,000 characters from every modern writing system plus emoji, math symbols, and historic scripts.
-          This tool shows that number in two forms. The first is the <code>\uXXXX</code> escape used inside JavaScript and JSON source code; the second is the UTF-8 byte sequence (HEX) that actually travels over the wire.
-          For example, the letter &quot;A&quot; lives at U+0041, escapes to <code>A</code>, and serializes to the single byte <code>41</code> in UTF-8.
-          When text looks scrambled it helps to translate it both ways here and see at which stage the corruption was introduced.
+          <strong className="text-gray-900 dark:text-white">Unicode assigns a unique code point to every character.</strong>{' '}
+          The standard, first published in 1991 and now at version 15.1, covers <strong>more than 150,000 characters</strong> from every modern writing system plus emoji, math symbols, and historic scripts.
+          This tool shows that number in two forms: the <strong><code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\uXXXX</code> escape</strong> used inside JavaScript and JSON, and the <strong>UTF-8 byte sequence (HEX)</strong> that actually travels over the wire.
+          For example, &quot;A&quot; lives at <strong>U+0041</strong> and serializes to the single byte <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">41</code> in UTF-8.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">💡 When Text Goes Wrong</h2>
-        <p className="text-sm leading-relaxed">
-          The most common case is <strong>mojibake</strong>: UTF-8 bytes being interpreted as Latin-1 (or vice versa) so &quot;naïve&quot; renders as &quot;naÃ¯ve&quot;.
-          Check three places — the database column charset, the HTTP <code>Content-Type</code> header, and the file BOM — until all three agree on UTF-8.
-          A run of question marks or empty boxes usually means data was already lost during a previous round-trip; rerunning your decoder will not bring it back.
-          Characters outside the BMP (U+0000–U+FFFF) such as emoji cannot fit into a single <code>\uXXXX</code> escape; they require either a surrogate pair or the ES6+ form <code>\u&#123;1F600&#125;</code>.
-          This tool only emits the 4-digit form, so inspect the output if your input contains supplementary characters.
-        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">Mojibake</strong> — UTF-8 bytes interpreted as Latin-1 so &quot;naïve&quot; renders as &quot;naÃ¯ve&quot;. Check three places: <strong>database column charset, HTTP Content-Type header, file BOM</strong> — until all three agree on UTF-8.</li>
+          <li><strong className="text-gray-900 dark:text-white">Question marks or empty boxes</strong> — usually means data was already lost during a previous round-trip; <strong>rerunning your decoder will not bring it back</strong>.</li>
+          <li><strong className="text-gray-900 dark:text-white">Characters outside the BMP</strong> (emoji etc.) — cannot fit into a single <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\uXXXX</code> escape; they require a <strong>surrogate pair</strong> or the ES6+ form <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">\u&#123;1F600&#125;</code>.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Good to Know</p>
+        <p className="text-blue-800 dark:text-blue-300"><strong>Unicode and UTF-8 are different concepts.</strong> Unicode is the catalogue of character numbers; UTF-8 is one way to store them as bytes. UTF-8 is <strong>variable length</strong>: 1 byte for ASCII, 2–3 for most Latin/CJK, 4 for emoji.</p>
+      </div>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📋 Conversion Modes</h2>

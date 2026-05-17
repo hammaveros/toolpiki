@@ -304,11 +304,18 @@ function SeoContent() {
           👁️ 색맹 시뮬레이터란?
         </h2>
         <p className="text-sm leading-relaxed">
-          색맹 시뮬레이터는 색각이상(색맹/색약)을 가진 사람이 이미지를 어떻게 인식하는지 시뮬레이션하는 접근성 도구입니다.
-          적색맹(Protanopia), 녹색맹(Deuteranopia), 청색맹(Tritanopia), 전색맹(Achromatopsia) 등 주요 유형을 지원합니다.
+          <strong className="text-gray-900 dark:text-white">색맹 시뮬레이터는 색각이상을 가진 사람이 이미지를 어떻게 보는지 재현하는 <strong>접근성 도구</strong>입니다.</strong>{' '}
+          <strong>적색맹</strong>(Protanopia), <strong>녹색맹</strong>(Deuteranopia), <strong>청색맹</strong>(Tritanopia), 전색맹(Achromatopsia) 등 주요 유형을 지원합니다.
           업로드한 이미지뿐 아니라 색상 팔레트도 실시간으로 비교할 수 있어 디자인 검토에 유용합니다.
-          전 세계 남성의 약 8%, 여성의 약 0.5%가 색각이상을 가지고 있어 접근성 고려는 필수입니다.
+          전 세계 <strong>남성의 약 8%</strong>, 여성의 약 0.5%가 색각이상을 가지고 있어 접근성 고려는 필수입니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 접근성 체크</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            색각이상자의 <strong>99% 이상</strong>이 <strong>적녹색맹</strong>입니다. 색상만으로 정보 전달하지 말고 <strong>아이콘·텍스트 라벨</strong>을 함께 제공하세요.
+          </p>
+        </div>
       </section>
 
       <section>

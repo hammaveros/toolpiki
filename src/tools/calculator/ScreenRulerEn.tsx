@@ -296,11 +296,16 @@ function SeoContent() {
           📏 What is Screen Ruler?
         </h2>
         <p className="text-sm leading-relaxed">
-          Screen Ruler measures on-screen areas by dragging to get pixel dimensions.
-          It also converts to mm and inches based on your DPI (dots per inch) settings.
-          Essential for UI/UX design, web development, and checking image sizes.
-          Measure multiple areas simultaneously and keep a record of measurements.
+          <strong className="text-gray-900 dark:text-white">Screen Ruler measures on-screen areas by dragging to get pixel dimensions.</strong>{' '}
+          Converts to <strong>mm and inches</strong> based on your <strong>DPI (dots per inch)</strong> setting.
+          Essential for <strong>UI/UX design, web development, and checking image sizes</strong>.
+          <strong>Measure multiple areas</strong> simultaneously and keep a record of measurements.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">No standalone ruler app needed—<strong>measure right in the browser</strong>. Instantly review design specs or margins.</p>
+        </div>
       </section>
 
       <section>

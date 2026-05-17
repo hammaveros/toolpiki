@@ -181,10 +181,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔗 What is URL Encoding?</h2>
         <p className="text-sm leading-relaxed">
-          URL encoding (Percent-encoding) converts characters that are not allowed in URLs into %XX format.
-          It's essential for safely transmitting URLs containing spaces, special characters, or non-ASCII characters.
-          Following RFC 3986, reserved characters and non-ASCII characters are first converted to UTF-8 byte sequences,
-          then each byte is represented as %HH. It is one of the most commonly used encoding techniques in web development.
+          <strong className="text-gray-900 dark:text-white">URL encoding (Percent-encoding) converts unsafe characters into %XX format.</strong>{' '}
+          It&apos;s essential for safely transmitting URLs containing <strong>spaces, special characters, or non-ASCII characters</strong>.
+          Following <strong>RFC 3986</strong>, reserved characters and non-ASCII characters are first converted to <strong>UTF-8 byte sequences</strong>, then each byte is represented as <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%HH</code>.
+          It is one of the most commonly used encoding techniques in web development.
         </p>
       </section>
 
@@ -192,17 +192,22 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">⚙️ encodeURI vs encodeURIComponent</h2>
         <div className="text-sm space-y-3">
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-            <h3 className="font-semibold mb-1">encodeURIComponent (Recommended)</h3>
-            <p>Use for encoding query parameter values. Encodes all URL delimiters including =, &amp;, ?, /, : so special characters in parameter values are handled safely.</p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded mt-1 inline-block">?name=encodeURIComponent("John&Jane")</code>
+            <h3 className="font-semibold mb-1"><code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">encodeURIComponent</code> (Recommended)</h3>
+            <p>Use for <strong>query parameter values</strong>. Encodes all URL delimiters including =, &amp;, ?, /, : so <strong>special characters in parameter values</strong> are handled safely.</p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded mt-1 inline-block">?name=encodeURIComponent(&quot;John&amp;Jane&quot;)</code>
           </div>
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-            <h3 className="font-semibold mb-1">encodeURI (Full URL)</h3>
-            <p>Use for encoding complete URLs. Preserves URL structure characters like :, /, ?, #, &amp; while encoding everything else.</p>
-            <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded mt-1 inline-block">encodeURI("https://example.com/search?q=hello world")</code>
+            <h3 className="font-semibold mb-1"><code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">encodeURI</code> (Full URL)</h3>
+            <p>Use for <strong>complete URLs</strong>. <strong>Preserves URL structure characters</strong> like :, /, ?, #, &amp; while encoding everything else.</p>
+            <code className="text-xs bg-gray-100 dark:bg-gray-700 px-1 rounded mt-1 inline-block">encodeURI(&quot;https://example.com/search?q=hello world&quot;)</code>
           </div>
         </div>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Good to Know</p>
+        <p className="text-blue-800 dark:text-blue-300">Long encoded URLs are normal. <strong>Non-ASCII characters expand to 3 bytes</strong> in UTF-8 (e.g. one CJK character → %XX%XX%XX). Most chat apps automatically re-decode them for preview display.</p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

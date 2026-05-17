@@ -15,10 +15,10 @@ function SeoContent() {
           ⚡ 코드 Minifier란?
         </h2>
         <p className="text-sm leading-relaxed">
-          코드 Minifier(압축기)는 CSS, JavaScript, HTML 코드에서 불필요한 공백, 줄바꿈, 주석을 제거하여
-          파일 크기를 최소화하는 도구입니다. 웹사이트 로딩 속도를 개선하고 대역폭을 절약하는 데 필수적입니다.
-          프로덕션 환경에서 코드 배포 전 압축은 표준 관행이며, 일반적으로 30~70%의 용량 절감 효과를 볼 수 있습니다.
-          반대로 Beautify 기능은 압축된 코드를 읽기 좋게 다시 정렬해줍니다.
+          <strong className="text-gray-900 dark:text-white">CSS·JavaScript·HTML 코드를 압축해 파일 크기를 최소화합니다.</strong>{' '}
+          공백·줄바꿈·주석을 제거해 <strong>웹사이트 로딩 속도</strong>를 개선하고 대역폭을 절약합니다.
+          프로덕션 배포 전 압축은 표준 관행이며, 일반적으로 <strong>30~70% 용량 절감</strong> 효과를 볼 수 있습니다.
+          반대로 <strong>Beautify</strong> 기능은 압축된 코드를 다시 읽기 좋게 정렬합니다.
         </p>
       </section>
 
@@ -61,12 +61,20 @@ function SeoContent() {
           💡 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>개발 중에는 Beautify 상태로 작업하고, 배포 전에 Minify 적용</li>
-          <li>CDN에 올릴 파일은 반드시 Minify하여 로딩 속도 개선</li>
-          <li>소스맵(Source Map)과 함께 사용하면 디버깅에도 문제없음</li>
-          <li>빌드 도구(Webpack, Vite)는 자동 Minify를 지원하므로 설정 확인</li>
+          <li><strong>개발 중에는 Beautify</strong> 상태로 작업하고, <strong>배포 전에 Minify</strong> 적용</li>
+          <li>CDN에 올릴 파일은 반드시 Minify하여 <strong>로딩 속도</strong> 개선</li>
+          <li><strong>소스맵(Source Map)</strong>과 함께 사용하면 디버깅에도 문제없음</li>
+          <li>빌드 도구(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Webpack</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Vite</code>)는 자동 Minify를 지원하므로 설정 확인</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 팁</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          빌드 자동화가 어려운 <strong>정적 페이지</strong>나 <strong>이메일 템플릿 HTML</strong>은 이 도구로 일회성 압축을 처리하면 충분합니다.
+          단, 압축 후엔 반드시 한 번 동작 테스트를 거치세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

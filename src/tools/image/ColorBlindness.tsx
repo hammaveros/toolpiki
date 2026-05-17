@@ -217,8 +217,9 @@ function SeoContent() {
           👁️ 색맹 시뮬레이터란?
         </h2>
         <p className="text-sm leading-relaxed">
-          색맹 시뮬레이터는 색각 이상이 있는 사람들이 이미지나 디자인을 어떻게 보는지 시뮬레이션해주는 도구입니다.
-          웹사이트, 앱, 인포그래픽 등을 디자인할 때 색맹 사용자도 정보를 정확히 인식할 수 있는지 확인하는 접근성(Accessibility) 검토에 필수적입니다.
+          <strong className="text-gray-900 dark:text-white">색각 이상자가 이미지/디자인을 어떻게 보는지 시뮬레이션하는 도구.</strong>{' '}
+          웹사이트, 앱, 인포그래픽을 디자인할 때 <strong>색맹 사용자</strong>도 정보를 정확히 인식할 수 있는지 확인하는
+          <strong>접근성(Accessibility) 검토</strong>에 필수입니다.
         </p>
       </section>
 
@@ -226,20 +227,11 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           🔬 색맹의 종류
         </h2>
-        <div className="space-y-3 text-sm leading-relaxed">
-          <div>
-            <p className="font-medium">적록 색맹 (가장 흔함)</p>
-            <p>전체 남성의 약 8%, 여성의 약 0.5%에게 나타납니다. 빨간색과 초록색을 구별하기 어렵습니다. 적색맹(Protanopia)과 녹색맹(Deuteranopia)으로 나뉩니다.</p>
-          </div>
-          <div>
-            <p className="font-medium">청황 색맹</p>
-            <p>파란색과 노란색을 구별하기 어려운 유형입니다. 청색맹(Tritanopia)이라고 하며, 적록 색맹보다 드문 편입니다.</p>
-          </div>
-          <div>
-            <p className="font-medium">전색맹</p>
-            <p>색을 전혀 구별할 수 없는 상태로 매우 드물게 나타납니다. 모든 것이 회색 톤으로 보입니다.</p>
-          </div>
-        </div>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">적록 색맹</strong> — 남성 <strong>약 8%</strong>, 여성 약 0.5%. 빨강/초록 구별 곤란. <strong>Protanopia</strong>(적색맹), <strong>Deuteranopia</strong>(녹색맹)</li>
+          <li><strong className="text-gray-900 dark:text-white">청황 색맹</strong> — <strong>Tritanopia</strong>. 파랑/노랑 구별 곤란. 적록 색맹보다 드뭄</li>
+          <li><strong className="text-gray-900 dark:text-white">전색맹</strong> — <strong>Achromatopsia</strong>. 색 구별 불가, 모두 회색 톤. 매우 드뭄</li>
+        </ul>
       </section>
 
       <section>
@@ -247,11 +239,17 @@ function SeoContent() {
           🎨 접근성 디자인 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>색상만으로 정보를 전달하지 마세요. 패턴, 아이콘, 텍스트를 함께 사용하세요</li>
-          <li>빨강-초록 조합 대신 파랑-주황 조합이 더 구별하기 쉽습니다</li>
-          <li>그래프에서는 색상과 함께 다른 시각적 구분(점선, 마커 등)을 추가하세요</li>
-          <li>충분한 명도 대비(Contrast ratio)를 확보하세요 (WCAG 기준 4.5:1 이상)</li>
+          <li><strong>색상만으로 정보 전달 금지</strong> — 패턴, 아이콘, 텍스트 함께 사용</li>
+          <li><strong>빨강-초록 대신 파랑-주황</strong> 조합이 더 구별하기 쉬움</li>
+          <li>그래프엔 <strong>점선/마커</strong> 등 시각적 구분 추가</li>
+          <li><strong>명도 대비</strong> 확보 — WCAG 기준 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">4.5:1</code> 이상</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 접근성 체크</p>
+          <p className="text-blue-800 dark:text-blue-300">
+            전 세계 인구 <strong>약 4.5%</strong>가 색각 이상. 디자인 완료 전 <strong>적록 색맹</strong> 모드로 한 번 확인해 보세요.
+          </p>
+        </div>
       </section>
 
       <FaqSection

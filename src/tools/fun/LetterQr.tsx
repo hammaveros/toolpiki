@@ -228,11 +228,18 @@ function SeoContent() {
           ✉️ 편지 QR이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          편지 QR은 짧은 편지를 작성하고 QR코드로 공유할 수 있는 도구입니다.
-          받는 사람이 QR코드를 스캔하면 예쁘게 꾸며진 편지 카드가 열립니다.
-          편지 내용은 URL에 직접 포함되어 서버에 저장되지 않아 개인정보 걱정이 없습니다.
-          5가지 편지지 디자인 중 원하는 스타일을 골라 더 특별한 편지를 만들어보세요.
+          <strong className="text-gray-900 dark:text-white">편지 QR은 짧은 편지를 작성하고 QR코드로 공유할 수 있는 도구입니다.</strong>{' '}
+          받는 사람이 QR코드를 스캔하면 <strong>예쁘게 꾸며진 편지 카드</strong>가 열립니다.
+          편지 내용은 <strong>URL에 직접 인코딩</strong>되어 서버에 저장되지 않아 개인정보 걱정이 없습니다.
+          <strong>5가지 편지지 디자인</strong> 중 원하는 스타일을 골라 더 특별한 편지를 만들어보세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🔒 프라이버시</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            편지 내용은 <strong>URL 안에만</strong> 저장되며 어떤 서버에도 전송되지 않습니다. <strong>최대 100자</strong> 입력 가능.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -274,10 +281,10 @@ function SeoContent() {
           사용 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>짧은 문장일수록 QR코드가 단순해져 스캔이 잘 됩니다</li>
-          <li>편지 이미지를 저장해서 SNS에 올릴 수도 있습니다</li>
-          <li>QR코드를 인쇄할 때는 최소 2cm 이상 크기를 추천합니다</li>
-          <li>줄바꿈(Enter)도 편지에 그대로 반영됩니다</li>
+          <li><strong>짧을수록 좋음</strong> — QR이 단순해져 스캔 인식률이 높아집니다</li>
+          <li><strong>이미지 저장</strong>해서 SNS 업로드 가능</li>
+          <li><strong>인쇄 시 최소 2cm</strong> 이상 크기 권장</li>
+          <li><strong>줄바꿈(Enter)</strong>도 편지에 그대로 반영</li>
         </ul>
       </section>
 

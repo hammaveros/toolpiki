@@ -311,11 +311,18 @@ function SeoContent() {
           🎨 Box Shadow 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          Box Shadow 생성기는 CSS box-shadow 속성을 시각적으로 편집하고 실시간 미리보기를 제공하는 도구입니다.
-          X/Y 오프셋, 흐림, 확산, 색상, 투명도를 슬라이더로 조절하며 여러 그림자를 레이어링할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">Box Shadow 생성기는 CSS <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">box-shadow</code> 속성을 시각적으로 편집하고 실시간 미리보기를 제공하는 도구입니다.</strong>{' '}
+          <strong>X/Y 오프셋</strong>, <strong>흐림</strong>, <strong>확산</strong>, 색상, 투명도를 슬라이더로 조절하며 여러 그림자를 <strong>레이어링</strong>할 수 있습니다.
           소프트 그림자, 하드 그림자, 네온 효과, 인셋 등 다양한 프리셋으로 빠르게 시작하고 커스터마이즈할 수 있습니다.
           생성된 CSS 코드는 복사 버튼으로 바로 가져갈 수 있어 개발 워크플로우에 즉시 적용 가능합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 디자인 팁</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            <strong>가까운 그림자</strong>(작고 진함)와 <strong>먼 그림자</strong>(크고 흐림)를 함께 레이어링하면 평면적인 느낌이 사라지고 자연스러운 깊이감이 살아납니다.
+          </p>
+        </div>
       </section>
 
       <section>

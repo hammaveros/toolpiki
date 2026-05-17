@@ -182,10 +182,11 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📡 모스부호 변환기란?</h2>
         <p className="text-sm leading-relaxed">
-          모스부호는 1837년 사무엘 모스와 알프레드 베일이 미국 특허로 정리한 전신 부호로, 짧은 신호(dit)와 긴 신호(dah)만 가지고 모든 문자를 표현하는 가장 오래된 디지털 통신 중 하나입니다.
-          1851년 국제 모스부호로 재정비된 뒤 ITU 표준으로 굳어졌고, 1999년 GMDSS(전 세계 해상 조난 통신 시스템)에 자리를 내준 지금도 아마추어 무선과 항공 항법 식별 신호에서 매일 사용됩니다.
-          이 도구는 입력한 텍스트를 점·대시로 바꿔주고 반대로 점·대시 시퀀스를 텍스트로 복원하며, Web Audio API로 600Hz 사인파를 합성해 실제 톤으로 들려줍니다.
-          SOS(<code>··· --- ···</code>)는 1906년 베를린 국제무선전신회의에서 채택된 이후 지금까지 동일한 신호입니다.
+          <strong className="text-gray-900 dark:text-white">모스부호는 짧은 신호(dit)와 긴 신호(dah)만으로 모든 문자를 표현하는 전신 부호입니다.</strong>{' '}
+          <strong>1837년 사무엘 모스와 알프레드 베일</strong>이 미국 특허로 정리한 가장 오래된 디지털 통신 중 하나입니다.
+          1851년 국제 모스부호로 재정비된 뒤 <strong>ITU 표준</strong>으로 굳어졌고, 1999년 GMDSS에 자리를 내준 지금도 <strong>아마추어 무선과 항공 항법 신호</strong>에서 매일 사용됩니다.
+          이 도구는 입력한 텍스트를 점·대시로 바꾸고, <strong>Web Audio API로 600Hz 사인파</strong>를 합성해 실제 톤으로 들려줍니다.
+          <strong>SOS(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">··· --- ···</code>)</strong>는 1906년 베를린 국제무선전신회의에서 채택된 이후 지금까지 동일한 신호입니다.
         </p>
       </section>
 
@@ -205,13 +206,15 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🧠 외우는 요령 – 음절로 익히기</h2>
-        <p className="text-sm leading-relaxed">
-          모스부호를 외울 때 점·대시를 노트에 적어 외우면 금세 잊어버립니다.
-          햄 무선 동호회에서는 음절을 활용한 코흐 방식(Koch Method)을 권장하는데,
-          예를 들어 A는 &quot;아아빵&quot;(점-대시 = 짧고-길게), B는 &quot;빵아아아&quot;처럼 운율로 익히면 효과적입니다.
-          또 다른 팁은 자주 쓰는 글자(E, T, A, N, I, M)부터 익히는 방법으로, ITU에서 정한 길이가 짧은 글자가 사용 빈도 상위에 배치되어 있어 빠른 송수신에 유리합니다.
-          숙련된 햄 무선사는 분당 30단어(WPM 30) 이상을 받아쓸 수 있으며, 군사 통신용으로는 40 WPM도 표준이었습니다.
+        <p className="text-sm leading-relaxed mb-3">
+          <strong className="text-gray-900 dark:text-white">점·대시를 노트에 적어 외우면 금세 잊어버립니다.</strong>{' '}
+          햄 무선 동호회에서 권장하는 학습법을 정리하면:
         </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">코흐 방식(Koch Method)</strong> — 음절·운율로 익힙니다. 예: A는 &quot;아아빵&quot;(짧고-길게), B는 &quot;빵아아아&quot;.</li>
+          <li><strong className="text-gray-900 dark:text-white">빈도 상위 글자부터</strong> — E, T, A, N, I, M 순서. ITU 표에서 <strong>짧은 글자가 자주 쓰는 글자</strong>에 배치되어 빠른 송수신에 유리합니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">속도 기준</strong> — 숙련된 햄 무선사는 <strong>분당 30단어(WPM 30) 이상</strong>, 군사 통신용은 40 WPM이 표준이었습니다.</li>
+        </ul>
       </section>
 
       <section>
@@ -235,6 +238,11 @@ function SeoContent() {
           </table>
         </div>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 알아두면 좋은 점</p>
+        <p className="text-blue-800 dark:text-blue-300"><strong>SOS는 &quot;Save Our Souls&quot;의 약어가 아닙니다.</strong> 단순히 알아듣기 쉬운 패턴을 고른 것입니다. 정석은 S와 O 사이에 문자 간격 없이 <strong>한 덩어리로 송신</strong>하는 것입니다.</p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

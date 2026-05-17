@@ -15,10 +15,10 @@ function SeoContent() {
           ⚡ What is Code Minifier?
         </h2>
         <p className="text-sm leading-relaxed">
-          Code Minifier is a tool that removes unnecessary whitespace, line breaks, and comments from CSS, JavaScript, and HTML
-          to minimize file size. It's essential for improving website loading speed and saving bandwidth.
-          Minification before deployment is standard practice, typically achieving 30-70% size reduction.
-          The Beautify feature does the opposite, reformatting compressed code for readability.
+          <strong className="text-gray-900 dark:text-white">Compress CSS, JavaScript, and HTML to shrink file size.</strong>{' '}
+          Strips whitespace, line breaks, and comments to boost <strong>page load speed</strong> and save bandwidth.
+          Minifying before deployment is standard practice and typically yields <strong>30-70% size reduction</strong>.
+          The <strong>Beautify</strong> feature does the reverse, reformatting compressed code for readability.
         </p>
       </section>
 
@@ -61,12 +61,20 @@ function SeoContent() {
           💡 Best Practices
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Use Beautify during development, apply Minify before deployment</li>
-          <li>Always minify files before uploading to CDN for faster loading</li>
-          <li>Use Source Maps alongside minified code for debugging capability</li>
-          <li>Build tools like Webpack/Vite have built-in minification settings</li>
+          <li>Use <strong>Beautify during development</strong>, <strong>Minify before deployment</strong></li>
+          <li>Always minify files before uploading to CDN for <strong>faster loading</strong></li>
+          <li>Use <strong>Source Maps</strong> alongside minified code for debugging capability</li>
+          <li>Build tools like <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Webpack</code>/<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Vite</code> have built-in minification settings</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Pro Tip</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          For one-off cases where build automation is overkill (<strong>static pages</strong>, <strong>email HTML templates</strong>),
+          this tool handles minification in seconds. Just run a smoke test afterwards.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

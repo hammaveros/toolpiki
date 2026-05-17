@@ -686,11 +686,18 @@ function SeoContent() {
           🎲 랜덤 닉네임 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          게임, SNS, 커뮤니티 등에서 사용할 한글 닉네임을 자동 생성하는 도구입니다.
-          게임용, 감성, 강함, 귀여움, 무난, 웃긴 6가지 스타일과 2~5글자 길이를 선택할 수 있습니다.
-          의미 있는 단어 조합 알고리즘으로 실제 사람이 지은 듯한 자연스러운 닉네임을 만들어줍니다.
+          <strong className="text-gray-900 dark:text-white">게임, SNS, 커뮤니티에서 사용할 한글 닉네임을 자동 생성하는 도구입니다.</strong>{' '}
+          <strong>게임용, 감성, 강함, 귀여움, 무난, 웃긴</strong> 6가지 스타일과 <strong>2~5글자</strong> 길이를 선택할 수 있습니다.
+          <strong>의미 있는 단어 조합 알고리즘</strong>으로 실제 사람이 지은 듯한 자연스러운 닉네임을 만들어줍니다.
           필터 기능으로 특정 글자가 포함된 닉네임만 골라볼 수도 있어요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎯 플랫폼별 추천</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>롤/발로란트: 3~5자</strong>, <strong>메이플: 2~4자</strong>, <strong>인스타/디스코드: 4~7자</strong>가 일반적입니다.
+          </p>
+        </div>
       </section>
 
       <section>

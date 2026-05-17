@@ -322,11 +322,9 @@ function SeoContent() {
           📦 Flexbox Playground란?
         </h2>
         <p className="text-sm leading-relaxed">
-          Flexbox Playground는 CSS Flexbox 레이아웃을 시각적으로 학습하고 실험할 수 있는 인터랙티브 도구입니다.
-          컨테이너의 flex-direction, justify-content, align-items 등 주요 속성과
-          개별 아이템의 flex-grow, flex-shrink, order 등을 실시간으로 조절하면서
-          각 속성이 레이아웃에 미치는 영향을 즉시 확인할 수 있습니다.
-          설정한 속성은 CSS 코드로 자동 생성되어 바로 복사해서 사용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">CSS Flexbox 속성을 슬라이더로 조절하며 즉시 결과를 보는 인터랙티브 도구입니다.</strong>{' '}
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">flex-direction</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">justify-content</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">align-items</code>와 아이템의 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">flex-grow</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">order</code>를 <strong>실시간으로 비교</strong>할 수 있습니다.
+          설정값은 <strong>CSS 코드로 자동 생성</strong>되어 바로 복사·붙여넣기 가능합니다.
         </p>
       </section>
 
@@ -360,12 +358,20 @@ function SeoContent() {
           💡 Flexbox 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>중앙 정렬</strong>: justify-content: center + align-items: center로 완벽한 중앙 배치</li>
-          <li><strong>균등 배분</strong>: space-between으로 첫/끝 요소를 양 끝에, 나머지를 균등 배치</li>
-          <li><strong>반응형 그리드</strong>: flex-wrap: wrap + flex-basis로 자동 줄바꿈 그리드 구현</li>
-          <li><strong>순서 변경</strong>: order 속성으로 HTML 순서와 다른 시각적 순서 적용</li>
+          <li><strong>중앙 정렬</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">justify-content: center</code> + <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">align-items: center</code>로 완벽 중앙 배치</li>
+          <li><strong>균등 배분</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">space-between</code>으로 첫/끝 요소 양 끝, 나머지 균등 배치</li>
+          <li><strong>반응형 그리드</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">flex-wrap: wrap</code> + <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">flex-basis</code>로 자동 줄바꿈</li>
+          <li><strong>순서 변경</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">order</code>로 HTML 순서와 다른 시각적 순서 적용</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 언제 Flex, 언제 Grid?</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          <strong>1차원 정렬</strong>(네비게이션 바, 카드 한 줄)은 <strong>Flexbox</strong>, <strong>2차원 레이아웃</strong>(전체 페이지 그리드)은 <strong>CSS Grid</strong>가 정답입니다.
+          억지로 한쪽으로 통일하면 코드가 복잡해집니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

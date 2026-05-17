@@ -236,11 +236,18 @@ function SeoContent() {
           💕 What is Love Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          A fun tool that generates a love compatibility percentage between two people based on their names.
-          Using a simple hash algorithm, the same name combinations always produce consistent results for easy sharing.
+          <strong className="text-gray-900 dark:text-white">A fun tool that generates a love compatibility percentage between two people based on names.</strong>{' '}
+          A simple <strong>hash algorithm</strong> means the same name combinations always produce <strong>consistent results</strong> for easy sharing.
           Perfect for entertainment with friends, parties, or satisfying curiosity about a crush!
-          Remember, real relationships are built on much more than name compatibility.
+          Remember, real relationships are built on much more than names.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Just for Fun</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            This is <strong>not scientific</strong>. Real compatibility depends on far more than name combinations.
+          </p>
+        </div>
       </section>
 
       <section>

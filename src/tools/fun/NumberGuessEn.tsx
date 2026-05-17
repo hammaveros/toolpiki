@@ -206,11 +206,18 @@ function SeoContent() {
           What is Number Guessing Game?
         </h2>
         <p className="text-sm leading-relaxed">
-          Number Guessing (Higher or Lower) is a classic deduction game where you try to find the number the computer is thinking of using UP/DOWN hints.
+          <strong className="text-gray-900 dark:text-white">Number Guessing (Higher or Lower) is a classic deduction game using UP/DOWN hints.</strong>{' '}
           After each guess, you are told whether the target is higher or lower, allowing you to narrow down the range.
-          Using a binary search strategy, you can find any number in a 1-100 range in at most 7 attempts, and in a 1-1000 range in at most 10 attempts.
+          With <strong>binary search</strong>, find any number in <strong>1-100 in max 7 attempts</strong>, or <strong>1-1000 in max 10 attempts</strong>.
           Try three difficulty levels: Easy, Normal, and Hard.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎯 Core Strategy</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            Always pick the <strong>midpoint of the current range</strong>. Each guess <strong>halves the search space</strong>.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -252,10 +259,10 @@ function SeoContent() {
           Strategy Tips (Binary Search)
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Always choose the middle value of the current range</li>
-          <li>Example: 1-100 start, guess 50, if Higher then range becomes 51-100</li>
-          <li>Each guess cuts the range in half for fast convergence</li>
-          <li>Check the history to track your previous guesses and hints</li>
+          <li><strong>Pick the midpoint</strong> of the current range every time</li>
+          <li><strong>Example</strong>: 1-100 → guess 50, Higher → 51-100</li>
+          <li><strong>Range halves</strong> each guess for fast convergence</li>
+          <li><strong>History panel</strong> tracks previous guesses and hints</li>
         </ul>
       </section>
 

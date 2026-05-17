@@ -320,10 +320,10 @@ function SeoContent() {
           🔄 What is Image Format Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          Image Format Converter transforms images between different formats like JPG, PNG, and WebP online.
-          Convert to WebP for web optimization, PNG when transparency is needed, or JPEG for smaller file sizes.
-          Select multiple images for batch conversion and download them all at once as a ZIP file.
-          All processing happens in your browser - no images are uploaded to any server, ensuring complete privacy.
+          <strong className="text-gray-900 dark:text-white">Convert images between JPG, PNG, and WebP online.</strong>{' '}
+          Use <strong>WebP</strong> for web optimization, <strong>PNG</strong> for transparency, or <strong>JPEG</strong> for smaller files.
+          Select multiple images for batch conversion and download as a single <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">ZIP</code>.
+          All processing happens in your browser — no server uploads, complete privacy.
         </p>
       </section>
 
@@ -355,12 +355,18 @@ function SeoContent() {
           💡 Format Selection Guide
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>Web performance</strong>: WebP reduces file size 25-35% vs JPEG/PNG</li>
-          <li><strong>Need transparency</strong>: Choose PNG or WebP (JPEG lacks transparency)</li>
-          <li><strong>Maximum quality</strong>: PNG (lossless) or JPEG at 100% quality</li>
-          <li><strong>File size priority</strong>: JPEG at 70-80% or WebP recommended</li>
-          <li><strong>Compatibility first</strong>: Use JPEG/PNG for older browser support</li>
+          <li><strong>Web performance</strong> — <strong>WebP</strong> cuts file size <strong>25-35%</strong> vs JPEG/PNG</li>
+          <li><strong>Need transparency</strong> — <strong>PNG</strong> or <strong>WebP</strong> (JPEG lacks transparency)</li>
+          <li><strong>Maximum quality</strong> — PNG (lossless) or JPEG at <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">100%</code></li>
+          <li><strong>File size priority</strong> — JPEG at <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">70-80%</code> or WebP</li>
+          <li><strong>Compatibility first</strong> — JPEG/PNG for legacy browsers</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 p-4 text-sm">
+          <p className="font-semibold text-emerald-900 dark:text-emerald-200 mb-1">💡 Quick pick</p>
+          <p className="text-emerald-800 dark:text-emerald-300">
+            When in doubt, pick <strong>WebP</strong>. Smallest size at equal quality, supports transparency and animation.
+          </p>
+        </div>
       </section>
 
       <FaqSection

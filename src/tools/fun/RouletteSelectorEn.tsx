@@ -391,11 +391,18 @@ function SeoContent() {
           🎰 What is Roulette Selector?
         </h2>
         <p className="text-sm leading-relaxed">
-          Roulette Selector is a visually engaging tool that randomly picks one option from your list of choices.
-          Add up to 12 items and watch the colorful wheel spin with smooth animation until it lands on a winner.
-          You can set weights (1~1000) for each item to precisely control the winning probability.
-          Perfect for lunch decisions, duty assignments, prize draws, presentation order, and more.
+          <strong className="text-gray-900 dark:text-white">Roulette Selector visually picks one option from your list at random.</strong>{' '}
+          Add up to <strong>12 items</strong> and watch the colorful wheel spin with smooth animation.
+          Set <strong>weights (1~1000)</strong> per item to precisely control winning probability.
+          Perfect for lunch decisions, duty assignments, prize draws, and more.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🧮 Probability Formula</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            Each item's chance is <strong>P(i) = w(i) / Σw</strong>. A=5, B=3, C=2 yields <strong>50% / 30% / 20%</strong>.
+          </p>
+        </div>
       </section>
 
       <section>

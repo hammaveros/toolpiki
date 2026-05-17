@@ -16,10 +16,10 @@ function SeoContent() {
           🔗 URL 쿼리 파서란?
         </h2>
         <p className="text-sm leading-relaxed">
-          URL 쿼리 파서는 URL에 포함된 쿼리 파라미터(?key=value 형식)를 추출하고 편집할 수 있는 도구입니다.
-          복잡한 마케팅 URL의 UTM 파라미터를 분석하거나, API 엔드포인트의 쿼리스트링을 디버깅하고,
-          인코딩된 값을 자동으로 디코딩하여 확인할 수 있습니다.
-          편집한 파라미터는 새 URL로 재구성되어 바로 복사하여 사용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">URL의 쿼리 파라미터를 한눈에 추출·편집·재조합합니다.</strong>{' '}
+          마케팅 URL의 <strong>UTM 파라미터</strong> 분석, API <strong>쿼리스트링 디버깅</strong>,
+          인코딩된 값의 자동 디코딩까지 한 번에 처리합니다.
+          편집한 파라미터는 새 URL로 재조합되어 <strong>바로 복사</strong>해 사용할 수 있습니다.
         </p>
       </section>
 
@@ -48,13 +48,20 @@ function SeoContent() {
           💡 UTM 파라미터 활용
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>utm_source</strong>: 트래픽 출처 (google, facebook, newsletter)</li>
-          <li><strong>utm_medium</strong>: 마케팅 매체 (cpc, email, social)</li>
-          <li><strong>utm_campaign</strong>: 캠페인명 (spring_sale, launch)</li>
-          <li><strong>utm_term</strong>: 검색 키워드 (유료 검색용)</li>
-          <li><strong>utm_content</strong>: 콘텐츠 구분 (A/B 테스트용)</li>
+          <li><strong>utm_source</strong> — 트래픽 출처 (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">google</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">facebook</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">newsletter</code>)</li>
+          <li><strong>utm_medium</strong> — 마케팅 매체 (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">cpc</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">email</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">social</code>)</li>
+          <li><strong>utm_campaign</strong> — 캠페인명 (<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">spring_sale</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">launch</code>)</li>
+          <li><strong>utm_term</strong> — 검색 키워드 (유료 검색용)</li>
+          <li><strong>utm_content</strong> — 콘텐츠 구분 (A/B 테스트용)</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 팁</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          UTM은 <strong>모두 소문자</strong>로 통일하세요. <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">Google</code>과 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">google</code>은 GA에서 <strong>서로 다른 소스</strong>로 잡혀 리포트가 쪼개집니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

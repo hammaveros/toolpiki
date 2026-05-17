@@ -428,11 +428,16 @@ function SeoContent() {
           📄 견적서/인보이스 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          견적서 생성기는 품목, 수량, 단가를 입력하면 전문적인 견적서를 자동으로 만들어주는 도구입니다.
-          공급자와 공급받는자 정보를 입력하고, 부가세율을 설정하면 자동 계산됩니다.
-          작성된 견적서는 브라우저 인쇄 기능을 통해 PDF로 저장하거나 바로 출력할 수 있습니다.
-          별도의 프로그램 설치 없이 웹에서 바로 깔끔한 견적서를 만들 수 있어 프리랜서와 소규모 사업자에게 유용합니다.
+          <strong className="text-gray-900 dark:text-white">견적서 생성기는 품목·수량·단가만 입력하면 전문적인 견적서를 자동으로 만들어주는 도구입니다.</strong>{' '}
+          공급자와 공급받는자 정보를 입력하고 <strong>부가세율</strong>을 설정하면 자동 계산됩니다.
+          작성된 견적서는 <strong>브라우저 인쇄 기능</strong>을 통해 PDF로 저장하거나 바로 출력할 수 있습니다.
+          별도의 프로그램 설치 없이 웹에서 바로 깔끔한 견적서를 만들 수 있어 <strong>프리랜서와 소규모 사업자</strong>에게 유용합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">설치·회원가입 없이 <strong>웹에서 바로 출력 가능한 PDF</strong>를 생성합니다. 데이터는 모두 브라우저에서만 처리됩니다.</p>
+        </div>
       </section>
 
       <section>

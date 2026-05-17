@@ -217,11 +217,18 @@ function SeoContent() {
           What is Random Decision Maker?
         </h2>
         <p className="text-sm leading-relaxed">
-          Random Decision Maker is a utility that lets fate decide when you are stuck between options.
-          It supports four modes: Yes/No decisions, coin flip, random number within a range, and custom choices you enter yourself.
-          Perfect for breaking decision paralysis, settling debates, or just having fun with randomness.
+          <strong className="text-gray-900 dark:text-white">Random Decision Maker lets fate decide when you are stuck between options.</strong>{' '}
+          Supports four modes — <strong>Yes/No</strong>, <strong>coin flip</strong>, <strong>random number range</strong>, and <strong>custom choices</strong>.
+          Perfect for breaking decision paralysis, settling debates, or having fun with randomness.
           Results are animated for added excitement.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🧠 Decision Fatigue</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            Adults make <strong>~35,000 decisions per day</strong>. Outsourcing trivial picks to randomness frees mental bandwidth for what matters.
+          </p>
+        </div>
       </section>
 
       <section>

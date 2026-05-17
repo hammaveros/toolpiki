@@ -380,10 +380,9 @@ function SeoContent() {
           📦 What is Image Compressor?
         </h2>
         <p className="text-sm leading-relaxed">
-          Image compression reduces file size while minimizing visible quality loss.
-          Methods include lossy (JPEG) and lossless (PNG) compression, with modern WebP offering the best of both worlds.
-          Essential for improving website loading speeds, saving cloud storage, and meeting email and messaging app size limits.
-          Supports batch compression for processing multiple images at once.
+          <strong className="text-gray-900 dark:text-white">Reduces file size while minimizing visible quality loss.</strong>{' '}
+          Methods include <strong>lossy (JPEG)</strong> and <strong>lossless (PNG)</strong>, with modern <strong>WebP</strong> offering the best of both.
+          Essential for faster website loading, saving cloud storage, and meeting email/messaging size limits. Supports <strong>batch compression</strong>.
         </p>
       </section>
 
@@ -414,11 +413,17 @@ function SeoContent() {
           💡 Quality Settings Guide
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>80-100%</strong>: High quality, for print or important photos</li>
-          <li><strong>60-80%</strong>: Optimal for websites (quality/size balance)</li>
-          <li><strong>40-60%</strong>: Social media uploads, preview images</li>
-          <li><strong>20-40%</strong>: Maximum compression, noticeable quality loss</li>
+          <li><strong>80-100%</strong> — high quality, print or important photos</li>
+          <li><strong>60-80%</strong> — <strong>optimal for websites</strong> (quality/size balance)</li>
+          <li><strong>40-60%</strong> — social media uploads, previews</li>
+          <li><strong>20-40%</strong> — maximum compression, noticeable loss</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 p-4 text-sm">
+          <p className="font-semibold text-emerald-900 dark:text-emerald-200 mb-1">💡 Compression tip</p>
+          <p className="text-emerald-800 dark:text-emerald-300">
+            Not sure? Try <strong>WebP at 75%</strong>. Best <strong>quality/size balance</strong> for most web photos.
+          </p>
+        </div>
       </section>
 
       <FaqSection

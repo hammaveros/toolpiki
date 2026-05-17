@@ -190,10 +190,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔍 정규표현식 생성기란?</h2>
         <p className="text-sm leading-relaxed">
-          정규표현식(Regular Expression, Regex)은 문자열에서 특정 패턴을 찾거나 검증하기 위한 강력한 도구입니다.
-          이메일 주소, 전화번호, URL, IP 주소 등 다양한 형식의 데이터를 검증할 때 필수적으로 사용됩니다.
-          하지만 정규식 문법은 직관적이지 않아 매번 작성하기가 번거롭습니다.
-          이 정규표현식 생성기는 20가지 이상의 자주 사용하는 프리셋 패턴을 제공하고, 직접 입력한 텍스트로 실시간 테스트까지 할 수 있어 개발 생산성을 크게 높여줍니다.
+          <strong className="text-gray-900 dark:text-white">정규표현식(Regex)은 문자열에서 특정 패턴을 찾거나 검증하기 위한 강력한 도구</strong>입니다.
+          <strong>이메일·전화번호·URL·IP 주소</strong> 등 다양한 형식의 데이터를 검증할 때 필수적으로 사용됩니다.
+          하지만 정규식 문법은 직관적이지 않아 매번 작성하기 번거롭습니다.
+          이 도구는 <strong>20가지 이상의 프리셋 패턴</strong>을 제공하고, 직접 입력한 텍스트로 <strong>실시간 테스트</strong>까지 할 수 있습니다.
         </p>
       </section>
 
@@ -296,6 +296,13 @@ function SeoContent() {
           <li><strong className="text-gray-800 dark:text-gray-200">m (multiline)</strong> — ^와 $가 전체 문자열이 아닌 각 줄의 시작과 끝에 매칭됩니다.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 디버깅 팁</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          정규식이 의도대로 동작하지 않을 때는 <strong>플래그(g, i, m)</strong>가 올바른지, 그리고 특수문자(<code className="px-1 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900 text-xs font-mono">. * + ? ( ) [ ] {'{'} {'}'} \ ^ $ |</code>)에 <strong>이스케이프(\)</strong>가 빠지지 않았는지 가장 먼저 확인하세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

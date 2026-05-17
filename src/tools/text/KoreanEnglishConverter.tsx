@@ -271,36 +271,41 @@ function SeoContent() {
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">한영타 변환기란?</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          한영타 변환기는 키보드 언어 설정을 잘못한 채 입력한 텍스트를 올바른 언어로 변환해주는 도구입니다.
-          한글 키보드 상태에서 영어를 입력하면 &quot;ㅗㄷㅣㅣㅐ&quot;처럼 한글 자모가 나오고,
-          반대로 영문 키보드 상태에서 한글을 입력하면 &quot;dkssudgktpdy&quot;처럼 영문 알파벳이 출력됩니다.
-          이 변환기를 사용하면 잘못 입력한 텍스트를 다시 타이핑할 필요 없이 즉시 올바른 결과로 변환할 수 있습니다.
-          쌍자음(ㄲ, ㄸ, ㅃ, ㅆ, ㅉ), 겹모음(ㅘ, ㅙ, ㅚ, ㅝ, ㅞ, ㅟ, ㅢ) 등 복잡한 한글 조합도 정확하게 처리합니다.
+          <strong className="text-gray-900 dark:text-white">한영타 변환기는 키보드 언어를 잘못 설정한 채 입력한 텍스트를 올바른 언어로 변환해주는 도구</strong>입니다.
+          한글 상태에서 영어를 치면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">ㅗㄷㅣㅣㅐ</code>처럼 한글 자모가 나오고,
+          영문 상태에서 한글을 치면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">dkssudgktpdy</code>처럼 영문 알파벳이 출력됩니다.
+          <strong>다시 타이핑할 필요 없이 즉시 올바른 결과로 변환</strong>할 수 있으며,
+          <strong>쌍자음·겹모음</strong> 등 복잡한 한글 조합도 정확하게 처리합니다.
         </p>
       </div>
 
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">어떤 상황에서 유용한가요?</h2>
-        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          가장 흔한 경우는 한/영 키를 누르지 않고 그대로 타이핑했을 때입니다.
-          채팅이나 메신저에서 빠르게 타이핑하다가 한영 전환을 깜빡하면 &quot;안녕하세요&quot;를 입력했는데
-          &quot;dkssudgktpdy&quot;가 나오는 경우가 있습니다. 이럴 때 변환기에 복사해서 붙여넣으면
-          바로 원래 의도한 텍스트를 확인할 수 있습니다.
-          프로그래밍 중 변수명이나 명령어를 한글 모드에서 입력한 경우,
-          게임 내 채팅에서 한영 전환이 안 되는 환경, 또는 외국인이 한글 키보드 배열을
-          연습할 때도 활용할 수 있습니다.
+        <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside">
+          <li><strong>채팅·메신저</strong>에서 한/영 전환을 깜빡하여 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">dkssudgktpdy</code>처럼 출력된 경우</li>
+          <li><strong>프로그래밍</strong> 중 변수명이나 명령어를 한글 모드에서 잘못 입력한 경우</li>
+          <li><strong>게임 내 채팅</strong>에서 한영 전환이 막혀 있는 환경</li>
+          <li><strong>외국인 사용자</strong>가 한글 키보드 배열을 연습할 때</li>
+        </ul>
+        <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          이럴 때 변환기에 복사해서 붙여넣으면 <strong>바로 원래 의도한 텍스트를 확인</strong>할 수 있어 다시 타이핑하는 수고를 덜 수 있습니다.
         </p>
       </div>
 
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">한글 키보드 배열(두벌식)</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          한국에서 표준으로 사용되는 두벌식 키보드 배열은 영문 QWERTY 키보드 위에 한글 자모를 배치한 형태입니다.
-          왼쪽 영역(Q~T)에는 자음 ㅂ, ㅈ, ㄷ, ㄱ, ㅅ이, 오른쪽 영역(Y~P)에는 모음 ㅛ, ㅕ, ㅑ, ㅐ, ㅔ가 배치됩니다.
-          중간 행(A~L)에는 ㅁ, ㄴ, ㅇ, ㄹ, ㅎ, ㅗ, ㅓ, ㅏ, ㅣ가 위치하며,
-          아래 행(Z~M)에는 ㅋ, ㅌ, ㅊ, ㅍ, ㅠ, ㅜ, ㅡ가 배치됩니다.
-          Shift 키와 함께 누르면 쌍자음(ㄲ, ㄸ, ㅃ, ㅆ, ㅉ)과 겹모음(ㅒ, ㅖ)을 입력할 수 있습니다.
-          이 배열 구조 덕분에 영문 키와 한글 자모 간의 1:1 매핑이 가능하여 한영 변환이 정확하게 이루어집니다.
+          한국 표준 <strong>두벌식 키보드</strong>는 영문 <strong>QWERTY 위에 한글 자모를 배치</strong>한 형태입니다.
+          왼쪽(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Q~T</code>)에는 자음 ㅂ·ㅈ·ㄷ·ㄱ·ㅅ, 오른쪽(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Y~P</code>)에는 모음 ㅛ·ㅕ·ㅑ·ㅐ·ㅔ가 배치됩니다.
+          중간 행(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">A~L</code>)에는 ㅁ·ㄴ·ㅇ·ㄹ·ㅎ·ㅗ·ㅓ·ㅏ·ㅣ, 아래 행(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Z~M</code>)에는 ㅋ·ㅌ·ㅊ·ㅍ·ㅠ·ㅜ·ㅡ가 위치합니다.
+          <strong>Shift와 함께 누르면 쌍자음·겹모음</strong>(ㄲ·ㄸ·ㅃ·ㅆ·ㅉ·ㅒ·ㅖ)을 입력할 수 있어, 영문 키와 한글 자모 간 <strong>1:1 매핑</strong>이 가능합니다.
+        </p>
+      </div>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 변환 방향 팁</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          한글이 영문 알파벳으로 보인다면 <strong>영타→한글</strong>, 영문이 한글 자모로 보인다면 <strong>한글→영타</strong>를 선택하세요.
         </p>
       </div>
 

@@ -181,9 +181,9 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔑 What is JWT Decoder?</h2>
         <p className="text-sm leading-relaxed">
-          JSON Web Token (JWT, RFC 7519) packs a small authentication payload into three Base64url segments joined by dots.
-          The Header announces the signing algorithm, the Payload carries claims like user ID, scopes, or expiry, and the Signature is a MAC that ties the first two parts to a secret or private key.
-          This tool splits the input on the dot character, decodes each part to readable JSON, and — when an <code>exp</code> claim is present — compares it against the current Unix timestamp to flag expired tokens.
+          <strong className="text-gray-900 dark:text-white">JWT packs an authentication payload into three Base64url segments joined by dots (RFC 7519).</strong>{' '}
+          The <strong>Header</strong> announces the signing algorithm, the <strong>Payload</strong> carries claims like user ID, scopes, or expiry, and the <strong>Signature</strong> is a MAC that ties the first two parts to a secret or private key.
+          This tool splits the input on the dot character, decodes each part to readable JSON, and — when an <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">exp</code> claim is present — compares it against the current Unix timestamp to <strong>flag expired tokens</strong>.
           Everything happens locally in the browser; the token you paste is never sent to a server.
         </p>
       </section>
@@ -204,14 +204,18 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🛡️ Common JWT Pitfalls</h2>
-        <p className="text-sm leading-relaxed">
-          The most famous JWT bug is the <strong>alg: none vulnerability</strong> disclosed in 2015, where naive libraries accepted a token whose header advertised &quot;none&quot; and skipped signature checks entirely.
-          Always whitelist the algorithms you expect (for example HS256 or RS256) on the verification side rather than reading <code>alg</code> from the untrusted header.
-          A second classic mistake is <strong>storing secrets in the payload</strong> — remember that Base64url is not encryption; anything inside is visible to anyone who copies the token.
-          Third, <strong>where you store the token matters</strong>: localStorage is reachable from any XSS payload, so use an HttpOnly Secure cookie for refresh tokens and keep short-lived access tokens in memory.
-          Finally, pair <code>exp</code> with a server-side revocation list or a <code>jti</code> claim so a leaked token can actually be killed before its natural expiry.
-        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">alg: none vulnerability</strong> — disclosed in 2015. Naive libraries accepted a token whose header advertised &quot;none&quot; and skipped signature checks entirely. Always <strong>whitelist the algorithms</strong> (HS256, RS256) on the verification side rather than reading <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">alg</code> from the untrusted header.</li>
+          <li><strong className="text-gray-900 dark:text-white">Storing secrets in the payload</strong> — Base64url is <strong>not encryption</strong>; anything inside is visible to anyone who copies the token.</li>
+          <li><strong className="text-gray-900 dark:text-white">Storage location matters</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">localStorage</code> is reachable from any XSS payload. Use an <strong>HttpOnly Secure cookie</strong> for refresh tokens and keep short-lived access tokens in memory.</li>
+          <li><strong className="text-gray-900 dark:text-white">Pair exp with revocation</strong> — server-side revocation list or a <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">jti</code> claim so a leaked token can actually be killed.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 p-4 text-sm">
+        <p className="font-semibold text-red-900 dark:text-red-200 mb-1">🔒 Security Note</p>
+        <p className="text-red-800 dark:text-red-300"><strong>Never verify signatures in the browser.</strong> Exposing HMAC secrets or RSA/ECDSA private keys is risky. Verification belongs on the server using a well-audited library such as <strong>jose</strong> or <strong>jsonwebtoken</strong>.</p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

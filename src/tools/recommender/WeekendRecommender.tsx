@@ -346,9 +346,10 @@ function SeoContent() {
           🏖️ 주말 활동 추천이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          주말에 뭘 할지 고민될 때, 날씨·계절·예산·인원 등 조건에 맞는 활동을 추천해주는 도구입니다.
-          실내외 활동, 혼자 또는 여럿이 할 수 있는 활동, 무료부터 유료까지 다양한 선택지를 제공합니다.
-          고민 없이 랜덤으로 골라볼 수도 있습니다.
+          <strong className="text-gray-900 dark:text-white">주말에 뭐 하지? 라는 고민을 한 방에 줄여주는 도구입니다.</strong>{' '}
+          <strong>날씨·계절·예산·인원</strong>에 맞춰 적합한 활동을 추려주고, 결정 장애가 올 땐
+          <strong>랜덤 추첨</strong>으로 그 자리에서 결정할 수도 있습니다. 실내외 활동, 무료부터 유료까지
+          폭넓게 다루기 때문에 매주 다른 주말을 보내고 싶을 때 활용하기 좋습니다.
         </p>
       </section>
 
@@ -356,25 +357,34 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           🌤️ 날씨별 추천 활동
         </h2>
-        <div className="text-sm leading-relaxed space-y-2">
-          <p><strong>맑은 날:</strong> 등산, 자전거, 피크닉, 캠핑, 사진 촬영, 공원 산책</p>
-          <p><strong>흐린 날:</strong> 미술관/전시회, 카페 투어, 쇼핑, 드라이브</p>
-          <p><strong>비/눈 오는 날:</strong> 영화 감상, 보드게임, 요리, 독서, 실내 클라이밍</p>
-          <p><strong>추운 날:</strong> 온천/찜질방, 실내 스포츠, 홈카페, 베이킹</p>
-        </div>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>맑은 날</strong> — 등산, 자전거, 피크닉, 캠핑, 사진 촬영, 공원 산책</li>
+          <li><strong>흐린 날</strong> — 미술관/전시회, 카페 투어, 쇼핑, 드라이브</li>
+          <li><strong>비/눈 오는 날</strong> — 영화 감상, 보드게임 카페, 요리, 독서, 방탈출</li>
+          <li><strong>추운 날</strong> — 찜질방/사우나, 실내 스포츠, 홈카페, 베이킹</li>
+        </ul>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          💡 알찬 주말 보내기 팁
+          🍃 계절별 즐길 거리
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>금요일 저녁에 미리 계획을 세우면 주말을 더 알차게 보낼 수 있습니다</li>
-          <li>활동과 휴식의 균형을 맞추세요. 하루는 활동, 하루는 충전</li>
-          <li>새로운 활동에 도전해보세요. 익숙한 것만 반복하면 금방 지루해집니다</li>
-          <li>혼자만의 시간도 소중합니다. 꼭 누군가와 함께할 필요는 없습니다</li>
+          <li><strong>봄</strong> — 꽃구경, 한강 피크닉, 자전거, 가벼운 등산</li>
+          <li><strong>여름</strong> — 바다/계곡, 워터파크, 야시장, 캠핑</li>
+          <li><strong>가을</strong> — 단풍 구경, 산책, 사진 촬영, 야외 페스티벌</li>
+          <li><strong>겨울</strong> — 스키/보드, 눈사람, 따뜻한 카페, 온천</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-rose-50 dark:bg-rose-950/30 border border-rose-100 dark:border-rose-900 p-4 text-sm">
+        <p className="font-semibold text-rose-900 dark:text-rose-200 mb-1">🎯 알찬 주말 보내기 팁</p>
+        <p className="text-rose-800 dark:text-rose-300">
+          <strong>금요일 저녁</strong>에 미리 계획을 세우면 토요일 오전을 버리지 않게 됩니다.
+          이틀 중 하루는 <strong>활동</strong>, 하루는 <strong>충전</strong>으로 나눠 잡으면 월요일 컨디션이 확실히 다릅니다.
+          익숙한 것만 반복하면 금세 지루해지니, 매달 새로운 활동을 하나씩 끼워보는 것도 좋습니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

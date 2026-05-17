@@ -249,11 +249,18 @@ function SeoContent() {
           🔢 숫자 맞추기 게임이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          숫자 맞추기(Up and Down) 게임은 컴퓨터가 특정 범위에서 생각한 숫자를 UP/DOWN 힌트를 통해 맞추는 고전 추리 게임입니다.
+          <strong className="text-gray-900 dark:text-white">숫자 맞추기(Up and Down) 게임은 컴퓨터가 생각한 숫자를 UP/DOWN 힌트로 맞추는 고전 추리 게임입니다.</strong>{' '}
           숫자를 입력하면 정답보다 큰지 작은지 알려주어 범위를 좁혀나갈 수 있습니다.
-          이진 탐색(Binary Search) 전략을 활용하면 1-100 범위에서 최대 7번, 1-1000 범위에서도 최대 10번이면 정답을 찾을 수 있습니다.
+          <strong>이진 탐색(Binary Search)</strong> 전략을 활용하면 <strong>1-100은 최대 7번</strong>, <strong>1-1000은 최대 10번</strong>이면 정답을 찾을 수 있습니다.
           쉬움/보통/어려움 세 가지 난이도로 도전해보세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎯 핵심 공략</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            매번 <strong>현재 범위의 중간값</strong>을 선택하세요. 한 번 추측할 때마다 <strong>탐색 범위가 절반</strong>으로 줄어듭니다.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -295,10 +302,10 @@ function SeoContent() {
           공략 팁 (이진 탐색)
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>항상 현재 범위의 중간값을 선택하세요</li>
-          <li>예: 1~100 → 50 입력 → UP이면 51~100, DOWN이면 1~49</li>
-          <li>매번 범위가 절반으로 줄어들어 빠르게 정답에 도달합니다</li>
-          <li>기록에서 이전 추측과 힌트를 확인하며 전략을 세우세요</li>
+          <li><strong>중간값 선택</strong> — 항상 현재 범위의 중앙을 추측</li>
+          <li><strong>예시</strong>: 1~100 → 50 → UP이면 51~100, DOWN이면 1~49</li>
+          <li><strong>범위 반토막</strong> — 매번 절반으로 줄어 빠르게 수렴</li>
+          <li><strong>기록 활용</strong> — 이전 추측과 힌트로 전략 세우기</li>
         </ul>
       </section>
 

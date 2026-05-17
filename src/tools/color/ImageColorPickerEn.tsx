@@ -202,11 +202,18 @@ function SeoContent() {
           🖼️ What is Image Color Picker?
         </h2>
         <p className="text-sm leading-relaxed">
-          Image Color Picker extracts exact color codes from any position in an uploaded image.
-          Preview colors in real-time as you hover over the image, then click to save them.
-          Save up to 10 colors to build a palette, with both HEX and RGB codes provided.
+          <strong className="text-gray-900 dark:text-white">Image Color Picker extracts <strong>exact color codes</strong> from any position in an uploaded image.</strong>{' '}
+          Preview colors in <strong>real-time</strong> as you hover over the image, then click to save them.
+          Save <strong>up to 10 colors</strong> to build a palette, with both <strong>HEX</strong> and <strong>RGB</strong> codes provided.
           Perfect for design reference analysis, brand color extraction, and photo color studies.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 Design Tip</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            Divide the image into <strong>5 regions</strong> and pick the dominant color from each — you instantly get a balanced <strong>5-color palette</strong>.
+          </p>
+        </div>
       </section>
 
       <section>

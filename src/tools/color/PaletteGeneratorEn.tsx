@@ -254,11 +254,18 @@ function SeoContent() {
           🎨 What is Palette Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Palette Generator automatically creates harmonious color palettes based on color theory from a single base color.
-          It supports five color harmony types: complementary, analogous, triadic, tetradic, and monochromatic, each based on relationships on the color wheel.
-          Generated palettes are provided as HEX/RGB codes with direct CSS variable export capability.
+          <strong className="text-gray-900 dark:text-white">Palette Generator automatically creates harmonious color palettes based on <strong>color theory</strong> from a single base color.</strong>{' '}
+          It supports five harmony types: <strong>complementary</strong>, <strong>analogous</strong>, <strong>triadic</strong>, tetradic, and monochromatic, each based on relationships on the color wheel.
+          Generated palettes are provided as <strong>HEX/RGB</strong> codes with direct CSS variable export capability.
           Perfect for web design, brand color systems, UI themes, and illustration work.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 Design Tip</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            <strong>60-30-10 rule</strong>: primary 60% (background), secondary 30% (sections), accent 10% (CTA) creates a natural visual hierarchy.
+          </p>
+        </div>
       </section>
 
       <section>

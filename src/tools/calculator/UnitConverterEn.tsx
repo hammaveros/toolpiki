@@ -233,11 +233,16 @@ function SeoContent() {
           📐 What is Unit Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          Unit Converter transforms values between different measurement units for length, weight, temperature, area, volume, and data.
-          It supports both metric (SI) and imperial (US/UK) systems with instant real-time conversion.
+          <strong className="text-gray-900 dark:text-white">Unit Converter transforms values between measurement units for length, weight, temperature, area, volume, and data.</strong>{' '}
+          Supports both <strong>metric (SI)</strong> and <strong>imperial (US/UK)</strong> systems with <strong>instant real-time conversion</strong>.
           See all related unit conversions at once as you type, making comparisons easy.
-          Essential for cooking, fitness, travel, real estate, and technical work.
+          Essential for <strong>cooking, fitness, travel, real estate, and technical work</strong>.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">Real-time multi-unit view—see <strong>meters, feet, yards</strong> simultaneously without switching back and forth.</p>
+        </div>
       </section>
 
       <section>

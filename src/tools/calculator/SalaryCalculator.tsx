@@ -299,11 +299,16 @@ function SeoContent() {
           💰 연봉 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          연봉 계산기는 세전 연봉에서 4대보험과 소득세를 공제한 실수령액을 계산하는 도구입니다.
-          2026년 기준 4대보험 요율(국민연금 4.75%, 건강보험 3.595%, 장기요양 13.14%, 고용보험 0.9%)과 간이세액표를 적용합니다.
-          부양가족 수, 자녀세액공제, 비과세 금액을 반영하여 정확도를 높일 수 있습니다.
-          모든 계산은 브라우저에서 처리되며 입력 정보는 서버에 저장되지 않습니다.
+          <strong className="text-gray-900 dark:text-white">연봉 계산기는 세전 연봉에서 4대보험과 소득세를 공제한 실수령액을 계산하는 도구입니다.</strong>{' '}
+          <strong>2026년 기준 4대보험 요율</strong>(국민연금 4.75%, 건강보험 3.595%, 장기요양 13.14%, 고용보험 0.9%)과 간이세액표를 적용합니다.
+          <strong>부양가족 수, 자녀세액공제, 비과세 금액</strong>을 반영하여 정확도를 높일 수 있습니다.
+          모든 계산은 <strong>브라우저에서 처리</strong>되며 입력 정보는 서버에 저장되지 않습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">세전 연봉의 실수령은 보통 <strong>80~85% 수준</strong>입니다. 4대보험과 소득세가 차이를 만듭니다.</p>
+        </div>
       </section>
 
       <section>

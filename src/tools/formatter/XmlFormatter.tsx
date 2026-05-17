@@ -16,10 +16,10 @@ function SeoContent() {
           📄 XML 포맷터란?
         </h2>
         <p className="text-sm leading-relaxed">
-          XML(eXtensible Markup Language)은 데이터를 구조화하여 저장하고 전송하는 마크업 언어입니다.
-          XML 포맷터는 압축된 XML을 계층 구조에 맞게 들여쓰기하여 가독성을 높이거나,
-          반대로 공백을 제거하여 파일 크기를 줄입니다. API 응답 분석, 설정 파일(pom.xml, web.xml) 편집,
-          SOAP 메시지 디버깅, RSS/Atom 피드 확인 등 다양한 개발 작업에 활용됩니다.
+          <strong className="text-gray-900 dark:text-white">XML을 계층 구조에 맞춰 정렬·압축하고 유효성까지 검사합니다.</strong>{' '}
+          <strong>1~8칸 들여쓰기</strong>로 가독성을 높이거나, 공백을 제거해 용량을 줄입니다.
+          <strong>API 응답 분석</strong>, 설정 파일(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">pom.xml</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">web.xml</code>) 편집,
+          <strong> SOAP 디버깅</strong>, RSS/Atom 피드 확인 등 다양한 작업에 활용됩니다.
         </p>
       </section>
 
@@ -77,6 +77,14 @@ function SeoContent() {
           </table>
         </div>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 자주 하는 실수</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          XML은 <strong>대소문자를 구분</strong>합니다. <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`<Item>`}</code>과 <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`</item>`}</code>은 <strong>다른 태그</strong>로 인식되어 파싱이 실패합니다.
+          또한 <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`<`}</code>, <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">{`&`}</code>는 반드시 <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">&amp;lt;</code>, <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">&amp;amp;</code>로 이스케이프해야 합니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

@@ -141,11 +141,10 @@ function SeoContent() {
           🌐 3자리 숫자에 담긴 응답의 의미
         </h2>
         <p className="text-sm leading-relaxed">
-          HTTP 상태 코드는 서버가 보내온 짧은 답신 같은 것입니다. 첫 번째 숫자가 가장 중요합니다.
-          1xx는 &quot;받았으니 계속해도 좋다&quot;, 2xx는 &quot;성공&quot;, 3xx는 &quot;다른 곳으로 가라&quot;, 4xx는 &quot;네가 잘못했다&quot;,
-          5xx는 &quot;내가 잘못했다&quot;는 뜻으로 외워두면 빠르게 분류됩니다. RFC 9110(2022) 기준 약 60여 개 코드가 표준이며,
-          이 페이지에서 검색·필터링으로 자주 마주치는 코드 30여 개를 한 화면에 정리해뒀습니다.
-          API 응답을 분석하거나 nginx/Apache 액세스 로그를 보다가 처음 만난 코드의 의미가 궁금할 때 이 페이지를 즐겨찾기 해두면 편합니다.
+          <strong className="text-gray-900 dark:text-white">HTTP 상태 코드는 서버가 보내는 짧은 답신입니다. 첫 자리만 외워도 절반은 끝.</strong>{' '}
+          <strong>1xx</strong>는 &quot;계속해도 좋다&quot;, <strong>2xx</strong>는 &quot;성공&quot;, <strong>3xx</strong>는 &quot;다른 곳으로 가라&quot;,
+          <strong>4xx</strong>는 &quot;네가 잘못했다&quot;, <strong>5xx</strong>는 &quot;내가 잘못했다&quot;로 외워두면 빠르게 분류됩니다.
+          <strong>RFC 9110(2022)</strong> 기준 약 60여 개 코드 중 실무에서 자주 마주치는 30여 개를 한 화면에 정리했습니다.
         </p>
       </section>
 
@@ -191,6 +190,15 @@ function SeoContent() {
           <li><strong>504 Gateway Timeout</strong> — 백엔드가 살아 있지만 느림. 쿼리 인덱스, N+1, 외부 API 응답 시간부터 점검.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 헷갈리는 조합 체크</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          <strong>401 vs 403</strong>: 토큰 부재/만료는 <strong>401</strong>, 권한 부족은 <strong>403</strong>.
+          <strong> 502 vs 504</strong>: 업스트림이 죽었으면 <strong>502</strong>, 살아있는데 느리면 <strong>504</strong>.
+          잘못 매핑하면 모니터링 알람 분류부터 엉킵니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

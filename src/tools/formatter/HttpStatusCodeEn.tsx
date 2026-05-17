@@ -141,10 +141,10 @@ function SeoContent() {
           🌐 What are HTTP Status Codes?
         </h2>
         <p className="text-sm leading-relaxed">
-          HTTP status codes are 3-digit numbers indicating how the server processed a client request.
-          Defined in HTTP standards like RFC 7231, the first digit indicates the response category.
-          1xx is informational, 2xx is success, 3xx is redirection, 4xx is client error, and 5xx is server error.
-          Developers use these codes for API debugging, error handling, and logging.
+          <strong className="text-gray-900 dark:text-white">HTTP status codes are 3-digit signals telling you how the server handled a request.</strong>{' '}
+          Memorize the first digit and you are halfway done — <strong>1xx</strong> informational, <strong>2xx</strong> success,
+          <strong> 3xx</strong> redirect, <strong>4xx</strong> client error, <strong>5xx</strong> server error.
+          Defined in <strong>RFC 9110 (2022)</strong>, this page consolidates the codes you actually hit while debugging.
         </p>
       </section>
 
@@ -181,14 +181,23 @@ function SeoContent() {
           💡 Common Status Codes
         </h2>
         <ul className="text-sm leading-relaxed space-y-1 list-disc list-inside">
-          <li><strong>200 OK</strong> - Success, most common response</li>
-          <li><strong>201 Created</strong> - New resource created via POST</li>
-          <li><strong>400 Bad Request</strong> - Invalid parameters or body</li>
-          <li><strong>401/403</strong> - Authentication/authorization issues</li>
-          <li><strong>404 Not Found</strong> - Resource not found</li>
-          <li><strong>500 Internal Server Error</strong> - Server internal error</li>
+          <li><strong>200 OK</strong> — Success, the most common response</li>
+          <li><strong>201 Created</strong> — New resource created via POST</li>
+          <li><strong>400 Bad Request</strong> — Invalid parameters or body</li>
+          <li><strong>401 / 403</strong> — Authentication vs authorization issues</li>
+          <li><strong>404 Not Found</strong> — Resource not found</li>
+          <li><strong>500 Internal Server Error</strong> — Unhandled server exception</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Easy-to-Confuse Pairs</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          <strong>401 vs 403</strong>: missing/expired token is <strong>401</strong>, lacking permission is <strong>403</strong>.
+          <strong> 502 vs 504</strong>: upstream is dead → <strong>502</strong>, upstream is alive but slow → <strong>504</strong>.
+          Mismatched mapping breaks alert categorization first.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

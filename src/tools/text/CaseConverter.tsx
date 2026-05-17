@@ -166,9 +166,9 @@ function SeoContent() {
           🔤 대소문자 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          대소문자 변환기는 텍스트를 다양한 케이스 형식으로 변환하는 도구입니다.
-          UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, kebab-case, CONSTANT_CASE 등
-          프로그래밍과 문서 작성에 필요한 모든 케이스 변환을 한 번에 처리할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">대소문자 변환기는 텍스트를 다양한 케이스 형식으로 변환하는 도구</strong>입니다.
+          <strong>UPPERCASE</strong>, <strong>lowercase</strong>, Title Case, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">camelCase</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">PascalCase</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">snake_case</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">kebab-case</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">CONSTANT_CASE</code> 등
+          프로그래밍과 문서 작성에 필요한 <strong>모든 케이스 변환을 한 번에</strong> 처리할 수 있습니다.
           변수명 작성, API 응답 키 변환, 제목 포맷팅 등에 활용됩니다.
         </p>
       </section>
@@ -177,15 +177,22 @@ function SeoContent() {
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           📋 케이스 종류별 설명
         </h2>
-        <div className="text-sm leading-relaxed space-y-2">
-          <p><strong>camelCase:</strong> 첫 단어 소문자, 이후 단어 첫 글자 대문자. JavaScript/Java 변수명에 사용 (예: userName)</p>
-          <p><strong>PascalCase:</strong> 모든 단어 첫 글자 대문자. 클래스명, 컴포넌트명에 사용 (예: UserProfile)</p>
-          <p><strong>snake_case:</strong> 단어를 언더스코어로 연결. Python, Ruby 변수명에 사용 (예: user_name)</p>
-          <p><strong>kebab-case:</strong> 단어를 하이픈으로 연결. URL, CSS 클래스에 사용 (예: user-name)</p>
-          <p><strong>CONSTANT_CASE:</strong> 전부 대문자 + 언더스코어. 상수 정의에 사용 (예: MAX_COUNT)</p>
-          <p><strong>Title Case:</strong> 각 단어의 첫 글자 대문자. 제목, 헤드라인에 사용</p>
-        </div>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>camelCase:</strong> 첫 단어 소문자, 이후 단어 첫 글자 대문자. JavaScript/Java 변수명 (예: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">userName</code>)</li>
+          <li><strong>PascalCase:</strong> 모든 단어 첫 글자 대문자. 클래스명, 컴포넌트명 (예: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">UserProfile</code>)</li>
+          <li><strong>snake_case:</strong> 단어를 언더스코어로 연결. Python, Ruby 변수명 (예: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">user_name</code>)</li>
+          <li><strong>kebab-case:</strong> 단어를 하이픈으로 연결. URL, CSS 클래스 (예: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">user-name</code>)</li>
+          <li><strong>CONSTANT_CASE:</strong> 전부 대문자 + 언더스코어. 상수 정의 (예: <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">MAX_COUNT</code>)</li>
+          <li><strong>Title Case:</strong> 각 단어의 첫 글자 대문자. 제목, 헤드라인에 사용</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 선택 팁</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          변수에는 <strong>camelCase</strong>, 타입/클래스에는 <strong>PascalCase</strong>, 상수에는 <strong>CONSTANT_CASE</strong>를 쓰는 것이 가장 일반적인 관례입니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

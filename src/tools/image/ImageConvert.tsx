@@ -320,10 +320,10 @@ function SeoContent() {
           🔄 이미지 포맷 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          이미지 포맷 변환기는 JPG, PNG, WebP 등 다양한 이미지 형식 간에 상호 변환할 수 있는 온라인 도구입니다.
-          웹사이트 최적화를 위해 WebP로 변환하거나, 투명 배경이 필요할 때 PNG로, 파일 크기를 줄이고 싶을 때 JPEG로 변환합니다.
-          여러 이미지를 한 번에 선택하여 일괄 변환하고, ZIP 파일로 한꺼번에 다운로드할 수 있습니다.
-          모든 처리는 브라우저에서 이루어지므로 서버로 이미지가 전송되지 않아 안전합니다.
+          <strong className="text-gray-900 dark:text-white">JPG, PNG, WebP 등 이미지 형식을 상호 변환하는 온라인 도구.</strong>{' '}
+          웹 최적화엔 <strong>WebP</strong>, 투명 배경엔 <strong>PNG</strong>, 용량 감소엔 <strong>JPEG</strong>로 변환합니다.
+          여러 파일을 한 번에 골라 일괄 변환 후 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">ZIP</code>으로 받을 수 있고,
+          모든 처리는 브라우저에서 이뤄져 서버 전송이 없습니다.
         </p>
       </section>
 
@@ -355,12 +355,18 @@ function SeoContent() {
           💡 이미지 포맷 선택 가이드
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>웹 성능 최적화</strong>: WebP 사용 시 JPEG/PNG 대비 25~35% 파일 크기 감소</li>
-          <li><strong>투명 배경 필요</strong>: PNG 또는 WebP 선택 (JPEG는 투명 미지원)</li>
-          <li><strong>최고 품질</strong>: PNG(무손실) 또는 JPEG 100% 품질</li>
-          <li><strong>파일 크기 중요</strong>: JPEG 70~80% 품질 또는 WebP 권장</li>
-          <li><strong>호환성 우선</strong>: 오래된 브라우저 지원 필요 시 JPEG/PNG 선택</li>
+          <li><strong>웹 성능 최적화</strong> — <strong>WebP</strong>는 JPEG/PNG 대비 <strong>25~35% 작은 용량</strong></li>
+          <li><strong>투명 배경 필요</strong> — <strong>PNG</strong> 또는 <strong>WebP</strong> 선택 (JPEG는 미지원)</li>
+          <li><strong>최고 품질</strong> — PNG(무손실) 또는 JPEG <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">100%</code></li>
+          <li><strong>파일 크기 중요</strong> — JPEG <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">70~80%</code> 또는 WebP 권장</li>
+          <li><strong>호환성 우선</strong> — 구형 브라우저는 <strong>JPEG/PNG</strong></li>
         </ul>
+        <div className="mt-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 p-4 text-sm">
+          <p className="font-semibold text-emerald-900 dark:text-emerald-200 mb-1">💡 빠른 선택 팁</p>
+          <p className="text-emerald-800 dark:text-emerald-300">
+            고민되면 <strong>WebP</strong>. 같은 화질에서 가장 작고 투명 배경/애니메이션까지 지원합니다.
+          </p>
+        </div>
       </section>
 
       <FaqSection

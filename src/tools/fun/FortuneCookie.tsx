@@ -552,11 +552,18 @@ function SeoContent() {
           🥠 포춘 쿠키란?
         </h2>
         <p className="text-sm leading-relaxed">
-          포춘 쿠키를 클릭해서 오늘의 짧은 문장을 받아보는 도구입니다.
-          위로, 동기부여, 인간관계, 일과 삶, 유머 등 5가지 카테고리에서 250개 이상의 문장이 준비되어 있습니다.
+          <strong className="text-gray-900 dark:text-white">포춘 쿠키를 클릭해서 오늘의 짧은 문장을 받아보는 도구입니다.</strong>{' '}
+          <strong>위로, 동기부여, 인간관계, 일과 삶, 유머</strong> 등 5가지 카테고리에서 <strong>250개 이상의 문장</strong>이 준비되어 있습니다.
           기분에 따라 카테고리를 선택하거나 랜덤으로 받아보세요.
           간단한 문장이지만 하루를 시작하는 작은 힘이 될 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🌅 아침 루틴 추천</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            하루 시작할 때 <strong>한 번 열어보고</strong>, 마음에 들면 <strong>스크린샷이나 공유</strong>로 친구에게 전해보세요.
+          </p>
+        </div>
       </section>
 
       <section>

@@ -202,11 +202,18 @@ function SeoContent() {
           🖼️ 이미지 색상 추출이란?
         </h2>
         <p className="text-sm leading-relaxed">
-          이미지 색상 추출 도구는 업로드한 이미지에서 원하는 위치의 정확한 색상 코드를 추출하는 도구입니다.
-          마우스를 올리면 실시간으로 색상을 미리 보고, 클릭하면 해당 색상이 저장됩니다.
-          최대 10개의 색상을 저장하여 팔레트로 활용할 수 있으며, HEX와 RGB 코드를 제공합니다.
+          <strong className="text-gray-900 dark:text-white">이미지 색상 추출 도구는 업로드한 이미지에서 정확한 <strong>색상 코드</strong>를 뽑아내는 도구입니다.</strong>{' '}
+          마우스를 올리면 <strong>실시간</strong>으로 색상을 미리 보고, 클릭하면 해당 색상이 저장됩니다.
+          <strong>최대 10개</strong>의 색상을 저장하여 팔레트로 활용할 수 있으며, <strong>HEX</strong>와 <strong>RGB</strong> 코드를 제공합니다.
           디자인 레퍼런스 분석, 브랜드 컬러 추출, 사진 색감 연구 등에 유용합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 디자인 팁</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            이미지를 <strong>5등분</strong>해서 각 영역에서 가장 넓은 면적의 색을 한 번씩 뽑으면 자연스러운 <strong>5색 팔레트</strong>가 만들어집니다.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -251,13 +258,13 @@ function SeoContent() {
           🖌️ 어떤 작업에 자주 쓰는지
         </h2>
         <p className="text-sm leading-relaxed">
-          무드보드를 만들 때 가장 유용합니다. Pinterest에서 마음에 드는 인테리어 사진을 다운로드한 뒤
-          가구, 벽, 소품, 조명 영역에서 한 색씩 뽑으면 거실에 어울리는 5색 팔레트가 완성되고,
-          그대로 Figma의 컬러 변수로 옮겨 디자인을 시작할 수 있습니다.
-          영화 포스터 분석에도 활용도가 높은데, 웨스 앤더슨 영화의 핑크-시안 조합이나 누아르 영화의 시안-앰버 같은 유명한 색조 패턴을
+          <strong>무드보드</strong>를 만들 때 가장 유용합니다. Pinterest에서 마음에 드는 인테리어 사진을 다운로드한 뒤
+          가구, 벽, 소품, 조명 영역에서 한 색씩 뽑으면 거실에 어울리는 <strong>5색 팔레트</strong>가 완성되고,
+          그대로 <strong>Figma 컬러 변수</strong>로 옮겨 디자인을 시작할 수 있습니다.
+          <strong>영화 포스터</strong> 분석에도 활용도가 높은데, 웨스 앤더슨 영화의 핑크-시안 조합이나 누아르 영화의 시안-앰버 같은 유명한 색조 패턴을
           직접 뽑아보면서 색채 설계의 이론을 체감할 수 있습니다.
           개인 브랜딩에서는 자신이 좋아하는 사진 3장에서 공통적으로 등장하는 색조를 찾으면
-          자연스러운 퍼스널 컬러 키트가 만들어집니다.
+          자연스러운 <strong>퍼스널 컬러 키트</strong>가 만들어집니다.
         </p>
       </section>
 

@@ -639,11 +639,18 @@ function SeoContent() {
           🪜 사다리 타기(게임)란?
         </h2>
         <p className="text-sm leading-relaxed">
-          사다리 타기(사다리 게임)는 참가자들이 각자 출발점을 선택하고, 세로선을 따라 내려가다가 가로선을 만나면 옆으로 이동하여 최종 결과에 도달하는 추첨 방식입니다.
-          가로선이 무작위로 배치되어 누가 어떤 결과를 받을지 예측할 수 없어 공정한 추첨이 가능합니다.
+          <strong className="text-gray-900 dark:text-white">사다리 타기는 출발점에서 세로선을 따라 내려가다가 가로선을 만나 옆으로 이동하는 추첨 방식입니다.</strong>{' '}
+          <strong>가로선이 무작위 배치</strong>되어 누가 어떤 결과를 받을지 예측할 수 없어 <strong>공정한 추첨</strong>이 가능합니다.
           회식 벌칙, 청소 당번, 순서 정하기, 선물 교환, 역할 분담 등 다양한 상황에서 활용할 수 있습니다.
-          최대 8명까지 참여 가능하며, 애니메이션으로 경로를 확인할 수 있습니다.
+          <strong>최대 8명</strong>까지 참여 가능하며, 애니메이션으로 경로를 확인할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎲 공정성</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            모든 참가자는 <strong>동일한 확률</strong>로 모든 결과에 매칭됩니다. <strong>"가운데 숨기기"</strong>로 경로를 가리면 더 공정한 추첨이 가능.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -690,11 +697,11 @@ function SeoContent() {
           사용 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>참가자와 결과 개수가 동일해야 합니다 (쉼표로 구분)</li>
-          <li>"가운데 숨기기" 옵션으로 결과 공개 전까지 경로를 숨길 수 있습니다</li>
-          <li>"결과 섞기" 버튼으로 결과 순서를 무작위로 바꿀 수 있습니다</li>
-          <li>참가자 이름을 클릭하면 해당 경로가 애니메이션으로 표시됩니다</li>
-          <li>결과 공유 버튼으로 친구들에게 결과를 공유하세요</li>
+          <li><strong>참가자 = 결과 개수</strong> (쉼표로 구분)</li>
+          <li><strong>"가운데 숨기기"</strong> — 결과 공개 전까지 경로 가리기</li>
+          <li><strong>"결과 섞기"</strong> — 결과 순서를 무작위로 변경</li>
+          <li><strong>이름 클릭</strong>으로 해당 경로 애니메이션 확인</li>
+          <li><strong>공유 버튼</strong>으로 친구들에게 결과 전달</li>
         </ul>
       </section>
 

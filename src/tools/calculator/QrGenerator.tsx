@@ -334,11 +334,16 @@ function SeoContent() {
           📱 QR코드 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          QR코드 생성기는 URL, 텍스트, Wi-Fi 정보, 연락처 등을 스마트폰으로 스캔 가능한 QR코드로 변환하는 도구입니다.
-          명함, 포스터, 제품 패키지, 매장 안내 등 다양한 용도로 활용할 수 있습니다.
-          전경색과 배경색을 자유롭게 설정하고 원하는 크기로 PNG 이미지를 다운로드하세요.
-          Wi-Fi QR코드는 스캔만으로 자동 접속이 가능하여 게스트 와이파이 공유에 편리합니다.
+          <strong className="text-gray-900 dark:text-white">QR코드 생성기는 URL·텍스트·Wi-Fi·연락처를 스마트폰으로 스캔 가능한 QR코드로 변환하는 도구입니다.</strong>{' '}
+          <strong>명함, 포스터, 제품 패키지, 매장 안내</strong> 등 다양한 용도로 활용할 수 있습니다.
+          <strong>전경색과 배경색</strong>을 자유롭게 설정하고 원하는 크기로 <strong>PNG 이미지</strong>를 다운로드하세요.
+          <strong>Wi-Fi QR코드</strong>는 스캔만으로 자동 접속이 가능해 게스트 와이파이 공유에 편리합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">전경색과 배경색은 <strong>대비가 충분</strong>해야 스캔이 잘 됩니다. 어두운색 배경 위 밝은색 QR은 인식이 어려울 수 있어요.</p>
+        </div>
       </section>
 
       <section>

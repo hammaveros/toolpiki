@@ -146,10 +146,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🏷️ HTML 엔티티 변환이란?</h2>
         <p className="text-sm leading-relaxed">
-          HTML 엔티티는 브라우저의 파서가 &quot;태그 시작&quot;이나 &quot;속성 경계&quot;로 해석하는 문자를 안전한 문자 참조로 바꿔주는 표준 표기법입니다.
-          예를 들어 사용자가 댓글에 <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>를 적었을 때 그대로 페이지에 출력하면 그 코드가 실행됩니다.
-          이 도구는 &amp;, &lt;, &gt;, &quot;, ', /, ` 8개를 한 번에 처리하므로 가장 흔한 XSS 벡터를 차단합니다.
-          단순 표시뿐 아니라 정적 사이트 빌드 시 마크다운에서 코드 블록을 그대로 보존할 때, 또는 RSS 피드의 description 필드처럼 HTML 안에 다시 HTML을 넣어야 할 때 유용합니다.
+          <strong className="text-gray-900 dark:text-white">HTML 엔티티는 특수문자를 안전한 문자 참조로 바꾸는 표준 표기법입니다.</strong>{' '}
+          브라우저의 파서가 &quot;태그 시작&quot;이나 &quot;속성 경계&quot;로 해석하는 문자를 보호합니다.
+          예를 들어 사용자가 댓글에 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&lt;script&gt;alert(1)&lt;/script&gt;</code>를 적었을 때 그대로 페이지에 출력하면 <strong>그 코드가 실행됩니다</strong>.
+          이 도구는 <strong>&amp;, &lt;, &gt;, &quot;, &apos;, /, ` 8개를 한 번에 처리</strong>하므로 가장 흔한 <strong>XSS 벡터</strong>를 차단합니다.
         </p>
       </section>
 
@@ -179,13 +179,21 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🚨 XSS 방어, 위치별로 다르다</h2>
-        <p className="text-sm leading-relaxed">
-          OWASP Cheat Sheet에 따르면 같은 문자열이라도 출력 위치에 따라 필요한 인코딩이 다릅니다.
-          <strong> 본문 텍스트</strong>에는 본 도구의 6~8자 엔티티 변환이면 충분하지만, <strong>속성 값</strong> 안에 들어갈 때는 작은따옴표/큰따옴표까지 모두 변환해야 합니다.
-          <strong>&lt;script&gt; 블록 내부</strong>나 <strong>스타일 속성</strong>은 HTML 엔티티만으로 막을 수 없고 JavaScript/CSS 이스케이프가 별도로 필요합니다.
-          또한 <strong>href, src 같은 URL 속성</strong>은 javascript: 스킴 차단이 추가로 들어가야 하며, 위키나 SNS의 자동 링크화 같은 후처리도 함께 검토해야 합니다.
+        <p className="text-sm leading-relaxed mb-3">
+          <strong className="text-gray-900 dark:text-white">OWASP Cheat Sheet에 따르면 같은 문자열이라도 출력 위치에 따라 필요한 인코딩이 다릅니다.</strong>
         </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">본문 텍스트</strong> — 본 도구의 6~8자 엔티티 변환이면 충분합니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">속성 값</strong> — 작은따옴표/큰따옴표까지 모두 변환해야 합니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">&lt;script&gt; 블록 내부</strong> / <strong>스타일 속성</strong> — HTML 엔티티만으로 막을 수 없고 <strong>JavaScript/CSS 이스케이프</strong>가 별도로 필요합니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">href, src 같은 URL 속성</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">javascript:</code> 스킴 차단이 추가로 들어가야 합니다.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 p-4 text-sm">
+        <p className="font-semibold text-red-900 dark:text-red-200 mb-1">🔒 보안 주의</p>
+        <p className="text-red-800 dark:text-red-300">React의 <code className="px-1 py-0.5 rounded bg-red-100 dark:bg-red-900/40 text-xs font-mono">dangerouslySetInnerHTML</code>, Vue의 <code className="px-1 py-0.5 rounded bg-red-100 dark:bg-red-900/40 text-xs font-mono">v-html</code>은 <strong>자동 이스케이프를 우회</strong>합니다. 사용 시 반드시 직접 변환하거나 DOMPurify로 sanitize하세요.</p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

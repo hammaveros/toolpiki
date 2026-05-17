@@ -250,11 +250,16 @@ function SeoContent() {
           🔐 What is Password Strength Checker?
         </h2>
         <p className="text-sm leading-relaxed">
-          Password Strength Checker analyzes your password security in real-time.
-          It evaluates length, uppercase, lowercase, numbers, special characters, and detects common patterns (123, abc, qwerty).
-          Scores out of 100 with five levels from Very Weak to Very Strong.
-          Your password is processed locally in the browser and never sent to any server.
+          <strong className="text-gray-900 dark:text-white">Password Strength Checker analyzes your password security in real-time.</strong>{' '}
+          Evaluates <strong>length, uppercase, lowercase, numbers, special characters</strong>, and detects <strong>common patterns (123, abc, qwerty)</strong>.
+          Scores out of <strong>100</strong> across five levels from Very Weak to Very Strong.
+          Your password is processed <strong>locally in the browser</strong> and never sent to any server.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Warning</p>
+          <p className="text-amber-800 dark:text-amber-300">A high strength score doesn't help if the password was <strong>leaked on another site</strong>. Use a unique password per site.</p>
+        </div>
       </section>
 
       <section>

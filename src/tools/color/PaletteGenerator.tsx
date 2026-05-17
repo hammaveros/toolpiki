@@ -254,11 +254,18 @@ function SeoContent() {
           🎨 색상 팔레트 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          색상 팔레트 생성기는 기본 색상을 기반으로 색상 이론에 따른 조화로운 팔레트를 자동으로 생성하는 도구입니다.
-          보색, 유사색, 삼원색, 사각 조화, 단색 조화 등 5가지 배색 방식을 지원하며, 각 방식은 색상환에서의 관계에 기반합니다.
-          생성된 팔레트는 HEX/RGB 코드로 제공되며, CSS 변수로 바로 내보내기가 가능합니다.
+          <strong className="text-gray-900 dark:text-white">색상 팔레트 생성기는 <strong>색상 이론</strong>에 따른 조화로운 팔레트를 자동 생성하는 도구입니다.</strong>{' '}
+          <strong>보색</strong>, <strong>유사색</strong>, <strong>삼원색</strong>, 사각 조화, 단색 조화 등 5가지 배색 방식을 지원하며, 각 방식은 색상환에서의 관계에 기반합니다.
+          생성된 팔레트는 <strong>HEX/RGB</strong> 코드로 제공되며, CSS 변수로 바로 내보내기가 가능합니다.
           웹 디자인, 브랜드 컬러 시스템, UI 테마, 일러스트 작업 등에 유용하게 활용됩니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 디자인 팁</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            <strong>60-30-10 규칙</strong>: 주색 60%(배경), 보조색 30%(섹션), 강조색 10%(CTA)로 배분하면 시선 흐름이 자연스러워집니다.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -304,12 +311,12 @@ function SeoContent() {
           🧭 시작 색을 정할 때 참고할 것
         </h2>
         <p className="text-sm leading-relaxed">
-          어떤 색을 기준 색으로 잡느냐에 따라 팔레트 전체 인상이 달라집니다.
-          채도(S)가 80% 이상인 비비드 색은 게임·F&B 브랜드처럼 활기 있는 분위기를,
-          채도 30~50% 사이의 차분한 색은 금융·헬스케어·B2B SaaS의 신뢰감을 자아냅니다.
-          명도(L)는 50% 부근일 때 보색·유사색 변형이 가장 균형 있게 분포하며,
+          어떤 색을 <strong>기준 색</strong>으로 잡느냐에 따라 팔레트 전체 인상이 달라집니다.
+          <strong>채도(S)가 80% 이상</strong>인 비비드 색은 게임·F&B 브랜드처럼 활기 있는 분위기를,
+          <strong>채도 30~50%</strong> 사이의 차분한 색은 금융·헬스케어·B2B SaaS의 신뢰감을 자아냅니다.
+          <strong>명도(L)</strong>는 50% 부근일 때 보색·유사색 변형이 가장 균형 있게 분포하며,
           80% 이상의 파스텔이나 20% 이하의 다크 톤은 단색 조화 시에만 안정적입니다.
-          색조(H)는 217°(파랑)이 가장 보편적인 SaaS 컬러이고, 12°(빨강)는 식음료, 142°(녹색)는 헬스/지속가능성 도메인에 흔히 보입니다.
+          색조(H)는 <strong>217°(파랑)</strong>이 가장 보편적인 SaaS 컬러이고, <strong>12°(빨강)</strong>는 식음료, <strong>142°(녹색)</strong>는 헬스/지속가능성 도메인에 흔히 보입니다.
         </p>
       </section>
 

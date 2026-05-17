@@ -250,11 +250,18 @@ function SeoContent() {
           ⏱️ 타이밍 테스트란?
         </h2>
         <p className="text-sm leading-relaxed">
-          타이밍 테스트는 시계나 화면을 보지 않고 정확히 특정 시간을 맞추는 시간 감각 테스트입니다.
-          5초, 10초, 30초 중 원하는 목표 시간을 선택하고 시작 버튼을 누른 뒤, 목표 시간이 됐다고 느껴질 때 멈춤 버튼을 누르세요.
-          0.001초(밀리초) 단위로 정밀하게 측정하며, 평균 기록과 최고 기록 통계를 제공합니다.
-          당신의 내부 시계(체내 시계)가 얼마나 정확한지 테스트해보세요.
+          <strong className="text-gray-900 dark:text-white">타이밍 테스트는 시계나 화면을 보지 않고 정확히 특정 시간을 맞추는 시간 감각 테스트입니다.</strong>{' '}
+          <strong>5초/10초/30초</strong> 중 목표 시간을 선택하고 시작 버튼을 누른 뒤, 목표 시간이 됐다고 느껴질 때 멈춤 버튼을 누르세요.
+          <strong>0.001초(밀리초) 단위</strong>로 정밀하게 측정하며, 평균 기록과 최고 기록 통계를 제공합니다.
+          당신의 <strong>내부 시계(체내 시계)</strong>가 얼마나 정확한지 테스트해보세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎯 목표 등급</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>오차 0.1초 미만</strong>이면 천재급 타이밍 감각입니다. <strong>10초 모드</strong>가 가장 균형 잡힌 난이도예요.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -311,11 +318,11 @@ function SeoContent() {
           시간 감각 향상 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>마음 속으로 일정한 리듬으로 숫자를 세보세요 (하나, 둘, 셋...)</li>
-          <li>심장 박동이나 호흡 리듬을 기준으로 삼아보세요</li>
-          <li>짧은 시간(5초)부터 연습하고 점차 긴 시간에 도전하세요</li>
-          <li>여러 번 반복하면 내부 시계가 보정됩니다</li>
-          <li>집중력이 흐트러지면 시간이 빠르게 느껴질 수 있어요</li>
+          <li><strong>속으로 카운트</strong> — 일정한 리듬으로 숫자를 세기 (하나, 둘, 셋...)</li>
+          <li><strong>심박/호흡</strong> 리듬을 기준으로 삼기</li>
+          <li><strong>5초부터</strong> 연습하고 점차 긴 시간으로 도전</li>
+          <li><strong>반복 학습</strong>으로 내부 시계 보정 가능</li>
+          <li><strong>집중력 저하</strong> 시 시간이 빠르게 느껴짐 주의</li>
         </ul>
       </section>
 

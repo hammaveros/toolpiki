@@ -88,10 +88,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔧 줄바꿈 제거란?</h2>
         <p className="text-sm leading-relaxed">
-          줄바꿈 제거는 텍스트에 포함된 개행 문자(Line Break)를 제거하거나 공백으로 변환하는 작업입니다.
-          PDF에서 복사한 텍스트, 이메일에서 가져온 내용, 웹페이지에서 긁어온 텍스트 등에는 의도하지 않은 줄바꿈이 포함되는 경우가 많습니다.
-          이러한 불필요한 줄바꿈은 문서 편집, 데이터 처리, 코드 작성 시 방해가 될 수 있어 깔끔하게 정리해야 합니다.
-          이 도구는 줄바꿈을 공백으로 치환, 모든 공백 제거, 공백 정규화, 빈 줄 제거 등 4가지 모드를 제공하여 다양한 상황에 맞게 텍스트를 정리할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">줄바꿈 제거는 텍스트의 개행 문자(Line Break)를 제거하거나 공백으로 변환하는 작업</strong>입니다.
+          <strong>PDF에서 복사한 텍스트</strong>, 이메일 본문, 웹페이지에서 긁어온 텍스트 등에는 의도하지 않은 줄바꿈이 포함되는 경우가 많습니다.
+          이러한 불필요한 줄바꿈은 문서 편집·데이터 처리·코드 작성 시 방해가 됩니다.
+          이 도구는 <strong>4가지 모드</strong>(공백 치환, 모든 공백 제거, 공백 정규화, 빈 줄 제거)를 제공합니다.
         </p>
       </section>
 
@@ -116,6 +116,13 @@ function SeoContent() {
           <li><code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">\r</code> (CR) — 구형 Mac OS에서 사용하던 줄바꿈 문자</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 모드 선택 가이드</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          단어 사이를 자연스럽게 이으려면 <strong>줄바꿈 → 공백</strong>, 한 줄로 완전히 붙이려면 <strong>모든 공백 제거</strong>, 문단 구조를 살리려면 <strong>공백 정규화</strong>를 선택하세요.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

@@ -140,11 +140,16 @@ function SeoContent() {
           🔢 What is Percentage Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Percentage Calculator solves various percentage problems with four easy modes.
-          Calculate discounts, find ratios, apply increases or decreases—all common percentage operations you need daily.
-          The formula is displayed alongside results so you can understand how the calculation works.
-          Perfect for shopping discounts, tax calculations, growth analysis, and grade conversions.
+          <strong className="text-gray-900 dark:text-white">Percentage Calculator solves various percentage problems with four easy modes.</strong>{' '}
+          Calculate <strong>discounts, ratios, increases, and decreases</strong>—all common percentage operations you need daily.
+          The <strong>formula is displayed alongside results</strong> so you can understand how the calculation works.
+          Perfect for <strong>shopping discounts, tax, growth analysis, and grade conversion</strong>.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300"><strong>Four modes</strong> (value / ratio / increase / decrease) cover almost every everyday percentage problem.</p>
+        </div>
       </section>
 
       <section>
@@ -187,8 +192,13 @@ function SeoContent() {
           📐 Common Percentage Formulas
         </h2>
         <p className="text-sm leading-relaxed mb-3">
-          A quick reference to formulas you will run into in everyday work and study.
+          <strong>A quick reference</strong> to formulas you will run into in everyday work and study.
         </p>
+
+        <div className="mb-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Warning</p>
+          <p className="text-amber-800 dark:text-amber-300"><strong>Percent (%)</strong> and <strong>percentage point (pp)</strong> are different. A move from 3% to 5% is "+2 pp" or "+66.7%".</p>
+        </div>
         <div className="overflow-x-auto text-sm">
           <table className="w-full text-xs">
             <thead>

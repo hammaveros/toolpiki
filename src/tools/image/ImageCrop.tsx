@@ -302,10 +302,10 @@ function SeoContent() {
           ✂️ 이미지 자르기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          이미지 자르기(크롭) 도구는 사진에서 원하는 부분만 선택하여 잘라내는 온라인 도구입니다.
-          드래그로 영역을 직접 선택하거나, 정확한 픽셀 좌표를 입력하여 정밀하게 자를 수 있습니다.
-          프로필 사진 제작, 불필요한 배경 제거, SNS 썸네일 규격 맞추기 등 다양한 용도로 활용됩니다.
-          별도 프로그램 설치 없이 브라우저에서 바로 작업하며, 로컬 처리로 개인정보가 안전합니다.
+          <strong className="text-gray-900 dark:text-white">사진에서 원하는 부분만 잘라내는 온라인 도구.</strong>{' '}
+          <strong>드래그</strong>로 영역을 선택하거나 <strong>픽셀 좌표</strong>를 입력해 정밀하게 자를 수 있고,
+          <strong>프로필 사진, 배경 제거, SNS 썸네일</strong> 규격 맞추기에 활용됩니다.
+          설치 없이 브라우저에서 바로 처리되며, <strong>로컬 처리</strong>로 개인정보가 안전합니다.
         </p>
       </section>
 
@@ -338,12 +338,20 @@ function SeoContent() {
           💡 이미지 자르기 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>중요 피사체 중앙 배치</strong>: 인물/제품을 영역 중심에 배치하여 균형 잡힌 구도</li>
-          <li><strong>여백 확보</strong>: 텍스트 오버레이용 썸네일은 상단이나 하단에 여백 남기기</li>
-          <li><strong>플랫폼별 규격</strong>: SNS마다 권장 비율이 다르므로 프리셋 활용 권장</li>
-          <li><strong>고해상도 유지</strong>: 너무 작은 영역으로 자르면 해상도가 낮아질 수 있음</li>
-          <li><strong>정밀 자르기</strong>: 픽셀 단위 입력으로 정확한 크기 지정 가능</li>
+          <li><strong>중앙 배치</strong> — 인물/제품을 영역 중심에 두면 균형 잡힌 구도</li>
+          <li><strong>여백 확보</strong> — 텍스트 오버레이용은 <strong>상단/하단 여백</strong> 남기기</li>
+          <li><strong>플랫폼별 규격</strong> — SNS마다 비율 달라 <strong>프리셋 활용</strong> 권장</li>
+          <li><strong>고해상도 유지</strong> — 너무 작게 자르면 해상도 저하</li>
+          <li><strong>정밀 자르기</strong> — 픽셀 단위 입력으로 정확한 크기 지정</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 비율 빠른 선택</p>
+          <p className="text-blue-800 dark:text-blue-300">
+            인스타 피드는 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">1:1</code>,
+            유튜브 썸네일은 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">16:9</code>,
+            인쇄 사진은 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">3:2</code>가 표준입니다.
+          </p>
+        </div>
       </section>
 
       <FaqSection

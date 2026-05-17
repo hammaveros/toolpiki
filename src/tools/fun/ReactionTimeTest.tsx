@@ -359,11 +359,18 @@ function SeoContent() {
           ⚡ 반응속도 테스트란?
         </h2>
         <p className="text-sm leading-relaxed">
-          반응속도 테스트는 시각적 자극에 대한 반응 시간을 밀리초(ms) 단위로 측정하는 도구입니다.
-          화면이 초록색으로 바뀌는 순간 얼마나 빨리 클릭하는지를 5회 측정하여 평균을 냅니다.
-          일반 성인의 평균 반응속도는 200~300ms이며, 프로게이머는 150ms 이하를 기록하기도 합니다.
+          <strong className="text-gray-900 dark:text-white">반응속도 테스트는 시각적 자극에 대한 반응 시간을 밀리초(ms) 단위로 측정합니다.</strong>{' '}
+          화면이 <strong>초록색으로 바뀌는 순간</strong> 얼마나 빨리 클릭하는지를 <strong>5회 측정</strong>하여 평균을 냅니다.
+          일반 성인 평균은 <strong>200~300ms</strong>이며, 프로게이머는 <strong>150ms 이하</strong>를 기록하기도 합니다.
           측정 결과를 공유하여 친구들과 비교해보세요.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">⚡ 등급 기준</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>150ms 이하</strong>는 최상위급(프로게이머). 일반 성인은 <strong>250~300ms</strong>가 평균입니다.
+          </p>
+        </div>
       </section>
 
       <section>

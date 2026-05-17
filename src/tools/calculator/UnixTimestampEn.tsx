@@ -205,11 +205,16 @@ function SeoContent() {
           🕐 What is Unix Timestamp?
         </h2>
         <p className="text-sm leading-relaxed">
-          Unix timestamp represents the number of seconds elapsed since January 1, 1970 00:00:00 UTC (Unix Epoch).
-          It's a timezone-independent way to represent any moment in time, making it standard for cross-system time exchange.
-          This tool converts between timestamps and human-readable dates, auto-detecting seconds (10 digits) and milliseconds (13 digits).
-          View and copy the current timestamp in real-time.
+          <strong className="text-gray-900 dark:text-white">Unix timestamp is the number of seconds elapsed since January 1, 1970 00:00:00 UTC (Unix Epoch).</strong>{' '}
+          It's a <strong>timezone-independent</strong> way to represent any moment in time, making it the standard for cross-system time exchange.
+          Converts between timestamps and human-readable dates, auto-detecting <strong>seconds (10 digits) and milliseconds (13 digits)</strong>.
+          View and copy the <strong>current timestamp in real-time</strong>.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Warning</p>
+          <p className="text-amber-800 dark:text-amber-300">On <strong>January 19, 2038</strong>, 32-bit timestamps overflow (the Y2K38 problem). Modern systems now use 64-bit timestamps.</p>
+        </div>
       </section>
 
       <section>

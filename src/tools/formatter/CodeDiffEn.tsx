@@ -302,10 +302,9 @@ function SeoContent() {
           🔍 What is Code Diff?
         </h2>
         <p className="text-sm leading-relaxed">
-          Code Diff is a tool that visually shows differences between two pieces of code or text.
-          Similar to Git diff, it displays added lines (green), removed lines (red), and unchanged lines with color coding.
-          It's essential for code review, version comparison, merge conflict resolution, and before/after refactoring comparison.
-          Uses the Myers diff algorithm (same as Git) to efficiently compare even large code files.
+          <strong className="text-gray-900 dark:text-white">Compare two versions of text line by line and spot every change instantly.</strong>{' '}
+          Additions show in <strong>green</strong>, deletions in <strong>red</strong>. Powered by the <strong>Myers diff algorithm</strong> (same as Git),
+          it handles up to <strong>50,000 lines</strong> in the browser. Code never leaves your machine, so it's safe for <strong>internal code and configs</strong>.
         </p>
       </section>
 
@@ -334,12 +333,20 @@ function SeoContent() {
           💡 Use Cases
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Preview changes before Pull Request review</li>
-          <li>Compare config files before/after library updates</li>
-          <li>Compare text data like SQL queries, configs, API responses</li>
-          <li>Compare two versions when resolving merge conflicts</li>
+          <li>Preview changes before <strong>Pull Request</strong> review</li>
+          <li>Compare config files <strong>before/after library updates</strong></li>
+          <li>Compare text data like <strong>SQL queries, configs, API responses</strong></li>
+          <li>Compare two versions when resolving <strong>merge conflicts</strong></li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Watch for Fake Diffs</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          Different line endings (<strong>CRLF vs LF</strong>) or a leading <strong>BOM</strong> mark every line as changed even when content matches.
+          Normalize line endings in your editor before pasting.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

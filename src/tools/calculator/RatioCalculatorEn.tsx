@@ -328,11 +328,16 @@ function SeoContent() {
           📐 What is Ratio Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Ratio Calculator computes and converts aspect ratios for images, videos, and screens.
-          Automatically extracts ratios from dimensions and calculates new sizes while maintaining proportions.
-          Includes common ratio presets (16:9, 4:3) and golden ratio (1:1.618) calculations.
-          Essential tool for designers, developers, video editors, and photographers.
+          <strong className="text-gray-900 dark:text-white">Ratio Calculator computes and converts aspect ratios for images, videos, and screens.</strong>{' '}
+          Automatically <strong>extracts ratios from dimensions</strong> and calculates new sizes while maintaining proportions.
+          Includes common presets (<strong>16:9, 4:3</strong>) and <strong>golden ratio (1:1.618)</strong> calculations.
+          Essential for <strong>designers, developers, video editors, and photographers</strong>.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">YouTube/Netflix use <strong>16:9</strong>, Instagram uses <strong>1:1 or 4:5</strong>, cinema uses <strong>2.35:1</strong>.</p>
+        </div>
       </section>
 
       <section>

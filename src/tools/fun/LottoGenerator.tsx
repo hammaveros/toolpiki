@@ -320,11 +320,18 @@ function SeoContent() {
           🎱 로또 번호 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          한국 로또 6/45 형식에 맞춰 1~45 중 6개 번호를 암호학적으로 안전한 난수(crypto.getRandomValues)로 생성하는 도구입니다.
-          보너스 번호 포함 옵션과 최대 10세트 동시 생성을 지원합니다.
-          번호 선택이 고민될 때 빠르게 추천받아 보세요.
-          단, 모든 번호 조합의 당첨 확률은 동일합니다.
+          <strong className="text-gray-900 dark:text-white">한국 로또 6/45 형식에 맞춰 1~45 중 6개 번호를 생성하는 도구입니다.</strong>{' '}
+          <strong>암호학적으로 안전한 난수(crypto.getRandomValues)</strong>를 사용해 진정한 무작위 결과를 보장합니다.
+          보너스 번호 포함 옵션과 <strong>최대 10세트 동시 생성</strong>을 지원합니다.
+          번호 선택이 고민될 때 빠르게 추천받아 보세요. 단, 모든 번호 조합의 당첨 확률은 동일합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 1등 확률</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            1등 당첨 확률은 <strong>1/8,145,060</strong>. 어떤 번호 조합도 <strong>당첨 확률은 동일</strong>합니다.
+          </p>
+        </div>
       </section>
 
       <section>

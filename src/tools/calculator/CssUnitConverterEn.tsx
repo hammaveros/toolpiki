@@ -226,11 +226,16 @@ function SeoContent() {
           📏 What is CSS Unit Converter?
         </h2>
         <p className="text-sm leading-relaxed">
-          CSS Unit Converter transforms between px, rem, em, pt, vw, and vh units used in web development.
-          It calculates accurate conversions based on root font-size (default 16px) and viewport dimensions.
-          Essential for responsive web design, accessible font sizing, and mobile/desktop layout work.
-          Copy converted CSS values with one click to paste directly into your code.
+          <strong className="text-gray-900 dark:text-white">CSS Unit Converter transforms between px, rem, em, pt, vw, and vh units used in web development.</strong>{' '}
+          It calculates accurate conversions based on <strong>root font-size (default 16px)</strong> and <strong>viewport dimensions</strong>.
+          Essential for <strong>responsive design, accessible font sizing</strong>, and mobile/desktop layouts.
+          Copy converted CSS values with <strong>one click</strong> to paste directly into your code.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Key Point</p>
+          <p className="text-blue-800 dark:text-blue-300">Use <strong>rem</strong> for accessible fonts, <strong>em</strong> for component-relative sizing, and <strong>vw/vh</strong> for viewport-based layouts.</p>
+        </div>
       </section>
 
       <section>

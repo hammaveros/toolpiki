@@ -181,9 +181,9 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔑 JWT 디코더란?</h2>
         <p className="text-sm leading-relaxed">
-          JWT(JSON Web Token, RFC 7519)는 점(.)으로 구분된 세 토막의 짧은 문자열에 사용자 정보를 담아 주고받는 인증 토큰 규격입니다.
-          Header는 서명 알고리즘, Payload는 사용자 ID나 권한 같은 클레임, Signature는 앞 두 부분을 비밀 키로 묶은 위변조 방지 코드입니다.
-          이 도구는 점으로 분리된 세 부분을 Base64url로 디코딩해 사람이 읽을 수 있는 JSON으로 풀어 주고, <code>exp</code> 클레임이 있으면 현재 시각과 비교해 만료 여부도 표시합니다.
+          <strong className="text-gray-900 dark:text-white">JWT는 점(.)으로 구분된 세 토막에 사용자 정보를 담는 인증 토큰 규격입니다(RFC 7519).</strong>{' '}
+          <strong>Header</strong>는 서명 알고리즘, <strong>Payload</strong>는 사용자 ID나 권한 같은 클레임, <strong>Signature</strong>는 앞 두 부분을 비밀 키로 묶은 위변조 방지 코드입니다.
+          이 도구는 점으로 분리된 세 부분을 <strong>Base64url로 디코딩</strong>해 사람이 읽을 수 있는 JSON으로 풀어 주고, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">exp</code> 클레임이 있으면 현재 시각과 비교해 <strong>만료 여부도 표시</strong>합니다.
           로컬에서만 처리되며 입력한 토큰이 어디로도 전송되지 않습니다.
         </p>
       </section>
@@ -204,15 +204,18 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🛡️ JWT 다룰 때 자주 빠지는 함정</h2>
-        <p className="text-sm leading-relaxed">
-          첫째, <strong>alg: none 공격</strong>. 2015년 공개된 취약점으로, Header의 alg 필드를 &quot;none&quot;으로 바꾸고 Signature를 비워 보내면 일부 라이브러리가 무서명 토큰을 받아들였습니다.
-          반드시 서버에서 허용된 알고리즘 목록(예: HS256, RS256만)을 명시적으로 검증해야 합니다.
-          둘째, <strong>Payload는 암호화가 아닙니다.</strong> Base64url을 풀기만 하면 누구나 내용을 봅니다.
-          비밀번호, 주민번호, 카드번호처럼 노출되면 안 되는 정보를 넣지 말고 sub에는 가능하면 UUID처럼 식별성이 약한 값을 씁니다.
-          셋째, <strong>저장 위치</strong>. localStorage는 XSS에 취약하므로 HttpOnly Secure 쿠키 또는 메모리 보관이 권장되며, 리프레시 토큰은 쿠키, 액세스 토큰은 메모리로 분리하는 패턴이 흔합니다.
-          넷째, exp만 믿지 말고 서버에서 <strong>토큰 폐기 목록(블랙리스트)</strong>이나 jti 기반 사용 추적을 함께 운용하면 탈취 대응이 빨라집니다.
-        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong className="text-gray-900 dark:text-white">alg: none 공격</strong> — 2015년 공개된 취약점. Header의 alg를 &quot;none&quot;으로 바꾸고 Signature를 비워 보내면 일부 라이브러리가 무서명 토큰을 받아들였습니다. 서버에서 <strong>허용된 알고리즘 목록(HS256, RS256 등)을 명시적으로 검증</strong>해야 합니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">Payload는 암호화가 아님</strong> — Base64url을 풀기만 하면 누구나 내용을 봅니다. 비밀번호·주민번호·카드번호처럼 노출되면 안 되는 정보를 넣지 마세요.</li>
+          <li><strong className="text-gray-900 dark:text-white">저장 위치</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">localStorage</code>는 XSS에 취약합니다. <strong>HttpOnly Secure 쿠키</strong> 또는 <strong>메모리 보관</strong>이 권장됩니다.</li>
+          <li><strong className="text-gray-900 dark:text-white">토큰 폐기 대응</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">exp</code>만 믿지 말고 서버에서 <strong>블랙리스트</strong>나 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">jti</code> 기반 사용 추적을 함께 운용하세요.</li>
+        </ul>
       </section>
+
+      <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 p-4 text-sm">
+        <p className="font-semibold text-red-900 dark:text-red-200 mb-1">🔒 보안 주의</p>
+        <p className="text-red-800 dark:text-red-300"><strong>서명 검증은 절대 브라우저에서 하지 마세요.</strong> HMAC의 비밀 키나 RSA/ECDSA의 키가 노출되면 토큰 시스템 전체가 무력화됩니다. 검증은 서버에서 <strong>jose, jsonwebtoken</strong> 같은 검증된 라이브러리로 진행해야 합니다.</p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

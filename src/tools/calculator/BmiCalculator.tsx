@@ -199,11 +199,16 @@ function SeoContent() {
           ⚖️ BMI 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          BMI(Body Mass Index, 체질량지수)는 키와 체중의 비율로 비만도를 측정하는 국제 표준 지표입니다.
-          체중(kg)을 키(m)의 제곱으로 나눈 값으로, 세계보건기구(WHO)에서 권장하는 비만 판정 기준입니다.
-          이 계산기는 입력된 키와 체중으로 BMI를 계산하고, 정상 체중 범위와 이상적인 체중까지 알려줍니다.
-          시각화된 BMI 범위 차트로 현재 건강 상태를 직관적으로 파악할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">BMI(Body Mass Index, 체질량지수)는 키와 체중의 비율로 비만도를 측정하는 국제 표준 지표입니다.</strong>{' '}
+          <strong>체중(kg) ÷ 키(m)²</strong> 공식으로, <strong>세계보건기구(WHO)</strong>에서 권장하는 비만 판정 기준입니다.
+          이 계산기는 BMI를 계산하고, <strong>정상 체중 범위와 이상적인 체중</strong>까지 알려줍니다.
+          시각화된 <strong>BMI 범위 차트</strong>로 현재 건강 상태를 직관적으로 파악할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 주의</p>
+          <p className="text-amber-800 dark:text-amber-300">BMI는 <strong>근육량·체지방률</strong>을 구분하지 못합니다. 운동선수처럼 근육이 많은 경우 과대평가될 수 있어요.</p>
+        </div>
       </section>
 
       <section>

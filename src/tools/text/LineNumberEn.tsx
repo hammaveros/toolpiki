@@ -188,10 +188,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📝 What Is the Line Number Tool?</h2>
         <p className="text-sm leading-relaxed">
-          The Line Number tool is an online utility that automatically prepends sequential numbers to each line of your text.
-          Whether you need to reference specific lines in a code snippet, annotate a document for peer review, or simply organize a list with numbered items, this tool handles it instantly.
-          It also works in reverse, stripping existing line numbers from text so you can get clean, unnumbered content back.
-          Everything runs directly in your browser with real-time results, no installation or sign-up required.
+          <strong className="text-gray-900 dark:text-white">The Line Number tool automatically prepends sequential numbers to each line of your text.</strong>{' '}
+          Whether you need to reference specific lines in a <strong>code snippet</strong>, annotate a document for peer review, or organize a numbered list, this tool handles it instantly.
+          It also <strong>works in reverse</strong>, stripping existing line numbers to give you clean, unnumbered content back.
+          Everything runs <strong>directly in your browser</strong> with real-time results.
         </p>
       </section>
 
@@ -219,10 +219,17 @@ function SeoContent() {
           </div>
           <div>
             <strong className="text-gray-900 dark:text-white">Number Padding</strong>
-            <p className="mt-1 leading-relaxed">When enabled, shorter numbers are left-padded with spaces so all lines align neatly. For example, in a 100-line text, line 1 appears as &quot;  1&quot; to match the width of &quot;100&quot;. This keeps code and structured text looking clean and easy to read.</p>
+            <p className="mt-1 leading-relaxed">When enabled, shorter numbers are left-padded with spaces so all lines align neatly. For example, in a 100-line text, <strong>line 1 appears as <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">  1</code></strong> to match the width of <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">100</code>. Keeps code and structured text easy to read.</p>
           </div>
         </div>
       </section>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 Quick tip</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          For code review snippets, the cleanest combo is the <strong>colon separator with padding enabled</strong>. For plain numbered lists, the <strong>period separator</strong> feels most natural.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

@@ -206,10 +206,9 @@ function SeoContent() {
           ⭐ 파비콘 생성기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          파비콘 생성기는 웹사이트용 파비콘(favicon)을 다양한 크기로 한 번에 생성하는 온라인 도구입니다.
-          하나의 원본 이미지만 업로드하면 브라우저 탭, 북마크, iOS/Android 홈 화면 아이콘, PWA 스플래시 화면 등
-          각 플랫폼에서 요구하는 모든 크기의 아이콘을 자동으로 생성합니다.
-          생성된 아이콘들은 개별 또는 일괄 다운로드가 가능하며, HTML 코드도 함께 제공됩니다.
+          <strong className="text-gray-900 dark:text-white">웹사이트 파비콘을 다양한 크기로 한 번에 생성하는 도구.</strong>{' '}
+          원본 이미지 한 장만 올리면 <strong>브라우저 탭, 북마크, iOS/Android 홈 아이콘, PWA 스플래시</strong>까지
+          각 플랫폼이 요구하는 모든 크기를 자동 생성하고, <strong>HTML 코드</strong>까지 함께 제공합니다.
         </p>
       </section>
 
@@ -242,12 +241,19 @@ function SeoContent() {
           💡 좋은 파비콘 만들기 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>정사각형 원본</strong>: 512x512 이상의 정사각형 이미지 권장</li>
-          <li><strong>심플한 디자인</strong>: 작은 크기에서도 식별 가능하도록 단순하게</li>
-          <li><strong>투명 배경</strong>: PNG 형식으로 투명 배경 활용 가능</li>
-          <li><strong>브랜드 색상</strong>: 로고의 핵심 색상으로 인지도 높이기</li>
-          <li><strong>테스트</strong>: 16x16에서도 알아볼 수 있는지 확인</li>
+          <li><strong>정사각형 원본</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">512x512</code> 이상 권장</li>
+          <li><strong>심플한 디자인</strong> — 작은 크기에서도 식별 가능하게</li>
+          <li><strong>투명 배경</strong> — <strong>PNG</strong> 형식으로 활용 가능</li>
+          <li><strong>브랜드 색상</strong> — 로고 핵심 색상으로 인지도 강화</li>
+          <li><strong>테스트</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">16x16</code>에서도 식별되는지 확인</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 p-4 text-sm">
+          <p className="font-semibold text-emerald-900 dark:text-emerald-200 mb-1">💡 디자인 팁</p>
+          <p className="text-emerald-800 dark:text-emerald-300">
+            <strong>글자 대신 심볼</strong>이 좋습니다. <code className="px-1 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/50 text-xs font-mono">16x16</code>에서 글자는 거의 안 보이지만,
+            단순한 도형/이니셜 한 글자는 또렷이 보입니다.
+          </p>
+        </div>
       </section>
 
       <FaqSection

@@ -371,11 +371,18 @@ function SeoContent() {
           🎰 What is US Lotto Generator?
         </h2>
         <p className="text-sm leading-relaxed">
-          Generate random numbers for US lottery games including Powerball (5/69 + 1/26) and Mega Millions (5/70 + 1/25).
-          Uses cryptographically secure random generation (crypto.getRandomValues) for truly unpredictable results.
-          Create up to 10 sets at once and track your generation history.
-          Remember, all number combinations have exactly the same odds of winning.
+          <strong className="text-gray-900 dark:text-white">Generate random numbers for Powerball and Mega Millions.</strong>{' '}
+          Supports <strong>Powerball (5/69 + 1/26)</strong> and <strong>Mega Millions (5/70 + 1/25)</strong>.
+          Uses <strong>cryptographically secure random generation</strong> (crypto.getRandomValues) for truly unpredictable results.
+          Create up to <strong>10 sets at once</strong> with history tracking.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Jackpot Odds</p>
+          <p className="text-amber-800 dark:text-amber-300">
+            <strong>Powerball: 1 in 292.2M</strong>, <strong>Mega Millions: 1 in 302.6M</strong>. Every combination has equal odds.
+          </p>
+        </div>
       </section>
 
       <section>

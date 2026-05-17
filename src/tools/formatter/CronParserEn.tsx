@@ -277,11 +277,10 @@ function SeoContent() {
           ⏰ Decode That Cryptic Cron String
         </h2>
         <p className="text-sm leading-relaxed">
-          You see <span className="font-mono">0 9 * * 1-5</span> in a config file and have to guess what it does.
-          This parser translates the five-field syntax into a plain English sentence and lists the next five run times,
-          so you can sanity-check a schedule before pushing to production. It works for almost every flavor of cron you meet day to day:
-          AWS EventBridge, GitHub Actions schedule blocks, Kubernetes CronJobs, classic /etc/crontab, and Spring&apos;s
-          @Scheduled (5-field mode). Everything happens in your browser, so internal schedules never leave your machine.
+          <strong className="text-gray-900 dark:text-white">Translate any cron expression into plain English and preview the next 5 run times.</strong>{' '}
+          No more guessing what <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">0 9 * * 1-5</code> means.
+          Works for <strong>AWS EventBridge</strong>, <strong>GitHub Actions schedule</strong>, <strong>Kubernetes CronJobs</strong>, classic <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">/etc/crontab</code>, and Spring <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">@Scheduled</code> (5-field).
+          Everything happens in the browser, so <strong>internal schedules never leave your machine</strong>.
         </p>
       </section>
 
@@ -354,6 +353,14 @@ function SeoContent() {
           <li><strong>Sunday is 0 or 7</strong> depending on the implementation. Stick with 0 to stay portable across Linux, AWS, and Kubernetes.</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+        <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Timezone Checklist</p>
+        <p className="text-amber-800 dark:text-amber-300">
+          <strong>Cron follows the system timezone.</strong> For 9 AM EST on a UTC host, write <code className="px-1 py-0.5 rounded bg-amber-100 dark:bg-amber-900/40 text-xs font-mono">0 14 * * *</code> (UTC-5).
+          <strong> AWS EventBridge and GitHub Actions are UTC-only</strong> — always verify TZ per platform before shipping.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

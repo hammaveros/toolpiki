@@ -228,11 +228,18 @@ function SeoContent() {
           🎨 색감 테스트란?
         </h2>
         <p className="text-sm leading-relaxed">
-          색감 테스트는 미세한 색상 차이를 구별하는 능력을 측정하는 도구입니다.
-          제시된 색상과 정확히 일치하는 색을 4개의 유사한 색상 중에서 찾아야 합니다.
-          10라운드 동안 난이도가 점점 높아지며, 정확도와 반응시간을 함께 측정합니다.
+          <strong className="text-gray-900 dark:text-white">색감 테스트는 미세한 색상 차이를 구별하는 능력을 측정하는 도구입니다.</strong>{' '}
+          제시된 색상과 정확히 일치하는 색을 <strong>4개의 유사한 색상</strong> 중에서 찾아야 합니다.
+          <strong>10라운드</strong> 동안 난이도가 점점 높아지며, <strong>정확도</strong>와 <strong>반응시간</strong>을 함께 측정합니다.
           디자이너, 일러스트레이터, 사진작가 등 색상을 다루는 직업군에서 유용하게 활용할 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎨 디자이너 추천</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            <strong>90% 이상</strong>이면 디자이너급 색감입니다. <strong>모니터 캘리브레이션</strong> 후 측정하면 더 정확합니다.
+          </p>
+        </div>
       </section>
 
       <section>

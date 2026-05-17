@@ -199,11 +199,16 @@ function SeoContent() {
           ⚖️ What is BMI Calculator?
         </h2>
         <p className="text-sm leading-relaxed">
-          BMI (Body Mass Index) is an international standard metric that measures body fat based on height and weight ratio.
-          It is calculated by dividing weight (kg) by the square of height (m), and is the screening tool recommended by the WHO.
-          This calculator computes your BMI from entered height and weight, showing your normal weight range and ideal weight.
-          A visual BMI range chart helps you understand your current health status at a glance.
+          <strong className="text-gray-900 dark:text-white">BMI (Body Mass Index) is the international standard metric for body fat based on height and weight.</strong>{' '}
+          The formula is <strong>weight (kg) ÷ height (m)²</strong>, recommended by the <strong>WHO</strong> as a screening tool.
+          This calculator computes your BMI and shows your <strong>normal weight range and ideal weight</strong>.
+          A visual <strong>BMI range chart</strong> helps you understand your current health status at a glance.
         </p>
+
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ Warning</p>
+          <p className="text-amber-800 dark:text-amber-300">BMI cannot distinguish between <strong>muscle mass</strong> and <strong>body fat</strong>. Athletes may register as overweight despite being healthy.</p>
+        </div>
       </section>
 
       <section>

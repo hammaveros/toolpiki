@@ -238,11 +238,16 @@ function SeoContent() {
           🎂 나이 계산기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          나이 계산기는 생년월일을 입력하면 만 나이와 한국 나이를 동시에 계산해주는 도구입니다.
-          2023년부터 한국도 공식적으로 만 나이를 사용하지만, 일상에서는 여전히 연 나이를 많이 씁니다.
-          다음 생일까지 남은 일수, 태어난 지 총 며칠인지도 확인할 수 있습니다.
-          12지신 띠 정보도 제공하여 같은 띠 해에 태어난 연도를 한눈에 볼 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">나이 계산기는 생년월일을 입력하면 만 나이와 한국 나이를 동시에 계산해주는 도구입니다.</strong>{' '}
+          <strong>2023년부터</strong> 한국도 공식적으로 만 나이를 사용하지만, 일상에서는 여전히 연 나이를 많이 씁니다.
+          <strong>다음 생일까지 남은 일수</strong>, 태어난 지 총 며칠인지도 확인할 수 있습니다.
+          <strong>12지신 띠 정보</strong>도 제공하여 같은 띠 해에 태어난 연도를 한눈에 볼 수 있습니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 핵심 포인트</p>
+          <p className="text-blue-800 dark:text-blue-300">2023년 6월부터 <strong>만 나이</strong>가 법적 공식 기준이지만, 학년·병역 등은 여전히 연 나이를 씁니다.</p>
+        </div>
       </section>
 
       <section>

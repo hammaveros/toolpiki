@@ -176,10 +176,11 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔐 What is Base64 Encoding?</h2>
         <p className="text-sm leading-relaxed">
-          Base64 first appeared in RFC 1421 (PEM) in 1987 and was formalised for general use in the MIME specification (RFC 2045).
-          It slices arbitrary binary data into 6-bit chunks and maps each chunk to one of 64 printable ASCII characters — A–Z, a–z, 0–9, plus &quot;+&quot; and &quot;/&quot; — with &quot;=&quot; used as padding when the input length isn't a multiple of three bytes.
+          <strong className="text-gray-900 dark:text-white">Base64 safely carries binary data across text-only channels.</strong>{' '}
+          It first appeared in <strong>RFC 1421 (PEM)</strong> in 1987 and was formalised for general use in the <strong>MIME specification (RFC 2045)</strong>.
+          It slices arbitrary binary data into <strong>6-bit chunks</strong> and maps each chunk to one of 64 printable ASCII characters — A–Z, a–z, 0–9, plus &quot;+&quot; and &quot;/&quot; — with <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">=</code> used as padding when the input length isn&apos;t a multiple of three bytes.
           The practical purpose is bridging text-only channels: SMTP, HTTP headers, JSON, and XML all tolerate ASCII but can mangle raw bytes.
-          Base64 grows payloads by roughly 4/3 (about 33%), which is the trade-off you accept in return for safe transport through systems that might otherwise rewrite line endings or strip the high bit.
+          Base64 grows payloads by <strong>roughly 4/3 (about 33%)</strong>, the trade-off for safe transport through systems that might otherwise rewrite line endings or strip the high bit.
         </p>
       </section>
 
@@ -188,22 +189,27 @@ function SeoContent() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <h3 className="font-semibold mb-1">Email Attachments</h3>
-            <p>MIME standard encodes attachments in Base64 because email protocols only support 7-bit ASCII.</p>
+            <p><strong>MIME standard</strong> encodes attachments in Base64 because email protocols only support <strong>7-bit ASCII</strong>.</p>
           </div>
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <h3 className="font-semibold mb-1">Data URLs (Inline Images)</h3>
-            <p>Embed images directly in CSS or HTML using data:image/png;base64,... format.</p>
+            <p>Embed images directly in CSS or HTML using <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">data:image/png;base64,...</code> format.</p>
           </div>
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <h3 className="font-semibold mb-1">JWT Tokens</h3>
-            <p>JSON Web Token Header and Payload are encoded using Base64url encoding.</p>
+            <p>JSON Web Token <strong>Header and Payload</strong> are encoded using <strong>Base64url</strong> encoding.</p>
           </div>
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
             <h3 className="font-semibold mb-1">API Authentication</h3>
-            <p>HTTP Basic Auth sends username:password encoded in Base64.</p>
+            <p>HTTP <strong>Basic Auth</strong> sends <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">username:password</code> encoded in Base64.</p>
           </div>
         </div>
       </section>
+
+      <div className="rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900 p-4 text-sm">
+        <p className="font-semibold text-red-900 dark:text-red-200 mb-1">🔒 Security Note</p>
+        <p className="text-red-800 dark:text-red-300">Base64 is <strong>encoding, not encryption</strong>. Anyone can decode it in seconds. Use bcrypt/Argon2 for passwords and HTTPS/TLS for transport security.</p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

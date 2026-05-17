@@ -331,11 +331,18 @@ function SeoContent() {
           🔄 색상 일괄 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          색상 일괄 변환기는 여러 색상 코드를 한 번에 HEX, RGB, HSL 등 원하는 형식으로 변환하는 도구입니다.
-          HEX(#FF5733), RGB(rgb(255,87,51)), RGBA, HSL, HSLA 등 다양한 입력 형식을 자동으로 인식합니다.
-          줄바꿈으로 구분하여 수십 개의 색상을 동시에 처리할 수 있어 대량 작업에 효율적입니다.
+          <strong className="text-gray-900 dark:text-white">색상 일괄 변환기는 여러 색상 코드를 한 번에 <strong>HEX</strong>, <strong>RGB</strong>, <strong>HSL</strong>로 변환합니다.</strong>{' '}
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">#FF5733</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">rgb(255,87,51)</code>, RGBA, HSL, HSLA 등 다양한 입력 형식을 자동으로 인식합니다.
+          줄바꿈으로 구분하여 <strong>수십 개의 색상</strong>을 동시에 처리할 수 있어 대량 작업에 효율적입니다.
           디자인 시스템 구축, CSS 마이그레이션, 색상 문서화 작업에 유용합니다.
         </p>
+
+        <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 활용 팁</p>
+          <p className="text-purple-800 dark:text-purple-300">
+            Figma 컬러 스타일 export를 통째로 붙여넣으면 <strong>RGB·HEX·HSL</strong>이 한 번에 정리되어 디자인 핸드오프가 빨라집니다.
+          </p>
+        </div>
       </section>
 
       <section>

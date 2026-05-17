@@ -227,10 +227,10 @@ function SeoContent() {
           🖼️ What is Image Resizer?
         </h2>
         <p className="text-sm leading-relaxed">
-          Image resizing changes the resolution (width × height in pixels) of photos or graphics.
-          You can scale images while maintaining aspect ratio or adjust to specific dimensions for social media.
-          Common uses include optimizing images for faster website loading, social media formatting, thumbnail creation, and reducing email attachment sizes.
-          All processing happens in your browser — images are never sent to any server.
+          <strong className="text-gray-900 dark:text-white">Change image resolution (width × height in pixels).</strong>{' '}
+          Scale while <strong>maintaining aspect ratio</strong> or adjust to specific dimensions for <strong>social media</strong>.
+          Common uses: <strong>faster website loading, social formatting, thumbnails, and email attachments</strong>.
+          All processing happens in your browser — images never sent to a server.
         </p>
       </section>
 
@@ -263,11 +263,19 @@ function SeoContent() {
           💡 Resizing Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>Keep aspect ratio</strong>: Prevents image distortion</li>
-          <li><strong>Avoid upscaling</strong>: Enlarging beyond original size reduces quality</li>
-          <li><strong>File size savings</strong>: Reducing dimensions by 50% cuts file size by ~75%</li>
-          <li><strong>Batch processing</strong>: Useful for formatting multiple images to same specs</li>
+          <li><strong>Keep aspect ratio</strong> — prevents image distortion</li>
+          <li><strong>Avoid upscaling</strong> — enlarging beyond original <strong>reduces quality</strong></li>
+          <li><strong>File size savings</strong> — <strong>50% smaller dimensions</strong> = <strong>~75% smaller file</strong></li>
+          <li><strong>Batch processing</strong> — format multiple images to the same specs</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+          <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Recommended sizes</p>
+          <p className="text-blue-800 dark:text-blue-300">
+            Web body images: <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">1920px</code> max,
+            Instagram feed: <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">1080×1080</code>,
+            YouTube thumbnail: <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/50 text-xs font-mono">1280×720</code>.
+          </p>
+        </div>
       </section>
 
       <FaqSection

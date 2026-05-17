@@ -227,11 +227,18 @@ function SeoContent() {
           What is Letter QR?
         </h2>
         <p className="text-sm leading-relaxed">
-          Letter QR is a tool that lets you write a short letter and share it as a QR code.
-          When the recipient scans the QR code, a beautifully styled letter card appears.
-          The letter content is encoded directly in the URL, so nothing is stored on any server.
-          Choose from 5 unique stationery designs to make your letter even more special.
+          <strong className="text-gray-900 dark:text-white">Letter QR lets you write a short letter and share it as a QR code.</strong>{' '}
+          When the recipient scans the QR, a <strong>beautifully styled letter card</strong> appears.
+          The letter content is <strong>encoded directly in the URL</strong>, so nothing is stored on any server.
+          Choose from <strong>5 unique stationery designs</strong> to make your letter even more special.
         </p>
+
+        <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
+          <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🔒 Privacy</p>
+          <p className="text-violet-800 dark:text-violet-300">
+            Your letter lives <strong>only inside the URL</strong> — no server stores it. Up to <strong>500 characters</strong> supported.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -273,10 +280,10 @@ function SeoContent() {
           Tips
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Shorter messages produce simpler QR codes that are easier to scan</li>
-          <li>You can save the letter as an image to share on social media</li>
-          <li>Print QR codes at least 2cm (0.8in) for reliable scanning</li>
-          <li>Line breaks (Enter) are preserved in the letter display</li>
+          <li><strong>Shorter = better</strong> — simpler QR codes are easier to scan</li>
+          <li><strong>Image export</strong> for social media sharing</li>
+          <li><strong>Print at 2cm+</strong> (0.8in) for reliable scanning</li>
+          <li><strong>Line breaks</strong> (Enter) are preserved in display</li>
         </ul>
       </section>
 

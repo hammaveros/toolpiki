@@ -381,20 +381,27 @@ function SeoContent() {
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">읽기 시간 & 발표 시간 계산기란?</h2>
         <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          읽기 시간 계산기는 입력한 텍스트를 읽는 데 걸리는 예상 시간과 발표(스피치) 시간을 자동으로 계산해 주는 도구입니다.
-          한글과 영어를 구분하여 각각의 읽기·발표 속도를 적용하므로 혼합된 텍스트도 정확하게 측정할 수 있습니다.
-          텍스트 입력, 슬라이드 기반 계산, 목표 시간 역산 세 가지 모드를 지원하여 다양한 발표 준비 시나리오에 활용할 수 있습니다.
-          성인 기준 한글 평균 읽기 속도는 분당 약 400~600자이며, 발표 시에는 분당 약 250~400자로 읽기보다 느립니다.
+          <strong className="text-gray-900 dark:text-white">읽기 시간 계산기는 텍스트를 읽는 시간과 발표(스피치) 시간을 자동 계산해 주는 도구</strong>입니다.
+          <strong>한글과 영어를 구분</strong>하여 각각의 읽기·발표 속도를 적용하므로 혼합 텍스트도 정확하게 측정할 수 있습니다.
+          <strong>텍스트 입력 / 슬라이드 기반 / 목표 시간 역산</strong> 세 가지 모드를 지원합니다.
+          성인 기준 한글 평균 읽기 속도는 <strong>분당 약 400~600자</strong>이며, 발표 시에는 <strong>분당 약 250~400자</strong>로 더 느립니다.
         </p>
       </div>
 
       <div>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">활용 사례</h2>
-        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          블로그 글을 작성할 때 독자의 독자가 중간에 그만 읽지 않으려면 적정 읽기 시간을 파악하는 것이 중요합니다. 일반적으로 블로그 최적 길이는 5~10분(2,500~5,000자) 정도로 알려져 있습니다.
-          발표나 스피치 원고를 준비할 때 슬라이드 수와 장당 시간으로 전체 발표 시간을 미리 계산할 수 있습니다.
-          목표 시간 역산 기능을 사용하면 &quot;15분 발표에 필요한 원고 분량&quot;을 즉시 확인할 수 있어 원고 작성이 훨씬 수월합니다.
-          회의 자료, 보고서, 유튜브 대본, 뉴스레터 등 다양한 콘텐츠의 분량을 사전에 가늠할 수 있습니다.
+        <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside">
+          <li><strong>블로그 글 작성</strong> — 일반적으로 최적 길이는 <strong>5~10분(2,500~5,000자)</strong></li>
+          <li><strong>발표·스피치 원고</strong> — 슬라이드 수 × 장당 시간으로 전체 발표 시간 사전 계산</li>
+          <li><strong>목표 시간 역산</strong> — &quot;15분 발표에 필요한 원고 분량&quot;을 즉시 확인</li>
+          <li><strong>회의 자료·보고서·유튜브 대본·뉴스레터</strong>의 분량을 사전에 가늠</li>
+        </ul>
+      </div>
+
+      <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
+        <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 발표 준비 팁</p>
+        <p className="text-indigo-800 dark:text-indigo-300">
+          실전에서는 강조와 쉼, 청중 반응으로 <strong>읽기보다 1.3~1.6배 느려진다</strong>는 점을 감안해 원고 길이를 짜는 것이 안전합니다.
         </p>
       </div>
 

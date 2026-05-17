@@ -13,10 +13,9 @@ function SeoContent() {
           📝 What is Markdown Preview?
         </h2>
         <p className="text-sm leading-relaxed">
-          Markdown is a lightweight text-based markup language that allows creating formatted documents with simple syntax.
-          It is widely used in GitHub README files, blog posts, and technical documentation.
-          This tool converts markdown syntax to HTML in real-time for preview,
-          and the you can copy the rendered HTML directly into websites or blogs.
+          <strong className="text-gray-900 dark:text-white">Render Markdown to HTML in real time and copy it instantly.</strong>{' '}
+          <strong>Markdown</strong> is a lightweight markup language used in <strong>GitHub README</strong> files, blog posts, and technical docs.
+          Copy the rendered HTML and paste it straight into <strong>websites, blogs, or emails</strong>.
         </p>
       </section>
 
@@ -57,12 +56,20 @@ function SeoContent() {
           💡 Markdown Usage Tips
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Structure GitHub README with project description, installation, and usage</li>
-          <li>Write tech blog posts with code snippets</li>
-          <li>Quick note-taking in apps like Notion, Obsidian</li>
-          <li>Convert to HTML for emails or web pages</li>
+          <li>Structure <strong>GitHub README</strong> with project description, installation, and usage</li>
+          <li>Write <strong>tech blog posts</strong> with code snippets</li>
+          <li>Quick note-taking in apps like <strong>Notion, Obsidian</strong></li>
+          <li>Convert to <strong>HTML</strong> for emails or web pages</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 Pro Tip</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          For a forced line break, use <strong>two trailing spaces + Enter</strong> — a single Enter is treated as the same paragraph.
+          Open code fences with <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">```language</code> to enable <strong>automatic syntax highlighting</strong>.
+        </p>
+      </div>
 
       <FaqSection
         title="Frequently Asked Questions"

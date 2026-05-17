@@ -15,10 +15,10 @@ function SeoContent() {
           📊 JSON ↔ CSV 변환기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          JSON(JavaScript Object Notation)과 CSV(Comma-Separated Values)는 모두 데이터 저장/전송에 사용되는 포맷입니다.
-          JSON은 API 통신에, CSV는 스프레드시트 작업에 주로 사용됩니다.
-          이 도구는 두 형식을 양방향으로 변환하여 API 데이터를 엑셀에서 열거나,
-          스프레드시트 데이터를 JSON으로 변환하여 웹 애플리케이션에서 사용할 수 있게 합니다.
+          <strong className="text-gray-900 dark:text-white">JSON과 CSV를 양방향으로 즉시 변환하는 도구입니다.</strong>{' '}
+          <strong>JSON</strong>(JavaScript Object Notation)은 <strong>API 통신</strong>에,{' '}
+          <strong>CSV</strong>(Comma-Separated Values)는 <strong>스프레드시트 작업</strong>에 주로 사용됩니다.
+          API 데이터를 엑셀에서 열거나, 엑셀 데이터를 웹 애플리케이션에서 사용할 때 활용하세요.
         </p>
       </section>
 
@@ -50,12 +50,20 @@ function SeoContent() {
           💡 활용 사례
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>REST API 응답을 CSV로 변환하여 엑셀에서 분석</li>
-          <li>엑셀 데이터를 JSON으로 변환하여 웹앱에 업로드</li>
-          <li>데이터베이스 덤프를 스프레드시트로 열기</li>
-          <li>테스트 데이터 생성 및 포맷 변환</li>
+          <li><strong>REST API 응답</strong>을 CSV로 변환하여 엑셀에서 분석</li>
+          <li><strong>엑셀 데이터</strong>를 JSON으로 변환하여 웹앱에 업로드</li>
+          <li><strong>데이터베이스 덤프</strong>를 스프레드시트로 열기</li>
+          <li><strong>테스트 데이터</strong> 생성 및 포맷 변환</li>
         </ul>
       </section>
+
+      <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
+        <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 팁</p>
+        <p className="text-blue-800 dark:text-blue-300">
+          중첩 구조 JSON은 CSV 변환 전에 <code className="px-1 py-0.5 rounded bg-blue-100 dark:bg-blue-900/40 text-xs font-mono">flatten</code>으로 평면화하면 한 셀당 한 값으로 깔끔하게 떨어집니다.
+          반대로 CSV → JSON 변환 시 <strong>true/false</strong>와 <strong>숫자</strong>는 자동 타입 추론됩니다.
+        </p>
+      </div>
 
       <FaqSection
         title="자주 묻는 질문"

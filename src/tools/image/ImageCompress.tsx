@@ -382,10 +382,9 @@ function SeoContent() {
           📦 이미지 압축기란?
         </h2>
         <p className="text-sm leading-relaxed">
-          이미지 압축은 사진의 파일 크기를 줄이면서 눈에 보이는 화질 저하를 최소화하는 기술입니다.
-          손실 압축(JPEG)과 무손실 압축(PNG) 방식이 있으며, 최신 WebP 포맷은 손실/무손실 두 방식을 모두 지원합니다.
-          웹사이트 로딩 속도 개선, 클라우드 저장 공간 절약, 이메일/메신저 용량 제한 대응에 필수적입니다.
-          여러 이미지를 한 번에 처리하는 배치 압축을 지원합니다.
+          <strong className="text-gray-900 dark:text-white">파일 크기를 줄이면서 화질 저하를 최소화하는 기술.</strong>{' '}
+          <strong>손실 압축(JPEG)</strong>과 <strong>무손실 압축(PNG)</strong>이 있고, <strong>WebP</strong>는 두 방식을 모두 지원합니다.
+          웹사이트 로딩 속도 개선, 클라우드 저장 공간 절약, 이메일/메신저 용량 제한 대응에 필수이며, <strong>배치 압축</strong>도 지원합니다.
         </p>
       </section>
 
@@ -416,11 +415,17 @@ function SeoContent() {
           💡 압축 품질 가이드
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>80~100%</strong>: 고화질 유지, 인쇄용이나 중요 사진에 적합</li>
-          <li><strong>60~80%</strong>: 웹사이트 최적 (화질/용량 균형)</li>
-          <li><strong>40~60%</strong>: SNS 업로드, 미리보기 이미지</li>
-          <li><strong>20~40%</strong>: 최대 압축, 화질 저하 감수</li>
+          <li><strong>80~100%</strong> — 고화질 유지, 인쇄용/중요 사진</li>
+          <li><strong>60~80%</strong> — <strong>웹사이트 최적</strong> (화질/용량 균형)</li>
+          <li><strong>40~60%</strong> — SNS 업로드, 미리보기</li>
+          <li><strong>20~40%</strong> — 최대 압축, 화질 저하 감수</li>
         </ul>
+        <div className="mt-4 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900 p-4 text-sm">
+          <p className="font-semibold text-emerald-900 dark:text-emerald-200 mb-1">💡 압축 팁</p>
+          <p className="text-emerald-800 dark:text-emerald-300">
+            모르겠으면 <strong>WebP 75%</strong>. 대부분의 웹 사진에서 <strong>화질/용량 최적</strong>입니다.
+          </p>
+        </div>
       </section>
 
       <section>
@@ -428,11 +433,12 @@ function SeoContent() {
           🔍 웹사이트 이미지 최적화와 SEO
         </h2>
         <p className="text-sm leading-relaxed">
-          구글은 Core Web Vitals를 검색 순위 지표로 사용하며, 그 중 <strong>LCP(Largest Contentful Paint)</strong>는 페이지에서 가장 큰 콘텐츠가 표시되는 시간을 측정합니다.
-          대부분의 웹페이지에서 가장 큰 콘텐츠는 이미지이므로, 이미지 최적화가 곧 LCP 개선이자 SEO 점수 향상입니다.
-          LCP 2.5초 이내가 &quot;좋음&quot; 등급이며, 이미지 압축과 포맷 변환만으로도 1~3초 단축이 가능합니다.
-          이미지가 무거운 사이트는 이탈률이 높아지고, 모바일 검색에서 특히 불리합니다.
-          구글 PageSpeed Insights에서 &quot;이미지를 차세대 형식으로 제공&quot; 항목이 뜬다면 WebP 변환이 필요하다는 신호입니다.
+          구글은 <strong>Core Web Vitals</strong>를 검색 순위 지표로 사용하며, 그 중 <strong>LCP(Largest Contentful Paint)</strong>는
+          가장 큰 콘텐츠가 표시되는 시간을 측정합니다.
+          대부분 웹페이지의 가장 큰 콘텐츠는 이미지이므로, 이미지 최적화 = LCP 개선 = SEO 점수 향상입니다.
+          LCP <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">2.5초 이내</code>가 &quot;좋음&quot; 등급이며,
+          압축과 포맷 변환만으로 <strong>1~3초 단축</strong>이 가능합니다.
+          PageSpeed Insights에서 &quot;이미지를 차세대 형식으로 제공&quot;이 뜬다면 <strong>WebP 변환</strong>이 필요하다는 신호입니다.
         </p>
       </section>
 
@@ -441,7 +447,8 @@ function SeoContent() {
           📊 WebP vs JPG vs PNG 용량 비교
         </h2>
         <p className="text-sm leading-relaxed mb-3">
-          동일한 1920×1080 사진 기준 대략적인 파일 크기 비교입니다. 실제 용량은 이미지 복잡도에 따라 달라집니다.
+          동일한 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">1920×1080</code> 사진 기준 대략적인 파일 크기 비교.
+          실제 용량은 <strong>이미지 복잡도</strong>에 따라 달라집니다.
         </p>
         <div className="overflow-x-auto text-sm">
           <table className="w-full text-xs">
