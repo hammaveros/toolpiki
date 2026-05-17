@@ -274,19 +274,20 @@ function SeoContent() {
     <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-8 text-gray-700 dark:text-gray-300">
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          ⏰ Cron 파서란?
+          ⏰ Cron 표현식, 머리 아프지 않게 풀어보기
         </h2>
         <p className="text-sm leading-relaxed">
-          Cron 표현식은 Unix/Linux 시스템에서 작업 스케줄링에 사용되는 시간 기반 문법입니다.
-          5개의 필드(분, 시, 일, 월, 요일)로 구성되며, 각 필드에 숫자, 와일드카드(*), 범위(-), 목록(,) 등을 조합하여
-          복잡한 스케줄을 표현할 수 있습니다. 이 도구는 Cron 표현식을 한글로 해석하고,
-          다음 실행 시간을 미리 계산하여 스케줄 설정 전에 검증할 수 있게 해줍니다.
+          <span className="font-mono">0 9 * * 1-5</span> 같은 별표투성이 문자열을 보고 매번 검색하지 않아도 되도록 만든 도구입니다.
+          5칸짜리 표현식을 한국어로 풀어주고, 지금 시각 기준으로 다음에 실행될 시간 5개를 미리 보여줍니다.
+          AWS EventBridge, GitHub Actions의 schedule, Kubernetes CronJob, Spring @Scheduled, crontab 등
+          현장에서 만나는 거의 모든 Cron 표기를 분 단위까지 정확히 해석합니다. 입력은 모두 브라우저 안에서 처리하므로
+          민감한 운영 스크립트의 스케줄을 검증할 때도 안심하고 사용할 수 있습니다.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          📋 Cron 표현식 구조
+          📋 5개 필드 한눈에 보기
         </h2>
         <div className="text-sm">
           <div className="overflow-x-auto">
@@ -318,37 +319,60 @@ function SeoContent() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
           <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
             <span className="text-blue-600 dark:text-blue-400">0 9 * * 1-5</span>
-            <span className="ml-2 text-gray-500">평일 오전 9시</span>
+            <span className="ml-2 text-gray-500">평일 오전 9시 (출근 알림)</span>
           </div>
           <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
             <span className="text-blue-600 dark:text-blue-400">0 0 1 * *</span>
-            <span className="ml-2 text-gray-500">매월 1일 자정</span>
+            <span className="ml-2 text-gray-500">매월 1일 자정 (정산 배치)</span>
           </div>
           <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
             <span className="text-blue-600 dark:text-blue-400">*/15 * * * *</span>
-            <span className="ml-2 text-gray-500">15분마다</span>
+            <span className="ml-2 text-gray-500">15분마다 (헬스체크)</span>
           </div>
           <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
             <span className="text-blue-600 dark:text-blue-400">0 */2 * * *</span>
-            <span className="ml-2 text-gray-500">2시간마다</span>
+            <span className="ml-2 text-gray-500">2시간마다 (백업)</span>
+          </div>
+          <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
+            <span className="text-blue-600 dark:text-blue-400">30 3 * * 0</span>
+            <span className="ml-2 text-gray-500">일요일 새벽 3시 30분</span>
+          </div>
+          <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
+            <span className="text-blue-600 dark:text-blue-400">0 0,12 * * *</span>
+            <span className="ml-2 text-gray-500">매일 자정과 정오</span>
           </div>
         </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ 자주 빠지는 함정
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>요일과 일을 둘 다 지정</strong>: 표준 cron에서는 OR 조건이 됩니다. 매월 15일 + 매주 금요일을 동시에 쓰면 둘 중 하나라도 맞으면 실행되어 의도와 다르게 동작할 수 있어요.</li>
+          <li><strong>2월 30일 같은 존재하지 않는 날짜</strong>: 0 0 30 2 *처럼 쓰면 절대 실행되지 않습니다. 마지막 날을 원하면 L 확장 문법(Quartz 등)을 지원하는 환경인지 먼저 확인하세요.</li>
+          <li><strong>매주 일요일은 0과 7 둘 다 가능</strong>: 시스템에 따라 다르므로 안전하게 0을 쓰세요.</li>
+        </ul>
       </section>
 
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
           {
-            question: 'Cron과 Crontab의 차이는 무엇인가요?',
-            answer: 'Cron은 스케줄링 데몬(서비스)이고, Crontab은 사용자가 Cron 작업을 등록하는 설정 파일입니다. "crontab -e" 명령으로 편집할 수 있습니다.',
+            question: 'Cron과 Crontab의 차이가 정확히 뭔가요?',
+            answer: 'Cron은 백그라운드에서 돌아가는 스케줄링 데몬이고, Crontab은 사용자가 어떤 명령을 언제 실행할지 적어두는 설정 파일입니다. 터미널에서 crontab -e로 편집, crontab -l로 확인할 수 있고, 각 사용자별로 별도의 crontab을 가집니다.',
           },
           {
-            question: '초 단위 스케줄링은 어떻게 하나요?',
-            answer: '표준 Cron은 분 단위까지만 지원합니다. 초 단위가 필요하면 Node.js의 node-cron, Spring의 @Scheduled 등 확장 구현을 사용하세요. 일부는 6개 필드(초 포함)를 지원합니다.',
+            question: '초 단위로 더 자주 돌리려면 어떻게 해야 하나요?',
+            answer: '표준 cron은 분 단위가 최소 단위입니다. 1초 간격이 필요하면 Spring @Scheduled, Quartz, node-cron(6필드 모드), Kubernetes의 별도 워크어라운드 같은 확장 구현을 써야 하고, 이때는 표현식 앞에 초 필드가 하나 더 붙어 6칸이 됩니다.',
           },
           {
-            question: '서버 시간대와 Cron 실행 시간의 관계는?',
-            answer: 'Cron은 서버의 시스템 시간대를 기준으로 실행됩니다. 한국 서버라면 KST 기준, UTC 서버라면 UTC 기준입니다. 클라우드 환경에서는 시간대 설정을 확인하세요.',
+            question: '서버 시간대가 UTC인데 9시 KST에 돌리고 싶어요',
+            answer: 'cron 자체는 시스템 타임존을 따라가므로 UTC 서버라면 KST 9시 = UTC 0시, 즉 0 0 * * *로 적어야 합니다. AWS EventBridge처럼 명시적으로 cron(0 0 * * ? *) 형태와 UTC가 고정인 서비스도 있어 환경별로 한 번씩 점검이 필요합니다.',
+          },
+          {
+            question: '이 도구가 보여주는 다음 실행 시간은 어디 기준인가요?',
+            answer: '브라우저가 인식한 사용자의 로컬 타임존입니다. 한국에서 접속하면 KST 기준으로 계산되니, UTC 서버에 배포할 cron을 작성한다면 시간대 차이를 한 번 더 점검하세요.',
           },
         ]}
       />

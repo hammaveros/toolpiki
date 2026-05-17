@@ -240,10 +240,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔍 What is Hex Viewer?</h2>
         <p className="text-sm leading-relaxed">
-          Hex Viewer displays binary file data in hexadecimal (Hex) or binary format.
-          All files are ultimately composed of byte sequences (0-255), and this tool lets you inspect them visually.
-          It is used for file header analysis, data format verification, corrupted file debugging, and reverse engineering.
-          All processing happens in your browser — files are never uploaded to any server.
+          Hex Viewer breaks a file apart byte by byte and renders the result as a 16-column grid of hexadecimal values (00–FF) alongside an ASCII preview.
+          Every file on disk — image, video, executable, archive — is ultimately a sequence of integers between 0 and 255, so reading the first few bytes is often enough to identify the real format regardless of the filename extension.
+          The page can show 8, 16, or 32 bytes per row and paginates in 1 KB chunks so even larger files stay responsive.
+          Uploads are handled with the browser's FileReader API; nothing leaves your device, which means you can inspect sensitive binaries safely.
         </p>
       </section>
 
@@ -261,12 +261,23 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🛠️ Practical Things You Can Do Here</h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
+          <li><strong>Spot a renamed file</strong>: someone sends &quot;photo.jpg&quot; that's actually a ZIP. A leading <code>50 4B 03 04</code> betrays ZIP, while real JPEGs start with <code>FF D8 FF</code>.</li>
+          <li><strong>Check for BOM bytes</strong>: a text file beginning with <code>EF BB BF</code> carries a UTF-8 BOM; <code>FF FE</code> indicates UTF-16 LE. Stray BOMs are a frequent culprit behind encoding errors.</li>
+          <li><strong>Locate metadata blocks</strong>: scan for JPEG's <code>FF E1</code> EXIF marker or PNG's <code>tEXt</code> / <code>eXIf</code> chunk to find where embedded text lives before stripping or editing it.</li>
+          <li><strong>Repair broken archives</strong>: compare the header of a corrupted PDF or ZIP against a known-good copy to find exactly which bytes to patch.</li>
+          <li><strong>Learn binary formats</strong>: ELF (<code>7F 45 4C 46</code>), Mach-O, and PE headers all reveal themselves clearly in a hex view, which makes this a popular starting point for CTF challenges and reverse-engineering tutorials.</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
-          { question: 'What is a file signature (magic number)?', answer: 'A unique identifier stored in the first few bytes of a file. It identifies the actual file format regardless of the file extension. For example, PNG files always start with 89 50 4E 47.' },
-          { question: 'Are files uploaded to a server?', answer: 'No. All file processing is performed locally using the browser FileReader API. File data is never transmitted over the network.' },
-          { question: 'Can I open large files?', answer: 'Since the entire file is loaded into memory, files over several hundred MB may slow down the browser. Use the 1KB pagination to browse efficiently.' },
+          { question: 'What is a file signature (magic number)?', answer: 'A fixed byte pattern recorded at the start of a binary format that identifies it independently of the filename. PNG, for instance, always begins with the eight bytes 89 50 4E 47 0D 0A 1A 0A; if those bytes do not match, viewers reject the file immediately. Checking the magic number is far more reliable than trusting the extension.' },
+          { question: 'Are files uploaded to a server?', answer: 'No. The browser FileReader API loads the file into a local ArrayBuffer and the display logic runs entirely on the same page. That makes the tool safe to use under corporate policies that forbid uploading files to external services.' },
+          { question: 'Can I open large files?', answer: 'The current implementation pulls the entire file into memory, so anything past a few hundred megabytes will noticeably slow the browser. Pagination keeps navigation efficient, but for multi-gigabyte memory dumps you will likely want a desktop tool such as 010 Editor or HxD alongside.' },
         ]}
       />
     </div>

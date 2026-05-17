@@ -162,10 +162,21 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🌐 What is Unicode Converter?</h2>
         <p className="text-sm leading-relaxed">
-          Unicode is an international standard that represents all characters worldwide in a single character set.
-          Each character is assigned a unique code point (U+XXXX), supporting over 150,000 characters.
-          This tool converts text to Unicode escape (\uXXXX) format or UTF-8 bytes (HEX).
-          It is useful for safely representing non-ASCII characters in JSON and JavaScript source code.
+          The Unicode standard, first published in 1991 and now at version 15.1, assigns a unique code point (U+XXXX) to more than 150,000 characters from every modern writing system plus emoji, math symbols, and historic scripts.
+          This tool shows that number in two forms. The first is the <code>\uXXXX</code> escape used inside JavaScript and JSON source code; the second is the UTF-8 byte sequence (HEX) that actually travels over the wire.
+          For example, the letter &quot;A&quot; lives at U+0041, escapes to <code>A</code>, and serializes to the single byte <code>41</code> in UTF-8.
+          When text looks scrambled it helps to translate it both ways here and see at which stage the corruption was introduced.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">💡 When Text Goes Wrong</h2>
+        <p className="text-sm leading-relaxed">
+          The most common case is <strong>mojibake</strong>: UTF-8 bytes being interpreted as Latin-1 (or vice versa) so &quot;naïve&quot; renders as &quot;naÃ¯ve&quot;.
+          Check three places — the database column charset, the HTTP <code>Content-Type</code> header, and the file BOM — until all three agree on UTF-8.
+          A run of question marks or empty boxes usually means data was already lost during a previous round-trip; rerunning your decoder will not bring it back.
+          Characters outside the BMP (U+0000–U+FFFF) such as emoji cannot fit into a single <code>\uXXXX</code> escape; they require either a surrogate pair or the ES6+ form <code>\u&#123;1F600&#125;</code>.
+          This tool only emits the 4-digit form, so inspect the output if your input contains supplementary characters.
         </p>
       </section>
 
@@ -186,9 +197,9 @@ function SeoContent() {
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
-          { question: 'What is the difference between Unicode and UTF-8?', answer: 'Unicode is a character set (which number is assigned to each character), while UTF-8 is an encoding method (how to store those numbers as bytes). UTF-8 is the most widely used way to store Unicode.' },
-          { question: 'Where is the \\uXXXX format used?', answer: 'It is used in JavaScript strings and JSON files to represent non-ASCII characters. The \\u prefix followed by 4 hex digits can represent all BMP (Basic Multilingual Plane) characters.' },
-          { question: 'How many bytes is a CJK character in UTF-8?', answer: 'CJK characters (Chinese, Japanese, Korean) use 3 bytes in UTF-8 encoding, 2 bytes in UTF-16. Their Unicode code points typically fall in various ranges like U+4E00-U+9FFF.' },
+          { question: 'Unicode vs UTF-8 — what is the difference?', answer: 'Unicode is the catalogue of characters and their numbers; UTF-8 is one of several ways to actually store those numbers as bytes. UTF-8 is variable length (1 byte for ASCII, 2 for most Latin extended letters, 3 for CJK, 4 for emoji) and is backward-compatible with ASCII, which is why virtually all modern protocols default to it.' },
+          { question: 'Where is the \\uXXXX format used?', answer: 'Mostly inside JavaScript string literals and JSON files when you cannot rely on the surrounding file being saved as UTF-8. It is also handy for embedding zero-width or look-alike characters explicitly so reviewers can spot them in code review.' },
+          { question: 'How many bytes is a CJK character in UTF-8?', answer: 'Most common CJK Unified Ideographs sit in U+4E00–U+9FFF and take 3 bytes in UTF-8. The CJK Extension B and later blocks live above U+20000 and require 4 bytes. UTF-16 fits the BMP characters in 2 bytes but spends 4 on supplementary planes via surrogate pairs.' },
         ]}
       />
     </div>

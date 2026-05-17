@@ -241,11 +241,25 @@ function SeoContent() {
           💡 색상 형식 선택 가이드
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>HEX</strong>: CSS, HTML에서 가장 널리 사용, 간결한 표기</li>
-          <li><strong>RGB</strong>: 프로그래밍에서 색상 조작 시 직관적</li>
-          <li><strong>HSL</strong>: 밝기/채도 조절이 쉬워 파생색 만들기 좋음</li>
-          <li><strong>RGBA</strong>: 투명도가 필요한 오버레이, 그림자 등에 사용</li>
+          <li><strong>HEX</strong>: CSS, HTML, 디자인 툴 export에서 가장 널리 쓰이며 6자리 한 줄로 끝나서 코드 리뷰가 깔끔합니다.</li>
+          <li><strong>RGB</strong>: 캔버스 API, 이미지 처리 라이브러리에서 채널별 연산이 필요할 때 직관적이며, 슬라이더 UI와도 잘 맞습니다.</li>
+          <li><strong>HSL</strong>: 색조는 그대로 두고 명도만 -10% 같이 상대 조정할 때 강력합니다. 같은 brand 색의 hover/active 파생 색 만들기에 최적입니다.</li>
+          <li><strong>RGBA</strong>: 모달 백드롭 rgba(0,0,0,0.5), 카드 그림자 rgba(0,0,0,0.08)처럼 투명도 자체가 의미를 가지는 곳에 사용합니다.</li>
+          <li><strong>HSLA</strong>: 다크 모드에서 같은 색조의 알파만 0.6 → 0.9로 강조할 때처럼, 톤은 유지하고 노출만 조절하는 시나리오에 적합합니다.</li>
         </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔬 색공간의 작은 차이가 만드는 큰 결과
+        </h2>
+        <p className="text-sm leading-relaxed">
+          같은 색이라도 색공간에 따라 값이 다르게 표현됩니다.
+          예를 들어 Tailwind의 blue-500(#3B82F6)을 RGB로 보면 (59, 130, 246)이고 HSL로 보면 hsl(217, 91%, 60%)인데,
+          여기서 명도(L)만 60 → 80으로 올리면 blue-300 비슷한 톤이 만들어지지만 RGB로 같은 작업을 하려면 세 채널을 각각 계산해야 합니다.
+          반대로 RGB는 캔버스에 픽셀 단위로 색을 찍을 때 한 번에 처리하기 좋아 이미지 합성에 유리합니다.
+          그래서 디자인 시스템은 HSL로 정의하되 런타임에서는 HEX/RGB로 저장하는 하이브리드 방식이 자주 쓰입니다.
+        </p>
       </section>
 
       <FaqSection
@@ -253,15 +267,19 @@ function SeoContent() {
         faqs={[
           {
             question: 'HEX 코드에서 # 기호는 꼭 필요한가요?',
-            answer: 'CSS에서는 # 기호가 필수입니다. 일부 그래픽 소프트웨어에서는 # 없이 사용하기도 합니다. 이 도구는 둘 다 인식합니다.',
+            answer: 'CSS에서는 # 기호가 필수입니다. JavaScript 변수, JSON 데이터, 일부 그래픽 소프트웨어에서는 # 없이 사용하기도 합니다. 이 도구는 둘 다 인식하므로 어떤 형태로 붙여넣어도 변환됩니다.',
           },
           {
             question: 'HSL이 RGB보다 좋은 점은 무엇인가요?',
-            answer: 'HSL은 색조(H), 채도(S), 밝기(L)로 구성되어 직관적입니다. 같은 색조에서 밝거나 어두운 변형을 만들기 쉽습니다.',
+            answer: 'HSL은 색조(H), 채도(S), 밝기(L)로 구성되어 직관적입니다. 같은 색조에서 밝거나 어두운 변형을 만들기 쉬워, 디자인 토큰을 단일 색조 + 명도 스케일로 정의할 때 매우 편리합니다.',
           },
           {
             question: '투명 색상은 어떻게 만드나요?',
-            answer: 'RGBA 형식에서 마지막 값(알파)을 0~1 사이로 조절합니다. 0은 완전 투명, 1은 완전 불투명입니다.',
+            answer: 'RGBA 형식에서 마지막 값(알파)을 0~1 사이로 조절합니다. 0은 완전 투명, 1은 완전 불투명이며, 0.08~0.12는 카드 그림자, 0.4~0.6은 모달 배경에 자주 쓰입니다.',
+          },
+          {
+            question: '8자리 HEX(#RRGGBBAA)도 변환되나요?',
+            answer: '최신 브라우저는 #RRGGBBAA 형식을 지원하지만 이 도구는 6자리 HEX와 별도 알파값을 권장합니다. 호환성과 코드 가독성 측면에서 RGBA/HSLA가 더 안정적입니다.',
           },
         ]}
       />

@@ -162,10 +162,20 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🌐 유니코드 변환기란?</h2>
         <p className="text-sm leading-relaxed">
-          유니코드(Unicode)는 전 세계 모든 문자를 하나의 문자 집합으로 표현하는 국제 표준입니다.
-          각 문자에 고유 코드 포인트(U+XXXX)가 할당되어 있으며, 현재 15만 자 이상을 지원합니다.
-          이 도구는 텍스트를 유니코드 이스케이프(\uXXXX) 형식이나 UTF-8 바이트(HEX)로 변환합니다.
-          JSON, JavaScript 소스 코드에서 한글 등 비ASCII 문자를 안전하게 표현할 때 유용합니다.
+          유니코드는 1991년 1.0 발표 이후 매년 확장되어 2024년 기준 15만 자 이상의 문자에 고유 번호(코드 포인트, U+XXXX)를 부여하고 있습니다.
+          이 도구는 그 번호를 두 가지 형태로 보여줍니다. 하나는 JavaScript와 JSON에서 사용하는 <code>\uXXXX</code> 이스케이프 표기, 다른 하나는 실제 파일이나 네트워크에 흘러가는 UTF-8 바이트(HEX)입니다.
+          한글 &quot;가&quot;를 예로 들면 코드 포인트는 U+AC00, JS 표기는 <code>가</code>, UTF-8 바이트로는 <code>EA B0 80</code>입니다.
+          문자가 깨져 보일 때 어느 단계에서 잘못됐는지 추적하는 데 유용합니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">💡 자주 깨지는 상황과 해결법</h2>
+        <p className="text-sm leading-relaxed">
+          한글이 <strong>&quot;ê°€&quot; 비슷한 글자로 보인다면</strong> UTF-8 바이트가 Latin-1로 잘못 해석되는 경우입니다. DB 컬럼 캐릭터셋, HTTP <code>Content-Type</code> 헤더의 charset, 파일 BOM 셋 중 하나가 어긋났을 가능성이 큽니다.
+          <strong>물음표(?)나 □로 보이면</strong> 폰트에 글리프가 없는 게 아니라 인코딩 변환 중 손실됐을 가능성이 높습니다.
+          이모지처럼 <strong>BMP(U+0000~U+FFFF) 밖의 문자</strong>는 <code>\uXXXX</code> 한 번으로 표현할 수 없고 서러게이트 페어로 분리되거나 <code>\u&#123;1F600&#125;</code> 형식(ES6+)으로 적어야 합니다.
+          이 도구는 BMP 범위만 단일 \uXXXX로 변환하므로 이모지를 다룰 때는 결과값을 잘 살펴보세요.
         </p>
       </section>
 
@@ -186,9 +196,9 @@ function SeoContent() {
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: '유니코드와 UTF-8의 차이는 무엇인가요?', answer: '유니코드는 문자 집합(어떤 문자에 어떤 번호를 부여할지)이고, UTF-8은 인코딩 방식(그 번호를 바이트로 어떻게 저장할지)입니다. UTF-8은 유니코드를 저장하는 가장 널리 쓰이는 방법입니다.' },
-          { question: '\\uXXXX 형식은 어디서 사용하나요?', answer: 'JavaScript 문자열, JSON 파일에서 비ASCII 문자를 표현할 때 사용합니다. \\u로 시작하는 4자리 16진수 코드로 모든 BMP(기본 다국어 평면) 문자를 표현할 수 있습니다.' },
-          { question: '한글은 유니코드에서 몇 바이트인가요?', answer: 'UTF-8로 인코딩 시 한글 한 글자는 3바이트입니다. UTF-16에서는 2바이트, 유니코드 코드 포인트는 U+AC00~U+D7A3 범위입니다.' },
+          { question: '유니코드와 UTF-8의 차이는?', answer: '유니코드는 어떤 문자에 어떤 번호를 줄지 정한 문자 집합이고, UTF-8은 그 번호를 바이트로 저장하는 방법 중 하나입니다. UTF-8은 ASCII와 호환되며 영어 1바이트, 한글 3바이트, 이모지 4바이트로 가변 길이입니다. 웹 표준이 사실상 UTF-8로 통일되어 있습니다.' },
+          { question: '\\uXXXX는 어디서 사용하나요?', answer: 'JavaScript 소스 코드 안의 문자열, JSON 파일에서 비ASCII 문자를 안전하게 표현할 때 사용합니다. 예전 환경에서 UTF-8 파일 인코딩이 보장되지 않을 때 특히 유용하며, 외부 시스템과 파일을 주고받을 때 깨짐 방지용으로도 쓰입니다.' },
+          { question: '한글은 몇 바이트인가요?', answer: '코드 포인트는 U+AC00~U+D7A3 영역에 있는 11,172자이며 UTF-8 인코딩 시 한 글자당 3바이트, UTF-16 인코딩 시 2바이트입니다. 옛한글 자모(U+1100~)나 호환 자모(U+3130~)는 별도 영역에 있어 합성 방식에 따라 바이트 수가 달라질 수 있습니다.' },
         ]}
       />
     </div>

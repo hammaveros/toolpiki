@@ -744,22 +744,65 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📏 글자수별 닉네임 가이드
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          닉네임 길이는 노출되는 플랫폼에 따라 인상이 달라집니다. 한국 주요 서비스의 닉네임 정책과 추천 길이를 정리했습니다.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs border-collapse">
+            <thead>
+              <tr className="border-b border-gray-200 dark:border-gray-700">
+                <th className="text-left py-2 pr-3 font-semibold">플랫폼</th>
+                <th className="text-left py-2 pr-3 font-semibold">최대 글자수</th>
+                <th className="text-left py-2 font-semibold">추천 길이</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-600 dark:text-gray-400">
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-2 pr-3">롤(LoL) / 발로란트</td><td className="py-2 pr-3">한글 8자 / 영문 16자</td><td className="py-2">3~5자가 가장 흔함</td></tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-2 pr-3">메이플스토리</td><td className="py-2 pr-3">한글 6자</td><td className="py-2">2~4자 임팩트 추천</td></tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-2 pr-3">디스코드 표시 이름</td><td className="py-2 pr-3">32자</td><td className="py-2">4~8자가 채팅에서 가독성 좋음</td></tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-2 pr-3">인스타그램</td><td className="py-2 pr-3">30자</td><td className="py-2">짧고 검색하기 쉬운 4~7자</td></tr>
+              <tr><td className="py-2 pr-3">트위치 / 유튜브</td><td className="py-2 pr-3">25~30자</td><td className="py-2">브랜딩용 6자 내외</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🎮 스타일별 추천 사용처
+        </h2>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong>게임용 (흑염룡, 폭주맨)</strong>: FPS·MMORPG 등 액션 게임. 중2병 감성이 오히려 매력 포인트.</li>
+          <li><strong>감성 (별빛소녀, 달빛이슬)</strong>: 인스타·블로그·일상 SNS. 검색되기 쉽고 호감형 인상.</li>
+          <li><strong>강함 (철벽수비, 불사신)</strong>: 격투 게임, 스포츠 커뮤니티. 단단한 닉네임은 멘탈 안정에도 도움.</li>
+          <li><strong>귀여움 (복숭아냥, 솜사탕)</strong>: 캐주얼 게임, 카카오톡 프로필, 친목 위주 커뮤니티.</li>
+          <li><strong>무난 (파란하늘, 초록잎)</strong>: 업무용 메신저, 회사 슬랙, 공식 계정. 튀지 않고 무난.</li>
+          <li><strong>웃긴 (던져라참치, 졸린두부)</strong>: 디스코드 보이스 채팅, 친구들과 모인 디스코드 서버. 자연스러운 아이스브레이커.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 활용 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li><strong>게임별 제한:</strong> 대부분의 게임은 2~6글자 닉네임을 허용함</li>
-          <li><strong>중복 체크:</strong> 생성된 닉네임은 게임 내에서 사용 가능 여부 확인 필요</li>
-          <li><strong>변형 사용:</strong> 마음에 드는 닉네임에 숫자나 특수문자 추가 가능</li>
-          <li><strong>복사 기능:</strong> 원클릭으로 닉네임 복사해서 바로 사용</li>
+          <li><strong>중복 회피</strong>: 생성된 닉네임 뒤에 숫자(123, 88), 본인 생일, 좋아하는 숫자를 붙이면 중복률이 급감합니다.</li>
+          <li><strong>내 단어 활용</strong>: '웃긴' 스타일에서 본명·별명·좋아하는 음식을 입력하면 그 단어 기반의 변형 50개+가 자동 생성됩니다.</li>
+          <li><strong>필터 검색</strong>: 한 번 생성한 200개 중에서 '룡', '냥' 등 원하는 글자가 들어간 것만 골라볼 수 있습니다.</li>
+          <li><strong>변형 조합</strong>: 마음에 드는 닉네임이 있으면 받침 변경(룡→롱, 광→강)으로 미세 조정해보세요.</li>
+          <li><strong>욕설 필터</strong>: 부적절한 단어는 자동으로 결과에서 제외됩니다.</li>
         </ul>
       </section>
 
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: '내 단어 조합은 어떻게 사용하나요?', answer: '원하는 단어(이름, 별명 등)를 입력하면 그 단어를 포함한 닉네임을 접두어+단어, 단어+접미어 등 다양한 패턴으로 자동 조합합니다.' },
-          { question: '필터는 어떻게 쓰나요?', answer: '생성 결과에서 특정 글자가 포함된 닉네임만 보고 싶을 때 사용합니다. 예를 들어 "참치"를 입력하면 참치가 들어간 닉네임만 표시됩니다.' },
-          { question: '영어 닉네임도 생성할 수 있나요?', answer: '현재는 한글 닉네임 생성만 지원합니다. 영문은 다른 도구를 이용해 주세요.' },
+          { question: '내 단어 조합은 어떻게 사용하나요?', answer: '원하는 단어(이름, 별명, 좋아하는 음식 등)를 \'웃긴\' 스타일에서 입력하면 그 단어를 포함한 닉네임을 접두어+단어, 단어+접미어, 접두어+조사+단어 등 다양한 패턴으로 50개 이상 자동 조합합니다. 예: "참치" → "광란의참치", "참치왕", "졸린참치" 등.' },
+          { question: '필터는 어떻게 쓰나요?', answer: '생성 결과 영역에서 특정 글자가 포함된 닉네임만 보고 싶을 때 사용합니다. 예를 들어 "별"을 입력하면 별빛, 별님, 별꽃 등 별이 들어간 닉네임만 표시되며, 우측 상단의 X로 필터를 해제할 수 있습니다.' },
+          { question: '영어 닉네임도 생성할 수 있나요?', answer: '현재 도구는 한글 닉네임 전용입니다. 영문 닉네임이 필요하면 영어 사이트의 fantasy name generator나 username 생성기를 활용하세요.' },
+          { question: '같은 닉네임이 또 나오나요?', answer: '내부적으로 중복 제거 후 셔플하기 때문에 한 번에 생성된 결과 안에서는 중복이 없습니다. 다만 다시 \'닉네임 생성\' 버튼을 누르면 같은 풀에서 다시 뽑기 때문에 일부 닉네임이 겹칠 수 있습니다.' },
         ]}
       />
     </div>

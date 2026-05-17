@@ -274,20 +274,20 @@ function SeoContent() {
     <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-8 text-gray-700 dark:text-gray-300">
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          ⏰ What is Cron Parser?
+          ⏰ Decode That Cryptic Cron String
         </h2>
         <p className="text-sm leading-relaxed">
-          Cron expressions are time-based syntax used for job scheduling in Unix/Linux systems.
-          They consist of 5 fields (minute, hour, day, month, weekday), and each field can combine numbers,
-          wildcards (*), ranges (-), and lists (,) to express complex schedules.
-          This tool interprets cron expressions in plain English and calculates upcoming execution times
-          to help verify your schedule before deployment.
+          You see <span className="font-mono">0 9 * * 1-5</span> in a config file and have to guess what it does.
+          This parser translates the five-field syntax into a plain English sentence and lists the next five run times,
+          so you can sanity-check a schedule before pushing to production. It works for almost every flavor of cron you meet day to day:
+          AWS EventBridge, GitHub Actions schedule blocks, Kubernetes CronJobs, classic /etc/crontab, and Spring&apos;s
+          @Scheduled (5-field mode). Everything happens in your browser, so internal schedules never leave your machine.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          📋 Cron Expression Structure
+          📋 The Five Fields at a Glance
         </h2>
         <div className="text-sm">
           <div className="overflow-x-auto">
@@ -314,42 +314,65 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          💡 Common Patterns
+          💡 Patterns You Will Reach For
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
           <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
             <span className="text-blue-600 dark:text-blue-400">0 9 * * 1-5</span>
-            <span className="ml-2 text-gray-500">Weekdays at 9 AM</span>
+            <span className="ml-2 text-gray-500">Weekdays 9 AM (daily standup)</span>
           </div>
           <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
             <span className="text-blue-600 dark:text-blue-400">0 0 1 * *</span>
-            <span className="ml-2 text-gray-500">1st of each month</span>
+            <span className="ml-2 text-gray-500">1st of month (monthly invoice)</span>
           </div>
           <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
             <span className="text-blue-600 dark:text-blue-400">*/15 * * * *</span>
-            <span className="ml-2 text-gray-500">Every 15 minutes</span>
+            <span className="ml-2 text-gray-500">Every 15 min (health check)</span>
           </div>
           <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
             <span className="text-blue-600 dark:text-blue-400">0 */2 * * *</span>
-            <span className="ml-2 text-gray-500">Every 2 hours</span>
+            <span className="ml-2 text-gray-500">Every 2 hours (backup)</span>
+          </div>
+          <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
+            <span className="text-blue-600 dark:text-blue-400">30 3 * * 0</span>
+            <span className="ml-2 text-gray-500">Sun 3:30 AM (weekly purge)</span>
+          </div>
+          <div className="p-2 bg-gray-50 dark:bg-gray-800/50 rounded font-mono text-xs">
+            <span className="text-blue-600 dark:text-blue-400">0 0,12 * * *</span>
+            <span className="ml-2 text-gray-500">Midnight &amp; noon</span>
           </div>
         </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ Footguns to Watch For
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>Both day-of-month and day-of-week set?</strong> Classic cron treats them as OR, not AND, so the job fires whenever either matches. This is the most common cron bug in production.</li>
+          <li><strong>Impossible dates</strong> like <span className="font-mono">0 0 30 2 *</span> never run. If you want &quot;last day of the month&quot;, you need an L extension (Quartz/Spring), which standard cron does not support.</li>
+          <li><strong>Sunday is 0 or 7</strong> depending on the implementation. Stick with 0 to stay portable across Linux, AWS, and Kubernetes.</li>
+        </ul>
       </section>
 
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
           {
-            question: 'What is the difference between Cron and Crontab?',
-            answer: 'Cron is the scheduling daemon (service), and Crontab is the configuration file where users register cron jobs. Edit it with the "crontab -e" command.',
+            question: 'What is the difference between cron and crontab?',
+            answer: 'cron is the background daemon that wakes up every minute and runs whatever is due. crontab is the per-user file that lists those jobs; you edit it with "crontab -e" and inspect with "crontab -l". Each Linux user has an independent crontab.',
           },
           {
-            question: 'How do I schedule tasks by the second?',
-            answer: 'Standard cron only supports minute-level precision. For second-level scheduling, use extended implementations like node-cron (Node.js) or @Scheduled (Spring). Some support 6 fields including seconds.',
+            question: 'How do I schedule something every few seconds?',
+            answer: 'Standard cron has minute-level resolution, period. For sub-minute precision, switch to a scheduler that accepts a 6-field expression with seconds at the front: node-cron, Quartz, Spring @Scheduled, or APScheduler. Alternatively, run the job every minute and have the script sleep/loop internally.',
           },
           {
-            question: 'How does server timezone affect cron execution?',
-            answer: 'Cron runs based on the system timezone. If your server is set to EST, cron uses EST. In cloud environments, always verify your timezone configuration.',
+            question: 'My server is on UTC but I want jobs at 9 AM EST. What do I write?',
+            answer: 'cron always uses the system timezone. With a UTC host, 9 AM EST (UTC-5) becomes 14:00 UTC, i.e. "0 14 * * *". Some managed services like AWS EventBridge are UTC-only regardless of region, so always verify TZ for each platform.',
+          },
+          {
+            question: 'Whose timezone is used for the "next run" preview here?',
+            answer: 'Your browser&apos;s local timezone. If you are previewing a cron that will deploy to a UTC server, mentally subtract your offset—or temporarily switch your OS clock to UTC for an exact match.',
           },
         ]}
       />

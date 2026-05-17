@@ -439,13 +439,31 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          Tips
+          How the Weighting Math Works
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          Under the hood this wheel uses a "weighted random" algorithm rather than a flat uniform draw.
+          Each item's win chance is calculated as <span className="font-mono bg-gray-100 dark:bg-gray-800 px-1 rounded">P(i) = w(i) / Σw</span>:
+          give A=5, B=3, C=2 and the total is 10, producing 50% / 30% / 20% odds respectively.
+          Because the pie chart slice size is proportional to weight, what you see on screen is exactly what the algorithm is rolling — there are no hidden modifiers or "house edge."
+          The wheel decelerates with cubic easing over 4 seconds, and the final pointer position is mapped to the cumulative probability bands to determine the winner.
+        </p>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          Set every weight to 1 and the wheel becomes a fair lottery. Push one slice to 999 with the rest at 1 and you have a near-guaranteed pick. The 1-1000 range gives you everything from a flat raffle to a 0.1% gacha roll.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          Practical Use Cases
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Higher weight means larger pie slice and higher winning probability</li>
-          <li>The (%) next to weight shows actual winning probability</li>
-          <li>For equal chances, set all items to the same weight</li>
-          <li>Minimum 2, maximum 12 items can be added</li>
+          <li><strong>Restaurant night</strong>: Korean(1), Italian(1), Mexican(1), Sushi(1), Burgers(1) for fair pick — or boost Mexican to 5 if it's everyone's favorite.</li>
+          <li><strong>Book-club next pick</strong>: Add 10 candidate books with equal weight and let the wheel decide.</li>
+          <li><strong>Giveaway raffle</strong>: 1st prize weight 1, 2nd prize weight 5, participation prize weight 30 to mimic tiered odds.</li>
+          <li><strong>Chore rotation</strong>: Give the dreaded task weight 1 and pleasant ones weight 10, so the painful slot rotates fairly across the household.</li>
+          <li><strong>Classroom raffle</strong>: Add student names with equal weight — pie chart makes the result visible and trustworthy on a projector.</li>
+          <li><strong>Replayable results</strong>: The share URL encodes items, weights, winner index, and exact final angle, so anyone opening the link sees the same wheel land in the same spot.</li>
         </ul>
       </section>
 
@@ -454,15 +472,19 @@ function SeoContent() {
         faqs={[
           {
             question: 'How does the weight system work?',
-            answer: 'Weight determines the relative probability of each item winning. For example, if A has weight 2 and B has weight 1, A wins about 67% of the time and B wins about 33%.',
+            answer: 'Weight determines the relative probability of each item winning. For example, if A has weight 2 and B has weight 1, A wins about 67% of the time and B wins about 33%. The total of all weights forms the denominator, and each item\'s weight is its numerator — pure ratio math, nothing fancier.',
           },
           {
             question: 'How do I make it equal probability?',
-            answer: 'Set all items to the same weight (e.g., all 1). With N items, each will have exactly 1/N probability.',
+            answer: 'Set all items to the same weight (e.g., all 1, which is the default). With N items each will have exactly 1/N probability. Just adding items without touching weights gives you a fair lottery out of the box.',
           },
           {
             question: 'Why is the weight range 1~1000?',
-            answer: 'The wide range allows for precise probability control. For example, to express 0.1% probability, you can set a 1:999 ratio.',
+            answer: 'The wide range allows for precise probability control. To express 0.1% probability you can set a 1:999 ratio, and zero or negative weights are disallowed because they would either remove the item or break the cumulative-probability calculation.',
+          },
+          {
+            question: 'Can I show a friend the exact same spin?',
+            answer: 'Yes — the Share button encodes items, weights, the winning index, and the precise final rotation angle into a URL. When your friend opens that link, they see the same wheel spinning to the same stopping position as a verifiable replay.',
           },
         ]}
       />

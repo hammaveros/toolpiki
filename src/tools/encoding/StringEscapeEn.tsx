@@ -192,10 +192,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔤 What is String Escape?</h2>
         <p className="text-sm leading-relaxed">
-          String escaping converts characters with special meaning in programming languages or data formats
-          into safe representations. For example, a double quote (") in a JSON string is interpreted as a
-          string delimiter, so it must be escaped as \".
-          This tool supports escape/unescape for 6 formats: JSON, JavaScript, HTML, URL, Regex, and SQL.
+          Whenever data travels between two grammars — say, from raw user text into a JSON document, an SQL query, or a regex pattern — characters that belong to the destination grammar can hijack the parse.
+          Escaping marks each of those characters as &quot;just a character, please&quot;.
+          For instance, an embedded double quote in JSON has to become <code>\&quot;</code>, and a single quote inside a SQL literal has to be doubled to <code>''</code> to block injection.
+          This tool covers six common contexts — JSON, JavaScript, HTML, URL, Regex, SQL — and runs after a 300 ms debounce so it doesn't fight your typing.
         </p>
       </section>
 
@@ -221,12 +221,22 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🧪 Quick Real-World Scenarios</h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
+          <li><strong>Pasting a JSON sample into source code</strong>: line breaks and inner quotes immediately trip your editor. Run it through JSON mode once and the result drops straight into a string literal.</li>
+          <li><strong>Hot-fixing a query in a maintenance script</strong>: parameter binding is always preferable, but when you must inline a value, SQL mode doubles single quotes the way ANSI SQL expects, neutralising the classic <code>' OR 1=1 --</code> trick.</li>
+          <li><strong>Matching a Windows path with regex</strong>: a path like <code>C:\\Users\\name</code> contains backslashes that regex treats as escape openers. Regex mode produces a literal-safe pattern in one click.</li>
+          <li><strong>Embedding code samples in Markdown</strong>: not every renderer respects backticks consistently. HTML mode keeps angle brackets from collapsing into stray tags.</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
-          { question: 'What happens if I skip escaping?', answer: 'Syntax errors, data loss, or security vulnerabilities (XSS, SQL injection) can occur. User input should always be properly escaped before use.' },
-          { question: 'What is the difference between JSON and JavaScript escaping?', answer: 'JSON uses only double quotes (") as string delimiters, while JavaScript supports both single and double quotes. JavaScript also escapes \\0 (null character).' },
-          { question: 'How does real-time auto-conversion work?', answer: 'Input is debounced by 300ms, automatically converting when typing stops. Changing the mode (escape/unescape) or format is reflected immediately.' },
+          { question: 'What happens if I skip escaping?', answer: 'Outcomes range from harmless syntax errors to data corruption and serious vulnerabilities like XSS and SQL injection. Injection has stayed near the top of the OWASP Top 10 for over a decade precisely because output-context escaping gets skipped under deadline pressure.' },
+          { question: 'JSON vs JavaScript escaping — what is the difference?', answer: 'JSON (RFC 8259) only treats double quotes as string delimiters, so single quotes need no special handling. JavaScript allows both quote styles and recognises extra escape sequences such as \\0 (null) and \\v (vertical tab). The JavaScript mode in this tool emits the broader set.' },
+          { question: 'How does the live conversion work?', answer: 'A 300 ms debounce waits until you stop typing before running the conversion, so the UI stays smooth even on long inputs. Switching the mode or format button re-runs the conversion instantly against the current input.' },
         ]}
       />
     </div>

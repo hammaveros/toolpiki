@@ -258,12 +258,26 @@ function SeoContent() {
           💡 그라데이션 디자인 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>인접 색상</strong>: 색상환에서 가까운 색상끼리 자연스러운 전환</li>
-          <li><strong>명도 대비</strong>: 밝은 색 → 어두운 색으로 깊이감 표현</li>
-          <li><strong>중간 색상</strong>: 3개 이상 색상으로 풍부한 그라데이션</li>
-          <li><strong>위치 조절</strong>: 색상 위치(%)를 조절하여 전환 속도 제어</li>
-          <li><strong>각도 활용</strong>: 45°, 135° 등 대각선 그라데이션으로 역동적 효과</li>
+          <li><strong>인접 색상</strong>: 색상환에서 60° 이내로 떨어진 색끼리 섞으면 중간에 탁한 회색대가 생기지 않고 매끄럽게 전환됩니다. (예: 파랑→보라)</li>
+          <li><strong>명도 대비</strong>: 시작 색의 L값이 70%, 끝 색이 30% 정도로 차이가 나면 입체감이 살아납니다. 같은 명도 두 색은 평면적으로 보입니다.</li>
+          <li><strong>중간 색상</strong>: 두 색만 쓸 때 회색이 보인다면 두 색의 색조 평균에 해당하는 색을 50% 지점에 stop으로 끼워주세요(예: 빨강 0% → 주황 50% → 노랑 100%).</li>
+          <li><strong>위치 조절</strong>: stop 위치를 0%, 30%, 100%처럼 비대칭으로 두면 한쪽이 강조되는 비대칭 그라데이션이 만들어져 시선이 한쪽으로 흐릅니다.</li>
+          <li><strong>각도 활용</strong>: 135°는 좌상단→우하단으로 흐르는 가장 자연스러운 대각선이며, Stripe·Linear 같은 SaaS 히어로 배경에서 자주 보입니다.</li>
+          <li><strong>Hard stop</strong>: 같은 위치에 두 색을 연속으로 넣으면(예: red 50%, blue 50%) 그라데이션 대신 단색 분할 배경이 되어 인포그래픽에 활용됩니다.</li>
         </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🎯 유형별 추천 사용처
+        </h2>
+        <p className="text-sm leading-relaxed">
+          선형 그라데이션은 헤더 배너, 카드 배경, 버튼 등 정적인 영역에 가장 흔히 쓰이며,
+          135° 각도와 두 색 조합만으로도 충분히 모던한 인상을 줍니다.
+          원형(radial)은 중심에서 퍼지는 빛 효과나 카드의 spot highlight, 다크 테마의 vignette 처리에 유용하고,
+          conic은 도넛 차트 배경, 로딩 스피너, 컬러 휠 같은 회전 모티프에서 빛납니다.
+          모바일에서는 그라데이션 영역이 크면 GPU 합성 비용이 들 수 있으니 헤더 전체 대신 카드 단위로 분할해 적용하는 것이 성능에 유리합니다.
+        </p>
       </section>
 
       <FaqSection
@@ -271,15 +285,19 @@ function SeoContent() {
         faqs={[
           {
             question: '그라데이션에 색상은 몇 개까지 추가할 수 있나요?',
-            answer: 'CSS 그라데이션에는 제한이 없지만, 보통 2~4개가 자연스럽습니다. 너무 많으면 복잡해 보일 수 있습니다.',
+            answer: 'CSS 그라데이션 자체에는 제한이 없지만 보통 2~4개가 자연스럽습니다. 5개 이상이면 무지개처럼 시각적으로 산만해지고, 의미 있는 강조가 어려워집니다. 5색 이상이 필요하면 여러 그라데이션을 background에 콤마로 겹치는 방식을 권장합니다.',
           },
           {
             question: '그라데이션 배경이 구형 브라우저에서 안 보이면?',
-            answer: 'CSS에 fallback 배경색을 먼저 선언하세요. 예: background: #3b82f6; 다음 줄에 그라데이션 선언.',
+            answer: 'CSS에 fallback 배경색을 먼저 선언하세요. 예: background: #3b82f6; 다음 줄에 background: linear-gradient(...). IE11 이하는 conic-gradient를 지원하지 않으므로 SVG로 대체하는 것이 안전합니다.',
           },
           {
             question: '투명 그라데이션은 어떻게 만드나요?',
-            answer: '색상 코드 대신 rgba() 또는 transparent를 사용하세요. 예: transparent → #3b82f6로 페이드인 효과.',
+            answer: '색상 코드 대신 rgba() 또는 transparent를 사용하세요. 예: transparent → #3b82f6로 페이드인 효과를 만들 수 있습니다. 단, transparent는 rgba(0,0,0,0)으로 해석되므로 끝 색의 색조가 검정 쪽으로 살짝 빠질 수 있어 rgba(59,130,246,0)처럼 같은 색의 알파 0을 쓰는 편이 깔끔합니다.',
+          },
+          {
+            question: '그라데이션을 텍스트에 적용할 수 있나요?',
+            answer: '가능합니다. background로 그라데이션을 깐 뒤 background-clip: text와 color: transparent를 함께 적용하면 글자 안에 그라데이션이 채워집니다. 단, 작은 폰트에서는 색 전환이 잘 보이지 않으므로 굵고 큰 헤딩에 사용하는 것이 효과적입니다.',
           },
         ]}
       />

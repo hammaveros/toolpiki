@@ -287,6 +287,7 @@ export function NameCompatibility() {
       <div className="text-center text-sm text-gray-500 dark:text-gray-400">
         ⚠️ 이 결과는 재미로만 봐주세요! 실제 성명학과는 관련이 없습니다.
       </div>
+      <SeoContent />
     </div>
   );
 }

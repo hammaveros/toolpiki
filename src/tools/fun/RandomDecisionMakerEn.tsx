@@ -204,6 +204,7 @@ export function RandomDecisionMakerEn() {
         <p>• Quick decisions when you are undecided</p>
         <p>• No obligation to follow the result</p>
       </div>
+      <SeoContent />
     </div>
   );
 }
@@ -264,13 +265,32 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          Tips
+          Why Coin Flipping Works: A Quick Look at Decision Science
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          Behavioral economists call the modern struggle with everyday choices "decision fatigue."
+          A widely cited Cornell study estimated that the average adult makes around 35,000 decisions per day, and an even more famous Columbia "jam study" showed that shoppers facing 24 flavors of jam were 10 times less likely to buy than those choosing from only 6.
+          Outsourcing trivial picks to randomness frees up mental bandwidth for decisions that actually matter — your career path, a relationship, a major purchase.
+          Economist Steven Levitt even ran a real experiment where over 20,000 people flipped digital coins to make big life decisions; six months later, those who acted on "heads" reported being happier on average than those who did not.
+        </p>
+        <ul className="text-sm space-y-1 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong>Lunch decision</strong>: Narrow to 4-5 options and roll once — saves about 2 minutes per meal</li>
+          <li><strong>Workout or rest?</strong>: A simple Yes/No flip removes the procrastination spiral</li>
+          <li><strong>Which task first?</strong>: Add 3-5 tasks in Custom mode and let randomness pick the starting point</li>
+          <li><strong>Which movie to watch</strong>: Type the shortlist and stop the endless scroll on streaming services</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          Tips for Better Random Picks
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Use Custom mode with line-separated options for multiple choices</li>
-          <li>Recent results are shown in history (up to 10)</li>
-          <li>Share your decision result with friends</li>
-          <li>Remember: you are not obligated to follow the result!</li>
+          <li><strong>The "gut check" trick</strong>: If the result disappoints you, that disappointment reveals what you actually wanted. Use the flip as a mirror.</li>
+          <li><strong>Custom mode formatting</strong>: One option per line, 3-7 options is the sweet spot for clarity and decision speed.</li>
+          <li><strong>Number range tips</strong>: For raffles, start at 1 and use the actual ticket count as the max. For dice rolls, 1-6 or 1-20 (D&amp;D style) are common.</li>
+          <li><strong>Coin statistics</strong>: After 30+ flips the heads/tails distribution converges close to 50:50 — a clean demonstration of the law of large numbers.</li>
+          <li><strong>Stay reasonable</strong>: Avoid using random picks for ethical, legal, or major financial decisions. This is a tool for low-stakes everyday choices.</li>
         </ul>
       </section>
 
@@ -279,15 +299,19 @@ function SeoContent() {
         faqs={[
           {
             question: 'Is the result truly random?',
-            answer: 'We use JavaScript Math.random() which generates pseudo-random numbers. It is sufficiently random for casual use, but not suitable for cryptographic purposes.',
+            answer: 'We use JavaScript Math.random() which generates pseudo-random numbers (PRNG). It is sufficiently random for casual decisions, games, and demos, but not suitable for cryptographic, security, or gambling-grade randomness — those use cases require crypto.getRandomValues() or hardware RNGs.',
           },
           {
-            question: 'Can I adjust the probability?',
-            answer: 'In the Korean version, Yes/No mode allows adjusting the Yes probability. The English version uses a fair 50/50 split for all binary decisions.',
+            question: 'Why does my result feel "stuck" on one side?',
+            answer: 'Streaks of 4-5 identical results are statistically normal in true randomness. A genuinely random coin will produce a run of 5+ heads roughly once every 32 flips. Humans tend to misjudge randomness — we expect alternation, but real random data clusters.',
           },
           {
-            question: 'Is my history saved?',
-            answer: 'The last 10 results are displayed on screen but reset when you refresh the page. Use the share feature to save a specific result.',
+            question: 'Can I weight the choices unevenly?',
+            answer: 'Not directly in this tool — Custom mode treats every option equally. If you need weighted picks (e.g., 70% A, 30% B), use the Roulette Selector tool which supports weights from 1 to 1000.',
+          },
+          {
+            question: 'Is my history saved across sessions?',
+            answer: 'No — the last 10 results live only in browser memory and clear on refresh. If you need to keep a specific outcome, hit the Share button to encode it into a permanent URL you can bookmark.',
           },
         ]}
       />

@@ -188,19 +188,20 @@ function SeoContent() {
     <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-8 text-gray-700 dark:text-gray-300">
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          🔍 JSONPath 테스터란?
+          🔍 JSON 깊은 곳의 값, 한 줄로 꺼내기
         </h2>
         <p className="text-sm leading-relaxed">
-          JSONPath는 JSON 데이터에서 특정 값을 추출하기 위한 경로 표현식 언어입니다.
-          XPath가 XML 문서에서 노드를 선택하는 것처럼, JSONPath는 JSON 데이터 구조를 탐색합니다.
-          API 응답 분석, 데이터 추출 자동화, 설정 파일 검증 등에 널리 활용되며,
-          이 도구를 통해 경로 표현식을 작성하고 즉시 결과를 확인할 수 있습니다.
+          JSONPath는 JSON 트리에서 원하는 값만 골라내는 미니 쿼리 언어입니다.
+          XPath가 XML을 다루듯 <span className="font-mono">$.store.books[0].title</span> 같은 표현식 한 줄로 깊이 4~5단계 객체 안의 값을 끄집어낼 수 있습니다.
+          이 도구는 왼쪽 입력란에 JSON을 넣고, 오른쪽에 경로 표현식을 적으면 300ms 디바운스로 즉시 결과를 보여줍니다.
+          모든 처리는 브라우저 안에서 일어나기 때문에 사내 API 응답이나 토큰이 포함된 페이로드를 그대로 붙여 넣어도
+          외부로 전송되지 않습니다. 작성해 둔 표현식은 jq, jsonpath-ng, Spring의 JsonPath 라이브러리에도 그대로 옮겨 쓸 수 있습니다.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          📋 JSONPath 문법
+          📋 JSONPath 문법 핵심
         </h2>
         <div className="overflow-x-auto text-sm">
           <table className="w-full text-xs">
@@ -214,9 +215,9 @@ function SeoContent() {
             <tbody>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">$</td><td>루트 객체</td><td className="font-mono text-xs">$</td></tr>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">.key</td><td>속성 접근</td><td className="font-mono text-xs">$.store.name</td></tr>
-              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">[n]</td><td>배열 인덱스</td><td className="font-mono text-xs">$.books[0]</td></tr>
-              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">[*]</td><td>모든 요소</td><td className="font-mono text-xs">$.books[*].title</td></tr>
-              <tr><td className="py-2 px-2 font-mono">..</td><td>재귀 탐색</td><td className="font-mono text-xs">$..price</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">[n]</td><td>배열 인덱스 (0부터)</td><td className="font-mono text-xs">$.books[0]</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">[*]</td><td>배열의 모든 요소</td><td className="font-mono text-xs">$.books[*].title</td></tr>
+              <tr><td className="py-2 px-2 font-mono">..</td><td>재귀 탐색 (모든 깊이)</td><td className="font-mono text-xs">$..price</td></tr>
             </tbody>
           </table>
         </div>
@@ -224,13 +225,25 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          💡 활용 사례
+          🛠️ 이런 상황에 가장 효과적이에요
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>REST API 응답에서 필요한 데이터만 추출</li>
-          <li>복잡한 JSON 설정 파일에서 특정 값 조회</li>
-          <li>테스트 자동화에서 응답 검증</li>
-          <li>jq, Python jsonpath-ng 등 라이브러리 표현식 검증</li>
+          <li><strong>3-depth 이상 API 응답 파싱</strong> — <span className="font-mono">$.data.items[*].user.email</span> 한 줄로 100개 항목의 이메일만 추출.</li>
+          <li><strong>Postman 테스트 스크립트 작성 전 검증</strong> — JsonPath 표현식이 의도한 노드를 정확히 가리키는지 미리 확인.</li>
+          <li><strong>k8s manifest 디버깅</strong> — kubectl get -o jsonpath= 옵션에 들어갈 경로를 여기서 먼저 검증.</li>
+          <li><strong>Elasticsearch / OpenSearch 응답 분석</strong> — <span className="font-mono">$.hits.hits[*]._source</span>로 원본 문서만 추출.</li>
+          <li><strong>jq 명령 만들기 전 프로토타이핑</strong> — 표현식이 검증되면 jq 문법으로 변환하기 쉬워집니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          💡 실수 줄이는 팁
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li>키 이름에 공백이나 하이픈이 있으면 <span className="font-mono">$[&apos;user-name&apos;]</span>처럼 대괄호 표기를 쓰세요. 점 표기는 식별자 규칙을 따릅니다.</li>
+          <li>결과가 <span className="font-mono">undefined</span>로 나오면 경로 중간에 null이 있거나 키 오타일 가능성이 큽니다. 점 하나 줄여서 부모 노드부터 확인해 보세요.</li>
+          <li>대규모 배열에서는 <span className="font-mono">[*]</span> 대신 <span className="font-mono">[0:10]</span> 같은 슬라이스로 먼저 표본을 확인하면 디버깅이 빠릅니다.</li>
         </ul>
       </section>
 
@@ -238,16 +251,20 @@ function SeoContent() {
         title="자주 묻는 질문"
         faqs={[
           {
-            question: 'JSONPath와 JSON Pointer의 차이점은 무엇인가요?',
-            answer: 'JSONPath는 와일드카드와 필터 기능을 지원하는 쿼리 언어인 반면, JSON Pointer(RFC 6901)는 단순 경로 지정만 가능합니다. JSONPath가 더 유연하지만, JSON Pointer는 표준화되어 있습니다.',
+            question: 'JSONPath와 JSON Pointer(RFC 6901), 어느 쪽을 써야 하나요?',
+            answer: 'JSON Pointer는 한 노드를 정확히 가리키는 표준 경로(예: /store/books/0/title)로, 패치(RFC 6902)나 스키마 참조처럼 정밀함이 필요할 때 좋습니다. JSONPath는 와일드카드, 재귀, 필터까지 지원하는 쿼리 언어라 데이터 추출/탐색에 강합니다. 목적에 따라 다른 도구라고 생각하세요.',
           },
           {
-            question: '모든 JSONPath 문법이 지원되나요?',
-            answer: '이 도구는 기본 문법(속성 접근, 배열 인덱스, 와일드카드)을 지원합니다. 필터 표현식(?())이나 슬라이스([start:end])는 부분적으로 지원됩니다.',
+            question: '필터 표현식 ?(@.price > 10) 같은 것도 지원하나요?',
+            answer: '이 도구의 내장 엔진은 속성 접근, 배열 인덱스, 와일드카드 등 기본 문법에 초점이 맞춰져 있습니다. 필터 표현식이나 스크립트(?())이 필요하면 jq나 jsonpath-plus 같은 풀스펙 라이브러리를 함께 쓰는 편이 안전합니다.',
           },
           {
-            question: 'JSONPath 결과가 여러 개일 때 어떻게 되나요?',
-            answer: '와일드카드(*)를 사용하면 여러 값이 배열로 반환됩니다. 예를 들어 $.books[*].title은 모든 책의 제목을 배열로 반환합니다.',
+            question: '결과가 배열로 나오는 게 맞나요? 단일 값을 원할 땐 어떻게 하죠?',
+            answer: '와일드카드(*)나 재귀(..)를 쓰면 매칭이 여러 개일 수 있으니 결과가 배열로 반환됩니다. 단일 값을 원하면 [0]을 추가해서 첫 번째 요소만 꺼내거나, 인덱스를 명시해 매칭을 1개로 좁히세요.',
+          },
+          {
+            question: '깊이를 모르는 객체에서 특정 키만 모두 찾고 싶어요',
+            answer: '재귀 탐색 ..을 쓰세요. 예를 들어 $..id라고 적으면 어떤 깊이에 있든 id라는 키를 가진 값을 모두 모아 배열로 반환합니다. 대용량 JSON에서는 성능 비용이 크니 필요한 범위로 한정하는 게 좋습니다.',
           },
         ]}
       />

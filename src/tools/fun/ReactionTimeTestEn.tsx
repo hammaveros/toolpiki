@@ -433,11 +433,40 @@ function SeoContent() {
           💡 Tips to Improve Reaction Time
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>Get enough sleep</strong>: Fatigue can slow reaction time by 20-30%</li>
-          <li><strong>Moderate caffeine</strong>: Can temporarily improve reaction speed</li>
-          <li><strong>High refresh monitor</strong>: 144Hz+ displays reduce visual latency</li>
-          <li><strong>Regular practice</strong>: Consistent training can measurably improve speed</li>
+          <li><strong>Get enough sleep</strong>: Sleep deprivation slows reaction time by 20-30%, comparable to a 0.08% blood alcohol level after 17+ hours awake</li>
+          <li><strong>Moderate caffeine</strong>: 100-200mg (1-2 cups of coffee) can sharpen reaction speed by 10-15% temporarily; more than that backfires</li>
+          <li><strong>High refresh monitor</strong>: A 144Hz display shows new frames every 6.9ms versus 16.7ms on a standard 60Hz panel — saves you nearly 10ms of input lag</li>
+          <li><strong>Regular practice</strong>: Aim trainers like Aim Lab or KovaaK's, just 15-20 minutes daily, show measurable improvement within 2-4 weeks</li>
+          <li><strong>Hand warm-up</strong>: A quick 5-minute wrist and finger stretch before a gaming session can shave 10-20ms off your early-round times</li>
         </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🎮 Pro Esports Reaction Times by Game
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          Different esports genres demand different reaction profiles. Here is a quick comparison of average pro-level reaction times across major titles:
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">Title</th>
+                <th className="text-left py-2 px-2">Pro Average</th>
+                <th className="text-left py-2 px-2">Reaction Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Valorant / CS2</td><td className="font-mono">140-170ms</td><td>Pure click-timing, peeker's advantage</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">League of Legends</td><td className="font-mono">160-200ms</td><td>Skill-shot dodging, prediction-heavy</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Overwatch 2</td><td className="font-mono">150-180ms</td><td>Tracking aim + instant flicks</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">Fighting games (Tekken)</td><td className="font-mono">130-160ms</td><td>Frame-level reactions (1 frame = 16.6ms)</td></tr>
+              <tr><td className="py-2 px-2 font-medium">F1 / sim racing</td><td className="font-mono">170-220ms</td><td>Steering correction under sustained focus</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-gray-500 mt-2">Note: in real matches, prediction and game-sense beat raw reaction time — top pros are not always the fastest, just the most consistent.</p>
       </section>
 
       <FaqSection

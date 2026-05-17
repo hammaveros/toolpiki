@@ -367,10 +367,23 @@ function SeoContent() {
           💡 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>CSS 마이그레이션</strong>: 기존 HEX를 HSL로 일괄 변환하여 테마 시스템 구축</li>
-          <li><strong>디자인 핸드오프</strong>: Figma/Sketch 색상을 개발자용 형식으로 변환</li>
-          <li><strong>문서화</strong>: 브랜드 가이드라인에 모든 형식 포함</li>
-          <li><strong>디버깅</strong>: 다양한 소스의 색상을 통일된 형식으로 비교</li>
+          <li><strong>CSS 변수 마이그레이션</strong>: 기존 HEX 30~50개를 HSL로 한 번에 바꾸면 다크모드 토글이 채도/명도 조정만으로 가능해집니다.</li>
+          <li><strong>디자인 핸드오프</strong>: Figma의 컬러 스타일 export를 붙여넣으면 개발팀이 쓸 RGB·HEX·HSL을 한 번에 확보할 수 있어 슬랙 핑퐁이 줄어듭니다.</li>
+          <li><strong>브랜드 가이드 문서화</strong>: Notion/Confluence 표에 동일한 색을 세 형식으로 나란히 기록하면 인쇄·웹·앱 디자이너 모두 그대로 복사할 수 있습니다.</li>
+          <li><strong>레거시 코드 정리</strong>: 10년 된 SCSS 파일에 흩어진 #aaa, #AAA, rgb(170,170,170)을 골라내서 동일한 색이라는 사실을 빠르게 검증할 수 있습니다.</li>
+          <li><strong>접근성 점검</strong>: 본문 색을 HSL로 뽑아 보면 L(명도)가 50% 이하인 색은 흰 배경에서 보통 WCAG AA(4.5:1)를 충족합니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚙️ 입력 시 자주 막히는 케이스
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>3자리 HEX 혼용</strong>: #fff와 #ffffff가 같은 색인지 헷갈릴 때 둘 다 붙여넣고 출력 형식을 HEX(6자리)로 고정하면 한눈에 확인됩니다.</li>
+          <li><strong>공백 차이</strong>: rgb(255,87,51)와 rgb(255, 87, 51) 모두 인식되므로 엑셀 표에서 복사한 값도 그대로 사용 가능합니다.</li>
+          <li><strong>대소문자</strong>: #FF5733과 #ff5733은 동일 색입니다. 코드 컨벤션 통일을 위해 출력값을 한쪽 케이스로 맞춰 복사하세요.</li>
+          <li><strong>CSS 색상명</strong>: tomato, slategray 같은 명명색은 현재 인식하지 않으므로 사전에 HEX로 바꿔 입력해야 합니다.</li>
         </ul>
       </section>
 
@@ -379,15 +392,19 @@ function SeoContent() {
         faqs={[
           {
             question: 'RGBA의 투명도는 어떻게 처리되나요?',
-            answer: '현재 버전에서는 알파(투명도) 값이 무시되고 RGB 부분만 변환됩니다. 투명도가 필요한 경우 별도로 관리하세요.',
+            answer: '현재 버전에서는 알파(투명도) 값이 무시되고 RGB 부분만 변환됩니다. 투명도가 중요한 오버레이/그림자 색은 알파값을 따로 메모해 두고 변환 후 다시 결합하는 흐름을 권장합니다.',
           },
           {
             question: '인식되지 않는 색상은 어떻게 표시되나요?',
-            answer: '빨간색 배경으로 표시되며 "인식할 수 없는 형식"이라고 안내됩니다. 오타나 지원하지 않는 형식(CSS 색상명 등)인지 확인하세요.',
+            answer: '빨간색 배경으로 표시되며 "인식할 수 없는 형식"이라고 안내됩니다. 오타, 닫는 괄호 누락, CSS 색상명(예: red, navy) 사용, 8자리 HEX(#FF5733AA) 등이 흔한 원인입니다.',
           },
           {
             question: '결과를 복사하면 어떤 형식으로 복사되나요?',
-            answer: '선택한 출력 형식(HEX, RGB, HSL, 전체)에 따라 줄바꿈으로 구분된 텍스트로 복사됩니다. 스프레드시트나 코드에 바로 붙여넣기 가능합니다.',
+            answer: '선택한 출력 형식(HEX, RGB, HSL, 전체)에 따라 줄바꿈으로 구분된 텍스트로 복사됩니다. 구글 시트에 붙여넣으면 한 줄에 한 색이 들어가고, 코드 에디터에서는 그대로 변수 값에 매핑하기 쉽습니다.',
+          },
+          {
+            question: '몇 개까지 한 번에 처리할 수 있나요?',
+            answer: '브라우저 메모리에 따라 다르지만, 일반적으로 수백 개 정도까지는 즉시 변환됩니다. 디자인 토큰 전체를 한꺼번에 마이그레이션하기에 충분한 용량입니다.',
           },
         ]}
       />

@@ -181,11 +181,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📡 What is Morse Code Converter?</h2>
         <p className="text-sm leading-relaxed">
-          Morse code is a telegraph communication system invented by Samuel Morse in 1837.
-          It represents letters, numbers, and punctuation using combinations of short signals (dots/dits)
-          and long signals (dashes/dahs). Following ITU (International Telecommunication Union) standards,
-          it uses the same codes worldwide. It is still used for emergency signals like SOS (··· --- ···).
-          This tool provides bidirectional text-to-Morse conversion and audio playback.
+          Morse code dates back to 1837 when Samuel Morse and Alfred Vail patented a telegraph code that represents every character with combinations of two symbols — a short signal (dit) and a long one (dah).
+          The international variant, agreed in 1851 and later folded into ITU standards, replaced the maritime use of Morse in 1999 when GMDSS took over, yet it remains in daily use by amateur radio operators and aviation navigation beacons.
+          This tool converts text to Morse, decodes Morse back to text, and plays the result as actual audio by synthesising a 600 Hz sine wave through the Web Audio API.
+          The SOS signal (<code>··· --- ···</code>) was standardised in Berlin in 1906 and has remained unchanged ever since.
         </p>
       </section>
 
@@ -203,12 +202,34 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🎓 Useful Morse Patterns</h2>
+        <div className="text-sm">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="border-b border-gray-200 dark:border-gray-700">
+                <th className="text-left py-2 px-2">Term</th>
+                <th className="text-left py-2 px-2">Morse</th>
+                <th className="text-left py-2 px-2">Note</th>
+              </tr>
+            </thead>
+            <tbody className="text-xs">
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-1 px-2">SOS</td><td className="py-1 px-2 font-mono">··· --- ···</td><td className="py-1 px-2">Distress — sent as one continuous group</td></tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-1 px-2">CQ</td><td className="py-1 px-2 font-mono">-·-· --·-</td><td className="py-1 px-2">&quot;Calling any station&quot; in amateur radio</td></tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-1 px-2">73</td><td className="py-1 px-2 font-mono">--··· ···--</td><td className="py-1 px-2">Ham radio sign-off meaning &quot;best regards&quot;</td></tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-1 px-2">HELLO</td><td className="py-1 px-2 font-mono">···· · ·-·· ·-·· ---</td><td className="py-1 px-2">Word boundary needs a slash (/)</td></tr>
+              <tr><td className="py-1 px-2">QRT</td><td className="py-1 px-2 font-mono">--·- ·-· -</td><td className="py-1 px-2">Q-code meaning &quot;cease transmitting&quot;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
-          { question: 'How do I send an SOS signal?', answer: 'SOS is ··· --- ···. It has been the universal distress signal since 1906. It is transmitted continuously without the usual inter-character spacing.' },
-          { question: 'Can I convert non-Latin characters to Morse code?', answer: 'Standard Morse code only supports English alphabet, numbers, and some punctuation. Non-Latin text must first be romanized before converting to Morse code.' },
-          { question: 'How does the audio playback work?', answer: 'It uses Web Audio API oscillators to generate a 600Hz sine wave. Dots play short tones and dashes play long tones, following ITU timing rules.' },
+          { question: 'How do I send an SOS signal?', answer: 'SOS is ··· --- ···, standardised at the 1906 Berlin International Radiotelegraph Convention. The trick is to send the entire pattern without the usual inter-character gap so it sounds like one unbroken group. Despite popular legend, the letters were chosen for clarity on a key, not as an acronym for &quot;Save Our Souls&quot;.' },
+          { question: 'Can I convert non-Latin characters to Morse?', answer: 'The international ITU table only assigns dits and dahs to the Latin alphabet, the digits 0–9, and a handful of punctuation marks. For other scripts the practical approach is to romanise first (for example transliterating a name into Latin letters) and then run that through this converter.' },
+          { question: 'How does the audio playback work?', answer: 'A Web Audio OscillatorNode generates a 600 Hz sine wave, attenuated to 50% by a GainNode. The dit length is fixed at 100 ms, the dah at 300 ms (3×), the inter-character pause at 200 ms, and the inter-word pause at 400 ms — matching the classic 1:3:3:7 ITU timing ratio.' },
         ]}
       />
     </div>

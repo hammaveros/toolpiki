@@ -302,28 +302,42 @@ function SeoContent() {
           🔍 코드 비교 도구란?
         </h2>
         <p className="text-sm leading-relaxed">
-          코드 비교(Code Diff) 도구는 두 개의 코드 또는 텍스트 간의 차이점을 시각적으로 보여주는 도구입니다.
-          Git diff와 유사하게 추가된 줄(녹색), 삭제된 줄(빨간색), 변경되지 않은 줄을 색상으로 구분하여 표시합니다.
-          코드 리뷰, 버전 비교, 병합 충돌 해결, 리팩토링 전후 비교 등 개발 작업에서 필수적으로 사용됩니다.
-          Myers diff 알고리즘(Git과 동일)을 기반으로 대용량 코드도 효율적으로 비교합니다.
+          두 버전의 텍스트가 어디서 어떻게 달라졌는지 라인 단위로 보여주는 도구입니다.
+          삭제된 줄은 빨간색, 새로 추가된 줄은 녹색으로 강조되고, 그대로 유지된 줄은 회색 톤으로 처리해서
+          한눈에 변경 흐름이 잡힙니다. 내부적으로는 Git이 쓰는 것과 동일한 Myers diff (O(ND)) 알고리즘을 사용하고,
+          최대 50,000줄까지 브라우저에서 바로 계산합니다. 서버로 코드를 전송하지 않기 때문에 사내 코드나 설정 파일을
+          올려도 외부로 새지 않습니다.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          📊 보기 모드
+          🛠️ 이런 상황에 써보세요
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li>GitHub/GitLab 안 쓰는 사내 시스템에서 두 버전의 SQL 스키마를 비교할 때</li>
+          <li>장애 났을 때 어제 nginx.conf와 오늘 nginx.conf 사이 무엇이 바뀌었는지 빠르게 잡아낼 때</li>
+          <li>ChatGPT/Claude가 리팩토링한 코드와 원본을 나란히 두고 검토할 때</li>
+          <li>Postman으로 받은 두 번의 API 응답 JSON을 붙여서 어떤 필드가 추가/삭제됐는지 확인할 때</li>
+          <li>Slack으로 받은 코드 스니펫과 IDE에 있는 현재 코드를 비교할 때</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📊 보기 모드 고르기
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded">
             <p className="font-medium mb-1">통합 보기 (Unified)</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              모든 변경사항을 한 열에 순차적으로 표시. 전체 흐름 파악에 적합
+              GitHub PR 화면처럼 한 컬럼에 +/- 라인이 섞여서 나옵니다. 모바일이나 좁은 모니터에서 보기 좋아요.
             </p>
           </div>
           <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded">
             <p className="font-medium mb-1">분할 보기 (Split)</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              원본과 수정본을 나란히 표시. 라인별 직접 비교에 적합
+              왼쪽에 원본, 오른쪽에 수정본이 나란히 표시되어 라인별로 직접 매칭해서 보기 편합니다. 와이드 모니터 추천.
             </p>
           </div>
         </div>
@@ -331,13 +345,12 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          💡 활용 사례
+          💡 잘 쓰는 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Pull Request 리뷰 전 변경사항 미리 확인</li>
-          <li>라이브러리 업데이트 전후 설정 파일 비교</li>
-          <li>SQL 쿼리, 설정 파일, API 응답 등 텍스트 데이터 비교</li>
-          <li>병합 충돌 해결 시 두 버전 비교</li>
+          <li>JSON/YAML 비교 전에 먼저 같은 포맷터로 정렬해두면 들여쓰기 차이로 인한 가짜 diff가 사라집니다.</li>
+          <li>로그 파일 비교 시 타임스탬프 열은 sed/awk로 제거하고 붙이면 실제 변경 라인만 보여요.</li>
+          <li>50,000줄 이상은 대용량으로 판단해 자르는 게 좋고, 큰 파일은 git diff --stat으로 먼저 후보를 좁히세요.</li>
         </ul>
       </section>
 
@@ -345,16 +358,20 @@ function SeoContent() {
         title="자주 묻는 질문"
         faqs={[
           {
-            question: 'Git diff와 어떻게 다른가요?',
-            answer: 'Git diff는 Git 저장소의 파일 변경사항을 보여주지만, 이 도구는 임의의 두 텍스트를 직접 비교합니다. Git이 없는 환경이나 파일이 아닌 데이터 비교에 유용합니다.',
+            question: 'Git diff와 정확히 무엇이 다른가요?',
+            answer: 'git diff는 워킹 트리/스테이지/커밋 사이를 비교하는 명령이고, 이 도구는 그냥 두 덩어리의 텍스트를 붙여 넣어서 즉시 비교하는 도구입니다. Git 저장소가 아닌 곳—예를 들면 두 API 응답, 두 설정 파일, AI가 생성한 코드 두 버전 등—을 비교할 때 더 편합니다.',
           },
           {
-            question: '대용량 코드도 비교할 수 있나요?',
-            answer: 'Myers diff 알고리즘을 사용하여 대용량 파일도 효율적으로 처리합니다. 최대 50,000줄까지 비교 가능합니다.',
+            question: '비교 결과를 저장하거나 공유할 수 있나요?',
+            answer: '결과는 브라우저 안에서만 표시되고 서버에 저장되지 않습니다. 공유가 필요하면 결과 영역을 캡처하거나, 통합 보기 상태에서 텍스트를 복사해 PR 코멘트로 붙여 넣는 방식이 가장 빠릅니다.',
           },
           {
-            question: '문자 단위 비교도 가능한가요?',
-            answer: '현재는 라인 단위 비교만 지원합니다. 문자 단위 비교가 필요하면 텍스트 비교 도구를 사용하세요.',
+            question: '한글이나 이모지가 섞여도 정확히 비교되나요?',
+            answer: '네. 라인 단위 문자열 비교라 유니코드 문자(한글, 일본어, 이모지)도 동일한 라인이면 변경 없음으로 판정됩니다. 다만 BOM이나 줄바꿈 문자(CRLF vs LF)는 다른 라인으로 잡힐 수 있으니 사전에 통일해 주세요.',
+          },
+          {
+            question: '문자나 단어 단위로도 비교되나요?',
+            answer: '현재 버전은 라인 단위까지만 지원합니다. 한 줄 안에서 어느 글자가 바뀌었는지 보고 싶다면 텍스트 비교 도구를 함께 쓰는 편이 빠릅니다.',
           },
         ]}
       />

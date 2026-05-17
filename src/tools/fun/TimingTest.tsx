@@ -236,6 +236,8 @@ export function TimingTest() {
         <p>• 화면을 보지 않고 시간 감각만으로 맞춰보세요</p>
         <p>• 오차 0.1초 이내면 천재급 타이밍 감각!</p>
       </div>
+
+      <SeoContent />
     </div>
   );
 }

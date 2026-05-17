@@ -153,10 +153,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔒 What is Hash Generator?</h2>
         <p className="text-sm leading-relaxed">
-          A hash function takes any input and produces a fixed-length output called a hash.
-          The same input always produces the same hash, but recovering the original from the hash is impossible.
-          It is widely used for file integrity verification, password storage, digital signatures, and blockchain.
-          This tool supports MD5, SHA-1, SHA-256, SHA-384, and SHA-512 algorithms.
+          A cryptographic hash compresses arbitrary input into a fixed-length fingerprint and exhibits the avalanche effect: changing a single bit of the input scrambles the entire output.
+          This page generates five hashes in parallel — MD5, SHA-1, SHA-256, SHA-384, and SHA-512 — so you can compare digests side by side.
+          SHA-2 algorithms run on the browser's built-in Web Crypto API (<code>crypto.subtle.digest</code>); MD5, which is no longer part of that API, uses a self-contained pure-JS implementation.
+          Nothing leaves your machine — the text you paste is hashed locally and is never transmitted.
         </p>
       </section>
 
@@ -183,12 +183,23 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📜 A Short Timeline of Breaks</h2>
+        <p className="text-sm leading-relaxed">
+          <strong>MD5</strong> arrived in 1991, but cryptanalysis chipped away at it for over a decade until Wang Xiaoyun's team published practical collisions in 2004. By 2008 researchers had forged a working CA certificate with it. Today it survives only as a non-cryptographic checksum.
+          <strong>SHA-1</strong> followed in 1995. Google's 2017 SHAttered attack produced two distinct PDFs sharing a SHA-1 digest, and TLS certificate authorities had already begun deprecating it by then.
+          <strong>SHA-256</strong> remains the workhorse — it secures Bitcoin's proof-of-work, TLS handshakes, and most digital signatures via 64 rounds of compression yielding a 256-bit output.
+          Higher-assurance environments reach for SHA-384, SHA-512, or the structurally different SHA-3 (Keccak), standardised by NIST in 2015.
+        </p>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
-          { question: 'Why is MD5 considered insecure?', answer: 'Collision attacks were discovered in 2004, meaning two different inputs can produce the same hash. Use MD5 only for non-security purposes like file checksums.' },
-          { question: 'Which hash should I use for passwords?', answer: 'Use dedicated password hashing functions like bcrypt, scrypt, or Argon2 instead of general hash functions. These are intentionally slow to resist brute-force attacks.' },
-          { question: 'Will the same text produce the same hash on different computers?', answer: 'Yes, the same algorithm and input always produce identical hash values regardless of the platform. This property makes hashing useful for file integrity verification.' },
+          { question: 'Why is MD5 considered insecure?', answer: 'Since the 2004 Wang Xiaoyun results, finding two inputs that share an MD5 digest is achievable on commodity hardware within hours. That kills any usage where authenticity matters — digital signatures, certificates, code signing — though MD5 is still acceptable as a plain integrity checksum where an attacker cannot tamper with the input.' },
+          { question: 'Which hash should I use for passwords?', answer: 'Not SHA-256. General-purpose hashes are designed to be fast, so a modern GPU can try billions of guesses per second. Use a purpose-built password hash with a tunable cost: bcrypt (2^cost rounds), scrypt (memory-hard), or Argon2 (PHC winner, 2015). Always pair it with a unique per-user salt.' },
+          { question: 'Will the same text produce the same hash on different machines?', answer: 'Yes. Given the same algorithm and the exact same byte sequence, the output is identical regardless of OS, language, or hardware. That determinism is what makes hashing useful for download verification, Git object IDs, and content-addressed storage like IPFS.' },
+          { question: 'Can I recover the original from a hash?', answer: 'Mathematically no — hash functions are one-way. The practical risk is when the input space is small (think 4-digit PINs) and an attacker can brute-force every possibility offline. Salting and stretching protect against that.' },
         ]}
       />
     </div>

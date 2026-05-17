@@ -138,55 +138,57 @@ function SeoContent() {
     <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-8 text-gray-700 dark:text-gray-300">
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          🌐 HTTP 상태 코드란?
+          🌐 3자리 숫자에 담긴 응답의 의미
         </h2>
         <p className="text-sm leading-relaxed">
-          HTTP 상태 코드는 웹 서버가 클라이언트 요청에 대한 처리 결과를 알려주는 3자리 숫자입니다.
-          RFC 7231 등 HTTP 표준에서 정의되며, 첫 번째 숫자로 응답의 성격을 나타냅니다.
-          1xx는 정보, 2xx는 성공, 3xx는 리다이렉션, 4xx는 클라이언트 오류, 5xx는 서버 오류를 의미합니다.
-          개발자는 이 코드를 통해 API 디버깅, 오류 처리, 로깅 등을 수행합니다.
+          HTTP 상태 코드는 서버가 보내온 짧은 답신 같은 것입니다. 첫 번째 숫자가 가장 중요합니다.
+          1xx는 &quot;받았으니 계속해도 좋다&quot;, 2xx는 &quot;성공&quot;, 3xx는 &quot;다른 곳으로 가라&quot;, 4xx는 &quot;네가 잘못했다&quot;,
+          5xx는 &quot;내가 잘못했다&quot;는 뜻으로 외워두면 빠르게 분류됩니다. RFC 9110(2022) 기준 약 60여 개 코드가 표준이며,
+          이 페이지에서 검색·필터링으로 자주 마주치는 코드 30여 개를 한 화면에 정리해뒀습니다.
+          API 응답을 분석하거나 nginx/Apache 액세스 로그를 보다가 처음 만난 코드의 의미가 궁금할 때 이 페이지를 즐겨찾기 해두면 편합니다.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          📊 카테고리별 의미
+          📊 카테고리별 큰 그림
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
           <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded">
             <span className="font-medium text-blue-700 dark:text-blue-300">1xx 정보</span>
-            <p className="text-xs text-gray-500 mt-1">요청 수신, 처리 계속</p>
+            <p className="text-xs text-gray-500 mt-1">100 Continue, 101 Switching Protocols 등. WebSocket 업그레이드 외에는 거의 안 보임</p>
           </div>
           <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded">
             <span className="font-medium text-green-700 dark:text-green-300">2xx 성공</span>
-            <p className="text-xs text-gray-500 mt-1">요청 정상 처리 완료</p>
+            <p className="text-xs text-gray-500 mt-1">200 OK가 90% 이상. POST 후엔 201, DELETE 후엔 204를 자주 봄</p>
           </div>
           <div className="p-2 bg-yellow-50 dark:bg-yellow-900/20 rounded">
             <span className="font-medium text-yellow-700 dark:text-yellow-300">3xx 리다이렉션</span>
-            <p className="text-xs text-gray-500 mt-1">추가 작업 필요 (이동)</p>
+            <p className="text-xs text-gray-500 mt-1">301(영구)와 302(임시)가 핵심. SEO 관점에선 무조건 301 권장</p>
           </div>
           <div className="p-2 bg-orange-50 dark:bg-orange-900/20 rounded">
             <span className="font-medium text-orange-700 dark:text-orange-300">4xx 클라이언트 오류</span>
-            <p className="text-xs text-gray-500 mt-1">잘못된 요청</p>
+            <p className="text-xs text-gray-500 mt-1">400/401/403/404가 절대 다수. 429는 Rate Limit이므로 백오프 필요</p>
           </div>
           <div className="p-2 bg-red-50 dark:bg-red-900/20 rounded sm:col-span-2">
             <span className="font-medium text-red-700 dark:text-red-300">5xx 서버 오류</span>
-            <p className="text-xs text-gray-500 mt-1">서버 처리 실패</p>
+            <p className="text-xs text-gray-500 mt-1">500은 코드 버그, 502/503/504는 인프라(게이트웨이/스케일링) 문제일 확률이 높음</p>
           </div>
         </div>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          💡 자주 만나는 상태 코드
+          💡 디버깅할 때 가장 자주 만나는 코드
         </h2>
         <ul className="text-sm leading-relaxed space-y-1 list-disc list-inside">
-          <li><strong>200 OK</strong> - 요청 성공, 가장 일반적인 응답</li>
-          <li><strong>201 Created</strong> - POST로 새 리소스 생성 성공</li>
-          <li><strong>400 Bad Request</strong> - 요청 파라미터나 본문 오류</li>
-          <li><strong>401/403</strong> - 인증/권한 문제</li>
-          <li><strong>404 Not Found</strong> - 리소스를 찾을 수 없음</li>
-          <li><strong>500 Internal Server Error</strong> - 서버 내부 오류</li>
+          <li><strong>200 OK</strong> — 성공. 그러나 응답 본문에 에러 메시지가 들어 있는 케이스(이른바 200 Always)는 의외로 흔하니 항상 바디도 확인.</li>
+          <li><strong>301 / 308</strong> — 영구 리다이렉트. 도메인 이전이나 https 강제 전환 시 사용. 한 번 캐시되면 잘 안 풀리니 신중히.</li>
+          <li><strong>401 vs 403</strong> — 401은 &quot;너 누구?&quot;(인증 부재/실패), 403은 &quot;너 누군지는 알겠는데 권한이 없어&quot;.</li>
+          <li><strong>422 Unprocessable Entity</strong> — 문법은 맞는데 비즈니스 검증 실패. Rails, Laravel API에서 자주 등장.</li>
+          <li><strong>429 Too Many Requests</strong> — 헤더의 Retry-After 값을 보고 정확한 시간만큼 기다린 뒤 재시도.</li>
+          <li><strong>502 Bad Gateway</strong> — 업스트림(예: Node 서버)이 죽었거나, nginx 타임아웃 설정이 짧을 가능성.</li>
+          <li><strong>504 Gateway Timeout</strong> — 백엔드가 살아 있지만 느림. 쿼리 인덱스, N+1, 외부 API 응답 시간부터 점검.</li>
         </ul>
       </section>
 
@@ -194,16 +196,20 @@ function SeoContent() {
         title="자주 묻는 질문"
         faqs={[
           {
-            question: '401과 403의 차이는 무엇인가요?',
-            answer: '401 Unauthorized는 인증이 필요하거나 실패한 경우(로그인 필요), 403 Forbidden은 인증은 되었지만 해당 리소스에 대한 권한이 없는 경우입니다.',
+            question: '401과 403, 어떻게 구분해서 써야 하나요?',
+            answer: '클라이언트가 토큰을 안 보냈거나 만료된 경우엔 401, 토큰은 유효한데 해당 리소스에 접근 권한이 없을 땐 403입니다. 보안 관점에서 가끔 일부러 모든 권한 부족을 404로 위장하기도 하지만, 일반적인 비즈니스 API라면 표준대로 401/403을 정확히 나누어 주세요.',
           },
           {
-            question: '302와 307의 차이는 무엇인가요?',
-            answer: '302 Found는 역사적으로 브라우저가 POST를 GET으로 바꿔서 리다이렉트했지만, 307 Temporary Redirect는 원래 HTTP 메서드를 유지합니다.',
+            question: '302와 307은 둘 다 임시 리다이렉트인데 왜 나뉘어 있나요?',
+            answer: '역사적 이유로 302는 일부 구현체가 POST를 GET으로 바꿔서 리다이렉트하는 동작을 했고, 그게 호환성 이슈가 되자 RFC 7231이 메서드를 그대로 유지하는 307 Temporary Redirect를 새로 정의했습니다. 폼 제출 후 리다이렉트라면 303 See Other가 가장 안전합니다.',
           },
           {
-            question: '커스텀 상태 코드를 만들 수 있나요?',
-            answer: '가능하지만 권장하지 않습니다. 표준 코드를 사용하고, 상세 정보는 응답 본문에 포함하는 것이 좋습니다. 499(Nginx), 520-527(Cloudflare) 등 벤더별 확장 코드도 있습니다.',
+            question: '301 영구 리다이렉트, 한 번 걸면 못 되돌리나요?',
+            answer: '서버 응답을 304가 아닌 301로 바꾸면 되돌릴 수는 있지만, 브라우저와 검색엔진이 일정 시간 결과를 캐시하기 때문에 사용자 입장에선 안 풀린 것처럼 보입니다. 도메인 이전 같은 경우라면 며칠 ~ 몇 주까지 캐시가 남는 경우가 있으니 신중하게 결정하세요.',
+          },
+          {
+            question: '커스텀 상태 코드를 만들어 써도 되나요?',
+            answer: '기술적으로는 가능하지만 권장하지 않습니다. 클라이언트 라이브러리나 프록시가 표준 코드만 이해하므로, 비즈니스 의미는 본문(JSON)에 errorCode 필드로 담고 HTTP 코드는 표준 범위 안에서 골라 쓰세요. nginx의 499(클라이언트 종료)나 Cloudflare의 520-527처럼 잘 알려진 벤더 확장은 예외입니다.',
           },
         ]}
       />

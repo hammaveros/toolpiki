@@ -182,10 +182,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">💻 What is ASCII Converter?</h2>
         <p className="text-sm leading-relaxed">
-          ASCII (American Standard Code for Information Interchange) is a character encoding standard that represents
-          English letters, digits, and special characters using 7-bit numeric codes (0-127). Established in 1963,
-          it became the foundation for computer communication and remains the base compatibility range for modern
-          encodings like UTF-8. This tool converts between text and ASCII codes in decimal, hexadecimal, and binary formats.
+          ASCII was standardised in 1963 by ANSI X3.4 as a 7-bit code that maps the integers 0 through 127 onto English letters, digits, punctuation, and a handful of control characters.
+          Its teletype origins are still visible today through <code>\n</code> (LF, 10), <code>\r</code> (CR, 13), and <code>\t</code> (TAB, 9), which carry over into every modern programming language.
+          This tool decomposes a string character by character and shows each code in decimal, hexadecimal, and binary, or rebuilds text from any of those forms.
+          It is especially handy while learning C, Java, or Python and verifying how a string is actually stored in memory.
         </p>
       </section>
 
@@ -203,12 +203,22 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🧠 Handy ASCII Tricks</h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
+          <li><strong>Case toggle in one bit</strong>: 'A' (65) and 'a' (97) differ only at bit 5. Flipping that bit with <code>code ^ 0x20</code> swaps case in a single CPU instruction, faster than any string method.</li>
+          <li><strong>Digit to integer</strong>: classic <code>atoi</code> implementations rely on <code>'9' - '0' = 9</code>. The subtraction works because digits occupy a contiguous block from 48 to 57.</li>
+          <li><strong>Alphabet test</strong>: range checks 65–90 and 97–122 outperform regex by an order of magnitude and dominate embedded firmware parsing.</li>
+          <li><strong>HTTP parsing</strong>: every protocol delimiter — <code>:</code> (58), space (32), and CRLF (13, 10) — lives in ASCII, which is why byte-level HTTP/1.1 parsers stay simple and portable.</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
-          { question: 'What is the difference between ASCII and Unicode?', answer: 'ASCII represents only 128 characters (English letters, digits, special chars). Unicode covers all characters worldwide and includes ASCII range (0-127) as a subset.' },
-          { question: 'Can I convert non-English characters with ASCII?', answer: 'Non-English characters are outside the ASCII range. Use the Unicode Converter or UTF-8 tools for CJK, Arabic, Cyrillic, and other scripts.' },
-          { question: 'Which format should I use: decimal, hex, or binary?', answer: 'Decimal is most readable for general use. Hexadecimal is common for memory addresses and color codes. Binary is used in bit operations and network protocol analysis.' },
+          { question: 'ASCII vs Unicode — what is the difference?', answer: 'ASCII is a 7-bit table of 128 characters; Unicode is a much larger catalogue of more than 150,000. The first 128 Unicode code points are identical to ASCII, so English-only data behaves the same either way. The difference shows up once you bring in non-Latin scripts, emoji, or math symbols, which need a Unicode encoding such as UTF-8.' },
+          { question: 'Can I convert non-English characters with this tool?', answer: 'Strictly speaking, no. Anything beyond U+007F is outside ASCII. If you paste, say, an emoji or a CJK character the tool prints the underlying UTF-16 code unit JavaScript exposes, which is technically not an ASCII code. For those scripts, switch to the Unicode Converter instead.' },
+          { question: 'Decimal, hex, or binary — when to use which?', answer: 'Decimal reads most naturally for humans. Hexadecimal is the standard for memory dumps, packet captures, and color codes because it groups four bits per digit. Binary is best when you really need to highlight bit-level structure, such as permission flags or protocol headers.' },
         ]}
       />
     </div>

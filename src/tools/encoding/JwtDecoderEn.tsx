@@ -181,10 +181,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔑 What is JWT Decoder?</h2>
         <p className="text-sm leading-relaxed">
-          JWT (JSON Web Token) is a token format used for authentication and information exchange in web applications.
-          It consists of three parts: Header (algorithm info), Payload (claims data), and Signature (verification),
-          each separated by dots (.) and encoded in Base64url format.
-          This tool decodes JWTs to inspect token contents and verify expiration times.
+          JSON Web Token (JWT, RFC 7519) packs a small authentication payload into three Base64url segments joined by dots.
+          The Header announces the signing algorithm, the Payload carries claims like user ID, scopes, or expiry, and the Signature is a MAC that ties the first two parts to a secret or private key.
+          This tool splits the input on the dot character, decodes each part to readable JSON, and — when an <code>exp</code> claim is present — compares it against the current Unix timestamp to flag expired tokens.
+          Everything happens locally in the browser; the token you paste is never sent to a server.
         </p>
       </section>
 
@@ -202,12 +202,23 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🛡️ Common JWT Pitfalls</h2>
+        <p className="text-sm leading-relaxed">
+          The most famous JWT bug is the <strong>alg: none vulnerability</strong> disclosed in 2015, where naive libraries accepted a token whose header advertised &quot;none&quot; and skipped signature checks entirely.
+          Always whitelist the algorithms you expect (for example HS256 or RS256) on the verification side rather than reading <code>alg</code> from the untrusted header.
+          A second classic mistake is <strong>storing secrets in the payload</strong> — remember that Base64url is not encryption; anything inside is visible to anyone who copies the token.
+          Third, <strong>where you store the token matters</strong>: localStorage is reachable from any XSS payload, so use an HttpOnly Secure cookie for refresh tokens and keep short-lived access tokens in memory.
+          Finally, pair <code>exp</code> with a server-side revocation list or a <code>jti</code> claim so a leaked token can actually be killed before its natural expiry.
+        </p>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
-          { question: 'Is JWT decoding safe?', answer: 'JWT Header and Payload use Base64url encoding (not encryption), so anyone can decode them. Only the Signature prevents tampering. Never put sensitive data in the Payload.' },
-          { question: 'How do I check if a token is expired?', answer: 'Compare the exp (expiration) claim in the Payload with the current time. This tool automatically displays the expiration status.' },
-          { question: 'Can this tool verify JWT signatures?', answer: 'Signature verification requires a secret key (HMAC) or public key (RSA/ECDSA). This tool only performs decoding for security reasons. Signature verification should be done server-side.' },
+          { question: 'Is JWT decoding safe?', answer: 'Yes for the decoding step itself — but never treat the payload as private. Header and Payload are Base64url-encoded, not encrypted, so anyone with the token can read them. Tampering is the only thing the signature blocks. Avoid putting passwords, full names, or card numbers in claims.' },
+          { question: 'How do I check if a token is expired?', answer: 'Compare the exp claim (a Unix timestamp in seconds) with the current time. This page does that automatically and colors the badge red when the token is past its expiry. Typical lifetimes are 15 minutes to 1 hour for access tokens and several days for refresh tokens.' },
+          { question: 'Can this tool verify the signature?', answer: 'No, and intentionally so. Verifying HMAC needs the shared secret, and verifying RSA/ECDSA needs the public key. Exposing either in a browser tool would be risky, so signature verification belongs on the server using a well-audited library such as jose or jsonwebtoken.' },
         ]}
       />
     </div>

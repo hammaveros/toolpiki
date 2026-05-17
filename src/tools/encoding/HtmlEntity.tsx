@@ -146,10 +146,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🏷️ HTML 엔티티 변환이란?</h2>
         <p className="text-sm leading-relaxed">
-          HTML 엔티티는 HTML에서 특수한 의미를 가진 문자를 안전하게 표현하기 위한 문자 참조 방식입니다.
-          &lt;, &gt;, &amp; 같은 문자는 HTML 태그로 해석될 수 있기 때문에 엔티티로 변환해야 합니다.
-          웹 보안에서 XSS(Cross-Site Scripting) 공격을 방지하는 가장 기본적인 방법이며,
-          사용자 입력을 HTML에 표시할 때 반드시 적용해야 하는 필수 처리입니다.
+          HTML 엔티티는 브라우저의 파서가 &quot;태그 시작&quot;이나 &quot;속성 경계&quot;로 해석하는 문자를 안전한 문자 참조로 바꿔주는 표준 표기법입니다.
+          예를 들어 사용자가 댓글에 <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>를 적었을 때 그대로 페이지에 출력하면 그 코드가 실행됩니다.
+          이 도구는 &amp;, &lt;, &gt;, &quot;, ', /, ` 8개를 한 번에 처리하므로 가장 흔한 XSS 벡터를 차단합니다.
+          단순 표시뿐 아니라 정적 사이트 빌드 시 마크다운에서 코드 블록을 그대로 보존할 때, 또는 RSS 피드의 description 필드처럼 HTML 안에 다시 HTML을 넣어야 할 때 유용합니다.
         </p>
       </section>
 
@@ -177,12 +177,22 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🚨 XSS 방어, 위치별로 다르다</h2>
+        <p className="text-sm leading-relaxed">
+          OWASP Cheat Sheet에 따르면 같은 문자열이라도 출력 위치에 따라 필요한 인코딩이 다릅니다.
+          <strong> 본문 텍스트</strong>에는 본 도구의 6~8자 엔티티 변환이면 충분하지만, <strong>속성 값</strong> 안에 들어갈 때는 작은따옴표/큰따옴표까지 모두 변환해야 합니다.
+          <strong>&lt;script&gt; 블록 내부</strong>나 <strong>스타일 속성</strong>은 HTML 엔티티만으로 막을 수 없고 JavaScript/CSS 이스케이프가 별도로 필요합니다.
+          또한 <strong>href, src 같은 URL 속성</strong>은 javascript: 스킴 차단이 추가로 들어가야 하며, 위키나 SNS의 자동 링크화 같은 후처리도 함께 검토해야 합니다.
+        </p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: 'HTML 엔티티를 사용하지 않으면 어떻게 되나요?', answer: '사용자 입력에 <script> 같은 태그가 포함되면 XSS 공격이 발생할 수 있습니다. 엔티티 변환은 웹 보안의 기본입니다.' },
-          { question: '이름 엔티티와 숫자 엔티티의 차이는?', answer: '이름 엔티티(&amp;lt;)는 읽기 쉽고, 숫자 엔티티(&amp;#60;)는 모든 브라우저에서 지원됩니다. 기능은 동일합니다.' },
-          { question: 'React에서도 HTML 엔티티 변환이 필요한가요?', answer: 'React의 JSX는 기본적으로 문자열을 이스케이프하므로 XSS가 방지됩니다. 단, dangerouslySetInnerHTML 사용 시에는 수동 변환이 필요합니다.' },
+          { question: 'HTML 엔티티를 사용하지 않으면 어떻게 되나요?', answer: '사용자 입력에 <script>나 <img onerror> 같은 코드가 들어가면 그대로 실행되어 세션 쿠키 탈취, 화면 변조, CSRF 우회 같은 공격이 가능합니다. 매년 OWASP Top 10 상위에 XSS가 꾸준히 들어가는 이유이기도 합니다.' },
+          { question: '이름 엔티티와 숫자 엔티티의 차이는?', answer: '결과는 같지만 명명 엔티티(&amp;lt;)는 사람이 읽기 좋고, 숫자 엔티티(&amp;#60;)는 매우 오래된 브라우저나 일부 XML 파서에서 더 안정적입니다. 호환성 위주라면 숫자 엔티티가 무난합니다.' },
+          { question: 'React, Vue에서도 변환이 필요한가요?', answer: 'React의 JSX, Vue의 mustache 보간은 기본적으로 자동 이스케이프되어 안전합니다. 다만 React의 dangerouslySetInnerHTML, Vue의 v-html을 쓸 때는 반드시 직접 변환해야 하며, 마크다운 라이브러리가 만든 HTML도 sanitize 단계를 거쳐야 합니다.' },
         ]}
       />
     </div>

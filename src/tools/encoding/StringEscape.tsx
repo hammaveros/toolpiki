@@ -192,10 +192,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔤 문자열 이스케이프란?</h2>
         <p className="text-sm leading-relaxed">
-          문자열 이스케이프는 프로그래밍 언어나 데이터 형식에서 특별한 의미를 가진 문자를
-          안전하게 표현하기 위해 변환하는 과정입니다. 예를 들어 JSON 문자열에서 큰따옴표(")는
-          문자열 경계로 해석되므로 \"로 이스케이프해야 합니다.
-          이 도구는 JSON, JavaScript, HTML, URL, Regex, SQL 등 6가지 형식의 이스케이프/언이스케이프를 지원합니다.
+          데이터를 한 컨텍스트에서 다른 컨텍스트로 옮길 때, 그 안에 특수 의미를 가진 문자가 있으면 파서가 오해해 버립니다.
+          이스케이프는 그런 문자를 &quot;진짜 그 문자&quot;라고 표시해 두는 작업입니다.
+          예를 들어 JSON 문자열 안에 들어간 &quot;는 문자열 끝으로 해석되므로 <code>\&quot;</code>로 바꿔야 하고, SQL 안의 작은따옴표는 두 번 겹쳐 <code>''</code>로 만들어야 인젝션이 차단됩니다.
+          이 도구는 JSON, JavaScript, HTML, URL, Regex, SQL 여섯 가지 컨텍스트를 한 곳에서 처리하며 300ms 디바운스로 타이핑이 멈추는 순간 자동 변환됩니다.
         </p>
       </section>
 
@@ -221,12 +221,22 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🧪 자주 쓰는 미니 시나리오</h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
+          <li><strong>로그에서 가져온 JSON을 코드에 박을 때</strong>: 따옴표와 줄바꿈이 섞여 있으면 IDE가 빨갛게 표시합니다. JSON 모드로 한 번 이스케이프하면 그대로 변수 값으로 사용할 수 있습니다.</li>
+          <li><strong>운영자 입력으로 SQL을 만들 때</strong>: 정석은 파라미터 바인딩이지만, 점검 스크립트에서 즉석으로 쿼리를 짤 때 SQL 모드로 작은따옴표를 두 번화하면 안전합니다.</li>
+          <li><strong>특정 단어를 정규식으로 찾을 때</strong>: 파일 경로 <code>C:\\Users\\name</code>을 그대로 패턴에 넣으면 \\U가 메타로 해석됩니다. Regex 모드로 한 번 변환해서 안전한 패턴을 얻습니다.</li>
+          <li><strong>마크다운 본문에 코드 예시를 넣을 때</strong>: HTML 모드로 변환해 두면 백틱이 부족한 렌더러에서도 태그가 깨지지 않습니다.</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: '이스케이프를 하지 않으면 어떤 문제가 생기나요?', answer: '구문 오류, 데이터 손실, 보안 취약점(XSS, SQL 인젝션)이 발생할 수 있습니다. 사용자 입력은 항상 적절한 이스케이프 처리를 해야 합니다.' },
-          { question: 'JSON과 JavaScript 이스케이프의 차이는?', answer: 'JSON은 큰따옴표(")만 문자열 구분자로 사용하고, JavaScript는 큰따옴표와 작은따옴표(\') 모두 사용합니다. JavaScript는 \\0(null)도 추가로 이스케이프합니다.' },
-          { question: '실시간 자동 변환은 어떻게 동작하나요?', answer: '입력을 300ms 디바운스하여 타이핑이 멈추면 자동으로 변환합니다. 모드(이스케이프/언이스케이프)와 형식을 변경해도 즉시 반영됩니다.' },
+          { question: '이스케이프를 하지 않으면 어떤 문제가 생기나요?', answer: '단순 구문 오류부터 데이터 손실, XSS, SQL 인젝션 같은 보안 사고까지 이어집니다. 2008년 이후 OWASP Top 10에 인젝션 계열이 꾸준히 등장하는 이유이기도 합니다. 사용자 입력은 출력 컨텍스트별로 매번 이스케이프해야 합니다.' },
+          { question: 'JSON과 JavaScript 이스케이프의 차이는?', answer: 'JSON 표준(RFC 8259)은 문자열 구분자로 큰따옴표만 인정하기 때문에 작은따옴표는 그대로 둬도 됩니다. 반면 JavaScript는 두 따옴표를 모두 쓸 수 있고 \\0(널 문자), \\v(수직 탭) 같은 추가 이스케이프 시퀀스가 있습니다. 이 도구의 JavaScript 모드는 \\0까지 함께 처리합니다.' },
+          { question: '실시간 자동 변환은 어떻게 동작하나요?', answer: '입력이 멈춘 후 300ms 뒤에 변환을 실행합니다. 디바운스 덕분에 빠르게 타이핑해도 매번 변환이 일어나지 않아 부드럽고, 모드나 형식 버튼을 누르면 즉시 다시 계산됩니다.' },
         ]}
       />
     </div>

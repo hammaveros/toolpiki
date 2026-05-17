@@ -240,12 +240,25 @@ function SeoContent() {
           💡 색상 블렌딩 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>브랜드 컬러 확장</strong>: 주요 색상에서 밝은/어두운 변형 생성</li>
-          <li><strong>데이터 시각화</strong>: 차트 색상 범위를 부드럽게 연결</li>
-          <li><strong>호버 효과</strong>: 버튼의 기본/호버 상태 색상 생성</li>
-          <li><strong>테마 색상</strong>: primary-100부터 primary-900까지 일관된 스케일</li>
-          <li><strong>그라데이션 배경</strong>: CSS gradient에 중간 색상 추가로 부드러운 효과</li>
+          <li><strong>Tailwind 스케일 재현</strong>: 시작색을 brand-500으로 잡고 9단계로 뽑으면 100~900까지의 톤이 자연스럽게 만들어져 디자인 토큰 정의가 한 번에 끝납니다.</li>
+          <li><strong>호버/액티브 상태</strong>: 기본 버튼 색을 시작, 같은 색의 명도 -15%를 끝으로 두고 3단계만 뽑으면 정중앙 색이 hover, 끝이 active로 그대로 쓰입니다.</li>
+          <li><strong>데이터 시각화</strong>: 라이트한 베이지 → 진한 인디고처럼 명도/채도 차이가 큰 두 색을 7단계로 잘라 heat map 범례를 만들면 시선이 자연스럽게 흘러갑니다.</li>
+          <li><strong>다크모드 페어링</strong>: 라이트 모드의 brand 색을 시작점, 다크 배경에서 잘 보이는 같은 색조의 채도 낮은 버전을 끝점으로 두면 모드별 토큰 매핑이 쉬워집니다.</li>
+          <li><strong>그라데이션 부드럽게</strong>: linear-gradient에 시작/끝만 넣으면 중간에 회색 띠가 보일 때가 있는데, 5단계 색을 stop으로 모두 넣어주면 띠가 사라집니다.</li>
         </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🧪 두 색을 고를 때 체크할 것
+        </h2>
+        <p className="text-sm leading-relaxed">
+          블렌딩 결과의 품질은 출발/도착 색의 채도 차이와 색조 거리에 크게 좌우됩니다.
+          색조가 180° 떨어진 보색(예: 파랑-주황)은 RGB 보간 시 중간이 탁한 회갈색으로 빠지기 쉬워 HSL을 권장하며,
+          색조 차이가 60° 이하인 인접 색은 어떤 방식으로 보간해도 결과가 안정적입니다.
+          또한 명도(L) 차이가 40 이상 벌어져야 단계가 시각적으로 구별되며,
+          차이가 10 미만이면 사람 눈에는 같은 색으로 보일 수 있다는 점도 고려하세요.
+        </p>
       </section>
 
       <FaqSection
@@ -253,15 +266,19 @@ function SeoContent() {
         faqs={[
           {
             question: 'RGB 블렌딩 시 중간 색상이 어두워지는 이유는?',
-            answer: 'RGB 선형 보간은 두 색상의 각 채널을 평균내므로, 보색 관계의 색상(빨강-청록 등)을 혼합하면 회색에 가까워집니다. 이를 피하려면 HSL/LAB 보간 방식을 사용하세요.',
+            answer: 'RGB 선형 보간은 두 색상의 각 채널을 평균내므로, 보색 관계의 색상(빨강-청록 등)을 혼합하면 회색에 가까워집니다. 이를 피하려면 HSL/LAB 보간 방식을 사용하거나, 중간에 보조 색상을 하나 더 끼워 stop을 늘리는 방법이 있습니다.',
           },
           {
             question: '몇 단계의 중간색이 적당한가요?',
-            answer: '용도에 따라 다릅니다. 버튼 호버 효과는 2~3단계, 색상 팔레트는 5~9단계, 데이터 시각화 범례는 7~11단계가 일반적입니다.',
+            answer: '용도에 따라 다릅니다. 버튼 호버 효과는 2~3단계, 색상 팔레트는 5~9단계, 데이터 시각화 범례는 7~11단계가 일반적입니다. Tailwind 호환을 노린다면 11단계(50, 100~900, 950)가 표준입니다.',
           },
           {
             question: 'CSS 변수로 어떻게 활용하나요?',
-            answer: ':root에 --blend-0, --blend-1 등으로 선언하고, var(--blend-3) 형태로 사용합니다. Tailwind에서는 extend colors로 등록하여 bg-blend-3 등으로 활용 가능합니다.',
+            answer: ':root에 --blend-0, --blend-1 등으로 선언하고, var(--blend-3) 형태로 사용합니다. Tailwind에서는 extend colors로 등록하여 bg-blend-3 등으로 활용 가능합니다. CSS-in-JS라면 객체로 매핑해 theme.colors.brand[300] 같은 접근도 가능합니다.',
+          },
+          {
+            question: '같은 두 색인데 결과가 매번 다른가요?',
+            answer: '아닙니다. 블렌딩은 결정론적이라 입력과 단계가 같으면 항상 동일한 출력이 나옵니다. 결과가 다르게 보인다면 모니터 캘리브레이션이나 다크/라이트 모드 차이일 가능성이 큽니다.',
           },
         ]}
       />

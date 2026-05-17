@@ -188,19 +188,22 @@ function SeoContent() {
     <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-8 text-gray-700 dark:text-gray-300">
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          🔍 What is JSONPath Tester?
+          🔍 Pluck Values Out of Deep JSON
         </h2>
         <p className="text-sm leading-relaxed">
-          JSONPath is a path expression language for extracting specific values from JSON data.
-          Just like XPath selects nodes in XML documents, JSONPath navigates through JSON data structures.
-          It is widely used for API response analysis, data extraction automation, and configuration validation.
-          This tool lets you write path expressions and instantly see the results.
+          JSONPath is a tiny query language for JSON, similar to how XPath works on XML.
+          With a single expression like <span className="font-mono">$.data.users[*].email</span> you can pull every email
+          out of a 4-level nested API response without writing a loop. Paste your JSON on the left, type the path on
+          the right, and the result appears after a 300ms debounce. Everything runs locally in your browser, so payloads
+          containing access tokens, internal IDs, or PII never leave the page. Expressions you craft here translate
+          almost directly to <span className="font-mono">jq</span>, Python <span className="font-mono">jsonpath-ng</span>,
+          and Spring&apos;s JsonPath library.
         </p>
       </section>
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          📋 JSONPath Syntax
+          📋 JSONPath Syntax Essentials
         </h2>
         <div className="overflow-x-auto text-sm">
           <table className="w-full text-xs">
@@ -214,7 +217,7 @@ function SeoContent() {
             <tbody>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">$</td><td>Root object</td><td className="font-mono text-xs">$</td></tr>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">.key</td><td>Property access</td><td className="font-mono text-xs">$.store.name</td></tr>
-              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">[n]</td><td>Array index</td><td className="font-mono text-xs">$.books[0]</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">[n]</td><td>Array index (0-based)</td><td className="font-mono text-xs">$.books[0]</td></tr>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">[*]</td><td>All elements</td><td className="font-mono text-xs">$.books[*].title</td></tr>
               <tr><td className="py-2 px-2 font-mono">..</td><td>Recursive descent</td><td className="font-mono text-xs">$..price</td></tr>
             </tbody>
@@ -224,13 +227,25 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          💡 Use Cases
+          🛠️ Where It Pays Off
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li>Extract specific data from REST API responses</li>
-          <li>Query values from complex JSON configuration files</li>
-          <li>Validate responses in test automation</li>
-          <li>Test expressions for jq, Python jsonpath-ng, and other libraries</li>
+          <li><strong>Paginated REST responses</strong> — <span className="font-mono">$.data.items[*].id</span> gives you 50 IDs in one shot.</li>
+          <li><strong>Postman / Insomnia tests</strong> — Validate that your <span className="font-mono">pm.expect</span> path resolves before committing the test.</li>
+          <li><strong>kubectl scripting</strong> — Prototype the expression you will paste into <span className="font-mono">-o jsonpath=...</span>.</li>
+          <li><strong>Elasticsearch / OpenSearch responses</strong> — <span className="font-mono">$.hits.hits[*]._source</span> isolates the documents.</li>
+          <li><strong>GraphQL response inspection</strong> — Drill into nested <span className="font-mono">data.viewer.repositories</span> structures fast.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          💡 Pitfall-Avoidance Tips
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li>Keys with dashes or spaces (like <span className="font-mono">user-name</span>) need bracket notation: <span className="font-mono">$[&apos;user-name&apos;]</span>.</li>
+          <li>Getting <span className="font-mono">undefined</span>? Walk the path back one segment at a time—usually it&apos;s a typo or an unexpected null in the chain.</li>
+          <li>On huge arrays, start with <span className="font-mono">[0:5]</span> to peek at the shape before unleashing <span className="font-mono">[*]</span>.</li>
         </ul>
       </section>
 
@@ -238,16 +253,20 @@ function SeoContent() {
         title="Frequently Asked Questions"
         faqs={[
           {
-            question: 'What is the difference between JSONPath and JSON Pointer?',
-            answer: 'JSONPath is a query language supporting wildcards and filters, while JSON Pointer (RFC 6901) only allows simple path specification. JSONPath is more flexible, but JSON Pointer is standardized.',
+            question: 'JSONPath vs JSON Pointer (RFC 6901) — when do I use which?',
+            answer: 'JSON Pointer addresses exactly one node with a path like /store/books/0/title and is the right choice for JSON Patch (RFC 6902) or schema $refs. JSONPath is a query language: wildcards, recursion, filters. Use Pointer for precise referencing, JSONPath for extraction and search.',
           },
           {
-            question: 'Is all JSONPath syntax supported?',
-            answer: 'This tool supports basic syntax (property access, array index, wildcards). Filter expressions (?()) and slices ([start:end]) are partially supported.',
+            question: 'Are filter expressions like ?(@.price > 10) supported?',
+            answer: 'This tool focuses on the core syntax: property access, array index, wildcard, and recursive descent. For full-spec filters, slices, or script expressions, fall back to a complete library such as jsonpath-plus or jq.',
           },
           {
-            question: 'What happens when JSONPath returns multiple results?',
-            answer: 'When using wildcards (*), multiple values are returned as an array. For example, $.books[*].title returns all book titles as an array.',
+            question: 'The result is always an array—how do I get a single scalar?',
+            answer: 'Wildcards and recursive descent can match many nodes, so the result is wrapped in an array. Either append [0] to take the first match, or narrow the path with explicit indices and property names so only one node resolves.',
+          },
+          {
+            question: 'How do I find a key anywhere in a deeply nested object?',
+            answer: 'Use recursive descent: $..id collects every node with the key id, regardless of depth. It is convenient, but expensive on multi-megabyte JSON—scope it to a subtree (e.g. $.data..id) whenever you can.',
           },
         ]}
       />

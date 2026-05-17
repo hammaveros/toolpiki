@@ -146,10 +146,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🏷️ What is HTML Entity Encoding?</h2>
         <p className="text-sm leading-relaxed">
-          HTML entities are character references used to safely represent characters with special meaning in HTML.
-          Characters like &lt;, &gt;, and &amp; can be interpreted as HTML tags, so they must be converted to entities.
-          This is the most fundamental method for preventing XSS (Cross-Site Scripting) attacks in web security,
-          and is a mandatory process when displaying user input in HTML content.
+          HTML entities are character references that tell the browser parser to render a symbol literally instead of treating it as markup.
+          The classic case is a user comment like <code>&lt;script&gt;alert(1)&lt;/script&gt;</code>: rendered raw, the script actually runs.
+          Encoded as <code>&amp;lt;script&amp;gt;</code>, it appears as plain text. This tool replaces eight characters in one pass — &amp;, &lt;, &gt;, &quot;, ', /, `, and = — covering the vectors listed in the OWASP XSS Prevention Cheat Sheet.
+          Beyond security, encoding is also handy when you need to embed code samples inside HTML, paste markup into an RSS &lt;description&gt; field, or store snippets in a CMS that would otherwise interpret the tags.
         </p>
       </section>
 
@@ -177,12 +177,23 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🚨 Context Changes Everything</h2>
+        <p className="text-sm leading-relaxed">
+          Sanitizing user data once and reusing it everywhere is a common mistake. OWASP separates output contexts into at least five categories.
+          <strong> Body text</strong> is safe with the basic six-character entity swap. <strong>HTML attribute values</strong> need both quote characters escaped, otherwise an attacker can break out with a stray <code>&quot;</code>.
+          Content placed <strong>inside &lt;script&gt; blocks</strong> requires JavaScript string escaping (e.g. backslash-uXXXX) — HTML entities will not run there.
+          Inline <strong>style</strong> values need CSS escaping, and <strong>URL attributes</strong> such as href or src additionally require blocking the <code>javascript:</code> scheme.
+          When in doubt, prefer DOM APIs like <code>textContent</code> over assigning strings to <code>innerHTML</code>.
+        </p>
+      </section>
+
       <FaqSection
         title="Frequently Asked Questions"
         faqs={[
-          { question: 'What happens if I skip HTML entity encoding?', answer: 'User input containing tags like <script> can lead to XSS attacks. Entity encoding is a fundamental web security practice.' },
-          { question: 'Named vs numeric entities - what is the difference?', answer: 'Named entities (&amp;lt;) are more readable, while numeric entities (&amp;#60;) are supported by all browsers. Both produce identical results.' },
-          { question: 'Does React handle HTML entity encoding automatically?', answer: 'JSX in React automatically escapes strings to prevent XSS. However, when using dangerouslySetInnerHTML, manual encoding is still required.' },
+          { question: 'What happens if I skip HTML entity encoding?', answer: 'Untrusted markup can execute as code: stolen session cookies, defaced pages, and CSRF bypasses are all classic outcomes. XSS has been a permanent fixture of the OWASP Top 10 since 2007 for exactly this reason.' },
+          { question: 'Named vs numeric entities — does it matter?', answer: 'Functionally they render identically. Named forms (&amp;lt;) are more readable for humans, while numeric forms (&amp;#60;) parse reliably in very old browsers and stricter XML tooling. For pure HTML5 use either; for legacy XML/SVG pipelines numeric is the safer default.' },
+          { question: 'Does React or Vue handle this automatically?', answer: 'Yes for default interpolation: React JSX expressions and Vue mustache bindings escape strings by default. The trap is opt-out APIs — React dangerouslySetInnerHTML and Vue v-html assign raw markup directly and bypass that protection, so always run such content through an entity encoder or a sanitizer like DOMPurify first.' },
         ]}
       />
     </div>

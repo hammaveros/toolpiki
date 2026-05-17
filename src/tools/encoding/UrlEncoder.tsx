@@ -186,10 +186,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔗 URL 인코딩이란?</h2>
         <p className="text-sm leading-relaxed">
-          URL 인코딩(Percent-encoding)은 URL에서 사용할 수 없는 문자를 %XX 형식으로 변환하는 표준 방식입니다.
-          한글, 공백, 특수문자 등이 포함된 URL을 안전하게 전송하기 위해 사용됩니다.
-          RFC 3986 표준에 따라 예약 문자와 비ASCII 문자를 UTF-8 바이트 시퀀스로 변환한 후
-          각 바이트를 %HH 형식으로 표현합니다. 웹 개발에서 가장 기본적인 인코딩 방식 중 하나입니다.
+          URL 인코딩(Percent-encoding)은 1994년 RFC 1738에서 처음 규정되고 2005년 RFC 3986으로 정비된 표준으로, URL이 허용하는 안전한 ASCII 문자 외의 모든 문자를 <code>%XX</code> 형식으로 바꿉니다.
+          내부적으로는 입력을 UTF-8 바이트로 만들고, 각 바이트를 2자리 16진수로 표현하기 때문에 한글 한 글자(3바이트)는 <code>%XX%XX%XX</code>처럼 9문자로 늘어납니다.
+          공백을 비롯해 <code>?</code>, <code>#</code>, <code>&amp;</code>, <code>=</code>처럼 URL 구조에 의미가 있는 글자가 파라미터 값 안에 들어가야 할 때 반드시 거쳐야 하는 변환입니다.
+          잘못 처리하면 GET 요청이 의도와 다른 키-값 쌍으로 파싱되어 버그를 일으키므로, 쿼리스트링을 직접 조립할 때는 거의 항상 인코딩이 필요합니다.
         </p>
       </section>
 
@@ -209,12 +209,21 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">⚡ 실수하기 쉬운 포인트 3가지</h2>
+        <p className="text-sm leading-relaxed">
+          첫째, <strong>&amp;를 인코딩하지 않은 경우</strong>입니다. 검색어에 &amp;가 들어가면 그 뒤가 다른 파라미터로 잘려나가서 검색이 이상하게 동작합니다. 파라미터 값에는 항상 <code>encodeURIComponent</code>를 쓰세요.
+          둘째, <strong>이미 인코딩된 값을 또 인코딩</strong>하는 경우입니다. <code>%20</code>이 <code>%2520</code>이 되어 서버는 공백 대신 &quot;%20&quot; 문자열을 받게 됩니다. <code>fetch</code>나 <code>URL</code> 객체로 만든 URL을 다시 인코딩하지 마세요.
+          셋째, <strong>+ 기호 처리</strong>입니다. 쿼리스트링에서 +는 RFC 3986엔 없지만 폼 인코딩 관습으로 공백을 의미합니다. <code>encodeURIComponent</code>는 +를 그대로 두므로, 사용자가 입력한 진짜 +를 보존하려면 추가로 <code>%2B</code>로 치환해야 합니다.
+        </p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: 'URL 인코딩은 왜 필요한가요?', answer: 'URL은 ASCII 문자만 허용합니다. 한글, 공백, 특수문자를 URL에 포함하려면 %XX 형식으로 변환해야 브라우저와 서버가 올바르게 해석할 수 있습니다.' },
-          { question: '공백은 +로 인코딩되나요, %20으로 인코딩되나요?', answer: 'encodeURIComponent는 공백을 %20으로 인코딩합니다. +는 application/x-www-form-urlencoded 형식(HTML 폼)에서만 사용됩니다.' },
-          { question: '한글 URL이 깨져 보이는 이유는?', answer: '한글은 UTF-8로 인코딩되면 한 글자당 3바이트(%XX%XX%XX)로 변환됩니다. 예를 들어 "가"는 %EA%B0%80이 됩니다.' },
+          { question: 'URL 인코딩은 왜 필요한가요?', answer: 'URL은 RFC 3986이 정의한 안전한 ASCII 문자만 그대로 받습니다. 한글, 공백, &amp;, =, # 같은 문자는 별도 의미를 가지거나 허용되지 않아 %XX 형식으로 바꿔야 브라우저와 서버가 같은 값으로 해석합니다.' },
+          { question: '공백은 +인가요, %20인가요?', answer: '둘 다 통할 때가 많지만 의미가 다릅니다. URL 경로와 쿼리에서는 %20이 정식이며 encodeURIComponent도 %20을 사용합니다. +는 application/x-www-form-urlencoded(HTML 폼 전송)에서만 공백을 뜻하므로 둘을 섞어 쓰면 디코딩이 어긋날 수 있습니다.' },
+          { question: '한글 URL이 깨져 보이는 이유는?', answer: '한글은 UTF-8로 한 글자당 3바이트라 인코딩하면 %XX%XX%XX 9문자로 늘어납니다. 예: &quot;가&quot;는 %EA%B0%80. 표시는 길어도 표준이며, 카카오톡이나 슬랙처럼 URL 미리보기를 만드는 서비스는 보통 자동으로 다시 디코딩해 사람이 읽을 수 있게 보여줍니다.' },
         ]}
       />
     </div>

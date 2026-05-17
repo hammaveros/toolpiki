@@ -240,10 +240,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔍 Hex Viewer란?</h2>
         <p className="text-sm leading-relaxed">
-          Hex Viewer는 파일의 바이너리 데이터를 16진수(Hexadecimal) 또는 2진수(Binary) 형태로 표시하는 도구입니다.
-          모든 파일은 궁극적으로 바이트(0~255) 시퀀스로 구성되어 있으며, 이를 시각적으로 확인할 수 있습니다.
-          파일 헤더 분석, 데이터 포맷 확인, 손상된 파일 디버깅, 리버스 엔지니어링 등에 활용됩니다.
-          모든 처리는 브라우저에서 이루어지며 파일이 서버로 전송되지 않아 안전합니다.
+          Hex Viewer는 파일을 바이트 단위로 풀어서 16진수(00~FF) 표와 ASCII 미리보기를 나란히 보여주는 도구입니다.
+          확장자가 무엇이든 디스크 위의 데이터는 결국 0~255 사이의 정수 시퀀스이므로, 헤더 몇 바이트만 읽으면 진짜 파일 형식을 가려낼 수 있습니다.
+          이 페이지는 행당 8/16/32바이트로 끊어 보여주고, 1KB 단위 페이지네이션으로 큰 파일도 부담 없이 훑을 수 있습니다.
+          업로드는 브라우저의 FileReader API로 처리되며 데이터가 네트워크로 빠져나가지 않아 압축 파일·이미지·실행 파일 등 민감한 데이터도 안심하고 검사할 수 있습니다.
         </p>
       </section>
 
@@ -261,12 +261,23 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🛠️ 이런 상황에서 써먹기 좋다</h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
+          <li><strong>잘못된 확장자 파악</strong>: 누가 보낸 &quot;photo.jpg&quot;가 사실은 ZIP일 수 있습니다. 첫 4바이트가 <code>50 4B 03 04</code>면 ZIP, <code>89 50 4E 47</code>이면 PNG입니다.</li>
+          <li><strong>BOM 확인</strong>: 텍스트 파일이 UTF-8 BOM(<code>EF BB BF</code>)이나 UTF-16 BOM(<code>FF FE</code>)을 달고 있는지 파악해 인코딩 오류 원인을 추적합니다.</li>
+          <li><strong>EXIF/메타데이터 위치 추정</strong>: JPEG의 <code>FF E1</code> 마커, PNG의 <code>tEXt</code>·<code>eXIf</code> 청크가 어디에 박혀 있는지 눈으로 확인합니다.</li>
+          <li><strong>망가진 파일 응급조치</strong>: 헤더 일부 손상으로 열리지 않는 PDF, ZIP 등을 정상 파일과 비교하면서 패치 위치를 찾을 때 유용합니다.</li>
+          <li><strong>CTF/리버스 엔지니어링 입문</strong>: ELF(<code>7F 45 4C 46</code>), Mach-O, PE 헤더의 기본 구조 학습에도 자주 등장합니다.</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: '파일 시그니처(매직 넘버)란 무엇인가요?', answer: '파일의 처음 몇 바이트에 기록된 고유 식별자입니다. 파일 확장자와 관계없이 실제 파일 형식을 판별할 수 있습니다. 예를 들어 PNG 파일은 항상 89 50 4E 47로 시작합니다.' },
-          { question: '파일이 서버로 전송되나요?', answer: '아니요. 모든 파일 처리는 브라우저의 FileReader API를 사용하여 로컬에서 수행됩니다. 파일 데이터가 네트워크를 통해 전송되지 않습니다.' },
-          { question: '대용량 파일도 열 수 있나요?', answer: '파일 전체를 메모리에 로드하므로 수백 MB 이상 파일은 브라우저가 느려질 수 있습니다. 1KB 단위 페이지네이션으로 효율적으로 탐색할 수 있습니다.' },
+          { question: '파일 시그니처(매직 넘버)란?', answer: '거의 모든 바이너리 포맷은 파일 첫머리에 자신을 식별하는 고정 바이트 패턴을 박아둡니다. 예를 들어 PNG는 8바이트의 <code>89 50 4E 47 0D 0A 1A 0A</code>로 시작하며, 이 값이 어긋나면 뷰어가 곧바로 거부합니다. 확장자만 보지 말고 시그니처를 확인하면 파일을 더 정확히 판별할 수 있습니다.' },
+          { question: '파일이 서버로 전송되나요?', answer: '전송되지 않습니다. 브라우저의 FileReader API가 파일을 ArrayBuffer로 메모리에 올린 뒤, 표시 로직이 같은 페이지 안에서만 동작합니다. 회사 보안 정책상 외부 업로드가 금지된 환경에서도 안전하게 사용할 수 있습니다.' },
+          { question: '대용량 파일도 열 수 있나요?', answer: '전체 파일을 메모리에 적재하기 때문에 수백 MB 이상이면 브라우저 메모리 사용량이 급격히 올라 응답이 느려질 수 있습니다. 1KB 단위 페이지네이션으로 탐색 효율은 유지되지만, 실무에서 수 GB 덤프를 분석할 때는 데스크톱 전용 도구(010 Editor, HxD 등)를 함께 활용하는 편이 안전합니다.' },
         ]}
       />
     </div>

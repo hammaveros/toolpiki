@@ -330,13 +330,31 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          사용 팁
+          🧠 결정 장애가 생기는 이유
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          심리학에서는 이를 '결정 피로(decision fatigue)' 또는 '분석 마비(analysis paralysis)'라고 부릅니다.
+          하루 평균 성인은 약 35,000번의 결정을 내린다는 컬럼비아대 연구가 있으며, 그 중 점심 메뉴 같은 사소한 선택에 매일 평균 132초를 쓰는 것으로 알려져 있습니다.
+          선택지가 많을수록 후회 가능성이 높아져 오히려 결정이 느려지는데(잼 실험에서 24종 진열대는 6종 진열대보다 구매율이 10분의 1 수준이었음), 동전 던지기 같은 무작위 장치는 이 '선택의 압박'을 외부로 옮겨 인지 부담을 줄여줍니다.
+        </p>
+        <ul className="text-sm space-y-1 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong>점심 메뉴</strong>: 4~5개로 추리고 랜덤 돌리면 평균 80% 시간 절약</li>
+          <li><strong>구독 해지 여부</strong>: Yes 30%로 설정해서 살짝 미루는 쪽으로 기울이기</li>
+          <li><strong>다음 휴가지</strong>: 후보 도시 5곳을 직접 입력 모드로 추첨</li>
+          <li><strong>운동 갈까 말까</strong>: Yes 60% 설정해서 '자신을 살짝 속이기'</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          💡 무작위 결과를 더 잘 활용하는 법
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
-          <li>Yes/No 모드에서 확률을 조절해 원하는 방향으로 기울일 수 있습니다</li>
-          <li>통계 기능으로 Yes/No, 앞면/뒷면의 실제 분포를 확인하세요</li>
-          <li>직접 입력 모드에서는 줄바꿈으로 선택지를 구분합니다</li>
-          <li>결과에 따르지 않아도 됩니다 - 참고용으로만 활용하세요</li>
+          <li><strong>두 번 돌리지 않기</strong>: 첫 결과가 마음에 안 들면 그게 진짜 원하는 답입니다. 마음의 신호로 활용하세요.</li>
+          <li><strong>확률 미세 조정</strong>: Yes 50%가 아닌 55~70%로 살짝 기울이면 직관과 비슷한 결과가 자주 나옵니다.</li>
+          <li><strong>줄바꿈으로 옵션 구분</strong>: 직접 입력 모드는 한 줄에 하나씩 선택지를 적습니다. 옵션은 3~7개가 가장 효과적입니다.</li>
+          <li><strong>통계 확인</strong>: 동전 30회 이상 던지면 실제 분포가 50:50에 수렴하는 것을 확인할 수 있습니다(큰수의 법칙).</li>
+          <li><strong>책임 회피용 아님</strong>: 도덕적·재무적 결정에는 사용하지 말고, 일상의 가벼운 선택에만 활용하세요.</li>
         </ul>
       </section>
 
@@ -345,15 +363,19 @@ function SeoContent() {
         faqs={[
           {
             question: '결과가 정말 무작위인가요?',
-            answer: 'JavaScript의 Math.random() 함수를 사용하여 의사 난수(pseudo-random)를 생성합니다. 일반적인 용도에는 충분히 무작위이지만, 암호학적 보안이 필요한 곳에는 적합하지 않습니다.',
+            answer: 'JavaScript의 Math.random() 함수로 의사 난수(pseudo-random)를 생성합니다. 일상적인 추첨에는 충분히 무작위이지만, 보안용 난수(암호 키, 보안 토큰)로는 적합하지 않습니다. 보안이 필요한 영역은 crypto.getRandomValues() 같은 별도 API를 써야 합니다.',
           },
           {
-            question: 'Yes 확률을 바꾸면 어떻게 되나요?',
-            answer: 'Yes 확률을 50% 이외로 설정하면 결과가 한쪽으로 기울어집니다. 예를 들어 70%로 설정하면 10번 중 약 7번은 Yes가 나옵니다.',
+            question: 'Yes 확률을 70% 같은 비대칭 값으로 설정해도 되나요?',
+            answer: '네, 의도적으로 한쪽으로 결과를 기울이고 싶을 때 유용합니다. 예를 들어 다이어트 중인데 디저트를 먹을지 말지 결정한다면 No 70%로 설정해 의지를 약간 보조할 수 있습니다. 단, 결과는 여전히 확률적이라 30% 쪽이 나올 수도 있습니다.',
           },
           {
-            question: '기록이 저장되나요?',
-            answer: '최근 10개의 결과가 화면에 표시되며, 페이지를 새로고침하면 초기화됩니다. 공유 기능으로 특정 결과를 저장할 수 있습니다.',
+            question: '직접 입력 모드에서 선택지를 가중치별로 다르게 줄 수 있나요?',
+            answer: '현재는 균등 확률만 지원합니다. 가중치 기반 추첨이 필요하면 룰렛 선택기 도구를 사용하면 1~1000 범위로 비중을 조절할 수 있습니다.',
+          },
+          {
+            question: '히스토리가 페이지 새로고침 후에도 남나요?',
+            answer: '아니요. 최근 10개의 결과는 메모리에만 저장되며 새로고침하면 초기화됩니다. 특정 결과를 보존하고 싶다면 결과 공유 버튼으로 링크를 만들어 두세요.',
           },
         ]}
       />

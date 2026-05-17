@@ -176,10 +176,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔐 What is Base64 Encoding?</h2>
         <p className="text-sm leading-relaxed">
-          Base64 is an encoding scheme that converts binary data into 64 ASCII characters (A-Z, a-z, 0-9, +, /).
-          It is widely used in email systems (MIME), HTML Data URLs, REST API requests, and anywhere
-          binary data needs to be safely transmitted through text-only channels.
-          While it increases data size by roughly 33%, it ensures data integrity across different systems.
+          Base64 first appeared in RFC 1421 (PEM) in 1987 and was formalised for general use in the MIME specification (RFC 2045).
+          It slices arbitrary binary data into 6-bit chunks and maps each chunk to one of 64 printable ASCII characters — A–Z, a–z, 0–9, plus &quot;+&quot; and &quot;/&quot; — with &quot;=&quot; used as padding when the input length isn't a multiple of three bytes.
+          The practical purpose is bridging text-only channels: SMTP, HTTP headers, JSON, and XML all tolerate ASCII but can mangle raw bytes.
+          Base64 grows payloads by roughly 4/3 (about 33%), which is the trade-off you accept in return for safe transport through systems that might otherwise rewrite line endings or strip the high bit.
         </p>
       </section>
 

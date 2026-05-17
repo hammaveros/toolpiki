@@ -20,11 +20,6 @@ export function generateWebAppJsonLdEn(tool: ToolMeta) {
       price: '0',
       priceCurrency: 'USD',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '100',
-    },
     author: {
       '@type': 'Organization',
       name: siteConfig.name,
@@ -133,12 +128,6 @@ export function generateSoftwareAppJsonLdEn() {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'USD',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      bestRating: '5',
-      ratingCount: '150',
     },
   };
 }

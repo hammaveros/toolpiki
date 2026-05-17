@@ -153,10 +153,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔒 해시 생성기란?</h2>
         <p className="text-sm leading-relaxed">
-          해시 함수는 임의 길이의 데이터를 고정 길이의 해시값으로 변환하는 단방향 함수입니다.
-          동일한 입력은 항상 같은 해시값을 생성하지만, 해시값에서 원본을 복원하는 것은 불가능합니다.
-          파일 무결성 검증, 비밀번호 저장, 디지털 서명, 블록체인 등 다양한 보안 분야에서 핵심 역할을 합니다.
-          이 도구는 MD5, SHA-1, SHA-256, SHA-384, SHA-512 알고리즘을 지원합니다.
+          해시 함수는 임의 길이의 입력을 고정 길이의 출력으로 압축하는 단방향 함수입니다.
+          1바이트가 바뀌어도 결과 전체가 완전히 다른 값으로 튀어 오르는 &quot;눈사태 효과(Avalanche Effect)&quot;가 핵심 특성입니다.
+          이 도구는 입력 텍스트로 MD5, SHA-1, SHA-256, SHA-384, SHA-512 다섯 가지 해시를 동시에 뽑아 줍니다.
+          MD5와 SHA-1을 제외한 SHA-2 계열은 브라우저의 Web Crypto API(<code>crypto.subtle.digest</code>)를 그대로 사용하므로 로컬에서 즉시 계산되며 네트워크 전송이 없습니다.
         </p>
       </section>
 
@@ -183,12 +183,23 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📜 알고리즘별 역사와 깨진 시점</h2>
+        <p className="text-sm leading-relaxed">
+          <strong>MD5</strong>는 1991년에 발표되었지만 1995년 약점이 지적되었고 2004년 Wang Xiaoyun 팀이 충돌(collision) 공격을 실용화하면서 사실상 깨졌습니다. 2008년에는 가짜 SSL 인증서가 만들어진 사례도 있어 이제는 단순 체크섬 외에는 쓰지 않습니다.
+          <strong>SHA-1</strong>은 1995년 NSA가 설계했고 2017년 구글이 두 개의 서로 다른 PDF로 같은 SHA-1을 만드는 SHAttered 공격을 공개하면서 폐기 권고가 굳어졌습니다.
+          현재 산업 표준인 <strong>SHA-256</strong>은 비트코인 작업증명에 쓰이며 64라운드 압축을 통해 256비트 다이제스트를 만듭니다.
+          더 큰 다이제스트가 필요한 정부 등급 시스템에서는 SHA-384, SHA-512 또는 차세대 표준인 SHA-3(Keccak)를 사용합니다.
+        </p>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: 'MD5는 왜 보안에 취약한가요?', answer: '2004년에 충돌(collision) 공격이 발견되어 서로 다른 두 입력이 같은 해시값을 가질 수 있습니다. 파일 체크섬 등 비보안 용도로만 사용하세요.' },
-          { question: '비밀번호 저장에 어떤 해시를 사용해야 하나요?', answer: '일반 해시 함수 대신 bcrypt, scrypt, Argon2 같은 전용 비밀번호 해시 함수를 사용해야 합니다. 이들은 의도적으로 느리게 설계되어 무차별 대입 공격에 강합니다.' },
-          { question: '같은 텍스트를 다른 컴퓨터에서 해시하면 결과가 같나요?', answer: '네, 같은 알고리즘과 같은 입력이면 어디서든 동일한 해시값이 나옵니다. 이 특성 덕분에 파일 무결성 검증에 사용됩니다.' },
+          { question: 'MD5는 왜 보안에 취약한가요?', answer: '2004년 Wang Xiaoyun 연구진이 실용적인 충돌 공격을 발표한 뒤 일반 PC로도 수 시간이면 서로 다른 두 입력이 같은 MD5를 갖도록 만들 수 있게 되었습니다. 파일이 변조되었는지 확인하는 체크섬 정도라면 여전히 쓸 수 있지만, 디지털 서명이나 인증서에는 절대 사용해서는 안 됩니다.' },
+          { question: '비밀번호 저장에 SHA-256을 쓰면 안 되나요?', answer: 'SHA-256은 너무 빠르기 때문에 GPU로 초당 수십억 번 시도하는 무차별 대입에 취약합니다. 비밀번호는 의도적으로 느리게 설계된 bcrypt(2^cost 라운드), scrypt(메모리 비용), Argon2(2015 PHC 우승)를 사용해야 하며, 사용자별 salt도 반드시 함께 저장합니다.' },
+          { question: '같은 텍스트라면 어디서 해시해도 결과가 같나요?', answer: '네. 같은 알고리즘과 같은 입력 바이트 시퀀스라면 OS, 언어, 시간이 달라도 결과는 동일합니다. 이 결정성 덕분에 파일 다운로드 무결성 검증, Git 객체 ID, IPFS 콘텐츠 주소 등에 활용됩니다.' },
+          { question: '해시 결과로 원본을 복원할 수 있나요?', answer: '수학적으로 불가능합니다. 다만 입력 공간이 좁으면(예: 4자리 PIN) 사전 공격으로 역추적될 수 있어 salt와 충분한 길이의 입력을 함께 써야 안전합니다.' },
         ]}
       />
     </div>

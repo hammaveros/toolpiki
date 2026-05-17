@@ -235,6 +235,8 @@ export function TimingTestEn() {
         <p>• Try without looking at the screen - use your internal clock</p>
         <p>• Under 0.1s difference = incredible timing sense!</p>
       </div>
+
+      <SeoContent />
     </div>
   );
 }

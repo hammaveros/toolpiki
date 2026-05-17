@@ -613,6 +613,7 @@ export function LadderGameEn() {
         <p>• Use Reveal All to see all results at once</p>
         <p>• Participants and results count must match</p>
       </div>
+      <SeoContent />
     </div>
   );
 }

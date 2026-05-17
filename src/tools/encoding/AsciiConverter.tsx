@@ -182,10 +182,10 @@ function SeoContent() {
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">💻 ASCII 변환기란?</h2>
         <p className="text-sm leading-relaxed">
-          ASCII(American Standard Code for Information Interchange)는 영문 알파벳, 숫자, 특수문자를
-          7비트(0~127) 숫자 코드로 표현하는 문자 인코딩 표준입니다. 1963년에 제정되어
-          컴퓨터 통신의 기반이 되었으며, 현재도 UTF-8 등 현대 인코딩의 기본 호환 영역입니다.
-          이 도구는 텍스트와 ASCII 코드를 10진수, 16진수, 2진수 형식으로 상호 변환합니다.
+          ASCII는 1963년 ANSI X3.4 위원회가 표준화한 7비트 문자 코드로, 0~127 사이 정수에 영문 알파벳·숫자·기호·제어 문자를 배치한 가장 오래된 텍스트 인코딩 중 하나입니다.
+          전신용 텔레타이프에서 출발한 만큼 0~31에 줄바꿈, 종이이송 같은 제어 코드가 들어 있어 지금도 <code>\n</code>(LF, 10), <code>\r</code>(CR, 13), <code>\t</code>(TAB, 9) 같은 형태로 그 흔적이 남아 있습니다.
+          이 도구는 문자열을 한 글자씩 분해해 10진수, 16진수, 2진수 세 가지 표기로 보여주거나, 반대로 코드 시퀀스를 다시 텍스트로 복원합니다.
+          C/Java/Python 같은 언어 학습 중 문자 ↔ 코드 변환을 빠르게 확인할 때 유용합니다.
         </p>
       </section>
 
@@ -203,12 +203,22 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🧠 외워두면 편한 ASCII 트릭</h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc pl-5">
+          <li><strong>대소문자 변환은 32 차이</strong>: 'A'(65)와 'a'(97)의 거리는 32입니다. 비트 단위로는 6번째 비트만 다르기 때문에 <code>code ^ 0x20</code> 한 줄로 대소문자를 뒤집을 수 있습니다.</li>
+          <li><strong>숫자 문자를 정수로</strong>: 입력 검증할 때 <code>'9' - '0' = 9</code>처럼 ASCII 코드 차이로 자릿수를 뽑아냅니다. atoi 구현의 핵심 트릭입니다.</li>
+          <li><strong>알파벳인지 검사</strong>: 65~90 또는 97~122 범위 검사로 한 줄에 끝납니다. 정규식보다 훨씬 빠르고, 임베디드 환경에서 자주 보입니다.</li>
+          <li><strong>HTTP 헤더 파싱</strong>: <code>:</code>(58), 공백(32), <code>\r\n</code>(13, 10) 같은 구분자가 모두 ASCII이므로 바이트 단위 파서가 가능합니다.</li>
+        </ul>
+      </section>
+
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: 'ASCII와 유니코드의 차이는 무엇인가요?', answer: 'ASCII는 128개 문자(영문, 숫자, 특수문자)만 표현합니다. 유니코드는 전 세계 모든 문자를 포함하며, ASCII의 0-127 범위를 그대로 포함합니다.' },
-          { question: '한글도 ASCII로 변환할 수 있나요?', answer: '한글은 ASCII 범위에 포함되지 않습니다. 한글 변환은 유니코드 변환기나 UTF-8 변환기를 사용하세요.' },
-          { question: '10진수, 16진수, 2진수 중 어떤 형식을 사용해야 하나요?', answer: '일반적으로 10진수가 가장 읽기 쉽습니다. 16진수는 메모리 주소나 색상 코드에, 2진수는 비트 연산이나 네트워크 프로토콜 분석에 주로 사용됩니다.' },
+          { question: 'ASCII와 유니코드의 차이는?', answer: 'ASCII는 128개의 문자만 다루는 7비트 표인 반면, 유니코드는 15만 자 이상을 포괄하는 거대한 카탈로그입니다. 다만 유니코드의 첫 128자는 ASCII와 그대로 같아서 영문만 다룬다면 두 표 차이를 거의 느끼지 않습니다. 한글, 이모지처럼 그 너머의 문자가 등장할 때만 UTF-8 같은 별도 인코딩이 필요합니다.' },
+          { question: '한글도 ASCII로 변환할 수 있나요?', answer: '엄밀히 말해 불가능합니다. ASCII 범위(0~127) 안에 한글이 없기 때문이며, 이 도구로 한글을 입력하면 자바스크립트 내부의 UTF-16 코드 유닛 값(예: &quot;가&quot; → 44032)이 출력됩니다. 한글에 맞는 표현이 필요하면 사이드바의 유니코드 변환기를 사용하세요.' },
+          { question: '10진수·16진수·2진수, 어느 걸 써야 하나요?', answer: '사람이 읽기엔 10진수가 가장 자연스럽고, 메모리 덤프나 네트워크 패킷 분석에는 16진수가 표준입니다. 2진수는 비트 마스크나 권한 플래그(예: 755의 8진수 표기)처럼 비트 단위 의미를 강조해야 할 때 가독성이 좋습니다.' },
         ]}
       />
     </div>
