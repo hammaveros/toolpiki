@@ -14,8 +14,8 @@ export function RelatedTools({ slugs }: RelatedToolsProps) {
   if (relatedTools.length === 0) return null;
 
   return (
-    <section className="mt-12">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+    <section className="mt-6">
+      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
         관련 도구
       </h2>
       <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

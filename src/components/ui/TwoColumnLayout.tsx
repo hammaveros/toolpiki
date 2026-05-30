@@ -31,7 +31,7 @@ export function TwoColumnLayout({
   const hasAnyHeader = leftLabel || leftHeader || rightLabel || rightHeader;
 
   return (
-    <div className={cn('grid grid-cols-1 lg:grid-cols-2 gap-6', className)}>
+    <div className={cn('grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4', className)}>
       {/* 왼쪽 (입력) */}
       <div className="flex flex-col">
         {hasAnyHeader && (

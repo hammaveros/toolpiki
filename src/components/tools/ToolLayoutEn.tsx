@@ -39,18 +39,18 @@ function ToolHeroEn({ meta, focusMode }: { meta: ToolMeta; focusMode: boolean })
 
   if (focusMode) {
     return (
-      <div className="mb-4">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white">{meta.name}</h1>
+      <div className="mb-2">
+        <h1 className="text-lg font-bold text-gray-900 dark:text-white">{meta.name}</h1>
       </div>
     );
   }
 
   return (
-    <div className="mb-6 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-blue-50/50 dark:from-[var(--bg-surface)] dark:via-[var(--bg-surface)] dark:to-indigo-950/20 border border-gray-200 dark:border-[var(--border-subtle)] p-5 md:p-6">
-      <div className="flex items-center justify-between mb-4">
+    <div className="mb-3 rounded-xl bg-gradient-to-br from-white via-gray-50 to-blue-50/50 dark:from-[var(--bg-surface)] dark:via-[var(--bg-surface)] dark:to-indigo-950/20 border border-gray-200 dark:border-[var(--border-subtle)] p-3 md:p-4">
+      <div className="flex items-center justify-between mb-2">
         <Link
           href="/en/tools"
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-[var(--bg-elevated)] rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-[var(--bg-elevated)] rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
         >
           <ArrowLeftIcon size={12} />
           All Tools
@@ -61,13 +61,13 @@ function ToolHeroEn({ meta, focusMode }: { meta: ToolMeta; focusMode: boolean })
           description={meta.description}
         />
       </div>
-      <div className="flex items-start gap-4">
-        <span className="text-4xl md:text-5xl flex-shrink-0" role="img" aria-hidden="true">
+      <div className="flex items-start gap-3">
+        <span className="text-2xl md:text-3xl flex-shrink-0 leading-none mt-0.5" role="img" aria-hidden="true">
           {meta.icon}
         </span>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1 flex-wrap">
-            <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+          <div className="flex items-center gap-2 mb-0.5 flex-wrap">
+            <h1 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">
               {meta.name}
             </h1>
             {badge && (
@@ -76,7 +76,7 @@ function ToolHeroEn({ meta, focusMode }: { meta: ToolMeta; focusMode: boolean })
               </span>
             )}
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+          <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 leading-snug line-clamp-2">
             {meta.description}
           </p>
         </div>
@@ -106,21 +106,21 @@ function ToolLayoutEnContent({ meta, children }: ToolLayoutEnProps) {
       <JsonLd data={jsonLd} />
       <JsonLd data={breadcrumb} />
 
-      <article className="max-w-5xl mx-auto px-4 py-4 md:py-6">
+      <article className="max-w-7xl mx-auto px-3 md:px-4 py-2 md:py-3">
         <ToolHeroEn meta={meta} focusMode={focusMode} />
 
         <div className="tool-content">{children}</div>
 
         {/* Mid ad */}
         {!focusMode && (
-          <div className="mt-8 flex justify-center">
+          <div className="mt-4 flex justify-center">
             <AdSlot format="auto" slotId="5012956081" className="w-full max-w-3xl" />
           </div>
         )}
 
         {/* SEO Content */}
         {!focusMode && meta.seoContent && (
-          <section className="mt-8 p-5 md:p-6 bg-white dark:bg-[var(--bg-surface)] rounded-2xl border border-gray-200 dark:border-[var(--border-subtle)]">
+          <section className="mt-6 p-4 md:p-5 bg-white dark:bg-[var(--bg-surface)] rounded-xl border border-gray-200 dark:border-[var(--border-subtle)]">
             <div
               className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-base prose-headings:font-bold prose-headings:text-gray-900 prose-headings:dark:text-white prose-headings:mb-3 prose-p:text-gray-600 prose-p:dark:text-gray-400 prose-p:leading-relaxed prose-p:text-sm"
               dangerouslySetInnerHTML={{
@@ -146,7 +146,7 @@ function ToolLayoutEnContent({ meta, children }: ToolLayoutEnProps) {
 
         {/* Disclaimer */}
         {!focusMode && ENTERTAINMENT_SLUGS_EN.has(meta.slug) && (
-          <div className="mt-4 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+          <div className="mt-3 p-3 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
             <p className="text-xs text-amber-700 dark:text-amber-400">
               This tool is for entertainment purposes only. Results have no scientific basis and should not be used for real decisions.
             </p>
@@ -174,7 +174,7 @@ function ToolLayoutEnFallback({ meta, children }: ToolLayoutEnProps) {
     <>
       <JsonLd data={jsonLd} />
       <JsonLd data={breadcrumb} />
-      <article className="max-w-5xl mx-auto px-4 py-4 md:py-6">
+      <article className="max-w-7xl mx-auto px-3 md:px-4 py-2 md:py-3">
         <ToolHeroEn meta={meta} focusMode={false} />
         <div className="tool-content">{children}</div>
         {meta.relatedSlugs && meta.relatedSlugs.length > 0 && (
