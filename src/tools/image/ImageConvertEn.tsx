@@ -26,6 +26,7 @@ export function ImageConvertEn() {
   const [images, setImages] = useState<ConvertedImage[]>([]);
   const [targetFormat, setTargetFormat] = useState<ImageFormat>('png');
   const [quality, setQuality] = useState(90);
+  const [bgColor, setBgColor] = useState<string>('transparent');
   const [isConverting, setIsConverting] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -70,6 +71,16 @@ export function ImageConvertEn() {
       img.onload = () => {
         canvas.width = img.width;
         canvas.height = img.height;
+
+        // Fill transparent areas (JPEG has no alpha → fill white)
+        const supportsAlpha = targetFormat !== 'jpeg';
+        const fillColor =
+          bgColor === 'transparent' ? (supportsAlpha ? null : '#ffffff') : bgColor;
+        if (fillColor) {
+          ctx.fillStyle = fillColor;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
         ctx.drawImage(img, 0, 0);
 
         const formatInfo = FORMAT_INFO[targetFormat];
@@ -212,6 +223,55 @@ export function ImageConvertEn() {
                   </Button>
                 ))}
               </div>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Background (fill transparent areas)
+              </label>
+              <div className="flex gap-2 flex-wrap items-center">
+                <Button
+                  variant={bgColor === 'transparent' ? 'primary' : 'secondary'}
+                  size="sm"
+                  onClick={() => setBgColor('transparent')}
+                >
+                  Keep transparent
+                </Button>
+                <Button
+                  variant={bgColor === '#ffffff' ? 'primary' : 'secondary'}
+                  size="sm"
+                  onClick={() => setBgColor('#ffffff')}
+                >
+                  White
+                </Button>
+                <Button
+                  variant={bgColor === '#000000' ? 'primary' : 'secondary'}
+                  size="sm"
+                  onClick={() => setBgColor('#000000')}
+                >
+                  Black
+                </Button>
+                <label
+                  className={`inline-flex items-center gap-1.5 h-8 px-2 rounded-md border cursor-pointer text-sm font-medium transition-colors ${
+                    bgColor !== 'transparent' && bgColor !== '#ffffff' && bgColor !== '#000000'
+                      ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                      : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300'
+                  }`}
+                >
+                  <input
+                    type="color"
+                    value={bgColor === 'transparent' ? '#ffffff' : bgColor}
+                    onChange={(e) => setBgColor(e.target.value)}
+                    className="w-5 h-5 rounded cursor-pointer border-0 bg-transparent p-0"
+                  />
+                  Custom
+                </label>
+              </div>
+              {targetFormat === 'jpeg' && bgColor === 'transparent' && (
+                <p className="text-xs text-amber-600 dark:text-amber-400 mt-2">
+                  JPEG does not support transparency, so a white background is used.
+                </p>
+              )}
             </div>
 
             {targetFormat !== 'png' && (
