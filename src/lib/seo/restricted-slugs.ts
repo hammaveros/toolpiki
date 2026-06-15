@@ -24,6 +24,15 @@ export const NOINDEX_SLUGS_KR: ReadonlySet<string> = new Set([
   'menu-recommender',
   'weekend-recommender',
   'rest-recommender',
+  // 오락/위젯형 도구 (검색 의도 약함, AdSense thin content 대응 - 2차 솎기)
+  'roulette-selector',
+  'ladder-game',
+  'reaction-time-test',
+  'timing-test',
+  'random-decision-maker',
+  'typing-game',
+  'pros-cons-comparator',
+  'nickname-generator',
 ]);
 
 export const NOINDEX_SLUGS_EN: ReadonlySet<string> = new Set([
@@ -40,6 +49,14 @@ export const NOINDEX_SLUGS_EN: ReadonlySet<string> = new Set([
   'team-picker-en',
   'letter-qr-en',
   'number-guess-en',
+  // 오락/위젯형 도구 (검색 의도 약함, AdSense thin content 대응 - 2차 솎기)
+  'roulette-selector-en',
+  'ladder-game-en',
+  'reaction-time-test-en',
+  'timing-test-en',
+  'random-decision-maker-en',
+  'typing-game-en',
+  'pros-cons-comparator-en',
 ]);
 
 // 라우트 단위로 noindex/광고 미노출되는 정적 경로 (locale prefix 제외한 형태)
