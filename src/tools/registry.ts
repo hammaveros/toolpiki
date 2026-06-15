@@ -49,6 +49,8 @@ const toolComponents: Record<string, ComponentType> = {
   'jwt-decoder-en': dynamic(() => import('./encoding/JwtDecoderEn').then(m => ({ default: m.JwtDecoderEn }))),
   'string-escape': dynamic(() => import('./encoding/StringEscape').then(m => ({ default: m.StringEscape }))),
   'string-escape-en': dynamic(() => import('./encoding/StringEscapeEn').then(m => ({ default: m.StringEscapeEn }))),
+  'protobuf-decoder': dynamic(() => import('./encoding/ProtobufDecoder').then(m => ({ default: m.ProtobufDecoder }))),
+  'protobuf-decoder-en': dynamic(() => import('./encoding/ProtobufDecoderEn').then(m => ({ default: m.ProtobufDecoderEn }))),
 
   // 포맷터
   'json-formatter': dynamic(() => import('./formatter/JsonFormatter').then(m => ({ default: m.JsonFormatter }))),

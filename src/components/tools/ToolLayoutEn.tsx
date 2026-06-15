@@ -118,31 +118,13 @@ function ToolLayoutEnContent({ meta, children }: ToolLayoutEnProps) {
           </div>
         )}
 
-        {/* SEO Content */}
-        {!focusMode && meta.seoContent && (
-          <section className="mt-6 p-4 md:p-5 bg-white dark:bg-[var(--bg-surface)] rounded-xl border border-gray-200 dark:border-[var(--border-subtle)]">
-            <div
-              className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-base prose-headings:font-bold prose-headings:text-gray-900 prose-headings:dark:text-white prose-headings:mb-3 prose-p:text-gray-600 prose-p:dark:text-gray-400 prose-p:leading-relaxed prose-p:text-sm"
-              dangerouslySetInnerHTML={{
-                __html: meta.seoContent
-                  .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-                  .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                  .replace(/^- (.+)$/gm, '<li>$1</li>')
-                  .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
-                  .replace(/\n\n/g, '</p><p>')
-                  .replace(/^/, '<p>')
-                  .replace(/$/, '</p>')
-                  .replace(/<p><h2>/g, '<h2>')
-                  .replace(/<\/h2><\/p>/g, '</h2>')
-                  .replace(/<p><ul>/g, '<ul>')
-                  .replace(/<\/ul><\/p>/g, '</ul>')
-                  .replace(/<p><\/p>/g, ''),
-              }}
-            />
-          </section>
-        )}
-
-        {/* FAQ — rendered by component's own FaqSection, not here (avoid duplication) */}
+        {/*
+          meta.seoContent is intentionally NOT rendered here.
+          Each tool component already renders a richer, unique SeoContent() block.
+          Rendering the generic tools-en.ts template on top of it produced a duplicate
+          "What is ...?" section on the same page (AdSense thin/duplicate content). → removed.
+          FAQ is rendered by the component's own FaqSection (avoid duplication).
+        */}
 
         {/* Disclaimer */}
         {!focusMode && ENTERTAINMENT_SLUGS_EN.has(meta.slug) && (

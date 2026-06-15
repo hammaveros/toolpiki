@@ -130,31 +130,13 @@ function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
         {/* 도구 중간 광고 */}
         {!focusMode && <ToolMidAd />}
 
-        {/* SEO 콘텐츠 */}
-        {!focusMode && meta.seoContent && (
-          <section className="mt-6 p-4 md:p-5 bg-white dark:bg-[var(--bg-surface)] rounded-xl border border-gray-200 dark:border-[var(--border-subtle)]">
-            <div
-              className="prose prose-sm dark:prose-invert max-w-none prose-headings:text-base prose-headings:font-bold prose-headings:text-gray-900 prose-headings:dark:text-white prose-headings:mb-3 prose-p:text-gray-600 prose-p:dark:text-gray-400 prose-p:leading-relaxed prose-p:text-sm"
-              dangerouslySetInnerHTML={{
-                __html: meta.seoContent
-                  .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-                  .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-                  .replace(/^- (.+)$/gm, '<li>$1</li>')
-                  .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
-                  .replace(/\n\n/g, '</p><p>')
-                  .replace(/^/, '<p>')
-                  .replace(/$/, '</p>')
-                  .replace(/<p><h2>/g, '<h2>')
-                  .replace(/<\/h2><\/p>/g, '</h2>')
-                  .replace(/<p><ul>/g, '<ul>')
-                  .replace(/<\/ul><\/p>/g, '</ul>')
-                  .replace(/<p><\/p>/g, ''),
-              }}
-            />
-          </section>
-        )}
-
-        {/* FAQ는 각 도구 컴포넌트 내부 FaqSection에서 렌더링 (중복 방지) */}
+        {/*
+          SEO 콘텐츠(meta.seoContent)는 렌더링하지 않는다.
+          각 도구 컴포넌트 내부의 SeoContent()가 더 풍부하고 고유한 콘텐츠를 이미 렌더링하므로,
+          여기서 tools.ts의 제네릭 템플릿(seoContent)을 또 그리면 동일 페이지에 "~란?" 섹션이
+          두 번 나오는 중복 콘텐츠가 된다 (AdSense thin/duplicate content 사유). → 제거.
+          FAQ도 각 도구 컴포넌트 내부 FaqSection에서 렌더링 (중복 방지).
+        */}
 
         {/* 면책 문구 */}
         {!focusMode && ENTERTAINMENT_SLUGS.has(meta.slug) && (
