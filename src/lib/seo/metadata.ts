@@ -101,7 +101,9 @@ export function generateToolMetadata(tool: ToolMeta): Metadata {
     : `${siteConfig.url}/tools/${tool.slug}`;
 
   // SEO 최적화된 타이틀/설명 우선 사용
-  const title = tool.name;
+  // seoTitle 이 있으면 검색결과 <title> 로 사용(템플릿 ' | ToolPiki' 미적용),
+  // UI 에 노출되는 도구명(name)은 그대로 유지한다.
+  const title = tool.seoTitle || tool.name;
   const description = tool.seoDescription || tool.description;
 
   // 도구별 특화 키워드 (간결하게)
@@ -112,7 +114,7 @@ export function generateToolMetadata(tool: ToolMeta): Metadata {
   const restricted = isRestrictedSlug(tool.slug);
 
   return {
-    title,
+    title: tool.seoTitle ? { absolute: tool.seoTitle } : title,
     description,
     keywords,
     ...(restricted ? { robots: NOINDEX_ROBOTS } : {}),

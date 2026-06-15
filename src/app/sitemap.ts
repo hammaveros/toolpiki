@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { tools } from '@/data/tools';
+import { curatedColors } from '@/data/colors';
 import { siteConfig } from '@/data/site';
 import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
 
@@ -71,5 +72,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: tool.featured ? 0.95 : 0.9,
     }));
 
-  return [...staticPages, ...toolPages];
+  // 큐레이션 색상 상세 페이지
+  const colorPages: MetadataRoute.Sitemap = curatedColors.map((c) => ({
+    url: `${baseUrl}/tools/color/${c.slug}`,
+    lastModified: BUILD_DATE,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...toolPages, ...colorPages];
 }

@@ -1,183 +1,242 @@
 'use client';
 
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { Input } from '@/components/ui/Input';
 import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
 import { FaqSection } from '@/components/ui/FaqItem';
-
-interface RGB {
-  r: number;
-  g: number;
-  b: number;
-}
-
-interface HSL {
-  h: number;
-  s: number;
-  l: number;
-}
+import { curatedColors } from '@/data/colors';
+import {
+  parseColor,
+  hexToRgb,
+  rgbToHex,
+  rgbToHsl,
+  rgbToHsv,
+  rgbToCmyk,
+  bestTextColor,
+  wcag,
+  harmony,
+  lightnessScale,
+  nearestNamedColor,
+} from '@/lib/color';
 
 export function ColorConverter() {
   const [hex, setHex] = useState('#3B82F6');
+  const [text, setText] = useState('#3B82F6');
 
-  // HEX → RGB 변환
-  const hexToRgb = useCallback((hex: string): RGB | null => {
-    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result
-      ? {
-          r: parseInt(result[1], 16),
-          g: parseInt(result[2], 16),
-          b: parseInt(result[3], 16),
-        }
-      : null;
-  }, []);
-
-  // RGB → HEX 변환
-  const rgbToHex = useCallback((r: number, g: number, b: number): string => {
-    return (
-      '#' +
-      [r, g, b]
-        .map((x) => {
-          const hex = Math.max(0, Math.min(255, x)).toString(16);
-          return hex.length === 1 ? '0' + hex : hex;
-        })
-        .join('')
-        .toUpperCase()
-    );
-  }, []);
-
-  // RGB → HSL 변환
-  const rgbToHsl = useCallback((r: number, g: number, b: number): HSL => {
-    r /= 255;
-    g /= 255;
-    b /= 255;
-
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
-    let h = 0;
-    let s = 0;
-    const l = (max + min) / 2;
-
-    if (max !== min) {
-      const d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-
-      switch (max) {
-        case r:
-          h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
-          break;
-        case g:
-          h = ((b - r) / d + 2) / 6;
-          break;
-        case b:
-          h = ((r - g) / d + 4) / 6;
-          break;
+  // 공유 링크(?c=ff5733 / ?hex=...) 로 들어오면 해당 색으로 초기화
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get('c') || params.get('hex') || params.get('color');
+    if (raw) {
+      const rgb = parseColor(raw);
+      if (rgb) {
+        const h = rgbToHex(rgb.r, rgb.g, rgb.b);
+        setHex(h);
+        setText(h);
       }
     }
-
-    return {
-      h: Math.round(h * 360),
-      s: Math.round(s * 100),
-      l: Math.round(l * 100),
-    };
   }, []);
 
-  const colors = useMemo(() => {
+  // 모든 컨트롤(피커·슬라이더·스와치)이 색을 바꿀 때 사용
+  const setColor = useCallback((newHex: string) => {
+    setHex(newHex);
+    setText(newHex);
+  }, []);
+
+  // 텍스트 입력은 HEX·rgb()·hsl()·이름색 무엇이든 파싱
+  const handleText = (v: string) => {
+    setText(v);
+    const rgb = parseColor(v);
+    if (rgb) setHex(rgbToHex(rgb.r, rgb.g, rgb.b));
+  };
+
+  const invalid = text.trim() !== '' && parseColor(text) === null;
+
+  const data = useMemo(() => {
     const rgb = hexToRgb(hex);
     if (!rgb) return null;
-
     const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
-
+    const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+    const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+    const textColor = bestTextColor(rgb);
     return {
-      hex: hex.toUpperCase(),
       rgb,
       hsl,
-      rgbString: `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`,
-      hslString: `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`,
-      rgbaString: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 1)`,
+      hsv,
+      cmyk,
+      textColor,
+      whiteWcag: wcag({ r: 255, g: 255, b: 255 }, rgb),
+      blackWcag: wcag({ r: 0, g: 0, b: 0 }, rgb),
+      harmony: harmony(rgb),
+      scale: lightnessScale(rgb, 10),
+      nearest: nearestNamedColor(rgb),
+      hexStr: hex.toUpperCase(),
+      rgbStr: `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`,
+      rgbaStr: `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 1)`,
+      hslStr: `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`,
+      hsvStr: `hsv(${hsv.h}, ${hsv.s}%, ${hsv.v}%)`,
+      cmykStr: `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`,
     };
-  }, [hex, hexToRgb, rgbToHsl]);
+  }, [hex]);
 
   const handleRgbChange = (key: 'r' | 'g' | 'b', value: number) => {
-    if (!colors) return;
-    const newRgb = { ...colors.rgb, [key]: value };
-    setHex(rgbToHex(newRgb.r, newRgb.g, newRgb.b));
+    if (!data) return;
+    const newRgb = { ...data.rgb, [key]: value };
+    setColor(rgbToHex(newRgb.r, newRgb.g, newRgb.b));
   };
 
   return (
     <div className="space-y-2">
-      {/* 색상 미리보기 */}
+      {/* 색상 미리보기 + 입력 */}
       <Card variant="bordered" className="p-6">
         <div className="flex flex-col sm:flex-row gap-6 items-center">
           <div
-            className="w-32 h-32 rounded-xl shadow-lg border-4 border-white dark:border-gray-700"
-            style={{ backgroundColor: hex }}
-          />
+            className="w-32 h-32 rounded-xl shadow-lg border-4 border-white dark:border-gray-700 flex items-center justify-center text-sm font-mono font-semibold flex-shrink-0"
+            style={{ backgroundColor: hex, color: data?.textColor }}
+          >
+            {data?.hexStr}
+          </div>
           <div className="flex-1 w-full">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              HEX 색상 코드
+              색상값 입력 (HEX · RGB · HSL · 이름색)
             </label>
             <div className="flex gap-2">
               <input
                 type="color"
                 value={hex}
-                onChange={(e) => setHex(e.target.value)}
-                className="w-12 h-12 rounded cursor-pointer"
+                onChange={(e) => setColor(e.target.value)}
+                className="w-12 h-12 rounded cursor-pointer flex-shrink-0"
+                aria-label="컬러 피커"
               />
               <Input
-                value={hex}
-                onChange={(e) => setHex(e.target.value)}
-                placeholder="#000000"
-                className="font-mono"
+                value={text}
+                onChange={(e) => handleText(e.target.value)}
+                placeholder="#3B82F6, rgb(59,130,246), hsl(217,91%,60%), tomato"
+                className={`font-mono ${invalid ? 'border-red-400 focus:ring-red-400' : ''}`}
               />
             </div>
+            {invalid ? (
+              <p className="mt-1 text-xs text-red-500">색상값을 인식하지 못했어요. 예: #3B82F6 · rgb(59,130,246) · hsl(217,91%,60%)</p>
+            ) : (
+              data && (
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                  가장 가까운 색 이름: <span className="font-medium text-gray-700 dark:text-gray-300">{data.nearest.name}</span>{' '}
+                  ({data.nearest.hex})
+                </p>
+              )
+            )}
           </div>
         </div>
       </Card>
 
       {/* RGB 슬라이더 */}
-      {colors && (
+      {data && (
         <Card variant="bordered" className="p-4">
-          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">
-            RGB 조절
-          </p>
+          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">RGB 조절</p>
           <div className="space-y-4">
             {(['r', 'g', 'b'] as const).map((channel) => (
               <div key={channel} className="flex items-center gap-4">
-                <span className="w-8 text-sm font-medium text-gray-500 uppercase">
-                  {channel}
-                </span>
+                <span className="w-8 text-sm font-medium text-gray-500 uppercase">{channel}</span>
                 <input
                   type="range"
                   min="0"
                   max="255"
-                  value={colors.rgb[channel]}
+                  value={data.rgb[channel]}
                   onChange={(e) => handleRgbChange(channel, Number(e.target.value))}
                   className="flex-1"
-                  style={{
-                    accentColor:
-                      channel === 'r' ? 'red' : channel === 'g' ? 'green' : 'blue',
-                  }}
+                  style={{ accentColor: channel === 'r' ? 'red' : channel === 'g' ? 'green' : 'blue' }}
                 />
-                <span className="w-10 text-sm text-gray-600 dark:text-gray-400 text-right">
-                  {colors.rgb[channel]}
-                </span>
+                <span className="w-10 text-sm text-gray-600 dark:text-gray-400 text-right">{data.rgb[channel]}</span>
               </div>
             ))}
           </div>
         </Card>
       )}
 
-      {/* 변환 결과 */}
-      {colors && (
+      {/* 전체 변환 결과 */}
+      {data && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <ColorValueCard label="HEX" value={colors.hex} />
-          <ColorValueCard label="RGB" value={colors.rgbString} />
-          <ColorValueCard label="HSL" value={colors.hslString} />
-          <ColorValueCard label="RGBA" value={colors.rgbaString} />
+          <ColorValueCard label="HEX" value={data.hexStr} />
+          <ColorValueCard label="RGB" value={data.rgbStr} />
+          <ColorValueCard label="HSL" value={data.hslStr} />
+          <ColorValueCard label="HSV" value={data.hsvStr} />
+          <ColorValueCard label="CMYK" value={data.cmykStr} />
+          <ColorValueCard label="RGBA" value={data.rgbaStr} />
         </div>
       )}
+
+      {/* 대비색 + WCAG */}
+      {data && (
+        <Card variant="bordered" className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-sm font-medium text-gray-700 dark:text-gray-300">대비색 · 명암비 (WCAG)</p>
+            <Link href="/tools/contrast-checker" className="text-xs text-blue-600 dark:text-blue-400 hover:underline">
+              두 색 명암비 자세히 →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ContrastRow bg={hex} fg="#FFFFFF" label="흰색 글자" w={data.whiteWcag} />
+            <ContrastRow bg={hex} fg="#000000" label="검은색 글자" w={data.blackWcag} />
+          </div>
+          <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
+            이 배경에는 <span className="font-medium">{data.textColor === '#FFFFFF' ? '흰색' : '검은색'}</span> 글자가 더 잘 읽혀요.
+          </p>
+        </Card>
+      )}
+
+      {/* 배색(보색·유사색·삼각배색) */}
+      {data && (
+        <Card variant="bordered" className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <p className="text-sm font-medium text-gray-700 dark:text-gray-300">어울리는 배색</p>
+            <Link href="/tools/palette-generator" className="text-xs text-blue-600 dark:text-blue-400 hover:underline">
+              팔레트 더 만들기 →
+            </Link>
+          </div>
+          <div className="space-y-3">
+            <SwatchRow label="보색" hexes={[data.harmony.complementary]} onPick={setColor} />
+            <SwatchRow label="유사색" hexes={data.harmony.analogous} onPick={setColor} />
+            <SwatchRow label="삼각배색" hexes={data.harmony.triadic} onPick={setColor} />
+          </div>
+        </Card>
+      )}
+
+      {/* 명도 스케일 */}
+      {data && (
+        <Card variant="bordered" className="p-4">
+          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">명도 스케일 (밝게 → 어둡게)</p>
+          <div className="flex rounded-lg overflow-hidden">
+            {data.scale.map((s) => (
+              <button
+                key={s.l}
+                onClick={() => setColor(s.hex)}
+                className="flex-1 h-12 relative group"
+                style={{ backgroundColor: s.hex }}
+                title={`${s.hex} (L ${s.l}%)`}
+                aria-label={`${s.hex} 선택`}
+              />
+            ))}
+          </div>
+          <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">색을 클릭하면 그 값으로 바뀝니다.</p>
+        </Card>
+      )}
+
+      {/* 인기 색상 바로가기 */}
+      <Card variant="bordered" className="p-4">
+        <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">인기 색상 바로 보기</p>
+        <div className="grid grid-cols-5 sm:grid-cols-7 gap-2">
+          {curatedColors.slice(0, 21).map((c) => (
+            <Link key={c.slug} href={`/tools/color/${c.slug}`} className="group" title={`${c.ko} ${c.hex}`}>
+              <span className="block w-full aspect-square rounded-lg border border-gray-200 dark:border-gray-700" style={{ backgroundColor: c.hex }} />
+              <span className="block mt-1 text-[10px] text-center text-gray-500 dark:text-gray-400 truncate group-hover:text-gray-900 dark:group-hover:text-white">
+                {c.ko}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </Card>
 
       <SeoContent />
     </div>
@@ -198,32 +257,80 @@ function ColorValueCard({ label, value }: { label: string; value: string }) {
   );
 }
 
+function ContrastRow({ bg, fg, label, w }: { bg: string; fg: string; label: string; w: { ratio: number; aaNormal: boolean; aaLarge: boolean; aaaNormal: boolean } }) {
+  return (
+    <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className="h-12 flex items-center justify-center text-sm font-medium" style={{ backgroundColor: bg, color: fg }}>
+        {label} 샘플
+      </div>
+      <div className="p-2 flex items-center justify-between text-xs">
+        <span className="font-mono text-gray-700 dark:text-gray-300">{w.ratio}:1</span>
+        <span className="flex gap-1">
+          <Badge ok={w.aaLarge}>AA Large</Badge>
+          <Badge ok={w.aaNormal}>AA</Badge>
+          <Badge ok={w.aaaNormal}>AAA</Badge>
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function Badge({ ok, children }: { ok: boolean; children: React.ReactNode }) {
+  return (
+    <span
+      className={`px-1.5 py-0.5 rounded text-[10px] font-semibold ${
+        ok
+          ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300'
+          : 'bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500'
+      }`}
+    >
+      {ok ? '✓' : '✕'} {children}
+    </span>
+  );
+}
+
+function SwatchRow({ label, hexes, onPick }: { label: string; hexes: string[]; onPick: (hex: string) => void }) {
+  return (
+    <div className="flex items-center gap-3">
+      <span className="w-16 text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">{label}</span>
+      <div className="flex gap-2 flex-wrap">
+        {hexes.map((h) => (
+          <button
+            key={h}
+            onClick={() => onPick(h)}
+            className="flex items-center gap-1.5 rounded-md border border-gray-200 dark:border-gray-700 pr-2 hover:shadow-sm transition"
+            title={`${h} 선택`}
+          >
+            <span className="w-7 h-7 rounded-l-md" style={{ backgroundColor: h }} />
+            <span className="font-mono text-xs text-gray-700 dark:text-gray-300">{h}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SeoContent() {
   return (
     <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-8 text-gray-700 dark:text-gray-300">
       <section>
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          🎨 색상 코드 변환기란?
-        </h2>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🎨 색상 종합 도구란?</h2>
         <p className="text-sm leading-relaxed">
-          <strong className="text-gray-900 dark:text-white">색상 코드 변환기는 <strong>HEX</strong>, <strong>RGB</strong>, <strong>HSL</strong> 형식을 한 번에 상호 변환하는 도구입니다.</strong>{' '}
-          컬러 피커로 시각적으로 색상을 선택하거나, <strong>RGB 슬라이더</strong>로 세밀하게 조절할 수 있습니다.
-          웹 개발, 그래픽 디자인, UI/UX 작업에서 다양한 형식의 색상 코드가 필요할 때 유용합니다.
-          변환된 값은 <strong>클릭 한 번</strong>으로 복사하여 바로 사용할 수 있습니다.
+          <strong className="text-gray-900 dark:text-white">HEX·RGB·HSL·HSV·CMYK</strong> 변환은 물론, 입력한 색의{' '}
+          <strong>대비색(WCAG 명암비)</strong>, <strong>보색·유사색·삼각배색</strong>, <strong>명도 스케일</strong>,
+          가장 가까운 <strong>CSS 이름색</strong>까지 한 화면에서 보여 줍니다. HEX뿐 아니라 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">rgb(59,130,246)</code>,
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono ml-1">hsl(217,91%,60%)</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono ml-1">tomato</code> 같은 이름색을 그대로 붙여넣어도 인식합니다.
         </p>
-
         <div className="mt-4 rounded-lg bg-purple-50 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900 p-4 text-sm">
-          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🎨 디자인 팁</p>
+          <p className="font-semibold text-purple-900 dark:text-purple-200 mb-1">🔗 공유 팁</p>
           <p className="text-purple-800 dark:text-purple-300">
-            디자인 시스템은 <strong>HSL</strong>로 정의하고 런타임은 <code className="px-1 py-0.5 rounded bg-white/60 dark:bg-gray-800 text-xs font-mono">#3B82F6</code> 같은 <strong>HEX</strong>로 저장하면 명도만 조정해 hover/active 톤을 쉽게 만들 수 있습니다.
+            주소 끝에 <code className="px-1 py-0.5 rounded bg-white/60 dark:bg-gray-800 text-xs font-mono">?c=ff5733</code> 처럼 색상값을 붙이면 그 색이 열린 상태로 공유됩니다.
           </p>
         </div>
       </section>
 
       <section>
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          📋 색상 형식 비교
-        </h2>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">📋 색상 형식 비교</h2>
         <div className="overflow-x-auto text-sm">
           <table className="w-full text-xs">
             <thead>
@@ -237,57 +344,29 @@ function SeoContent() {
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">HEX</td><td className="font-mono">#3B82F6</td><td>웹에서 가장 흔함</td></tr>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">RGB</td><td className="font-mono">rgb(59, 130, 246)</td><td>빨강/초록/파랑 조합</td></tr>
               <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">HSL</td><td className="font-mono">hsl(217, 91%, 60%)</td><td>색조/채도/밝기</td></tr>
-              <tr><td className="py-2 px-2 font-medium">RGBA</td><td className="font-mono">rgba(59, 130, 246, 1)</td><td>투명도 포함</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">HSV</td><td className="font-mono">hsv(217, 76%, 96%)</td><td>색조/채도/명도(디자인 툴)</td></tr>
+              <tr><td className="py-2 px-2 font-medium">CMYK</td><td className="font-mono">cmyk(76%, 47%, 0%, 4%)</td><td>인쇄용 잉크 모델</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
       <section>
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          💡 색상 형식 선택 가이드
-        </h2>
-        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
-          <li><strong>HEX</strong>: CSS, HTML, 디자인 툴 export에서 가장 널리 쓰이며 6자리 한 줄로 끝나서 코드 리뷰가 깔끔합니다.</li>
-          <li><strong>RGB</strong>: 캔버스 API, 이미지 처리 라이브러리에서 채널별 연산이 필요할 때 직관적이며, 슬라이더 UI와도 잘 맞습니다.</li>
-          <li><strong>HSL</strong>: 색조는 그대로 두고 명도만 -10% 같이 상대 조정할 때 강력합니다. 같은 brand 색의 hover/active 파생 색 만들기에 최적입니다.</li>
-          <li><strong>RGBA</strong>: 모달 백드롭 rgba(0,0,0,0.5), 카드 그림자 rgba(0,0,0,0.08)처럼 투명도 자체가 의미를 가지는 곳에 사용합니다.</li>
-          <li><strong>HSLA</strong>: 다크 모드에서 같은 색조의 알파만 0.6 → 0.9로 강조할 때처럼, 톤은 유지하고 노출만 조절하는 시나리오에 적합합니다.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          🔬 색공간의 작은 차이가 만드는 큰 결과
-        </h2>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">🔬 대비색과 명암비는 왜 중요할까</h2>
         <p className="text-sm leading-relaxed">
-          같은 색이라도 <strong>색공간</strong>에 따라 값이 다르게 표현됩니다.
-          예를 들어 Tailwind의 blue-500(<code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">#3B82F6</code>)을 RGB로 보면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">(59, 130, 246)</code>이고 HSL로 보면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">hsl(217, 91%, 60%)</code>인데,
-          여기서 <strong>명도(L)</strong>만 60 → 80으로 올리면 blue-300 비슷한 톤이 만들어지지만 RGB로 같은 작업을 하려면 <strong>세 채널</strong>을 각각 계산해야 합니다.
-          반대로 RGB는 캔버스에 픽셀 단위로 색을 찍을 때 한 번에 처리하기 좋아 <strong>이미지 합성</strong>에 유리합니다.
-          그래서 디자인 시스템은 HSL로 정의하되 런타임에서는 HEX/RGB로 저장하는 <strong>하이브리드 방식</strong>이 자주 쓰입니다.
+          글자색과 배경색의 <strong>명암비(contrast ratio)</strong>가 낮으면 저시력 사용자뿐 아니라 일반 사용자도 읽기 어렵습니다.
+          웹 접근성 기준 <strong>WCAG</strong>는 본문 텍스트에 <strong>4.5:1(AA)</strong>, 큰 텍스트에 <strong>3:1</strong>, 더 엄격하게는 <strong>7:1(AAA)</strong>를 권장합니다.
+          이 도구는 입력한 색을 배경으로 두고 흰색/검은색 글자의 명암비를 계산해 어떤 글자색이 통과하는지 바로 알려 줍니다.
         </p>
       </section>
 
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          {
-            question: 'HEX 코드에서 # 기호는 꼭 필요한가요?',
-            answer: 'CSS에서는 # 기호가 필수입니다. JavaScript 변수, JSON 데이터, 일부 그래픽 소프트웨어에서는 # 없이 사용하기도 합니다. 이 도구는 둘 다 인식하므로 어떤 형태로 붙여넣어도 변환됩니다.',
-          },
-          {
-            question: 'HSL이 RGB보다 좋은 점은 무엇인가요?',
-            answer: 'HSL은 색조(H), 채도(S), 밝기(L)로 구성되어 직관적입니다. 같은 색조에서 밝거나 어두운 변형을 만들기 쉬워, 디자인 토큰을 단일 색조 + 명도 스케일로 정의할 때 매우 편리합니다.',
-          },
-          {
-            question: '투명 색상은 어떻게 만드나요?',
-            answer: 'RGBA 형식에서 마지막 값(알파)을 0~1 사이로 조절합니다. 0은 완전 투명, 1은 완전 불투명이며, 0.08~0.12는 카드 그림자, 0.4~0.6은 모달 배경에 자주 쓰입니다.',
-          },
-          {
-            question: '8자리 HEX(#RRGGBBAA)도 변환되나요?',
-            answer: '최신 브라우저는 #RRGGBBAA 형식을 지원하지만 이 도구는 6자리 HEX와 별도 알파값을 권장합니다. 호환성과 코드 가독성 측면에서 RGBA/HSLA가 더 안정적입니다.',
-          },
+          { question: 'rgb()나 hsl() 값을 그대로 넣어도 되나요?', answer: '네. HEX는 물론 rgb(59,130,246), hsl(217,91%,60%), tomato 같은 CSS 이름색까지 입력창에 그대로 붙여넣으면 자동으로 인식해 모든 형식으로 변환합니다.' },
+          { question: '대비색은 어떻게 정해지나요?', answer: '입력한 색을 배경으로 두고 흰색·검은색 글자의 WCAG 명암비를 각각 계산해, 더 높은 쪽을 추천 글자색으로 안내합니다. AA(4.5:1)·AAA(7:1) 통과 여부도 함께 표시합니다.' },
+          { question: 'CMYK 값이 인쇄물과 다르게 보여요.', answer: 'CMYK는 잉크 기준 모델이라 화면(RGB)과 완벽히 일치하지 않습니다. 실제 인쇄는 용지·프로파일에 따라 달라지므로 변환값은 참고용으로 사용하세요.' },
+          { question: '특정 색 링크를 공유할 수 있나요?', answer: '주소 끝에 ?c=ff5733 처럼 색상값을 붙이면 그 색이 선택된 상태로 페이지가 열립니다. 블로그·메신저에 바로 공유하기 좋습니다.' },
         ]}
       />
     </div>
