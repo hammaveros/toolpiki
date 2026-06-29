@@ -37,6 +37,10 @@ export function HeaderEn({ focusMode = false }: HeaderEnProps) {
               <ToolsIcon size={18} />
               <span>Tools</span>
             </NavLink>
+            <NavLink href="/en/blog">
+              <span>✍️</span>
+              <span>Blog</span>
+            </NavLink>
             <ThemeToggle isEnglish />
           </nav>
 
@@ -68,6 +72,13 @@ export function HeaderEn({ focusMode = false }: HeaderEnProps) {
             >
               <ToolsIcon size={20} />
               <span>Tools</span>
+            </MobileNavLink>
+            <MobileNavLink
+              href="/en/blog"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span>✍️</span>
+              <span>Blog</span>
             </MobileNavLink>
           </nav>
         )}

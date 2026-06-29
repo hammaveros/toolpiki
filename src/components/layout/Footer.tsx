@@ -46,6 +46,7 @@ export function Footer({ focusMode = false }: FooterProps) {
               정보
             </h3>
             <div className="space-y-0.5">
+              <FooterLink href="/blog">블로그</FooterLink>
               <FooterLink href="/about">소개</FooterLink>
               <FooterLink href="/contact">문의하기</FooterLink>
               <FooterLink href="/privacy">개인정보처리방침</FooterLink>

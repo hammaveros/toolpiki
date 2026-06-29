@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { toolsEn } from '@/data/tools-en';
 import { siteConfig } from '@/data/site';
 import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
+import { blogPostsEn } from '@/data/blog';
 
 export const dynamic = 'force-static';
 
@@ -59,5 +60,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: tool.featured ? 0.95 : 0.9,
     }));
 
-  return [...staticPages, ...toolPages];
+  const blogPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: BUILD_DATE,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    ...blogPostsEn.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+  ];
+
+  return [...staticPages, ...blogPages, ...toolPages];
 }

@@ -3,6 +3,7 @@ import { tools } from '@/data/tools';
 import { curatedColors } from '@/data/colors';
 import { siteConfig } from '@/data/site';
 import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
+import { blogPostsKr } from '@/data/blog';
 
 export const dynamic = 'force-static';
 
@@ -80,5 +81,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...toolPages, ...colorPages];
+  const blogPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: BUILD_DATE,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    ...blogPostsKr.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
+  ];
+
+  return [...staticPages, ...blogPages, ...toolPages, ...colorPages];
 }

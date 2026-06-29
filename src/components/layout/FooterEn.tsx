@@ -26,6 +26,7 @@ export function FooterEn({ focusMode = false }: FooterEnProps) {
 
           {/* Links */}
           <nav className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
+            <FooterLink href="/en/blog">Blog</FooterLink>
             <FooterLink href="/en/about">About</FooterLink>
             <FooterLink href="/en/contact">Contact</FooterLink>
             <FooterLink href="/en/privacy">Privacy Policy</FooterLink>
