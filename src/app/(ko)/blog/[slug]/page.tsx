@@ -44,6 +44,21 @@ const contentMap: Record<string, () => Promise<{ default: React.ComponentType }>
   'image-compress': () => import('@/content/blog/kr/image-compress'),
   'qr-generator': () => import('@/content/blog/kr/qr-generator'),
   'base64': () => import('@/content/blog/kr/base64'),
+  'text-diff': () => import('@/content/blog/kr/text-diff'),
+  'url-encoder': () => import('@/content/blog/kr/url-encoder'),
+  'morse-code': () => import('@/content/blog/kr/morse-code'),
+  'markdown-preview': () => import('@/content/blog/kr/markdown-preview'),
+  'yaml-json-converter': () => import('@/content/blog/kr/yaml-json-converter'),
+  'image-convert': () => import('@/content/blog/kr/image-convert'),
+  'video-gif-converter': () => import('@/content/blog/kr/video-gif-converter'),
+  'color-converter': () => import('@/content/blog/kr/color-converter'),
+  'password-strength': () => import('@/content/blog/kr/password-strength'),
+  'date-calculator': () => import('@/content/blog/kr/date-calculator'),
+  'unit-converter': () => import('@/content/blog/kr/unit-converter'),
+  'random-picker': () => import('@/content/blog/kr/random-picker'),
+  'regex-tester': () => import('@/content/blog/kr/regex-tester'),
+  'unix-timestamp': () => import('@/content/blog/kr/unix-timestamp'),
+  'pomodoro-timer': () => import('@/content/blog/kr/pomodoro-timer'),
 };
 
 export default async function BlogPostPage({ params }: Props) {
