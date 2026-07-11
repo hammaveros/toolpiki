@@ -154,6 +154,7 @@ const contentMap: Record<string, () => Promise<{ default: React.ComponentType }>
   'saju-compatibility': () => import('@/content/blog/kr/saju-compatibility'),
   'saju-reading': () => import('@/content/blog/kr/saju-reading'),
   'team-saju': () => import('@/content/blog/kr/team-saju'),
+  'chat': () => import('@/content/blog/kr/chat'),
 };
 
 export default async function BlogPostPage({ params }: Props) {

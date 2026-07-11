@@ -1160,6 +1160,16 @@ export const blogPostsKr: BlogPost[] = [
     toolUrl: '/tools/team-saju',
     readingTime: 4,
   },
+  {
+    slug: 'chat',
+    title: '재택하다 심심할 때, 아무나랑 잠깐 수다 떨 데가 없더라',
+    description: '회원가입도 프로필도 없이 익명 랜덤 닉네임으로 접속해 잠깐 수다 떠는 온라인 쉼터. 재택·야근·혼밥할 때 딴 사람 목소리가 그리울 때 쓰라고 만들었다.',
+    date: '2026-08-03',
+    category: '재미/테스트',
+    toolSlug: 'chat',
+    toolUrl: '/chat',
+    readingTime: 3,
+  },
 ];
 
 export const blogPostsEn: BlogPost[] = [
