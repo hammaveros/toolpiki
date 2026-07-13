@@ -6,6 +6,7 @@ import type { ToolMeta, CategoryMeta } from '@/types';
 import { ToolCardEn } from './ToolCardEn';
 import { CategoryFilterEn } from './CategoryFilterEn';
 import { useRecentTools } from '@/hooks/useRecentTools';
+import { filterToolsByQuery } from '@/lib/search';
 
 const POPULAR_SLUGS_EN = [
   'qr-generator-en', 'json-formatter-en', 'mermaid-diagram-en', 'reaction-time-test-en',
@@ -27,17 +28,11 @@ function ToolsClientPageEnContent({ tools, categories, isMainPage, initialSearch
 
   const category = isMainPage ? undefined : (searchParams.get('category') || undefined);
 
-  // Search filtering
-  const searchFilteredTools = useMemo(() => {
-    if (!searchQuery.trim()) return tools;
-    const query = searchQuery.toLowerCase().trim();
-    return tools.filter((tool) =>
-      tool.name.toLowerCase().includes(query) ||
-      tool.description.toLowerCase().includes(query) ||
-      tool.keywords?.some((k) => k.toLowerCase().includes(query)) ||
-      tool.tags?.some((t) => t.toLowerCase().includes(query))
-    );
-  }, [tools, searchQuery]);
+  // Search filtering (normalized + partial match via shared util)
+  const searchFilteredTools = useMemo(
+    () => filterToolsByQuery(tools, searchQuery),
+    [tools, searchQuery]
+  );
 
   const popularTools = useMemo(() => {
     return POPULAR_SLUGS_EN

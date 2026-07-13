@@ -6,6 +6,7 @@ import type { ToolMeta, CategoryMeta } from '@/types';
 import { ToolCard } from './ToolCard';
 import { CategoryFilter } from './CategoryFilter';
 import { useRecentTools } from '@/hooks/useRecentTools';
+import { filterToolsByQuery } from '@/lib/search';
 import Link from 'next/link';
 
 interface ToolsClientPageProps {
@@ -55,16 +56,10 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
   const effectiveSearch = initialSearch || searchQuery;
   const category = isMainPage ? undefined : (searchParams.get('category') || undefined);
 
-  const searchFilteredTools = useMemo(() => {
-    if (!effectiveSearch.trim()) return tools;
-    const query = effectiveSearch.toLowerCase().trim();
-    return tools.filter((tool) =>
-      tool.name.toLowerCase().includes(query) ||
-      tool.description.toLowerCase().includes(query) ||
-      tool.keywords?.some((k) => k.toLowerCase().includes(query)) ||
-      tool.tags?.some((t) => t.toLowerCase().includes(query))
-    );
-  }, [tools, effectiveSearch]);
+  const searchFilteredTools = useMemo(
+    () => filterToolsByQuery(tools, effectiveSearch),
+    [tools, effectiveSearch]
+  );
 
   const popularSlugs = isEnglish ? POPULAR_SLUGS_EN : POPULAR_SLUGS_KR;
   const popularTools = useMemo(() => {
