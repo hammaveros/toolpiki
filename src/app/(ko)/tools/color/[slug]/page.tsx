@@ -39,6 +39,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     keywords: [`${color.ko} 색상`, `${color.ko} 색상코드`, `${color.en} color`, `${color.hex}`, `${color.ko} rgb`, `${color.ko} hex`],
     alternates: { canonical: url },
+    // 색상별 템플릿 페이지(구조 동일, 차이는 수치값)라 저품질 판정 리스크가 있어 인덱스에서 제외한다.
+    robots: { index: false, follow: true },
     openGraph: {
       type: 'website',
       url,

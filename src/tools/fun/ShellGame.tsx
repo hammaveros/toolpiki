@@ -417,6 +417,12 @@ function SeoContent() {
           <strong>3D 애니메이션</strong>으로 컵이 뒤집히는 모습을 실감나게 볼 수 있습니다.
         </p>
 
+        <div className="mt-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
+          <p className="text-amber-800 dark:text-amber-300">
+            ⚠️ 이 게임은 순수하게 재미로 즐기는 무료 콘텐츠이며, 실제 도박·베팅·금전 거래와는 아무 관련이 없습니다. 어떠한 실제 상금이나 보상도 제공하지 않습니다.
+          </p>
+        </div>
+
         <div className="mt-4 rounded-lg bg-violet-50 dark:bg-violet-950/30 border border-violet-100 dark:border-violet-900 p-4 text-sm">
           <p className="font-semibold text-violet-900 dark:text-violet-200 mb-1">🎲 난이도 조절</p>
           <p className="text-violet-800 dark:text-violet-300">

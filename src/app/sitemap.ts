@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
 import { tools } from '@/data/tools';
-import { curatedColors } from '@/data/colors';
 import { siteConfig } from '@/data/site';
 import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
 import { blogPostsKr } from '@/data/blog';
@@ -73,13 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: tool.featured ? 0.95 : 0.9,
     }));
 
-  // 큐레이션 색상 상세 페이지
-  const colorPages: MetadataRoute.Sitemap = curatedColors.map((c) => ({
-    url: `${baseUrl}/tools/color/${c.slug}`,
-    lastModified: BUILD_DATE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
+  // 색상 상세 페이지는 템플릿형(저품질 판정 리스크)이라 noindex 처리 → sitemap에서도 제외
 
   const blogPages: MetadataRoute.Sitemap = [
     {
@@ -96,5 +89,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticPages, ...blogPages, ...toolPages, ...colorPages];
+  return [...staticPages, ...blogPages, ...toolPages];
 }
