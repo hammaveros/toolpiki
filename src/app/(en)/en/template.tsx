@@ -21,10 +21,12 @@ export default function EnTemplate({
     '/en/letter',
   ]);
   const showAds = !isRestrictedPath(pathname) && !CORE_PAGES_NO_ADS.has(pathname);
+  // AdSense 심사 기간: 콘텐츠 위 상단 배너를 꺼 콘텐츠:광고 비율 개선. 승인 후 false 로.
+  const AD_REVIEW_MODE = true;
 
   return (
     <>
-      {showAds && <HeaderAdBanner disableFallback />}
+      {showAds && !AD_REVIEW_MODE && <HeaderAdBanner disableFallback />}
       <main className="flex-1">{children}</main>
       {showAds && <FooterAdBanner disableFallback isEnglish />}
     </>
