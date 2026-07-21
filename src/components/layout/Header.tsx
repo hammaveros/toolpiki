@@ -47,6 +47,7 @@ export function Header({ focusMode = false }: HeaderProps) {
             <NavLink href="/"><HomeIcon size={16} /><span>홈</span></NavLink>
             <NavLink href="/tools"><ToolsIcon size={16} /><span>도구</span></NavLink>
             <NavLink href="/blog"><span>✍️</span><span>블로그</span></NavLink>
+            <NavLink href="/chat"><span>☕</span><span>탕비실</span></NavLink>
             <NavLink href="/contact"><span>문의</span></NavLink>
             <div className="ml-2"><ThemeToggle isEnglish={false} /></div>
           </nav>
@@ -70,6 +71,7 @@ export function Header({ focusMode = false }: HeaderProps) {
             <MobileNavLink href="/" onClick={() => setMobileMenuOpen(false)}><HomeIcon size={20} /><span>홈</span></MobileNavLink>
             <MobileNavLink href="/tools" onClick={() => setMobileMenuOpen(false)}><ToolsIcon size={20} /><span>도구</span></MobileNavLink>
             <MobileNavLink href="/blog" onClick={() => setMobileMenuOpen(false)}><span>✍️</span><span>블로그</span></MobileNavLink>
+            <MobileNavLink href="/chat" onClick={() => setMobileMenuOpen(false)}><span>☕</span><span>랜선 탕비실</span></MobileNavLink>
             <MobileNavLink href="/contact" onClick={() => setMobileMenuOpen(false)}><span>📩</span><span>문의하기</span></MobileNavLink>
           </nav>
         )}
