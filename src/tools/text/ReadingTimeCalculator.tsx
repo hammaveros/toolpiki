@@ -398,6 +398,54 @@ function SeoContent() {
         </ul>
       </div>
 
+      <div>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">발표 시간별 원고 분량 기준</h2>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mb-3">
+          발표 준비에서 가장 자주 나오는 질문이 &quot;몇 분이면 몇 자를 써야 하나&quot;입니다.
+          한국어 발표 속도를 분당 약 300자로 잡았을 때의 대략적인 기준입니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">발표 시간</th>
+                <th className="text-left py-2 px-2">원고 분량</th>
+                <th className="text-left py-2 px-2">A4 기준</th>
+                <th className="text-left py-2 px-2">슬라이드</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-600 dark:text-gray-400">
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">3분</td><td>약 900자</td><td>약 0.5장</td><td>3~4장</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">5분</td><td>약 1,500자</td><td>약 1장</td><td>5~7장</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">10분</td><td>약 3,000자</td><td>약 2장</td><td>10~12장</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">15분</td><td>약 4,500자</td><td>약 3장</td><td>15~18장</td></tr>
+              <tr><td className="py-1.5 px-2">30분</td><td>약 9,000자</td><td>약 6장</td><td>25~35장</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+          질의응답이 포함된 발표라면 <strong>배정 시간의 70~80%</strong>만 원고로 채우는 것이 안전합니다.
+          15분을 받았다면 원고는 11~12분 분량으로 준비하는 식입니다.
+        </p>
+      </div>
+
+      <div>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">읽기 속도는 왜 사람마다 다를까</h2>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          같은 글이라도 읽는 속도는 상황에 따라 크게 달라집니다. 계산 결과를 <strong>절대적인 값이 아니라 기준점</strong>으로 봐야 하는 이유입니다.
+        </p>
+        <ul className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 space-y-2 list-disc list-inside mt-3">
+          <li><strong>글의 난이도</strong> — 익숙한 주제의 에세이는 빠르게 읽히지만, 낯선 전문 용어가 많은 기술 문서는 절반 이하로 느려집니다.</li>
+          <li><strong>읽는 목적</strong> — 훑어보기(스캐닝)는 훨씬 빠르고, 이해하며 정독하는 경우는 느려집니다.</li>
+          <li><strong>매체</strong> — 모바일 화면은 한 줄이 짧아 시선 이동이 잦고, 인쇄물보다 다소 느린 경향이 있습니다.</li>
+          <li><strong>표와 그림</strong> — 본문 글자수에는 안 잡히지만 실제로는 이해하는 데 시간이 걸립니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+          블로그의 &quot;읽는 데 5분&quot; 표시는 정확한 예측이라기보다 <strong>글의 분량을 가늠하게 해주는 신호</strong>에 가깝습니다.
+          그 자체로도 이탈률을 낮추는 효과가 있어 널리 쓰입니다.
+        </p>
+      </div>
+
       <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
         <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 발표 준비 팁</p>
         <p className="text-indigo-800 dark:text-indigo-300">
@@ -411,6 +459,9 @@ function SeoContent() {
           { question: '한글과 영어가 섞인 텍스트도 정확하게 측정되나요?', answer: '네, 한글은 글자 수(분당 200~700자), 영어는 단어 수(분당 100~350 WPM) 기준으로 읽기와 발표 속도를 따로 계산한 뒤 합산하므로 혼합 텍스트도 정확하게 측정됩니다.' },
           { question: '발표 시간은 어떻게 계산되나요?', answer: '발표 시간은 읽기 속도와 별개의 발표 전용 속도(분당 200~470자)로 계산됩니다. 실제 발표에서는 강조, 쉼, 청중 반응 등으로 읽기보다 상당히 느려지기 때문입니다.' },
           { question: '슬라이드당 적정 시간은 얼마인가요?', answer: '일반적으로 슬라이드당 1~2분이 권장됩니다. 내용이 많은 슬라이드는 2~3분, 제목이나 전환 슬라이드는 30초 정도가 적당합니다.' },
+          { question: '10분 발표에는 원고를 몇 자 써야 하나요?', answer: '한국어 발표 속도를 분당 300자로 잡으면 약 3,000자, A4 2장 정도입니다. 질의응답이 포함된다면 배정 시간의 70~80%만 원고로 채우는 것이 안전합니다.' },
+          { question: '계산 결과와 실제 시간이 차이 나요.', answer: '글의 난이도, 읽는 목적, 표와 그림의 양에 따라 실제 시간은 달라집니다. 계산값은 절대적인 예측이 아니라 분량을 가늠하는 기준점으로 활용하세요.' },
+          { question: '입력한 원고가 서버로 전송되나요?', answer: '아니요. 계산은 브라우저 안에서만 이루어지며 입력한 원고가 서버로 전송되거나 저장되지 않습니다. 미공개 발표 자료도 안심하고 확인할 수 있습니다.' },
         ]}
       />
 

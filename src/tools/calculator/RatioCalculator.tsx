@@ -367,6 +367,71 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🧮 비율은 어떻게 구하나
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          가로와 세로를 <strong>최대공약수(GCD)로 나누면</strong> 가장 단순한 정수비가 나옵니다.
+          1920×1080을 예로 들면 두 수의 최대공약수가 120이므로 1920÷120 : 1080÷120 = <strong>16:9</strong>가 됩니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">해상도</th>
+                <th className="text-left py-2 px-2">최대공약수</th>
+                <th className="text-left py-2 px-2">비율</th>
+              </tr>
+            </thead>
+            <tbody className="font-mono">
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">1920×1080</td><td>120</td><td>16:9</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">1280×720</td><td>80</td><td>16:9</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">1024×768</td><td>256</td><td>4:3</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">2560×1080</td><td>40</td><td>64:27 (≈21:9)</td></tr>
+              <tr><td className="py-1.5 px-2">1080×1350</td><td>270</td><td>4:5</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          21:9로 불리는 울트라와이드는 실제로 계산하면 64:27처럼 딱 떨어지지 않는 경우가 많습니다.
+          업계에서 부르는 이름과 수학적 비율이 항상 일치하지는 않습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📱 플랫폼별 권장 비율
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          업로드 전에 비율을 맞춰두면 플랫폼이 임의로 잘라내는 것을 막을 수 있습니다.
+          특히 인물 사진은 자동 크롭에서 얼굴이 잘리는 사고가 잦습니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">플랫폼 · 용도</th>
+                <th className="text-left py-2 px-2">비율</th>
+                <th className="text-left py-2 px-2">권장 해상도</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">유튜브 썸네일</td><td className="font-mono">16:9</td><td className="font-mono">1280×720</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">쇼츠 · 릴스 · 틱톡</td><td className="font-mono">9:16</td><td className="font-mono">1080×1920</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">인스타 피드(정방형)</td><td className="font-mono">1:1</td><td className="font-mono">1080×1080</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">인스타 피드(세로)</td><td className="font-mono">4:5</td><td className="font-mono">1080×1350</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">블로그 · SNS 공유 이미지</td><td className="font-mono">1.91:1</td><td className="font-mono">1200×630</td></tr>
+              <tr><td className="py-1.5 px-2">프레젠테이션 슬라이드</td><td className="font-mono">16:9</td><td className="font-mono">1920×1080</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          비율이 다른 이미지를 올리면 <strong>레터박스(여백)가 생기거나 자동으로 잘립니다.</strong>{' '}
+          가로 영상을 세로 플랫폼에 올릴 때 위아래 검은 띠가 생기는 것이 대표적인 예입니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 비율 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -391,6 +456,18 @@ function SeoContent() {
           {
             question: '비율이 맞지 않으면 어떻게 되나요?',
             answer: '이미지가 늘어나거나 찌그러져 보입니다. 크롭(잘라내기)을 하거나 레터박스(검은 여백)를 추가해 비율을 맞추는 것이 일반적입니다.',
+          },
+          {
+            question: '해상도에서 비율은 어떻게 계산하나요?',
+            answer: '가로와 세로를 최대공약수로 나누면 됩니다. 1920×1080은 최대공약수가 120이라 16:9가 되고, 1024×768은 256으로 나누면 4:3이 됩니다.',
+          },
+          {
+            question: '업로드했더니 사진이 잘렸어요.',
+            answer: '플랫폼이 요구하는 비율과 달라 자동 크롭된 경우입니다. 인스타 피드는 1:1 또는 4:5, 쇼츠·릴스는 9:16으로 미리 맞춰 올리면 의도한 구도가 유지됩니다.',
+          },
+          {
+            question: '21:9 모니터인데 계산하면 64:27이 나와요.',
+            answer: '2560×1080 같은 울트라와이드 해상도는 정확히 21:9로 떨어지지 않습니다. 업계에서 편의상 21:9로 부르는 것이고 실제 비율은 조금 다릅니다.',
           },
         ]}
       />
