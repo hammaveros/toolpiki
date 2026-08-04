@@ -302,6 +302,45 @@ function SeoContent() {
         </p>
       </div>
 
+      <div>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">자주 나오는 변환 예시</h2>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mb-3">
+          아래처럼 보인다면 변환기에 그대로 붙여넣으면 됩니다. 익숙해지면 형태만 보고도 원래 문구가 짐작됩니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">잘못 입력된 형태</th>
+                <th className="text-left py-2 px-2">원래 문구</th>
+                <th className="text-left py-2 px-2">변환 방향</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-600 dark:text-gray-400">
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">dkssudgktpdy</td><td>안녕하세요</td><td>영타 → 한글</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">rkatkgkqslek</td><td>감사합니다</td><td>영타 → 한글</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">tnrhgotjdy</td><td>수고하셨어요</td><td>영타 → 한글</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">ㅗ디ㅣㅐ</td><td>hello</td><td>한글 → 영타</td></tr>
+              <tr><td className="py-1.5 px-2 font-mono">ㅔ소서ㅐㄱㅁ</td><td>password</td><td>한글 → 영타</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">왜 이런 일이 생길까</h2>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          두벌식 자판은 영문 QWERTY 위에 한글 자모를 겹쳐 올린 구조라, 같은 키를 눌러도 입력 모드에 따라 전혀 다른 글자가 나옵니다.
+          키보드는 &quot;어떤 키를 눌렀는지&quot;만 전달하고, 그 키를 무엇으로 해석할지는 입력기(IME)가 결정하기 때문입니다.
+          그래서 <strong>모드만 바뀌었을 뿐 눌린 키 자체는 동일</strong>하고, 덕분에 이렇게 되돌리는 변환이 가능합니다.
+        </p>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+          특히 로그인 화면에서 자주 겪습니다. 비밀번호 입력란은 글자가 가려져 있어 한/영 상태를 알아채기 어렵고,
+          <strong>Caps Lock이 켜진 경우</strong>와 증상이 비슷해 헷갈리기 쉽습니다.
+          로그인이 반복해서 실패한다면 한/영 상태와 Caps Lock을 함께 확인해 보세요.
+        </p>
+      </div>
+
       <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
         <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 변환 방향 팁</p>
         <p className="text-indigo-800 dark:text-indigo-300">
@@ -315,6 +354,9 @@ function SeoContent() {
           { question: '쌍자음이나 겹모음도 변환되나요?', answer: '네, ㄲ·ㄸ·ㅃ·ㅆ·ㅉ 같은 쌍자음과 ㅘ·ㅙ·ㅚ·ㅝ·ㅞ·ㅟ·ㅢ 같은 겹모음도 모두 정확하게 변환됩니다. Shift 입력까지 반영하여 처리합니다.' },
           { question: '영타→한글과 한글→영타 차이가 뭔가요?', answer: '영타→한글은 영문 상태에서 한글을 치려고 했던 경우(예: dkssudgktpdy → 안녕하세요)에 사용하고, 한글→영타는 한글 상태에서 영어를 치려고 했던 경우(예: ㅗㄷㅣㅣㅐ → hello)에 사용합니다.' },
           { question: '특수문자나 숫자도 변환되나요?', answer: '특수문자, 숫자, 공백 등은 한영 키보드 배열에서 동일한 위치에 있으므로 변환 없이 그대로 유지됩니다.' },
+          { question: '왜 한/영 전환을 깜빡하면 이런 글자가 나오나요?', answer: '두벌식 자판은 영문 QWERTY 위에 한글 자모를 겹쳐 놓은 구조입니다. 키보드는 눌린 키 위치만 전달하고 해석은 입력기가 하기 때문에, 모드가 다르면 같은 키가 전혀 다른 글자로 표시됩니다. 눌린 키는 같으므로 되돌릴 수 있습니다.' },
+          { question: '비밀번호 입력이 자꾸 틀리는데 이것 때문일까요?', answer: '가능성이 큽니다. 비밀번호 칸은 글자가 가려져 한/영 상태를 알기 어렵습니다. Caps Lock이 켜진 경우와 증상이 비슷하니 두 가지를 함께 확인해 보세요.' },
+          { question: '입력한 텍스트가 서버로 전송되나요?', answer: '아니요. 변환은 브라우저 안에서만 처리되며 입력 내용이 서버로 전송되거나 저장되지 않습니다. 다만 실제 사용 중인 비밀번호는 어떤 사이트에도 입력하지 않는 것이 안전합니다.' },
         ]}
       />
 

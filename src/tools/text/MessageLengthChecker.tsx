@@ -199,6 +199,62 @@ function SeoContent() {
         </p>
       </div>
 
+      <div>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">플랫폼별 권장 길이 정리</h2>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mb-3">
+          같은 문구라도 어디에 보내느냐에 따라 적정 길이가 다릅니다. 실무에서 자주 쓰는 기준을 모았습니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">채널</th>
+                <th className="text-left py-2 px-2">권장 길이</th>
+                <th className="text-left py-2 px-2">넘으면 생기는 일</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-600 dark:text-gray-400">
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">SMS (단문)</td><td>한글 약 70자 / 80바이트</td><td>LMS로 전환되어 단가 상승</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">LMS (장문)</td><td>2,000바이트</td><td>MMS로 전환</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">이메일 제목</td><td>30~50자</td><td>모바일에서 뒷부분 잘림</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">슬랙·팀즈</td><td>100자 내외</td><td>스크롤 발생, 읽힘률 저하</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">카카오톡</td><td>200자 이내</td><td>&quot;더보기&quot;로 접힘</td></tr>
+              <tr><td className="py-1.5 px-2">푸시 알림</td><td>제목 20자 / 본문 50자</td><td>기기에서 말줄임 처리</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">바이트 계산 예시</h2>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mb-3">
+          SMS 요금은 글자수가 아니라 <strong>바이트</strong>로 결정됩니다. 한글과 영문이 섞이면 감이 잘 안 잡히니
+          실제 문구로 확인해 보는 편이 정확합니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">문구</th>
+                <th className="text-left py-2 px-2">글자수</th>
+                <th className="text-left py-2 px-2">바이트</th>
+                <th className="text-left py-2 px-2">구분</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-600 dark:text-gray-400">
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">[안내] 주문이 완료되었습니다.</td><td>17자</td><td>약 32바이트</td><td>단문</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">한글 40자 안내문</td><td>40자</td><td>약 80바이트</td><td>단문 경계</td></tr>
+              <tr><td className="py-1.5 px-2">한글 50자 + URL</td><td>약 70자</td><td>약 120바이트</td><td>장문(LMS)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 mt-3">
+          링크를 넣으면 바이트가 훅 늘어납니다. URL은 영문이라 1자당 1바이트지만 길이 자체가 길기 때문입니다.
+          단축 URL을 쓰면 단문 안에 들어가는 경우가 많습니다. 또한 이모지는 한 개가 여러 바이트를 차지하므로
+          대량 발송 문구에는 신중하게 쓰는 편이 좋습니다.
+        </p>
+      </div>
+
       <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
         <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 비용 절감 팁</p>
         <p className="text-indigo-800 dark:text-indigo-300">
@@ -212,6 +268,9 @@ function SeoContent() {
           { question: 'SMS 단문과 장문의 기준은 무엇인가요?', answer: '국내 SMS 기준 한글 약 70자(80바이트)까지가 단문(SMS)이며, 이를 초과하면 장문(LMS)으로 전환됩니다. LMS는 최대 2,000바이트(한글 약 1,000자)까지 발송 가능합니다.' },
           { question: '이메일 제목의 적정 길이는 어느 정도인가요?', answer: '이메일 제목은 30~50자가 이상적입니다. 모바일에서는 약 30자까지만 표시되므로 핵심 키워드를 앞부분에 배치하는 것이 좋습니다.' },
           { question: '카카오톡 메시지 최대 글자수는 얼마인가요?', answer: '카카오톡 일반 메시지는 최대 10,000자까지 입력 가능하지만, 가독성을 위해 200자 이내로 작성하는 것을 권장합니다.' },
+          { question: '왜 글자수가 아니라 바이트로 계산하나요?', answer: 'SMS 규격이 바이트 단위로 정해져 있기 때문입니다. 한글은 1자당 2바이트, 영문·숫자는 1바이트라 같은 글자수라도 구성에 따라 단문/장문 여부가 달라집니다.' },
+          { question: '이모지를 넣으면 얼마나 늘어나나요?', answer: '이모지는 하나가 여러 바이트를 차지하고, 조합형 이모지는 더 커집니다. 대량 발송 문구에서는 단문 기준을 넘기는 원인이 되기 쉬우니 실제 바이트를 확인하고 사용하세요.' },
+          { question: '입력한 메시지가 서버로 전송되나요?', answer: '아니요. 글자수와 바이트 계산은 브라우저 안에서만 처리되며 입력 내용이 서버로 전송되거나 저장되지 않습니다. 발송 전 고객 안내 문구도 안심하고 확인할 수 있습니다.' },
         ]}
       />
 
