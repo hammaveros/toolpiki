@@ -335,6 +335,67 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🧮 자르면 해상도는 얼마나 남을까
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          자르기는 픽셀을 버리는 작업이라, 잘라낸 영역만큼 해상도가 그대로 줄어듭니다.
+          4000×3000 사진에서 각 비율로 최대 크기를 잘랐을 때 남는 해상도는 다음과 같습니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">비율</th>
+                <th className="text-left py-2 px-2">남는 해상도</th>
+                <th className="text-left py-2 px-2">원본 대비</th>
+                <th className="text-left py-2 px-2">활용 가능 범위</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">1:1</td><td className="font-mono">3000×3000</td><td>75%</td><td>인스타 피드에 충분</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">4:3</td><td className="font-mono">4000×3000</td><td>100%</td><td>손실 없음 (원본 비율)</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">16:9</td><td className="font-mono">4000×2250</td><td>75%</td><td>4K 썸네일까지 가능</td></tr>
+              <tr><td className="py-2 px-2 font-medium">3:2</td><td className="font-mono">4000×2667</td><td>89%</td><td>A4 인화 여유</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          문제는 <strong>사진 일부만 확대하듯 좁게 자를 때</strong>입니다. 예를 들어 전체의 1/4 영역만 남기면
+          해상도는 2000×1500으로 떨어집니다. 유튜브 썸네일(1280×720)에는 충분하지만, 인쇄용으로는 부족해집니다.
+          자르기 전에 <strong>최종 용도의 필요 해상도</strong>를 먼저 정해두면 실패를 줄일 수 있습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          👤 용도별 권장 크기
+        </h2>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">용도</th>
+                <th className="text-left py-2 px-2">비율</th>
+                <th className="text-left py-2 px-2">권장 픽셀</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">이력서 증명사진</td><td className="font-mono">3:4</td><td className="font-mono">413×531</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">SNS 프로필</td><td className="font-mono">1:1</td><td className="font-mono">400×400 이상</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">유튜브 썸네일</td><td className="font-mono">16:9</td><td className="font-mono">1280×720</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">블로그 대표 이미지</td><td className="font-mono">1.91:1</td><td className="font-mono">1200×630</td></tr>
+              <tr><td className="py-2 px-2">쇼핑몰 상품 이미지</td><td className="font-mono">1:1</td><td className="font-mono">1000×1000 이상</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          증명사진은 규격이 엄격한 편입니다. 얼굴이 세로 길이의 약 70~80%를 차지하고 머리 위 여백을
+          조금 남기는 구도가 일반적이며, 기관마다 기준이 다르므로 제출처 안내를 확인하세요.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 이미지 자르기 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -368,6 +429,18 @@ function SeoContent() {
           {
             question: '인스타그램 정사각형 사진은 어떻게 만드나요?',
             answer: '1:1 비율 프리셋을 선택하면 자동으로 정사각형 영역이 설정됩니다. 드래그로 원하는 위치로 이동하여 자르세요.',
+          },
+          {
+            question: '자르면 화질이 나빠지나요?',
+            answer: '남긴 영역의 픽셀은 그대로라 화질 자체는 떨어지지 않습니다. 다만 전체 픽셀 수가 줄어들기 때문에, 좁게 자른 뒤 크게 확대해서 쓰면 흐릿해 보일 수 있습니다.',
+          },
+          {
+            question: '자른 이미지가 서버로 전송되나요?',
+            answer: '아니요. 브라우저 Canvas에서만 처리되며 이미지가 업로드되지 않습니다. 신분증·계약서 같은 민감한 이미지도 안전하게 자를 수 있습니다.',
+          },
+          {
+            question: '여러 장을 같은 영역으로 한 번에 자를 수 있나요?',
+            answer: '현재는 한 장씩 처리합니다. 여러 장을 같은 크기로 맞춰야 한다면 이미지 리사이즈 도구로 규격을 통일한 뒤 개별로 자르는 방식이 편합니다.',
           },
         ]}
       />

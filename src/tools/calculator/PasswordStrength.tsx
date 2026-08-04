@@ -294,6 +294,61 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔢 길이가 복잡도를 이기는 이유
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          비밀번호의 경우의 수는 <strong>(문자 종류 수)<sup>길이</sup></strong>로 늘어납니다.
+          지수 자리에 있는 <strong>길이</strong>가 밑에 있는 문자 종류보다 훨씬 강하게 작용한다는 뜻입니다.
+          아래는 조합 가능한 경우의 수를 비교한 표입니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">구성</th>
+                <th className="text-left py-2 px-2">문자 종류</th>
+                <th className="text-left py-2 px-2">길이</th>
+                <th className="text-left py-2 px-2">경우의 수</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">숫자만</td><td className="font-mono">10</td><td className="font-mono">8자</td><td className="font-mono">10<sup>8</sup></td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">영소문자+숫자</td><td className="font-mono">36</td><td className="font-mono">8자</td><td className="font-mono">약 2.8×10<sup>12</sup></td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">4종류 전부</td><td className="font-mono">약 94</td><td className="font-mono">8자</td><td className="font-mono">약 6.1×10<sup>15</sup></td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">영소문자만</td><td className="font-mono">26</td><td className="font-mono">16자</td><td className="font-mono">약 4.4×10<sup>22</sup></td></tr>
+              <tr><td className="py-2 px-2">4종류 전부</td><td className="font-mono">약 94</td><td className="font-mono">16자</td><td className="font-mono">약 3.7×10<sup>31</sup></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          <strong>소문자만 쓴 16자가 특수문자까지 섞은 8자보다 경우의 수가 훨씬 큽니다.</strong>{' '}
+          외우기 힘든 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">P@ssw0rd!</code>보다
+          기억하기 쉬운 긴 문장이 더 안전한 이유입니다. 다만 실제 안전성은 경우의 수만으로 결정되지 않습니다 —
+          아무리 길어도 <strong>이미 유출된 문구나 흔한 표현</strong>이면 사전 공격에 바로 뚫립니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ 점수만 믿으면 안 되는 경우
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          강도 점수는 <strong>구성만</strong> 보고 계산합니다. 아래 경우들은 점수가 높게 나와도 실제로는 위험합니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>이미 유출된 비밀번호</strong> — 공격자는 유출 목록부터 대입합니다. 아무리 복잡해도 목록에 있으면 즉시 뚫립니다.</li>
+          <li><strong>흔한 치환 패턴</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">a→@</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">o→0</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">i→1</code> 같은 치환은 크래킹 도구가 기본으로 시도합니다.</li>
+          <li><strong>규칙적인 끝맺음</strong> — 뒤에 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">123!</code>이나 연도를 붙이는 습관은 널리 알려진 패턴입니다.</li>
+          <li><strong>사이트마다 살짝만 바꾼 비밀번호</strong> — 하나가 유출되면 나머지도 추측됩니다.</li>
+          <li><strong>키보드 인접 문자열</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">qwerty</code>, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">1q2w3e</code> 등은 길어도 사전에 포함돼 있습니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed mt-3">
+          가장 확실한 대비는 <strong>2단계 인증(2FA)</strong>입니다. 비밀번호가 유출되어도 추가 인증이 있으면 로그인을 막을 수 있습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 강력한 비밀번호 만들기 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -318,6 +373,18 @@ function SeoContent() {
           {
             question: '비밀번호 관리자를 사용해도 되나요?',
             answer: '강력히 권장합니다. 비밀번호 관리자는 사이트별로 고유한 강력한 비밀번호를 생성/저장해주어 보안을 크게 향상시킵니다.',
+          },
+          {
+            question: '길게 만드는 것과 특수문자를 섞는 것 중 뭐가 더 중요한가요?',
+            answer: '길이입니다. 경우의 수가 (문자 종류)^(길이)로 늘어나기 때문에, 소문자만 쓴 16자가 4종류를 섞은 8자보다 조합 수가 훨씬 큽니다. 다만 흔한 문구는 길어도 사전 공격에 뚫리니 예측 가능한 표현은 피하세요.',
+          },
+          {
+            question: '비밀번호를 주기적으로 바꿔야 하나요?',
+            answer: '최근 보안 가이드는 정기 변경을 권장하지 않습니다. 자주 바꾸면 오히려 규칙적이고 단순한 비밀번호를 쓰게 되기 때문입니다. 유출이 의심될 때 즉시 변경하는 편이 효과적입니다.',
+          },
+          {
+            question: '2단계 인증(2FA)을 쓰면 비밀번호는 덜 신경 써도 되나요?',
+            answer: '2FA는 비밀번호가 유출돼도 로그인을 막아주는 강력한 보호막이지만, 비밀번호를 대체하지는 않습니다. 충분히 긴 고유 비밀번호와 2FA를 함께 쓰는 것이 가장 안전합니다.',
           },
         ]}
       />

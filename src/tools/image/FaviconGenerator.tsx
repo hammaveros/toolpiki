@@ -238,6 +238,52 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🧩 HTML에 넣는 방법
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          생성된 파일을 사이트 루트에 올린 뒤, <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">{`<head>`}</code> 안에 아래 태그를 넣으면 됩니다.
+          브라우저는 상황에 맞는 크기를 알아서 골라 씁니다.
+        </p>
+        <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">`}
+        </pre>
+        <p className="text-sm leading-relaxed mt-3">
+          PWA로 설치되게 하려면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">site.webmanifest</code>에
+          192×192, 512×512 아이콘을 등록해야 합니다.
+        </p>
+        <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto mt-3">
+{`{
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}`}
+        </pre>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔁 파비콘이 안 바뀔 때
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          파비콘은 브라우저가 유독 오래 캐시하는 리소스입니다. 파일을 교체했는데 예전 아이콘이 계속 보인다면
+          대부분 코드 문제가 아니라 캐시 문제입니다. 아래 순서대로 확인해 보세요.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>강력 새로고침</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Ctrl+Shift+R</code>(맥은 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Cmd+Shift+R</code>)로 캐시를 무시하고 다시 받습니다.</li>
+          <li><strong>파비콘 URL 직접 열기</strong> — 주소창에 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">/favicon.ico</code>를 직접 입력해 새 파일이 올라갔는지 확인합니다.</li>
+          <li><strong>쿼리스트링 붙이기</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">favicon.png?v=2</code>처럼 버전을 붙이면 새 파일로 인식됩니다.</li>
+          <li><strong>시크릿 창에서 확인</strong> — 캐시가 없는 상태라 실제 배포 결과를 정확히 볼 수 있습니다.</li>
+          <li><strong>CDN 캐시 무효화</strong> — CDN을 쓴다면 배포 후에도 엣지에 옛 파일이 남아 있을 수 있습니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 좋은 파비콘 만들기 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -270,6 +316,18 @@ function SeoContent() {
           {
             question: 'ICO 파일도 필요한가요?',
             answer: '과거에는 .ico 형식이 필수였지만, 현대 브라우저는 PNG 파비콘을 잘 지원합니다. 구형 IE 호환이 필요하면 별도 ICO 변환 도구를 사용하세요.',
+          },
+          {
+            question: '파비콘을 바꿨는데 예전 아이콘이 계속 보여요.',
+            answer: '브라우저가 파비콘을 오래 캐시하기 때문입니다. 강력 새로고침(Ctrl+Shift+R)을 하거나 favicon.png?v=2처럼 쿼리스트링을 붙여 새 파일로 인식시키세요. 시크릿 창에서 확인하면 실제 배포 상태를 볼 수 있습니다.',
+          },
+          {
+            question: '다크 모드에서 아이콘이 안 보이는데 어떻게 하나요?',
+            answer: '검은 배경에 어두운 로고를 쓰면 묻힙니다. 투명 배경 대신 브랜드 색 배경을 깔거나, 밝은 테두리를 넣어 두 테마 모두에서 식별되도록 만드는 것이 안전합니다.',
+          },
+          {
+            question: '업로드한 이미지가 서버로 전송되나요?',
+            answer: '아니요. 크기 변환은 브라우저 Canvas에서만 처리되며 이미지가 서버로 올라가지 않습니다. 미공개 로고도 안심하고 사용할 수 있습니다.',
           },
         ]}
       />

@@ -275,6 +275,57 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📅 만 나이 계산법 — 헷갈리는 이유
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          만 나이는 간단합니다. <strong>올해 생일이 지났으면 &quot;올해 − 태어난 해&quot;, 아직 안 지났으면 거기서 1을 뺍니다.</strong>{' '}
+          헷갈리는 건 계산식이 아니라, 같은 사람의 나이가 상황마다 다르게 불린다는 점입니다.
+          1998년 5월 20일생을 2026년 3월 기준으로 계산해보면 이렇습니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">구분</th>
+                <th className="text-left py-2 px-2">계산</th>
+                <th className="text-left py-2 px-2">결과</th>
+                <th className="text-left py-2 px-2">쓰이는 곳</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">만 나이</td><td className="font-mono">2026 − 1998 − 1</td><td className="font-mono">27세</td><td>공문서, 계약, 의료</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">연 나이</td><td className="font-mono">2026 − 1998</td><td className="font-mono">28세</td><td>병역, 청소년보호법</td></tr>
+              <tr><td className="py-2 px-2 font-medium">세는 나이</td><td className="font-mono">2026 − 1998 + 1</td><td className="font-mono">29세</td><td>일상 대화</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          생일이 지나면 만 나이와 연 나이가 같아지므로, <strong>1년 중 절반은 두 나이가 일치하고 절반은 1살 차이</strong>가 납니다.
+          &quot;만으로 몇 살?&quot;이라는 질문이 유독 헷갈리는 이유가 여기 있습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚖️ 아직 만 나이가 아닌 것들
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          2023년 6월 만 나이 통일법 이후에도 일부 제도는 여전히 <strong>연 나이(출생연도 기준)</strong>를 씁니다.
+          법에서 예외로 정해둔 영역이라 헷갈리기 쉬운 부분입니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>초등학교 입학</strong> — 태어난 연도 기준으로 같은 해 출생자가 함께 입학합니다.</li>
+          <li><strong>병역 판정검사</strong> — 출생연도 기준이라 생일과 무관하게 같은 해 출생자가 같은 해에 받습니다.</li>
+          <li><strong>청소년보호법</strong> — 주류·담배 구매 기준은 연 나이라, 생일 전이어도 해당 연도가 되면 적용됩니다.</li>
+          <li><strong>보험 나이</strong> — 상법상 &quot;보험나이&quot;는 만 나이에서 6개월이 지나면 반올림하는 별도 방식을 쓰는 경우가 있습니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed mt-3">
+          정확한 기준은 제도마다 다르므로, 지원 자격이나 법적 요건을 따질 때는 해당 기관의 안내를 확인하세요.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           🐉 12지신 띠 순서
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -299,6 +350,18 @@ function SeoContent() {
           {
             question: '띠는 양력과 음력 중 어떤 기준인가요?',
             answer: '전통적으로 띠는 음력 설날(대개 1~2월)을 기준으로 바뀝니다. 하지만 현대에는 편의상 양력 1월 1일 기준으로 계산하는 경우도 많습니다. 이 계산기는 양력 기준입니다.',
+          },
+          {
+            question: '생일이 지났는지 안 지났는지에 따라 만 나이가 달라지나요?',
+            answer: '네. 올해 생일이 지났으면 "올해 − 태어난 해", 아직 안 지났으면 거기서 1을 뺍니다. 그래서 1년 중 절반은 연 나이와 같고, 절반은 1살 차이가 납니다.',
+          },
+          {
+            question: '학교 입학이나 병역도 만 나이 기준인가요?',
+            answer: '아닙니다. 초등학교 입학과 병역 판정검사는 출생연도 기준(연 나이)을 씁니다. 만 나이 통일법 이후에도 이런 예외가 남아 있으니 해당 기관 안내를 확인하세요.',
+          },
+          {
+            question: '2월 29일생은 어떻게 계산되나요?',
+            answer: '평년에는 2월 28일 또는 3월 1일을 생일로 보는 관행이 있습니다. 이 계산기는 날짜 기준으로 경과 시간을 계산하므로, 평년에는 3월 1일부터 한 살이 더해집니다.',
           },
         ]}
       />

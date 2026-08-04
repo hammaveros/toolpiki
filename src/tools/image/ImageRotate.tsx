@@ -249,6 +249,66 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📱 사진이 저절로 눕는 이유 — EXIF Orientation
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          스마트폰으로 세로로 찍은 사진이 PC에서만 옆으로 누워 보이는 경험, 흔합니다.
+          카메라는 센서를 물리적으로 회전시키지 않고, <strong>&quot;이 사진은 몇 도 돌려서 보여달라&quot;는 표시(EXIF Orientation)</strong>만
+          파일에 적어둡니다. 이 표시를 읽는 프로그램에서는 똑바로 보이고, 무시하는 프로그램에서는 누워 보이는 겁니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">Orientation 값</th>
+                <th className="text-left py-2 px-2">의미</th>
+                <th className="text-left py-2 px-2">바로잡는 방법</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">1</td><td>정상 (회전 없음)</td><td>그대로 사용</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">3</td><td>180도 뒤집힘</td><td>180° 회전</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">6</td><td>시계방향 90도 필요</td><td>90° 오른쪽</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">8</td><td>반시계 90도 필요</td><td>90° 왼쪽</td></tr>
+              <tr><td className="py-2 px-2 font-mono">2 / 4 / 5 / 7</td><td>거울 반전 포함</td><td>뒤집기 + 회전 조합</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          이 도구로 회전해서 저장하면 <strong>픽셀 자체가 돌아간 상태로 새로 기록</strong>되고 EXIF 표시에 의존하지 않게 됩니다.
+          어디서 열어도 같은 방향으로 보이므로, 업로드했을 때 방향이 제멋대로 바뀌는 문제를 근본적으로 없앨 수 있습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🪞 회전과 뒤집기는 다르다
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          둘을 헷갈리면 원하는 결과가 안 나옵니다. 결정적인 차이는 <strong>글자가 읽히는지</strong>입니다.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+          <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded">
+            <p className="font-medium mb-1">회전 (Rotate)</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              이미지를 통째로 돌립니다. 고개를 기울이면 글자를 읽을 수 있습니다. 방향이 잘못 찍힌 사진·스캔 문서 교정용.
+            </p>
+          </div>
+          <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded">
+            <p className="font-medium mb-1">뒤집기 (Flip)</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              거울에 비친 것처럼 좌우/상하를 반전합니다. 글자가 반대로 보여 읽을 수 없습니다. 셀카 반전·반사 효과용.
+            </p>
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          전면 카메라 셀카는 대부분 좌우가 반전되어 저장됩니다. 실제로 남들이 보는 얼굴로 되돌리려면
+          <strong> 좌우 뒤집기</strong>를 쓰세요. 배경에 간판이나 글자가 있다면 그 글자가 제대로 읽히는 쪽이 원래 방향입니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 이미지 회전 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -282,6 +342,18 @@ function SeoContent() {
           {
             question: '지원하는 이미지 형식은 무엇인가요?',
             answer: 'JPG, PNG, GIF, WebP 등 브라우저에서 지원하는 대부분의 이미지 형식을 사용할 수 있습니다. 결과는 PNG로 저장됩니다.',
+          },
+          {
+            question: '스마트폰 사진이 PC에서만 옆으로 누워 보여요.',
+            answer: 'EXIF Orientation 정보를 읽지 않는 프로그램에서 생기는 현상입니다. 이 도구로 회전해 저장하면 픽셀 자체가 돌아간 상태로 기록되어, 어떤 프로그램에서 열어도 같은 방향으로 보입니다.',
+          },
+          {
+            question: '결과가 PNG로 저장되면 용량이 커지지 않나요?',
+            answer: 'PNG는 무손실이라 사진의 경우 원본 JPEG보다 커질 수 있습니다. 용량이 중요하다면 회전 후 이미지 포맷 변환기로 JPEG나 WebP로 바꾸면 됩니다.',
+          },
+          {
+            question: '45도처럼 비스듬한 각도로도 돌릴 수 있나요?',
+            answer: '이 도구는 90도 단위 회전과 좌우·상하 뒤집기를 지원합니다. 직각 회전은 픽셀 재계산이 없어 화질 손실이 전혀 없다는 장점이 있습니다.',
           },
         ]}
       />

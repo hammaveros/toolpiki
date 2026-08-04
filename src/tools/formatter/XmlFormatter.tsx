@@ -78,6 +78,74 @@ function SeoContent() {
         </div>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📄 포맷팅 전후 비교
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          API 응답이나 로그에서 가져온 XML은 대개 한 줄로 붙어 있어 구조가 보이지 않습니다.
+          들여쓰기만 넣어도 어떤 요소가 어디에 속하는지 즉시 드러납니다.
+        </p>
+        <div className="space-y-3">
+          <div>
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">입력 (한 줄)</p>
+            <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`<order id="1001"><customer><name>홍길동</name><email>hong@example.com</email></customer><items><item sku="A-01"><qty>2</qty><price>15000</price></item></items></order>`}
+            </pre>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">출력 (2칸 들여쓰기)</p>
+            <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`<order id="1001">
+  <customer>
+    <name>홍길동</name>
+    <email>hong@example.com</email>
+  </customer>
+  <items>
+    <item sku="A-01">
+      <qty>2</qty>
+      <price>15000</price>
+    </item>
+  </items>
+</order>`}
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔤 XML 이스케이프 문자
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          아래 5개 문자는 XML 문법에서 특별한 의미를 가지므로, 값으로 쓰려면 반드시 치환해야 합니다.
+          파싱 오류의 상당수가 여기서 발생합니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">문자</th>
+                <th className="text-left py-2 px-2">이스케이프</th>
+                <th className="text-left py-2 px-2">이름</th>
+                <th className="text-left py-2 px-2">필수 여부</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">&lt;</td><td className="font-mono">&amp;lt;</td><td>less than</td><td>항상 필수</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">&amp;</td><td className="font-mono">&amp;amp;</td><td>ampersand</td><td>항상 필수</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">&gt;</td><td className="font-mono">&amp;gt;</td><td>greater than</td><td>권장</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">&quot;</td><td className="font-mono">&amp;quot;</td><td>quote</td><td>속성값 안에서 필수</td></tr>
+              <tr><td className="py-2 px-2 font-mono">&#39;</td><td className="font-mono">&amp;apos;</td><td>apostrophe</td><td>속성값 안에서 필수</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          이스케이프할 문자가 너무 많다면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">{`<![CDATA[ ... ]]>`}</code>로 감싸는 편이 깔끔합니다.
+          HTML 조각이나 스크립트를 XML 안에 넣을 때 주로 씁니다.
+        </p>
+      </section>
+
       <div className="rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900 p-4 text-sm">
         <p className="font-semibold text-amber-900 dark:text-amber-200 mb-1">⚠️ 자주 하는 실수</p>
         <p className="text-amber-800 dark:text-amber-300">
@@ -100,6 +168,18 @@ function SeoContent() {
           {
             question: 'CDATA 섹션은 언제 사용하나요?',
             answer: 'HTML이나 특수문자(<, >, &)가 포함된 텍스트를 이스케이프 없이 그대로 넣고 싶을 때 <![CDATA[ ... ]]>로 감쌉니다.',
+          },
+          {
+            question: '입력한 XML이 서버로 전송되나요?',
+            answer: '아니요. 파싱과 포맷팅 모두 브라우저 안에서 처리되며 내용이 서버로 전송되거나 저장되지 않습니다. 사내 설정 파일이나 API 응답도 안전하게 붙여넣을 수 있습니다.',
+          },
+          {
+            question: '"엔티티를 찾을 수 없다"는 오류가 나요.',
+            answer: '값 안에 &가 그대로 들어간 경우가 대부분입니다. XML에서 &는 엔티티 시작 문자라 반드시 &amp;로 써야 합니다. URL의 쿼리스트링을 그대로 넣을 때 자주 발생합니다.',
+          },
+          {
+            question: '압축(Minify)하면 XML 의미가 바뀌지 않나요?',
+            answer: '태그 사이의 들여쓰기용 공백만 제거하므로 구조는 그대로입니다. 다만 요소 내부 텍스트의 공백이 의미를 갖는 문서라면 결과를 한 번 확인하는 것이 좋습니다.',
           },
         ]}
       />
