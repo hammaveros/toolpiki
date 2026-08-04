@@ -47,6 +47,56 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔄 변환 예시
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          같은 데이터가 두 포맷에서 어떻게 표현되는지 보면, 어느 쪽이 어떤 작업에 맞는지 바로 감이 옵니다.
+          JSON 배열의 각 객체가 CSV 한 행이 되고, 객체의 키가 헤더 행이 됩니다.
+        </p>
+        <div className="space-y-3">
+          <div>
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">JSON</p>
+            <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`[
+  { "id": 1, "name": "김철수", "dept": "개발", "active": true },
+  { "id": 2, "name": "이영희", "dept": "디자인", "active": false }
+]`}
+            </pre>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">CSV</p>
+            <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`id,name,dept,active
+1,김철수,개발,true
+2,이영희,디자인,false`}
+            </pre>
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          값에 쉼표나 줄바꿈이 들어 있으면 자동으로 큰따옴표로 감싸집니다.
+          예를 들어 주소 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">서울시 강남구, 101동</code>은
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&quot;서울시 강남구, 101동&quot;</code>으로 출력됩니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ 변환에서 데이터가 깨지는 경우
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          두 포맷은 표현력이 다르기 때문에 변환 과정에서 정보가 손실될 수 있습니다. 자주 문제가 되는 것들입니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>중첩 구조는 평면화되지 않음</strong> — 객체 안의 객체는 한 셀에 JSON 문자열로 들어갑니다. 표로 다루려면 미리 구조를 펼쳐야 합니다.</li>
+          <li><strong>엑셀이 앞자리 0을 지움</strong> — 우편번호 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">06234</code>가 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">6234</code>가 됩니다. 엑셀에서 해당 열을 텍스트 서식으로 지정한 뒤 가져오세요.</li>
+          <li><strong>긴 숫자가 지수 표기로 바뀜</strong> — 카드번호나 큰 ID가 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">1.23E+15</code>처럼 변합니다. 같은 이유로 텍스트 서식이 필요합니다.</li>
+          <li><strong>한글이 깨짐</strong> — 엑셀에서 CSV를 그냥 열면 인코딩이 어긋날 수 있습니다. &quot;데이터 → 텍스트 가져오기&quot;에서 UTF-8을 지정하면 해결됩니다.</li>
+          <li><strong>null과 빈 문자열 구분이 사라짐</strong> — CSV에서는 둘 다 빈 칸으로 보이므로, 되돌릴 때 의도와 달라질 수 있습니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 활용 사례
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -79,6 +129,18 @@ function SeoContent() {
           {
             question: 'CSV를 JSON으로 변환할 때 타입은 어떻게 결정되나요?',
             answer: 'true/false는 불린, 숫자 형태는 Number로 자동 변환됩니다. 그 외는 문자열로 유지됩니다.',
+          },
+          {
+            question: '엑셀에서 열었더니 한글이 깨져요.',
+            answer: 'CSV를 더블클릭으로 열면 인코딩이 어긋날 수 있습니다. 엑셀의 "데이터 → 텍스트/CSV 가져오기"를 사용하고 원본 파일 형식을 UTF-8로 지정하면 정상적으로 표시됩니다.',
+          },
+          {
+            question: '우편번호 앞의 0이 사라집니다.',
+            answer: '엑셀이 숫자로 인식해 앞자리 0을 없애기 때문입니다. 가져오기 마법사에서 해당 열을 "텍스트" 서식으로 지정하면 그대로 유지됩니다. 카드번호처럼 긴 숫자가 지수 표기로 바뀌는 것도 같은 이유입니다.',
+          },
+          {
+            question: '데이터가 서버로 전송되나요?',
+            answer: '아니요. 변환은 브라우저 안에서만 처리되며 입력한 데이터가 서버로 전송되거나 저장되지 않습니다. 고객 데이터나 사내 자료도 안전하게 변환할 수 있습니다.',
           },
         ]}
       />

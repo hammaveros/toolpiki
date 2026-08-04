@@ -306,6 +306,103 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📖 정규식 문법 치트시트
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          정규식은 기호가 전부입니다. 아래 표만 손에 익으면 대부분의 패턴을 읽고 쓸 수 있습니다.
+        </p>
+        <div className="overflow-x-auto text-sm mb-4">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">문자 클래스</th>
+                <th className="text-left py-2 px-2">의미</th>
+                <th className="text-left py-2 px-2">예시</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">.</td><td>줄바꿈 제외 모든 문자</td><td className="font-mono">a.c → abc, a1c</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">{'\\d'}</td><td>숫자 (0-9)</td><td className="font-mono">{'\\d\\d → 42'}</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">{'\\w'}</td><td>영숫자와 밑줄</td><td className="font-mono">{'\\w+ → user_1'}</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">{'\\s'}</td><td>공백, 탭, 줄바꿈</td><td className="font-mono">{'a\\sb → a b'}</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">[abc]</td><td>a, b, c 중 하나</td><td className="font-mono">[aeiou] → 모음</td></tr>
+              <tr><td className="py-1.5 px-2 font-mono">[^abc]</td><td>a, b, c 가 아닌 문자</td><td className="font-mono">{'[^0-9] → 숫자 아님'}</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="overflow-x-auto text-sm mb-4">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">수량자 · 위치</th>
+                <th className="text-left py-2 px-2">의미</th>
+                <th className="text-left py-2 px-2">예시</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">*</td><td>0개 이상</td><td className="font-mono">ab*c → ac, abbc</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">+</td><td>1개 이상</td><td className="font-mono">ab+c → abc (ac 불가)</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">?</td><td>0개 또는 1개</td><td className="font-mono">colou?r</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">{'{2,4}'}</td><td>2개 이상 4개 이하</td><td className="font-mono">{'\\d{2,4} → 12, 1234'}</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">^</td><td>문자열(줄) 시작</td><td className="font-mono">^Hello</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">$</td><td>문자열(줄) 끝</td><td className="font-mono">{'\\.com$'}</td></tr>
+              <tr><td className="py-1.5 px-2 font-mono">|</td><td>또는</td><td className="font-mono">cat|dog</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">플래그</th>
+                <th className="text-left py-2 px-2">의미</th>
+                <th className="text-left py-2 px-2">없으면 생기는 일</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">g</td><td>전역 검색</td><td>첫 번째 일치만 찾음</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">i</td><td>대소문자 무시</td><td>Apple과 apple을 구분</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">m</td><td>여러 줄 모드</td><td>^ $가 전체 문자열에만 적용</td></tr>
+              <tr><td className="py-1.5 px-2 font-mono">s</td><td>. 이 줄바꿈도 포함</td><td>. 이 줄바꿈을 건너뜀</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ 정규식에서 자주 터지는 함정
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li>
+            <strong>탐욕적 매칭</strong> —{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">{'<.+>'}</code>는{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">{'<b>글자</b>'}</code> 전체를 한 덩어리로 잡습니다.
+            태그 하나만 잡으려면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">{'<.+?>'}</code>처럼 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">?</code>를 붙이세요.
+          </li>
+          <li>
+            <strong>문자 클래스 안에서는 규칙이 다름</strong> — 대괄호 안의{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">.</code>은 그냥 마침표이고,{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">-</code>는 위치에 따라 범위 기호가 됩니다.
+          </li>
+          <li>
+            <strong>g 플래그와 상태</strong> — 자바스크립트에서 g가 붙은 정규식 객체는 마지막 검색 위치를 기억합니다.
+            같은 객체를 반복 사용하면 결과가 들쭉날쭉해집니다.
+          </li>
+          <li>
+            <strong>이메일 검증 과신 금지</strong> — 정규식으로 완벽한 이메일 검증은 사실상 불가능합니다.
+            형식만 가볍게 거르고 실제 유효성은 인증 메일로 확인하는 편이 안전합니다.
+          </li>
+          <li>
+            <strong>백트래킹 폭발</strong> —{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">{'(a+)+b'}</code>처럼 중첩된 수량자는
+            입력이 조금만 길어져도 처리 시간이 급격히 늘어날 수 있습니다.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 정규식 작성 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -330,6 +427,18 @@ function SeoContent() {
           {
             question: '왜 패턴이 작동하지 않나요?',
             answer: '플래그를 확인하세요. g가 없으면 첫 번째만 매칭됩니다. 또한 JavaScript 정규식과 다른 언어의 정규식은 약간 다를 수 있습니다.',
+          },
+          {
+            question: '.+ 를 썼더니 너무 많이 잡혀요.',
+            answer: '기본 동작이 탐욕적(greedy)이라 가능한 길게 매칭하기 때문입니다. 뒤에 ?를 붙여 .+? 로 바꾸면 가장 짧게 매칭하는 비탐욕 모드가 됩니다.',
+          },
+          {
+            question: '한글도 매칭할 수 있나요?',
+            answer: '가능합니다. [가-힣]으로 완성형 한글을, [ㄱ-ㅎㅏ-ㅣ]로 자음·모음을 매칭할 수 있습니다. \\w는 한글을 포함하지 않으니 주의하세요.',
+          },
+          {
+            question: '입력한 텍스트가 서버로 전송되나요?',
+            answer: '아니요. 정규식 실행과 하이라이트 모두 브라우저에서 처리되며 패턴이나 테스트 문자열이 서버로 전송되지 않습니다.',
           },
         ]}
       />
