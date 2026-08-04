@@ -453,6 +453,58 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📖 측정 항목이 각각 뜻하는 것
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          속도라고 하면 보통 다운로드 숫자만 보지만, 체감 품질을 결정하는 건 상황마다 다릅니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">항목</th>
+                <th className="text-left py-2 px-2">의미</th>
+                <th className="text-left py-2 px-2">낮으면(나쁘면) 생기는 일</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-medium">다운로드</td><td>받아오는 속도</td><td>영상 화질 저하, 버퍼링</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-medium">업로드</td><td>보내는 속도</td><td>화상회의에서 내 화면이 깨짐, 파일 전송 지연</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-medium">핑(지연)</td><td>왕복 응답 시간</td><td>게임 조작 밀림, 통화 어색함</td></tr>
+              <tr><td className="py-1.5 px-2 font-medium">지터</td><td>핑의 흔들림 폭</td><td>음성 끊김, 순간적인 랙</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          <strong>게임이 렉 걸린다</strong>면 대역폭보다 핑과 지터를 봐야 합니다.
+          1Gbps 회선이어도 핑이 100ms를 넘으면 조작이 밀리고, 반대로 50Mbps여도 핑이 20ms면 쾌적합니다.
+          <strong>화상회의에서 내 얼굴만 깨진다</strong>면 업로드 속도가 원인인 경우가 대부분입니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔍 속도가 안 나올 때 확인 순서
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          회선 자체보다 집 안 환경이 병목인 경우가 훨씬 많습니다. 위에서부터 순서대로 확인해 보세요.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>유선으로 다시 측정</strong> — 와이파이는 환경에 따라 손실이 큽니다. 유선에서 정상이면 회선이 아니라 무선 문제입니다.</li>
+          <li><strong>공유기 사양 확인</strong> — 기가 회선인데 공유기 포트가 100Mbps라면 절대 그 이상 나오지 않습니다. 오래된 공유기에서 흔한 원인입니다.</li>
+          <li><strong>랜선 등급</strong> — 카테고리 5(CAT5) 케이블은 100Mbps까지입니다. 기가 속도를 내려면 CAT5e 이상이 필요합니다.</li>
+          <li><strong>2.4GHz vs 5GHz</strong> — 2.4GHz는 멀리 가지만 느리고 간섭이 많습니다. 공유기 근처라면 5GHz로 연결하세요.</li>
+          <li><strong>동시 사용량</strong> — 가족이 4K 영상을 보고 있거나 클라우드 백업이 돌고 있으면 대역폭을 나눠 쓰게 됩니다.</li>
+          <li><strong>측정 시간대</strong> — 저녁 시간대는 지역 전체가 혼잡해 평소보다 느릴 수 있습니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed mt-3">
+          위를 모두 확인했는데도 약정 속도의 절반에 못 미친다면 통신사에 점검을 요청할 근거가 됩니다.
+          측정 결과를 시간대별로 몇 번 남겨두면 상담이 수월합니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 속도 개선 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -477,6 +529,18 @@ function SeoContent() {
           {
             question: '측정 결과가 약정 속도보다 낮아요',
             answer: '약정 속도는 이론상 최대치입니다. WiFi 손실, 라우터 성능, 서버 거리, 네트워크 혼잡 등으로 70-90% 수준이 일반적입니다. 유선 연결로 다시 테스트해보세요.',
+          },
+          {
+            question: '기가 인터넷인데 100Mbps 정도만 나와요.',
+            answer: '공유기 포트나 랜선이 100Mbps 규격일 가능성이 높습니다. 기가 속도를 내려면 공유기가 기가비트 포트를 지원해야 하고 랜선도 CAT5e 이상이어야 합니다.',
+          },
+          {
+            question: '게임이 렉 걸리는데 속도를 올리면 해결되나요?',
+            answer: '대부분 아닙니다. 게임에서 중요한 건 대역폭보다 핑과 지터입니다. 1Gbps여도 핑이 100ms를 넘으면 조작이 밀리고, 50Mbps여도 핑이 20ms면 쾌적합니다.',
+          },
+          {
+            question: '화상회의에서 제 화면만 깨집니다.',
+            answer: '업로드 속도가 부족한 경우가 대부분입니다. 가정용 회선은 다운로드에 대역폭을 몰아주는 비대칭 구조라 업로드가 낮게 나옵니다. 업로드 값을 확인해 보세요.',
           },
         ]}
       />
