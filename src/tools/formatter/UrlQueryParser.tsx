@@ -56,6 +56,53 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔡 URL 인코딩 대조표
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          쿼리 값에 들어가면 문제를 일으키는 문자들입니다. 인코딩하지 않으면 파라미터 경계가 잘못 잘려
+          값이 통째로 사라지거나 엉뚱하게 나뉩니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">문자</th>
+                <th className="text-left py-2 px-2">인코딩</th>
+                <th className="text-left py-2 px-2">인코딩하지 않으면</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">(공백)</td><td className="font-mono">%20 또는 +</td><td>URL이 잘려 인식됨</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">&amp;</td><td className="font-mono">%26</td><td>새 파라미터 시작으로 오인</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">=</td><td className="font-mono">%3D</td><td>키와 값 구분자로 오인</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">?</td><td className="font-mono">%3F</td><td>쿼리 시작으로 오인</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">#</td><td className="font-mono">%23</td><td>이후 전부 해시로 처리되어 서버에 전달 안 됨</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">+</td><td className="font-mono">%2B</td><td>공백으로 해석됨</td></tr>
+              <tr><td className="py-1.5 px-2 font-mono">가</td><td className="font-mono">%EA%B0%80</td><td>환경에 따라 깨짐</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          한글은 UTF-8 기준으로 한 글자가 3바이트라 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%XX</code>가 세 개씩 붙습니다.
+          검색어를 URL에 담을 때 유독 길어지는 이유입니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🐛 쿼리스트링에서 자주 겪는 문제
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>URL 안에 URL을 넣을 때</strong> — 리다이렉트 주소를 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">?redirect=https://...</code>처럼 그대로 넣으면 그 안의 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">&amp;</code>가 파라미터 구분자로 잘립니다. 반드시 인코딩해야 합니다.</li>
+          <li><strong>이중 인코딩</strong> — 이미 인코딩된 값을 또 인코딩하면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%25EA%25B0%2580</code>처럼 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%</code>가 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%25</code>로 변해 원본을 잃습니다.</li>
+          <li><strong>공백을 + 로 쓸지 %20으로 쓸지</strong> — 폼 전송에서는 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">+</code>가 공백을 뜻하지만, 경로 부분에서는 그냥 플러스 기호입니다. 안전하게 하려면 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">%20</code>을 쓰세요.</li>
+          <li><strong>URL 길이 제한</strong> — 명확한 표준은 없지만 브라우저·서버·프록시마다 상한이 달라, 아주 긴 데이터는 쿼리 대신 POST 본문으로 보내는 편이 안전합니다.</li>
+          <li><strong>민감 정보 노출</strong> — 쿼리스트링은 브라우저 기록·서버 로그·리퍼러 헤더에 그대로 남습니다. 토큰이나 개인정보를 담지 마세요.</li>
+        </ul>
+      </section>
+
       <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900 p-4 text-sm">
         <p className="font-semibold text-blue-900 dark:text-blue-200 mb-1">💡 실무 팁</p>
         <p className="text-blue-800 dark:text-blue-300">
@@ -77,6 +124,18 @@ function SeoContent() {
           {
             question: '해시(#) 이후의 내용도 서버로 전송되나요?',
             answer: '아니요, 해시 프래그먼트는 브라우저에서만 사용되며 서버로 전송되지 않습니다. 페이지 내 특정 위치로 스크롤하거나 SPA 라우팅에 사용됩니다.',
+          },
+          {
+            question: 'URL 안에 다른 URL을 넣으려면 어떻게 하나요?',
+            answer: '반드시 인코딩해야 합니다. redirect=https://a.com?x=1&y=2 처럼 그대로 넣으면 &부터 별도 파라미터로 잘립니다. 값 전체를 URL 인코딩하면 하나의 값으로 안전하게 전달됩니다.',
+          },
+          {
+            question: '%25가 잔뜩 붙은 URL은 왜 그런가요?',
+            answer: '이중 인코딩된 상태입니다. %가 다시 %25로 인코딩되면서 생깁니다. 한 번 디코딩한 뒤 원본이 나오는지 확인하고, 인코딩은 한 번만 적용하도록 코드를 점검하세요.',
+          },
+          {
+            question: '쿼리스트링에 토큰을 담아도 되나요?',
+            answer: '권장하지 않습니다. 브라우저 방문 기록, 서버 접근 로그, 외부 사이트로 전달되는 리퍼러 헤더에 그대로 남습니다. 인증 정보는 헤더나 POST 본문으로 전달하세요.',
           },
         ]}
       />

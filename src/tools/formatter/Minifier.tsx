@@ -58,6 +58,60 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📄 압축 전후 비교
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          CSS를 예로 보면, 사람이 읽기 위해 넣은 요소가 얼마나 큰 비중인지 드러납니다.
+          아래 코드는 압축 후 약 40% 줄어듭니다.
+        </p>
+        <div className="space-y-3">
+          <div>
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">압축 전</p>
+            <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`/* 메인 버튼 스타일 */
+.btn-primary {
+    background-color: #3b82f6;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+}`}
+            </pre>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">압축 후</p>
+            <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`.btn-primary{background-color:#3b82f6;color:#fff;padding:12px 24px;border-radius:8px}`}
+            </pre>
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          실제 절감 효과는 코드 스타일에 따라 다릅니다. 주석과 들여쓰기가 많은 CSS는 절반 가까이 줄기도 하고,
+          이미 간결하게 작성된 코드는 10~20% 정도에 그칩니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ 압축이 깨뜨릴 수 있는 것들
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          공백 제거는 단순해 보이지만, 공백이 의미를 갖는 자리가 있습니다. 압축 후에는 반드시 동작을 확인하세요.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>HTML의 인라인 요소 사이 공백</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">{`<span>A</span> <span>B</span>`}</code>의 공백을 지우면 화면에서 두 글자가 붙어버립니다.</li>
+          <li><strong>&lt;pre&gt;와 &lt;textarea&gt;</strong> — 내부 공백과 줄바꿈이 그대로 출력되는 태그라 압축하면 표시가 달라집니다.</li>
+          <li><strong>세미콜론 없는 JS</strong> — 줄바꿈에 의존해 문장을 구분하던 코드는 한 줄로 합쳐지면 문법 오류가 납니다.</li>
+          <li><strong>템플릿 리터럴</strong> — 백틱 문자열 안의 줄바꿈은 실제 값의 일부입니다.</li>
+          <li><strong>조건부 주석·라이선스 주석</strong> — 오픈소스 라이브러리는 라이선스 고지 주석을 유지해야 하는 경우가 있습니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed mt-3">
+          실무에서는 <strong>Gzip이나 Brotli 압축</strong>이 서버 단에서 한 번 더 적용됩니다.
+          Minify와 중복처럼 보이지만 원리가 달라 함께 쓸 때 효과가 가장 큽니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -90,6 +144,18 @@ function SeoContent() {
           {
             question: 'Beautify는 언제 사용하나요?',
             answer: '압축된 라이브러리나 난독화된 코드를 분석할 때, 또는 코드 리뷰/학습 목적으로 가독성 있게 정렬하고 싶을 때 사용합니다.',
+          },
+          {
+            question: 'Gzip을 쓰는데도 Minify가 필요한가요?',
+            answer: '네. Minify는 불필요한 문자를 실제로 없애고, Gzip은 남은 내용을 압축 알고리즘으로 줄입니다. 원리가 달라 함께 적용할 때 효과가 가장 큽니다.',
+          },
+          {
+            question: 'HTML을 압축했더니 글자가 붙어버렸어요.',
+            answer: '인라인 요소 사이의 공백은 화면에 실제 간격으로 렌더링되기 때문입니다. span이나 a 태그가 나란히 있는 구간은 압축 후 표시를 확인하고, 필요하면 CSS 여백으로 대체하세요.',
+          },
+          {
+            question: '입력한 코드가 서버로 전송되나요?',
+            answer: '아니요. 압축과 정렬 모두 브라우저에서 처리되며 코드가 서버로 전송되거나 저장되지 않습니다. 사내 코드도 안전하게 사용할 수 있습니다.',
           },
         ]}
       />
