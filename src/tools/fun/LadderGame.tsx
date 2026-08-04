@@ -694,6 +694,41 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          사다리는 어떤 원리로 공정한가
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          사다리 타기의 핵심은 <strong>가로선 하나가 두 세로줄의 위치를 서로 맞바꾼다</strong>는 점입니다.
+          위에서부터 가로선을 만날 때마다 자리가 교환되고, 끝까지 내려가면 최종 위치가 결정됩니다.
+        </p>
+        <p className="text-sm leading-relaxed mb-3">
+          여기서 중요한 성질이 하나 있습니다. <strong>서로 다른 출발점은 절대 같은 도착점에 도달할 수 없습니다.</strong>{' '}
+          자리를 맞바꾸기만 할 뿐 합치거나 없애지 않기 때문입니다. 그래서 참가자 수와 결과 수가 같으면
+          <strong> 모든 결과가 정확히 한 명씩</strong> 배정되며, 중복이나 누락이 생기지 않습니다.
+        </p>
+        <p className="text-sm leading-relaxed">
+          가로선이 무작위로 배치되므로 각 참가자가 특정 결과를 받을 확률은 모두 동일합니다.
+          제비뽑기와 수학적으로 같은 구조지만, <strong>경로를 눈으로 따라갈 수 있어</strong> 결과를 납득시키기 쉽다는 것이 사다리의 장점입니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          진행할 때 지키면 좋은 순서
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          결과보다 <strong>진행 순서</strong> 때문에 시비가 붙는 경우가 많습니다. 아래 순서대로 하면 뒷말이 줄어듭니다.
+        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong>참가자와 결과를 먼저 확정</strong> — 사다리를 만든 뒤 항목을 고치면 신뢰가 깨집니다.</li>
+          <li><strong>출발 위치를 먼저 정하기</strong> — 사다리를 본 뒤 자리를 고르면 유리한 위치를 노렸다는 오해가 생길 수 있습니다.</li>
+          <li><strong>가운데 숨기기 켜기</strong> — 경로가 보이면 결과를 역추적할 수 있습니다. 공개 전까지 가려두세요.</li>
+          <li><strong>다시 만들기 규칙 정하기</strong> — &quot;한 번만 다시&quot;처럼 기준을 미리 합의해 두면 논란이 없습니다.</li>
+          <li><strong>결과 공유</strong> — 확정된 결과를 공유하면 나중에 기억이 엇갈리는 일을 막을 수 있습니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           사용 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
@@ -719,6 +754,18 @@ function SeoContent() {
           {
             question: '결과를 미리 알 수 없게 하려면?',
             answer: '"가운데 숨기기" 옵션을 켜면 사다리 중간 부분이 가려져서 결과를 클릭하기 전까지 경로를 알 수 없습니다. 공정한 추첨을 위해 추천하는 설정입니다.',
+          },
+          {
+            question: '두 사람이 같은 결과에 도착할 수도 있나요?',
+            answer: '없습니다. 가로선은 두 줄의 위치를 맞바꾸기만 하므로 서로 다른 출발점은 반드시 서로 다른 도착점에 도달합니다. 그래서 모든 결과가 정확히 한 명씩 배정됩니다.',
+          },
+          {
+            question: '먼저 고르는 자리가 유리하지 않나요?',
+            answer: '유리한 자리는 없습니다. 가로선이 무작위로 배치되어 어느 출발점에서 시작하든 각 결과를 받을 확률은 동일합니다. 다만 사다리를 본 뒤 자리를 고르면 오해가 생길 수 있으니 위치를 먼저 정하는 것이 좋습니다.',
+          },
+          {
+            question: '결과가 서버에 저장되나요?',
+            answer: '아니요. 사다리 생성과 경로 계산 모두 브라우저 안에서 처리되며 참가자 이름이나 결과가 서버로 전송되지 않습니다.',
           },
         ]}
       />

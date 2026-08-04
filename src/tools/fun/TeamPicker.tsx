@@ -864,6 +864,54 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          인원별 팀 구성표
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          인원이 팀 수로 나누어떨어지지 않을 때 어떻게 배분되는지 미리 확인해 두면 진행이 매끄럽습니다.
+          라운드 로빈 방식이라 팀 간 인원 차이는 항상 <strong>최대 1명</strong>입니다.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs border-collapse">
+            <thead>
+              <tr className="border-b border-gray-200 dark:border-gray-700">
+                <th className="text-left py-2 px-3 font-semibold">인원</th>
+                <th className="text-left py-2 px-3 font-semibold">2팀</th>
+                <th className="text-left py-2 px-3 font-semibold">3팀</th>
+                <th className="text-left py-2 px-3 font-semibold">4팀</th>
+              </tr>
+            </thead>
+            <tbody className="text-gray-600 dark:text-gray-400 font-mono">
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-1.5 px-3">7명</td><td>4·3</td><td>3·2·2</td><td>2·2·2·1</td></tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-1.5 px-3">10명</td><td>5·5</td><td>4·3·3</td><td>3·3·2·2</td></tr>
+              <tr className="border-b border-gray-100 dark:border-gray-800"><td className="py-1.5 px-3">13명</td><td>7·6</td><td>5·4·4</td><td>4·3·3·3</td></tr>
+              <tr><td className="py-1.5 px-3">20명</td><td>10·10</td><td>7·7·6</td><td>5·5·5·5</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          인원이 애매하면 팀 수를 바꿔보는 것도 방법입니다. 예를 들어 13명은 4팀으로 나누면 4·3·3·3으로
+          비교적 고르지만, 5팀으로 나누면 3·3·3·2·2가 되어 편차가 커집니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          무작위 배정이 어색할 때
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          완전 무작위는 공정하지만, 상황에 따라 결과가 한쪽으로 쏠려 보일 수 있습니다.
+          이럴 때 쓰는 현실적인 방법들입니다.
+        </p>
+        <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
+          <li><strong>실력 차가 큰 스포츠</strong> — 잘하는 사람끼리 한 팀이 되면 경기가 시시해집니다. 상위권과 하위권을 따로 나눠 각각 돌린 뒤 합치면 균형이 맞습니다.</li>
+          <li><strong>같은 부서끼리 묶이는 워크숍</strong> — 교류가 목적이라면 부서별로 나눠 돌린 뒤 한 명씩 배분하는 편이 낫습니다.</li>
+          <li><strong>다시 섞기는 한 번만</strong> — 마음에 들 때까지 계속 돌리면 공정성이 의심받습니다. 재실행 횟수를 미리 정해두세요.</li>
+          <li><strong>인원 확정 후 실행</strong> — 뽑고 나서 사람이 추가되면 처음부터 다시 하는 편이 깔끔합니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           사용 팁
         </h2>
         <ul className="text-sm space-y-2 list-disc list-inside text-gray-600 dark:text-gray-400">
@@ -888,6 +936,18 @@ function SeoContent() {
           {
             question: '팀 이름을 바꿀 수 있나요?',
             answer: '네, 결과 화면에서 팀 이름 부분을 클릭하면 직접 수정할 수 있습니다. "1팀" 대신 "레드팀", "호랑이팀" 등 원하는 이름으로 변경하세요.',
+          },
+          {
+            question: '실력이 비슷하게 나뉘도록 할 수 있나요?',
+            answer: '완전 무작위 방식이라 실력은 고려하지 않습니다. 균형이 필요하면 상위권과 하위권을 따로 나눠 각각 팀 뽑기를 돌린 뒤 합치는 방법이 효과적입니다.',
+          },
+          {
+            question: '참가자 명단이 서버로 전송되나요?',
+            answer: '아니요. 배정은 브라우저 안에서만 처리됩니다. 목록은 편의를 위해 브라우저 저장소에 남아 다음 방문에도 유지되지만, 외부로 전송되지는 않습니다.',
+          },
+          {
+            question: '몇 명까지 넣을 수 있나요?',
+            answer: '인원 수 자체에는 실질적인 제한이 없어 수십 명 규모도 처리할 수 있습니다. 팀 수는 2팀에서 8팀까지 선택할 수 있습니다.',
           },
         ]}
       />
