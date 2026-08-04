@@ -187,6 +187,58 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔁 같은 문구, 케이스별 변환 결과
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">user profile image</code> 한 문구를
+          각 케이스로 바꾸면 이렇게 됩니다. 규칙을 말로 외우는 것보다 결과를 나란히 보는 편이 빠릅니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">케이스</th>
+                <th className="text-left py-2 px-2">결과</th>
+                <th className="text-left py-2 px-2">주로 쓰이는 곳</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">camelCase</td><td className="font-mono">userProfileImage</td><td>JS·Java 변수, JSON 키</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">PascalCase</td><td className="font-mono">UserProfileImage</td><td>클래스, React 컴포넌트</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">snake_case</td><td className="font-mono">user_profile_image</td><td>Python 변수, DB 컬럼</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">kebab-case</td><td className="font-mono">user-profile-image</td><td>URL, CSS 클래스, 파일명</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">CONSTANT_CASE</td><td className="font-mono">USER_PROFILE_IMAGE</td><td>상수, 환경변수</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">Title Case</td><td className="font-mono">User Profile Image</td><td>제목, 버튼 라벨</td></tr>
+              <tr><td className="py-1.5 px-2">UPPERCASE</td><td className="font-mono">USER PROFILE IMAGE</td><td>강조, 헤더</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🌐 언어·환경별 관례
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          케이스는 취향이 아니라 생태계의 약속입니다. 관례를 어기면 코드 리뷰에서 지적받거나
+          프레임워크가 값을 못 찾는 일이 생깁니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>JavaScript / TypeScript</strong> — 변수·함수는 camelCase, 클래스·타입·컴포넌트는 PascalCase, 상수는 CONSTANT_CASE.</li>
+          <li><strong>Python</strong> — 변수·함수는 snake_case, 클래스는 PascalCase. PEP 8에 명시된 규칙입니다.</li>
+          <li><strong>데이터베이스</strong> — 테이블·컬럼은 snake_case가 일반적입니다. 대소문자 처리 방식이 DB마다 달라 소문자 통일이 안전합니다.</li>
+          <li><strong>CSS / HTML</strong> — 클래스와 속성은 kebab-case. HTML 속성은 대소문자를 구분하지 않으므로 소문자 하이픈이 관례입니다.</li>
+          <li><strong>URL</strong> — kebab-case가 표준입니다. 언더스코어는 밑줄과 겹쳐 보여 가독성이 떨어집니다.</li>
+          <li><strong>환경변수</strong> — CONSTANT_CASE. 셸에서 소문자 변수와 충돌을 피하기 위한 관례입니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed mt-3">
+          API를 만들 때는 <strong>서버(snake_case)와 프론트(camelCase)의 경계</strong>에서 변환이 필요한 경우가 많습니다.
+          한쪽에서 일괄 변환하는 규칙을 정해두면 혼선을 줄일 수 있습니다.
+        </p>
+      </section>
+
       <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
         <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 선택 팁</p>
         <p className="text-indigo-800 dark:text-indigo-300">
@@ -208,6 +260,18 @@ function SeoContent() {
           {
             question: 'camelCase와 PascalCase의 차이는?',
             answer: 'camelCase는 첫 단어가 소문자(userName)이고, PascalCase는 첫 단어도 대문자(UserName)입니다. 변수에는 camelCase, 클래스/타입에는 PascalCase를 사용합니다.',
+          },
+          {
+            question: 'URL에는 kebab-case와 snake_case 중 뭐가 좋나요?',
+            answer: 'kebab-case가 표준입니다. 언더스코어는 링크에 밑줄이 그어지면 잘 안 보이는 문제가 있어, 하이픈으로 단어를 구분하는 방식이 널리 쓰입니다.',
+          },
+          {
+            question: '약어(ID, URL, API)는 어떻게 처리하나요?',
+            answer: '팀 규칙에 따라 다릅니다. userId처럼 첫 글자만 대문자로 쓰는 방식이 가장 널리 쓰이고, userID처럼 약어를 전부 대문자로 두는 스타일도 있습니다. 한 프로젝트 안에서는 하나로 통일하는 것이 중요합니다.',
+          },
+          {
+            question: '입력한 텍스트가 저장되나요?',
+            answer: '아니요. 변환은 브라우저에서만 처리되며 입력 내용이 서버로 전송되거나 저장되지 않습니다.',
           },
         ]}
       />

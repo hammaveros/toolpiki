@@ -146,6 +146,57 @@ function SeoContent() {
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔎 옵션에 따라 결과가 이렇게 달라집니다
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          같은 입력이라도 대소문자 구분과 공백 처리 설정에 따라 남는 줄이 달라집니다.
+          아래 5줄을 예로 들어 보겠습니다.
+        </p>
+        <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`hong@example.com
+HONG@example.com
+  hong@example.com
+kim@example.com
+kim@example.com`}
+        </pre>
+        <div className="overflow-x-auto text-sm mt-3">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">대소문자 구분</th>
+                <th className="text-left py-2 px-2">앞뒤 공백 제거</th>
+                <th className="text-left py-2 px-2">남는 줄 수</th>
+                <th className="text-left py-2 px-2">설명</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">켬</td><td>끔</td><td className="font-mono">4줄</td><td>대문자·들여쓰기 모두 다른 줄로 취급</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">켬</td><td>켬</td><td className="font-mono">3줄</td><td>들여쓰기 차이만 병합</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">끔</td><td>끔</td><td className="font-mono">3줄</td><td>대소문자 차이만 병합</td></tr>
+              <tr><td className="py-2 px-2">끔</td><td>켬</td><td className="font-mono">2줄</td><td>가장 공격적으로 병합</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          이메일 주소는 대소문자를 구분하지 않는 것이 일반적이므로, 목록 정리에는 <strong>둘 다 끄고 공백 제거만 켠 설정</strong>이 잘 맞습니다.
+          반대로 코드나 ID처럼 대소문자가 의미를 갖는 데이터는 구분을 켜야 안전합니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ 중복 제거 전 확인할 것
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>보이지 않는 문자</strong> — 줄 끝의 공백이나 윈도우 줄바꿈(CRLF)이 섞이면 눈에 같아 보여도 다른 줄로 처리됩니다. 공백 제거 옵션을 켜면 대부분 해결됩니다.</li>
+          <li><strong>중복이 정보인 경우</strong> — 로그에서 같은 에러가 몇 번 발생했는지가 중요한 상황이라면, 중복을 지우기 전에 횟수를 먼저 세어 두세요.</li>
+          <li><strong>CSV 헤더</strong> — 여러 파일을 합친 데이터에는 헤더 행이 중간중간 섞여 있을 수 있습니다. 중복 제거로 하나만 남지만, 그 위치가 맨 위가 아닐 수 있습니다.</li>
+          <li><strong>순서가 중요한 데이터</strong> — 이 도구는 처음 등장 순서를 유지하지만, 정렬이 필요하다면 별도로 정렬해야 합니다.</li>
+        </ul>
+      </section>
+
       <div className="rounded-lg bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-100 dark:border-indigo-900 p-4 text-sm">
         <p className="font-semibold text-indigo-900 dark:text-indigo-200 mb-1">💡 활용 팁</p>
         <p className="text-indigo-800 dark:text-indigo-300">
@@ -167,6 +218,18 @@ function SeoContent() {
           {
             question: '탭이나 공백만 다른 줄도 중복으로 처리되나요?',
             answer: '"앞뒤 공백 제거" 옵션을 활성화하면 줄 앞뒤의 공백과 탭을 제거한 후 비교하므로, 들여쓰기만 다른 줄도 중복으로 처리됩니다. 비활성화하면 공백 차이도 구분합니다.',
+          },
+          {
+            question: '눈으로 보기엔 같은 줄인데 중복 제거가 안 돼요.',
+            answer: '줄 끝 공백이나 윈도우 줄바꿈(CRLF)이 섞인 경우가 많습니다. "앞뒤 공백 제거" 옵션을 켜면 대부분 해결됩니다. 대소문자만 다른 경우라면 "대소문자 구분"을 끄세요.',
+          },
+          {
+            question: '몇 줄이 제거됐는지 알 수 있나요?',
+            answer: '결과 영역에서 원본과 처리 후의 줄 수를 비교하면 제거된 개수를 확인할 수 있습니다. 중복 발생 횟수 자체가 중요한 로그 분석에는 단어 빈도 도구가 더 적합합니다.',
+          },
+          {
+            question: '입력한 텍스트가 서버로 전송되나요?',
+            answer: '아니요. 모든 처리는 브라우저 안에서 이루어지며 입력한 내용이 서버로 전송되거나 저장되지 않습니다. 고객 이메일 목록 같은 민감한 데이터도 안전하게 정리할 수 있습니다.',
           },
         ]}
       />
