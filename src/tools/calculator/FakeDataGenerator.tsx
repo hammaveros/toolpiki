@@ -279,6 +279,46 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🧪 좋은 테스트 데이터의 조건
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          &quot;홍길동, 010-1234-5678&quot; 같은 반듯한 데이터만 넣고 테스트하면 실제 서비스에서 터집니다.
+          <strong>경계값과 예외 케이스</strong>가 섞여 있어야 의미 있는 검증이 됩니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>아주 긴 이름·주소</strong> — 레이아웃이 깨지거나 말줄임 처리가 필요한 지점을 찾을 수 있습니다.</li>
+          <li><strong>한 글자 이름</strong> — 최소 길이 검증이 지나치게 엄격하지 않은지 확인합니다.</li>
+          <li><strong>정렬 확인용 데이터</strong> — 가나다순, 숫자순 정렬이 의도대로 되는지 봅니다. 숫자를 문자열로 정렬하면 10이 2보다 앞에 옵니다.</li>
+          <li><strong>날짜 경계</strong> — 월말, 연말, 윤년 2월 29일이 포함되면 날짜 계산 버그가 드러납니다.</li>
+          <li><strong>빈 값과 null</strong> — 선택 입력 항목이 비어 있을 때 화면이 깨지지 않는지 확인합니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed mt-3">
+          데이터 양도 중요합니다. 10건으로는 멀쩡하던 목록 화면이 <strong>1,000건에서 느려지는</strong> 경우가 흔합니다.
+          페이지네이션과 검색 성능은 충분한 양으로 확인해야 합니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔒 실제 데이터를 쓰면 안 되는 이유
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          개발·테스트 환경에 운영 DB를 복사해 쓰는 관행은 여전히 흔하지만, 위험이 큽니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>개인정보 유출 경로</strong> — 개발 서버는 보안 수준이 낮은 경우가 많고, 접근 권한도 넓게 열려 있습니다.</li>
+          <li><strong>실수로 발송되는 알림</strong> — 테스트 중 실제 고객에게 문자나 메일이 나가는 사고가 대표적입니다.</li>
+          <li><strong>법적 문제</strong> — 개인정보는 수집 목적 범위에서만 사용해야 하며, 테스트 용도 전용은 여기에 해당하지 않을 수 있습니다.</li>
+          <li><strong>화면 캡처·시연</strong> — 데모나 문서에 실명·연락처가 그대로 노출되는 일이 생깁니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed mt-3">
+          형식만 현실적이면 테스트 목적은 충분히 달성됩니다.
+          운영 데이터를 꼭 써야 한다면 이름·연락처를 치환한 <strong>비식별 처리</strong>를 거치는 것이 원칙입니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -303,6 +343,18 @@ function SeoContent() {
           {
             question: '같은 필드를 여러 개 추가할 수 있나요?',
             answer: '네, 동일한 타입의 필드를 여러 개 추가할 수 있습니다. 예를 들어 이메일 필드를 2개 추가하면 email, email2 키로 각각 다른 값이 생성됩니다.',
+          },
+          {
+            question: '테스트에 실제 운영 데이터를 쓰면 안 되나요?',
+            answer: '권장하지 않습니다. 개발 환경은 보안 수준이 낮고, 테스트 중 실제 고객에게 알림이 발송되는 사고도 흔합니다. 개인정보를 목적 외로 사용하는 문제도 있어 가짜 데이터를 쓰는 편이 안전합니다.',
+          },
+          {
+            question: '생성한 데이터가 서버에 저장되나요?',
+            answer: '아니요. 데이터 생성과 내보내기 모두 브라우저 안에서 처리되며 서버로 전송되거나 저장되지 않습니다.',
+          },
+          {
+            question: '100개보다 더 많이 필요하면 어떻게 하나요?',
+            answer: '여러 번 생성해 합치거나, 내보낸 JSON/CSV를 스크립트로 반복 처리하는 방법이 있습니다. 성능 테스트처럼 수만 건이 필요한 경우에는 별도의 생성 스크립트를 작성하는 편이 효율적입니다.',
           },
         ]}
       />

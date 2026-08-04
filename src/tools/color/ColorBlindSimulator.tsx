@@ -343,6 +343,55 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🎨 색각이상에 안전한 팔레트 선택
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          같은 &quot;구분되는 두 색&quot;이라도 조합에 따라 결과가 크게 갈립니다.
+          적록 색각이상에서 특히 취약한 조합과 안전한 대안입니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">피해야 할 조합</th>
+                <th className="text-left py-2 px-2">문제</th>
+                <th className="text-left py-2 px-2">대안</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">빨강 · 초록</td><td>거의 같은 색으로 보임</td><td>파랑 · 주황</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">초록 · 갈색</td><td>구분 거의 불가</td><td>파랑 · 노랑</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">연두 · 노랑</td><td>명도까지 비슷해 겹침</td><td>진한 파랑 · 밝은 노랑</td></tr>
+              <tr><td className="py-1.5 px-2">분홍 · 회색</td><td>채도가 낮아지면 동일</td><td>명도 차이를 크게</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          핵심은 <strong>색상(Hue)이 아니라 명도(Lightness) 차이</strong>를 두는 것입니다.
+          색상만 다르고 밝기가 비슷하면 색각이상에서 하나로 뭉쳐 보이지만,
+          명도가 충분히 다르면 색을 구분하지 못해도 &quot;진한 쪽과 연한 쪽&quot;으로 인식됩니다.
+          <strong>파랑 계열은 대부분의 색각이상에서 비교적 안정적</strong>으로 보이므로 기준 색으로 삼기 좋습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📈 데이터 시각화에서의 대응
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          차트는 색에 의존하기 쉬운 대표적인 영역입니다. 색 외의 단서를 하나만 더해도 크게 개선됩니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>계열 수를 줄이기</strong> — 한 차트에 5개 이상의 색을 쓰면 누구에게나 구분이 어렵습니다.</li>
+          <li><strong>직접 라벨링</strong> — 범례 대신 선 끝에 이름을 붙이면 색과 계열을 대조할 필요가 없어집니다.</li>
+          <li><strong>선 모양과 마커</strong> — 실선·점선, 원·삼각형·사각형 마커로 색 없이도 구분됩니다.</li>
+          <li><strong>막대는 패턴</strong> — 빗금이나 도트 패턴을 넣으면 흑백 인쇄에서도 읽힙니다.</li>
+          <li><strong>순차형 데이터는 단색 그라데이션</strong> — 하나의 색상에서 밝기만 변화시키면 색각이상에서도 순서가 유지됩니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 접근성 디자인 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -368,6 +417,18 @@ function SeoContent() {
           {
             question: '이미지가 서버로 전송되나요?',
             answer: '아니요, 모든 이미지 처리는 브라우저에서 로컬로 이루어집니다. 개인정보 보호를 위해 이미지는 어디에도 업로드되지 않습니다.',
+          },
+          {
+            question: '빨강-초록 대신 어떤 색 조합을 써야 하나요?',
+            answer: '파랑-주황 조합이 가장 안전합니다. 파랑 계열은 대부분의 색각이상에서 비교적 안정적으로 보이기 때문에 기준 색으로 삼기 좋습니다.',
+          },
+          {
+            question: '색상만 다르면 구분되는 것 아닌가요?',
+            answer: '아닙니다. 색상이 달라도 밝기가 비슷하면 색각이상에서 하나로 뭉쳐 보입니다. 명도 차이를 충분히 두면 색을 구분하지 못해도 진한 쪽과 연한 쪽으로 인식됩니다.',
+          },
+          {
+            question: '차트에서 계열을 구분하려면 어떻게 하나요?',
+            answer: '색 외의 단서를 추가하세요. 실선·점선, 마커 모양, 막대 패턴이 효과적이고, 범례 대신 선 끝에 직접 이름을 붙이면 색을 대조할 필요 자체가 없어집니다.',
           },
         ]}
       />

@@ -236,6 +236,38 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ 실무에서 자주 걸리는 사례
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          색각 이상 사용자가 실제로 불편을 겪는 지점은 대부분 <strong>색 하나에만 의미를 실은 경우</strong>입니다.
+          아래는 흔하면서도 고치기 쉬운 사례들입니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">상황</th>
+                <th className="text-left py-2 px-2">문제</th>
+                <th className="text-left py-2 px-2">해결</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">입력 오류 표시</td><td>테두리만 빨갛게</td><td>아이콘 + 오류 문구 추가</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">상태 배지</td><td>초록=정상, 빨강=장애</td><td>텍스트 라벨 함께 표기</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">꺾은선 그래프</td><td>선 색으로만 구분</td><td>실선·점선 + 마커 모양</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">주가·증감 표시</td><td>빨강·초록 화살표</td><td>▲▼ 기호와 수치 병기</td></tr>
+              <tr><td className="py-1.5 px-2">필수 입력 항목</td><td>빨간 별표만</td><td>&quot;필수&quot; 텍스트 명시</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          가장 간단한 자가 점검법은 <strong>화면을 흑백으로 놓고 보는 것</strong>입니다.
+          흑백에서도 구분되는 디자인이면 대부분의 색각 이상에서도 문제없이 읽힙니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           🎨 접근성 디자인 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -266,6 +298,18 @@ function SeoContent() {
           {
             question: '업로드한 이미지는 안전한가요?',
             answer: '네, 모든 이미지 처리는 브라우저에서 로컬로 수행되며 서버로 전송되지 않습니다. 개인 정보가 유출될 걱정이 없습니다.',
+          },
+          {
+            question: '어떤 유형부터 확인하는 게 좋나요?',
+            answer: '적록 색맹(Protanopia, Deuteranopia)입니다. 전체 색각 이상자의 대부분을 차지하므로 이 두 가지에서 정보가 구분되면 상당 부분 해결됩니다.',
+          },
+          {
+            question: '간단하게 자가 점검하는 방법이 있나요?',
+            answer: '화면을 흑백으로 놓고 보는 방법이 효과적입니다. 흑백에서도 구분되는 디자인이면 대부분의 색각 이상에서도 문제없이 읽힙니다.',
+          },
+          {
+            question: '시뮬레이션 결과가 실제와 완전히 같나요?',
+            answer: '과학적 모델에 기반한 근사치입니다. 개인마다 정도가 다르므로 경향을 파악하는 용도로 활용하고, 중요한 서비스라면 실제 사용자 테스트를 권장합니다.',
           },
         ]}
       />
