@@ -221,29 +221,43 @@ function ToolsClientPageContent({ tools, categories, isMainPage, initialSearch =
   );
 }
 
-function ToolsClientPageFallback({ tools, categories }: ToolsClientPageProps) {
+// Suspense fallback은 정적 빌드(SSG) 시 HTML로 출력되는 유일한 본문이다.
+// 스켈레톤을 렌더하면 크롤러가 도구 링크를 하나도 못 봐서 전체 도구 페이지가
+// 고아(orphan) 페이지가 되므로, 실제 도구 목록을 그대로 렌더한다.
+function ToolsClientPageFallback({ tools, categories, isEnglish = false }: ToolsClientPageProps) {
+  const basePath = isEnglish ? '/en/tools' : '/tools';
+  const sections = categories
+    .map((cat) => ({ category: cat, tools: tools.filter((t) => t.category === cat.slug) }))
+    .filter(({ tools: catTools }) => catTools.length > 0);
+
   return (
     <>
-      <div className="mb-6">
+      <div className="mb-8">
         <div className="flex gap-2 flex-wrap justify-center">
           {categories.map((cat) => (
-            <div key={cat.slug} className="h-9 w-20 bg-gray-100 dark:bg-gray-800 rounded-full animate-pulse" />
+            <span
+              key={cat.slug}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-[var(--bg-surface)] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-[var(--border-subtle)]"
+            >
+              <span aria-hidden="true">{cat.icon}</span>
+              {cat.name}
+            </span>
           ))}
         </div>
       </div>
-      <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {tools.slice(0, 12).map((tool) => (
-          <div key={tool.slug} className="h-16 bg-gray-100 dark:bg-gray-800 rounded-xl animate-pulse" />
+      <div className="space-y-10">
+        {sections.map(({ category: cat, tools: catTools }) => (
+          <CategorySection key={cat.slug} category={cat} tools={catTools} basePath={basePath} />
         ))}
       </div>
     </>
   );
 }
 
-export function ToolsClientPage({ tools, categories, isMainPage, initialSearch }: ToolsClientPageProps) {
+export function ToolsClientPage({ tools, categories, isMainPage, initialSearch, isEnglish }: ToolsClientPageProps) {
   return (
-    <Suspense fallback={<ToolsClientPageFallback tools={tools} categories={categories} />}>
-      <ToolsClientPageContent tools={tools} categories={categories} isMainPage={isMainPage} initialSearch={initialSearch} />
+    <Suspense fallback={<ToolsClientPageFallback tools={tools} categories={categories} isEnglish={isEnglish} />}>
+      <ToolsClientPageContent tools={tools} categories={categories} isMainPage={isMainPage} initialSearch={initialSearch} isEnglish={isEnglish} />
     </Suspense>
   );
 }

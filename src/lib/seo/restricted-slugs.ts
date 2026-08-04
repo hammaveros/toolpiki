@@ -53,7 +53,8 @@ export const NOINDEX_SLUGS_EN: ReadonlySet<string> = new Set([
 ]);
 
 // 라우트 단위로 noindex/광고 미노출되는 정적 경로 (locale prefix 제외한 형태)
-export const NOINDEX_STATIC_PATHS: readonly string[] = ['/chat'];
+// /letter 는 letter-qr 결과 뷰어라 고유 콘텐츠가 없다(크롤러엔 "불러오는 중"만 노출됨).
+export const NOINDEX_STATIC_PATHS: readonly string[] = ['/chat', '/letter'];
 
 export function isRestrictedSlug(slug: string): boolean {
   return NOINDEX_SLUGS_KR.has(slug) || NOINDEX_SLUGS_EN.has(slug);

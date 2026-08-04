@@ -216,26 +216,44 @@ function ToolsClientPageEnContent({ tools, categories, isMainPage, initialSearch
   );
 }
 
+// The Suspense fallback is the only body emitted into the static (SSG) HTML.
+// Rendering a skeleton here leaves crawlers with zero tool links, turning every
+// tool page into an orphan, so render the real tool list instead.
 function ToolsClientPageEnFallback({ tools, categories }: ToolsClientPageEnProps) {
+  const sections = categories
+    .map((cat) => ({ category: cat, tools: tools.filter((t) => t.category === cat.slug) }))
+    .filter(({ tools: catTools }) => catTools.length > 0);
+
   return (
     <>
       <div className="mb-6">
         <div className="flex gap-2 flex-wrap">
           {categories.map((cat) => (
-            <div
+            <span
               key={cat.slug}
-              className="h-9 w-20 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse"
-            />
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 dark:bg-[var(--bg-surface)] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-[var(--border-subtle)]"
+            >
+              <span aria-hidden="true">{cat.icon}</span>
+              {cat.name}
+            </span>
           ))}
         </div>
       </div>
 
-      <div className="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
-        {tools.slice(0, 12).map((tool) => (
-          <div
-            key={tool.slug}
-            className="h-20 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse"
-          />
+      <div className="space-y-8">
+        {sections.map(({ category: cat, tools: catTools }) => (
+          <section key={cat.slug}>
+            <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center gap-2">
+              <span aria-hidden="true">{cat.icon}</span>
+              {cat.name} Tools
+              <span className="text-sm font-normal text-gray-400 dark:text-gray-500">({catTools.length})</span>
+            </h2>
+            <div className="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+              {catTools.map((tool) => (
+                <ToolCardEn key={tool.slug} tool={tool} compact />
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     </>

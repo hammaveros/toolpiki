@@ -412,6 +412,51 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📊 같은 사진, 포맷별 용량 차이
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          1920×1080 풍경 사진 한 장을 각 포맷으로 저장했을 때의 대략적인 용량입니다.
+          포맷을 바꾸는 것만으로 웹 페이지 로딩 시간이 눈에 띄게 달라지는 이유가 여기 있습니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">포맷</th>
+                <th className="text-left py-2 px-2">예상 용량</th>
+                <th className="text-left py-2 px-2">PNG 대비</th>
+                <th className="text-left py-2 px-2">비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">PNG</td><td>약 2.5 MB</td><td>100%</td><td>사진에는 비효율적</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">JPEG 90</td><td>약 600 KB</td><td>약 24%</td><td>육안상 차이 거의 없음</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-medium">JPEG 80</td><td>약 350 KB</td><td>약 14%</td><td>웹 표준 품질</td></tr>
+              <tr><td className="py-2 px-2 font-medium">WebP 80</td><td>약 250 KB</td><td>약 10%</td><td>같은 품질에서 가장 작음</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          반대로 <strong>로고·아이콘·스크린샷처럼 색 수가 적고 경계가 뚜렷한 이미지</strong>는 PNG가 더 작습니다.
+          JPEG로 저장하면 글자 주변에 지저분한 얼룩(링잉 아티팩트)이 생기니 피하세요.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ 변환할 때 주의할 점
+        </h2>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>손실 → 손실 재변환은 화질이 누적으로 손해</strong> — JPEG를 WebP로 바꿔도 이미 날아간 디테일은 돌아오지 않습니다. 가능하면 원본에서 변환하세요.</li>
+          <li><strong>PNG → JPEG 시 투명 영역이 채워짐</strong> — 투명 배경이 흰색이나 검은색으로 바뀝니다. 투명이 필요하면 PNG 또는 WebP로.</li>
+          <li><strong>애니메이션 GIF는 첫 프레임만 변환</strong> — 움직임을 유지하려면 애니메이션을 지원하는 포맷이 필요합니다.</li>
+          <li><strong>인쇄용은 무손실 유지</strong> — 인쇄물은 확대 배율이 커서 압축 흔적이 드러납니다. PNG나 원본 포맷을 쓰세요.</li>
+          <li><strong>EXIF는 유지되지 않음</strong> — 변환 과정에서 촬영 정보·위치 정보가 제거됩니다. 원본 정보가 필요하면 따로 보관하세요.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 이미지 포맷 선택 가이드
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -443,6 +488,18 @@ function SeoContent() {
           {
             question: 'PNG는 왜 품질 설정이 없나요?',
             answer: 'PNG는 무손실 압축 방식이라 품질 손실이 없습니다. 따라서 품질 설정 없이 항상 원본 품질을 유지합니다.',
+          },
+          {
+            question: 'WebP는 모든 브라우저에서 보이나요?',
+            answer: '크롬, 사파리, 엣지, 파이어폭스 등 현재 주요 브라우저에서 모두 지원합니다. 아주 오래된 브라우저까지 고려해야 한다면 JPEG나 PNG를 함께 제공하는 방식이 안전합니다.',
+          },
+          {
+            question: 'PNG를 JPEG로 바꿨더니 배경이 검게 변했어요.',
+            answer: 'JPEG는 투명도를 저장할 수 없어서 투명 영역이 단색으로 채워지기 때문입니다. 투명 배경을 유지하려면 PNG나 WebP로 변환하세요.',
+          },
+          {
+            question: '변환하면 원본보다 용량이 커질 수도 있나요?',
+            answer: '있습니다. 사진을 PNG로 변환하면 무손실 저장이라 원본 JPEG보다 몇 배 커질 수 있습니다. 사진은 JPEG나 WebP, 로고·아이콘은 PNG가 적합합니다.',
           },
         ]}
       />

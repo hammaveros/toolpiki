@@ -260,6 +260,73 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📐 크기와 용량의 관계
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          이미지 용량은 <strong>가로 × 세로 픽셀 수</strong>에 비례합니다. 가로세로를 각각 절반으로 줄이면
+          픽셀 수는 1/4이 되므로 용량도 대략 1/4 수준으로 떨어집니다. 아래는 4000×3000(약 12MP) 사진을
+          JPEG 품질 80으로 저장했을 때의 대략적인 기준입니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">리사이즈 후</th>
+                <th className="text-left py-2 px-2">픽셀 수</th>
+                <th className="text-left py-2 px-2">예상 용량</th>
+                <th className="text-left py-2 px-2">적합한 용도</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">4000×3000</td><td>12.0 MP</td><td>약 4~6 MB</td><td>원본 보관, 인쇄</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">1920×1440</td><td>2.8 MP</td><td>약 900 KB</td><td>웹 본문, 블로그</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">1280×960</td><td>1.2 MP</td><td>약 400 KB</td><td>모바일, 메신저</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2 font-mono">800×600</td><td>0.5 MP</td><td>약 150 KB</td><td>목록 이미지</td></tr>
+              <tr><td className="py-2 px-2 font-mono">320×240</td><td>0.08 MP</td><td>약 30 KB</td><td>썸네일</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          실제 용량은 사진의 복잡도에 따라 달라집니다. 하늘이나 단색 배경처럼 단순한 이미지는 표보다 훨씬
+          작게 나오고, 나뭇잎·군중처럼 디테일이 많은 사진은 더 커집니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔍 리사이즈 vs 크롭 vs 압축
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          셋 다 &quot;용량을 줄인다&quot;는 결과는 비슷하지만 바꾸는 대상이 다릅니다. 목적에 맞는 걸 골라야 합니다.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+          <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded">
+            <p className="font-medium mb-1">리사이즈</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              전체 화면을 그대로 두고 픽셀 수만 줄임. 구도는 유지되고 크기만 작아집니다.
+            </p>
+          </div>
+          <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded">
+            <p className="font-medium mb-1">크롭(자르기)</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              필요 없는 영역을 잘라냄. 구도가 바뀌고, 남긴 부분의 화질은 그대로입니다.
+            </p>
+          </div>
+          <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded">
+            <p className="font-medium mb-1">압축</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              픽셀 수는 그대로 두고 품질을 낮춤. 크기는 같지만 디테일이 뭉개집니다.
+            </p>
+          </div>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          용량을 크게 줄여야 한다면 <strong>리사이즈를 먼저</strong> 적용하고 그다음 압축하는 순서가 효율적입니다.
+          압축부터 걸면 이미 손실된 이미지를 다시 줄이게 되어 결과물이 더 지저분해집니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 리사이즈 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -292,6 +359,18 @@ function SeoContent() {
           {
             question: '이미지가 서버로 업로드되나요?',
             answer: '아니요, 모든 처리는 브라우저의 Canvas API를 사용해 로컬에서 이루어집니다. 이미지 데이터가 외부 서버로 전송되지 않아 개인정보 걱정 없이 사용할 수 있습니다.',
+          },
+          {
+            question: '용량을 줄이려면 리사이즈와 압축 중 뭐가 먼저인가요?',
+            answer: '리사이즈를 먼저 하는 것이 좋습니다. 픽셀 수를 줄인 뒤 압축하면 같은 용량에서 더 깨끗한 결과가 나옵니다. 압축부터 하면 이미 뭉개진 이미지를 다시 줄이게 되어 화질 손해가 큽니다.',
+          },
+          {
+            question: '리사이즈해도 EXIF(촬영 정보)가 남나요?',
+            answer: 'Canvas로 다시 그리는 방식이라 촬영 위치·기기 정보 등 EXIF 메타데이터는 결과 파일에 포함되지 않습니다. 사진을 외부에 공유하기 전 개인정보를 지우는 용도로도 활용할 수 있습니다.',
+          },
+          {
+            question: '투명 배경 PNG를 리사이즈하면 배경이 유지되나요?',
+            answer: 'PNG로 저장하면 투명도가 그대로 유지됩니다. 다만 JPEG로 변환하면 투명 영역이 흰색이나 검은색으로 채워지므로, 투명 배경이 필요하면 PNG나 WebP를 선택하세요.',
           },
         ]}
       />
