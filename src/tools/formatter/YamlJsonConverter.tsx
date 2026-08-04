@@ -46,6 +46,75 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔄 같은 설정, 두 가지 표기
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          동일한 데이터를 두 포맷으로 써보면 왜 설정 파일에 YAML이 자리 잡았는지 바로 보입니다.
+          중괄호와 따옴표가 사라지고 주석을 달 수 있습니다.
+        </p>
+        <div className="space-y-3">
+          <div>
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">YAML</p>
+            <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`# 웹 서비스 설정
+service:
+  name: web-api
+  port: 8080
+  replicas: 3
+  env:
+    - DB_HOST=db.internal
+    - LOG_LEVEL=info
+  healthcheck:
+    path: /health
+    interval: 30`}
+            </pre>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">JSON</p>
+            <pre className="p-3 rounded bg-gray-900 text-gray-100 text-xs font-mono overflow-x-auto">
+{`{
+  "service": {
+    "name": "web-api",
+    "port": 8080,
+    "replicas": 3,
+    "env": ["DB_HOST=db.internal", "LOG_LEVEL=info"],
+    "healthcheck": { "path": "/health", "interval": 30 }
+  }
+}`}
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⚠️ YAML에서 실수하기 쉬운 지점
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          YAML은 읽기 쉬운 대신 눈에 안 보이는 규칙이 많습니다. 배포가 실패하는 원인의 상당수가 여기서 나옵니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>탭 문자 금지</strong> — 들여쓰기에 탭을 쓰면 파싱 자체가 실패합니다. 에디터에서 탭을 스페이스로 변환하도록 설정해두세요.</li>
+          <li>
+            <strong>불린으로 둔갑하는 값들</strong> —{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">yes</code>,{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">no</code>,{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">on</code>,{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">off</code>가 true/false로 해석되는 경우가 있습니다.
+            GitHub Actions에서 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">on:</code> 키가 헷갈리는 이유이기도 합니다.
+          </li>
+          <li>
+            <strong>앞자리 0이 있는 숫자</strong> — 우편번호나 버전 번호처럼{' '}
+            <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">0123</code> 형태는 8진수로 해석될 수 있습니다. 따옴표로 감싸세요.
+          </li>
+          <li><strong>콜론 뒤 공백 필수</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">key:value</code>는 통째로 문자열이 됩니다. 반드시 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">key: value</code>로 쓰세요.</li>
+          <li><strong>값 안의 콜론</strong> — <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">url: http://a.com</code>처럼 값에 콜론이 들어가면 따옴표로 감싸는 편이 안전합니다.</li>
+          <li><strong>주석은 변환 시 사라짐</strong> — JSON은 주석을 지원하지 않으므로 YAML → JSON 변환에서 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">#</code> 주석이 모두 제거됩니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 활용 사례
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -78,6 +147,18 @@ function SeoContent() {
           {
             question: '타입 변환은 어떻게 되나요?',
             answer: 'true/false는 불린, 숫자 형태는 Number, null/~는 null로 자동 인식됩니다. 문자열로 유지하려면 따옴표로 감싸세요.',
+          },
+          {
+            question: 'YAML에 탭을 쓰면 왜 오류가 나나요?',
+            answer: 'YAML 명세가 들여쓰기에 탭을 허용하지 않기 때문입니다. 화면상 같아 보여도 파서는 구분하므로, 에디터에서 탭을 스페이스로 변환하도록 설정하세요.',
+          },
+          {
+            question: 'no나 off를 썼는데 false가 됐어요.',
+            answer: 'yes/no/on/off를 불린으로 해석하는 경우가 있기 때문입니다. 문자열로 쓰고 싶다면 "no"처럼 따옴표로 감싸면 됩니다.',
+          },
+          {
+            question: '입력한 설정 파일이 서버로 전송되나요?',
+            answer: '아니요. 변환은 브라우저 안에서만 처리되며 내용이 서버로 전송되거나 저장되지 않습니다. 다만 실제 비밀번호나 API 키가 담긴 설정은 어디서든 취급에 주의하세요.',
           },
         ]}
       />
