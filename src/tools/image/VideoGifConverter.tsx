@@ -389,6 +389,59 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📦 설정에 따른 용량 변화
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          GIF 용량은 <strong>프레임 수 × 프레임당 픽셀 수</strong>로 결정됩니다.
+          길이·FPS·너비 중 하나만 줄여도 체감이 크고, 두 개를 함께 줄이면 곱으로 작아집니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">설정</th>
+                <th className="text-left py-2 px-2">총 프레임</th>
+                <th className="text-left py-2 px-2">예상 용량</th>
+                <th className="text-left py-2 px-2">쓸 만한 곳</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">2초·10fps·240px</td><td>20장</td><td>약 500KB~1MB</td><td>메신저, 이모티콘</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">3초·12fps·320px</td><td>36장</td><td>약 2~4MB</td><td>트위터, 블로그</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">3초·15fps·480px</td><td>45장</td><td>약 5~10MB</td><td>업로드 제한 주의</td></tr>
+              <tr><td className="py-1.5 px-2 font-mono">5초·20fps·640px</td><td>100장</td><td>20MB 이상</td><td>대부분 업로드 불가</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          실제 용량은 영상 내용에 크게 좌우됩니다. <strong>배경이 고정된 화면</strong>은 프레임 간 차이가 작아 잘 압축되지만,
+          <strong>화면 전체가 흔들리거나 전환되는 장면</strong>은 매 프레임이 새 이미지나 다름없어 몇 배로 커집니다.
+          카메라가 움직이는 구간보다 정지된 구간을 고르면 훨씬 가벼워집니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🎨 GIF가 지저분해 보이는 이유
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          GIF는 1980년대 포맷이라 <strong>한 프레임에 최대 256색</strong>만 담을 수 있습니다.
+          수백만 색을 쓰는 원본 영상을 256색으로 줄이는 과정에서 화질 저하가 생깁니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>그라데이션이 띠처럼 보임</strong> — 하늘이나 노을처럼 색이 서서히 변하는 장면에서 계단 현상이 두드러집니다.</li>
+          <li><strong>점처럼 지글거림</strong> — 부족한 색을 점으로 섞어 흉내 내는 디더링 때문입니다. 움직이면 노이즈처럼 보입니다.</li>
+          <li><strong>사람 피부톤이 부자연스러움</strong> — 미묘한 색 차이를 표현할 색이 모자라 얼룩덜룩해집니다.</li>
+          <li><strong>어두운 장면에서 심함</strong> — 검정 근처의 계조가 뭉개져 형태를 알아보기 어려워집니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed mt-3">
+          그래서 <strong>단순한 색과 뚜렷한 움직임</strong>이 있는 장면이 GIF에 잘 맞습니다.
+          화질이 중요하거나 길이가 길다면 GIF를 고집하기보다 <strong>영상 파일 그대로 올리는 편</strong>이 화질도 좋고 용량도 훨씬 작습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 GIF 변환 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -421,6 +474,18 @@ function SeoContent() {
           {
             question: '변환에 시간이 오래 걸립니다.',
             answer: '프레임 수가 많거나(길이×FPS) 해상도가 높으면 변환 시간이 늘어납니다. 품질을 20에 가깝게 설정하면 더 빨리 변환됩니다.',
+          },
+          {
+            question: '같은 설정인데 어떤 영상은 용량이 훨씬 커요.',
+            answer: '프레임 간 변화량 차이 때문입니다. 배경이 고정된 장면은 잘 압축되지만, 화면 전체가 흔들리거나 전환되는 구간은 매 프레임이 새 이미지나 다름없어 몇 배로 커집니다.',
+          },
+          {
+            question: '영상 파일이 서버로 업로드되나요?',
+            answer: '아니요. 변환은 브라우저 안에서 처리되며 영상이 서버로 전송되지 않습니다. 다만 브라우저 메모리를 사용하므로 아주 큰 파일은 처리가 느려질 수 있습니다.',
+          },
+          {
+            question: 'GIF 대신 영상을 쓰는 게 나을 때는 언제인가요?',
+            answer: '길이가 3초를 넘거나 화질이 중요할 때입니다. 같은 장면이라도 영상 파일이 GIF보다 화질이 좋고 용량은 훨씬 작습니다. 요즘은 대부분의 플랫폼이 짧은 영상을 GIF처럼 자동 재생해 줍니다.',
           },
         ]}
       />

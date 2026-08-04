@@ -335,6 +335,68 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔍 CSS 픽셀과 실제 픽셀
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          측정값이 예상과 다를 때는 대부분 <strong>픽셀의 정의가 두 가지</strong>라는 점이 원인입니다.
+          웹에서 말하는 픽셀(CSS 픽셀)과 화면의 물리적 점(디바이스 픽셀)은 다를 수 있습니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">환경</th>
+                <th className="text-left py-2 px-2">배율(DPR)</th>
+                <th className="text-left py-2 px-2">CSS 100px의 실제 픽셀</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">일반 모니터</td><td className="font-mono">1x</td><td className="font-mono">100px</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">윈도우 배율 125%</td><td className="font-mono">1.25x</td><td className="font-mono">125px</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">맥 레티나</td><td className="font-mono">2x</td><td className="font-mono">200px</td></tr>
+              <tr><td className="py-1.5 px-2">최신 스마트폰</td><td className="font-mono">3x</td><td className="font-mono">300px</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          디자인 시안이 <strong>@2x로 제작된 경우</strong>, 시안의 200px 요소가 실제 화면에서는 CSS 100px입니다.
+          시안 수치와 측정값이 정확히 두 배 차이 난다면 이 경우일 가능성이 높습니다.
+          측정 전에 <strong>브라우저 확대/축소를 100%로 되돌리는 것</strong>도 중요합니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📐 디자인 검수에 자주 쓰이는 기준
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          측정한 값이 적절한지 판단할 때 참고할 만한 일반적인 기준입니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">항목</th>
+                <th className="text-left py-2 px-2">권장 크기</th>
+                <th className="text-left py-2 px-2">이유</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">터치 영역</td><td className="font-mono">44~48px 이상</td><td>손가락으로 정확히 누를 수 있는 최소 크기</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">본문 글자</td><td className="font-mono">16px 이상</td><td>모바일에서 확대 없이 읽히는 기준</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">여백 단위</td><td className="font-mono">4 또는 8의 배수</td><td>일관된 간격 체계 유지</td></tr>
+              <tr><td className="py-1.5 px-2">본문 한 줄 길이</td><td className="font-mono">45~75자</td><td>시선 이동이 편한 범위</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          여백이 <strong>13px, 17px처럼 어중간한 값</strong>으로 측정된다면 간격 체계가 무너졌다는 신호일 수 있습니다.
+          8px 단위로 정리하면 화면 전체의 리듬이 눈에 띄게 정돈됩니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 화면 측정 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -359,6 +421,18 @@ function SeoContent() {
           {
             question: '다른 앱의 요소도 측정할 수 있나요?',
             answer: '이 도구는 웹 브라우저 내 측정 영역에서만 작동합니다. 전체 화면을 측정하려면 OS의 스크린 캡처 도구나 전용 화면 측정 앱을 사용하세요.',
+          },
+          {
+            question: '디자인 시안 수치와 측정값이 두 배 차이 나요.',
+            answer: '시안이 @2x로 제작된 경우입니다. 시안의 200px 요소는 실제 화면에서 CSS 100px에 해당합니다. 레티나 디스플레이나 화면 배율 설정도 같은 원인이 될 수 있습니다.',
+          },
+          {
+            question: 'mm 값이 실제 자로 잰 것과 달라요.',
+            answer: 'DPI 설정이 실제 모니터와 다르기 때문입니다. 해상도(가로 픽셀)를 화면 가로 길이(인치)로 나눈 값을 DPI에 입력하면 정확해집니다.',
+          },
+          {
+            question: '버튼 크기는 몇 px이 적당한가요?',
+            answer: '터치로 누르는 요소는 44~48px 이상을 권장합니다. 손가락으로 정확히 누를 수 있는 최소 크기로 널리 쓰이는 기준입니다.',
           },
         ]}
       />
