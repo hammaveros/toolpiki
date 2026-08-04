@@ -245,6 +245,65 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🌏 UTC와 한국 시간(KST)
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          타임스탬프 자체에는 시간대 개념이 없습니다. 항상 UTC 기준의 절대 시각이고,
+          표시할 때만 지역 시간대를 적용합니다. 한국은 UTC보다 <strong>9시간 빠릅니다(UTC+9)</strong>.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">타임스탬프</th>
+                <th className="text-left py-2 px-2">UTC</th>
+                <th className="text-left py-2 px-2">한국 시간 (KST)</th>
+              </tr>
+            </thead>
+            <tbody className="font-mono">
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">0</td><td>1970-01-01 00:00</td><td>1970-01-01 09:00</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-2 px-2">946684800</td><td>2000-01-01 00:00</td><td>2000-01-01 09:00</td></tr>
+              <tr><td className="py-2 px-2">1735689600</td><td>2025-01-01 00:00</td><td>2025-01-01 09:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          한국은 서머타임을 쓰지 않아 연중 항상 +9시간으로 일정합니다.
+          반면 미국·유럽 사용자를 다루는 서비스라면 서머타임 때문에 시차가 계절마다 달라지므로,
+          <strong>저장은 항상 UTC 타임스탬프로 하고 표시할 때만 변환</strong>하는 것이 안전합니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🧮 유용한 초 단위 환산
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          토큰 만료 시간이나 캐시 TTL을 설정할 때 자주 쓰는 값들입니다. 외워두면 계산할 일이 줄어듭니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">기간</th>
+                <th className="text-left py-2 px-2">초</th>
+                <th className="text-left py-2 px-2">주로 쓰이는 곳</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">1분</td><td className="font-mono">60</td><td>짧은 폴링 주기</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">1시간</td><td className="font-mono">3,600</td><td>액세스 토큰 만료</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">1일</td><td className="font-mono">86,400</td><td>세션 유지, 일일 캐시</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">1주</td><td className="font-mono">604,800</td><td>리프레시 토큰</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">30일</td><td className="font-mono">2,592,000</td><td>정적 리소스 캐시</td></tr>
+              <tr><td className="py-1.5 px-2">1년(365일)</td><td className="font-mono">31,536,000</td><td>장기 쿠키</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 타임스탬프 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -269,6 +328,18 @@ function SeoContent() {
           {
             question: '음수 타임스탬프는 가능한가요?',
             answer: '네, 1970년 이전 날짜는 음수 타임스탬프로 표현됩니다. 예: 1969-12-31 23:59:59 UTC는 -1입니다.',
+          },
+          {
+            question: '변환한 시간이 9시간 차이가 나요.',
+            answer: '타임스탬프는 UTC 기준이고 한국 시간(KST)은 UTC+9이기 때문입니다. 같은 타임스탬프라도 UTC로 표시하면 00:00, 한국 시간으로 표시하면 09:00이 됩니다. 어느 기준으로 보고 있는지 확인해 보세요.',
+          },
+          {
+            question: '왜 시간을 UTC 타임스탬프로 저장하나요?',
+            answer: '시간대나 서머타임에 영향받지 않는 절대 시각이라 서버·DB·클라이언트가 서로 다른 지역에 있어도 같은 시점을 가리키기 때문입니다. 저장은 UTC로 하고 화면에 보여줄 때만 지역 시간으로 바꾸는 것이 표준적인 방식입니다.',
+          },
+          {
+            question: '1시간은 몇 초인가요?',
+            answer: '3,600초입니다. 하루는 86,400초, 일주일은 604,800초입니다. 토큰 만료 시간이나 캐시 TTL을 설정할 때 자주 쓰이는 값입니다.',
           },
         ]}
       />

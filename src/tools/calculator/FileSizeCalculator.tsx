@@ -201,6 +201,72 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          📏 1TB 하드가 931GB로 보이는 이유
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          같은 &quot;GB&quot;라는 표기를 두 가지 다른 의미로 쓰기 때문입니다.
+          저장장치 제조사는 <strong>1,000 단위(십진)</strong>로, 윈도우 같은 운영체제는 <strong>1,024 단위(이진)</strong>로 계산합니다.
+          용량이 커질수록 이 차이는 벌어집니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">표기 용량</th>
+                <th className="text-left py-2 px-2">실제 바이트</th>
+                <th className="text-left py-2 px-2">OS 표시</th>
+                <th className="text-left py-2 px-2">차이</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">128 GB</td><td className="font-mono">128,000,000,000</td><td className="font-mono">약 119 GB</td><td>약 7%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">512 GB</td><td className="font-mono">512,000,000,000</td><td className="font-mono">약 477 GB</td><td>약 7%</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">1 TB</td><td className="font-mono">1,000,000,000,000</td><td className="font-mono">약 931 GB</td><td>약 7%</td></tr>
+              <tr><td className="py-1.5 px-2 font-mono">4 TB</td><td className="font-mono">4,000,000,000,000</td><td className="font-mono">약 3,725 GB</td><td>약 7%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          혼동을 줄이려고 이진 단위에는 <strong>KiB, MiB, GiB</strong>(키비바이트·메비바이트·기비바이트)라는 별도 표기가 있습니다.
+          1 GiB = 1,073,741,824 B이고 1 GB = 1,000,000,000 B입니다. 다만 실제로는 대부분 GB로 뭉뚱그려 쓰고 있어
+          <strong>어느 기준인지 문맥으로 판단</strong>해야 합니다. 여기에 포맷 시 파일시스템이 차지하는 영역까지 더해지면 실제 사용 가능 용량은 조금 더 줄어듭니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🌐 Mbps와 MB/s — 8배 차이
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          인터넷 속도는 <strong>비트(bit)</strong>, 파일 크기는 <strong>바이트(byte)</strong> 단위입니다.
+          1바이트가 8비트이므로, 회선 속도를 8로 나눠야 실제 다운로드 속도가 나옵니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">회선 속도</th>
+                <th className="text-left py-2 px-2">이론상 최대</th>
+                <th className="text-left py-2 px-2">1GB 다운로드 (이론)</th>
+                <th className="text-left py-2 px-2">현실적 소요</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">100 Mbps</td><td className="font-mono">12.5 MB/s</td><td>약 1분 20초</td><td>약 1분 40초~2분</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">500 Mbps</td><td className="font-mono">62.5 MB/s</td><td>약 16초</td><td>약 20~25초</td></tr>
+              <tr><td className="py-1.5 px-2 font-mono">1 Gbps</td><td className="font-mono">125 MB/s</td><td>약 8초</td><td>약 10~13초</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          실제로는 프로토콜 오버헤드, 서버 응답 속도, 공유기 성능, 저장장치 쓰기 속도 등이 겹쳐
+          <strong>공칭 속도의 70~80% 정도</strong>가 나오는 것이 일반적입니다. 기가 인터넷인데 속도가 안 나온다면
+          회선보다 공유기나 랜선(카테고리 5e 이상 필요)이 병목인 경우가 많습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 파일 크기 이해 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -225,6 +291,18 @@ function SeoContent() {
           {
             question: 'USB 3.0이 빠른데 왜 예상보다 느리게 전송되나요?',
             answer: 'USB 3.0의 5Gbps는 이론상 최대치입니다. 실제로는 컨트롤러 성능, 드라이브 속도, 파일 개수 등에 영향을 받아 실제 전송 속도는 200-400MB/s 수준입니다.',
+          },
+          {
+            question: 'GB와 GiB는 뭐가 다른가요?',
+            answer: 'GiB(기비바이트)는 1,073,741,824 B로 1024 기준 이진 단위이고, GB는 원래 1,000,000,000 B로 십진 단위입니다. 혼동을 줄이기 위해 만들어진 표기이지만 실무에서는 대부분 GB로 통칭해 쓰므로 문맥으로 판단해야 합니다.',
+          },
+          {
+            question: '작은 파일 여러 개가 큰 파일 하나보다 느린 이유는?',
+            answer: '파일마다 열고 닫는 처리와 메타데이터 기록이 반복되기 때문입니다. 총 용량이 같아도 파일 개수가 많으면 전송이 훨씬 오래 걸립니다. 압축해서 하나로 묶으면 크게 단축됩니다.',
+          },
+          {
+            question: '기가 인터넷인데 속도가 안 나옵니다.',
+            answer: '회선보다 공유기나 랜선이 병목인 경우가 많습니다. 기가 속도를 내려면 공유기가 기가비트 포트를 지원해야 하고 랜선도 카테고리 5e 이상이어야 합니다. 와이파이라면 유선으로 바꿔 측정해 보세요.',
           },
         ]}
       />
