@@ -354,6 +354,56 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🔐 Math.random()과 뭐가 다른가
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          자바스크립트의 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">Math.random()</code>은
+          시드값에서 수식으로 숫자를 만들어내는 <strong>의사난수(pseudo-random)</strong>입니다.
+          충분히 무작위처럼 보이지만 알고리즘이 정해져 있어 이론적으로는 다음 값을 추정할 여지가 있습니다.
+          이 도구가 쓰는 <code className="px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-xs font-mono">crypto.getRandomValues()</code>는
+          운영체제가 수집한 예측 불가능한 물리적 잡음을 바탕으로 값을 만듭니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">항목</th>
+                <th className="text-left py-2 px-2">Math.random()</th>
+                <th className="text-left py-2 px-2">crypto.getRandomValues()</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">방식</td><td>수식 기반 의사난수</td><td>OS 엔트로피 기반</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">예측 가능성</td><td>이론상 추정 가능</td><td>사실상 불가능</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2">속도</td><td>매우 빠름</td><td>약간 느림</td></tr>
+              <tr><td className="py-1.5 px-2">적합한 용도</td><td>애니메이션, 간단한 셔플</td><td>추첨, 토큰 생성</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          경품 추첨처럼 <strong>결과에 이해관계가 걸린 상황</strong>에서는 후자를 쓰는 편이 안전합니다.
+          체감 차이는 없지만 &quot;조작이 아니냐&quot;는 논란의 여지를 줄일 수 있습니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🎯 공정한 추첨을 위한 준비
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          난수 자체보다 <strong>운영 방식</strong>에서 시비가 붙는 경우가 훨씬 많습니다. 이런 점들을 미리 정해두세요.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>명단을 먼저 확정</strong> — 추첨을 돌린 뒤 명단을 고치면 결과 신뢰도가 무너집니다. 참가자 목록을 먼저 공개하세요.</li>
+          <li><strong>중복 이름 정리</strong> — 동명이인이 있으면 번호를 붙여 구분해야 당첨자가 명확해집니다.</li>
+          <li><strong>재추첨 규칙 사전 공지</strong> — &quot;당첨자가 응답 없으면 며칠 뒤 재추첨&quot; 같은 기준을 미리 알려두면 분쟁이 줄어듭니다.</li>
+          <li><strong>한 번에 뽑기</strong> — 한 명씩 여러 번 돌리기보다 필요한 인원수만큼 한 번에 뽑는 편이 깔끔합니다.</li>
+          <li><strong>과정 공개</strong> — 화면을 공유하거나 녹화하면 결과에 대한 신뢰가 크게 올라갑니다.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 활용 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -378,6 +428,18 @@ function SeoContent() {
           {
             question: '추첨 기록은 어디에 저장되나요?',
             answer: '추첨 기록은 브라우저 메모리에만 저장됩니다. 페이지를 새로고침하면 기록이 삭제되며, 서버에 전송되지 않습니다.',
+          },
+          {
+            question: '경품 추첨에 사용해도 공정한가요?',
+            answer: '난수 자체는 암호학적으로 안전한 방식이라 충분히 공정합니다. 다만 신뢰를 얻으려면 참가자 명단을 먼저 확정·공개하고, 추첨 과정을 화면 공유나 녹화로 남기는 것이 좋습니다.',
+          },
+          {
+            question: '참가자 명단이 서버로 전송되나요?',
+            answer: '아니요. 입력한 목록과 추첨 결과 모두 브라우저 안에서만 처리되며 외부로 전송되지 않습니다. 실명이나 연락처가 포함된 명단도 안전하게 사용할 수 있습니다.',
+          },
+          {
+            question: '몇 명까지 넣을 수 있나요?',
+            answer: '브라우저 메모리가 허용하는 범위에서 수천 명 단위까지 처리할 수 있습니다. 다만 목록이 아주 길면 붙여넣기 직후 잠깐 반응이 느려질 수 있습니다.',
           },
         ]}
       />

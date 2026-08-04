@@ -335,6 +335,59 @@ function SeoContent() {
 
       <section>
         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          ⏱️ 하루를 뽀모도로로 짜면
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          25분 집중 + 5분 휴식이 한 세트(30분)이고, 4세트마다 긴 휴식이 들어갑니다.
+          오전 반나절을 예로 들면 이런 흐름이 됩니다.
+        </p>
+        <div className="overflow-x-auto text-sm">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b dark:border-gray-700">
+                <th className="text-left py-2 px-2">시각</th>
+                <th className="text-left py-2 px-2">단계</th>
+                <th className="text-left py-2 px-2">할 일</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">09:00~09:25</td><td>집중 1</td><td>가장 어려운 작업부터</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">09:25~09:30</td><td>짧은 휴식</td><td>일어나서 스트레칭</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">09:30~09:55</td><td>집중 2</td><td>같은 작업 이어서</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">10:00~10:25</td><td>집중 3</td><td>흐름 유지</td></tr>
+              <tr className="border-b dark:border-gray-800"><td className="py-1.5 px-2 font-mono">10:30~10:55</td><td>집중 4</td><td>마무리</td></tr>
+              <tr><td className="py-1.5 px-2 font-mono">10:55~11:10</td><td>긴 휴식</td><td>산책, 식사, 완전한 이탈</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm leading-relaxed mt-3">
+          이렇게 하면 오전에 <strong>약 100분의 순수 집중 시간</strong>이 확보됩니다.
+          체감상 짧아 보이지만, 방해받지 않은 100분은 산만하게 보낸 3시간보다 결과물이 많은 경우가 흔합니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+          🧠 왜 25분일까
+        </h2>
+        <p className="text-sm leading-relaxed mb-3">
+          25분이라는 숫자에 특별한 과학적 근거가 있는 것은 아닙니다. 창안자가 쓰던 주방 타이머의 눈금에서 나온 값이고,
+          실제로는 <strong>&quot;끝이 보이는 짧은 구간&quot;</strong>이라는 점이 핵심입니다. 이런 이유로 효과를 봅니다.
+        </p>
+        <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
+          <li><strong>시작 장벽이 낮아짐</strong> — &quot;오늘 이 일을 다 끝내야 한다&quot;보다 &quot;25분만 해보자&quot;가 시작하기 훨씬 쉽습니다. 미루기의 대부분은 시작 지점에서 생깁니다.</li>
+          <li><strong>마감 효과</strong> — 시간이 정해져 있으면 자연스럽게 속도가 붙습니다. 무한정 늘어지는 작업에 인위적인 마감을 만드는 셈입니다.</li>
+          <li><strong>휴식이 계획에 포함됨</strong> — 쉬는 시간이 일정에 들어 있으면 죄책감 없이 쉴 수 있고, 결과적으로 더 오래 지속됩니다.</li>
+          <li><strong>측정이 가능해짐</strong> — &quot;오늘 6뽀모도로&quot;처럼 셀 수 있는 단위가 생기면 하루 집중량을 객관적으로 파악할 수 있습니다.</li>
+        </ul>
+        <p className="text-sm leading-relaxed mt-3">
+          그래서 <strong>25분이 안 맞으면 바꿔도 됩니다.</strong> 몰입에 시간이 걸리는 작업은 45~50분이 나을 수 있고,
+          집중이 잘 안 되는 날은 15분으로 줄이는 편이 낫습니다. 중요한 건 숫자가 아니라 구간을 나눈다는 원리입니다.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           💡 뽀모도로 효과 극대화 팁
         </h2>
         <ul className="text-sm leading-relaxed space-y-2 list-disc list-inside">
@@ -359,6 +412,18 @@ function SeoContent() {
           {
             question: '하루에 몇 뽀모도로가 적당한가요?',
             answer: '일반적으로 8~12개(4~6시간)가 현실적인 목표입니다. 처음에는 4개부터 시작해 점차 늘려가세요.',
+          },
+          {
+            question: '집중이 잘 되는데 굳이 25분에 끊어야 하나요?',
+            answer: '몰입 상태라면 이어가도 괜찮습니다. 다만 그 흐름이 끝난 뒤에는 평소보다 긴 휴식을 갖는 편이 좋습니다. 뽀모도로는 규칙이라기보다 리듬을 만드는 도구입니다.',
+          },
+          {
+            question: '탭을 닫거나 다른 창을 봐도 타이머가 계속 가나요?',
+            answer: '다른 탭이나 창을 보고 있어도 타이머는 계속 진행됩니다. 다만 브라우저 탭을 완전히 닫으면 기록이 초기화되므로 탭은 열어 두세요.',
+          },
+          {
+            question: '휴식 시간에 뭘 하는 게 좋나요?',
+            answer: '화면에서 눈을 떼는 활동이 좋습니다. 일어나서 걷기, 스트레칭, 물 마시기 등입니다. SNS나 유튜브는 뇌를 계속 쓰게 만들어 회복 효과가 떨어집니다.',
           },
         ]}
       />
