@@ -244,6 +244,28 @@ const toolComponents: Record<string, ComponentType> = {
   'color-blindness-image-en': dynamic(() => import('./image/ColorBlindnessEn').then(m => ({ default: m.ColorBlindnessEn }))),
   'pros-cons-comparator': dynamic(() => import('./calculator/ProsConsComparator').then(m => ({ default: m.ProsConsComparator }))),
   'pros-cons-comparator-en': dynamic(() => import('./calculator/ProsConsComparatorEn').then(m => ({ default: m.ProsConsComparatorEn }))),
+
+  // 오디오 (Web Audio API)
+  'metronome': dynamic(() => import('./calculator/Metronome').then(m => ({ default: m.Metronome }))),
+  'metronome-en': dynamic(() => import('./calculator/MetronomeEn').then(m => ({ default: m.MetronomeEn }))),
+  'white-noise': dynamic(() => import('./calculator/WhiteNoise').then(m => ({ default: m.WhiteNoise }))),
+  'white-noise-en': dynamic(() => import('./calculator/WhiteNoiseEn').then(m => ({ default: m.WhiteNoiseEn }))),
+  'audio-cutter': dynamic(() => import('./calculator/AudioCutter').then(m => ({ default: m.AudioCutter }))),
+  'audio-cutter-en': dynamic(() => import('./calculator/AudioCutterEn').then(m => ({ default: m.AudioCutterEn }))),
+
+  // 이미지 (신규)
+  'image-watermark': dynamic(() => import('./image/ImageWatermark').then(m => ({ default: m.ImageWatermark }))),
+  'image-watermark-en': dynamic(() => import('./image/ImageWatermarkEn').then(m => ({ default: m.ImageWatermarkEn }))),
+  'exif-viewer': dynamic(() => import('./image/ExifViewer').then(m => ({ default: m.ExifViewer }))),
+  'exif-viewer-en': dynamic(() => import('./image/ExifViewerEn').then(m => ({ default: m.ExifViewerEn }))),
+
+  // 재미 (웹캠)
+  'webcam-photobooth': dynamic(() => import('./fun/WebcamPhotobooth').then(m => ({ default: m.WebcamPhotobooth }))),
+  'webcam-photobooth-en': dynamic(() => import('./fun/WebcamPhotoboothEn').then(m => ({ default: m.WebcamPhotoboothEn }))),
+
+  // PDF (pdf-lib)
+  'pdf-tool': dynamic(() => import('./formatter/PdfTool').then(m => ({ default: m.PdfTool }))),
+  'pdf-tool-en': dynamic(() => import('./formatter/PdfToolEn').then(m => ({ default: m.PdfToolEn }))),
 };
 
 /**
