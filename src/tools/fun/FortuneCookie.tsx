@@ -656,7 +656,7 @@ export function FortuneCookie() {
             {secretFortune && !secretOpening && (
               <>
                 <div className="text-5xl mb-4 animate-bounce">🎊</div>
-                <p className="text-xl md:text-2xl leading-relaxed max-w-md mb-6 font-extrabold text-gray-900 dark:text-white">
+                <p className="text-xl md:text-2xl leading-snug max-w-md mb-6 font-extrabold text-gray-900 dark:text-white break-keep [text-wrap:balance]">
                   {secretFortune}
                 </p>
                 <div className="flex gap-3 flex-wrap justify-center">
@@ -669,8 +669,8 @@ export function FortuneCookie() {
                   <CopyButton text={secretFortune} label="복사" />
                   <button
                     onClick={() => {
-                      // 개인화 이름은 빼고 ?secret 까지만 공유 (받는 사람에겐 기본 문구)
-                      const link = `${window.location.origin}${window.location.pathname}?secret`;
+                      // 개인화 이름은 빼고 ?secret= 까지만 공유 (받는 사람에겐 기본 문구)
+                      const link = `${window.location.origin}${window.location.pathname}?secret=`;
                       navigator.clipboard
                         .writeText(link)
                         .then(() => {
