@@ -605,6 +605,12 @@ export function FortuneCookie() {
   if (secretMode) {
     return (
       <div className="space-y-4">
+        <style>{`
+          @keyframes secret-wiggle {
+            0%, 100% { transform: rotate(-12deg) scale(1.05); }
+            50% { transform: rotate(12deg) scale(1.15); }
+          }
+        `}</style>
         <Card
           variant="bordered"
           className="relative overflow-hidden p-6 md:p-10 text-center min-h-[360px] flex flex-col items-center justify-center bg-gradient-to-br from-fuchsia-100 via-violet-100 to-sky-100 dark:from-fuchsia-950/40 dark:via-violet-950/40 dark:to-sky-950/40"
@@ -644,7 +650,7 @@ export function FortuneCookie() {
             )}
 
             {secretOpening && (
-              <div className="text-7xl animate-spin">🎁</div>
+              <div className="text-7xl" style={{ animation: 'secret-wiggle 0.35s ease-in-out infinite' }}>🎁</div>
             )}
 
             {secretFortune && !secretOpening && (
