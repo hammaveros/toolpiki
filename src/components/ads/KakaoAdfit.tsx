@@ -1,8 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
-import { isRestrictedPath } from '@/lib/seo/restricted-slugs';
 
 interface KakaoAdfitProps {
   unit: string;
@@ -11,20 +9,23 @@ interface KakaoAdfitProps {
   className?: string;
 }
 
-// 전역: SDK 스크립트 로드 여��
-let sdkAppended = false;
+const ADFIT_SDK_SRC = '//t1.daumcdn.net/kas/static/ba.min.js';
 
+/**
+ * 카카오 애드핏 광고 슬롯.
+ * SPA 특성상 SDK가 이미 로드된 뒤 추가된 ins 는 자동 스캔되지 않는다.
+ * 따라서 인스턴스마다 ins 를 만든 뒤 ba.min.js 를 새로 붙여
+ * 카카오 SDK 가 해당 ins 를 처리(렌더)하도록 한다.
+ */
 export function KakaoAdfit({ unit, width, height, className = '' }: KakaoAdfitProps) {
-  const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const initialized = useRef(false);
 
   useEffect(() => {
     if (!containerRef.current || initialized.current) return;
-    if (isRestrictedPath(pathname)) return;
     initialized.current = true;
 
-    // ins 엘리먼트 생성
+    // ins 엘리먼트 생성 (카카오가 광고 충전 시 display 를 노출로 바꾼다)
     const ins = document.createElement('ins');
     ins.className = 'kakao_ad_area';
     ins.style.display = 'none';
@@ -33,17 +34,13 @@ export function KakaoAdfit({ unit, width, height, className = '' }: KakaoAdfitPr
     ins.setAttribute('data-ad-height', String(height));
     containerRef.current.appendChild(ins);
 
-    // SDK 스크립트 1회만 추가
-    if (!sdkAppended && !document.querySelector('script[src*="ba.min.js"]')) {
-      sdkAppended = true;
-      const script = document.createElement('script');
-      script.src = '//t1.daumcdn.net/kas/static/ba.min.js';
-      script.async = true;
-      document.head.appendChild(script);
-    }
-  }, [unit, width, height, pathname]);
-
-  if (isRestrictedPath(pathname)) return null;
+    // ins 바로 뒤에 SDK 스크립트를 새로 붙인다.
+    // 스크립트가 (재)실행될 때 아직 처리되지 않은 kakao_ad_area 를 스캔·렌더한다.
+    const script = document.createElement('script');
+    script.src = ADFIT_SDK_SRC;
+    script.async = true;
+    containerRef.current.appendChild(script);
+  }, [unit, width, height]);
 
   return <div ref={containerRef} className={className} />;
 }

@@ -58,7 +58,7 @@ const categoryInfo: Record<Exclude<FortuneCategory, 'all'>, { label: string; emo
 };
 
 const fortunes: Fortune[] = [
-  // 위로 (55개)
+  // 위로 (85개)
   { text: "지금 하고 있는 방식이 꼭 틀린 건 아닙니다.", category: 'comfort' },
   { text: "오늘은 속도를 줄여도 괜찮은 날입니다.", category: 'comfort' },
   { text: "멈춰도 괜찮습니다. 멈추는 것도 움직임입니다.", category: 'comfort' },
@@ -114,8 +114,38 @@ const fortunes: Fortune[] = [
   { text: "당신의 하루를 응원하는 사람이 여기 있습니다.", category: 'comfort' },
   { text: "지금 느끼는 외로움도 결국 지나갑니다.", category: 'comfort' },
   { text: "쉬어가는 것도 앞으로 가는 겁니다.", category: 'comfort' },
+  { text: "오늘 아무것도 이루지 못했어도, 당신은 여전히 소중합니다.", category: 'comfort' },
+  { text: "마음이 무거운 날엔 그 무게만큼 쉬어도 됩니다.", category: 'comfort' },
+  { text: "남에게 보이는 모습이 당신의 전부는 아닙니다.", category: 'comfort' },
+  { text: "지금의 어려움이 당신을 규정하지 않습니다.", category: 'comfort' },
+  { text: "천천히 숨을 한 번 쉬어보세요. 그것만으로 충분합니다.", category: 'comfort' },
+  { text: "오늘 흘린 눈물은 내일의 당신을 단단하게 합니다.", category: 'comfort' },
+  { text: "서툴러도 괜찮습니다. 처음이니까요.", category: 'comfort' },
+  { text: "당신의 속도가 느린 게 아니라, 세상이 급한 겁니다.", category: 'comfort' },
+  { text: "무너져도 다시 일어설 힘이 당신 안에 있습니다.", category: 'comfort' },
+  { text: "지금 이 순간을 견디는 당신이 자랑스럽습니다.", category: 'comfort' },
+  { text: "아직 끝나지 않았습니다. 그러니 괜찮습니다.", category: 'comfort' },
+  { text: "오늘의 나에게도 수고했다고 말해주세요.", category: 'comfort' },
+  { text: "완벽하지 않은 하루도 충분히 아름답습니다.", category: 'comfort' },
+  { text: "힘든 마음을 누군가에게 털어놔도 괜찮습니다.", category: 'comfort' },
+  { text: "지금 느리게 가는 건 방향을 확인하는 시간입니다.", category: 'comfort' },
+  { text: "당신이 흘려보낸 하루하루는 헛되지 않았습니다.", category: 'comfort' },
+  { text: "오늘 하루, 당신 자신에게 조금 더 다정해지세요.", category: 'comfort' },
+  { text: "아무도 몰라줘도, 당신은 최선을 다했습니다.", category: 'comfort' },
+  { text: "슬픔도 당신을 이루는 소중한 조각입니다.", category: 'comfort' },
+  { text: "조급해하지 않아도 됩니다. 시간은 당신 편입니다.", category: 'comfort' },
+  { text: "지금 흔들리는 건 뿌리를 더 깊게 내리는 중이라 그렇습니다.", category: 'comfort' },
+  { text: "당신의 존재만으로 충분히 빛나고 있습니다.", category: 'comfort' },
+  { text: "아픈 만큼 마음이 더 깊어지고 있습니다.", category: 'comfort' },
+  { text: "오늘 하루 잘 버텼습니다. 그거면 됐습니다.", category: 'comfort' },
+  { text: "마음이 힘들 땐 잠시 눈을 감아도 됩니다.", category: 'comfort' },
+  { text: "당신은 생각보다 훨씬 강한 사람입니다.", category: 'comfort' },
+  { text: "지금 이대로의 당신이 가장 당신답습니다.", category: 'comfort' },
+  { text: "흐린 날이 있어야 맑은 날이 더 반갑습니다.", category: 'comfort' },
+  { text: "오늘 하루를 살아냈다는 게 가장 큰 용기입니다.", category: 'comfort' },
+  { text: "잠시 멈춰 서서 나를 돌봐도 되는 시간입니다.", category: 'comfort' },
 
-  // 동기부여 (55개)
+  // 동기부여 (85개)
   { text: "완벽하지 않아도 시작할 수 있습니다.", category: 'motivation' },
   { text: "작은 변화도 변화입니다.", category: 'motivation' },
   { text: "오늘 하루는 어제와 같을 필요가 없습니다.", category: 'motivation' },
@@ -171,8 +201,38 @@ const fortunes: Fortune[] = [
   { text: "한 번의 실패로 모든 게 끝나지 않습니다.", category: 'motivation' },
   { text: "당신의 노력은 절대 배신하지 않습니다.", category: 'motivation' },
   { text: "지금 멈추면 여기가 끝입니다. 한 발만 더 가보세요.", category: 'motivation' },
+  { text: "시작하지 않으면 아무 일도 일어나지 않습니다.", category: 'motivation' },
+  { text: "어제의 실패가 오늘의 지도가 됩니다.", category: 'motivation' },
+  { text: "지금 내딛는 한 걸음이 어제보다 앞선 겁니다.", category: 'motivation' },
+  { text: "완벽을 기다리다 시작을 놓치지 마세요.", category: 'motivation' },
+  { text: "당신이 멈추지 않는 한, 길은 계속됩니다.", category: 'motivation' },
+  { text: "작게 시작해도 크게 자랄 수 있습니다.", category: 'motivation' },
+  { text: "오늘 흘린 땀이 내일의 자신감이 됩니다.", category: 'motivation' },
+  { text: "두려움 너머에 당신이 원하던 것이 있습니다.", category: 'motivation' },
+  { text: "지금 하는 노력은 반드시 어딘가에 남습니다.", category: 'motivation' },
+  { text: "성장은 편안함 밖에서 일어납니다.", category: 'motivation' },
+  { text: "넘어진 자리에서 다시 시작하면 됩니다.", category: 'motivation' },
+  { text: "하루 한 걸음이면 1년 뒤엔 멀리 와 있습니다.", category: 'motivation' },
+  { text: "지금의 서투름이 곧 능숙함이 됩니다.", category: 'motivation' },
+  { text: "당신의 가능성은 아직 다 펼쳐지지 않았습니다.", category: 'motivation' },
+  { text: "오늘 포기하지 않은 것만으로도 이긴 겁니다.", category: 'motivation' },
+  { text: "큰 목표도 작은 오늘이 모여 이루어집니다.", category: 'motivation' },
+  { text: "어렵기 때문에 해낼 가치가 있습니다.", category: 'motivation' },
+  { text: "지금 심는 노력이 미래의 수확이 됩니다.", category: 'motivation' },
+  { text: "스스로를 믿는 만큼 멀리 갈 수 있습니다.", category: 'motivation' },
+  { text: "실패는 다음 성공의 밑그림입니다.", category: 'motivation' },
+  { text: "지금 이 순간이 변화를 만들 최고의 타이밍입니다.", category: 'motivation' },
+  { text: "당신의 오늘이 누군가의 내일에 영감이 됩니다.", category: 'motivation' },
+  { text: "멈추지 않는 사람을 이길 방법은 없습니다.", category: 'motivation' },
+  { text: "한계라고 느끼는 지점이 진짜 시작점입니다.", category: 'motivation' },
+  { text: "오늘 한 작은 도전이 내일의 자신감을 만듭니다.", category: 'motivation' },
+  { text: "꾸준함은 어떤 재능도 이깁니다.", category: 'motivation' },
+  { text: "지금 흔들려도 방향만 맞으면 도착합니다.", category: 'motivation' },
+  { text: "당신이 상상하는 것보다 더 해낼 수 있습니다.", category: 'motivation' },
+  { text: "어제보다 조금 더 나아졌다면, 그게 승리입니다.", category: 'motivation' },
+  { text: "지금 이 노력이 미래의 당신을 웃게 만듭니다.", category: 'motivation' },
 
-  // 인간관계 (45개)
+  // 인간관계 (75개)
   { text: "지금 생각하고 있는 그 사람도 당신을 생각하고 있을지 모릅니다.", category: 'relationship' },
   { text: "비교할 필요 없습니다. 각자의 길이 있습니다.", category: 'relationship' },
   { text: "남들과 같은 속도일 필요는 없습니다.", category: 'relationship' },
@@ -218,8 +278,38 @@ const fortunes: Fortune[] = [
   { text: "진짜 사과는 변하는 모습으로 보여주는 겁니다.", category: 'relationship' },
   { text: "만나야 할 사람은 결국 만나게 되어 있습니다.", category: 'relationship' },
   { text: "좋은 이별도 있습니다. 서로를 위한 이별이라면요.", category: 'relationship' },
+  { text: "오늘 건넨 말 한마디가 누군가에겐 오래 기억됩니다.", category: 'relationship' },
+  { text: "좋은 관계는 편안한 침묵도 견딜 수 있습니다.", category: 'relationship' },
+  { text: "곁에 있어주는 것만으로도 큰 위로가 됩니다.", category: 'relationship' },
+  { text: "표현하지 않으면 마음은 전해지지 않습니다.", category: 'relationship' },
+  { text: "진심 어린 관심은 언젠가 돌아옵니다.", category: 'relationship' },
+  { text: "오래 볼 사람일수록 서두르지 마세요.", category: 'relationship' },
+  { text: "당신을 아껴주는 사람에게 먼저 다가가 보세요.", category: 'relationship' },
+  { text: "미안함은 미룰수록 무거워집니다.", category: 'relationship' },
+  { text: "잘 들어주는 것만으로 좋은 사람이 됩니다.", category: 'relationship' },
+  { text: "관계에도 쉼표가 필요할 때가 있습니다.", category: 'relationship' },
+  { text: "진짜 인연은 조급하지 않아도 이어집니다.", category: 'relationship' },
+  { text: "상대를 바꾸려 하기보다 이해하려 해보세요.", category: 'relationship' },
+  { text: "고마운 마음은 표현할 때 완성됩니다.", category: 'relationship' },
+  { text: "서로 다른 게 틀린 건 아닙니다.", category: 'relationship' },
+  { text: "좋은 사람 곁엔 좋은 사람이 모입니다.", category: 'relationship' },
+  { text: "오늘 안부 한 번이 관계를 오래 잇습니다.", category: 'relationship' },
+  { text: "마음을 나눌 사람이 한 명만 있어도 충분합니다.", category: 'relationship' },
+  { text: "거절도 관계를 지키는 방법입니다.", category: 'relationship' },
+  { text: "있는 그대로 받아주는 사람이 진짜 내 사람입니다.", category: 'relationship' },
+  { text: "먼저 손 내미는 용기가 관계를 살립니다.", category: 'relationship' },
+  { text: "함께한 시간은 사라지지 않습니다.", category: 'relationship' },
+  { text: "상대의 하루를 궁금해하는 게 사랑입니다.", category: 'relationship' },
+  { text: "가끔은 그냥 곁에 있어주는 게 최고의 위로입니다.", category: 'relationship' },
+  { text: "진심은 서툴러도 전해집니다.", category: 'relationship' },
+  { text: "당신을 웃게 하는 사람을 소중히 여기세요.", category: 'relationship' },
+  { text: "관계는 저울이 아니라 정원입니다. 가꿔야 자랍니다.", category: 'relationship' },
+  { text: "말 한마디의 온도가 관계의 계절을 바꿉니다.", category: 'relationship' },
+  { text: "곁에 오래 남는 사람에게 오늘 고맙다고 해보세요.", category: 'relationship' },
+  { text: "좋은 사람에게는 좋은 사람이 되어주고 싶어집니다.", category: 'relationship' },
+  { text: "함께 웃은 기억은 관계를 오래 버티게 합니다.", category: 'relationship' },
 
-  // 일과 삶 (45개)
+  // 일과 삶 (75개)
   { text: "결정을 미루는 것도 하나의 결정입니다.", category: 'life' },
   { text: "어떤 선택이든 틀린 건 아닙니다.", category: 'life' },
   { text: "계획대로 안 되는 것도 계획의 일부입니다.", category: 'life' },
@@ -265,8 +355,38 @@ const fortunes: Fortune[] = [
   { text: "가진 게 적어도 행복할 수 있습니다.", category: 'life' },
   { text: "오늘 하루도 감사할 일이 하나쯤은 있습니다.", category: 'life' },
   { text: "바쁘게 사는 게 잘 사는 건 아닙니다.", category: 'life' },
+  { text: "오늘 하루도 당신 이야기의 한 페이지입니다.", category: 'life' },
+  { text: "완벽한 순간을 기다리다 지금을 놓치지 마세요.", category: 'life' },
+  { text: "삶은 정답이 아니라 방향입니다.", category: 'life' },
+  { text: "가끔은 멈춰 서서 하늘을 봐도 됩니다.", category: 'life' },
+  { text: "작은 일상이 결국 인생이 됩니다.", category: 'life' },
+  { text: "지금의 선택이 미래를 만듭니다. 너무 겁먹지 마세요.", category: 'life' },
+  { text: "돌아가는 길에서 더 많은 걸 보게 됩니다.", category: 'life' },
+  { text: "오늘의 나를 어제와 비교하지 마세요.", category: 'life' },
+  { text: "삶은 채우는 것만큼 비우는 것도 중요합니다.", category: 'life' },
+  { text: "후회 없는 하루보다 배움 있는 하루를 사세요.", category: 'life' },
+  { text: "지금 겪는 일이 훗날의 이야깃거리가 됩니다.", category: 'life' },
+  { text: "느리게 사는 것도 하나의 방식입니다.", category: 'life' },
+  { text: "가진 것에 눈을 돌리면 삶이 조금 밝아집니다.", category: 'life' },
+  { text: "오늘 할 수 있는 만큼만 해도 충분합니다.", category: 'life' },
+  { text: "인생에 늦은 시작이란 없습니다.", category: 'life' },
+  { text: "계획이 틀어져도 여정은 계속됩니다.", category: 'life' },
+  { text: "삶의 무게는 나눌수록 가벼워집니다.", category: 'life' },
+  { text: "지금 이 순간이 다시 오지 않을 오늘입니다.", category: 'life' },
+  { text: "잠시 쉬어가는 것도 삶의 지혜입니다.", category: 'life' },
+  { text: "남의 속도가 아닌 나의 리듬으로 걸으세요.", category: 'life' },
+  { text: "오늘 감사한 일 하나를 떠올려보세요.", category: 'life' },
+  { text: "삶은 완주가 아니라 산책입니다.", category: 'life' },
+  { text: "어떤 하루든 당신이 주인공입니다.", category: 'life' },
+  { text: "작은 성취를 축하할 줄 아는 사람이 행복합니다.", category: 'life' },
+  { text: "지금의 불안은 성장의 다른 이름입니다.", category: 'life' },
+  { text: "오늘 잘 쉬는 것도 내일을 위한 준비입니다.", category: 'life' },
+  { text: "인생은 채점표가 아닙니다. 즐기면 됩니다.", category: 'life' },
+  { text: "흘러가는 대로 두어도 되는 날이 있습니다.", category: 'life' },
+  { text: "지금 이 자리도 충분히 의미 있는 곳입니다.", category: 'life' },
+  { text: "오늘 하루, 당신답게 살면 그걸로 성공입니다.", category: 'life' },
 
-  // 유머 (50개)
+  // 유머 (80개)
   { text: "오늘 저녁은 맛있는 걸 드세요. 제가 허락합니다.", category: 'humor' },
   { text: "월요일은 화요일이 되면 끝납니다.", category: 'humor' },
   { text: "배고프면 밥 드세요. 그게 답입니다.", category: 'humor' },
@@ -317,6 +437,36 @@ const fortunes: Fortune[] = [
   { text: "세상에 공짜는 없다지만, 공짜 와이파이는 있습니다.", category: 'humor' },
   { text: "오늘 하루도 무사히 끝나면 그걸로 됐습니다.", category: 'humor' },
   { text: "내 인생의 주인공은 나인데 왜 엑스트라 같을까요.", category: 'humor' },
+  { text: "오늘 할 일은 딱 하나. 무사히 퇴근하기.", category: 'humor' },
+  { text: "냉장고 문은 열 때마다 새로운 세상이 없습니다.", category: 'humor' },
+  { text: "다이어트는 인류의 영원한 숙제입니다.", category: 'humor' },
+  { text: "알람은 두 번 울려야 진짜입니다.", category: 'humor' },
+  { text: "배달 앱은 오늘도 저를 응원합니다.", category: 'humor' },
+  { text: "주말이 이틀인 건 우주의 실수입니다. 더 줬어야죠.", category: 'humor' },
+  { text: "청소는 내일의 내가 잘할 겁니다. 아마도요.", category: 'humor' },
+  { text: "통장은 텅장이 되어야 월말입니다.", category: 'humor' },
+  { text: "오늘도 침대와의 이별이 가장 힘들었습니다.", category: 'humor' },
+  { text: "커피 없이는 못 사는 몸이 되어버렸습니다.", category: 'humor' },
+  { text: "회의는 이메일 한 통으로 끝날 수 있었습니다.", category: 'humor' },
+  { text: "운동복만 사도 반은 운동한 겁니다.", category: 'humor' },
+  { text: "퇴근길 노을은 야근하는 자를 위로합니다.", category: 'humor' },
+  { text: "냉장고에 있는 건 다 유통기한 순삭입니다.", category: 'humor' },
+  { text: "오늘도 위대한 일을 했습니다. 출근이요.", category: 'humor' },
+  { text: "낮잠은 어른의 특권이자 사치입니다.", category: 'humor' },
+  { text: "배부르면 세상이 다 평화롭습니다.", category: 'humor' },
+  { text: "할 일 목록은 늘어나지만 의욕은 줄어듭니다.", category: 'humor' },
+  { text: "주말 계획은 침대에서 세우는 게 국룰입니다.", category: 'humor' },
+  { text: "오늘도 참 잘 견뎠습니다. 상으로 치킨 어때요.", category: 'humor' },
+  { text: "월요일을 견디면 화요일이 옵니다. 참 야박하죠.", category: 'humor' },
+  { text: "지갑은 가볍고 마음은 무겁습니다.", category: 'humor' },
+  { text: "세상에서 제일 무거운 건 눈꺼풀입니다.", category: 'humor' },
+  { text: "아이스크림은 스트레스를 녹입니다. 과학입니다.", category: 'humor' },
+  { text: "오늘의 목표는 어제보다 덜 피곤하기입니다.", category: 'humor' },
+  { text: "택배 오는 날이 진짜 명절입니다.", category: 'humor' },
+  { text: "퇴근 5분 전은 시간이 거꾸로 갑니다.", category: 'humor' },
+  { text: "라면은 밤에 먹으면 두 배로 맛있습니다. 이것도 과학이에요.", category: 'humor' },
+  { text: "오늘 하루도 무사 통과. 참 잘했어요.", category: 'humor' },
+  { text: "내일부터 갓생 삽니다. 오늘은 아니고요.", category: 'humor' },
 ];
 
 export function FortuneCookie() {
@@ -327,6 +477,14 @@ export function FortuneCookie() {
   const [selectedMood, setSelectedMood] = useState<MoodType>(null);
   const [sharedFortune, setSharedFortune] = useState<string | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
+
+  // 🔒 비밀 포춘 모드 (?secret= 파라미터로만 진입)
+  const [secretMode, setSecretMode] = useState(false);
+  const [secretName, setSecretName] = useState<string | null>(null);
+  const [secretPool, setSecretPool] = useState<string[]>([]);
+  const [secretFortune, setSecretFortune] = useState<string | null>(null);
+  const [secretOpening, setSecretOpening] = useState(false);
+  const [secretLinkCopied, setSecretLinkCopied] = useState(false);
 
   // URL 해시에서 공유된 포춘 파싱
   useEffect(() => {
@@ -349,6 +507,41 @@ export function FortuneCookie() {
       } catch {}
     }
   }, []);
+
+  // 🔒 ?secret= 파라미터 감지 → 비밀 모드 진입 + 문장 풀 동적 로드
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has('secret')) return;
+
+    setSecretMode(true);
+    const raw = (params.get('secret') || '').trim();
+    // 짧은 이름/단어면 개인화 인사에 사용 (이상한 값은 무시)
+    if (raw && raw.length <= 16 && /^[\p{L}\p{N} _.-]+$/u.test(raw)) {
+      setSecretName(raw);
+    }
+
+    // 별도 청크로 분리된 비밀 문장 풀 로드
+    import('./secretFortunes')
+      .then((m) => setSecretPool(m.getSecretFortunes()))
+      .catch(() => setSecretPool([]));
+  }, []);
+
+  // 🔒 비밀 포춘 열기
+  const openSecret = useCallback(() => {
+    if (secretPool.length === 0) return;
+    setSecretOpening(true);
+    setSecretFortune(null);
+    setTimeout(() => {
+      const available = secretPool.filter((f) => !recentFortunes.includes(f));
+      const pool = available.length > 0 ? available : secretPool;
+      const picked = pool[Math.floor(Math.random() * pool.length)];
+      setRecentFortunes((prev) => [...prev, picked].slice(-10));
+      setSecretFortune(picked);
+      setSecretOpening(false);
+    }, 700);
+  }, [secretPool, recentFortunes]);
+
   // 감정 기반 필터링
   const getFilteredFortunes = useCallback(() => {
     if (selectedMood) {
@@ -407,6 +600,93 @@ export function FortuneCookie() {
   };
 
   const currentCatInfo = fortune && fortune.category !== 'all' ? categoryInfo[fortune.category] : null;
+
+  // 🔒 비밀 포춘 모드 — 완전히 다른, 신나고 장난스러운 응원 화면
+  if (secretMode) {
+    return (
+      <div className="space-y-4">
+        <Card
+          variant="bordered"
+          className="relative overflow-hidden p-6 md:p-10 text-center min-h-[360px] flex flex-col items-center justify-center bg-gradient-to-br from-fuchsia-100 via-violet-100 to-sky-100 dark:from-fuchsia-950/40 dark:via-violet-950/40 dark:to-sky-950/40"
+        >
+          {/* 반짝이 장식 */}
+          <div className="pointer-events-none absolute inset-0 select-none text-2xl">
+            <span className="absolute left-[8%] top-[12%] animate-pulse">✨</span>
+            <span className="absolute right-[10%] top-[18%] animate-bounce">🎉</span>
+            <span className="absolute left-[14%] bottom-[16%] animate-bounce">🌈</span>
+            <span className="absolute right-[12%] bottom-[12%] animate-pulse">💫</span>
+            <span className="absolute left-[46%] top-[6%] animate-pulse">⭐</span>
+          </div>
+
+          <div className="relative z-10 w-full flex flex-col items-center">
+            <span className="inline-flex items-center gap-1 px-3 py-1 mb-4 rounded-full bg-white/70 dark:bg-white/10 text-xs font-bold text-fuchsia-600 dark:text-fuchsia-300 ring-1 ring-fuchsia-300/50">
+              🔒 SECRET
+            </span>
+
+            {!secretFortune && !secretOpening && (
+              <>
+                <div className="text-6xl md:text-7xl mb-5 animate-bounce">🎁</div>
+                <h3 className="text-lg md:text-xl font-extrabold text-gray-900 dark:text-white mb-1">
+                  {secretName ? `${secretName}만을 위한 비밀 포춘!` : '너만 아는 비밀 포춘!'}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-6">
+                  아무나 못 여는 거야. 준비됐어? 😎
+                </p>
+                <Button
+                  onClick={openSecret}
+                  size="lg"
+                  disabled={secretPool.length === 0}
+                  className="bg-gradient-to-r from-fuchsia-500 to-violet-500 hover:from-fuchsia-600 hover:to-violet-600"
+                >
+                  {secretPool.length === 0 ? '불러오는 중...' : '🔓 비밀 열기'}
+                </Button>
+              </>
+            )}
+
+            {secretOpening && (
+              <div className="text-7xl animate-spin">🎁</div>
+            )}
+
+            {secretFortune && !secretOpening && (
+              <>
+                <div className="text-5xl mb-4 animate-bounce">🎊</div>
+                <p className="text-xl md:text-2xl leading-relaxed max-w-md mb-6 font-extrabold text-gray-900 dark:text-white">
+                  {secretFortune}
+                </p>
+                <div className="flex gap-3 flex-wrap justify-center">
+                  <Button
+                    onClick={openSecret}
+                    variant="secondary"
+                  >
+                    🎲 한 번 더!
+                  </Button>
+                  <CopyButton text={secretFortune} label="복사" />
+                  <button
+                    onClick={() => {
+                      navigator.clipboard
+                        .writeText(window.location.href)
+                        .then(() => {
+                          setSecretLinkCopied(true);
+                          setTimeout(() => setSecretLinkCopied(false), 2000);
+                        })
+                        .catch(() => {});
+                    }}
+                    className="px-4 py-2 text-sm rounded-lg bg-gradient-to-r from-fuchsia-500 to-violet-500 text-white hover:from-fuchsia-600 hover:to-violet-600 transition-colors"
+                  >
+                    {secretLinkCopied ? '✅ 비밀 링크 복사됨!' : '🔗 비밀 링크 공유'}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </Card>
+
+        <p className="text-center text-xs text-gray-400 dark:text-gray-500">
+          🤫 이 링크를 아는 사람에게만 살짝 공유해보세요
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-2">
@@ -536,7 +816,7 @@ export function FortuneCookie() {
 
       <div className="text-xs text-gray-400 dark:text-gray-500 text-center space-y-1">
         <p>• 기분에 맞는 문장을 추천받거나 카테고리를 선택하세요</p>
-        <p>• 총 250개의 문장이 준비되어 있습니다</p>
+        <p>• 총 400개의 문장이 준비되어 있습니다</p>
       </div>
 
       <SeoContent />
@@ -553,7 +833,7 @@ function SeoContent() {
         </h2>
         <p className="text-sm leading-relaxed">
           <strong className="text-gray-900 dark:text-white">포춘 쿠키를 클릭해서 오늘의 짧은 문장을 받아보는 도구입니다.</strong>{' '}
-          <strong>위로, 동기부여, 인간관계, 일과 삶, 유머</strong> 등 5가지 카테고리에서 <strong>250개 이상의 문장</strong>이 준비되어 있습니다.
+          <strong>위로, 동기부여, 인간관계, 일과 삶, 유머</strong> 등 5가지 카테고리에서 <strong>400개 이상의 문장</strong>이 준비되어 있습니다.
           기분에 따라 카테고리를 선택하거나 랜덤으로 받아보세요.
           간단한 문장이지만 하루를 시작하는 작은 힘이 될 수 있습니다.
         </p>
@@ -625,7 +905,7 @@ function SeoContent() {
       <FaqSection
         title="자주 묻는 질문"
         faqs={[
-          { question: '문장은 매번 바뀌나요?', answer: '네, 250개 이상의 문장 중 랜덤으로 선택됩니다. 같은 카테고리 내에서도 다양한 문장이 나옵니다.' },
+          { question: '문장은 매번 바뀌나요?', answer: '네, 400개 이상의 문장 중 랜덤으로 선택됩니다. 같은 카테고리 내에서도 다양한 문장이 나옵니다.' },
           { question: '하루 횟수 제한이 있나요?', answer: '아니요, 횟수 제한 없이 원하는 만큼 열어볼 수 있습니다. 다시 열기 버튼으로 계속 새 문장을 받을 수 있어요.' },
           { question: '문장을 저장할 수 있나요?', answer: '복사 버튼으로 클립보드에 복사하거나, 공유 기능으로 SNS에 공유할 수 있습니다.' },
         ]}
