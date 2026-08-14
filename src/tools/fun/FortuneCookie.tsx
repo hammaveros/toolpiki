@@ -788,7 +788,7 @@ export function FortuneCookie() {
               </span>
             </div>
             <div className="text-4xl mb-4">📜</div>
-            <p className="text-xl md:text-2xl leading-relaxed max-w-md mb-6 font-medium">
+            <p className="text-xl md:text-2xl leading-relaxed max-w-md mb-6 font-medium break-keep [text-wrap:balance]">
               "{fortune.text}"
             </p>
             <div className="flex gap-3 flex-wrap justify-center">
