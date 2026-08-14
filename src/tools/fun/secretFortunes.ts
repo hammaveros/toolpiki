@@ -1,24 +1,50 @@
 // 🔒 비밀 포춘 문장 풀 (신나고 장난스러운 응원 톤).
 // 일반 포춘쿠키(400개)와 완전히 분리된 숨은 콘텐츠.
 //
-// ⚠️ 참고: 정적 클라이언트 사이트라 base64 는 "평문 노출 방지" 수준의 난독화일 뿐
-// 진짜 암호화가 아니다. 소스/번들 grep 으로 문구가 바로 보이지 않게 하고,
-// FortuneCookie 에서 ?secret= 진입 시에만 동적 import 되어 별도 청크로 로드된다.
-// 완벽히 숨기려면 서버가 필요하다.
+// 여기 문장을 자유롭게 추가/수정하세요. 배열에 한 줄씩 넣으면 됩니다.
+//
+// ⚠️ 참고: 정적 클라이언트 사이트라 이 파일도 결국 브라우저로 전송됩니다.
+// 다만 FortuneCookie 에서 ?secret= 진입 시에만 동적 import 되는 별도 청크라,
+// 일반 방문자의 메인 번들에는 포함되지 않습니다. (완벽히 숨기려면 서버 필요)
 
-const ENCODED =
-  'WyLsib/igJQg7J206rG0IOynhOynnCDruYTrsIDsnbjrjbAsIOyYpOuKmCDrhIgg7JmE7KCEIOyemOuQoCDsmIjsoJXsnbTslbwuIPCflKUiLCLsmrDso7zqsIAg67Cp6riIIOuEiCDtjrjrqLnquLDroZwg7ZaI64yALiDqsJzsnbTrk53snbTsp4A/IOKcqCIsIuyVvCwg7Jik64qY7J2YIOuEiCDrrLTsoIHsnbTslbwuIOq3vOqxsD8g6re464OlIOuCtOqwgCDqt7jroIfri6TrqbQg6re465+wIOyghOyngC4g8J+SqiIsIuyngOq4iCDsnbQg66y47J6lIOuztCDsgqzrnowsIDPsnbwg7JWI7JeQIOq4sOu2hCDsoovslYTsp5AuIOuCtCDstInsnYAg7JWIIO2LgOugpC4g8J+YjiIsIuu5hOuwgCDtlZjrgpgg7JWM66Ck7KSE6rKMLiDrhIwg7IOd6rCB67O064ukIO2bqOyUrCDrqYvsoLguIOynhOynnOuhnC4g8J+YhiIsIuyYpOuKmCDtlZjro6gg64SI7ZWc7YWMIOyii+ydgCDsnbwg66qw656YIOyEuO2Mhe2VtOuGqOyWtC4g6riw64yA7ZW064+EIOyii+yVhC4g8J+OgSIsIuynoOKAlCDtlonsmrQg67Cw64usIOyZlOyKteuLiOuLpCEg7ISc66qF7J2AIOuvuOyGjOuhnCDrtoDtg4HtlbTsmpQuIPCfmIQiLCLrhIgg7KeA6riIIOybg+yXiOyngD8g6re465+8IOyYpOuKmCDsmrTshLgg7Ya16rO8LiDstpXtlZjtlbQhIPCfjokiLCLshLjsg4HslYQg67mE7LycLCDsmKTripjsnZgg7KO87J246rO1IOyngOuCmOqwhOuLpCEgKOuEiCDrp5DsnbTslbwg64SIKSDwn4yfIiwi66qw656YIOydkeybkCDspJHsnbTsl4jslrQuIOuTpOy8sOuEpC4g7Ja07KiM65OgIO2MjOydtO2MhSEg8J+ZjCIsIuyYpOuKmCDrhIjsnZgg6riw7Jq0OiDrp4zroJkuIOuhnOuUqSDsmYTro4wuIOyekCwg7Lac67CcISDwn5qAIiwi67mE67CA67KI7Zi4IOyeheugpSDshLHqs7UhIOuztOyDgeydgC4uLiDsmKTripgg7ZWY66OoIOqwnOyatO2VqOydtOyVvC4g8J+YjCIsIuyJvywg7J206rG0IOyVhOustO2VnO2FjOuPhCDrp5Ag7JWIIO2WiOuKlOuNsOKAlCDrhIwg65CgIOuGiOydtOyVvC4g8J+YjyIsIu2WieyatCDsmpTsoJUg64uk64WA6rCQLiDtnZTsoIHsnLzroZwg67CY7Ked7J20IOu/jOugpOuGk+qzoCDqsJAuIOKcqOKcqCIsIuyYpOuKmCDrhIgg7ZWY64qUIOqxsCDri6Qg7J6Y65CgIOqwgS4g64K06rCAIOuztOymne2VqC4g64+E7J6lIOy+hSEg8J+npyIsIuq4tOq4ieyGjeuztCkg7Jik64qYIOq4sOu2hCDsoovslYTsp4gg7IKs656MIOuwnOqyrC4g67CU66GcIOuEiC4g8J+ToiIsIuu5hOuwgCDrr7jshZg6IOyYpOuKmCDrlLEg7ZWcIOuyiCDtgazqsowg7JuD6riwLiDshLHqs7XtlZjrqbQg65+t7YKkLiDwn5iBIiwi7Kec7J6UISDsiKjqsqjrkZQg7ZaJ7Jq0IOyDgeyekCDsmKTtlIghIOyViOyXkOuKlC4uLiDsoovsnYAg7ZWY66OoISDwn46KIiwi64SI66eMIOyVhOuKlCDruYTrsIA6IOyYpOuKmOydmCDrhIwg7Ja07KCc67O064ukIDEuNeuwsCDrqYvsoLguIPCfk4giLCLsmrDso7wg7ISc67KE7JeQ7IScIOuwqeq4iCDrhIggVklQIOuTseyXheuQkOuMgC4g7LaV7ZWYISDwn5GRIiwi7Im/4oCUIOyYpOuKmCDrhIjtlZzthYzrp4wg66qw656YIO2WieyatCDrkZAg67CwIOyggeyaqe2WiOyWtC4g8J+YnCIsIu2eiOuToCDsiqTthYzsnbTsp4Ag7J6F7J6lIOyEseqztSEg7Jes6ri0IOyii+ydgCDsnbzrp4wg7J6I64qUIOqzs+ydtOyVvC4g8J+Xuu+4jyIsIuyYpOuKmCDrhIgg6re87LKY7JeQIOyii+ydgCDquLDsmrQg7ISc7ISx7J2064qUIOykkS4g6rOnIOunjOuCoCDqsbDslbwuIPCfjYAiLCLruYTrsIAg7JqU7JuQIFjqsIAg7KCE7ZW07JqUOiAo7J6R7KCE66qFIOq1v+uNsOydtCwg6rCc7IucISkg8J+Vtu+4jyIsIuuEiCDsmKTripgg7KKAIOu5m+uCmOuNmOuNsD8g7JWELCDsm5Drnpgg6re4656s6rWs64KYLiDrr7jslYguIOKcqCIsIu2WieyatCDsoIHrpr0g7JmE66GcISDtmITsnqwg7Y+s7J247Yq4OiDrrLTtlZzrjIAuIOunmOq7jyDsjaguIPCfkqsiLCLsib8sIOydtCDtjpjsnbTsp4Ag7JWE66y064KYIOuquyDsmYAuIOuEjCDtirnrs4TtlZjri4jquYwg7JioIOqxsOyVvC4g8J+SnSIsIuyYpOuKmOydmCDsmIjslrg6IOuEiCDrtoTrqoUg7KKL7J2AIOyGjOyLnSDrk6PripTri6QuIOuRkOqzoCDrtJAuIPCfk6kiLCLruYTrsIAg7KO866y4IOyZuOyboOyWtC4g7Jik64qYIO2VmOujqCDsmYTsoIQg7J6YIO2SgOugpOudvCEg7JaNISDwn6qEIiwi66qw656YIO2VmOydtO2MjOydtOu4jCDrgqDrprwuIOynnSEg7J6QLCDsnbTsoJwg6rCA7IScIOydtOqyqC4g4pyLIiwi64SI7ZWc7YWM66eMIOyCtOynneKAlCDsmKTripgg7KeA6rWs6rCAIOuEiCDspJHsi6zsnLzroZwg64+I64ukLiDwn4yNIiwi7ZaJ7Jq0IOuwsO2EsOumrCAxMDAlIOy2qeyghCDsmYTro4wuIOyYpOuKmCDrsKnsoIQg6rGx7KCVIOyXhuydjC4g8J+UiyIsIuyJvywg7Jik64qYIOuEiCDsm4PripQg6rGwIOyasOyjvOqwgCDri6Qg67O06rOgIO2dkOuth+2VtO2VmOuKlCDspJEuIPCfmIoiLCLruYTrsIAg7Ya166GcIOuwnOqyrCDstpXtlZghIOyXrOq4sCDsmKgg7IKs656M7J2AIOuLpCDsnpjrkJzrjIAuIPCfmqrinKgiLCLsmKTripgg64SI7J2YIOuvuOyFmCDshLHqs7XrpaA6IDIwMCUuIOyYpO2DgCDslYTri5guIOynhOynnCAyMDAlLiDwn46vIiwi7Keg4oCUIOyYpOuKmCDtlZjro6gg64SIIOyghOyaqSDtlonsmrQg7ZWE7YSwIOyUjOyboOyWtC4g7IS47IOBIOyYiOu7kCDrs7Tsnbzqsbg/IPCfjIgiXQ==';
-
-let cache: string[] | null = null;
+export const SECRET_FORTUNES: string[] = [
+  '쉿— 이건 진짜 비밀인데, 오늘 너 완전 잘될 예정이야. 🔥',
+  '우주가 방금 너 편먹기로 했대. 개이득이지? ✨',
+  '야, 오늘의 너 무적이야. 근거? 그냥 내가 그렇다면 그런 거지. 💪',
+  '지금 이 문장 본 사람, 3일 안에 기분 좋아짐. 내 촉은 안 틀려. 😎',
+  '비밀 하나 알려줄게. 넌 생각보다 훨씬 멋져. 진짜로. 😆',
+  '오늘 하루 너한테 좋은 일 몰래 세팅해놨어. 기대해도 좋아. 🎁',
+  '짠— 행운 배달 왔습니다! 서명은 미소로 부탁해요. 😄',
+  '너 지금 웃었지? 그럼 오늘 운세 통과. 축하해! 🎉',
+  '세상아 비켜, 오늘의 주인공 지나간다! (너 말이야 너) 🌟',
+  '몰래 응원 중이었어. 들켰네. 어쨌든 파이팅! 🙌',
+  '오늘 너의 기운: 만렙. 로딩 완료. 자, 출발! 🚀',
+  '비밀번호 입력 성공! 보상은... 오늘 하루 개운함이야. 😌',
+  '쉿, 이건 아무한테도 말 안 했는데— 넌 될 놈이야. 😏',
+  '행운 요정 다녀감. 흔적으로 반짝이 뿌려놓고 감. ✨✨',
+  '오늘 너 하는 거 다 잘될 각. 내가 보증함. 도장 쾅! 🧧',
+  '긴급속보) 오늘 기분 좋아질 사람 발견. 바로 너. 📢',
+  '비밀 미션: 오늘 딱 한 번 크게 웃기. 성공하면 럭키. 😁',
+  '짜잔! 숨겨둔 행운 상자 오픈! 안에는... 좋은 하루! 🎊',
+  '너만 아는 비밀: 오늘의 넌 어제보다 1.5배 멋져. 📈',
+  '우주 서버에서 방금 너 VIP 등업됐대. 축하! 👑',
+  '쉿— 오늘 너한테만 몰래 행운 두 배 적용했어. 😜',
+  '히든 스테이지 입장 성공! 여긴 좋은 일만 있는 곳이야. 🗺️',
+  '오늘 너 근처에 좋은 기운 서성이는 중. 곧 만날 거야. 🍀',
+  '너 오늘 좀 빛나던데? 아, 원래 그랬구나. 미안. ✨',
+  '행운 적립 완료! 현재 포인트: 무한대. 맘껏 써. 💫',
+  '쉿, 이 페이지 아무나 못 와. 넌 특별하니까 온 거야. 💝',
+  '오늘의 예언: 너 분명 좋은 소식 듣는다. 두고 봐. 📩',
+  "비밀 주문 외웠어. '오늘 하루 완전 잘 풀려라!' 얍! 🪄",
+  '몰래 하이파이브 날림. 짝! 자, 이제 가서 이겨. ✋',
+  '너한테만 살짝— 오늘 지구가 너 중심으로 돈다. 🌍',
+  '행운 배터리 100% 충전 완료. 오늘 방전 걱정 없음. 🔋',
+  '쉿, 오늘 너 웃는 거 우주가 다 보고 흐뭇해하는 중. 😊',
+  '비밀 통로 발견 축하! 여기 온 사람은 다 잘된대. 🚪✨',
+  '오늘 너의 미션 성공률: 200%. 오타 아님. 진짜 200%. 🎯',
+  '짠— 오늘 하루 너 전용 행운 필터 씌웠어. 세상 예뻐 보일걸? 🌈',
+];
 
 export function getSecretFortunes(): string[] {
-  if (cache) return cache;
-  try {
-    const bytes = Uint8Array.from(atob(ENCODED), (c) => c.charCodeAt(0));
-    const json = new TextDecoder().decode(bytes);
-    cache = JSON.parse(json) as string[];
-  } catch {
-    cache = [];
-  }
-  return cache;
+  return SECRET_FORTUNES;
 }
