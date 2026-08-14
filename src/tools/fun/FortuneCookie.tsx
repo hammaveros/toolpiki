@@ -669,8 +669,10 @@ export function FortuneCookie() {
                   <CopyButton text={secretFortune} label="복사" />
                   <button
                     onClick={() => {
+                      // 개인화 이름은 빼고 ?secret 까지만 공유 (받는 사람에겐 기본 문구)
+                      const link = `${window.location.origin}${window.location.pathname}?secret`;
                       navigator.clipboard
-                        .writeText(window.location.href)
+                        .writeText(link)
                         .then(() => {
                           setSecretLinkCopied(true);
                           setTimeout(() => setSecretLinkCopied(false), 2000);
