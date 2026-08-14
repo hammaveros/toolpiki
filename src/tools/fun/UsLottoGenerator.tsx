@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { CopyButton } from '@/components/ui/CopyButton';
@@ -49,8 +49,8 @@ interface LottoSet {
 const MAX_SETS = 10;
 const MAX_HISTORY = 10;
 
-function getSecureRandomNumbers(count: number, max: number): number[] {
-  const available = Array.from({ length: max }, (_, i) => i + 1);
+function getSecureRandomNumbers(count: number, max: number, exclude: number[] = []): number[] {
+  const available = Array.from({ length: max }, (_, i) => i + 1).filter(n => !exclude.includes(n));
   const result: number[] = [];
 
   for (let i = 0; i < count && available.length > 0; i++) {
@@ -108,14 +108,40 @@ export function UsLottoGenerator() {
   const [sortNumbers, setSortNumbers] = useState(true);
   const [results, setResults] = useState<LottoSet[]>([]);
   const [history, setHistory] = useState<LottoSet[][]>([]);
+  const [showExclude, setShowExclude] = useState(false);
+  const [excludeInput, setExcludeInput] = useState('');
 
   const config = LOTTO_CONFIGS[lottoType];
 
+  // Parse the input (space / tab / comma separated) into a Set of main-pool numbers to exclude
+  const excludeSet = useMemo(() => {
+    const set = new Set<number>();
+    for (const token of excludeInput.split(/[\s,]+/)) {
+      if (!token) continue;
+      const n = Number(token);
+      if (Number.isInteger(n) && n >= 1 && n <= config.mainMax) {
+        set.add(n);
+      }
+    }
+    return set;
+  }, [excludeInput, config.mainMax]);
+
   const generateLotto = useCallback(() => {
+    const exclude = Array.from(excludeSet);
+
+    // Not enough main numbers left after exclusions
+    if (config.mainMax - exclude.length < config.mainCount) {
+      alert(
+        `Too many excluded numbers.\nYou need to pick ${config.mainCount} from 1-${config.mainMax}, ` +
+        `but excluding ${exclude.length} leaves only ${config.mainMax - exclude.length}.`
+      );
+      return;
+    }
+
     const newResults: LottoSet[] = [];
 
     for (let i = 0; i < setCount; i++) {
-      let mainNumbers = getSecureRandomNumbers(config.mainCount, config.mainMax);
+      let mainNumbers = getSecureRandomNumbers(config.mainCount, config.mainMax, exclude);
       if (sortNumbers) {
         mainNumbers = mainNumbers.sort((a, b) => a - b);
       }
@@ -132,7 +158,7 @@ export function UsLottoGenerator() {
 
     setResults(newResults);
     setHistory(prev => [newResults, ...prev].slice(0, MAX_HISTORY));
-  }, [setCount, sortNumbers, lottoType, config]);
+  }, [setCount, sortNumbers, lottoType, config, excludeSet]);
 
   const formatForCopy = (sets: LottoSet[], multiline: boolean): string => {
     return sets.map(set => {
@@ -248,6 +274,78 @@ export function UsLottoGenerator() {
             />
             <span className="text-sm text-gray-700 dark:text-gray-300">Sort numbers ascending</span>
           </label>
+
+          {/* Exclude numbers */}
+          <div>
+            <button
+              type="button"
+              onClick={() => setShowExclude(v => !v)}
+              className={cn(
+                'inline-flex items-center gap-1.5 text-sm font-medium transition-colors',
+                showExclude
+                  ? 'text-blue-600 dark:text-blue-400'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+              )}
+            >
+              <svg
+                className={cn('w-4 h-4 transition-transform', showExclude && 'rotate-90')}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              🚫 Exclude numbers
+              {excludeSet.size > 0 && (
+                <span className="ml-1 px-1.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-300 text-xs font-semibold">
+                  {excludeSet.size}
+                </span>
+              )}
+            </button>
+
+            {showExclude && (
+              <div className="mt-3 space-y-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-4">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Enter main numbers to exclude (1-{config.mainMax}). Separate with <strong>spaces, tabs, or commas</strong>. Out-of-range and duplicates are ignored.
+                </p>
+                <textarea
+                  value={excludeInput}
+                  onChange={(e) => setExcludeInput(e.target.value)}
+                  placeholder="e.g. 4, 13 22   31&#10;44"
+                  rows={3}
+                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 px-3 py-2 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y font-mono"
+                />
+
+                {excludeSet.size > 0 && (
+                  <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                    <span className="text-xs text-gray-500 dark:text-gray-400 mr-1">Excluded:</span>
+                    {Array.from(excludeSet).sort((a, b) => a - b).map(num => (
+                      <span
+                        key={num}
+                        className="inline-flex items-center justify-center min-w-[28px] h-7 px-1.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-300 text-xs font-semibold ring-1 ring-rose-200 dark:ring-rose-800"
+                      >
+                        {num}
+                      </span>
+                    ))}
+                    <button
+                      type="button"
+                      onClick={() => setExcludeInput('')}
+                      className="ml-1 text-xs text-gray-400 hover:text-rose-500 underline underline-offset-2"
+                    >
+                      Clear all
+                    </button>
+                  </div>
+                )}
+
+                {config.mainMax - excludeSet.size < config.mainCount && (
+                  <p className="text-xs font-medium text-rose-500 dark:text-rose-400">
+                    ⚠️ Only {config.mainMax - excludeSet.size} numbers left. You need at least {config.mainCount}.
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <Button
