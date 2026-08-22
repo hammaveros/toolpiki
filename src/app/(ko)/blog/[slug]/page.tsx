@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { blogPostsKr, getBlogPost } from '@/data/blog';
 import { siteConfig } from '@/data/site';
+import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -17,14 +18,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogPost(slug, 'kr');
   if (!post) return {};
 
+  // noindex 도구(사주/타로/채팅 등)의 홍보 글은 색인에서도 함께 제외 (정책 일관성)
+  const restricted = isRestrictedSlug(post.toolSlug);
+  // 영문판이 실제로 존재하는 글에만 hreflang alternate 를 건다 (없는데 걸면 404 를 가리킴)
+  const hasEn = Boolean(getBlogPost(slug, 'en'));
+
   return {
     title: post.title,
     description: post.description,
+    ...(restricted ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: `${siteConfig.url}/blog/${slug}`,
       languages: {
         ko: `${siteConfig.url}/blog/${slug}`,
-        en: `${siteConfig.url}/en/blog/${slug}`,
+        ...(hasEn ? { en: `${siteConfig.url}/en/blog/${slug}` } : {}),
       },
     },
     openGraph: {
@@ -39,6 +46,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const contentMap: Record<string, () => Promise<{ default: React.ComponentType }>> = {
+  // 가이드 (독립형 정보성 롱폼)
+  'jaso-word-count-guide': () => import('@/content/blog/kr/jaso-word-count-guide'),
+  'korean-utf8-bytes': () => import('@/content/blog/kr/korean-utf8-bytes'),
+  'base64-vs-encryption': () => import('@/content/blog/kr/base64-vs-encryption'),
+  'json-error-guide': () => import('@/content/blog/kr/json-error-guide'),
+  'image-format-guide': () => import('@/content/blog/kr/image-format-guide'),
+  'qr-code-safety-guide': () => import('@/content/blog/kr/qr-code-safety-guide'),
   'character-counter': () => import('@/content/blog/kr/character-counter'),
   'json-formatter': () => import('@/content/blog/kr/json-formatter'),
   'image-compress': () => import('@/content/blog/kr/image-compress'),

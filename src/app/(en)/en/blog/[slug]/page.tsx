@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { blogPostsEn, getBlogPost } from '@/data/blog';
 import { siteConfig } from '@/data/site';
+import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -17,14 +18,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogPost(slug, 'en');
   if (!post) return {};
 
+  // noindex 도구의 홍보 글은 색인에서도 함께 제외 (정책 일관성)
+  const restricted = isRestrictedSlug(post.toolSlug);
+  // 한국어판이 실제로 존재하는 글에만 hreflang alternate 를 건다
+  const hasKo = Boolean(getBlogPost(slug, 'kr'));
+
   return {
     title: post.title,
     description: post.description,
+    ...(restricted ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: `${siteConfig.url}/en/blog/${slug}`,
       languages: {
         en: `${siteConfig.url}/en/blog/${slug}`,
-        ko: `${siteConfig.url}/blog/${slug}`,
+        ...(hasKo ? { ko: `${siteConfig.url}/blog/${slug}` } : {}),
       },
     },
     openGraph: {

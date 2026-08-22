@@ -81,12 +81,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
-    ...blogPostsKr.map((post) => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    })),
+    // noindex 도구(사주/타로/채팅 등)의 홍보 글은 페이지도 noindex 처리하므로 sitemap 에서 제외
+    ...blogPostsKr
+      .filter((post) => !isRestrictedSlug(post.toolSlug))
+      .map((post) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.date),
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+      })),
   ];
 
   return [...staticPages, ...blogPages, ...toolPages];

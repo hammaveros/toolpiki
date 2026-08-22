@@ -10,6 +10,69 @@ export interface BlogPost {
 }
 
 export const blogPostsKr: BlogPost[] = [
+  // ========================================
+  // 가이드 (독립형 정보성 롱폼 — 도구 홍보 아님)
+  // ========================================
+  {
+    slug: 'jaso-word-count-guide',
+    title: '자소서 글자수 기준 총정리 — 공백 포함? 제외? 회사마다 다르다',
+    description: '채용 플랫폼별 글자수 산정 방식(공백 포함/제외, 바이트 기준)과 초과 시 처리 방식, 분량을 기준에 맞추는 실전 요령까지 정리했다.',
+    date: '2026-08-20',
+    category: '가이드',
+    toolSlug: 'character-counter',
+    toolUrl: '/tools/character-counter',
+    readingTime: 8,
+  },
+  {
+    slug: 'korean-utf8-bytes',
+    title: '한글은 왜 3바이트일까 — UTF-8, EUC-KR, 그리고 DB 컬럼이 터지는 이유',
+    description: '같은 글자인데 어디서는 2바이트, 어디서는 3바이트로 계산되는 이유. 인코딩의 원리부터 VARCHAR 길이 설계, SMS 90바이트 문제까지.',
+    date: '2026-08-20',
+    category: '가이드',
+    toolSlug: 'character-counter',
+    toolUrl: '/tools/character-counter',
+    readingTime: 9,
+  },
+  {
+    slug: 'base64-vs-encryption',
+    title: 'Base64는 암호화가 아니다 — 인코딩·암호화·해싱, 뭐가 다른가',
+    description: 'Base64로 비밀번호를 "암호화"했다는 코드를 만났다면 이 글부터. 세 가지 개념의 차이와 각각 언제 써야 하는지, 실무 사고 사례로 정리했다.',
+    date: '2026-08-21',
+    category: '가이드',
+    toolSlug: 'base64',
+    toolUrl: '/tools/base64',
+    readingTime: 8,
+  },
+  {
+    slug: 'json-error-guide',
+    title: 'JSON 파싱 에러 총정리 — Unexpected token은 대부분 이 6가지다',
+    description: '트레일링 콤마, 작은따옴표, BOM, 주석, NaN, 이스케이프. JSON.parse가 뱉는 에러의 실제 원인과 찾는 방법을 사례별로 정리했다.',
+    date: '2026-08-21',
+    category: '가이드',
+    toolSlug: 'json-formatter',
+    toolUrl: '/tools/json-formatter',
+    readingTime: 9,
+  },
+  {
+    slug: 'image-format-guide',
+    title: 'JPG vs PNG vs WebP vs AVIF — 지금 뭘 써야 하는지 정리',
+    description: '손실/무손실, 투명도, 브라우저 지원, 용량 비교까지. 블로그 썸네일부터 서비스 에셋까지 상황별로 어떤 포맷을 골라야 하는지 기준을 세웠다.',
+    date: '2026-08-22',
+    category: '가이드',
+    toolSlug: 'image-convert',
+    toolUrl: '/tools/image-convert',
+    readingTime: 9,
+  },
+  {
+    slug: 'qr-code-safety-guide',
+    title: 'QR코드는 어떻게 30%가 가려져도 읽힐까 — 원리와 큐싱 사기 예방',
+    description: '오류 정정 레벨, 버전, 파인더 패턴 같은 QR코드의 구조를 쉽게 풀고, 최근 급증한 큐싱(QR 피싱)을 구분하는 체크리스트를 정리했다.',
+    date: '2026-08-23',
+    category: '가이드',
+    toolSlug: 'qr-generator',
+    toolUrl: '/tools/qr-generator',
+    readingTime: 8,
+  },
   {
     slug: 'character-counter',
     title: '글자수 세기 사이트, 광고 없이 쓸 수 없는 건가',
