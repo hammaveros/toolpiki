@@ -98,6 +98,47 @@ export function generateToolListJsonLd(tools: ToolMeta[]) {
   };
 }
 
+// 블로그 글 JSON-LD (BlogPosting)
+export function generateBlogPostingJsonLd(post: {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  lang?: 'kr' | 'en';
+}) {
+  const isEn = post.lang === 'en';
+  const url = isEn
+    ? `${siteConfig.url}/en/blog/${post.slug}`
+    : `${siteConfig.url}/blog/${post.slug}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: isEn ? 'en' : 'ko-KR',
+    image: `${siteConfig.url}/og-image.png`,
+    author: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteConfig.url}/android-chrome-192x192.png`,
+      },
+    },
+  };
+}
+
 // FAQ JSON-LD
 export function generateFAQJsonLd(faqs: { question: string; answer: string }[]) {
   return {

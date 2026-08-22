@@ -39,9 +39,41 @@ const CATEGORY_BADGE: Record<string, { label: string; color: string }> = {
   fun: { label: '🎮 재미/테스트', color: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400' },
 };
 
+// 이 도구와 연결된 블로그 글 (서버에서 계산해 내려줌 — blog 데이터 전체를 클라이언트 번들에 싣지 않기 위함)
+export interface RelatedArticleLink {
+  slug: string;
+  title: string;
+  description: string;
+}
+
 interface ToolLayoutProps {
   meta: ToolMeta;
   children: ReactNode;
+  articles?: RelatedArticleLink[];
+}
+
+function RelatedArticles({ articles }: { articles: RelatedArticleLink[] }) {
+  if (articles.length === 0) return null;
+
+  return (
+    <section className="mt-6">
+      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">관련 글</h2>
+      <div className="space-y-3">
+        {articles.map((article) => (
+          <Link
+            key={article.slug}
+            href={`/blog/${article.slug}`}
+            className="block rounded-xl border border-gray-200 dark:border-gray-700 p-4 hover:border-blue-300 dark:hover:border-blue-600 transition-colors"
+          >
+            <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">{article.title}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">
+              {article.description}
+            </p>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function ToolHero({ meta, focusMode }: { meta: ToolMeta; focusMode: boolean }) {
@@ -98,7 +130,7 @@ function ToolHero({ meta, focusMode }: { meta: ToolMeta; focusMode: boolean }) {
   );
 }
 
-function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
+function ToolLayoutContent({ meta, children, articles }: ToolLayoutProps) {
   const searchParams = useSearchParams();
   const focusMode = searchParams.get('focus') === '1';
   const { recordToolUsage } = useRecentTools();
@@ -151,6 +183,9 @@ function ToolLayoutContent({ meta, children }: ToolLayoutProps) {
         {!focusMode && meta.relatedSlugs && meta.relatedSlugs.length > 0 && (
           <RelatedTools slugs={meta.relatedSlugs} />
         )}
+
+        {/* 관련 블로그 글 (내부 링크 — 크롤 경로 확보) */}
+        {!focusMode && articles && <RelatedArticles articles={articles} />}
       </article>
     </>
   );
@@ -179,10 +214,10 @@ function ToolLayoutFallback({ meta, children }: ToolLayoutProps) {
   );
 }
 
-export function ToolLayout({ meta, children }: ToolLayoutProps) {
+export function ToolLayout({ meta, children, articles }: ToolLayoutProps) {
   return (
     <Suspense fallback={<ToolLayoutFallback meta={meta}>{children}</ToolLayoutFallback>}>
-      <ToolLayoutContent meta={meta}>{children}</ToolLayoutContent>
+      <ToolLayoutContent meta={meta} articles={articles}>{children}</ToolLayoutContent>
     </Suspense>
   );
 }

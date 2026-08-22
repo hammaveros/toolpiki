@@ -29,9 +29,41 @@ const CATEGORY_BADGE_EN: Record<string, { label: string; color: string }> = {
   fun: { label: '🎮 Fun & Tests', color: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400' },
 };
 
+// Blog articles related to this tool (computed on the server to keep blog data out of the client bundle)
+export interface RelatedArticleLinkEn {
+  slug: string;
+  title: string;
+  description: string;
+}
+
 interface ToolLayoutEnProps {
   meta: ToolMeta;
   children: ReactNode;
+  articles?: RelatedArticleLinkEn[];
+}
+
+function RelatedArticlesEn({ articles }: { articles: RelatedArticleLinkEn[] }) {
+  if (articles.length === 0) return null;
+
+  return (
+    <section className="mt-6">
+      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Related Articles</h2>
+      <div className="space-y-3">
+        {articles.map((article) => (
+          <Link
+            key={article.slug}
+            href={`/en/blog/${article.slug}`}
+            className="block rounded-xl border border-gray-200 dark:border-gray-700 p-4 hover:border-blue-300 dark:hover:border-blue-600 transition-colors"
+          >
+            <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">{article.title}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-2">
+              {article.description}
+            </p>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function ToolHeroEn({ meta, focusMode }: { meta: ToolMeta; focusMode: boolean }) {
@@ -85,7 +117,7 @@ function ToolHeroEn({ meta, focusMode }: { meta: ToolMeta; focusMode: boolean })
   );
 }
 
-function ToolLayoutEnContent({ meta, children }: ToolLayoutEnProps) {
+function ToolLayoutEnContent({ meta, children, articles }: ToolLayoutEnProps) {
   const searchParams = useSearchParams();
   const focusMode = searchParams.get('focus') === '1';
   const { recordToolUsage } = useRecentTools();
@@ -139,6 +171,9 @@ function ToolLayoutEnContent({ meta, children }: ToolLayoutEnProps) {
         {!focusMode && meta.relatedSlugs && meta.relatedSlugs.length > 0 && (
           <RelatedToolsEn slugs={meta.relatedSlugs} />
         )}
+
+        {/* Related blog articles (internal links for crawl paths) */}
+        {!focusMode && articles && <RelatedArticlesEn articles={articles} />}
       </article>
     </>
   );
@@ -167,10 +202,10 @@ function ToolLayoutEnFallback({ meta, children }: ToolLayoutEnProps) {
   );
 }
 
-export function ToolLayoutEn({ meta, children }: ToolLayoutEnProps) {
+export function ToolLayoutEn({ meta, children, articles }: ToolLayoutEnProps) {
   return (
     <Suspense fallback={<ToolLayoutEnFallback meta={meta}>{children}</ToolLayoutEnFallback>}>
-      <ToolLayoutEnContent meta={meta}>{children}</ToolLayoutEnContent>
+      <ToolLayoutEnContent meta={meta} articles={articles}>{children}</ToolLayoutEnContent>
     </Suspense>
   );
 }

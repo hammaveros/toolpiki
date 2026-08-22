@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { getToolBySlugEn, getAllToolSlugsEn } from '@/data/tools-en';
 import { ToolLayoutEn } from '@/components/tools/ToolLayoutEn';
 import { generateToolMetadata } from '@/lib/seo/metadata';
+import { blogPostsEn } from '@/data/blog';
+import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
 
 // Tool component registry (reuse KR components)
 import { getToolComponent } from '@/tools/registry';
@@ -39,6 +41,13 @@ export default async function ToolPageEn({ params }: ToolPageEnProps) {
     notFound();
   }
 
+  // Blog articles tied to this tool (promo posts of noindexed tools are excluded)
+  const relatedArticles = isRestrictedSlug(slug)
+    ? []
+    : blogPostsEn
+        .filter((post) => post.toolSlug === slug)
+        .map(({ slug: postSlug, title, description }) => ({ slug: postSlug, title, description }));
+
   // Get tool component (reuse KR components)
   const ToolComponent = getToolComponent(slug);
 
@@ -58,7 +67,7 @@ export default async function ToolPageEn({ params }: ToolPageEnProps) {
   }
 
   return (
-    <ToolLayoutEn meta={tool}>
+    <ToolLayoutEn meta={tool} articles={relatedArticles}>
       <ToolComponent />
     </ToolLayoutEn>
   );

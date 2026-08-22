@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { blogPostsKr, getBlogPost } from '@/data/blog';
 import { siteConfig } from '@/data/site';
 import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { generateBlogPostingJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -53,6 +55,10 @@ const contentMap: Record<string, () => Promise<{ default: React.ComponentType }>
   'json-error-guide': () => import('@/content/blog/kr/json-error-guide'),
   'image-format-guide': () => import('@/content/blog/kr/image-format-guide'),
   'qr-code-safety-guide': () => import('@/content/blog/kr/qr-code-safety-guide'),
+  'percent-vs-percentpoint': () => import('@/content/blog/kr/percent-vs-percentpoint'),
+  'uuid-collision': () => import('@/content/blog/kr/uuid-collision'),
+  'unix-timestamp-2038': () => import('@/content/blog/kr/unix-timestamp-2038'),
+  'loan-repayment-guide': () => import('@/content/blog/kr/loan-repayment-guide'),
   'character-counter': () => import('@/content/blog/kr/character-counter'),
   'json-formatter': () => import('@/content/blog/kr/json-formatter'),
   'image-compress': () => import('@/content/blog/kr/image-compress'),
@@ -178,8 +184,17 @@ export default async function BlogPostPage({ params }: Props) {
 
   const { default: PostContent } = await contentMap[slug]();
 
+  const blogJsonLd = generateBlogPostingJsonLd({ ...post, lang: 'kr' });
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: '홈', url: '/' },
+    { name: '블로그', url: '/blog' },
+    { name: post.title },
+  ]);
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
+      <JsonLd data={blogJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <nav className="mb-8 text-sm text-gray-500 dark:text-gray-400">
         <Link href="/" className="hover:text-gray-900 dark:hover:text-white transition-colors">홈</Link>
         <span className="mx-2">/</span>

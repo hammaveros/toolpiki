@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { useState, useMemo } from 'react';
 import { blogPostsEn } from '@/data/blog';
 
+// Sort newest first
+const sortedPosts = [...blogPostsEn].sort((a, b) => b.date.localeCompare(a.date));
+
 export function BlogListEn() {
   const [activeCategory, setActiveCategory] = useState('All');
 
@@ -14,8 +17,8 @@ export function BlogListEn() {
 
   const filtered =
     activeCategory === 'All'
-      ? blogPostsEn
-      : blogPostsEn.filter((p) => p.category === activeCategory);
+      ? sortedPosts
+      : sortedPosts.filter((p) => p.category === activeCategory);
 
   const counts = useMemo(() => {
     const map: Record<string, number> = {};

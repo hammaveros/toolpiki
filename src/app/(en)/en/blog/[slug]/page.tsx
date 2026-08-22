@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { blogPostsEn, getBlogPost } from '@/data/blog';
 import { siteConfig } from '@/data/site';
 import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { generateBlogPostingJsonLd } from '@/lib/seo/jsonld';
+import { generateBreadcrumbJsonLdEn } from '@/lib/seo/jsonld-en';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -162,8 +165,17 @@ export default async function BlogPostPageEn({ params }: Props) {
 
   const { default: PostContent } = await contentMap[slug]();
 
+  const blogJsonLd = generateBlogPostingJsonLd({ ...post, lang: 'en' });
+  const breadcrumbJsonLd = generateBreadcrumbJsonLdEn([
+    { name: 'Home', url: '/en' },
+    { name: 'Blog', url: '/en/blog' },
+    { name: post.title },
+  ]);
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
+      <JsonLd data={blogJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <nav className="mb-8 text-sm text-gray-500 dark:text-gray-400">
         <Link href="/en" className="hover:text-gray-900 dark:hover:text-white transition-colors">Home</Link>
         <span className="mx-2">/</span>

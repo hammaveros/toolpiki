@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { getToolBySlug, getAllToolSlugs } from '@/data/tools';
 import { generateToolMetadata } from '@/lib/seo/metadata';
 import { ToolLayout } from '@/components/tools';
+import { blogPostsKr } from '@/data/blog';
+import { isRestrictedSlug } from '@/lib/seo/restricted-slugs';
 
 // 도구 컴포넌트 동적 import
 import { getToolComponent } from '@/tools/registry';
@@ -39,6 +41,14 @@ export default async function ToolPage({ params }: ToolPageProps) {
     notFound();
   }
 
+  // 이 도구와 연결된 블로그 글 (noindex 도구의 홍보 글은 제외)
+  // 빌드 시 서버에서 계산해 최소 데이터만 내려보낸다.
+  const relatedArticles = isRestrictedSlug(slug)
+    ? []
+    : blogPostsKr
+        .filter((post) => post.toolSlug === slug)
+        .map(({ slug: postSlug, title, description }) => ({ slug: postSlug, title, description }));
+
   // 도구 컴포넌트 가져오기
   const ToolComponent = getToolComponent(slug);
 
@@ -59,7 +69,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
   }
 
   return (
-    <ToolLayout meta={tool}>
+    <ToolLayout meta={tool} articles={relatedArticles}>
       <ToolComponent />
     </ToolLayout>
   );

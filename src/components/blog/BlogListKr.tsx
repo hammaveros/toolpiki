@@ -4,6 +4,9 @@ import Link from 'next/link';
 import { useState, useMemo } from 'react';
 import { blogPostsKr } from '@/data/blog';
 
+// 최신 글이 위로 오도록 날짜 내림차순 정렬
+const sortedPosts = [...blogPostsKr].sort((a, b) => b.date.localeCompare(a.date));
+
 export function BlogListKr() {
   const [activeCategory, setActiveCategory] = useState('전체');
 
@@ -14,8 +17,8 @@ export function BlogListKr() {
 
   const filtered =
     activeCategory === '전체'
-      ? blogPostsKr
-      : blogPostsKr.filter((p) => p.category === activeCategory);
+      ? sortedPosts
+      : sortedPosts.filter((p) => p.category === activeCategory);
 
   const counts = useMemo(() => {
     const map: Record<string, number> = {};
